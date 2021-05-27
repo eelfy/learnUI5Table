@@ -1,0 +1,87 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio91f19f036f4d1014b6dd926db0e91070" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Implementing Focus Handling</h1><div class="fig"><h1 class="topictitle1 title">Implementing Focus Handling</h1><div class="shortdesc">SAPUI5 provides
+		mechanisms for observing the moving focus in an application page for controls. This
+		information is then preserved for refocusing elements after rerendering. The focus triggers
+		event firing. However, due to the high degree of flexibility in control rendering, a
+		functionality tailored to the respective controls is required. For this, the framework
+		provides helper functions for the implementation of focus handling.</div><p>Each control provided by the SAPUI5 framework has its
+			own behavior for focus handling, depending on the functionality that is provided by the
+			control. Complex controls and their embedded content constitute the highest level of
+			complexity.</p><p>The base class for elements (<code>Element.js</code>) provides the following four
+			methods to support the implementation of focus handling: </p><ul class="ul ">
+			<li class="li">
+				<p>
+					<code>Element.getFocusDomRef()</code>
+				</p>
+				<p>Once a visible element is rendered, it has a Document Object Model (DOM)
+					representation. The root DOM node can be accessed by using the method
+						<code>getDomRef()</code> on the element. The root DOM node is the
+					default focused DOM node. After rendering, when a control is supposed to be
+					focused, the framework asks the control for its focus DOM node by using the
+						<code>getFocusDomRef()</code> method. If the root DOM node does
+						<span class="emphasis">not</span> represent the element that should have the focus,
+					you have to return another DOM node by overriding the
+						<code>getFocusDomRef()</code> method. </p>
+			</li>
+			<li class="li">
+				<p>
+					<code>Element.focus()</code>
+				</p>
+				<p>The <code>focus()</code> method sets the focus on the element. This is done
+					using the focus DOM node. </p>
+			</li>
+			<li class="li">
+				<p>
+					<code>Element.getFocusInfo()</code>
+				</p>
+				<p>For some controls, it is even more difficult to apply the focus once the control
+					has been rerendered. List controls, for example, have their own internal focus
+					handling and set the focus on the different items. A data table moves the focus
+					over a matrix of cells. The requirement is that a control can apply the focus to
+					its exact previous position after rerendering. In cases where the SAPUI5 rendering
+					mechanism fails to find the correct element after rendering (for example,
+					because it does not have an ID or the ID changed), override the
+						<code>getFocusInfo()</code> method and serialize the focus state into a
+					JSON object and return it. Before rendering, the render manager calls this
+					method for the element instance and stores this information for future use.
+					After rendering, it calls the <code>applyFocusInfo()</code> method and
+					passes back the serialized object. This is not only useful for focus
+					information, but also, for example, the exact cursor position of a
+						<code>TextField</code> control, can be stored in such an object.</p>
+			</li>
+			<li class="li">
+				<p>
+					<code>Element.applyFocusInfo(oFocusInfo)</code>
+				</p>
+				<p>The <code>applyFocusInfo()</code> method applies the focus to the element
+					after rerendering. You use this method if a different behavior is expected for
+					the element. The default implementation of this method sets the focus as it is
+					implemented in the <code>focus()</code> method (see above). </p>
+			</li>
+		</ul><section id="section_52A752721BCF4CFBB9D724F17370144A">
+			<h2 class="title ">Example</h2>
+			<p>In the following example, the control would usually set the focus on the second child
+				node of its root node. In this case, simply override the
+					<code>getFocusDomRef()</code> method:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.m.&lt;SampleControl&gt;.getFocusDomRef = function() {
+   return this.getDomRef().firstChild.nextSibling;
+}</pre></div></section>
+			<p>Another control generally sets the focus back to the element that previously had the
+				focus. Therefore, it overrides the methods <code>getFocusInfo</code> and
+					<code>applyFocusInfo</code>. </p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.m.&lt;SampleControl&gt;.getFocusInfo = function() {
+   return {id:this.getId(),idx:this.&lt;myFocusElementIndex&gt;};
+}
+
+sap.m.&lt;SampleControl&gt;.applyFocusInfo = function(oFocusInfo) {
+   var oDomRef = this.getDomRef();
+   if (oDomRef) {
+      this.&lt;myFocusElementIndex&gt; = oFocusInfo.idx;
+      this.focus();
+   }
+}</pre></div></section>
+		</section><section>
+			<h2 class="title ">API Reference</h2>
+			<p><a href="#/api/sap.ui.core.Element" title="#/api/sap.ui.core.Element" class="sap-doc" alt="#/api/sap.ui.core.Element">sap.ui.core.Element</a></p>
+			<p><a href="#/api/sap.ui.core.Core/methods/getCurrentFocusedControlId" title="#/api/sap.ui.core.Core/methods/getCurrentFocusedControlId" class="sap-doc" alt="#/api/sap.ui.core.Core/methods/getCurrentFocusedControlId">getCurrentFocusedControlId</a></p>
+			<p>
+		</p></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

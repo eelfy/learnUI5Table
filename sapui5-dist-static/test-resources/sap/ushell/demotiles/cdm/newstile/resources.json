@@ -1,0 +1,68 @@
+{
+	"_version":"1.1.0",
+	"resources":[
+		{
+			"name": "NewsContent.js",
+			"module": "sap/suite/ui/commons/NewsContent.js",
+			"size": 8702,
+			"required" : ["sap/m/NewsContent.js", "sap/suite/ui/commons/library.js", "sap/ui/core/Control.js"]
+		},
+		{
+			"name": "NewsContentRenderer.js",
+			"module": "sap/suite/ui/commons/NewsContentRenderer.js",
+			"size": 389,
+			"required" : ["sap/m/NewsContentRenderer.js", "sap/ui/core/Renderer.js"]
+		},
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/Component-h2-preload.js",
+			"size": 2799,
+			"required" : ["sap/suite/ui/commons/FeedItem.js", "sap/suite/ui/commons/FeedTile.js", "sap/suite/ui/commons/util/FeedAggregator.js", "sap/ui/model/Sorter.js"],
+			"included" : ["sap/ushell/demotiles/cdm/newstile/Component.js", "sap/ushell/demotiles/cdm/newstile/manifest.json", "sap/ushell/demotiles/cdm/newstile/NewsTile.controller.js", "sap/ushell/demotiles/cdm/newstile/NewsTile.view.js", "sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js", "sap/ushell/demotiles/cdm/newstile/news_tile_configuration_en.properties", "sap/ushell/demotiles/cdm/newstile/news_tile_en.properties"]
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/Component-preload.js",
+			"size": 12147,
+			"required" : ["sap/suite/ui/commons/FeedItem.js", "sap/suite/ui/commons/FeedTile.js", "sap/suite/ui/commons/util/FeedAggregator.js", "sap/ui/model/Sorter.js"],
+			"included" : ["sap/ushell/demotiles/cdm/newstile/Component.js", "sap/ushell/demotiles/cdm/newstile/NewsTile.controller.js", "sap/ushell/demotiles/cdm/newstile/NewsTile.view.js", "sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js", "sap/ushell/demotiles/cdm/newstile/manifest.json", "sap/ushell/demotiles/cdm/newstile/news_tile_configuration_en.properties", "sap/ushell/demotiles/cdm/newstile/news_tile_en.properties"]
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/Component.js",
+			"size": 1589
+		},
+		{
+			"name": "NewsTile.controller.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/NewsTile.controller.js",
+			"size": 4972,
+			"required" : ["sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js"]
+		},
+		{
+			"name": "NewsTile.view.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/NewsTile.view.js",
+			"size": 4687,
+			"required" : ["sap/suite/ui/commons/FeedItem.js", "sap/suite/ui/commons/FeedTile.js", "sap/suite/ui/commons/util/FeedAggregator.js", "sap/ui/model/Sorter.js", "sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js"]
+		},
+		{
+			"name": "NewsTileUtils.js",
+			"module": "sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js",
+			"size": 6619
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/demotiles/cdm/newstile/manifest.json",
+			"size": 2572
+		},
+		{
+			"name": "news_tile_configuration_en.properties",
+			"module": "sap/ushell/demotiles/cdm/newstile/news_tile_configuration_en.properties",
+			"size": 1279
+		},
+		{
+			"name": "news_tile_en.properties",
+			"module": "sap/ushell/demotiles/cdm/newstile/news_tile_en.properties",
+			"size": 297
+		}
+	]
+}

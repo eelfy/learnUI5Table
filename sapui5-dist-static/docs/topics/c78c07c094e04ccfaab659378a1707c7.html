@@ -1,0 +1,54 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc78c07c094e04ccfaab659378a1707c7" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Creating Control and Class Modules</h1><div class="fig"><h1 class="topictitle1 title">Creating Control and Class Modules</h1><div class="shortdesc">Modules do not only require and use functionality from other modules, they also expose
+		their own functionality to the outside. In asynchronous module definition (AMD) syntax,
+		there are several ways to expose such functionality.</div><p> However, SAPUI5 only
+			supports the "module return value".</p><p>If you want to export the "module value" of an AMD module under a global name, you have
+			two options:</p><ul class="ul ">
+				<li class="li">You rely on the SAPUI5 methods that
+					already do the exposure as a side effect, such as:<ul class="ul ">
+						<li class="li">
+							<p>Classes created by the <code>extend</code> method</p>
+						</li>
+						<li class="li">
+							<p>Libraries that call <code>initLibrary()</code> in their
+									<code>library.js</code> module</p>
+						</li>
+						<li class="li">
+							<p>Renderers that are created with
+									<code>sap.ui.core.Renderer.extend(“….”)</code></p>
+						</li>
+					</ul></li>
+				<li class="li">
+					<p>You set the fourth parameter <code>bExport of sap.ui.define(sModuleName, aDependencies, vFactory, bExport)</code> to <code>true</code>.
+						This will expose the module value under the global name that is derived from
+						the module name.</p>
+					<p>The global JavaScript namespace is based on a "slash to dot replacement".</p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>The resulting namespace might not have the expected result if the AMD
+							module name contains dots!</p>
+					<p></p></div></div>
+				</li>
+			</ul><p></p><p>In control and class modules, you should not use global variables at all. When you derive
+			a custom control from an existing superclass via the the <code>extend</code> method,
+			the resulting subclass is returned.</p><p>You can store the return value of the extend function in a local variable, make changes
+			to the prototype and then return this variable as the modules return value.</p><p>JSDoc for the class should use the <code>@alias</code> tag to make sure that the
+			variable is known under the global name in the generated JSDoc.</p><p>The <code>extend</code> function makes sure that the respective namespace is
+			created:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/ui/base/Object", "sap/ui/model/json/JSONModel"], function (BaseObject, JSONModel) {
+  
+    var Foo = BaseObject.extend("foo.bar.MyClass", /** @lends foo.bar.MyClass */ {
+  
+      constructor: function(sId, mProperties) {
+        this.mId = sId;
+      }
+    });
+ 
+    Foo.prototype.ownMethod = function (a) {
+        return a * 2;
+    };
+  
+    // return the module value, in this example a class
+    return Foo;
+});</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/f6fba4c6e1cb49c7b355319ac9c8d1cd.html" title="Full example of a class definition, including JSDoc" class="sap-doc">Example for Defining a Class</a></li>
+	</ul></section></div></section></div></body></html>

@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper'
+						 }"
+>
+
+
+	<template:if test="{= ${dataPoint>Visualization}}">
+		<template:then>
+			<template:if test="{= ${dataPoint>Visualization/$EnumMember} === 'com.sap.vocabularies.UI.v1.VisualizationType/Rating'}">
+				<template:then>
+					<RatingIndicator
+						enabled="true"
+						binding="{dataPoint>@@MODEL.getNavigationBinding}"
+						maxValue="{dataPoint>TargetValue@@MODEL.format}"
+						displayOnly="false"
+						value="{dataPoint>Value@@MODEL.format}"
+						tooltip="{= ${dataPoint>@com.sap.vocabularies.Common.v1.QuickInfo} ? ${dataPoint>@com.sap.vocabularies.Common.v1.QuickInfo@@MODEL.value} : '{sap.fe.i18n>T_COMMON_RATING_INDICATOR_TITLE_LABEL}'}"
+					/>
+				</template:then>
+				<template:elseif test="{= ${dataPoint>Visualization/$EnumMember} === 'com.sap.vocabularies.UI.v1.VisualizationType/Progress'}">
+					<template:with path="dataPoint>Value" var="valueProperty">
+						<ProgressIndicator
+							unittest:id="MacroDataPointProgressIndicator"
+							enabled="true"
+							binding="{dataPoint>@@MODEL.getNavigationBinding}"
+							displayValue="{= FIELD.buildExpressionForProgressIndicatorDisplayValue(${valueProperty>@@MODEL.value}, ${dataPoint>TargetValue@@MODEL.value}, ${valueProperty>$Path@Org.OData.Measures.V1.Unit@@MODEL.value})}"
+							percentValue="{= FIELD.buildExpressionForProgressIndicatorPercentValue(${valueProperty>@@MODEL.value}, ${dataPoint>TargetValue@@MODEL.value}, ${valueProperty>$Path@Org.OData.Measures.V1.Unit@@MODEL.value})}"
+							state="{path: 'dataPoint>./', formatter: '.FIELD.buildExpressionForCriticalityColor'}"
+							displayAnimation="false"
+						/>
+					</template:with>
+				</template:elseif>
+				<template:else>
+					<template:with path="dataPoint>Value" var="property">
+						<ObjectStatus
+							unittest:id="MacroDataPointObjectStatus"
+							core:require="{ FieldRuntime: 'sap/fe/macros/field/FieldRuntime' }"
+							icon="{= FIELD.getIconForDataPoint(${dataPoint>})}"
+							state="{path: 'dataPoint>./', formatter: '.FIELD.buildExpressionForCriticalityColor'}"
+							text="{ parts:[ {path:'property>'},{path:'property>$Path@'}, {path:'property>$Path@@FIELD.buildExpressionForTextValue'}, {path:'this>formatOptions'}, {path:'dataPoint>./'}, {path:'property>$Path/$Type'}], formatter: 'FIELD.buildFieldBindingExpression'}"
+						/>
+					</template:with>
+				</template:else>
+			</template:if>
+		</template:then>
+		<template:else>
+			<template:with path="dataPoint>Value" var="property">
+				<ObjectStatus
+					unittest:id="MacroDataPointObjectStatus"
+					core:require="{ FieldRuntime: 'sap/fe/macros/field/FieldRuntime' }"
+					icon="{= FIELD.getIconForDataPoint(${dataPoint>})}"
+					state="{path: 'dataPoint>./', formatter: '.FIELD.buildExpressionForCriticalityColor'}"
+					text="{ parts:[ {path:'property>'},{path:'property>$Path@'}, {path:'property>$Path@@FIELD.buildExpressionForTextValue'}, {path:'this>formatOptions'}, {path:'dataPoint>./'}, {path:'property>$Path/$Type'}], formatter: 'FIELD.buildFieldBindingExpression'}"
+				/>
+			</template:with>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

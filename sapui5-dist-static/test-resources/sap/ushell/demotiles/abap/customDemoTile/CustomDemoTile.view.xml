@@ -1,0 +1,15 @@
+<core:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ushell.demotiles.abap.customDemoTile.CustomDemoTile">
+
+    <GenericTile
+        header="{/config/display_title_text}"
+        subheader="{/config/display_subtitle_text}"
+        frameType= "{/frameType}"
+        backgroundImage="{/backgroundImage}">
+        <TileContent footer="{/info}">
+            <ImageContent src="{/icon}" />
+        </TileContent>
+    </GenericTile>
+</core:View>

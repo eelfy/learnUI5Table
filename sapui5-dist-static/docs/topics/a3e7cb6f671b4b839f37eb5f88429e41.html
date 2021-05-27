@@ -1,0 +1,85 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa3e7cb6f671b4b839f37eb5f88429e41" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 8: OData Operations</h1><div class="fig"><h1 class="topictitle1 title">Step 8: OData Operations</h1><div class="shortdesc">Our OData service provides one OData operation: the ResetDataSource
+		action. In this step, we add a button that resets all data changes we made during the
+		tutorial to their original state using this action.</div><section id="section_bt4_fxc_z1b"><h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loioe518debe1cdc4fcd9f5a6cffd014fbfa_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">A Restart Tutorial button is added</span></div></section><section id="section_tsr_gxc_z1b"><h2 class="title ">Coding</h2><p>You can view and download all files at <a href="#/sample/sap.ui.core.tutorial.odatav4.08/preview" title="#/sample/sap.ui.core.tutorial.odatav4.08/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.odatav4.08/preview">OData V4 - Step 8</a>.</p></section><section id="section_pvc_fyc_z1b">
+			<h2 class="title ">webapp/controller/App.controller.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+		onResetChanges : function () {
+			this.byId("peopleList").getBinding("items").resetChanges();
+			this._setUIChanges();
+		},
+
+		<span class="emphasis">onResetDataSource : function () {
+			var oModel = this.getView().getModel(),
+				oOperation = oModel.bindContext("/ResetDataSource(...)");
+
+			oOperation.execute().then(function () {
+					oModel.refresh();
+					MessageToast.show(this._getText("sourceResetSuccessMessage"));
+				}.bind(this), function (oError) {
+					MessageBox.error(oError.message);
+				}
+			);
+		},</span>
+
+		onSave : function () {
+...
+</pre></div></section>
+			<p>The <code>onResetDataSource</code> event handler calls the
+					<code>ResetDataSource</code> action, which is an action of the
+					<span class="ph uicontrol">TripPin</span> OData service that resets the data of the service
+				to its original state.</p>
+			<p>We call that action by first creating a deferred operation binding on the model. The
+					<code>(…)</code> part of the binding syntax marks the binding as deferred.
+				We use a deferred binding because we want to control when the action is executed.
+				Since it is deferred, we need to explicitly call its <code>execute</code>
+				method.</p>
+			<p>The execution is asynchronous, therefore the execute method returns a
+					<code>Promise</code>. We attach simple success and error handlers to that
+					<code>Promise</code> by calling its <code>then</code> method.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Many of the methods in the OData V4 API of SAPUI5 return a
+						<code>Promise</code> to manage asynchronous processing</p>
+			<p></p></div></div>
+		</section><section id="section_pp2_mxc_z1b"><h2 class="title ">webapp/view/App.view.xml</h2><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+	controllerName="sap.ui.core.tutorial.odatav4.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"&gt;
+	&lt;Shell&gt;
+		&lt;App busy="{appView&gt;/busy}" class="sapUiSizeCompact"&gt;
+			&lt;pages&gt;
+				&lt;Page title="{i18n&gt;peoplePageTitle}"&gt;
+<span class="emphasis">					&lt;headerContent&gt;
+						&lt;Button
+							id="resetChangesButton"
+							text="{i18n&gt;resetChangesButtonText}"
+							enabled="{= !${appView&gt;/hasUIChanges}}"
+							press="onResetDataSource"
+							type="Emphasized"&gt;
+						&lt;/Button&gt;
+					&lt;/headerContent&gt;</span>
+...</pre></div></section><p>We add the <span class="emphasis">headerContent</span> aggregation to the <span class="emphasis">Page</span> and
+				insert the new <span class="emphasis">Button</span>. We add the
+					<span class="emphasis">onResetDataSource</span>  event handler to the
+					<span class="emphasis">press</span> event.</p></section><section id="section_kl4_d1x_4cb">
+			<h2 class="title ">webapp/i18n/i18n.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+# Toolbar
+...
+<span class="emphasis">#XBUT: Button text for reset changes
+resetChangesButtonText=Restart Tutorial</span>
+...
+# Messages
+...
+<span class="emphasis">#XMSG: Message for changes reverted
+sourceResetSuccessMessage=All changes reverted back to start</span></pre></div></section>
+			<p>We add the missing texts to the properties file.</p>
+		</section><section id="section_rtl_jnx_pcb">And now we are done! We built a simple application with user
+			data from an OData V4 service. We can display, edit, create, and delete users. And we
+			use OData V4 features such as batch groups and automatic type detection.</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/bcdbde6911bd4fc68fd435cf8e306ed0">OData V4</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/12a0d1ef150a42ef81e9f07fe6407018">Step 7: Delete</a></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/54e0ddf695af4a6c978472cecb01c64d.html" title="Bindings connect SAPUI5 view elements to model data, allowing changes in the model to be reflected in the view element and vice versa." class="sap-doc">Bindings</a></li>
+		<li><a href="#/topic/b54f7895b7594c61a83fa7257fa9d13f.html" title="The OData V4 model supports OData operations (ActionImport, FunctionImport, bound Actions and bound Functions). Unbound parameters are limited to primitive values." class="sap-doc">OData Operations</a></li>
+	</ul></section></div></section></div></body></html>

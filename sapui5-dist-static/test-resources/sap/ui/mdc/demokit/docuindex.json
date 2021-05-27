@@ -1,0 +1,54 @@
+{
+	"explored": {
+		"entitiesDefaults": {
+			"formFactors": "SML"
+		},
+		"samplesRef": [
+			{
+				"namespace": "sap.ui.mdc.sample",
+				"ref": "test-resources/sap/ui/mdc/demokit/internal/sample"
+			}, {
+				"namespace": "delegates",
+				"ref": "test-resources/sap/ui/mdc/delegates"
+			}
+		],
+		"entities": [
+			{
+				"id": "sap.ui.mdc.sample.Table",
+				"name": "MDC",
+				"category": "_PRIVATE_",
+				"since": "1.82",
+				"samples": [
+					"sap.ui.mdc.sample.ResponsiveTable",
+					"sap.ui.mdc.sample.GridTable",
+					"sap.ui.mdc.sample.TableStateHandling",
+					"sap.ui.mdc.sample.TableFilter",
+					"sap.ui.mdc.sample.TableODataV4Analytics"
+				]
+			}
+		],
+		"samples": [
+			{
+				"id": "sap.ui.mdc.sample.ResponsiveTable",
+				"name": "Table of type \"ResponsiveTable\"",
+				"description": "Basic example with table type \"ResponsiveTable\"."
+			}, {
+				"id": "sap.ui.mdc.sample.GridTable",
+				"name": "Table of type \"GridTable\"",
+				"description": "Basic example with table type \"GridTable\"."
+			}, {
+				"id": "sap.ui.mdc.sample.TableStateHandling",
+				"name": "Table state handling",
+				"description": "Basic example of state handling."
+			}, {
+				"id": "sap.ui.mdc.sample.TableFilter",
+				"name": "Table with FilterBar",
+				"description": "Basic example with a FilterBar."
+			}, {
+				"id": "sap.ui.mdc.sample.TableODataV4Analytics",
+				"name": "Table with OData V4",
+				"description": "OData V4 with analytical capabilities, e.g. grouping and totals."
+			}
+		]
+	}
+}

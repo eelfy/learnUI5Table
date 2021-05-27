@@ -1,0 +1,35 @@
+sap.ui.define(["sap/fe/core/support/CommonHelper", "sap/fe/core/converters/helpers/IssueManager"], function (CommonHelper, IssueManager) {
+  "use strict";
+
+  var _exports = {};
+  var IssueCategory = IssueManager.IssueCategory;
+  var Audiences = CommonHelper.Audiences;
+  var getIssueByCategory = CommonHelper.getIssueByCategory;
+  var Categories = CommonHelper.Categories;
+  var oCollectionFacetMissingIDIssue = {
+    id: "collectionFacetMissingId",
+    title: "CollectionFacet: Missing IDs",
+    minversion: "1.85",
+    audiences: [Audiences.Application],
+    categories: [Categories.Usage],
+    description: "A collection facet requires an ID in the annotation file to derive a control ID from it.",
+    resolution: "Always provide a unique ID to a collection facet.",
+    resolutionurls: [{
+      "text": "CollectionFacets",
+      "href": "https://ui5.sap.com/#/topic/facfea09018d4376acaceddb7e3f03b6"
+    }],
+    check: function (oIssueManager, oCoreFacade)
+    /*oScope: any*/
+    {
+      getIssueByCategory(oIssueManager, oCoreFacade, IssueCategory.Facets, "MissingID");
+    }
+  };
+
+  function getRules() {
+    return [oCollectionFacetMissingIDIssue];
+  }
+
+  _exports.getRules = getRules;
+  return _exports;
+}, false);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNvbGxlY3Rpb25GYWNldE1pc3NpbmdJRC5zdXBwb3J0LnRzIl0sIm5hbWVzIjpbIm9Db2xsZWN0aW9uRmFjZXRNaXNzaW5nSURJc3N1ZSIsImlkIiwidGl0bGUiLCJtaW52ZXJzaW9uIiwiYXVkaWVuY2VzIiwiQXVkaWVuY2VzIiwiQXBwbGljYXRpb24iLCJjYXRlZ29yaWVzIiwiQ2F0ZWdvcmllcyIsIlVzYWdlIiwiZGVzY3JpcHRpb24iLCJyZXNvbHV0aW9uIiwicmVzb2x1dGlvbnVybHMiLCJjaGVjayIsIm9Jc3N1ZU1hbmFnZXIiLCJvQ29yZUZhY2FkZSIsImdldElzc3VlQnlDYXRlZ29yeSIsIklzc3VlQ2F0ZWdvcnkiLCJGYWNldHMiLCJnZXRSdWxlcyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFFQSxNQUFNQSw4QkFBOEIsR0FBRztBQUN0Q0MsSUFBQUEsRUFBRSxFQUFFLDBCQURrQztBQUV0Q0MsSUFBQUEsS0FBSyxFQUFFLDhCQUYrQjtBQUd0Q0MsSUFBQUEsVUFBVSxFQUFFLE1BSDBCO0FBSXRDQyxJQUFBQSxTQUFTLEVBQUUsQ0FBQ0MsU0FBUyxDQUFDQyxXQUFYLENBSjJCO0FBS3RDQyxJQUFBQSxVQUFVLEVBQUUsQ0FBQ0MsVUFBVSxDQUFDQyxLQUFaLENBTDBCO0FBTXRDQyxJQUFBQSxXQUFXLEVBQUUsMEZBTnlCO0FBT3RDQyxJQUFBQSxVQUFVLEVBQUUsbURBUDBCO0FBUXRDQyxJQUFBQSxjQUFjLEVBQUUsQ0FBQztBQUFFLGNBQVEsa0JBQVY7QUFBOEIsY0FBUTtBQUF0QyxLQUFELENBUnNCO0FBU3RDQyxJQUFBQSxLQUFLLEVBQUUsVUFBU0MsYUFBVCxFQUE2QkMsV0FBN0I7QUFBOEM7QUFBaUI7QUFDckVDLE1BQUFBLGtCQUFrQixDQUFDRixhQUFELEVBQWdCQyxXQUFoQixFQUE2QkUsYUFBYSxDQUFDQyxNQUEzQyxFQUFtRCxXQUFuRCxDQUFsQjtBQUNBO0FBWHFDLEdBQXZDOztBQWFPLFdBQVNDLFFBQVQsR0FBb0I7QUFDMUIsV0FBTyxDQUFDbkIsOEJBQUQsQ0FBUDtBQUNBIiwic291cmNlUm9vdCI6Ii4iLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDYXRlZ29yaWVzLCBnZXRJc3N1ZUJ5Q2F0ZWdvcnksIEF1ZGllbmNlcyB9IGZyb20gXCJzYXAvZmUvY29yZS9zdXBwb3J0L0NvbW1vbkhlbHBlclwiO1xuaW1wb3J0IHsgSXNzdWVDYXRlZ29yeSB9IGZyb20gXCJzYXAvZmUvY29yZS9jb252ZXJ0ZXJzL2hlbHBlcnMvSXNzdWVNYW5hZ2VyXCI7XG5jb25zdCBvQ29sbGVjdGlvbkZhY2V0TWlzc2luZ0lESXNzdWUgPSB7XG5cdGlkOiBcImNvbGxlY3Rpb25GYWNldE1pc3NpbmdJZFwiLFxuXHR0aXRsZTogXCJDb2xsZWN0aW9uRmFjZXQ6IE1pc3NpbmcgSURzXCIsXG5cdG1pbnZlcnNpb246IFwiMS44NVwiLFxuXHRhdWRpZW5jZXM6IFtBdWRpZW5jZXMuQXBwbGljYXRpb25dLFxuXHRjYXRlZ29yaWVzOiBbQ2F0ZWdvcmllcy5Vc2FnZV0sXG5cdGRlc2NyaXB0aW9uOiBcIkEgY29sbGVjdGlvbiBmYWNldCByZXF1aXJlcyBhbiBJRCBpbiB0aGUgYW5ub3RhdGlvbiBmaWxlIHRvIGRlcml2ZSBhIGNvbnRyb2wgSUQgZnJvbSBpdC5cIixcblx0cmVzb2x1dGlvbjogXCJBbHdheXMgcHJvdmlkZSBhIHVuaXF1ZSBJRCB0byBhIGNvbGxlY3Rpb24gZmFjZXQuXCIsXG5cdHJlc29sdXRpb251cmxzOiBbeyBcInRleHRcIjogXCJDb2xsZWN0aW9uRmFjZXRzXCIsIFwiaHJlZlwiOiBcImh0dHBzOi8vdWk1LnNhcC5jb20vIy90b3BpYy9mYWNmZWEwOTAxOGQ0Mzc2YWNhY2VkZGI3ZTNmMDNiNlwiIH1dLFxuXHRjaGVjazogZnVuY3Rpb24ob0lzc3VlTWFuYWdlcjogYW55LCBvQ29yZUZhY2FkZTogYW55IC8qb1Njb3BlOiBhbnkqLykge1xuXHRcdGdldElzc3VlQnlDYXRlZ29yeShvSXNzdWVNYW5hZ2VyLCBvQ29yZUZhY2FkZSwgSXNzdWVDYXRlZ29yeS5GYWNldHMsIFwiTWlzc2luZ0lEXCIpO1xuXHR9XG59O1xuZXhwb3J0IGZ1bmN0aW9uIGdldFJ1bGVzKCkge1xuXHRyZXR1cm4gW29Db2xsZWN0aW9uRmFjZXRNaXNzaW5nSURJc3N1ZV07XG59XG4iXX0=

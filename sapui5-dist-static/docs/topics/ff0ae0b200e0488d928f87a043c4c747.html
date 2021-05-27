@@ -1,0 +1,31 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioff0ae0b200e0488d928f87a043c4c747" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Header Field Group</h1><div class="fig"><h1 class="topictitle1 title">Header Field Group</h1><p>A field group defines the fields displayed within a specific reference facet. For example, the figure below shows the following fields
+			within the <span class="ph uicontrol">General Information</span> section (created with a header facet):</p><ul class="ul ">
+				<li class="li">
+					<p><span class="ph uicontrol">Sales Organization</span></p>
+				</li>
+				<li class="li"><span class="ph uicontrol">Distribution Channel</span></li>
+				<li class="li"><span class="ph uicontrol">Division</span></li>
+			</ul><p></p><div><div class="fig"><img src="loio379b97555ce347ec8a8ac4a692e006ea_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: Header Field Group</span></div><section id="section_mjl_ck5_dnb">
+			<h2 class="title ">Code Sample</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="OrgData"&gt;
+    &lt;Record Type="UI.FieldGroupType"&gt;
+        &lt;PropertyValue Property="Data"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="SalesOrganization"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="DistributionChannel"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                    &lt;Annotation Term="UI.Hidden" Path="Delivered"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="OrganizationDivision"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

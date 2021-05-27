@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	xmlns:m="sap.m"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper'
+	}"
+>
+	<template:with path="chartAnnotation>" helper="MODEL.resolve$Path" var="chartAnnotation">
+		<template:with path="chartAnnotation>Measures/0" helper="MICROCHART.getMeasureAttributeForMeasure" var="DataPoint">
+			<template:if test="{this>isAnalytics}">
+				<template:then>
+					<control:ConditionalWrapper condition="{= MICROCHART.hasValidAnalyticalCurrencyOrUnit(${DataPoint>Value/$Path@})}">
+							<control:contentTrue>
+								<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartContent" type="XML" />
+							</control:contentTrue>
+							<control:contentFalse>
+								<m:Text text="*" />
+							</control:contentFalse>
+					</control:ConditionalWrapper>
+				</template:then>
+				<template:else>
+					<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartContent" type="XML" />
+				</template:else>
+			</template:if>
+		</template:with>
+	</template:with>
+</core:FragmentDefinition>

@@ -1,0 +1,50 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.ushell_abap",
+    "type": "library",
+    "embeds": [
+      "plugins/fcc-transport-ui"
+    ],
+    "applicationVersion": {
+      "version": "1.88.1"
+    },
+    "title": "SAP library: sap.ushell_abap",
+    "description": "SAP library: sap.ushell_abap",
+    "ach": "CA-FLP-FE-UI",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": []
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.88",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.88.0"
+        },
+        "sap.m": {
+          "minVersion": "1.88.0"
+        },
+        "sap.ushell": {
+          "minVersion": "1.88.1"
+        },
+        "sap.ui.layout": {
+          "minVersion": "1.88.0",
+          "lazy": true
+        },
+        "sap.ui.fl": {
+          "minVersion": "1.88.0",
+          "lazy": true
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "css": false
+    }
+  }
+}

@@ -1,0 +1,2474 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "../ui/Device.js",
+			"module": "sap/ui/Device.js",
+			"size": 15566,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/ODataService.js",
+			"module": "sap/ui2/srvc/ODataService.js",
+			"size": 2148
+		},
+		{
+			"name": "../ui2/srvc/ODataWrapper.js",
+			"module": "sap/ui2/srvc/ODataWrapper.js",
+			"size": 10032
+		},
+		{
+			"name": "../ui2/srvc/PageBuildingService.js",
+			"module": "sap/ui2/srvc/PageBuildingService.js",
+			"size": 12625,
+			"required": [
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/RemoteCatalogService.js",
+			"module": "sap/ui2/srvc/RemoteCatalogService.js",
+			"size": 349,
+			"required": [
+				"sap/ui2/srvc/PageBuildingService.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/allcatalogs.js",
+			"module": "sap/ui2/srvc/allcatalogs.js",
+			"size": 1534,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/bag.js",
+			"module": "sap/ui2/srvc/bag.js",
+			"size": 5170,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/catalog.js",
+			"module": "sap/ui2/srvc/catalog.js",
+			"size": 6467,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/chip.js",
+			"module": "sap/ui2/srvc/chip.js",
+			"size": 8831,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/chipdefinition.js",
+			"module": "sap/ui2/srvc/chipdefinition.js",
+			"size": 2137,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/chipinstance.js",
+			"module": "sap/ui2/srvc/chipinstance.js",
+			"size": 5820,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/contracts/actions.js",
+			"module": "sap/ui2/srvc/contracts/actions.js",
+			"size": 1362,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/bag.js",
+			"module": "sap/ui2/srvc/contracts/bag.js",
+			"size": 823,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js",
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/configuration.js",
+			"module": "sap/ui2/srvc/contracts/configuration.js",
+			"size": 894,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/configurationUi.js",
+			"module": "sap/ui2/srvc/contracts/configurationUi.js",
+			"size": 1192,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/fullscreen.js",
+			"module": "sap/ui2/srvc/contracts/fullscreen.js",
+			"size": 451,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/navigation.js",
+			"module": "sap/ui2/srvc/contracts/navigation.js",
+			"size": 552,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/preview.js",
+			"module": "sap/ui2/srvc/contracts/preview.js",
+			"size": 1317,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/refresh.js",
+			"module": "sap/ui2/srvc/contracts/refresh.js",
+			"size": 330,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/search.js",
+			"module": "sap/ui2/srvc/contracts/search.js",
+			"size": 646,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/searchProvider.js",
+			"module": "sap/ui2/srvc/contracts/searchProvider.js",
+			"size": 562,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/types.js",
+			"module": "sap/ui2/srvc/contracts/types.js",
+			"size": 86,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/contracts/url.js",
+			"module": "sap/ui2/srvc/contracts/url.js",
+			"size": 529,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/contracts/visible.js",
+			"module": "sap/ui2/srvc/contracts/visible.js",
+			"size": 687,
+			"condRequired": [
+				"sap/ui2/srvc/chip.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/error.js",
+			"module": "sap/ui2/srvc/error.js",
+			"size": 447,
+			"condRequired": [
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/factory.js",
+			"module": "sap/ui2/srvc/factory.js",
+			"size": 5041,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/page.js",
+			"module": "sap/ui2/srvc/page.js",
+			"size": 6196,
+			"format": "raw"
+		},
+		{
+			"name": "../ui2/srvc/pageset.js",
+			"module": "sap/ui2/srvc/pageset.js",
+			"size": 3540,
+			"condRequired": [
+				"sap/ui2/srvc/page.js",
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "../ui2/srvc/utils.js",
+			"module": "sap/ui2/srvc/utils.js",
+			"size": 7954,
+			"condRequired": [
+				"sap/ui/thirdparty/URI.js"
+			]
+		},
+		{
+			"name": ".library",
+			"size": 2095
+		},
+		{
+			"name": ".theming",
+			"size": 97
+		},
+		{
+			"name": "adapters/abap/AdapterContainer-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/AdapterContainer.js",
+			"size": 14004,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/core/format/DateFormat.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "adapters/abap/AdapterContainer.js",
+			"module": "sap/ushell_abap/adapters/abap/AdapterContainer.js",
+			"size": 5822,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/core/format/DateFormat.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "adapters/abap/AppStateAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/AppStateAdapter.js",
+			"size": 4740,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/AppStateAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/AppStateAdapter.js",
+			"size": 1394,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ClientSideTargetResolutionAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/ClientSideTargetResolutionAdapter.js",
+			"size": 62038,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isPlainObject.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ClientSideTargetResolutionAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/ClientSideTargetResolutionAdapter.js",
+			"size": 18300,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isPlainObject.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ConfigurationDefaultsAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/ConfigurationDefaultsAdapter.js",
+			"size": 758,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/deepClone.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ConfigurationDefaultsAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/ConfigurationDefaultsAdapter.js",
+			"size": 284,
+			"required": [
+				"sap/base/util/deepClone.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ContainerAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/ContainerAdapter.js",
+			"size": 19642,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js",
+				"sap/ushell/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/ContainerAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/ContainerAdapter.js",
+			"size": 5138,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js",
+				"sap/ushell/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/EndUserFeedbackAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/EndUserFeedbackAdapter.js",
+			"size": 4615,
+			"isDebug": true,
+			"required": [
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js"
+			]
+		},
+		{
+			"name": "adapters/abap/EndUserFeedbackAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/EndUserFeedbackAdapter.js",
+			"size": 1466,
+			"required": [
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js"
+			]
+		},
+		{
+			"name": "adapters/abap/LaunchPageAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/LaunchPageAdapter.js",
+			"size": 172001,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/m/GenericTile.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/catalog.js",
+				"sap/ui2/srvc/chipdefinition.js",
+				"sap/ui2/srvc/chipinstance.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/cards/ManifestPropertyHelper.js"
+			],
+			"condRequired": [
+				"sap/ushell/EventHub.js"
+			]
+		},
+		{
+			"name": "adapters/abap/LaunchPageAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/LaunchPageAdapter.js",
+			"size": 37041,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/m/GenericTile.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/catalog.js",
+				"sap/ui2/srvc/chipdefinition.js",
+				"sap/ui2/srvc/chipinstance.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/cards/ManifestPropertyHelper.js"
+			],
+			"condRequired": [
+				"sap/ushell/EventHub.js"
+			]
+		},
+		{
+			"name": "adapters/abap/MenuAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/MenuAdapter.js",
+			"size": 4723,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ushell/Config.js"
+			]
+		},
+		{
+			"name": "adapters/abap/MenuAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/MenuAdapter.js",
+			"size": 1420,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ushell/Config.js"
+			]
+		},
+		{
+			"name": "adapters/abap/NavTargetResolutionAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/NavTargetResolutionAdapter.js",
+			"size": 636,
+			"isDebug": true
+		},
+		{
+			"name": "adapters/abap/NavTargetResolutionAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/NavTargetResolutionAdapter.js",
+			"size": 126
+		},
+		{
+			"name": "adapters/abap/PageBuildingAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/PageBuildingAdapter.js",
+			"size": 5679,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/PageBuildingService.js",
+				"sap/ui2/srvc/RemoteCatalogService.js",
+				"sap/ui2/srvc/factory.js",
+				"sap/ui2/srvc/pageset.js",
+				"sap/ushell/System.js"
+			]
+		},
+		{
+			"name": "adapters/abap/PageBuildingAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/PageBuildingAdapter.js",
+			"size": 1136,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/PageBuildingService.js",
+				"sap/ui2/srvc/RemoteCatalogService.js",
+				"sap/ui2/srvc/factory.js",
+				"sap/ui2/srvc/pageset.js",
+				"sap/ushell/System.js"
+			]
+		},
+		{
+			"name": "adapters/abap/PagePersistenceAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/PagePersistenceAdapter.js",
+			"size": 23335,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/model/odata/ODataMetadata.js",
+				"sap/ui/model/odata/v2/ODataModel.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "adapters/abap/PagePersistenceAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/PagePersistenceAdapter.js",
+			"size": 17582,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui/model/odata/ODataMetadata.js",
+				"sap/ui/model/odata/v2/ODataModel.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "adapters/abap/PersonalizationAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/PersonalizationAdapter.js",
+			"size": 3767,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/services/Personalization.js",
+				"sap/ushell/services/_Personalization/constants.js",
+				"sap/ushell_abap/adapters/abap/AdapterContainer.js"
+			]
+		},
+		{
+			"name": "adapters/abap/PersonalizationAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/PersonalizationAdapter.js",
+			"size": 1334,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/services/Personalization.js",
+				"sap/ushell/services/_Personalization/constants.js",
+				"sap/ushell_abap/adapters/abap/AdapterContainer.js"
+			]
+		},
+		{
+			"name": "adapters/abap/SearchAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/SearchAdapter.js",
+			"size": 527,
+			"isDebug": true
+		},
+		{
+			"name": "adapters/abap/SearchAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/SearchAdapter.js",
+			"size": 161
+		},
+		{
+			"name": "adapters/abap/SupportTicketAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/SupportTicketAdapter.js",
+			"size": 4071,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/SupportTicketAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/SupportTicketAdapter.js",
+			"size": 1462,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "adapters/abap/UserInfoAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/abap/UserInfoAdapter.js",
+			"size": 10309,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "adapters/abap/UserInfoAdapter.js",
+			"module": "sap/ushell_abap/adapters/abap/UserInfoAdapter.js",
+			"size": 2826,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "adapters/hana/ContainerAdapter-dbg.js",
+			"module": "sap/ushell_abap/adapters/hana/ContainerAdapter.js",
+			"size": 4444,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js"
+			]
+		},
+		{
+			"name": "adapters/hana/ContainerAdapter.js",
+			"module": "sap/ushell_abap/adapters/hana/ContainerAdapter.js",
+			"size": 1071,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js"
+			]
+		},
+		{
+			"name": "bootstrap/abap-dbg.js",
+			"size": 251045,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/abap.js",
+			"size": 90240
+		},
+		{
+			"name": "bootstrap/appruntime-min-0-dbg.js",
+			"size": 363551,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-0.js",
+			"size": 363291
+		},
+		{
+			"name": "bootstrap/appruntime-min-0.js.map",
+			"size": 449772,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-1-dbg.js",
+			"size": 366837,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-1.js",
+			"size": 366642
+		},
+		{
+			"name": "bootstrap/appruntime-min-1.js.map",
+			"size": 566814,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-2-dbg.js",
+			"size": 369724,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-2.js",
+			"size": 369504
+		},
+		{
+			"name": "bootstrap/appruntime-min-2.js.map",
+			"size": 428009,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-3-dbg.js",
+			"size": 391410,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/appruntime-min-3.js",
+			"size": 391074
+		},
+		{
+			"name": "bootstrap/appruntime-min-3.js.map",
+			"size": 576971,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/XhrLogonEventHandler-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+			"size": 12784,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/m/MessageBox.js",
+				"sap/ui/core/BusyIndicator.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/XhrLogonEventHandler.js",
+			"module": "sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+			"size": 4164,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/m/MessageBox.js",
+				"sap/ui/core/BusyIndicator.js",
+				"sap/ushell/resources.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.js",
+			"size": 135356,
+			"format": "raw",
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/abap-dbg.js.map",
+			"size": 4054,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/abap-def-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap-def.js",
+			"size": 2319,
+			"isDebug": true,
+			"required": [
+				"sap/ui2/srvc/chip.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell/bootstrap/common/common.load.core-min.js",
+				"sap/ushell/bootstrap/common/common.preload.module.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap-def-dev-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap-def-dev.js",
+			"size": 1857,
+			"isDebug": true,
+			"required": [
+				"sap/ui2/srvc/chip.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap-def-dev.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap-def-dev.js",
+			"size": 878,
+			"required": [
+				"sap/ui2/srvc/chip.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap-def.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap-def.js",
+			"size": 1138,
+			"required": [
+				"sap/ui2/srvc/chip.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell/bootstrap/common/common.load.core-min.js",
+				"sap/ushell/bootstrap/common/common.preload.module.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.bootstrap.utils-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+			"size": 6657,
+			"isDebug": true,
+			"required": [
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.bootstrap.utils.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+			"size": 1522,
+			"required": [
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.configure.ushell-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+			"size": 7691,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell/bootstrap/common/common.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.configure.ushell.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+			"size": 1746,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell/bootstrap/common/common.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.constants-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.constants.js",
+			"size": 6706,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/abap.constants.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.constants.js",
+			"size": 2741
+		},
+		{
+			"name": "bootstrap/evo/abap.get.server.config.Urls-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js",
+			"size": 4246,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell_abap/bootstrap/evo/abap.validate.Url.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.get.server.config.Urls.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js",
+			"size": 1037,
+			"required": [
+				"sap/base/util/ObjectPath.js",
+				"sap/ushell_abap/bootstrap/evo/abap.validate.Url.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.js",
+			"size": 789944,
+			"format": "raw"
+		},
+		{
+			"name": "bootstrap/evo/abap.js.map",
+			"size": 1200223,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/abap.load.launchpad-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+			"size": 3592,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui2/srvc/bag.js",
+				"sap/ui2/srvc/chip.js",
+				"sap/ui2/srvc/contracts/actions.js",
+				"sap/ui2/srvc/contracts/bag.js",
+				"sap/ui2/srvc/contracts/configuration.js",
+				"sap/ui2/srvc/contracts/configurationUi.js",
+				"sap/ui2/srvc/contracts/fullscreen.js",
+				"sap/ui2/srvc/contracts/preview.js",
+				"sap/ui2/srvc/contracts/refresh.js",
+				"sap/ui2/srvc/contracts/search.js",
+				"sap/ui2/srvc/contracts/searchProvider.js",
+				"sap/ui2/srvc/contracts/types.js",
+				"sap/ui2/srvc/contracts/url.js",
+				"sap/ui2/srvc/contracts/visible.js",
+				"sap/ui2/srvc/error.js"
+			],
+			"condRequired": [
+				"sap/ushell/iconfonts.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.load.launchpad.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+			"size": 1669,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui2/srvc/bag.js",
+				"sap/ui2/srvc/chip.js",
+				"sap/ui2/srvc/contracts/actions.js",
+				"sap/ui2/srvc/contracts/bag.js",
+				"sap/ui2/srvc/contracts/configuration.js",
+				"sap/ui2/srvc/contracts/configurationUi.js",
+				"sap/ui2/srvc/contracts/fullscreen.js",
+				"sap/ui2/srvc/contracts/preview.js",
+				"sap/ui2/srvc/contracts/refresh.js",
+				"sap/ui2/srvc/contracts/search.js",
+				"sap/ui2/srvc/contracts/searchProvider.js",
+				"sap/ui2/srvc/contracts/types.js",
+				"sap/ui2/srvc/contracts/url.js",
+				"sap/ui2/srvc/contracts/visible.js",
+				"sap/ui2/srvc/error.js"
+			],
+			"condRequired": [
+				"sap/ushell/iconfonts.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.catalog-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+			"size": 6077,
+			"isDebug": true,
+			"required": [
+				"sap/ui2/srvc/allcatalogs.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/ui/thirdparty/datajs.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.catalog.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+			"size": 1572,
+			"required": [
+				"sap/ui2/srvc/allcatalogs.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/ui/thirdparty/datajs.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.pageset-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+			"size": 8114,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/UriParameters.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/ui/thirdparty/datajs.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.pageset.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+			"size": 2317,
+			"required": [
+				"sap/base/util/UriParameters.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			],
+			"condRequired": [
+				"sap/ui/thirdparty/datajs.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.server.config-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+			"size": 2549,
+			"isDebug": true,
+			"required": [
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.server.config.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+			"size": 500,
+			"required": [
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.startup-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+			"size": 5666,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.request.startup.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+			"size": 1629,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.theme.handler-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+			"size": 2629,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ushell/bootstrap/common/common.read.metatags.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.theme.handler.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+			"size": 681,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ushell/bootstrap/common/common.read.metatags.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.ui5.boot.handler-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+			"size": 2990,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.ui5.boot.handler.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+			"size": 661,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui2/srvc/utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.validate.Url-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.validate.Url.js",
+			"size": 1927,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/abap.validate.Url.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.validate.Url.js",
+			"size": 412
+		},
+		{
+			"name": "bootstrap/evo/abap.xhr.handler-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js",
+			"size": 2554,
+			"isDebug": true,
+			"required": [
+				"sap/ushell/bootstrap/common/common.configure.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/abap.xhr.handler.js",
+			"module": "sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js",
+			"size": 1025,
+			"required": [
+				"sap/ushell/bootstrap/common/common.configure.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/boottask-dbg.js",
+			"module": "sap/ushell_abap/bootstrap/evo/boottask.js",
+			"size": 45187,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/Device.js",
+				"sap/ui/performance/trace/initTraces.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell/services/Container.js",
+				"sap/ushell/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+				"sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/boottask.js",
+			"module": "sap/ushell_abap/bootstrap/evo/boottask.js",
+			"size": 13114,
+			"required": [
+				"sap/base/Log.js",
+				"sap/ui/Device.js",
+				"sap/ui/performance/trace/initTraces.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell/services/Container.js",
+				"sap/ushell/utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+				"sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js"
+			]
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-0-dbg.js",
+			"size": 1422346,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-0.js",
+			"size": 1416516
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-0.js.map",
+			"size": 992288,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-1-dbg.js",
+			"size": 1419506,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-1.js",
+			"size": 1418610
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-1.js.map",
+			"size": 1614107,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-2-dbg.js",
+			"size": 1384429,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-2.js",
+			"size": 1383924
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-2.js.map",
+			"size": 1506775,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-3-dbg.js",
+			"size": 1440535,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-3.js",
+			"size": 1440148
+		},
+		{
+			"name": "bootstrap/evo/core-ext-light-3.js.map",
+			"size": 1653306,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-min-0.js",
+			"size": 771486
+		},
+		{
+			"name": "bootstrap/evo/core-min-0.js.map",
+			"size": 987930,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-min-1.js",
+			"size": 778484
+		},
+		{
+			"name": "bootstrap/evo/core-min-1.js.map",
+			"size": 964904,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-min-2.js",
+			"size": 788544
+		},
+		{
+			"name": "bootstrap/evo/core-min-2.js.map",
+			"size": 816687,
+			"isDebug": true
+		},
+		{
+			"name": "bootstrap/evo/core-min-3.js",
+			"size": 748829
+		},
+		{
+			"name": "bootstrap/evo/core-min-3.js.map",
+			"size": 990650,
+			"isDebug": true
+		},
+		{
+			"name": "library-dbg.js",
+			"module": "sap/ushell_abap/library.js",
+			"size": 771,
+			"isDebug": true,
+			"required": [
+				"sap/m/library.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js",
+			"module": "sap/ushell_abap/library-h2-preload.js",
+			"size": 9993,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/i18n/ResourceBundle.js",
+				"sap/base/security/encodeXML.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/UriParameters.js",
+				"sap/base/util/deepClone.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/base/util/isPlainObject.js",
+				"sap/m/GenericTile.js",
+				"sap/m/Image.js",
+				"sap/m/Panel.js",
+				"sap/m/Text.js",
+				"sap/m/Title.js",
+				"sap/m/Toolbar.js",
+				"sap/m/library.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/HTML.js",
+				"sap/ui/core/format/DateFormat.js",
+				"sap/ui/core/library.js",
+				"sap/ui/core/support/Plugin.js",
+				"sap/ui/layout/VerticalLayout.js",
+				"sap/ui/model/json/JSONModel.js",
+				"sap/ui/model/odata/ODataMetadata.js",
+				"sap/ui/model/odata/v2/ODataModel.js",
+				"sap/ui/model/resource/ResourceModel.js",
+				"sap/ui/performance/trace/initTraces.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.configure.ushell.js",
+				"sap/ushell/bootstrap/common/common.configure.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell/bootstrap/common/common.load.core-min.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.preload.module.js",
+				"sap/ushell/bootstrap/common/common.read.metatags.js",
+				"sap/ushell/components/cards/ManifestPropertyHelper.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/services/Container.js",
+				"sap/ushell/services/Personalization.js",
+				"sap/ushell/services/_Personalization/constants.js",
+				"sap/ushell/utils.js"
+			],
+			"condRequired": [
+				"sap/m/MessageBox.js",
+				"sap/ui/core/BusyIndicator.js",
+				"sap/ushell/iconfonts.js"
+			],
+			"included": [
+				"sap/ushell_abap/library.js",
+				"sap/ushell_abap/manifest.json",
+				"sap/ui/Device.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ui2/srvc/PageBuildingService.js",
+				"sap/ui2/srvc/RemoteCatalogService.js",
+				"sap/ui2/srvc/allcatalogs.js",
+				"sap/ui2/srvc/bag.js",
+				"sap/ui2/srvc/catalog.js",
+				"sap/ui2/srvc/chip.js",
+				"sap/ui2/srvc/chipdefinition.js",
+				"sap/ui2/srvc/chipinstance.js",
+				"sap/ui2/srvc/contracts/actions.js",
+				"sap/ui2/srvc/contracts/bag.js",
+				"sap/ui2/srvc/contracts/configuration.js",
+				"sap/ui2/srvc/contracts/configurationUi.js",
+				"sap/ui2/srvc/contracts/fullscreen.js",
+				"sap/ui2/srvc/contracts/navigation.js",
+				"sap/ui2/srvc/contracts/preview.js",
+				"sap/ui2/srvc/contracts/refresh.js",
+				"sap/ui2/srvc/contracts/search.js",
+				"sap/ui2/srvc/contracts/searchProvider.js",
+				"sap/ui2/srvc/contracts/types.js",
+				"sap/ui2/srvc/contracts/url.js",
+				"sap/ui2/srvc/contracts/visible.js",
+				"sap/ui2/srvc/error.js",
+				"sap/ui2/srvc/factory.js",
+				"sap/ui2/srvc/page.js",
+				"sap/ui2/srvc/pageset.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/adapters/abap/AdapterContainer.js",
+				"sap/ushell_abap/adapters/abap/AppStateAdapter.js",
+				"sap/ushell_abap/adapters/abap/ClientSideTargetResolutionAdapter.js",
+				"sap/ushell_abap/adapters/abap/ConfigurationDefaultsAdapter.js",
+				"sap/ushell_abap/adapters/abap/ContainerAdapter.js",
+				"sap/ushell_abap/adapters/abap/EndUserFeedbackAdapter.js",
+				"sap/ushell_abap/adapters/abap/LaunchPageAdapter.js",
+				"sap/ushell_abap/adapters/abap/MenuAdapter.js",
+				"sap/ushell_abap/adapters/abap/NavTargetResolutionAdapter.js",
+				"sap/ushell_abap/adapters/abap/PageBuildingAdapter.js",
+				"sap/ushell_abap/adapters/abap/PagePersistenceAdapter.js",
+				"sap/ushell_abap/adapters/abap/PersonalizationAdapter.js",
+				"sap/ushell_abap/adapters/abap/SearchAdapter.js",
+				"sap/ushell_abap/adapters/abap/SupportTicketAdapter.js",
+				"sap/ushell_abap/adapters/abap/UserInfoAdapter.js",
+				"sap/ushell_abap/adapters/hana/ContainerAdapter.js",
+				"sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+				"sap/ushell_abap/bootstrap/evo/abap-def-dev.js",
+				"sap/ushell_abap/bootstrap/evo/abap-def.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js",
+				"sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js",
+				"sap/ushell_abap/bootstrap/evo/abap.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+				"sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.validate.Url.js",
+				"sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js",
+				"sap/ushell_abap/plugins/fcc-transport-ui/Component.js",
+				"sap/ushell_abap/plugins/fcc-transport-ui/manifest.json",
+				"sap/ushell_abap/plugins/fcc-transport-ui/model/models.js",
+				"sap/ushell_abap/support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin.js",
+				"sap/ushell_abap/ui5appruntime/AppInfoAdapter.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js.map",
+			"size": 454,
+			"isDebug": true
+		},
+		{
+			"name": "library-preload.js",
+			"module": "sap/ushell_abap/library-preload.js",
+			"size": 239961,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/ObjectPath.js",
+				"sap/base/util/UriParameters.js",
+				"sap/base/util/deepClone.js",
+				"sap/base/util/deepExtend.js",
+				"sap/base/util/isEmptyObject.js",
+				"sap/base/util/isPlainObject.js",
+				"sap/m/GenericTile.js",
+				"sap/m/library.js",
+				"sap/ui/core/format/DateFormat.js",
+				"sap/ui/core/library.js",
+				"sap/ui/model/odata/ODataMetadata.js",
+				"sap/ui/model/odata/v2/ODataModel.js",
+				"sap/ui/performance/trace/initTraces.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/datajs.js",
+				"sap/ui/thirdparty/jquery.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/System.js",
+				"sap/ushell/User.js",
+				"sap/ushell/bootstrap/common/common.boot.path.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.extractLibs.js",
+				"sap/ushell/bootstrap/common/common.configure.ui5.js",
+				"sap/ushell/bootstrap/common/common.configure.ushell.js",
+				"sap/ushell/bootstrap/common/common.configure.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.debug.mode.js",
+				"sap/ushell/bootstrap/common/common.load.bootstrapExtension.js",
+				"sap/ushell/bootstrap/common/common.load.core-min.js",
+				"sap/ushell/bootstrap/common/common.load.xhrlogon.js",
+				"sap/ushell/bootstrap/common/common.preload.module.js",
+				"sap/ushell/bootstrap/common/common.read.metatags.js",
+				"sap/ushell/components/cards/ManifestPropertyHelper.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/services/Container.js",
+				"sap/ushell/services/Personalization.js",
+				"sap/ushell/services/_Personalization/constants.js",
+				"sap/ushell/utils.js"
+			],
+			"condRequired": [
+				"sap/m/MessageBox.js",
+				"sap/ui/core/BusyIndicator.js",
+				"sap/ushell/iconfonts.js"
+			],
+			"included": [
+				"sap/ui/Device.js",
+				"sap/ui2/srvc/ODataService.js",
+				"sap/ui2/srvc/ODataWrapper.js",
+				"sap/ui2/srvc/PageBuildingService.js",
+				"sap/ui2/srvc/RemoteCatalogService.js",
+				"sap/ui2/srvc/allcatalogs.js",
+				"sap/ui2/srvc/bag.js",
+				"sap/ui2/srvc/catalog.js",
+				"sap/ui2/srvc/chip.js",
+				"sap/ui2/srvc/chipdefinition.js",
+				"sap/ui2/srvc/chipinstance.js",
+				"sap/ui2/srvc/contracts/actions.js",
+				"sap/ui2/srvc/contracts/bag.js",
+				"sap/ui2/srvc/contracts/configuration.js",
+				"sap/ui2/srvc/contracts/configurationUi.js",
+				"sap/ui2/srvc/contracts/fullscreen.js",
+				"sap/ui2/srvc/contracts/navigation.js",
+				"sap/ui2/srvc/contracts/preview.js",
+				"sap/ui2/srvc/contracts/refresh.js",
+				"sap/ui2/srvc/contracts/search.js",
+				"sap/ui2/srvc/contracts/searchProvider.js",
+				"sap/ui2/srvc/contracts/types.js",
+				"sap/ui2/srvc/contracts/url.js",
+				"sap/ui2/srvc/contracts/visible.js",
+				"sap/ui2/srvc/error.js",
+				"sap/ui2/srvc/factory.js",
+				"sap/ui2/srvc/page.js",
+				"sap/ui2/srvc/pageset.js",
+				"sap/ui2/srvc/utils.js",
+				"sap/ushell_abap/adapters/abap/AdapterContainer.js",
+				"sap/ushell_abap/adapters/abap/AppStateAdapter.js",
+				"sap/ushell_abap/adapters/abap/ClientSideTargetResolutionAdapter.js",
+				"sap/ushell_abap/adapters/abap/ConfigurationDefaultsAdapter.js",
+				"sap/ushell_abap/adapters/abap/ContainerAdapter.js",
+				"sap/ushell_abap/adapters/abap/EndUserFeedbackAdapter.js",
+				"sap/ushell_abap/adapters/abap/LaunchPageAdapter.js",
+				"sap/ushell_abap/adapters/abap/MenuAdapter.js",
+				"sap/ushell_abap/adapters/abap/NavTargetResolutionAdapter.js",
+				"sap/ushell_abap/adapters/abap/PageBuildingAdapter.js",
+				"sap/ushell_abap/adapters/abap/PagePersistenceAdapter.js",
+				"sap/ushell_abap/adapters/abap/PersonalizationAdapter.js",
+				"sap/ushell_abap/adapters/abap/SearchAdapter.js",
+				"sap/ushell_abap/adapters/abap/SupportTicketAdapter.js",
+				"sap/ushell_abap/adapters/abap/UserInfoAdapter.js",
+				"sap/ushell_abap/adapters/hana/ContainerAdapter.js",
+				"sap/ushell_abap/bootstrap/evo/XhrLogonEventHandler.js",
+				"sap/ushell_abap/bootstrap/evo/abap-def-dev.js",
+				"sap/ushell_abap/bootstrap/evo/abap-def.js",
+				"sap/ushell_abap/bootstrap/evo/abap.bootstrap.utils.js",
+				"sap/ushell_abap/bootstrap/evo/abap.configure.ushell.js",
+				"sap/ushell_abap/bootstrap/evo/abap.constants.js",
+				"sap/ushell_abap/bootstrap/evo/abap.get.server.config.Urls.js",
+				"sap/ushell_abap/bootstrap/evo/abap.js",
+				"sap/ushell_abap/bootstrap/evo/abap.load.launchpad.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.catalog.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.pageset.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.server.config.js",
+				"sap/ushell_abap/bootstrap/evo/abap.request.startup.js",
+				"sap/ushell_abap/bootstrap/evo/abap.theme.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.ui5.boot.handler.js",
+				"sap/ushell_abap/bootstrap/evo/abap.validate.Url.js",
+				"sap/ushell_abap/bootstrap/evo/abap.xhr.handler.js",
+				"sap/ushell_abap/bootstrap/evo/boottask.js",
+				"sap/ushell_abap/library.js",
+				"sap/ushell_abap/manifest.json",
+				"sap/ushell_abap/ui5appruntime/AppInfoAdapter.js"
+			]
+		},
+		{
+			"name": "library-preload.js.map",
+			"size": 260378,
+			"isDebug": true
+		},
+		{
+			"name": "library.js",
+			"module": "sap/ushell_abap/library.js",
+			"size": 435,
+			"required": [
+				"sap/m/library.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell_abap/manifest.json",
+			"size": 1015
+		},
+		{
+			"name": "plugins/fcc-transport-ui/Component-dbg.js",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/Component.js",
+			"size": 20927,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Component.js",
+				"sap/ui/model/resource/ResourceModel.js",
+				"sap/ushell_abap/plugins/fcc-transport-ui/model/models.js"
+			]
+		},
+		{
+			"name": "plugins/fcc-transport-ui/Component-h2-preload.js",
+			"module": "Component-h2-preload.js",
+			"size": 378,
+			"format": "raw"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/Component-preload.js",
+			"module": "Component-preload.js",
+			"size": 112878,
+			"merged": true,
+			"included": [
+				"sap/ushell_abap/plugins/fcc-transport-ui/Component.js",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ar.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_bg.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ca.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_cs.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_cy.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_da.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_de.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_el.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_GB.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_sappsd.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_saprigi.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_saptrc.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_es.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_es_MX.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_et.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fi.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fr.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fr_CA.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hi.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hr.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hu.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_id.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_it.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_iw.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ja.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_kk.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ko.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_lt.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_lv.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ms.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_nl.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_no.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pl.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pt.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pt_PT.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ro.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ru.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sh.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sk.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sl.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sv.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_th.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_tr.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_uk.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_vi.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_zh_CN.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_zh_TW.properties",
+				"sap/ushell_abap/plugins/fcc-transport-ui/manifest.json",
+				"sap/ushell_abap/plugins/fcc-transport-ui/model/models.js"
+			]
+		},
+		{
+			"name": "plugins/fcc-transport-ui/Component.js",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/Component.js",
+			"size": 6731,
+			"required": [
+				"sap/ui/core/Component.js",
+				"sap/ui/model/resource/ResourceModel.js",
+				"sap/ushell_abap/plugins/fcc-transport-ui/model/models.js"
+			]
+		},
+		{
+			"name": "plugins/fcc-transport-ui/css/style.css",
+			"size": 35
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n.properties",
+			"size": 1659,
+			"locale": "",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ar.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ar.properties",
+			"size": 2503,
+			"locale": "ar",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_bg.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_bg.properties",
+			"size": 2989,
+			"locale": "bg",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ca.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ca.properties",
+			"size": 1043,
+			"locale": "ca",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_cs.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_cs.properties",
+			"size": 1056,
+			"locale": "cs",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_cy.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_cy.properties",
+			"size": 957,
+			"locale": "cy",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_da.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_da.properties",
+			"size": 872,
+			"locale": "da",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_de.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_de.properties",
+			"size": 951,
+			"locale": "de",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_el.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_el.properties",
+			"size": 3351,
+			"locale": "el",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_en.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en.properties",
+			"size": 891,
+			"locale": "en",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_en_GB.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_GB.properties",
+			"size": 895,
+			"locale": "en_GB",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_en_US_sappsd.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_sappsd.properties",
+			"size": 3906,
+			"locale": "en_US_sappsd",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_en_US_saprigi.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_saprigi.properties",
+			"size": 5862,
+			"locale": "en_US_saprigi",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_en_US_saptrc.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_en_US_saptrc.properties",
+			"size": 1304,
+			"locale": "en_US_saptrc",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_es.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_es.properties",
+			"size": 1045,
+			"locale": "es",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_es_MX.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_es_MX.properties",
+			"size": 1028,
+			"locale": "es_MX",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_et.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_et.properties",
+			"size": 907,
+			"locale": "et",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_fi.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fi.properties",
+			"size": 944,
+			"locale": "fi",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_fr.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fr.properties",
+			"size": 1076,
+			"locale": "fr",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_fr_CA.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_fr_CA.properties",
+			"size": 1102,
+			"locale": "fr_CA",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_hi.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hi.properties",
+			"size": 2767,
+			"locale": "hi",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_hr.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hr.properties",
+			"size": 954,
+			"locale": "hr",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_hu.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_hu.properties",
+			"size": 1075,
+			"locale": "hu",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_id.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_id.properties",
+			"size": 941,
+			"locale": "id",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_it.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_it.properties",
+			"size": 955,
+			"locale": "it",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_iw.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_iw.properties",
+			"size": 2433,
+			"locale": "iw",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ja.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ja.properties",
+			"size": 1757,
+			"locale": "ja",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_kk.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_kk.properties",
+			"size": 2844,
+			"locale": "kk",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ko.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ko.properties",
+			"size": 1550,
+			"locale": "ko",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_lt.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_lt.properties",
+			"size": 1025,
+			"locale": "lt",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_lv.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_lv.properties",
+			"size": 1171,
+			"locale": "lv",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ms.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ms.properties",
+			"size": 914,
+			"locale": "ms",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_nl.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_nl.properties",
+			"size": 879,
+			"locale": "nl",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_no.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_no.properties",
+			"size": 910,
+			"locale": "no",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_pl.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pl.properties",
+			"size": 1086,
+			"locale": "pl",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_pt.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pt.properties",
+			"size": 1047,
+			"locale": "pt",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_pt_PT.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_pt_PT.properties",
+			"size": 1081,
+			"locale": "pt_PT",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ro.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ro.properties",
+			"size": 1018,
+			"locale": "ro",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_ru.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_ru.properties",
+			"size": 2836,
+			"locale": "ru",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_sh.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sh.properties",
+			"size": 931,
+			"locale": "sh",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_sk.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sk.properties",
+			"size": 1074,
+			"locale": "sk",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_sl.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sl.properties",
+			"size": 938,
+			"locale": "sl",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_sv.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_sv.properties",
+			"size": 901,
+			"locale": "sv",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_th.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_th.properties",
+			"size": 3071,
+			"locale": "th",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_tr.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_tr.properties",
+			"size": 1100,
+			"locale": "tr",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_uk.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_uk.properties",
+			"size": 2956,
+			"locale": "uk",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_vi.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_vi.properties",
+			"size": 1721,
+			"locale": "vi",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_zh_CN.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_zh_CN.properties",
+			"size": 1212,
+			"locale": "zh_CN",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/i18n/i18n_zh_TW.properties",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/i18n/i18n_zh_TW.properties",
+			"size": 1228,
+			"locale": "zh_TW",
+			"raw": "plugins/fcc-transport-ui/i18n/i18n.properties"
+		},
+		{
+			"name": "plugins/fcc-transport-ui/manifest.json",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/manifest.json",
+			"size": 2721
+		},
+		{
+			"name": "plugins/fcc-transport-ui/model/models-dbg.js",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/model/models.js",
+			"size": 273,
+			"isDebug": true,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/model/json/JSONModel.js"
+			]
+		},
+		{
+			"name": "plugins/fcc-transport-ui/model/models.js",
+			"module": "sap/ushell_abap/plugins/fcc-transport-ui/model/models.js",
+			"size": 190,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/model/json/JSONModel.js"
+			]
+		},
+		{
+			"name": "plugins/fcc-transport-ui/resources.json",
+			"size": 15395
+		},
+		{
+			"name": "resources.json",
+			"size": 52787
+		},
+		{
+			"name": "support/plugins/app-infra/ABAP_ICON_GREEN_LIGHT.png",
+			"size": 636
+		},
+		{
+			"name": "support/plugins/app-infra/ABAP_ICON_LIGHT_OUT.png",
+			"size": 583
+		},
+		{
+			"name": "support/plugins/app-infra/ABAP_ICON_RED_LIGHT.png",
+			"size": 610
+		},
+		{
+			"name": "support/plugins/app-infra/ABAP_ICON_YELLOW_LIGHT.png",
+			"size": 651
+		},
+		{
+			"name": "support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin-dbg.js",
+			"module": "sap/ushell_abap/support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin.js",
+			"size": 12919,
+			"isDebug": true,
+			"required": [
+				"sap/base/i18n/ResourceBundle.js",
+				"sap/base/security/encodeXML.js",
+				"sap/m/Image.js",
+				"sap/m/Panel.js",
+				"sap/m/Text.js",
+				"sap/m/Title.js",
+				"sap/m/Toolbar.js",
+				"sap/ui/core/HTML.js",
+				"sap/ui/core/support/Plugin.js",
+				"sap/ui/layout/VerticalLayout.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin.css",
+			"size": 261
+		},
+		{
+			"name": "support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin.js",
+			"module": "sap/ushell_abap/support/plugins/app-infra/AppInfraOnSapNetWeaverSupportPlugin.js",
+			"size": 4526,
+			"required": [
+				"sap/base/i18n/ResourceBundle.js",
+				"sap/base/security/encodeXML.js",
+				"sap/m/Image.js",
+				"sap/m/Panel.js",
+				"sap/m/Text.js",
+				"sap/m/Title.js",
+				"sap/m/Toolbar.js",
+				"sap/ui/core/HTML.js",
+				"sap/ui/core/support/Plugin.js",
+				"sap/ui/layout/VerticalLayout.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties",
+			"size": 1135,
+			"locale": "",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ar.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ar.properties",
+			"size": 1624,
+			"locale": "ar",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_bg.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_bg.properties",
+			"size": 1722,
+			"locale": "bg",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ca.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ca.properties",
+			"size": 616,
+			"locale": "ca",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_cs.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_cs.properties",
+			"size": 648,
+			"locale": "cs",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_cy.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_cy.properties",
+			"size": 612,
+			"locale": "cy",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_da.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_da.properties",
+			"size": 547,
+			"locale": "da",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_de.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_de.properties",
+			"size": 581,
+			"locale": "de",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_el.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_el.properties",
+			"size": 1713,
+			"locale": "el",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en.properties",
+			"size": 584,
+			"locale": "en",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_GB.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_GB.properties",
+			"size": 584,
+			"locale": "en_GB",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_sappsd.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_sappsd.properties",
+			"size": 2604,
+			"locale": "en_US_sappsd",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_saprigi.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_saprigi.properties",
+			"size": 3349,
+			"locale": "en_US_saprigi",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_saptrc.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_en_US_saptrc.properties",
+			"size": 807,
+			"locale": "en_US_saptrc",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_es.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_es.properties",
+			"size": 601,
+			"locale": "es",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_es_MX.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_es_MX.properties",
+			"size": 652,
+			"locale": "es_MX",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_et.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_et.properties",
+			"size": 606,
+			"locale": "et",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fi.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fi.properties",
+			"size": 574,
+			"locale": "fi",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fr.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fr.properties",
+			"size": 624,
+			"locale": "fr",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fr_CA.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_fr_CA.properties",
+			"size": 705,
+			"locale": "fr_CA",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hi.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hi.properties",
+			"size": 1680,
+			"locale": "hi",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hr.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hr.properties",
+			"size": 627,
+			"locale": "hr",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hu.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_hu.properties",
+			"size": 600,
+			"locale": "hu",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_id.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_id.properties",
+			"size": 586,
+			"locale": "id",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_it.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_it.properties",
+			"size": 577,
+			"locale": "it",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_iw.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_iw.properties",
+			"size": 1180,
+			"locale": "iw",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ja.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ja.properties",
+			"size": 1056,
+			"locale": "ja",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_kk.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_kk.properties",
+			"size": 1874,
+			"locale": "kk",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ko.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ko.properties",
+			"size": 986,
+			"locale": "ko",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_lt.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_lt.properties",
+			"size": 693,
+			"locale": "lt",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_lv.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_lv.properties",
+			"size": 756,
+			"locale": "lv",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ms.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ms.properties",
+			"size": 590,
+			"locale": "ms",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_nl.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_nl.properties",
+			"size": 551,
+			"locale": "nl",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_no.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_no.properties",
+			"size": 542,
+			"locale": "no",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pl.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pl.properties",
+			"size": 616,
+			"locale": "pl",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pt.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pt.properties",
+			"size": 611,
+			"locale": "pt",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pt_PT.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_pt_PT.properties",
+			"size": 670,
+			"locale": "pt_PT",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ro.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ro.properties",
+			"size": 636,
+			"locale": "ro",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ru.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_ru.properties",
+			"size": 1556,
+			"locale": "ru",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sh.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sh.properties",
+			"size": 608,
+			"locale": "sh",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sk.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sk.properties",
+			"size": 634,
+			"locale": "sk",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sl.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sl.properties",
+			"size": 588,
+			"locale": "sl",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sv.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_sv.properties",
+			"size": 597,
+			"locale": "sv",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_th.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_th.properties",
+			"size": 1585,
+			"locale": "th",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_tr.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_tr.properties",
+			"size": 688,
+			"locale": "tr",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_uk.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_uk.properties",
+			"size": 1900,
+			"locale": "uk",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_vi.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_vi.properties",
+			"size": 1008,
+			"locale": "vi",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_zh_CN.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_zh_CN.properties",
+			"size": 730,
+			"locale": "zh_CN",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_zh_TW.properties",
+			"module": "sap/ushell_abap/support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin_zh_TW.properties",
+			"size": 763,
+			"locale": "zh_TW",
+			"raw": "support/plugins/app-infra/i18n/AppInfraOnSapNetWeaverSupportPlugin.properties"
+		},
+		{
+			"name": "transport/i18n/i18n_cy.properties",
+			"module": "sap/ushell_abap/transport/i18n/i18n_cy.properties",
+			"size": 1142,
+			"locale": "cy",
+			"raw": "transport/i18n/i18n.properties"
+		},
+		{
+			"name": "transport/i18n/i18n_fr_CA.properties",
+			"module": "sap/ushell_abap/transport/i18n/i18n_fr_CA.properties",
+			"size": 1263,
+			"locale": "fr_CA",
+			"raw": "transport/i18n/i18n.properties"
+		},
+		{
+			"name": "transport/i18n/i18n_id.properties",
+			"module": "sap/ushell_abap/transport/i18n/i18n_id.properties",
+			"size": 1137,
+			"locale": "id",
+			"raw": "transport/i18n/i18n.properties"
+		},
+		{
+			"name": "transport/i18n/i18n_pt_PT.properties",
+			"module": "sap/ushell_abap/transport/i18n/i18n_pt_PT.properties",
+			"size": 1242,
+			"locale": "pt_PT",
+			"raw": "transport/i18n/i18n.properties"
+		},
+		{
+			"name": "ui5appruntime/AppInfoAdapter-dbg.js",
+			"module": "sap/ushell_abap/ui5appruntime/AppInfoAdapter.js",
+			"size": 2648,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "ui5appruntime/AppInfoAdapter.js",
+			"module": "sap/ushell_abap/ui5appruntime/AppInfoAdapter.js",
+			"size": 1058,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui/thirdparty/URI.js",
+				"sap/ui/thirdparty/jquery.js"
+			]
+		},
+		{
+			"name": "workbenchTransport/i18n/i18n_cy.properties",
+			"module": "sap/ushell_abap/workbenchTransport/i18n/i18n_cy.properties",
+			"size": 259,
+			"locale": "cy",
+			"raw": "workbenchTransport/i18n/i18n.properties"
+		},
+		{
+			"name": "workbenchTransport/i18n/i18n_fr_CA.properties",
+			"module": "sap/ushell_abap/workbenchTransport/i18n/i18n_fr_CA.properties",
+			"size": 312,
+			"locale": "fr_CA",
+			"raw": "workbenchTransport/i18n/i18n.properties"
+		},
+		{
+			"name": "workbenchTransport/i18n/i18n_id.properties",
+			"module": "sap/ushell_abap/workbenchTransport/i18n/i18n_id.properties",
+			"size": 296,
+			"locale": "id",
+			"raw": "workbenchTransport/i18n/i18n.properties"
+		},
+		{
+			"name": "workbenchTransport/i18n/i18n_pt_PT.properties",
+			"module": "sap/ushell_abap/workbenchTransport/i18n/i18n_pt_PT.properties",
+			"size": 302,
+			"locale": "pt_PT",
+			"raw": "workbenchTransport/i18n/i18n.properties"
+		}
+	]
+}

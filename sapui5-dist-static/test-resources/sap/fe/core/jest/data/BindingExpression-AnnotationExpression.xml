@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+	<edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1" />
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1" />
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1" />
+	</edmx:Reference>
+	<edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1" />
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="sap.fe.test.JestService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<EntityContainer Name="EntityContainer">
+				<EntitySet Name="Items" EntityType="sap.fe.test.JestService.Items">
+				</EntitySet>
+			</EntityContainer>
+			<EntityType Name="Items">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.Int32" Nullable="false" />
+				<Property Name="constantValue" Type="Edm.String" />
+				<Property Name="pathValue" Type="Edm.String" />
+				<Property Name="concatValue" Type="Edm.String" />
+				<Property Name="concatPathValue" Type="Edm.String" />
+				<Property Name="concatIfValue" Type="Edm.String" />
+				<Property Name="ifValue" Type="Edm.String" />
+				<Property Name="ifConcatValue" Type="Edm.String" />
+			</EntityType>
+			<Annotations Target="sap.fe.test.JestService.Items/constantValue">
+				<Annotation Term="UI.Hidden" Bool="true" />
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/pathValue">
+				<Annotation Term="UI.Hidden" Path="constantValue" />
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/concatValue">
+				<Annotation Term="Common.Text">
+					<Apply Function="odata.concat">
+						<String>Yo</String>
+						<String>Lo</String>
+					</Apply>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/concatPathValue">
+				<Annotation Term="Common.Text">
+					<Apply Function="odata.concat">
+						<String>Yo</String>
+						<Path>constantValue</Path>
+						<String>Lo</String>
+					</Apply>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/concatIfValue">
+				<Annotation Term="Common.Text">
+					<Apply Function="odata.concat">
+						<String>Yo</String>
+						<If>
+							<Eq>
+								<Path>constantValue</Path>
+								<String>Yolo</String>
+							</Eq>
+							<String>Lo</String>
+							<String>NotLo</String>
+						</If>
+					</Apply>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/ifValue">
+				<Annotation Term="Common.Text">
+					<If>
+						<Eq>
+							<Path>constantValue</Path>
+							<String>Yolo</String>
+						</Eq>
+						<String>true</String>
+						<String>false</String>
+					</If>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="sap.fe.test.JestService.Items/ifConcatValue">
+				<Annotation Term="Common.Text">
+					<If>
+						<Eq>
+							<Path>constantValue</Path>
+							<Apply Function="odata.concat">
+								<String>Yo</String>
+								<Path>pathValue</Path>
+							</Apply>
+						</Eq>
+						<String>True</String>
+						<String>False</String>
+					</If>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,526 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio61cf0ee828824903907464c80dd0d88c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Extension Points for Object Page Header
+		Facets</h1><div class="fig"><h1 class="topictitle1 title">Extension Points for Object Page Header
+		Facets</h1><div class="shortdesc">You define application-specific header facets using annotations, but in some cases it might be necessary to integrate components in the
+		front end that are not available with annotations.</div><section id="section_xs5_kq5_rnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div><p>On the object page, you can use extension points to add additional header facets in the following places: </p><ul class="ul ">
+				<li class="li">
+					<p>Before header facet: The extension is inserted before a given facet.</p>
+				</li>
+				<li class="li">
+					<p>Replace header facet: The extension is rendered instead of an existing facet.</p>
+				</li>
+				<li class="li">
+					<p>After header facet: The extension is inserted after a given facet. </p>
+				</li>
+			</ul><p>You must use a view inside the extension to create a header facet extension. Enter the extension information in the following format in
+				the manifest.json of your application:</p><p><code>&lt;Different_Scenario&gt;|&lt;EntitySet_Name&gt;|headerEditable::&lt;Annotation_Information&gt;</code></p><p>Specify the extension facet in the form of its annotation path. In addition, you must specify the entity set name, as the same
+				annotation may exist for various entity sets. You also need to define the className, viewName, type and the optional parameter
+					<code>bVisibleOnEdit</code>. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You only set this optional parameter to "false" if the entire header extension is to be
+					hidden when the object page is edited.</p></div></div><p></p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"extends": {
+   "extensions": {
+         "sap.ui.viewExtensions": {
+                 "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                           "BeforeHeaderFacet|STTA_C_MP_Product|headerEditable::com.sap.vocabularies.UI.v1.Chart::SpecificationWidthBulletChart": {
+                                     "className": "sap.ui.core.mvc.View",
+                                     "viewName": "STTA_MP.ext.fragments.HeaderExtensionFacet",
+                                     "type": "XML",
+                                     "bVisibleOnEdit": true
+   }
+                        }
+           }
+     }
+}
+</pre></div></section>
+			<p></p></div></div><p>The following extension options are available:</p><ul class="ul ">
+				<li class="li">
+					<p>Standard object header facet: Before, replace, and after scenario:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p><code>"BeforeHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information "</code></p>
+						</li>
+						<li class="li">
+							<p><code>"ReplaceHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information&gt;"</code></p>
+						</li>
+						<li class="li">
+							<p><code>"AfterHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information&gt;"</code></p>
+						</li>
+					</ul>
+				</li>
+				<li class="li">
+					<p>Simple object header facet: Before, replace, and after scenario:</p>
+					<p><code>"BeforeSimpleHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information&gt;"</code>
+					</p>
+					<p><code>"ReplaceSimpleHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information&gt;"</code></p>
+					<p><code>"AfterSimpleHeaderFacet|&lt;EntitySet Name&gt;|headerEditable::&lt;Annotation information&gt;"</code></p>
+				</li>
+				<li class="li"><p>Replace the complete object page header with an extension. This means that the <code>UI.HeaderFacet</code> annotation is
+						not there. If it is there, remove it from the annotations. The manifest entry should look like
+						this:</p><code>"ReplaceHeaderExtensionFacet|&lt;EntitySet Name&gt;"</code></li>
+				<li class="li">
+					<p>Standard object header: If there is no image in the object page header, you can include an extension instead of an image. The
+						manifest entry should look like this:</p>
+					<p><code>"NoImageExtensionFacet|&lt;EntitySet Name&gt;"</code></p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You can only use this scenario if there is no value for the <code>ImageUrl</code> or <code>TypeImageUrl</code>
+						property of the <code>UI.HeaderInfo</code> annotation. </p></div></div>
+					<p>If there is an image in the object page header, you can enter an extension after the image. The manifest entry should look like
+						this:</p>
+					<p><code>" AfterImageExtensionFacet|&lt;EntitySet Name&gt;"</code></p>
+				</li>
+				<li class="li">
+					<p>Object page header containing only a <code>DataPoint</code> annotation: Before, replace, and after scenario:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p><code>"BeforeHeaderDataPoint|&lt;EntitySet Name&gt; | &lt;Annotation Information&gt;"</code></p>
+						</li>
+						<li class="li">
+							<p><code>"ReplaceHeaderDataPoint|&lt;EntitySet Name&gt; | &lt;Annotation Information&gt;"</code></p>
+						</li>
+						<li class="li">
+							<p><code>"AfterHeaderDataPoint|&lt;EntitySet Name&gt; | &lt;Annotation Information&gt;"</code></p>
+						</li>
+					</ul>
+				</li>
+			</ul></div></section><section id="section_svv_3r5_rnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Adding Custom Header Facets</h3>
+				<p>You have two options for including custom elements into the header area of an object page:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>You can include complete header facets next to the existing annotation-based header facets. This option provides
+							flexibility when creating your own XML fragment and the corresponding controller implementation.</p>
+					</li>
+					<li class="li">
+						<p>You can extend an already existing header facet that displays a group of fields with your own custom field.</p>
+					</li>
+				</ul>
+				<p>You can find further details in the sections below.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>
+						</p><ul class="ul ">
+							<li class="li">
+								<p>Key user adaptation for object page headers is currently only possible for non-editable header content, that is, if
+										<code>editableHeaderContent=false</code> is set in the manifest.</p>
+							</li>
+							<li class="li">
+								<p>You can only place 'Custom Header Facets' in the root collection of the header facet definition. You cannot place
+									it in further-nested collection facet definitions.</p>
+							</li>
+							<li class="li">
+								<p>Custom header facets and fields are currently supported only as read-only. To have editable fields for the
+									information provided through custom header facets or fields, you need to extend the "Edit Header Section".</p>
+							</li>
+						</ul>
+					<p></p>
+					<p>For more information, refer to <a href="#/topic/0d2f1a9ebd2d4a4c906216ded1d33783.html" title="You can extend and customize specific features of the list report and object page." class="sap-doc">Adapting the UI: List Report and Object Page</a>.</p>
+				<p></p></div></div>
+				<p><span class="emphasis">Using Custom Header Facets</span></p>
+				<p>Custom header facets provide the following features:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>adding free-style headers via an <code>xmlfragment</code> definition</p>
+					</li>
+					<li class="li">
+						<p>positioning relative to existing header elements defined by header facets or other custom headers</p>
+					</li>
+					<li class="li">
+						<p>using a localized header facet title</p>
+					</li>
+				</ul>
+				<div><div class="fig"><img src="loio8dd9f084fd0f451a814e6f9d376b7c7e_LowRes.png" usemap="#"></div></div>
+				<p>To define a header facet on UI level - you do this if you want to add a custom look and feel, or to use controls that are not
+					supported by default - you can extend the manifest of the corresponding object page with a content-based configuration or an
+					annotation-based configuration. You define header facets by using a custom key that you later reference by providing the following
+					properties:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>a title and subtitle (both optional)</p>
+					</li>
+					<li class="li">
+						<p>the UI5 fragment (type and name) and</p>
+					</li>
+					<li class="li">
+						<p>its relative position to an anchor facet</p>
+					</li>
+				</ul>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Priority Rules</p>
+					<p>Settings in the content-based configuration block have a higher priority and therefore overwrite settings in the
+						annotation-based configuration block for identical keys.</p>
+				<p></p></div></div>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Content-Based
+						Configuration</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {
+        "routing": {
+            "targets": {
+                "SalesOrderManageObjectPage": {
+                    "options": {
+                        "settings": {
+                            "content": {
+                                "header": {
+                                    "facets": {
+                                        "CustomHeaderFacet1": {
+                                            "type": "XMLFragment",
+                                            "name": "SalesOrder.custom.CustomHeaderFacetColumnChart",
+                                            "stashed": false,
+                                            "visible": "{= %{OverallSDProcessStatus} === 'C'}",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "NetValueDataHeader"
+                                            },
+                                            "flexSettings": {
+                                                "designtime": "not-adaptable-visibility"
+                                            }
+                                        },
+                                        "CustomHeaderFacet2": {
+                                            "type": "XMLFragment",
+                                            "name": "SalesOrder.custom.CustomHeaderFacetDataPoint",
+                                            "title": "{i18n&gt;customHeaderFacet2-CustomDataPoint}",
+                                            "subTitle": "{i18n&gt;customHeaderFacet2-CarRental}",
+                                            "requestGroupId": "LongRunners",
+                                            "stashed": false,
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "CustomHeaderFacet1"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.HeaderFacets": {
+                                   ... see below ...
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+				<p></p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Annotation-Based
+						Configuration</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {
+        "routing": {
+            "targets": {
+                "SalesOrderManageObjectPage": {
+                    "options": {
+                        "settings": {
+                            "content": {
+                                "header": {
+                                   ... see above ...
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.HeaderFacets": {
+                                    "facets": {
+                                        "CustomHeaderFacet2": {
+                                            "type": "XMLFragment",
+                                            "name": "SalesOrder.custom.CustomHeaderFacetOverwritten",
+                                            "title": "Custom Error",
+                                            "subTitle": "Should never appear!",
+                                            "stashed": false,
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "CustomHeaderFacet1"
+                                            }
+                                        },
+                                        "CustomHeaderFacet3": {
+                                            "type": "XMLFragment",
+                                            "name": "SalesOrder.custom.CustomHeaderFacetHarveyBall",
+                                            "title": "{i18n&gt;customHeaderFacet2-CustomProgress}",
+                                            "stashed": false,
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "CustomHeaderFacet2"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+				<p></p>
+				<p>In this example, the second header facet with the key <code>CustomHeaderFacet2</code> occurs twice: once in the content-based
+					configuration and a second time in the annotation-based configuration. Since the first configuration has a higher priority, the
+					second entry will be skipped at runtime and you won't see the fragment
+						<code>SalesOrder.custom.CustomHeaderFacetOverwritten</code> as a header facet.</p>
+				<p><span class="emphasis">Settings for Custom Header Facets</span></p>
+				<p>You can define your custom header facet by implementing an <code>xmlfragment</code> and using the following properties:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_w4x_dhb_snb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Property Name</th>
+								<th colspan="1" rowspan="1">Supported Values</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">type</td>
+								<td colspan="1" rowspan="1" valign="top">"XMLFragment"</td>
+								<td colspan="1" rowspan="1" valign="top">Type of section (only "XMLFragment" is currently available)</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">name</td>
+								<td colspan="1" rowspan="1" valign="top">Module Path of "XMLFragment"</td>
+								<td colspan="1" rowspan="1" valign="top">Defining the target fragment follows the syntax of defining a fragment via
+									<code>Fragment.load</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">title*</td>
+								<td colspan="1" rowspan="1" valign="top">Text | Binding Expression</td>
+								<td colspan="1" rowspan="1" valign="top">Title of the header facet (usually a binding path to an i18n text). If you do not specify it here, you should
+									add the title in the <code>xmlfragment</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">subTitle*</td>
+								<td colspan="1" rowspan="1" valign="top">Text | Binding Expression</td>
+								<td colspan="1" rowspan="1" valign="top">Subtitle of the header facet (usually a binding path to an i18n text).</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">stashed*</td>
+								<td colspan="1" rowspan="1" valign="top">Boolean</td>
+								<td colspan="1" rowspan="1" valign="top">Defines if the header facet is stashed in personalization. The default setting is
+									<code>true</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">visible*</td>
+								<td colspan="1" rowspan="1" valign="top">Boolean | Binding Expression</td>
+								<td colspan="1" rowspan="1" valign="top">Defines if the header facet is displayed in the header area. The default setting is
+									<code>true</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position</td>
+								<td colspan="1" rowspan="1" valign="top">
+								</td><td colspan="1" rowspan="1" valign="top">The properties in this group define the position of the header facet relative to another facet.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position.placement*</td>
+								<td colspan="1" rowspan="1" valign="top">"Before" | "After"</td>
+								<td colspan="1" rowspan="1" valign="top">Defines the placement: either "Before" or "After" (default) the referenced facet (anchor).</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position.anchor</td>
+								<td colspan="1" rowspan="1" valign="top">Facet Key</td>
+								<td colspan="1" rowspan="1" valign="top">The key of another header facet to be used as the placement anchor. Header facets defined via the
+										<code>Facet</code> annotation can be referenced by its <code>FacetKey</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">requestGroupId</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>"Heroes"</p>
+									<p>| "Decoration"</p>
+									<p>| "Workers"</p>
+									<p>| "LongRunners"</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">Enables the grouping of back-end requests retrieving the header facet data in different $batch groups according
+									to their loading time. You should separate long runners from fast runners to optimize the overall user experience.
+									For more information, refer to <a href="#/topic/ac035701f0f94bcca2d051bba9f1880d.html" title="Object pages can make use of request groups and lazy loading." class="sap-doc">Defining the Loading Behavior of Object Page Headers</a>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">flexSettings</td>
+								<td colspan="1" rowspan="1" valign="top">
+								</td><td colspan="1" rowspan="1" valign="top">Defines the key user adaptation behavior of the header facet.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">flexSettings.designtime</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>"Default"</p>
+									<p>| "not-adaptable-visibility"</p>
+									<p>| "not-adaptable"</p>
+									<p>| " not-adaptable-tree"</p>
+									<p>| "not-adaptable-visibility"</p>
+									<p>| "not-removable"</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">Defines which settings are available for key user adaptation at design time. For example, the value
+									"not-adaptable-visibility" means that all actions that influence the visibility are disabled. Remove and make
+									visible are not possible, whereas moving the header facet is enabled.</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>* = optional</p>
+				<p>Using a Custom Header Facet to Display a Harvey Ball Micro Chart</p>
+				<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio2517ecfcb7274ff58506cf101fb8303d_LowRes.png"></div></div></div>
+				<p>The values are retrieved via value binding and the title is defined in the manifest.json.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Custom Header Using a Harvey Ball Micro
+					Chart</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mc="sap.suite.ui.microchart"&gt;
+    &lt;VBox id="CustomHeaderFacetHarveyBall" displayInline="true"&gt;
+        &lt;mc:HarveyBallMicroChart size="S" total="100" totalScale="%" press="press"&gt;
+            &lt;mc:items&gt;
+                &lt;mc:HarveyBallMicroChartItem
+                    fraction="{= ((100 &gt; 0) ? ((${Progress} &gt; 100) ? 100 : ((${Progress} &amp;lt; 0) ? 0 : (${Progress} / 100 * 100))) : 0) }"
+                    color="Good"
+                    fractionScale="%"
+                /&gt;
+            &lt;/mc:items&gt;
+        &lt;/mc:HarveyBallMicroChart&gt;
+    &lt;/VBox&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section><p></p></div></div>
+			</section><section>
+				<h3 class="title ">Adding Custom Header Fields</h3>
+				<p>Custom header fields provide the following features:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>adding free-style headers via an <code>xmlfragment</code> definition</p>
+					</li>
+					<li class="li">
+						<p>positioning relative to existing fields on a field group or other custom fields</p>
+					</li>
+					<li class="li">
+						<p>using a localized header facet title</p>
+					</li>
+				</ul>
+				<div><div class="fig"><img src="loio8c266930d18a4855b424130fc50eb1fb_LowRes.png" usemap="#"></div></div>
+				<p><span class="emphasis">Using Custom Header Fields</span></p>
+				<p>To define a field in a header field - you do this if you want to add a custom look and feel, or to use controls that are not
+					supported by default - you can extend the manifest of the corresponding object page with an annotation-based configuration. You
+					define custom header fields by using a custom key that you later reference by providing the following properties:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>a label (optional)</p>
+					</li>
+					<li class="li">
+						<p>the UI5 fragment (template) and</p>
+					</li>
+					<li class="li">
+						<p>its relative position to an anchor facet</p>
+					</li>
+				</ul>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Annotation-Based
+						Configuration</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+   "sap.ui5": {
+      "routing": {
+         "targets": {
+            "LineItemsObjectPage": {
+               "options": {
+                  "settings": {
+                     "controlConfiguration": {
+                        "@com.sap.vocabularies.UI.v1.FieldGroup#ObjectPageHeaderData": {
+                           "fields": {
+                              "CustomField1": {
+                                 "label": "{i18n&gt;ObjectPageHeaderFacetFieldLabel1}",
+                                 "template": "ManageItems.custom.CustomHeaderFacetFieldGroupForm",
+                                 "position": {
+                                    "placement": "Before",
+                                    "anchor": "DataField::headerDate"
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}</pre></div></section><p></p></div></div>
+				<p></p>
+				<p>You reference the <code>fieldGroup</code> through the annotation path with the corresponding qualifier:
+						"<code>@com.sap.vocabularies.UI.v1.FieldGroup#ObjectPageHeaderData</code>". The qualifier can be found in the annotation
+					as shown below:</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Metadata
+						Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Schema&gt;
+    &lt;Annotations Target="&lt;PageName&gt;"&gt;
+        &lt;Annotation Term="UI.FieldGroup" Qualifier="ObjectPageHeaderData"&gt;
+            ... records
+        &lt;/Annotation&gt;
+    &lt;/Annotations&gt;
+&lt;/Schema&gt;</pre></div></section><p></p></div></div>
+				<p></p>
+				<p><span class="emphasis">Settings for Custom Header Fields</span></p>
+				<p>You can define your custom header fields by implementing an <code>xmlfragment</code> and using the following properties:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_hzf_ttb_snb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Property Name</th>
+								<th colspan="1" rowspan="1">Supported Values</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">key</td>
+								<td colspan="1" rowspan="1" valign="top">Module Path of "XMLFragment"</td>
+								<td colspan="1" rowspan="1" valign="top">Defining the target fragment follows the syntax of defining a fragment via
+									<code>Fragment.load</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">label*</td>
+								<td colspan="1" rowspan="1" valign="top">Text | Binding Expression</td>
+								<td colspan="1" rowspan="1" valign="top">Label of the field (usually a binding path to an i18n text). If you do not specify it here, you should add a
+									label in the <code>xmlfragment</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">template</td>
+								<td colspan="1" rowspan="1" valign="top">Module Path of "XMLFragment"</td>
+								<td colspan="1" rowspan="1" valign="top">Defining the target fragment follows the syntax of defining a fragment via
+									<code>Fragment.load</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position</td>
+								<td colspan="1" rowspan="1" valign="top">
+								</td><td colspan="1" rowspan="1" valign="top">The properties in this group define the position of the header facet relative to another facet.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position.placement*</td>
+								<td colspan="1" rowspan="1" valign="top">"Before" | "After"</td>
+								<td colspan="1" rowspan="1" valign="top">Defines the placement: either "Before" or "After" (default) the referenced facet (anchor).</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">position.anchor</td>
+								<td colspan="1" rowspan="1" valign="top">Facet Key</td>
+								<td colspan="1" rowspan="1" valign="top">The key of another header field to be used as the placement anchor. Header fields defined via the field group,
+									including a property annotation, can be referenced by the corresponding property name.</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>* = optional</p>
+				<p><span class="emphasis">Finding the Right Key for the Anchor</span></p>
+				<p>For the correct positioning of your custom elements, you need to identify an anchor element. For more information, see <a href="#/topic/6ffb084e6d8247d1863005c14e8d5894.html" title="For the correct positioning of your custom elements, you need to identify an anchor element using the browser's developer tools." class="sap-doc">Finding the Right Key for the Anchor</a>.</p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

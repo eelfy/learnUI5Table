@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<interface xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>IFormGroupElement</name>
+    <derived/>
+    <documentation>Marker interface for SmartForm GroupElements.</documentation>
+    <since>1.88.0</since>
+</interface>

@@ -1,0 +1,251 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9f95bdc13b6f410db22069ad8bb946c8" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring the List Card Header Area</h1><div class="fig"><h1 class="topictitle1 title">Configuring the List Card Header Area</h1><div class="shortdesc">Configure card header properties.</div><section id="section_mjd_gll_2fb">
+			<ol>
+				<li class="li">
+					<p>Configure card title and subtitle in the descriptor file as shown here:</p>
+					<p>Card <code>title</code> and
+						<code>subTitle</code></p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">	"sap.ovp": {
+		"globalFilterModel": "salesOrder",
+		"globalFilterEntityType": "GlobalFilters",
+              ...
+              ...
+		"cards": {
+          "sap.ovp.test_card.card002": {
+            "model": "salesOrder",
+            "template": "sap.ovp.cards.list",
+            "settings": {
+              "title": "Purchase History",
+              "subTitle": "SubTitle",
+              "entitySet": "SalesOrderSet",
+              ...
+              ...
+                }
+              ]
+            }
+          }</pre></div></section><p></p>
+				</li>
+				<li class="li">
+					<p>Configure KPI value</p>
+					<p>Descriptor
+							Settings</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ovp": {//section for ovp-specific app descriptor settings
+	...
+
+	"kpiAnnotationPath":"com.sap.vocabularies.UI.v1.KPI#AllActualCosts", // Represents the KPI annotation path
+	
+     ...
+}</pre></div></section><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>KPI
+							Annotation</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.KPI" Qualifier="AllActualCosts"&gt;
+   &lt;Record Type="UI.KPIType"&gt;
+      &lt;PropertyValue Property="Detail"&gt;
+         &lt;Record Type="UI.KPIDetailType"&gt;
+            &lt;PropertyValue Property="DefaultPresentationVariant" Path="@UI.PresentationVariant#Eval_by_Currency1" /&gt;
+            &lt;PropertyValue Property="AlternativePresentationVariants"&gt;
+               &lt;Collection&gt;
+                  &lt;Path&gt;@UI.PresentationVariant#Eval_by_Currency_Column&lt;/Path&gt;
+               &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+            &lt;PropertyValue Property="SemanticObject" String="Action" /&gt;
+            &lt;PropertyValue Property="Action" String="toappnavsample" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#Eval_by_Currency_1" /&gt;
+      &lt;PropertyValue Property="DataPoint" Path="@UI.DataPoint#Eval_by_Country-Generic" /&gt;
+      &lt;PropertyValue Property="ID" String="String for KPI Annotation" /&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Associated
+							Presentation Variant
+							Annotation</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.PresentationVariant" Qualifier="Eval_by_Currency1"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="MaxItems" Int="5" /&gt;
+      &lt;PropertyValue Property="GroupBy"&gt;
+         &lt;Collection&gt;
+            &lt;PropertyPath&gt;Country&lt;/PropertyPath&gt;
+            &lt;PropertyPath&gt;Currency&lt;/PropertyPath&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="SortOrder"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="Property" PropertyPath="TotalSales" /&gt;
+               &lt;PropertyValue Property="Descending" Boolean="true" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="Visualizations"&gt;
+         &lt;Collection&gt;
+            &lt;AnnotationPath&gt;@UI.Chart#Eval_by_Currency_Donut&lt;/AnnotationPath&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Associated
+							Selection Variant
+							Annotation</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionVariant" Qualifier="Eval_by_Currency_1"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="SelectOptions"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="Country" /&gt;
+               &lt;PropertyValue Property="Ranges"&gt;
+                  &lt;Collection&gt;
+                     &lt;Record&gt;
+                        &lt;PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I" /&gt;
+                        &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ" /&gt;
+                        &lt;PropertyValue Property="Low" String="IN" /&gt;
+                     &lt;/Record&gt;
+                  &lt;/Collection&gt;
+               &lt;/PropertyValue&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="Parameters"&gt;
+         &lt;Collection&gt;
+            &lt;Record Type="UI.Parameter"&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="Currency_Target" /&gt;
+               &lt;PropertyValue Property="PropertyValue" String="EUR" /&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.Parameter"&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="UoM_Target" /&gt;
+               &lt;PropertyValue Property="PropertyValue" String="KGM" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><p></p>
+					<p>Define the <code>DataPoint</code> annotation to complete configuring KPI
+						information on the card header area. The following are the annotation
+							properties:</p><ul class="ul ">
+							<li class="li">
+								<p>Add <code>Title</code> property to display as a title on the
+									KPI header</p>
+							</li>
+							<li class="li">
+								<p>Add <code>Value</code> property to display KPI measure</p>
+							</li>
+							<li class="li">
+								<p>Add <code>ValueFormat</code> to define number format</p>
+							</li>
+							<li class="li">
+								<p>Add criticality to highlight the KPI measure value. You can
+									define criticality as a path or enum value. The supported enum
+									values are:</p><ul class="ul ">
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Neutral</code>
+												- default neutral color is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Negative</code>
+												- Red is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Critical</code>
+												- Orange is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Positive</code>
+												- Green is considered</p>
+										</li>
+									</ul><p></p>
+							</li>
+						</ul>You can also define criticality using a path property that returns
+							value:<ul class="ul ">
+							<li class="li">
+								<p>0 for Neutral- default neutral colour is considered</p>
+							</li>
+							<li class="li">
+								<p>1 for Negative – Red is considered</p>
+							</li>
+							<li class="li">
+								<p>2 for Critical – Orange is considered</p>
+							</li>
+							<li class="li">
+								<p>3 for Positive – Green is considered</p>
+							</li>
+						</ul><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Associated DataPoint
+							annotation</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Eval_by_Country-Generic"&gt;
+   &lt;Record Type="UI.DataPointType"&gt;
+      &lt;PropertyValue Property="Title" String="Sales India - Generic Card" /&gt;
+      &lt;PropertyValue Property="Value" Path="Sales" /&gt;
+      &lt;PropertyValue Property="ValueFormat"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ScaleFactor" Int="2" /&gt;
+            &lt;PropertyValue Property="NumberOfFractionalDigits" Int="1" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="CriticalityCalculation"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimizing" /&gt;
+            &lt;PropertyValue Property="DeviationRangeHighValue" String="7300" /&gt;
+            &lt;PropertyValue Property="ToleranceRangeHighValue" String="7200" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="TargetValue" String="2.000 " /&gt;
+      &lt;PropertyValue Property="TrendCalculation"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ReferenceValue" String="5201680" /&gt;
+            &lt;PropertyValue Property="DownDifference" Int="10000000.0" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><p></p>
+				</li>
+				<li class="li">
+					<p>Configure <code>tabs</code> property (view switch) in the descriptor
+						settings to filter/view data at the card
+						level.</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"cards": {
+      "card00": {
+        "model": "salesOrder",
+        "template": "sap.ovp.cards.list",
+        "settings": {
+          "category" : "Sales Orders With Analytical Header",
+          "listFlavor": "bar",
+          "listType": "extended",
+          "entitySet": "SalesOrderSet",
+          "tabs": [
+                {
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#View1",
+                    "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#line1",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#line",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#line",
+                    "value": "{{dropdown_value1}}"
+                },
+                {
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#View2",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#customer",
+                    "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#SP2",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#item2",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#line",
+                    "value": "{{dropdown_value2}}"
+                },</pre></div></section><p></p>
+				</li>
+				<li class="li">
+					<p>Configure list header navigation.</p>
+					<p>The identification annotation lets you configure navigation (from header and
+						list area) within an application.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+							</p><p>In case of list area navigation, the navigation settings configured
+								using the <code>LineItem</code> annotation takes precedence over
+								the navigation settings configured using the identification
+								annotation.</p>
+						<p></p></div></div><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint"></pre></div></section><p></p>
+				</li>
+			</ol>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

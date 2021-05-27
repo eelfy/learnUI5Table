@@ -1,0 +1,27 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5a978fe3504e4dd39f5db0a46438ba64" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">JavaScript Namespaces</h1><div class="fig"><h1 class="topictitle1 title">JavaScript Namespaces</h1><div class="shortdesc">SAPUI5 modules such as
+		classes, components, and controls, should use a consistent qualified naming scheme. Each
+		module should reside in a unique namespace.</div><section>
+			<h2 class="title ">Naming Conventions</h2>
+			<p>A namespace should be lowercase and each word should be separated by a dot (<code>.</code>), like the Java package notation. The class name
+				should be camelcase starting with a capital letter.</p>
+			<p>The namespace gets attached to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" title="https://developer.mozilla.org/en-US/docs/Web/API/Window" class="external-link" target="_blank" rel="noopener">global window object</a>. Therefore, its first segment must not match any global properties, such as "name", "location",
+				"top", "self", ...</p>
+			<p>In the following example, <code>my.app</code> is the general namespace and
+					<code>my.app.MyControl</code> is the fully qualified class name.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/ui/core/Control"], function(Control) {
+    return Control.extend("my.app.MyControl", {});
+});</pre></div></section>
+			<p>For JavaScript global names, module names, and SAPUI5 qualified names
+				(class names, interface names, DataType names), use the same naming prefix, only
+				with varying separators. For example, use a slash (/) instead of a dot (.) when
+				requiring the class from the example above.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["my/app/MyControl"], function(MyControl) {
+    ...
+});</pre></div></section>
+			<div class="note note  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To avoid conflicts with other frameworks or developments, the
+					<code>sap</code> namespace is reserved for SAP. Therefore, any non-SAPUI5 content, such as
+				application code or custom controls, must <span class="emphasis">not</span> use namespaces
+				that start with the <code>sap</code> prefix.</p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

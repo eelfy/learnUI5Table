@@ -1,0 +1,79 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof6a8fd2812d9442a9bba2f6fb296c42e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Copying and Pasting from Microsoft Excel to Editable Tables</h1><div class="fig"><h1 class="topictitle1 title">Copying and Pasting from Microsoft Excel to Editable Tables</h1><div class="shortdesc">Users can copy and paste data from Microsoft Excel to responsive tables and grid
+		tables.</div><p>A <span class="ph uicontrol">Paste</span> button is shown in the table toolbar. Once the user has copied data from Microsoft Excel, the focus can be
+			anywhere in the table except for the cells. The user needs to trigger the browser paste (<span class="keys">
+				<span class="keyWrap"><kbd class="key">CTRL</kbd></span>
+				<span class="keyWrap"><kbd class="key">V</kbd></span>
+			</span> for Microsoft Windows, <span class="keys">
+				<span class="keyWrap"><kbd class="key">CMD</kbd></span>
+				<span class="keyWrap"><kbd class="key">V</kbd></span>
+			</span> for macOS). The paste function in a smart table is available for these scenarios:</p><ul class="ul ">
+			<li class="li">
+				<p>In edit mode, the smart table only has editable fields.</p>
+				<div><div class="fig"><img src="loio428f11454a7f401982be7745bb3157b6_HiRes.png" usemap="#"></div></div>
+				<p>Sample data:</p>
+				<div><div class="fig"><img src="loiod66f42d98034456b973d3ec779a9cefe_LowRes.png" usemap="#"></div></div>
+			</li>
+			<li class="li"><p>In edit mode, the smart table only has editable fields. It also contains multiple
+					editable fields in a single column, for example, value and unit of
+					measure.</p><img src="loio2af66fc682d14cdc864913bb6fe64152_HiRes.png" usemap="#"><p>Sample data: </p><div><div class="fig"><img src="loio17355b25ee8d4f30be6a94aa2c851243_LowRes.png" usemap="#"></div></div></li>
+			<li class="li">
+				<p>The smart table has both editable and non-editable fields.</p>
+				<div><div class="fig"><img src="loio766e2e9bcb6249d099840cbf1240e2f1_HiRes.png" usemap="#"></div></div>
+				<p>Sample data:</p><div><div class="fig"><img src="loiob6af7fd168d5449aae92aa4e3cba7032_LowRes.png" usemap="#"></div></div><p></p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The user has to maintain the placeholder for non-editable fields in Microsoft
+					Excel. The fields can also be empty.</p></div></div>
+			</li>
+		</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><ul class="ul ">
+				<li class="li">
+					<p>Only the pasting of simple data fields is supported. Complex fields, such as smart links, images, connected fields, multi-input
+						fields and fieldgroups, are not supported.</p>
+				</li>
+				<li class="li">
+					<p>If there are validation errors, an error message is shown in a dialog box so that the user can take action.</p>
+				</li>
+				<li class="li">
+					<p>All records that a user pastes are part of one POST batch call. The duration of the POST call increases with the number of
+						records pasted.</p>
+				</li>
+				<li class="li">
+					<p>The order of the of the data copied from Microsoft Excel might differ from the order in the table after the user has pasted it.
+						SAP Fiori elements cannot control this.</p>
+				</li>
+				<li class="li">
+					<p>Users cannot paste data into custom columns of tables.</p>
+				</li>
+				<li class="li">
+					<p>This feature is not supported for tables with custom columns and custom tables.</p>
+				</li>
+				<li class="li">
+					<p>In the object page, the 'Export to Spreadsheet' feature is available by default only if the copy/paste feature is available.
+						For more information, see <a href="#/topic/4bab6f2043814257974b52d4dafe1dcd.html" title="You can export a table into a spreadsheet." class="sap-doc">Using the 'Export to Spreadsheet' Feature</a>.</p>
+				</li>
+			</ul>
+		<p></p></div></div><section id="section_dxd_1mp_gnb">
+			<h2 class="title ">Restrictions</h2>
+			<p>In SAP Fiori elements for OData
+                            V2, you need to fulfill these prerequisites to use this
+				feature: </p>
+			<p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>The app is draft-enabled.</p>
+					</li>
+					<li class="li">
+						<p>Inline creation is enabled for the object page table. See also <a href="#/topic/cfb04f0c58e7409992feb4c91aa9410b.html" title="You can enable the inline creation of table entries for apps that use draft handling." class="sap-doc">Enabling Inline Creation of Table Entries on Object Page</a>.</p>
+					</li>
+				</ul>
+			<p></p>
+		</section><section id="section_u4k_cnp_gnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>The paste function in a smart table is also available if the smart table contains an inline action.</p><div><div class="fig"><img src="loiodb3d9d352fe74271bb36803721f6d4f1_HiRes.png" usemap="#"></div></div><p>Sample data: </p><div><div class="fig"><img src="loiofa98abca2f3b4da29d569b88b600a810_LowRes.png" usemap="#"></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Do not make entries for inline actions since the actions are not actual columns in the smart table.</p></div></div></div></section><section id="section_u35_d22_tnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The paste function in a table is also available if the table contains an inline action.</p><div><div class="fig"><img src="loio8173bd4b3c4d4dc4bf8a4ba079235a3e_LowRes.png" usemap="#"></div></div><p>Sample data:</p><div><div class="fig"><img src="loiob4c1a5d556604694a71c3f44602bf333_LowRes.png" usemap="#"></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The user has to maintain the placeholder for inline actions in Microsoft Excel. The column fields can also be empty.</p>
+			<p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,167 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio329a029f39e249a1bf89e3ffc006c8e1" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Labeling and Tooltips</h1><div class="fig"><h1 class="topictitle1 title">Labeling and Tooltips</h1><div class="shortdesc">The following guidelines help you properly label your controls in order to have good
+		accessibility.</div><section id="section_ujj_dpb_t2b">
+			<h2 class="title ">General Considerations</h2>
+			<p>Top 5 things to do for better screen reader support for labels</p>
+			<ol>
+				<li class="li">
+					<p>Label all elements and element containers correctly and completely.</p>
+				</li>
+				<li class="li">
+					<p>Provide text alternatives for visual labels</p>
+					<p>Use tooltips only in rare cases. They should not be used as a replacement for
+						a label.</p>
+					<p>Use the <code>alt</code> attribute for images</p>
+				</li>
+				<li class="li">
+					<p>Describe controls and give additional  information as part of  the UI</p>
+					<p>Use <code>ariaDescribedBy</code> where needed.</p>
+				</li>
+				<li class="li">
+					<p>Identify regions correctly according to their purpose.</p>
+					<p>Use containers with a correct meaning and Landmark roles.</p>
+				</li>
+				<li class="li">
+					<p>Provide accessible alternatives and describe how to use them (for example in
+						the documentation of the application). </p>
+				</li>
+			</ol>
+		</section><section id="section_ujb_dpb_t2b">
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_vzj_4r3_5s" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Rules and Guidelines</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Examples/Clarification</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Non-decorative
+										<code>sap.m.Image</code>/<code>sap.ui.core.Icon</code>
+									should provide a meaningful alternative description in the
+										<code>alt</code> property.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Image id="image_not_decorative" src="IMAGE_PATH" alt="This is an image showing an elephant" decorative=false&gt;</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Interactive
+									<code>sap.m.Image</code>/<code>sap.ui.core.Icon</code>
+								(that has a press handler) should not be decorative.</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Image src="IMAGE_PATH" alt="This is an image with a press handler" decorative=false press=onImagePress&gt;</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Icon-only <code>sap.m.Button</code> should have a
+									tooltip.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Button icon="sap-icon://action" press="onPress" tooltip="Action Name" ariaLabelledBy="actionButtonLabel"/&gt;</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Labels should <span class="emphasis">not</span> have a tooltip.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">This could lead to ambiguity.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Input elements should have labels.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">Every input needs a label for its description and purpose. Even
+								if the app doesn't include one, you can set one in
+									<code>sap.ui.core.InvisibleText</code>. The placeholder text
+								should not be used as a label.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Tables should have titles</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Tables with hidden titles or in containers with titles (for
+									example,single tables in tab strip panels) should be labeled
+									with <code>sap.ui.core.InvisibleText</code> in combination
+									with <code>arialabelledby</code>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Button that has a text, should <span class="emphasis">not</span> have a
+									tooltip.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Button text="Default" press="onPress" /&gt;</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code>Aria-labelledby</code> and
+										<code>aria-describedby</code> associations should point
+									to existing DOM elements.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint"> &lt;Page title="Page"&gt;
+  &lt;content&gt;   
+&lt;Button text="Home" ariaLabelledBy="invisibleId"/&gt;   
+&lt;core:InvisibleText id="invisibleId" text="I am a hidden label"/&gt;  
+&lt;/content&gt; 
+&lt;/Page&gt;
+</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Labels should be connected with the labelled elements via
+										<code>labelfor</code>.</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+									</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Label text="Name" labelFor="I1"&gt; 
+&lt;Input id="I1"&gt;
+</pre></div></section>
+								<p></p></div></div>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>If you want to enlarge the size of the standard tooltips, you need to change the
+					system font size. Tooltips are rendered by the browser using native window API
+					and thus their size cannot be influenced by the SAPUI5
+					framework.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

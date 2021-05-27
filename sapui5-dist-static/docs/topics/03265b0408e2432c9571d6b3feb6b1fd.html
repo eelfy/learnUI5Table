@@ -1,0 +1,165 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio03265b0408e2432c9571d6b3feb6b1fd" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Developing Apps with SAP Fiori
+		Elements</h1><div class="fig"><h1 class="topictitle1 title">Developing Apps with SAP Fiori
+		Elements</h1><div class="shortdesc">This section contains information about developing SAP Fiori apps using SAP Fiori
+		elements.</div><p>SAP Fiori elements provide designs for UI patterns and predefined templates for common
+			application use cases. App developers can use SAP Fiori elements to create SAP Fiori
+			applications based on OData services and annotations that don't need JavaScript UI
+			coding. The resulting app uses predefined views and controllers that are provided
+			centrally. This means no application-specific view instances are required. The SAPUI5 runtime interprets
+			metadata and annotations of the underlying OData service and uses the corresponding
+			views for the SAP Fiori app at startup.</p><p><span class="emphasis">Why use SAP Fiori elements?</span></p><ul class="ul ">
+				<li class="li">
+					<p>High <span class="emphasis">development efficiency</span> to cover what 80% of all
+						apps need</p>
+					<p>You do not need to build the UI over and over again. Just reuse the common
+						features required by most applications. They are provided by the SAP Fiori
+						elements floorplans.</p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">Design consistency</span></p>
+					<p>Predefined floorplans, views, and controllers ensure UI consistency within
+						and across similar apps. Apps created using SAP Fiori elements are kept
+						up-to-date as they are automatically adapted to the most recent design
+						guidelines.</p>
+				</li>
+				<li class="li"><p><span class="emphasis">Decoupling of UI and business logic</span></p>The
+					metadata-driven development model uses semantic annotations and significantly
+					reduces the amount of front-end code. Developers can focus on the business
+					logic.</li>
+			</ul><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>The initial effort for creating an app using SAP Fiori elements might be higher than
+				creating a freestyle SAP Fiori app. However, you will be richly rewarded for this
+				effort after you've created more apps this way because your apps will benefit from
+				using the framework and the included features, as described below. </p>
+		<p></p></div></div><p>You can create apps using the following SAP Fiori elements floorplans:</p><ul class="ul ">
+				<li class="li">
+					<p><a href="#/topic/c0eec49db81a441e878f528c8f3d28de.html" title="The list report is typically used in conjunction with an object page." class="sap-doc">List Report and Object Page</a></p>
+					<p>SAP Fiori elements contain predefined templates for list reports and object
+						pages. A list report lets users filter, view, and work with items (objects)
+						organized in list (table) format. The list report is typically used in
+						conjunction with an object page. This object page lets users work with
+						objects, providing functions for viewing, editing, and creating objects.</p>
+				</li>
+				<li class="li">
+					<p><a href="#/topic/d1d588f1061b4bac96a1facb80d3f3a2.html" title="A worklist displays a collection of items that are to be processed by the user." class="sap-doc">Worklist</a></p>
+					<p>A worklist displays a collection of items to be processed by the user. There
+						is no need for sophisticated filtering. Working through the item list
+						usually involves reviewing details of the list items and taking action. In
+						most cases, the user has to either complete a work item or delegate it.</p>
+				</li>
+				<li class="li"><a href="#/topic/c64ef8c6c65d4effbfd512e9c9aa5044.html" title="An overview page is a data-driven SAP Fiori application built using SAPUI5 technology, OData services, and annotations for organizing large amounts of information." class="sap-doc">Overview Pages</a><p>An overview page is a
+						data-driven SAP Fiori app for organizing large amounts of information.
+						Information is visualized in a card format in an attractive and efficient
+						way. Different cards are used for different types of content. The
+						user-friendly experience makes viewing, filtering, and acting on data quick
+						and easy. While presenting the big picture, business users can focus on the
+						most important tasks enabling faster decision making as well as immediate
+						action.</p></li>
+				<li class="li">
+					<p><a href="#/topic/3d33684b08ca4490b26a844b6ce19b83.html" title="Analytical List Page (ALP) is an SAP Fiori elements application for detailed analytics." class="sap-doc">Analytical List Page</a></p>
+					<p>Analytical list page is a SAP Fiori elements application for detailed
+						analytics. It lets you analyze data from different perspectives, to
+						investigate a root cause, and to act on transactional content. You can
+						identify relevant areas within data sets or significant single instances
+						using data visualization and business intelligence. All this can be done
+						seamlessly on one page.</p>
+				</li>
+			</ul><p></p><section id="section_vkc_d2p_cjb">
+			<h2 class="title ">Getting Started</h2>
+			<p>To find out if and when to use SAP Fiori elements, read this guide. It is aimed at
+				designers, product managers, developers, or anyone involved with application
+				development, from inception to execution: <a href="https://d.dam.sap.com/a/21EPJi8" title="https://d.dam.sap.com/a/21EPJi8" class="external-link" target="_blank" rel="noopener">When to use SAP Fiori
+					elements: Usage guide</a>.</p>
+			<p>You can find even more information on YouTube at <a href="https://www.youtube.com/playlist?list=PLo17W6sWsxWP4RMYXd7l824ss5KriAbwm" title="https://www.youtube.com/playlist?list=PLo17W6sWsxWP4RMYXd7l824ss5KriAbwm" class="external-link" target="_blank" rel="noopener">Getting Started with SAP Fiori elements</a>.</p>
+		</section><section id="section_pjp_pzg_1db"><h2 class="title ">Features</h2>SAP Fiori elements provide the
+			following default floorplan features:<ul class="ul ">
+				<li class="li">
+					<p><span class="ph uicontrol">Edit</span> mode control, switching between display and edit,
+						and submitting changes</p>
+				</li>
+				<li class="li">
+					<p>Handling of draft documents (draft saving is available)</p>
+				</li>
+				<li class="li">
+					<p>Message handling, including message lifecycle and message display</p>
+				</li>
+				<li class="li">
+					<p>Multi-device support</p>
+				</li>
+				<li class="li">
+					<p>Support of value help</p>
+				</li>
+				<li class="li">
+					<p>Storing and restoring of application states, for example, saving filter
+						fields with their content in the list report</p>
+				</li>
+				<li class="li">
+					<p>Back navigation that takes the history into account</p>
+				</li>
+				<li class="li">
+					<p>Busy handling and prevention of accidental double-clicks</p>
+				</li>
+				
+			</ul><p>The following features come with every SAP Fiori app:</p><ul class="ul ">
+				<li class="li">
+					<p>SAP Fiori launchpad
+						integration</p>
+				</li>
+				
+				<li class="li">
+					<p>Reuse functions that do not require specific programming</p>
+				</li>
+			</ul><section>
+				<h3 class="title "><span class="emphasis">Tool Support</span></h3>
+				<p>We recommend that you use <a href="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" title="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" class="external-link" target="_blank" rel="noopener">SAP Fiori tools</a>, which is a set of extensions for SAP Business Application Studio and Visual Studio Code, to build your apps.</p>
+				<p>In SAP Fiori elements for OData
+                            V2, you can also use SAP Web IDE to build UI applications when using SAP Fiori elements.</p>
+				<p>SAP Web IDE includes the following tools:</p><ul class="ul ">
+						<li class="li">
+							<p>Wizard for the initial creation of an app</p>
+						</li>
+						<li class="li">
+							<p>Annotation modeler for maintaining annotations</p>
+						</li>
+						<li class="li">
+							<p>Wizard to support the creation of app extensions</p>
+						</li>
+					</ul><p></p>
+				<p>
+					</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div>
+				<p></p>
+				<p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p>
+			</section></section><section>
+			<h2 class="title ">System Requirements</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p>To extend your apps, use SAP Web IDE 1.17 or higher. For more information, search for
+							<i>Annotation Modeler</i> in the documentation for SAP Web IDE on the
+						SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p>
+				</li>
+				<li class="li">
+					<p>The development of new transactional apps with draft capabilities requires
+						ABAP Application Server as of SAP NetWeaver AS for ABAP 7.51 innovation
+						package SP02 or higher. Draft capabilities are not available with SAP
+						NetWeaver AS for ABAP 7.50. For more information, see <a href="#/topic/ed9aa41c563a44b18701529c8327db4d.html" title="A draft is an interim version of a business entity that has not yet been explicitly saved as an active version. Drafts are saved automatically in the background whenever users add or change information within a business entity while it's in edit mode (auto-save). SAP Fiori elements support the creation of apps using draft handling." class="sap-doc">Draft Handling</a>. </p>
+				</li>
+				<li class="li">
+					<p>If you want to use annotations in CDS: SAP NetWeaver</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>We recommend that you download the most up-to-date version
+							to ensure that you have the latest features. 7.5 SP01 or
+							higher.</p></div></div><p></p>
+				</li>
+			</ul>
+		</section><section id="section_cmb_bd1_v3b">
+			<h2 class="title ">More Information</h2>
+			
+			<p><a href="https://experience.sap.com/fiori-design-web/smart-templates/" title="https://experience.sap.com/fiori-design-web/smart-templates/" class="external-link" target="_blank" rel="noopener">SAP Fiori Design Guidelines</a></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

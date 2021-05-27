@@ -1,0 +1,5 @@
+sap.ui.define(["sap/fe/macros/MacroMetadata","sap/base/Log","sap/fe/core/helpers/BindingExpression"],function(M,L,B){"use strict";var c=B.compileBinding;var r=B.resolveBindingString;var e=B.equal;var i=B.ifElse;
+/*!
+   * ${copyright}
+   */
+var F=M.extend("sap.fe.macros.Field",{name:"Field",namespace:"sap.fe.macros",fragment:"sap.fe.macros.Field",metadata:{stereotype:"xmlmacro",properties:{metaPath:{type:"sap.ui.model.Context",required:true},contextPath:{type:"sap.ui.model.Context",required:true},id:{type:"string",required:true},editable:{type:"boolean",deprecated:true,required:false},readOnly:{type:"boolean",required:false}},events:{change:{type:"function"}}},create:function(p){if(p.editable!==undefined){L.error("`editable` property has been deprecated in favor of `readOnly`");p.editModeExpression=c(i(e(r(p.editable,"boolean"),true),"Editable","Display"));}else{p.editModeExpression=undefined;}if(p.readOnly!==undefined){p.editModeExpression=c(i(e(r(p.readOnly,"boolean"),true),"Display","Editable"));}else{p.editModeExpression=undefined;}return p;}});return F;},false);

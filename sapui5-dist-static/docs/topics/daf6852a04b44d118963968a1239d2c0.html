@@ -1,0 +1,377 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiodaf6852a04b44d118963968a1239d2c0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Expression Binding</h1><div class="fig"><h1 class="topictitle1 title">Expression Binding</h1><div class="shortdesc">Expression binding is an enhancement of the SAPUI5 binding syntax, which
+		allows for providing expressions instead of custom formatter functions.</div><p>Using expression binding saves the overhead of defining a function and is recommended if the
+			formatter function has a trivial implementation like a comparison of values. Expression
+			binding is especially useful in the context of SAPUI5 XML templating where
+			XML views with templating are preprocessed and the SAPUI5 controller as the
+			natural place to put custom formatter functions is not available.</p><p>To use expression binding, you need to enable complex binding syntax by using
+			configuration setting <code>bindingSyntax</code> to <code>complex</code>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Complex syntax is automatically activated when the <code>compatVersion</code>
+					is set to <code>edge</code> or to version <code>1.28</code> or higher.
+					For more information, see <a href="#/topic/91f2d03b6f4d1014b6dd926db0e91070.html" title="The complete list of configuration options available in SAPUI5 can be found in the API Reference under sap.ui.core.Configuration. The following table shows a subset of the available configuration options." class="sap-doc">Configuration Options and URL Parameters</a>.</p>
+			<p></p></div></div><p></p><p>An expression binding is specified in an XML view by one of the following two
+			options:</p><ul class="ul ">
+			<li class="li">
+				<p><code>{=<i>expression</i>}</code></p>
+				<p>This variant uses one-way binding. This allows the automatic recalculation if the
+					model values change.</p>
+			</li>
+			<li class="li">
+				<p><code>{:=<i>expression</i>}</code></p>
+				<p>This variant uses one-time binding, meaning that the value is calculated only
+					once. This variant needs less resources because no change listeners to the model
+					have to be maintained.</p>
+			</li>
+		</ul><p>The syntax of the <code><i>expression</i></code> is similar to JavaScript syntax, but you
+			can only use a subset of the JavaScript expression syntax as defined in the table below.
+			Additionally, you can embed values from the model layer into an expression as additional
+			bindings by using one of the following syntaxes:</p><ul class="ul ">
+			<li class="li">
+				<p><code>${<i>binding</i>}</code></p>
+			</li>
+			<li class="li">
+				<p><code>%{<i>binding</i>}</code></p>
+			</li>
+		</ul><p><code><i>binding</i></code> can either be a simple path, or a complex binding. The embedded
+			binding <code>${<i>binding</i>}</code> delivers a value formatted according to the
+			target type of the control property the expression binding applies to, for example,
+			“boolean” in case of <code>&lt;Icon src="sap-icon://message-warning" visible="{=
+				${status} === 'critical' }"&gt;</code>. This can be undesirable or even lead to
+			errors, for example, if OData V4 automatically adds the correct type for the “status”
+			property which is string-like, not boolean. In such cases, use the syntax
+				<code>%{binding}</code> instead. It is just a shortcut for <code>${path :
+				'binding', targetType : 'any'}</code>. In rare cases, you might also want to
+			specify a different “targetType”, for example “string”, “boolean”, “int” or “float”. For
+			more information how these values relate to OData types, see the <a href="#/api/sap.ui.model.odata.type" title="#/api/sap.ui.model.odata.type" class="sap-doc" alt="#/api/sap.ui.model.odata.type">sap.ui.model.odata.type</a> API documentation or explore the
+				<a href="#/sample/sap.ui.core.sample.ViewTemplate.types/preview" title="#/sample/sap.ui.core.sample.ViewTemplate.types/preview" class="sap-doc" alt="#/sample/sap.ui.core.sample.ViewTemplate.types/preview">XML Templating: UI5 OData Types</a> sample in the Demo Kit. For more information about
+				<code>targetType</code>, see the <a href="#/api/sap.ui.base.ManagedObject/methods/bindProperty" title="#/api/sap.ui.base.ManagedObject/methods/bindProperty" class="sap-doc" alt="#/api/sap.ui.base.ManagedObject/methods/bindProperty">sap.ui.base.ManagedObject#bindProperty</a> API
+			documentation in the Demo Kit.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Expression binding can also be used with JavaScript. For example:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">new Text({"visible" : "{= ${status} === 'critical' && ${amount} &gt; 10000 }"});</pre></div></section>
+			<p>or</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">new Icon({color : "'{= encodeURIComponent(${/ID}) }'"});</pre></div></section>
+		<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>An expression binding does <span class="emphasis">not</span> validate binding paths. As a result, an
+			expression binding will <span class="emphasis">not</span> detect incorrect or misspelled binding
+			paths. But if you use an OData V4 model and try to bind data that does
+				<span class="emphasis">not</span> exist in the model, a warning is logged in the
+			console.</p></div></div><p>To embed a path containing a closing curly brace into an expression binding, use a
+			complex binding syntax: <code>${path:'...'}</code>, for example <code>"{:=
+				${path:'target&gt;extensions/[${name} === \'semantics\']/value'} ===
+				'email'}"</code>. You can use this also to avoid variable replacement by build
+			tools like Maven for special names like <q>Description</q> or <q>Name</q>.</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				
+				</tgroup><table border="1" id="table_q1l_f5s_cr" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+					<tr>
+						<th colspan="1" rowspan="1">
+							<p>Syntax Element</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>Symbol</p>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Literal</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>number, for example <code>42</code>, <code>6.022e+23</code>
+								or <code>-273.15</code></p>
+							<p> object, for example <code>{foo: 'bar'}</code></p>
+							<p> string, for example <code>'foo'</code></p>
+							<p><code>null</code></p>
+							<p><code>true</code></p>
+							<p><code>false</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Grouping</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>(...), for example <code>3 * (4 + 10)</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Unary operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>!</code></p>
+							<p><code>+</code></p>
+							<p><code>-</code></p>
+							<p><code>typeof</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Multiplicative operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>
+								<code>*</code></p>
+							<p><code>/</code></p>
+							<p><code>%</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Additive operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>+</code></p>
+							<p><code>-</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Relational operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>&lt;</code></p>
+							<p><code>&gt;</code></p>
+							<p><code>&lt;=</code></p>
+							<p><code>&gt;=</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Strict equality operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>===</code></p>
+							<p><code>!==</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Binary logical operator </p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>&&</code></p>
+							<p><code>||</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Conditional operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>?</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Member access operator with the <code>.</code> operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>
+								</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+									</p><p>With these, you can use members and member methods on
+										standard types such as string, array, number, and so on.</p>
+									<p>Example: <code>${message&gt;/}.length &gt;0</code> or
+											<code>${/firstName}.indexOf('S')</code>.</p>
+								<p></p></div></div>
+							<p></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Function call</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>&lt;function name&gt;(...)</code></p>
+							<p>Example:</p>
+							<p><code>• text="{= <span class="emphasis">Math.max(${/value1}, ${/value2},
+										${/value3})</span> }"</code></p>
+							<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+								</p><p> You can use functions that are available via global symbols,
+									such as <code>Math.max(...)</code> or
+										<code>isNaN(...)</code>.</p>
+							<p></p></div></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Array literals</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>[...]</code>, for example <code>[2,3,5,7,11]</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Property/array access</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>o[...]</code>, for example
+									<code>'foo/bar'.split('/')[1]</code></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>in</code> operator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>'PI' in Math</code> (true) or <code>0 in []</code>
+								(false)</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Global symbol</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>Array</code>, <code>Boolean</code>,
+									<code>Date</code>, <code>encodeURIComponent</code>,
+									<code>Infinity</code>, <code>isFinite</code>,
+									<code>isNaN</code>, <code>JSON</code>,
+									<code>Math</code>, <code>NaN</code>,
+									<code>Number</code>, <code>Object</code>,
+									<code>parseFloat</code>, <code>parseInt</code>,
+									<code>RegExp</code>, <code>String</code>,
+									<code>undefined</code></p>
+						</td>
+					</tr>
+				</tbody>
+			</table></div></div><section>
+			<h2 class="title ">Simple Example</h2>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>With expression binding you only need the XML view but no controller logic.</p></div></div>
+			<p>The following example shows how you use the custom formatter function to map an XML
+				view to an expression binding in the XML view without controller logic.</p>
+			<p>The icon is only displayed if the status property in the view's default model has the
+				value <code>critical</code>. You can use expression binding to replace the
+				formatter function <code>myFormatter</code> in the controller with an expression
+				binding in the XML view. You no longer need to implement any formatter function.</p>
+			<p>The application version without expression binding consists of the XML view
+					(<code>sample.App.view.xml</code>) and the controller:</p>
+			<p>XML view (<code>sample.App.view.xml</code>)</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View controllerName="sample.App" xmlns="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"&gt;
+...
+  &lt;Icon src="sap-icon://message-warning" visible="{path:'status', formatter:'.myFormatter'}"&gt;
+...
+ 
+&lt;/mvc:View&gt;
+</pre></div></section>
+			<p>Controller (<code>sample.App.controller.js</code>)</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+myFormatter: function(sStatus) {
+  return sStatus === "critical";
+}
+...
+</pre></div></section>
+			<p>When using expression binding, however, you only need the XML view without controller logic
+					(<code>sample.App.view.xml</code>):</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View controllerName="sample.app" xmlns="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"&gt;
+...
+  &lt;Icon src="sap-icon://message-warning" visible="{= ${status} === 'critical' }"&gt;
+...
+&lt;/mvc:View&gt;
+</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Some symbols need to be escaped in XML views, for example <code>&&</code> needs to be escaped with
+						<code>&amp;amp;&amp;amp;</code></p>
+			<p></p></div></div>
+		</section><section>
+			<h2 class="title ">More Complex Expressions</h2>
+			<p>With the expression syntax sketched above it is possible to create more complex
+				expressions as shown in the examples below.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>We recommend to use formatter functions instead of very complex and hard-to-read
+					expressions. Some characters that are used by operators, however, need to be
+					escaped in XML, for example the left angle bracket (&lt;) and the ampersand
+					(&). Escaping makes it more difficult to read the expression. To avoid
+					escaping, use one of the following options:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Rephrase the expression to make it more readable, for example, use
+								<code>a &gt; b</code> instead of <code>b &amp;lt;
+							a</code>.</p>
+					</li>
+					<li class="li">
+						<p>Use a custom formatter function.</p>
+					</li>
+				</ul>
+				<p>For more information about escaping in XML, see the W3C XML specification at
+						<a href="http://www.w3.org/TR/xml/#syntax" title="http://www.w3.org/TR/xml/#syntax" class="external-link" target="_blank" rel="noopener">http://www.w3.org/TR/xml/#syntax</a>.</p>
+			<p></p></div></div>
+			<p>Examples for more complex expressions:</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Set to visible if the status is critical and the amount 
+is above the threshold (note escaping of &&). --&gt;
+visible="{= ${status} === 'critical' &amp;amp;&amp;amp; ${amount} &gt; 10000 }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Text for amount level using language-dependent texts 
+from the resource model. --&gt;
+text="{= ${/amount} &gt; 10000 ? ${i18n&gt;/high} : ${i18n&gt;/normal} }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Set to visible if the rating is VIP, ignoring case 
+or if the order amount is greater than 10,000. --&gt;
+visible="{= ${/rating}.toUpperCase() === 'VIP' || ${/orderAmount} &gt; 10000 }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Set to visible if the rating contains VIP, ignoring
+ the case. --&gt;
+visible={= RegExp('vip', 'i').test(${/rating}) }</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Text is maximum of three values. --&gt;
+text="{= Math.max(${/value1}, ${/value2}, ${/value3}) }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Control is enabled only if the order status is set. --&gt; 
+enabled="{= ${/orderStatus} !== null }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Set text to the second string 'middle', access second 
+element in the array generated via 'split'. --&gt;
+text="{= 'small@middle@long'.split('@')[1] }"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Concatenate literal strings and expression bindings 
+or bindings. --&gt;
+text="Hello {=${gender}==='male' ? 'Mr.' : 'Mrs.'} {lastName}"</pre></div></section>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!-- Set text by using a composite binding that combines
+several values in a formatter defined by a parameterized
+entry of an i18n language resource. --&gt;
+
+&lt;!-- i18n language resource --&gt;
+successMsg=Message is available from {0} until {1}
+errorMsg=Message is too short
+
+&lt;!-- View --&gt;
+&lt;mvc:View controllerName="sample.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"&gt;
+...
+   &lt;Text text="{= ${/data/message}.length &amp;lt; 20
+      ? ${i18n&gt;errorMsg} 
+      : ${parts: [
+         {path: 'i18n&gt;successMsg'},
+         {path: '/data/today', type:'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}},
+         {path: '/data/tomorrow', type:'sap.ui.model.type.Date', constraints:{displayFormat:'Date'}}
+      ], formatter: '.formatMessage'}}" /&gt;
+...		
+&lt;/mvc:View&gt;
+
+&lt;!-- Controller --&gt;
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/base/strings/formatMessage"
+], function(Controller, formatMessage) {
+    return Controller.extend("sample.App", {
+        onInit: function() {
+            ...
+        },
+        formatMessage : formatMessage,
+        ...
+    });
+});</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/a2fe8e763014477e87990ff50657a0d0.html" title="Calculated fields enable the binding of multiple properties in different models to a single property of a control." class="sap-doc">Composite Binding</a></li>
+		<li><a href="25ab54b0113c4914999c43d07d3b71fe.xml" title="Examples how complex syntax can be used for calculated fields in XML, HTML, and JS views." class="sap-doc">Examples for Data Binding in Different View Types</a></li>
+		<li><a href="5ee619fc1370463ea674ee04b65ed83b.xml" title="The XML templating concept enables you to use an XML view as a template. This template is transformed by an XML preprocessor on the source level, the XML DOM, at runtime just before an SAPUI5 control tree is created from the XML source." class="sap-doc">XML Templating</a></li>
+		<li><a href="#/topic/91f08de06f4d1014b6dd926db0e91070.html" title="SAPUI5 provides several options for the configuration of the SAPUI5 runtime. The possible ways to provide input for the available configuration options are described in detail." class="sap-doc">Configuration of the SAPUI5 Runtime</a></li>
+	</ul></section></div></section></div></body></html>

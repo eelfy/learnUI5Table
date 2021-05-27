@@ -1,0 +1,89 @@
+{
+    "$schema-ref": "http://schemas.sap.com/sapui5/designtime/api.json/1.0",
+    "version": "1.88.0",
+    "library": "sap.fe.macros",
+    "symbols": [
+        {
+            "kind": "namespace",
+            "name": "sap.fe.macros",
+            "basename": "macros",
+            "resource": "sap/fe/macros/library.js",
+            "module": "sap/fe/macros/library",
+            "export": "",
+            "static": true,
+            "visibility": "public",
+            "description": "Library containing the macros for SAP Fiori elements."
+        },
+        {
+            "kind": "class",
+            "name": "sap.fe.macros.Field",
+            "basename": "Field",
+            "resource": "sap/fe/macros/FieldAPI.ts",
+            "module": "sap/fe/macros/FieldAPI",
+            "static": true,
+            "visibility": "public",
+            "description": "Macro for creating a Field based on the metadata provided by OData V4.\n<br>\nUsually, a DataField or DataPoint annotation is expected, but the macro Field can also be used to display a property from the entity type.<br/>Usage example:\n<pre>\n&lt;macro:Field id=\"MyField\" metaPath=\"MyProperty\" /&gt;\n</pre>\n",
+            "ui5-metadata": {
+                "stereotype": "xmlmacro",
+                "properties": [
+                    {
+                        "name": "contextPath",
+                        "bindable": true,
+                        "description": "Defines the path of the context used in the current page or block.\nThis setting is defined by the framework.",
+                        "group": "Misc",
+                        "methods": [],
+                        "type": "string",
+                        "visibility": "public"
+                    },
+                    {
+                        "name": "id",
+                        "bindable": true,
+                        "description": "The identifier of the Field control.",
+                        "group": "Misc",
+                        "methods": [],
+                        "type": "string",
+                        "visibility": "public"
+                    },
+                    {
+                        "name": "metaPath",
+                        "bindable": true,
+                        "description": "Defines the relative path of the property in the metamodel, based on the current contextPath.",
+                        "group": "Misc",
+                        "methods": [],
+                        "type": "string",
+                        "visibility": "public"
+                    },
+                    {
+                        "name": "readOnly",
+                        "bindable": true,
+                        "description": "An expression that allows you to control the read-only state of the field.",
+                        "group": "Misc",
+                        "methods": [],
+                        "type": "boolean",
+                        "visibility": "public"
+                    }
+                ],
+                "aggregations": []
+            },
+            "events": [
+                {
+                    "name": "change",
+                    "description": "An event containing details is triggered when the value of the field is changed.",
+                    "visibility": "public"
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getValue",
+                    "visibility": "public",
+                    "description": "Retrieves the current value of the Field.",
+                    "parameters": [],
+                    "returnValue": {
+                        "type": "string | boolean",
+                        "description": "the current value of the field\n"
+                    }
+                }
+            ]
+        }
+    ]
+}

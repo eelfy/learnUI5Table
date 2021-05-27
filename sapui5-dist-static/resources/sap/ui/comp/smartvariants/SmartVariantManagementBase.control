@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>smartvariants/SmartVariantManagementBase</name>
+    <derived/>
+    <documentation>&lt;h3&gt;Overview&lt;/h3&gt;
+           The &lt;code&gt;SmartVariantManagementBase&lt;/code&gt; control is a
+           specialization of the
+           {@link sap.ui.comp.variants.VariantManagement VariantManagement}
+           control and communicates with the flexibility library that
+           offers SAPUI5 flexibility to manage the variants for the UI
+           Adaptation scenarios.&lt;br&gt;</documentation>
+    <since>1.86</since>
+    <baseType>sap.ui.comp/variants/VariantManagement</baseType>
+</control>

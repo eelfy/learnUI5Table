@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mdcField="sap.ui.mdc.field"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters'
+	}"
+>
+	<template:if test="{property>@@Property.hasValueHelp}">
+		<!-- Value Help -->
+		<template:then>
+			<mdcField:FieldValueHelp
+				core:require="{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}"
+				unittest:id="ValueHelpMacroFragment"
+				delegate="{= ValueHelpTemplating.getDelegateConfiguration(${property>@@Property.getPropertyPath},${this>conditionModel})}"
+				id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}"
+				showConditionPanel="{= ${this>filterFieldValueHelp} ? ValueHelpTemplating.shouldShowConditionPanel(${property>@@Property.getPropertyObjectPath}) : false}"
+				validateInput="{= ${this>filterFieldValueHelp} ? true : ValueHelpTemplating.requiresValidation(${property>@@Property.getProperty})}"
+				noDialog="{property>@@Property.hasValueHelpWithFixedValues}"
+				customData:requestGroupId="{this>requestGroupId}"
+				customData:sourcePath="{property>@@Property.getPropertyPath}"
+			>
+				<mdcField:FieldValueHelpMTableWrapper />
+			</mdcField:FieldValueHelp>
+		</template:then>
+		<template:elseif
+			test="{= ${this>useSemanticDateRange} ? ValueHelpTemplating.isSemanticDateRange(${property>@@Property.getPropertyObjectPath}) : false}"
+		>
+			<mdcField:ConditionFieldHelp
+				id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}"
+				title="{property>@@Property.getLabel}"
+				customData:requestGroupId="{this>requestGroupId}"
+				label="{this.i18n>M_CONDITIONFIELDHELP_PERIOD}"
+			/>
+		</template:elseif>
+		<template:elseif test="{= ${property>@@Property.hasDateType} || ${this>filterFieldValueHelp}}">
+			<mdcField:FieldValueHelp
+				unittest:id="ValueHelpMacroFragmentWithDateTimeFilters"
+				id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}"
+				showConditionPanel="{= ${this>filterFieldValueHelp} ? true : false}"
+				title="{property>@@Property.getLabel}"
+				customData:requestGroupId="{this>requestGroupId}"
+			>
+			</mdcField:FieldValueHelp>
+		</template:elseif>
+	</template:if>
+</core:FragmentDefinition>

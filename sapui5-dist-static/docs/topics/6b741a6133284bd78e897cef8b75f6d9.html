@@ -1,0 +1,225 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6b741a6133284bd78e897cef8b75f6d9" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Keyboard Handling for SAPUI5 UI
+		Elements</h1><div class="fig"><h1 class="topictitle1 title">Keyboard Handling for SAPUI5 UI
+		Elements</h1><div class="shortdesc">SAPUI5 UI elements provide
+		keyboard handling in order to improve accessibility and speed up work. </div><section>
+			<h2 class="title ">Keyboard Shortcuts for End Users</h2>
+			<p>In this topic we introduce the main keyboard combinations that are used by SAPUI5 UI elements.
+				Furthermore we describe some additional combinations that are used in specific
+				cases. </p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					</tgroup><table border="1" id="table_u1x_1dg_yq" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">Key Combination</th>
+							<th colspan="1" rowspan="1">What it does</th>
+							<th colspan="1" rowspan="1">Specific Behavior</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Tab</kbd></span> / <span class="keys">
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">Tab</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top">Focuses UI elements in order (forward / backward)</td>
+							<td colspan="1" rowspan="1" valign="top"> You can cycle through all interactive, enabled and visible UI elements that are part
+								of a given dialog or other container. When the last UI element is
+								focused, pressing the key again will move the focus to first
+								element. </td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Space</kbd></span>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">Triggers an action (reversible)</td>
+							<td colspan="1" rowspan="1" valign="top">Pressing and releasing the key triggers the action that is associated with a UI
+								element (for example, open a link or toggle a button). <div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+									</p><p>If you press and hold the key, you can cancel the trigger
+										action by pressing <span class="keyWrap"><kbd class="key">Shift</kbd></span>.</p>
+								<p></p></div></div></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Enter</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Triggers an action (immediate)</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Triggers the action that is associated with a UI element (for example, open a link or
+									toggle a button). The action is triggered immediately after the
+									key is pressed. </p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Arrow Keys</kbd></span>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">Navigates between elements</td>
+							<td colspan="1" rowspan="1" valign="top">You can move the focus between elements within a complex UI element (for example a
+								table or a list). Depending on the structure, this navigation is
+								either one-directional (left/right or up/down) or two-directional
+								(left, right, up, down).</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Home</kbd></span> / <span class="keyWrap"><kbd class="key">End</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">Navigates between elements</td>
+							<td colspan="1" rowspan="1" valign="top">You can move the selection to the first/last element within a set of elements. <div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>When using UI elements like sliders and rating
+									indicators, pressing these keys will set the selected value to
+									the maximum/minimum respectively. </p></div></div></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Page Up</kbd></span> / <span class="keyWrap"><kbd class="key">Page Down</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">Skips elements during navigation</td>
+							<td colspan="1" rowspan="1" valign="top">You can move the selection forward/backward by several elements at a time. If the
+								remaining number of elements is less than the step size, selection
+								will move to the last/first element. </td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Escape</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">Closes element / Reverts changes</td>
+							<td colspan="1" rowspan="1" valign="top">Depending on your situation, you can do the following: <ul class="ul ">
+									<li class="li">
+										<p>Close an additionally opened element (for example, a
+											pop-up). </p>
+									</li>
+									<li class="li">
+										<p>Revert the execution to a previous step - one step at a
+											time. </p>
+									</li>
+									<li class="li">
+										<p>If you have made changes to the content of an element
+											(for example, a text field), pressing this key will
+											revert those changes. </p>
+									</li>
+								</ul></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<span class="keyWrap"><kbd class="key">F4</kbd></span> / <span class="keys">
+									<span class="keyWrap"><kbd class="key">Alt</kbd></span>
+									<span class="keyWrap"><kbd class="key">Down</kbd></span>
+								</span> / <span class="keys">
+									<span class="keyWrap"><kbd class="key">Alt</kbd></span>
+									<span class="keyWrap"><kbd class="key">Up</kbd></span>
+								</span></td>
+							<td colspan="1" rowspan="1" valign="top">Opens / closes a drop-down menu</td>
+							<td colspan="1" rowspan="1" valign="top"> You can open the options and elements available in a drop-down menu, if the UI
+								element in question provides this type of information.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">F6</kbd></span> / <span class="keys">
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">F6</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top">Skips focus of UI elements (forward / backward)</td>
+							<td colspan="1" rowspan="1" valign="top">UI elements within an application can be grouped together (for example, all elements
+								in the header of an application). You can skip focusing the elements
+								within a group by using these keys. </td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					</tgroup><table border="1" id="table_zld_4rl_yq" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">Key Combination</th>
+							<th colspan="1" rowspan="1">What it does</th>
+							<th colspan="1" rowspan="1">Specific Behavior</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">Page Up</kbd></span> / <span class="keyWrap"><kbd class="key">Page Down</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top"> Date modification (Days) </td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>When in input: Pressing these keys decreases/increases the date
+									value by one day.</p>
+								<p>When in Calendar UI: Pressing these keys decreases/increases the
+									date value by one month.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keys">
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">Page Up</kbd></span>
+							</span> / <span class="keys">
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">Page Down</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top"> Date modification (Months) </td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>When in input: Pressing these keys decreases/increases the date
+									value by one month.</p>
+								<p>When in Calendar UI: Pressing these keys decreases/increases the
+									date value by one year.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keys">
+								<span class="keyWrap"><kbd class="key">Ctrl</kbd></span>
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">Page Up</kbd></span>
+							</span> / <span class="keys">
+								<span class="keyWrap"><kbd class="key">Ctrl</kbd></span>
+								<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+								<span class="keyWrap"><kbd class="key">Page Down</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top"> Date modification (Years) </td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>When in input: Pressing these keys decreases/increases the date
+									value by one year.</p>
+								<p>When in Calendar UI: Pressing these keys decreases/increases the
+									date value by 10 years.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keys">
+								<span class="keyWrap"><kbd class="key">Ctrl</kbd></span>
+								<span class="keyWrap"><kbd class="key">Arrow Keys</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top"> When used with grouped radio buttons - Moves selection </td>
+							<td colspan="1" rowspan="1" valign="top"> Pressing these keys moves the focus to the next corresponding radio button in the
+								group. The currently selected radio button does not change. </td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keys">
+								<span class="keyWrap"><kbd class="key">Ctrl</kbd></span>
+								<span class="keyWrap"><kbd class="key">Arrow Keys</kbd></span>
+							</span></td>
+							<td colspan="1" rowspan="1" valign="top"> When editing tiles in a container - Changes tile position </td>
+							<td colspan="1" rowspan="1" valign="top"> Pressing these keys changes the position of the focused tile in the tile container.
+								The remaining tiles are re-ordered accordingly. </td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">F2</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Toggles edit mode</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>You can toggle editing of an editable UI element like an input field or text area. </p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="keyWrap"><kbd class="key">F7</kbd></span></td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Exits edit mode </p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>When you are editing an input field in a table or a list,
+									pressing this key will stop the editing and move the focus to
+									the parent UI element. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+										</p><p>Pressing <span class="keyWrap"><kbd class="key">F7</kbd></span> again will move focus back to the
+											editable element.</p>
+									<p></p></div></div><p></p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

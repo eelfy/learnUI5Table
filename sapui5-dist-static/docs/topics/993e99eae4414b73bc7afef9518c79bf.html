@@ -1,0 +1,140 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio993e99eae4414b73bc7afef9518c79bf" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Actions in the List Report</h1><div class="fig"><h1 class="topictitle1 title">Actions in the List Report</h1><div class="shortdesc">The list report supports various types of actions.</div><section id="section_rfx_pry_cnb"><h2 class="title ">Actions by Position on the UI</h2><section>
+				<h3 class="title ">Global Actions</h3>
+				<p>Applications can define custom global actions via enhancements to the manifest.json file.</p>
+				<p>For more information on defining custom actions using extension points, see <a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a>.</p>
+			</section><section>
+				<h3 class="title ">Actions in the Table Toolbar</h3>
+				<p>The table toolbar in the list report contains buttons used to trigger actions for the entire list report or for selected items.
+					These actions can include generic functions offered by SAP Fiori elements or app-specific actions.</p>
+				<p>For more information, see <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+				<div><div class="fig"><img src="loio856c5a455c9045cb9ec204f1106cd779_HiRes.jpg" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Example: Table Toolbar Actions and Inline Actions</span></div>
+			</section><section>
+				<h3 class="title "><span class="emphasis">Generic and Application-Specific Actions</span></h3>
+				<p><span class="emphasis">Generic Actions</span></p>
+				<p>You can use the following generic actions in the table toolbar:</p>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Creation of a new item (<span class="ph uicontrol">Create</span> button) if the entity set can be created</p>
+						</li>
+						<li class="li">
+							<p>Deletion of one or more items if the entity set can be deleted</p>
+						</li>
+					</ul>
+				<p></p>
+				<p><span class="emphasis">App-Specific Actions</span></p>
+				<p>Depending on your use case, you can define actions that are displayed in the table toolbar for your app, for example,
+						<span class="ph uicontrol">Copy</span> and <span class="ph uicontrol">Approve</span>. You can define the following types of actions for your
+					app:</p>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Actions that require user confirmation, for example, for critical actions that have severe consequences. The system
+								opens a dialog in which the user has to confirm the action.</p>
+						</li>
+						<li class="li">
+							<p>Actions that require additional user input, for example, an approval comment. The system opens a dialog with one or
+								more entry elements in which the user enters the required data.</p>
+						</li>
+						<li class="li">
+							<p>Actions that require none of the above. The system triggers the action.</p>
+						</li>
+						<li class="li">
+							<p>Actions that trigger external navigation.</p>
+						</li>
+					</ul>
+				<p></p>
+			</section></section><section id="section_qzm_wjs_tnb"><h2 class="title ">Standard Actions</h2><p>You can display actions to
+				allow users to perform an action for one or more lines in the table.</p><section>
+				<h3 class="title ">Delete Action</h3>
+				<p>The <span class="ph uicontrol">Delete</span> button can be seen as an action on a table. For
+					more information, see <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+			</section><section>
+				<h3 class="title ">Create Action</h3>
+			</section><p>You can set up your annotations so that the
+					<span class="ph uicontrol">Create</span> action is rendered in the list report table
+				toolbar. </p><section>
+				<h3 class="title ">SAP Fiori Elements for OData V2</h3>
+				
+				<p>The <span class="ph uicontrol">Create</span> action is enabled by default, as the entity set
+					is creatable.</p>
+				<p><code>sap:creatable="true"</code> is set for the entity set</p>
+				<p> By default, a POST call is made on selecting <span class="ph uicontrol">Create</span>
+					action. However, in draft enabled application, you can configure application to
+					make a call to a function import specified in <code>newAction</code> by
+					making the <code>useNewActionForCreate</code> manifest setting. This is
+					possible if <code>newAction</code> is defined in <code>draftRoot</code>
+					annotation as below:</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Common.DraftRoot"&gt;
+&lt;Record&gt;
+&lt;PropertyValue Property="NewAction" 
+    String="cds_zrc_ce_localized_srv.cds_zrc_ce_localized_srv_Entities/Create"/&gt;
+&lt;/Record&gt;
+&lt;/Annotation&gt;
+
+</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<p>Make the following manifest setting to turn on draft creation with
+						<code>newAction</code>:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"ListReport|Localized": {
+	"entitySet": "Localized",
+	"component": {
+	"name": "sap.suite.ui.generic.template.ListReport",
+	"list": true,
+	"settings": {
+	"useNewActionForCreate": true
+	}
+},</pre></div></section>
+					<p></p></div></div><p></p>
+				<p>For more information about actions, see <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+			</section><section>
+				<h3 class="title ">SAP Fiori Elements for OData
+					V4</h3>
+				<p>The <span class="ph uicontrol">Create</span> button in a list report is enabled based on the
+					presence of <code>NewAction</code> in the metadata. This is the default
+					behavior for the draft based applications:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Common.DraftRoot"&gt;
+&lt;Record Type="Common.DraftRootType"&gt;
+&lt;PropertyValue Property="ActivationAction" String="com.c_salesordermanage_sd.draftActivate"/&gt;
+&lt;PropertyValue Property="EditAction" String="com.c_salesordermanage_sd.draftEdit"/&gt;
+&lt;PropertyValue Property="PreparationAction" String="com.c_salesordermanage_sd.draftPrepare"/&gt;
+&lt;PropertyValue Property="NewAction" String="com.c_salesordermanage_sd.ReturnInProcess"/&gt;
+&lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div>
+				<p>The <code>InsertRestrictions</code> on the table entity set is completely
+					ignored while you enable <span class="ph uicontrol">Create</span>
+					in a list report due to the presence of
+						<code>NewAction</code>. The button is always enabled, if visible, and
+					the visibility can be controlled via the <code>OperationAvailable</code>
+					property through the following logic:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If <code>OperationAvailable=false</code>, then the
+								<span class="ph uicontrol">Create</span> button will not be displayed in the
+							list report table.</p>
+					</li>
+					<li class="li">
+						<p>If <code>OperationAvailable=true</code> or is not specified, then the
+								<span class="ph uicontrol">Create</span> button will be displayed.</p>
+					</li>
+					<li class="li">
+						<p>If <code>OperationAvailable=null</code> is ignored and the
+								<span class="ph uicontrol">Create</span> button is displayed, this is
+							equivalent to <code>OperationAvailable</code> not being
+							specified.</p>
+					</li>
+				</ul>
+				<p>For more information, see <span class="emphasis">Enablement of Operations</span> section
+					in <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

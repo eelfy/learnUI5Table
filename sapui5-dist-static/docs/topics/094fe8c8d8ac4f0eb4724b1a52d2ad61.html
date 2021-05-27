@@ -1,0 +1,155 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio094fe8c8d8ac4f0eb4724b1a52d2ad61" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Creating a List Report Without Variant Management</h1><div class="fig"><h1 class="topictitle1 title">Creating a List Report Without Variant Management</h1><div class="shortdesc">To make things easier, you may want to create an app without variant management. In
+		this case, only the title of the app is displayed. You can create a custom title, if
+		required.</div><section id="context_fly_n3x_cnb" class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig"><p>Without variant management, and with no custom title added, your app looks as follows:</p><div><div class="fig"><img src="loio8b8568489cd9471697d33df5ae3b5575_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">App Without Variant Management</span></div><p>Without variant management and with a custom title added, your app looks like this:</p><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">App Without Variant Management and With Custom Title</span></div><img src="loio98d4cb09ea0a4eadbbe932a75b9faf5e_LowRes.png" usemap="#"></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section><section id="task_orp_fsc_mmb" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">SAP Fiori Elements for OData V2</h1><div class="fig"><h1 class="topictitle1 title">SAP Fiori Elements for OData V2</h1><section id="steps_zfh_msc_mmb" class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+				<li class="step">
+					<span class="cmd">Include the <code>variantManagementHidden</code> flag in the settings of the list report component in the manifest.json
+						of your app.</span>
+					<ul>
+						<li>If you set the flag to <code>true</code>, then standard variant management is not available in the app. The app
+							name is displayed instead.</li>
+						<li>If you set the flag to <code>false</code> or if the flag is not at all contained in the manifest of the app, the
+							standard variant management is available and can be enabled or disabled. For more information, see <a href="#/topic/33c2b0d5bce24b30b1f05dbfe791f125.html" title="Variants let you store settings that users create for the filter bar, such as selection fields and layout, and for the table, such as sorting and visible columns." class="sap-doc">Enabling Variant Management</a>.</li>
+					</ul>
+					<div class="itemgroup info">
+						<p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>List Report Without Variant
+								Management</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+        "_version":"1.1.0",
+        "pages": [
+            {
+                "entitySet": "XXXXXX_Product",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings" : {
+                        "gridTable" : false,
+                        "multiSelect": false,
+                        "smartVariantManagement": true,
+                        "variantManagementHidden": true // Hides Variant management
+                    }
+                },
+</pre></div></section><p></p></div></div>
+						<p></p>
+					</div>
+				</li>
+				<li class="step">
+					<span class="cmd">If you want to use an app-specific title instead of the variant, include the <code>subTitleIfVariantMgmtHidden</code>
+						property in the i18n file and enter a text value as shown below:</span>
+					<div class="itemgroup info">
+						<p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">#XTIT,40
+subTitleIfVariantMgmtHidden = List Report Custom Title</pre></div></section>
+							<p></p></div></div>
+						<p></p>
+					</div>
+				</li>
+				<li class="step">
+					<span class="cmd">Add a new property in the manifest.json of the application as shown below.</span>
+					<div class="itemgroup info">
+						<p>
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+
+        "_version":"1.1.0",
+
+        "pages": [
+
+            {
+
+                "entitySet": "XXXXXX_Product",
+
+                "component": {
+
+                    "name": "sap.suite.ui.generic.template.ListReport",
+
+                    "list": true,
+
+                    "settings" : {
+
+                        "gridTable" : false,
+
+                        "multiSelect": false,
+
+                        "smartVariantManagement": true,
+
+                        "variantManagementHidden": true,
+
+                        "subTitleIfVariantMgmtHidden": "{{subTitleIfVariantMgmtHidden}}" // Adding Custom Title here
+
+                    }
+
+                },</pre></div></section>
+						<p></p>
+					</div>
+				</li>
+			</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="task_ozn_qsc_mmb" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">SAP Fiori Elements for OData V4</h1><div class="fig"><h1 class="topictitle1 title">SAP Fiori Elements for OData V4</h1><section id="steps_p3k_ssc_mmb" class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+				<li class="step">
+					<span class="cmd">Include the <code>variantManagement</code> configuration in the settings of the list report target in the manifest.json
+						of your app.</span>
+					<ul>
+						<li>If you set the configuration to <code>None</code>, then standard variant management is not available on the list
+							report. The app name is displayed instead.</li>
+						<li>If you set the configuration to <code>Page</code> or <code>Control</code> or if the configuration is not at
+							all contained in the manifest of the app, the standard variant management is available. For more information, see <a href="#/topic/33c2b0d5bce24b30b1f05dbfe791f125.html" title="Variants let you store settings that users create for the filter bar, such as selection fields and layout, and for the table, such as sorting and visible columns." class="sap-doc">Enabling Variant Management</a>.</li>
+					</ul>
+					<div class="itemgroup info">
+						<p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>List Report Without Variant
+								Management</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+            "routing": {
+                "targets": {
+                    "XXXXXX_List": {
+                        "type": "Component",
+                        "id": "XXXXXX_List",
+                        "name": "sap.fe.templates.ListReport",
+                        "options": {
+                            "settings" : {
+                                "entitySet" : "XXXXXX",
+                                "variantManagement": "None"
+                                }
+                            }
+                        }
+                    },
+</pre></div></section><p></p></div></div>
+						<p></p>
+					</div>
+				</li>
+				<li class="step">
+					<span class="cmd">If you want to use an app-specific title instead of the variant, include the <code>subTitle</code> property in the i18n
+						file and enter a text value as shown below:</span>
+					<div class="itemgroup info">
+						<p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">#XTIT, 40
+appSubTitle = List Report Custom Title</pre></div></section>
+							<p></p></div></div>
+						<p></p>
+					</div>
+				</li>
+				<li class="step">
+					<span class="cmd">Add a new property in the manifest.json of the application as shown below.</span>
+					<div class="itemgroup info">
+						<p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.app": {
+            "id": "XXXXXX",
+            "type": "application",
+            "i18n": "i18n/i18n.properties",
+            "title": "{{title}}",
+            "subTitle": "{{appSubTitle}}",
+            "description": "{{description}}",</pre></div></section>
+							<p></p></div></div>
+						<p></p>
+					</div>
+				</li>
+			</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></section></div></body></html>

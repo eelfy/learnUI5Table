@@ -1,0 +1,120 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2c641481649f44de9c1c22c9c3c49d13" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Spreadsheet Export
+		Restrictions</h1><div class="fig"><h1 class="topictitle1 title">Spreadsheet Export
+		Restrictions</h1><div class="shortdesc">There are some restrictions and features that are not supported when you use the
+		spreadsheet export.</div><p>The following
+			restrictions
+			apply:</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				</tgroup><table border="1" id="table_ezc_dq1_skb" class=" "><colgroup><col width="1"></colgroup><tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>In
+								Safari
+								on iOS , the file name and file extension get lost due to a download
+								attribute that is not supported. This issue is caused by the iOS
+								Safari browser in every version before iOS 13.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>While timestamps in SAPUI5
+								tables are usually shown in the time of the user's time zone,
+								exported timestamps are always shown in UTC. This has no effect on
+								the types <code>date</code> and <code>time</code> because
+								they show a date without any time information and vice versa
+								(independent of a specific time zone).</p>
+							<p>For columns of type <code>dateTime</code>, a suffix is added to
+								the column header to indicate that the time is shown in UTC. If
+								there are columns of type <code>date</code> and
+									<code>time</code> that are related to each other, you might
+								want to combine these into a column of type
+									<code>dateTime</code> or add a UTC
+								indication
+								manually.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Column width is converted into an Office Open XML equivalent and may
+								differ slightly from the original table. The column width is at
+								least the same as the width of the
+								column
+								label.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>If you use the client export within the <code>SmartTable</code>
+								control, you have to provide additional <code>p13n</code>
+								custom
+								data for the custom columns. </p>
+							<p>Custom columns are created by the application or SAP Fiori
+								elements
+								and
+								not by the <code>SmartTable</code> control, so the
+									<code>SmartTable</code> control does not
+								recognize
+								this data type.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>The maximum number of rows that can be exported is restricted to
+								1,048,576.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>The number of cells that can be exported is
+								restricted
+								to 2,000,000 on desktop and 100,000 on mobile
+								devices.</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							
+							<p>The hierarchical depth that can be visually
+								represented is restricted to eight
+								levels.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table></div></div><p>The following features are not supported:</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				</tgroup><table border="1" id="table_mcs_xd3_skb" class=" "><colgroup><col width="1"></colgroup><tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Charts</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Icons</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Semantic
+								cell highlighting</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Custom
+								formatters</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Dates before January 1st, 1900</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Aggregated rows (group headers or sum
+								rows)</p>
+						</td>
+					</tr>
+				</tbody>
+			</table></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

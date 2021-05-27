@@ -1,0 +1,28 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc312735b7417423ea239394b3b4f4018" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Key Value Facet</h1><div class="fig"><h1 class="topictitle1 title">Key Value Facet</h1><div class="shortdesc"></div><p>If you add a <span class="ph sap-technical-name">UI.ReferenceFacet</span> that points to
+				<span class="ph sap-technical-name">UI.DataPoint</span>, the title and value of the
+				<span class="ph sap-technical-name">UI.DataPoint</span> are rendered as follows:</p><img src="loioaed9f13159554e5595e06d8916dfac55_HiRes.png" usemap="#"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="ProductCategory"&gt;
+      &lt;Record&gt;
+            &lt;PropertyValue Property="Value" Path="ProductCategory"/&gt;
+            &lt;PropertyValue Property="Title" String="{@i18n&gt;ProductCategory}"/&gt;
+      &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+		<p></p></div></div><section id="section_gp5_h2l_r4b"><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h3></div><div class="fig"><p>The data point can also be colored based on criticality.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="StockAvailability"&gt;
+      &lt;Record Type="UI.DataPointType"&gt;
+           &lt;PropertyValue Property="Title" String="Availability" /&gt;
+           &lt;PropertyValue Property="Value" Path="stock/availability" /&gt;
+           &lt;PropertyValue Property="Criticality" Path="stock/availability"/&gt;
+      &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>You can also enable in-page and external navigation from a data point. For
+						more information, see <a href="#/topic/fa0ca22de375490a84aa3375b617592f.html" title="Applications can configure header facets so that end users can perform both in-page navigation and the navigation to an external application." class="sap-doc">Navigation from Header Facets</a>.</p>
+				<p></p></div></div></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

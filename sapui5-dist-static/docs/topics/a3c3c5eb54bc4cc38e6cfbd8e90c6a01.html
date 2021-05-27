@@ -1,0 +1,38 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa3c3c5eb54bc4cc38e6cfbd8e90c6a01" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Personalization Dialog </h1><div class="fig"><h1 class="topictitle1 title">Personalization Dialog </h1><div class="shortdesc">The sap.m.P13nDialog control provides a dialog to personalize tables,
+		such as adapting the order of columns or filtering table content.</div><p>For more information about this control, see the <a href="#/api/sap.m.P13nDialog" title="#/api/sap.m.P13nDialog" class="sap-doc" alt="#/api/sap.m.P13nDialog">API Reference</a> and the <a href="#/entity/sap.m.P13nDialog" title="#/entity/sap.m.P13nDialog" class="sap-doc" alt="#/entity/sap.m.P13nDialog">samples</a>.</p><section>
+			<h2 class="title ">Overview</h2>
+			<p>The <code>P13nDialog</code> control offers you a personalization dialog and allows the
+				consuming application to define various settings for tables using panels. The panels
+				represent the settings on the user interface. In order to register them to the
+				control, the <code>sap.m.P13nPanel</code> aggregation is used.</p>
+		</section><section>
+			<h2 class="title ">Details</h2>
+			<p>The following panels are available in the <code>P13nDialog</code> control:</p>
+			<ul class="ul ">
+				<li class="li"><code>sap.m.P13nSortPanel</code><p>Defines the sorting in a column in an
+						ascending or descending order.</p></li>
+				<li class="li"><code>sap.m.P13nFilterPanel</code><p>Defines filter conditions for a
+						column.</p></li>
+				<li class="li"><code>sap.m.P13nGroupPanel</code><p>Defines the grouping of
+					columns.</p></li>
+				<li class="li"><code>sap.m.P13nDimMeasurePanel</code><p>Defines the chart-specific
+						settings.</p></li>
+			</ul>
+			<p>The following buttons are available in the dialog:</p>
+			<ul class="ul ">
+				<li class="li"><span class="ph uicontrol">OK</span><p>Closes the personalization dialog. </p><p> In some
+						cases, the consuming application must transfer the settings of the end user
+						to the table, for example, when sorting and filtering.</p></li>
+				<li class="li"><span class="ph uicontrol">Cancel</span><p>Closes the personalization dialog.</p><p>All
+						changes made by the end user in the dialog that is currently open are
+						rejected.</p></li>
+				<li class="li"><span class="ph uicontrol">Reset</span><p>Personalization
+						dialog remains open.</p><p>All changes made by the end user are set back to
+						the initial state.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The control only provides the visual
+						representation of the table settings on the user interface. The consuming
+						application must ensure the settings are actually changed in the
+						table.</p></div></div></li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

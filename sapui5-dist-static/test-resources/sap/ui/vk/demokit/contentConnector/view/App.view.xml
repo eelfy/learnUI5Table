@@ -1,0 +1,49 @@
+<mvc:View
+	controllerName="sap-demo.controller.App"
+	xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:vk="sap.ui.vk"
+	xmlns:vk3="sap.ui.vk.threejs"
+	xmlns:vkd="sap.ui.vk.dvl"
+	displayBlock="true"
+>
+	<m:App class="sapUiDemoWT" id="sap-demo">
+		<m:Page title="{i18n>pageTitle}">
+			<l:Splitter orientation="Vertical" height="100%" width="100%">
+				<l:Splitter orientation="Horizontal" height="100%" width="100%">
+					<vk:SceneTree id="leftSceneTree" contentConnector="first-connector" viewStateManager="vsmA"/>
+					<vk:Viewport id="leftViewport" height="100%" contentConnector="first-connector" viewStateManager="vsmA"/>
+					<vk:Viewport id="rightViewport" contentConnector="first-connector" viewStateManager="vsmB"/>
+					<vk:SceneTree id="rightSceneTree" contentConnector="first-connector" viewStateManager="vsmB"/>
+				</l:Splitter>
+				<l:Splitter orientation="Horizontal" height="100%" width="100%">
+					<vk:Viewport id="leftBottomViewport" height="100%" contentConnector="second-connector" viewStateManager="vsmC"/>
+					<vk:SceneTree id="bottomSceneTree" contentConnector="second-connector" viewStateManager="vsmC"/>
+					<vk:Viewport id="rightBottomViewport" contentConnector="second-connector" viewStateManager="vsmC"/>
+				</l:Splitter>
+				<vk:StepNavigation id="stepNavigation" width="100%" contentConnector="second-connector"/>
+			</l:Splitter>
+		</m:Page>
+		<m:dependents>
+			<vk:ContentConnector id="first-connector">
+				<vk:contentResources>
+					<!-- <vk:ContentResource source="../../internal/testModels/998.vds" sourceType="vds" id="abc" /> -->
+				</vk:contentResources>
+				<vk:viewStateManagers>
+					<vk:ViewStateManager id="vsmA"/>
+					<vk:ViewStateManager id="vsmB"/>
+				</vk:viewStateManagers>
+			</vk:ContentConnector>
+			<vk:ContentConnector id="second-connector">
+				<vk:contentResources>
+					<vk:ContentResource source="../../internal/testModels/House.vds" sourceType="vds" id="abc" />
+				</vk:contentResources>
+				<vk:viewStateManagers>
+					<!-- <vk:ViewStateManager id="vsmC"/> -->
+				</vk:viewStateManagers>
+			</vk:ContentConnector>
+			<vk:ViewStateManager id="vsmC" contentConnector="second-connector"/>
+		</m:dependents>
+	</m:App>
+</mvc:View>

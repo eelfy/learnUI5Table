@@ -1,0 +1,55 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio46bf248182ed47cb85a05610abe361f7" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Store/Restore of the Application
+		State</h1><div class="fig"><h1 class="topictitle1 title">Store/Restore of the Application
+		State</h1><div class="shortdesc">SAP Fiori elements uses the iAppState mechanism for storing or
+		restoring the application state. This enables a smooth user experience when navigating back
+		and forth between SAP Fiori elements and other apps.</div><p>The state of the application is generally preserved when users refresh or navigate away
+			from an application created using SAP Fiori elements (either a list report or an object
+			page) and then navigate back to this page. This is also the case when the URL of the
+			application is shared with another user who then opens the link.</p><section id="section_nkf_5ff_ymb">
+			<h2 class="title ">What is Stored/Restored</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p>Any filter field values in the list report filter bar. The
+							<span class="ph uicontrol">Go</span> button state, when available, is also
+						considered.</p>
+				</li>
+				<li class="li">
+					<p>Any change in a chosen variant. However, SAP Fiori elements currently always
+						restores to the <span class="ph uicontrol">Standard</span> variant of the filter bar,
+						or to the page variant in those cases where the variant was marked as
+						'dirty' before the restore.</p>
+				</li>
+				<li class="li">
+					<p>If users click on the section or subsection in an object page, then the
+						section ID is stored/restored. Please note that the section ID that is in
+						focus is <span class="emphasis">not</span> stored in the <code>iAppState</code>
+						if users simply scroll to this section via a regular page scroll.</p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><ul class="ul ">
+							<li class="li">
+								<p>If the potentially sensitive filter field (the property that is
+									annotated via the
+										<code>PersonalData.v1.IsPotentiallySensitive</code>
+									annotation) is changed, SAP Fiori elements does not
+									store/restore this. Any changes added by users are therefore
+									lost upon refresh.</p>
+							</li>
+							<li class="li">
+								<p>Changes in the filter field visibility are not
+									stored/restored.</p>
+							</li>
+							<li class="li">
+								<p>Changes made to a chart or table, scroll position, or selections
+									are not stored/restored.</p>
+							</li>
+						</ul>
+					<p></p></div></div>
+				</li>
+			</ul>
+		</section><section id="section_o53_dgf_ymb">
+			<h2 class="title ">Additional Features in SAP Fiori Elements for OData V2</h2>
+			<p>You can perform inner app state handling for custom UI elements. For more
+				information, see <a href="#/topic/89fa878945294931b15a581a99043005.html" title="You can perform inner app-state handling for custom UI elements." class="sap-doc">Custom State Handling for Extended Apps</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

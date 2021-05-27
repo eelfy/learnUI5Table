@@ -1,0 +1,10 @@
+<core:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ushell.demo.HelloWorldSampleApp.App">
+    <VBox>
+        <Panel headerText="Hello World Sample Application">
+            <Label text="Hello World!" class="sapUiSmallMarginBottom" />
+        </Panel>
+    </VBox>
+</core:View>

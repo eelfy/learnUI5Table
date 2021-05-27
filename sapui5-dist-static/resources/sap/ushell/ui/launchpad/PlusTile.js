@@ -1,0 +1,4 @@
+/*!
+ * Copyright (c) 2009-2020 SAP SE, All Rights Reserved
+ */
+sap.ui.define(["sap/ui/core/Icon","sap/ushell/library","sap/ushell/resources","sap/ushell/ui/launchpad/PlusTileRenderer","sap/ushell/ui/launchpad/Tile"],function(I,u,r,P,T){"use strict";var a=T.extend("sap.ushell.ui.launchpad.PlusTile",{metadata:{library:"sap.ushell",properties:{groupId:{type:"string",group:"Misc",defaultValue:""},enableHelp:{type:"boolean",group:"Misc",defaultValue:false}},events:{press:{}}}});a.prototype.init=function(){this.oIcon=new I({src:"sap-icon://add",tooltip:r.i18n.getText("openAppFinder_tooltip")});};a.prototype.exit=function(){if(this.oIcon){this.oIcon.destroy();}};a.prototype.onclick=function(){var g=this.getParent().getBindingContext().getObject();if(!g.object){return;}this.firePress();};a.prototype.onsapspace=a.onclick;a.prototype.onsapenter=a.onclick;return a;});

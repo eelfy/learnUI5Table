@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/gantt/designtime/library-preload.designtime.js",
+"sourceroot":".",
+"sources":["GanttChart-dbg.designtime.js","GanttChartWithTable-dbg.designtime.js","library-dbg.designtime.js","simple/GanttChartContainer-dbg.designtime.js"],
+"names":[],
+"mappings":";;;;;;;AAQA,gBAAa,8CAAC,GACb,QAAS,EAAG,CACX,aAEA,MAAO,CACN,aAAc,CACb,cAAe,CACd,OAAQ,IACT,CACD,CACD,EACD,EAAkB;ACXnB,gBAAa,uDAAC,GACb,QAAS,EAAG,CACX,aAEA,MAAO,CACN,aAAc,CACb,cAAe,CACd,OAAQ,IACT,CACD,CACD,EACD,EAAkB;ACVnB,gBAAa,2CAAC,GAAI,UAAW,CACzB,aACA,MAAO,GACX;ACJA,gBAAa,8DAAC,GACb,UAAW,CACX,aAEA,MAAO,CACN,WAAY,CACX,YAAa,CACZ,OAAQ,IACA,CACJ,CACP,EACD;",
+"x_com_sap_openui5_sections":[65,329,329,488,488,587,587,743]
+}

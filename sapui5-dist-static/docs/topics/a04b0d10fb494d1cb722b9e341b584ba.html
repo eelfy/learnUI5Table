@@ -1,0 +1,97 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa04b0d10fb494d1cb722b9e341b584ba" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Bootstrapping: Loading and Initializing </h1><div class="fig"><h1 class="topictitle1 title">Bootstrapping: Loading and Initializing </h1><div class="shortdesc">To use SAPUI5 features
+		in your HTML page, you have to load and initialize the SAPUI5 library.</div><p>You can use the SAPUI5
+			bootstrap script in your page to initialize SAPUI5 runtime
+			automatically as soon as the script is loaded and executed by the browser. For simple
+			use cases as well as the default SAPUI5 installation, this
+			is sufficient to build and run UIs. In addition to this, you can specify the set of SAPUI5 libraries and the
+			theme used for your application in the configuration settings.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>If you run your app standalone, the bootstrap is added to your HTML page. In an SAP
+				Fiori launchpad environment, the launchpad executes the bootstrap and no additional
+				HTML page is needed to display the app.</p>
+		<p></p></div></div><p>The following code snippet shows a typical bootstrap script tag:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script id="sap-ui-bootstrap" 
+     type="text/javascript"
+     src="resources/sap-ui-core.js"
+     data-sap-ui-theme="sap_belize"
+     data-sap-ui-libs="sap.m"
+     data-sap-ui-compatVersion="edge"&gt;
+&lt;/script&gt;</pre></div></section><p>The attributes <code>data-sap-ui-theme="sap_belize"</code> and
+				<code>data-sap-ui-libs="sap.m"</code> already provide examples of how SAPUI5 runtime can be
+			configured to the needs of an application.</p><section>
+			<h2 class="title ">Overview of Bootstrap Files</h2>
+			<p>SAPUI5 provides several
+				bootstrap files for different use cases. The following table gives an overview of
+				the most important resources and the respective use cases. The resource names refer
+				to the <code>resources/</code> folder in the SAPUI5 installation.
+				The actual base URL depends on your platform and administrative setup.</p>
+			<div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_ksy_xsg_ps" class=" "><thead>
+					<tr><th colspan="1" rowspan="1">Resource</th>
+					<th colspan="1" rowspan="1">Description</th>
+				</tr></thead><tbody><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-core.js</code></td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>This is the standard bootstrap file, which we recommend to use for
+							typical use cases. It already contains jQuery,
+								<code>jquery-ui-position</code> and only the minimum required
+							parts of the core library (<code>sap.ui.core</code>). Required files
+							are loaded dynamically using XMLHttpRequest (XHR).</p>
+						<p>For more information, see <a href="#/topic/91f1f4536f4d1014b6dd926db0e91070.html" title="The standard variant for bootstrapping loads all JavaScript modules of a library in advance with one single request for performance reasons." class="sap-doc">Standard Variant for Bootstrapping</a>. </p>
+					</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>Content Delivery Network (CDN)</p>
+					</td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>You can access the libraries externally from a CDN. For more information
+							see <a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a>.</p>
+					</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-core-nojQuery.js</code></td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>You use this bootstrap file for applications with their own jQuery
+							version. It also contains the minimum required parts of the core
+							library, but <b>not</b> jQuery and
+							<code>jquery-ui-position</code>.</p>
+						<p>For more information, see <a href="#/topic/91f1dd0c6f4d1014b6dd926db0e91070.html" title="The noJQuery variant supports bootstrapping for an application that already integrates jQuery or uses a different jQuery version than SAPUI5." class="sap-doc">noJQuery Variant for Bootstrapping</a>. </p>
+					</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap/ui/core/library-preload.js</code></td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>This file contains most of the modules that are contained in the
+								<code>sap.ui.core</code> library, but the modules are parsed and
+							executed only on demand, and not immediately.</p>
+						<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>An
+							application must not reference this file. If the configuration option is
+							set to <code>preload</code>, SAPUI5
+							automatically loads the file.</p></div></div>
+						<p>For more information, see <a href="#/topic/91f1f4536f4d1014b6dd926db0e91070.html" title="The standard variant for bootstrapping loads all JavaScript modules of a library in advance with one single request for performance reasons." class="sap-doc">Standard Variant for Bootstrapping</a>. </p>
+					</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-core-lean.js</code></td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>This bootstrap file is similar to the <code>sap-ui-core.js</code>
+							file, but in this use case only the jQuery and one SAPUI5 file
+							are loaded immediately and the other files are loaded dynamically.</p>
+						<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+							</p><p>This use case is usually <span class="emphasis">not</span> used and may be
+								removed in future.</p>
+						<p></p></div></div>
+					</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-custom*.js</code></td>
+					<td colspan="1" rowspan="1" valign="top">
+						<p>File names that match this pattern are reserved for custom merged files used by the
+							application.</p>
+						<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The proposed
+							naming scheme for these files needs to be adapted in future versions for
+							the same encapsulation reasons as mentioned above. </p></div></div>
+					</td>
+				</tr></tbody></table></div></div>
+		</section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/91f1f4536f4d1014b6dd926db0e91070">Standard Variant for Bootstrapping</a></li><li><a href="topic/2d3eb2f322ea4a82983c1c62a33ec4ae">Variant for Bootstrapping from Content Delivery Network</a></li><li><a href="topic/91f1dd0c6f4d1014b6dd926db0e91070">noJQuery Variant for Bootstrapping</a></li><li><a href="topic/91f2c9076f4d1014b6dd926db0e91070#loio91f2c9076f4d1014b6dd926db0e91070">Initialization Process</a></li><li><a href="topic/91f08de06f4d1014b6dd926db0e91070">Configuration of the SAPUI5 Runtime</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

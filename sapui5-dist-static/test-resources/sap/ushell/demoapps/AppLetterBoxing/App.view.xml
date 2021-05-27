@@ -1,0 +1,23 @@
+<core:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ushell.demo.letterBoxing.App">
+    <App>
+        <Page title="letterBoxing Application">
+            <content>
+                <Panel headerText="letterBoxing application">
+                    <List id="letterBoxing" noDataText="">
+                        <CustomListItem>
+                            <Button
+                                id="idChangeLetterBoxButton"
+                                class="letterboxingBtn idQunitChangeLetterBoxButton"
+                                text="Change letterBoxing"
+                                press="onChaneLetterBoxing"
+                                icon="sap-icon://change" />
+                        </CustomListItem>
+                    </List>
+                </Panel>
+            </content>
+        </Page>
+    </App>
+</core:View>

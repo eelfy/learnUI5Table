@@ -1,0 +1,6 @@
+<core:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ushell.demo.FioriToExtAppTarget.App">
+    <App id="rootControl" />
+</core:View>

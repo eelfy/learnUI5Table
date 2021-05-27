@@ -1,0 +1,82 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio88756c08fe144ba08ff1762ad92fc07c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 5: One-Way Data Binding</h1><div class="fig"><h1 class="topictitle1 title">Step 5: One-Way Data Binding</h1><div class="shortdesc">In contrast to the two-way binding behavior shown above, one-way data binding is also
+		possible. Here, data is transported in one direction only: from the model, through the
+		binding instance to the consumer (usually the property of a control), but never in the other
+		direction. In this example, we will change the previous example to use one-way data binding.
+		This will illustrate how the flow of data from the user interface back to the model can be
+		switched off if required.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio61d68f167778425bbdd2abd7d550ae65_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Two-way data binding disabled for the checkbox</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit at <a href="#/sample/sap.ui.core.tutorial.databinding.05/preview" title="#/sample/sap.ui.core.tutorial.databinding.05/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.05/preview">Data Binding - Step 5</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView"<span class="emphasis">,
+	"sap/ui/model/BindingMode"</span>
+], function (JSONModel, XMLView<span class="emphasis">, BindingMode</span>) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		// Create a JSON model from an object literal
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true,
+			panelHeaderText: "Data Binding Basics"
+		});
+
+<span class="emphasis">		oModel.setDefaultBindingMode(BindingMode.OneWay);
+
+</span>
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		// Display the XML view called "App"
+		new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		}).placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>Insert the single highlighted line immediately after the creation of the model object in <code>index.js</code>.</p>
+			<p>Now, no matter what state the checkbox is in, the input fields remain open for input
+				because one-way data binding ensures that data flows only from the model to the UI,
+				but never in the other direction.</p>
+			<p>The binding mode (one-way or two-way) is set on the model itself. Therefore, unless
+				you specifically alter it, a binding instance will always be created using the
+				model's default binding mode.</p>
+			<p>Should you wish to alter the binding mode, then there are two ways of doing this: </p><ul class="ul ">
+					<li class="li">
+						<p>Alter the model's default binding mode. This is the approach used
+							above.</p>
+					</li>
+					<li class="li">
+						<p>Specify the data binding mode for a specific binding instance by using
+							the <code>oBindingInfo.mode</code> parameter. This change applies
+							only to this data binding instance. Any other binding instances will
+							continue to use the model's default binding mode.
+								For more information, see <a href="#/api/sap.ui.base.ManagedObject/methods/bindProperty" title="#/api/sap.ui.base.ManagedObject/methods/bindProperty" class="sap-doc" alt="#/api/sap.ui.base.ManagedObject/methods/bindProperty">API Reference:
+										<code>sap.ui.base.ManagedObject.bindProperty</code></a>.
+							</p>
+					</li>
+				</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>There are two important points to understand about alterations to a model
+						object's data binding mode: </p><ul class="ul ">
+							<li class="li">
+								<p>If you alter the default binding mode of a model (as in the
+									example above), then unless you explicitly say otherwise, all
+									binding instances created after that point in time will use the
+									altered binding mode.</p>
+							</li>
+							<li class="li">
+								<p>Altering a model's default binding mode has no effect on already
+									existing binding instances.</p>
+							</li>
+						</ul><p></p>
+				<p></p></div></div><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/c72b922fdb59422496661000165d7ff1">Step 4: Two-Way Data Binding</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/9790d9aa686e4f818f2ad99057adb7ee">Step 6: Resource Models</a></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,43 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio11ff444f82e14eb3a2e8eca0065a5055" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Prefilling Fields When Creating a New Entity</h1><div class="fig"><h1 class="topictitle1 title">Prefilling Fields When Creating a New Entity</h1><div class="shortdesc">When a user creates a new entity, it is possible to prefill fields with specific
+		values.</div><p>Applications can prefill the values for parameters corresponding to an action.</p><section id="section_q51_1rd_2nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p><span class="emphasis">Prefilling Fields When Creating a New Entity</span></p><p>If the entity is draft-enabled, the relevant service implementation can be used to prefill the fields.</p><p>In some cases, the values result from a user interaction that took place before the creation of the entity was triggered. Then, the
+				relevant information must be transferred from the front end to the back end.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Use this feature carefully as the user might not expect to come upon prefilled fields.</p>
+					<p>Do not use this feature if the fields are not (or might not be) visible to the user.</p>
+				<p></p></div></div><p></p><p>There are two options for supporting the prefilling of fields on the UI. You can use them only for the main object. </p><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>Creation via cross-app navigation</p>
+					</li>
+					<li class="li">
+						<p><a href="#/topic/189e2d8a59f04a2693a4fde7f4a91a65.html" title="When a user creates a new entity, it is possible to prefill fields with specific values." class="sap-doc">Prefilling Fields When Creating a New Entity Using an Extension Point</a></p>
+					</li>
+				</ul>
+			<p></p><p><span class="emphasis">Creation via Cross-App Navigation</span></p><p>When navigating to an app that is based on SAP Fiori elements, set <code>parameterMode</code> or <code>preferredMode</code> to
+					<code>create</code> to indicate that a new instance is to be created (and the user starts with the
+					<span class="uinolabel">Create</span> screen of this instance).</p><p>The source app might add values for properties to be prefilled in the created instance by adding the corresponding name/value-pair as a
+				startup-parameter for the target app. screen of this instance).</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p></p><p>The startup-parameters must contain a single value for the property.</p>You have configured the property to be used in the create
+				case, for the target app.<p></p></div></div><p>The configuration in the target app needs to be done in the manifest.json of the target app. The following code sample shows how to
+				ensure that a value for <code>Supplier</code> can be passed to the app's create process:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint"> screen of this
+... 
+"sap.ui.generic.app": { 
+    "_version": "???",  
+    "settings": {   
+        "inboundParameters": {   
+            "Supplier": {     
+                "useForCreate": true   
+            }   
+        },
+    }
+...
+</pre></div></section>
+			<p></p></div></div></div></section><section id="section_jjd_2rd_2nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>Applications can define <code>NewAction</code> and its parameters to ensure that
+				end users can provide parameter values during creation. For <code>POST</code>
+				based creation, a dialog is still shown if there are any non-computed key fields or
+				immutable fields. For more information, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

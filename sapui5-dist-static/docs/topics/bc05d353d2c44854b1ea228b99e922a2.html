@@ -1,0 +1,142 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiobc05d353d2c44854b1ea228b99e922a2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Initial Expansion Level for Tables in List
+		Reports & Analytical List Pages</h1><div class="fig"><h1 class="topictitle1 title">Initial Expansion Level for Tables in List
+		Reports & Analytical List Pages</h1><div class="shortdesc">You can set the number of expanded levels for tables in List Reports and Analytical List
+		Pages using the initialExpansionLevel property of the
+			PresentationVariant annotation.</div><section id="section_gpy_d5f_lkb">
+			<h2 class="title ">Expected
+				Behavior
+				of Table Types</h2>
+			<p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_w52_35f_lkb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Table Type</th>
+								<th colspan="1" rowspan="1">Expected Behavior</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Analytical Table</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>The default <code>initialExpansionLevel</code> is 0.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Responsive Table</td>
+								<td colspan="1" rowspan="1" valign="top">Irrespective of the value of the <code>initialExpansionLevel</code>, the
+									responsive table expands to one level. The groups are always
+									expanded and you can group using table settings. </td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Tree Table</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>In List Reports, the
+										first
+										level is  automatically expanded.</p>
+									<p>In Analytical List Pages, the default <code>initialExpansionLevel</code> is 0.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p>
+			<p>The <code>initialExpansionLevel</code> should never exceed the number of grouped
+				columns.</p>
+		</section><section id="section_h1l_x5f_lkb">
+			<h2 class="title ">Defining Initial Expansion Level in  PresentationVariant </h2>
+			<p>For <code>initialExpansionLevel</code> to be supported,
+					<code>PresentationVariant</code> annotations must exist for
+				the
+				content area in Analytical List Pages/ List Reports and multiple tabs in a
+				List Reports.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>If tabs are not defined for a List Reports, the default <code>PresentationVariant</code>
+					(without the qualifier) is considered. </p>
+				<p>The content area in Analytical List Pages can be associated directly with the
+						<code>PresentationVariant</code> in these cases: </p><ul class="ul ">
+						<li class="li">
+							<p>The qualifier is defined in the manifest: There is no matching
+									<code>SelectionPresentationVariant</code> with the qualifier
+								but there is a matching <code>PresentationVariant</code>.</p>
+						</li>
+						<li class="li">
+							<p>The qualifier is not defined in the manifest: There is no default
+									<code>SelectionPresentationVariant</code> but there is a
+								default <code>PresentationVariant</code>.</p>
+						</li>
+					</ul><p></p>
+			<p></p></div></div>
+			<p>The tabs in a List Reports can be associated directly with the
+					<code>PresentationVariant</code> when the annotation path of the tab defined
+				in the manifest points to a <code>PresentationVariant</code> annotation. In this
+				case, the required <code>PresentationVariant</code> has to be defined as shown
+				in the sample code below:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.PresentationVariant" Qualifier="Default"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Visualizations"&gt;
+            &lt;Collection&gt;
+                &lt;AnnotationPath&gt;@UI.LineItem#DefaultLineItem&lt;/AnnotationPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="GroupBy"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;ProductId&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="InitialExpansionLevel" Int="1"/&gt;
+        &lt;PropertyValue Property="SortOrder"&gt;
+            &lt;Collection&gt;
+                &lt;Record&gt;
+                    &lt;PropertyValue Property="Property" PropertyPath="ProductCategory" /&gt;
+                    &lt;PropertyValue Property="Descending" Bool="false" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+			<p></p></div></div>
+		</section><section id="section_drg_nvf_lkb">
+			<h2 class="title ">Defining the Initial Expansion Level in
+				the
+				SelectionPresentationVariant </h2>
+			<p>If the content area in the Analytical List Pages and tabs in the List Reports are associated
+				with a <code>SelectionPresentationVariant</code> that references a
+					<code>PresentationVariant</code>, ensure that the
+					<code>PresentationVariant</code> is not defined inline but referred to using
+				a path as shown in the sample code below:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionPresentationVariant" Qualifier="MainContent"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="ID" String=""/&gt;
+        &lt;PropertyValue Property="Text" String=""/&gt;
+        &lt;PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#Default"/&gt;
+        &lt;PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#Default"/&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+			<p></p></div></div>
+			<ul class="ul ">
+				<li class="li">
+					<p><a href="#/topic/f4eb70f4808b48adb6ea03a4017aba24.html" title="You can use the annotations and entries in the manifest.json to control various aspects of tables." class="sap-doc">Configuring Tables</a></p>
+				</li>
+				<li class="li">
+					<p><a href="#/topic/d074e26b013647c7a93b8a9db9b51d2d.html" title="Displays transactional data in a tabular format. Use table-only mode to view individual records within the transactional data." class="sap-doc">Table-Only View</a></p>
+				</li>
+			</ul>
+		</section><section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

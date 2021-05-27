@@ -1,0 +1,84 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5278bfd38f3940b192df0e39f2fb33b3" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 2: Creating a Model</h1><div class="fig"><h1 class="topictitle1 title">Step 2: Creating a Model</h1><div class="shortdesc">In this step, we create a model as container for the data on which your application
+		operates.</div><p>The business data within a model can be defined using various formats:</p><ul class="ul ">
+			<li class="li">
+				<p>JavaScript Object Notation (JSON)</p>
+			</li>
+			<li class="li">
+				<p>Extensible Markup Language (XML)</p>
+			</li>
+			<li class="li">
+				<p>OData</p>
+			</li>
+			<li class="li">
+				<p>Your own custom format (not covered in this tutorial) </p>
+			</li>
+		</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>There is also a special type of model called a "resource model". This model type is
+				used as a wrapper object around a resource bundle file. The names of such files must
+				end with <code>.properties</code> and are used typically for holding
+				language-specific text.</p>
+			<p>We will use this in <a href="#/topic/9790d9aa686e4f818f2ad99057adb7ee.html" title="Business applications also require language-specific (translatable) texts used as labels and descriptions on the user interface." class="sap-doc">Step 6: Resource Models</a>.</p>
+		<p></p></div></div><p>When JSON, XML and resource models are created, the data they contain is loaded in a
+			single request (either from a file stored locally on the client or by requesting it from
+			a Web server). In other words, after the model's data has been requested, the entire
+			model is known to the application. These models are known as client-side models and
+			tasks such as filtering and sorting are performed locally on the client.</p><p>An OData model however, is a server-side model. This means that whenever an application needs
+			data from the model, it must be requested from the server. Such a request will almost
+			never return all the data in the model, typically because this would be far more data
+			than is required by the client application. Consequently, tasks such as sorting and
+			filtering should always be delegated to the server.</p><p>In this tutorial, we will focus on JSON models since they are the simplest ones to work
+			with.</p><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio6d391d527601499fbeb3734246b2c067_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Screen with text derived from a model object (No visual changes to last step)</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.02/preview" title="#/sample/sap.ui.core.tutorial.databinding.02/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.02/preview">Data Binding - Step 2</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/m/Text",
+	"sap/ui/model/json/JSONModel"
+], function (Text, JSONModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+<span class="emphasis">		// Create a JSON model from an object literal
+		var oModel = new JSONModel({
+			greetingText: "Hi, my name is Harry Hawk"
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+</span>
+
+		// Create a text UI element that displays a hardcoded text string
+		new Text({text: "Hi, my name is Harry Hawk"}).placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>Create a new JSON model passing the data as object literal and store the resulting
+				model instance in a local variable called <code>oModel</code>.</p>
+			<p>Set <code>oModel</code> to be the default model within the entire SAPUI5 core.</p>
+			<p>This makes the model object globally available to all controls used within the
+				application.</p>
+			<p>In this case we have bound the model object to the SAPUI5 core. This has been done
+				for simplicity, but is not considered good practice. Generally speaking, a model object holding business data should be bound to the
+				app's <code>Component.js</code> or to the view that displays the data. For an example, see the Walkthrough tutorial, <a href="#/topic/70ef981d350a495b940640801701c409.html" title="Now that we have set up the view and controller, it’s about time to think about the M in MVC." class="sap-doc">Step 7: JSON Model</a> (binding to the View) or <a href="#/topic/4cfa60872dca462cb87148ccd0d948ee.html" title="After we have introduced all three parts of the Model-View-Controller (MVC) concept, we now come to another important structural aspect of SAPUI5." class="sap-doc">Step 9: Component Configuration</a>
+				(binding to the Component).</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Models can be set on every control by calling <code>setModel()</code>. The model is then
+					propagated to all aggregated child controls (and their children, and so on…).
+					All child control will then have access to that model</p>
+			<p></p></div></div>
+			<p>The text that is displayed on the UI is still hard-coded and not taken from the model - we will bind the property <code>greetingText</code>
+				to our UI control in the next step.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/4cde849dc18949b69bbe152a0aaa19c6">Step 1: No Data Binding</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/d70e9894c09b4c27a98d4850d4e90f2c">Step 3: Create Property Binding</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/e1b625940c104b558e52f47afe5ddb4f.html" title="A model in the Model View Controller concept holds the data and provides methods to retrieve the data from the database and to set and update data." class="sap-doc">Models</a></li>
+		<li><a href="#/topic/96804e3315ff440aa0a50fd290805116.html#loio96804e3315ff440aa0a50fd290805116" title="The JSON model can be used to bind controls to JavaScript object data, which is usually serialized in the JSON format." class="sap-doc">JSON Model</a></li>
+	</ul></section></div></section></div></body></html>

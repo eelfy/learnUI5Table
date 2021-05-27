@@ -1,0 +1,87 @@
+{
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.fe.templates.RootContainer.view.Fcl",
+			"type": "XML",
+			"async": true,
+			"id": "appRootView"
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"flexibleColumnLayout": {
+					"defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+					"defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+				}
+			},
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "ProductsList",
+					"target": ["ProductList"]
+				},
+				{
+					"pattern": "Products({key}):?query:",
+					"name": "ProductObjectPage",
+					"target": ["ProductList", "ProductObjectPage"]
+				},
+				{
+					"pattern": "Products({key}/reviews({key2}):?query:",
+					"name": "ReviewObjectPage",
+					"target": ["ProductList", "ProductObjectPage", "ReviewObjectPage"]
+				}
+			],
+			"targets": {
+				"ProductList": {
+					"type": "Component",
+					"id": "ProductList",
+					"name": "sap.fe.templates.ListReport",
+					"controlAggregation": "beginColumnPages",
+					"contextPattern": "",
+					"options": {
+						"settings": {
+							"entitySet": "Products",
+							"variantManagement": "Page",
+							"navigation": {
+								"Products": {
+									"detail": {
+										"route": "ProductObjectPage"
+									}
+								}
+							}
+						}
+					}
+				},
+				"ProductObjectPage": {
+					"type": "Component",
+					"id": "ProductObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"controlAggregation": "midColumnPages",
+					"contextPattern": "/Products({key})",
+					"options": {
+						"settings": {
+							"entitySet": "Products",
+							"navigation": {
+								"reviews": {
+									"detail": {
+										"route": "ReviewObjectPage"
+									}
+								}
+							}
+						}
+					}
+				},
+				"ReviewObjectPage": {
+					"type": "Component",
+					"id": "ReviewObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "Reviews"
+						}
+					}
+				}
+			}
+		}
+	}
+}

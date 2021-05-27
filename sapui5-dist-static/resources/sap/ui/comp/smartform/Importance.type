@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>smartform/Importance</name>
+    <derived/>
+    <documentation>Enumeration of SmartForm Importance types</documentation>
+    <since>1.87</since>
+    <enumeration>
+        <value name="High">
+            <documentation>Shows fields that are annotated with UI.ImportanceType/High or have importance property set to High</documentation>
+        </value>
+        <value name="Medium">
+            <documentation>Shows fields that are annotated with &lt;code&gt;UI.ImportanceType/Medium&lt;/code&gt; or &lt;code&gt;UI.ImportanceType/High&lt;/code&gt; or have the &lt;code&gt;importance&lt;/code&gt; property set to &lt;code&gt;medium&lt;/code&gt; or &lt;code&gt;high&lt;/code&gt;.</documentation>
+        </value>
+        <value name="Low">
+            <documentation>Shows all fields</documentation>
+        </value>
+    </enumeration>
+</simple-type>

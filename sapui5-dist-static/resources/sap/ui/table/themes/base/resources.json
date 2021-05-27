@@ -1,0 +1,130 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "AnalyticalTable.less",
+			"size": 1626,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Cell.less",
+			"size": 11109,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CreationRow.less",
+			"size": 2146,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DragDrop.less",
+			"size": 5498,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Grouping.less",
+			"size": 7681,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Row.less",
+			"size": 2242,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RowAction.less",
+			"size": 1403,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RowHighlight.less",
+			"size": 2775,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RowSelection.less",
+			"size": 4274,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Scrolling.less",
+			"size": 13094,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Table.less",
+			"size": 13425,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.css",
+			"size": 16697,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.less",
+			"size": 240,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.source.less",
+			"size": 101634,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 83715,
+			"theme": "base"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 6757,
+			"theme": "base"
+		},
+		{
+			"name": "library.css",
+			"size": 83770,
+			"theme": "base"
+		},
+		{
+			"name": "library.less",
+			"size": 71067,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library.source.less",
+			"size": 5253,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library_skeleton-RTL.css",
+			"size": 86962,
+			"theme": "base"
+		},
+		{
+			"name": "library_skeleton.css",
+			"size": 87019,
+			"theme": "base"
+		}
+	]
+}

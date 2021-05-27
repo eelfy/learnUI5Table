@@ -1,0 +1,104 @@
+<core:View height="100%" xmlns:core="sap.ui.core" xmlns="sap.m"
+	 xmlns:f="sap.f"
+	 xmlns:fl="sap.ui.fl.variants"
+	 xmlns:mdcField="sap.ui.mdc.field"
+	 xmlns:mdc="sap.ui.mdc"
+	 xmlns:mdcTable="sap.ui.mdc.table"	
+	controllerName="sap.ui.mdc.sample.filterbar.sample1.Test">
+
+	<App id="idMdcFilterBarApp">
+		<Page title="{i18n>appTitleMain}" id="page" enableScrolling="false">
+			<headerContent>
+					<Button visible="{app>/showAdaptButton}" text="{= ${app>/showAdaptButton} ? ${i18n>btnAdapt} : ${i18n>btnNonAdapt} }" press=".switchToAdaptionMode" />
+			</headerContent>
+		<content>
+
+		   <f:DynamicPage id="dynamicPage">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:actions>
+<!--
+						<Button id="changeProperty1" text="Change Req Property" press="onChangeReqProperty" />
+						<Button id="changeProperty2" text="Change Vis Property" press="onChangeVisProperty" />
+ -->
+					</f:actions>
+
+					<f:heading>
+							<fl:VariantManagement id="testVariantMngmn" for="dynamicPage" displayTextForExecuteOnSelectionForStandardVariant="{i18n>AA_STANDARD}" />
+					</f:heading>
+
+					<f:snappedContent>
+						<Text id="statusTextCollapsed" />
+					</f:snappedContent>
+					<f:expandedContent>
+						<Text id="statusTextExpanded" />
+					</f:expandedContent>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+						<mdc:FilterBar id="testFilterBar" filtersChanged="onFiltersChanged"
+							variantBackreference="testVariantMngmn"
+							liveMode="false"
+							delegate='\{"name" : "sap/ui/mdc/sample/filterbar/sample1/FilterBarHelperTest", "payload" : \{"modelName": null,  "collectionName": "ProductList"\} \}'
+							filterConditions = '\{"SupplierID" : [\{"operator":"EQ","values":["VENDOR"]}]\}'
+ 							search="onSearch"
+							p13nMode="Item,Value">
+
+							<mdc:dependents>
+									<mdcField:FieldValueHelp id="FVH_Multi"
+										title="Multiple"
+										showConditionPanel="true"
+										delegate="{name: 'sap/ui/mdc/odata/v4/FieldValueHelpDelegate', payload: {}}" />
+
+									<mdcField:FieldValueHelp id="FVH01"
+										title="Supplier"
+										showConditionPanel="true"
+										delegate="{name: 'sap/ui/mdc/odata/v4/FieldValueHelpDelegate', payload: {}}" />
+
+										<mdcField:FieldValueHelp id="FVH02"
+										title="Product"
+										showConditionPanel="true"
+										delegate="{name: 'sap/ui/mdc/odata/v4/FieldValueHelpDelegate', payload: {}}" />
+							</mdc:dependents>
+
+							<mdc:basicSearchField>
+								<mdc:FilterField id="field0"  placeholder= "{@i18n>SEARCH}" conditions="{$filters>/conditions/$search}" dataType="sap.ui.model.odata.type.String" maxConditions="1"/>
+							</mdc:basicSearchField>
+
+							<mdc:filterItems>
+								<mdc:FilterField id="field5"  label="P_CompanyCode" conditions="{$filters>/conditions/P_CompanyCode}" maxConditions="1" dataType="Edm.String"  dataTypeConstraints='\{"maxLength": 4\}' required="true"/>
+								<mdc:FilterField id="field1"  label="Category" conditions="{$filters>/conditions/Category}" maxConditions="1" dataType="Edm.String"  dataTypeConstraints='\{"maxLength": 40\}' required="true"/>
+								<mdc:FilterField id="field2"  label="Name" conditions="{$filters>/conditions/Name}"  maxConditions="1" dataType="Edm.String" dataTypeConstraints='\{"maxLength": 255\}'/>
+								<mdc:FilterField id="field3"  label="Product" fieldHelp="FVH02" conditions="{$filters>/conditions/ProductID}"  maxConditions="1" dataType="Edm.String" dataTypeConstraints='\{"maxLength": 10\}' operators="SINGLE_RANGE_EQ,SINGLE_RANGE_EQ,LE,GE"/>
+								<mdc:FilterField id="field4"  label="Currency Code" conditions="{$filters>/conditions/CurrencyCode}" maxConditions="1" dataType="Edm.String" dataTypeConstraints='\{"maxLength": 5\}'/>
+							</mdc:filterItems>
+						</mdc:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<mdc:Table id="authorsTable" header="Authors" filter="testFilterBar" p13nMode="{=['Sort', 'Column']}" delegate="{name: 'sap/ui/mdc/odata/v4/TableDelegate', payload: {collectionName: 'ProductList'}}" showRowCount="true" rowPress="onRowPress" threshold="50" width="100%">
+		<mdc:type>
+			<mdcTable:GridTableType rowCountMode="Fixed" rowCount="20"/>
+		</mdc:type>		
+					<mdc:actions>
+						<Button type="Emphasized" text="Add Author" press="onAddButtonPress" />
+					</mdc:actions>
+					<mdc:columns>
+						<mdc:table.Column id="cName" header="Name" dataProperty="Name" width="15rem">
+							<mdc:Field delegate="{name: 'sap/ui/mdc/odata/v4/FieldBaseDelegate', payload: {}}" value="{Name}" editMode="Display" multipleLines="true" />
+						</mdc:table.Column>
+						<mdc:table.Column id="cDoB" header="Date of birth" dataProperty="Product" width="15rem">
+							<mdc:Field delegate="{name: 'sap/ui/mdc/odata/v4/FieldBaseDelegate', payload: {}}" value="{Product}" editMode="Display" />
+						</mdc:table.Column>
+					</mdc:columns>
+				</mdc:Table>
+
+			</f:content>
+		</f:DynamicPage>
+		</content>
+		</Page>
+	</App>
+</core:View>

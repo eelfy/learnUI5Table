@@ -1,0 +1,1 @@
+sap.ui.define([],function(){"use strict";var _={};var M;(function(M){M["Error"]="Error";M["Information"]="Information";M["None"]="None";M["Success"]="Success";M["Warning"]="Warning";})(M||(M={}));_.MessageType=M;return _;},false);

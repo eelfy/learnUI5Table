@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(m){"use strict";return m.extend("sap.suite.ui.generic.template.lib.TemplateHost",{isPlaceholderShown:function(p){return!!p[this.sRouteName];},setRouteName:function(r){this.sRouteName=r;}});},true);

@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2020 SAP SE, All Rights Reserved
+sap.ui.define([],function(){"use strict";function c(u){var U=u&&u.services&&u.services.Container&&u.services.Container.adapter&&u.services.Container.adapter.config&&u.services.Container.adapter.config.userProfile;var l=U&&U.defaults&&U.defaults.languageBcp47;var s=U&&U.defaults&&U.defaults.language;if(l){sap.ui.getCore().getConfiguration().setLanguage(l,s);}}return c;});

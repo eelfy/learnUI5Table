@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="com.sap.GL.zrha" sap:schema-version="1"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+		<EntityType Name="Item" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ItemId" />
+				</Key>
+				<Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Item ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+				<Property Name="Company Code" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+				<Property Name="Count" Type="Edm.Int32" Nullable="false" MaxLength="20" sap:label="Count" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+				<Property Name="Quantity" Type="Edm.Decimal" Precision="24" Scale="3" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="true" sap:label="Quantity" sap:text="Quantity_F" sap:unit="QuantityUnit" sap:updatable="false" />
+				<Property Name="NUMC" Type="Edm.String" Nullable="false" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="NUMC Filter" sap:creatable="false" />
+				<Property Name="DateTimeOffset" Type="Edm.DateTimeOffset" Nullable="false" sap:aggregation-role="dimension" sap:label="DT Offset" sap:creatable="false" />
+				<Property Name="TIME_SINGLE" Type="Edm.Time" sap:filter-restriction="single-value" sap:label="Time Single"/>
+				<Property Name="TIME_MULTIPLE" Type="Edm.Time" sap:filter-restriction="multi-value" sap:label="Time Multiple"/>
+				<Property Name="TIME_INTERVAL" Type="Edm.Time" sap:filter-restriction="interval" sap:label="Time Interval"/>
+				<Property Name="TIME_AUTO" Type="Edm.Time" sap:label="Time Auto"/>
+			</EntityType>
+			<EntityContainer Name="com.sap.GL.zrha_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Items" EntityType="com.sap.GL.zrha.Item" sap:creatable="false" sap:updatable="true" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+			</EntityContainer>
+			<Annotations Target="com.sap.GL.zrha.Item"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Company Code" />
+							<PropertyValue Property="Label" String="Company Code" />
+							<Annotation Term="com.sap.vocabularies.UI.v1.Importance"
+								EnumMember="com.sap.vocabularies.UI.v1.ImportanceType/High" />
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Count" />
+							<Annotation Term="com.sap.vocabularies.UI.v1.Importance"
+								EnumMember="com.sap.vocabularies.UI.v1.ImportanceType/Medium" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="com.sap.GL.zrha.Item">
+			<Annotation Term="com.sap.vocabularies.UI.v1.FieldGroup" Qualifier="Time.Group">
+				<Record>
+					<PropertyValue Property="Label" String="Time Group" />
+					<PropertyValue Property="Data">
+						<Collection>
+							<Record Type="com.sap.vocabularies.UI.v1.DataField">
+								<PropertyValue Property="Value" Path="TIME_AUTO" />
+							</Record>
+							<Record Type="com.sap.vocabularies.UI.v1.DataField">
+								<PropertyValue Property="Value" Path="TIME_SINGLE" />
+							</Record>
+							<Record Type="com.sap.vocabularies.UI.v1.DataField">
+								<PropertyValue Property="Value" Path="TIME_MULTIPLE" />
+							</Record>
+							<Record Type="com.sap.vocabularies.UI.v1.DataField">
+								<PropertyValue Property="Value" Path="TIME_INTERVAL" />
+							</Record>
+						</Collection>
+					</PropertyValue>
+				</Record>
+			</Annotation>
+		</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

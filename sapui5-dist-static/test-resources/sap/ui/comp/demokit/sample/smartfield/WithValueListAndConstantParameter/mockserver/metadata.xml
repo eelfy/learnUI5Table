@@ -1,0 +1,113 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+		   xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+		   xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+
+
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="SAP" xml:lang="en" sap:schema-version="1">
+
+			<EntityType Name="MainType" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+				<Property Name="CODE" Type="Edm.String" sap:label="Language Code without any constants"/>
+				<Property Name="CODE_ASIA" Type="Edm.String" sap:label="Language Code filtered with Asia as a constant"/>
+				<Property Name="CODE_EUROPE" Type="Edm.String" sap:label="Language Code filtered with Europe as a constant"/>
+			</EntityType>
+
+			<EntityType Name="LanguageType" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ID" />
+				</Key>
+				<Property Name="ID" Type="Edm.String"/>
+				<Property Name="CODE" Type="Edm.String" sap:label="Language Code"/>
+				<Property Name="NAME" Type="Edm.String" sap:label="Language Name"/>
+				<Property Name="CONTINENT" Type="Edm.String" sap:label="Continent"/>
+			</EntityType>
+
+			<EntityContainer Name="SAP_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Main" EntityType="SAP.MainType" sap:creatable="false" sap:updatable="true" sap:deletable="false" sap:addressable="false" sap:content-version="1" />
+				<EntitySet Name="Language" EntityType="SAP.LanguageType" sap:creatable="false" sap:updatable="true" sap:deletable="false" sap:addressable="false" sap:content-version="1" />
+			</EntityContainer>
+
+			<Annotations Target="SAP.MainType/CODE"
+						 xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Languages"/>
+						<PropertyValue Property="CollectionPath" String="Language"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="CODE"/>
+									<PropertyValue Property="ValueListProperty" String="CODE"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="NAME"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="CONTINENT"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+			<Annotations Target="SAP.MainType/CODE_ASIA"
+						 xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Languages in Asia"/>
+						<PropertyValue Property="CollectionPath" String="Language"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="CODE_ASIA"/>
+									<PropertyValue Property="ValueListProperty" String="CODE"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="NAME"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterConstant">
+									<PropertyValue Property="Constant" String="Asia"/>
+									<PropertyValue Property="ValueListProperty" String="CONTINENT"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+			<Annotations Target="SAP.MainType/CODE_EUROPE"
+						 xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Languages in Europe"/>
+						<PropertyValue Property="CollectionPath" String="Language"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="CODE_EUROPE"/>
+									<PropertyValue Property="ValueListProperty" String="CODE"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="NAME"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterConstant">
+									<PropertyValue Property="Constant" String="Europe"/>
+									<PropertyValue Property="ValueListProperty" String="CONTINENT"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

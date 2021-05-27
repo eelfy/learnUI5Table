@@ -1,0 +1,181 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio3a16c7a2f1e944deb000db49e5ece6be" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Create a Northwind Destination</h1><div class="fig"><h1 class="topictitle1 title">Create a Northwind Destination</h1><div class="shortdesc">Configure a destination in the SAP Business Technology Platform Cockpit in order to
+		bypass the same-origin policy of the browser.</div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><section id="section_xjx_nvz_ghb">
+			<p>To be able to test your app, you can use a remote OData service that provides product data from the Northwind demo service of the OData
+				group.</p>
+			<p>In the navigation bar of the SAP Business Technology Platform Cockpit, choose
+					<span class="ph uicontrol">Destinations</span> and then choose <span class="ph uicontrol">New Destination</span> in the toolbar.</p>
+			<div><div class="fig"><img src="loiod4b788e837474db8a62f91b376ec4086_HiRes.png" usemap="#"></div></div>
+			<p>Enter the following values into the corresponding fields:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_k51_bc1_d5" class="tableFullWidth "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Field</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Value</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">Name</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">northwind</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">Type</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">HTTP</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">Description</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">Northwind OData Service</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">URL</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">https://services.odata.org</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">Proxy Type</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">Internet</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph uicontrol">Authentication</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">NoAuthentication</kbd></p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<p>Also, enter the following properties in the section <span class="ph uicontrol">Additional Properties</span>:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_dnm_gc1_d5" class="tableFullWidth "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Property</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Value</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code>WebIDEEnabled</code></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">true</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code>WebIDESystem</code></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">Northwind</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code>WebIDEUsage</code></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><kbd class="ph userinput">odata_gen</kbd></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code>Use default JDK truststore</code></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Set the checkmark.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section id="section_ill_4vz_ghb">
+			<h2 class="title ">neo-app.json</h2>
+			<p>With this configuration you can use the destination for any app inside SAP Web IDE. Whenever an app calls
+				a (local) service beginning with <code>/destinations/northwind/*</code>, the
+				created destination becomes active as a simple proxy. This helps to prevent any
+				possible issues related to the same-origin policy of browsers. For this, you need to
+				add another route to the <code>neo-app.json</code>:</p>
+			<section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "version": "snapshot",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    }<span class="emphasis">,
+    {
+      "path": "/destinations/northwind",
+      "target": {
+        "type": "destination",
+        "name": "northwind"
+      },
+      "description": "Northwind OData Service"
+    }</span>
+  ]
+}</pre></div></section>
+		</section><section id="section_t5m_fwz_ghb">
+			<h2 class="title ">webapp/manifest.json</h2>
+			<p>In the app descriptor, the service URL is then defined relative to the destination path specified
+				above:</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+"sap.app": {
+ "dataSources": {
+   "": {
+     "uri": "<span class="emphasis">/destinations/northwind/V2/Northwind/Northwind.svc/</span>",
+     "type": "OData",
+     "settings": {
+       "odataVersion": "2.0"
+     }
+   }
+ }
+}
+...</pre></div></section><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

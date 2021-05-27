@@ -1,0 +1,141 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio668ea184f58c4378a5394f54b4ae205d" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Editing Status</h1><div class="fig"><h1 class="topictitle1 title">Editing Status</h1><div class="shortdesc">The editing status reflects the state of the object or entry in terms of the processing
+		cycle. For example, it can give the user information about whether the item can be accessed
+		or its level of completion.</div><section id="section_z1y_vrp_llb">
+			<h2 class="title ">Editing Status for Table Items</h2>
+			<p>The list report allows users to view the editing status of the objects displayed. The
+				editing status is calculated from the draft administrative data that is added in the
+				back end.</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_rly_r5p_llb" class=" "><colgroup><col><col></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Editing Status</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Description</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>
+										<img src="loio4e387a1b83124cecb15d8cc3b26e9a10_LowRes.png" usemap="#"></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Draft: my own draft</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><img src="loio3bbd1264d6f04572814c1cd20671b167_LowRes.png" usemap="#"></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Active version</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><img src="loio8916c63eb8a64c72b56c8d8513eec47a_LowRes.jpg" usemap="#"></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Active version with draft created by another user; no longer
+										locked</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><img src="loiobfd920858bbf4fa7b56eb513b849ca1d_LowRes.jpg" usemap="#"></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Active version with draft created by another user; locked</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p>
+		</section><section id="section_gzh_lht_ymb">
+			<h2 class="title ">Access to Administrative Data</h2>
+			<p>For the statuses <span class="ph uicontrol">Unsaved Changes by Another User</span> and
+					<span class="ph uicontrol">Locked by Another User</span>, the name of the user who last
+				changed the object is visible directly in the line item in the list report (see
+				above). Note that if the user's full name is not available in the master data in the
+				back-end system, only the technical user name displays. If the technical name is
+				also not available, the message then indicates that the unsaved changes or the lock
+				on the object belongs to "another user".</p>
+			<p>In addition, for the statuses <span class="ph uicontrol">Own Draft</span>, <span class="ph uicontrol">Unsaved
+					Changes by Another User</span>, and <span class="ph uicontrol">Locked by Another
+					User</span>, a link accesses a popover to allow you to view the user who
+				last changed the object and the time of the change. Note that if the user's full
+				name is not available in the master data in the back-end system, only the technical
+				user name is displayed.</p>
+		</section><section id="section_tgf_4ht_ymb">
+			<h2 class="title ">Editing Status Filter</h2>
+			<p>A static filter attribute is available for all applications, which is added to the
+				filter bar of the list report for all draft-enabled applications by default. This
+				filter allows users to search for objects or entries in a specific state.</p>
+			<p>The drop-down values are as follows:</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_z3m_x5p_llb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Drop-Down Value</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="ph uicontrol">All</span></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays all entities</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="ph uicontrol">Own Draft</span></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays a user’s own draft only</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="ph uicontrol">Locked by Another User</span></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays all entities that are currently in progress by
+										someone</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="ph uicontrol">Unsaved Changes by Another User</span></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays all entities with unsaved changes (lock expired,
+										draft of someone is still available)</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="ph uicontrol">Unchanged</span></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays all entities that have no draft</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The default search filter is <span class="ph uicontrol">All</span>, even if the user
+						clears the filter value.</p>
+				<p></p></div></div><p></p>
+			<p><span class="emphasis">Disabling the Editing Status Filter</span></p>
+			<p>If desired, the editing status filter can be disabled after you generate your app.
+				For more information, see <a href="#/topic/8eb695ac473b4ab0a726e4021ce35cf4.html" title="The editing status filter is enabled by default in the list report page of draft enabled applications." class="sap-doc">Disabling the Editing Status Filter</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/b31162d62a864e6bb8e3ea8b3dfc384b.html" title="In draft-enabled applications, the Draft, Unsaved Changes by Another User and Locked by Another User statuses are displayed in the first column to which you can add the semantic key using the semantic key annotation." class="sap-doc">Displaying the Editing Status</a></li>
+	</ul></section></div></section></div></body></html>

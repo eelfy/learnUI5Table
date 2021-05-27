@@ -1,0 +1,104 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio080886d8d4af4ac6a68a476beab17da3" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Displaying Text and ID for Value Help
+		Input Fields</h1><div class="fig"><h1 class="topictitle1 title">Displaying Text and ID for Value Help
+		Input Fields</h1><div class="shortdesc">You can configure object pages to show both text and ID for value help input fields in
+			Edit and Display modes.</div><section id="section_q2k_ytx_jnb">
+			<h2 class="title ">Edit Mode</h2>
+			<p>By default, all fields in the form are configured with <code>TextInEditModeSource =
+					ValueListNoValidation</code>, so that you can enter a new value that is not
+				defined in the value help. If the <code>textArrangement</code> annotation is
+				defined, then the value help entity fetches and displays both text and ID as per the
+				annotation. </p>
+			<p><img src="loio4aa1f0d460254a3b9bdabb83cb4673b9_LowRes.png" usemap="#"></p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this is supported only in object page
+					form,
+					and not supported in table.</p>
+			<p></p></div></div>
+			<p><code>sap.ui.comp.smartfield.TextInEditModeSource.ValueList</code> enumeration
+				members are supported only in the following cases. If any of these conditions are
+				not met, only ID is displayed in the field.</p><ul class="ul ">
+					<li class="li">
+						<p>The value property of the <code>SmartField</code> control instance is
+							bound to an Entity Data Model (EDM) property type as
+								<code>Edm.String</code> or
+								<code>Edm.Guid</code>.</p>
+					</li>
+					<li class="li">
+						<p>The <code>com.sap.vocabularies.UI.v1.TextArrangement</code>
+							annotation for the bound EDM property or entity type is specified in the
+							service metadata document or annotation file.</p>
+					</li>
+					<li class="li">
+						<p>The binding mode for the value property of the
+								<code>SmartField</code> control is set as two-way binding.</p>
+					</li>
+					<li class="li">
+						<p>The field from which the description is fetched is filterable.</p>
+					</li>
+				</ul><p></p>
+			<p><code>textArrangement</code> is defined at the entity level or at individual
+				field level. The individual field level takes precedence over entity level.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Defining <code>textArrangement</code> at Entity
+				Level</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_SALES_ORDER_ND_SRV_01.STTA_C_SO_SalesOrder_NDType"&gt;
+     &lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement" EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextLast"/&gt;
+ &lt;/Annotations&gt;
+</pre></div></section><p></p></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Defining <code>textArrangement</code> at Field
+				Level</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint"> &lt;Annotations Target="STTA_SALES_ORDER_ND_SRV_01.STTA_C_SO_SalesOrder_NDType/BusinessPartnerID"&gt;
+       &lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement" EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextOnly"/&gt;
+ &lt;/Annotations&gt;
+</pre></div></section><p></p></div></div>
+			
+		</section><section id="section_opk_d5x_jnb">
+			<h2 class="title ">Display Mode</h2>
+			<p>You can display both text and ID of a <code>SmartField</code> having a value
+				list. To do so, specify <code>sap:text</code> directed to the navigation
+				property of value help from which the application fetches description.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Modelling <code>sap:text</code> via Navigation
+				Path</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">   &lt;Property Name="BusinessPartnerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="to_BusinessPartner/CompanyName" sap:label="Business Partner ID" sap:value-list="standard"/&gt;
+
+
+&lt;Annotations Target="STTA_SALES_ORDER_ND_SRV_01.STTA_C_SO_SalesOrder_NDType"&gt;
+         &lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement" EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextLast"/&gt; 
+ &lt;/Annotations&gt;
+</pre></div></section><p></p></div></div>
+			<p>If the above modelling is not done, alternatively text can be fetched from value help
+				entity by defining text arrangement as below: </p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Modelling <code>sap:text</code> Using Value Help
+				Entity</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="C_CostCenterVHType" sap:label="Cost Center Value Help" sap:value-list="true"
+                sap:content-version="1"&gt;
+                &lt;Key&gt;
+                    &lt;PropertyRef Name="CostCenter" /&gt;
+                &lt;/Key&gt;
+                &lt;Property Name="CostCenter" Type="Edm.String" Nullable="false" MaxLength="10"
+                    sap:display-format="UpperCase" sap:text="CostCenter_Text" sap:label="Cost Center" /&gt;
+                &lt;Property Name="CostCenter_Text" Type="Edm.String" MaxLength="20" sap:label="Cost Center Name"
+                    sap:creatable="false" sap:updatable="false" /&gt;
+&lt;/EntityType&gt;
+
+&lt;Annotations Target="COST_CENTERS_SRV.C_CostCenterVHType"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"&gt;
+     &lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement"
+                    EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextLast" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p></div></div>
+			<p><img src="loioc9ae198aa5524c23bce5805c1d613671_LowRes.png" usemap="#"></p>
+			<p>If text arrangement is defined with <code>textSeperate</code>, only the ID is
+				displayed.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic has not yet been updated with information specific to
+					OData V4.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

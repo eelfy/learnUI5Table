@@ -1,0 +1,69 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2a0a630e50c7472b803fb94dab922d18" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Value Help as a Dropdown List</h1><div class="fig"><h1 class="topictitle1 title">Value Help as a Dropdown List</h1><div class="shortdesc">If your value help contains a fixed number of values, a dropdown list will be
+		rendered.</div><p>For more information on how value help annotations are set in CDS, search for
+				<span class="uinolabel">UI Annotations</span>
+			in the documentation of your SAP NetWeaver version on the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>.</p><section id="section_nfd_b3f_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>If the entity set of a value help has a fairly stable number of instances, you can
+				render an input field with a value help and dropdown list box
+					(<code>sap.m.ComboBox</code> and in cases of multi selection a
+					<code>sap.m.MultiComboBox</code>) using the metadata extension
+					<code>sap:semantics='fixed-values'</code> on the entity set level and the
+					<code>sap:value-list='fixed-values'</code> on the property level. </p><p>In the following example the product category is implemented as a dropdown list
+					box:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>$metadata</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="SMART_C_ProductType" sap:label="Product" sap:content-version="1"&gt;
+	&lt;Key&gt;...&lt;/Key&gt;
+	... 
+	&lt;Property Name="ProductCategory" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Category" sap:value-list="fixed-values" /&gt;
+	...
+	&lt;EntityContainer Name="SMART_PROD_MAN_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"&gt;
+	...
+	&lt;EntitySet Name="SEPMRA_I_ProductCategory" EntityType="SMART_PROD_MAN.SEPMRA_I_ProductCategoryType" 
+							sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1" sap:semantics="fixed-values" /&gt;</pre></div></section><p></p></div></div><p></p><p>This is the rendering result:</p><div><div class="fig"><img src="loio30ba33bdf8224dd998524ac17b34b805_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Product Category Values as Dropdown List Box</span></div><p></p></div></section><section id="section_xdc_h3f_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>If the entity set of a value help has a fairly stable number of instances, you can
+				render an input field with a value help and dropdown list box
+					(<code>sap.m.ComboBox</code> and in cases of multi selection a
+					<code>sap.m.MultiComboBox</code>) using the annotation
+					<code>Common.ValueListWithFixedValue</code>. You can use
+					<code>FilterRestrictions</code> annotations and set the
+					<code>AllowedExpressions</code> property to <code>MultiValue</code> or
+					<code>SingleValue</code>.</p><p>
+				</p><div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>$metadata</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="SAP__capabilities.FilterRestrictions"&gt;
+    &lt;Record&gt;
+       &lt;PropertyValue Property="FilterExpressionRestrictions"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="Property" PropertyPath="currency_code" /&gt;
+               &lt;PropertyValue Property="AllowedExpressions" String="MultiValue" /&gt;
+            &lt;/Record&gt;
+	 &lt;/Collection&gt;
+       &lt;/PropertyValue&gt;
+    &lt;Record&gt; 
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+			<p></p><p>In the following example the currency code is implemented as a dropdown list box:
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>$metadata</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations&nbsp;Target="sap.fe.officesupplies.CatalogAdminService.Products/currency_code"&gt;
+   &lt;Annotation&nbsp;Term="Common.Label"&nbsp;String="Currency"/&gt;
+   &lt;Annotation&nbsp;Term="Common.Text"&nbsp;Path="currency/name"&gt;
+      &lt;Annotation&nbsp;Term="UI.TextArrangement"&nbsp;EnumMember="UI.TextArrangementType/TextOnly"/&gt;
+   &lt;/Annotation&gt;
+   &lt;Annotation&nbsp;Term="Common.ValueListWithFixedValues"&nbsp;Bool="true"/&gt;
+   &lt;Annotation&nbsp;Term="Common.ValueList"&gt;
+     &lt;Record&nbsp;Type="Common.ValueListType"&gt;
+       &lt;PropertyValue&nbsp;Property="Label"&nbsp;String="Currency"/&gt;
+       &lt;PropertyValue&nbsp;Property="CollectionPath"&nbsp;String="Currencies"/&gt;
+       &lt;PropertyValue&nbsp;Property="Parameters"&gt;
+         &lt;Collection&gt;
+            &lt;Record&nbsp;Type="Common.ValueListParameterInOut"&gt;
+               &lt;PropertyValue&nbsp;Property="LocalDataProperty"&nbsp;PropertyPath="currency_code"/&gt;
+               &lt;PropertyValue&nbsp;Property="ValueListProperty"&nbsp;String="code"/&gt;
+            &lt;/Record&gt;
+            &lt;Record&nbsp;Type="Common.ValueListParameterDisplayOnly"&gt;
+               &lt;PropertyValue&nbsp;Property="ValueListProperty"&nbsp;String="name"/&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+   &lt;/Annotation&gt;
+   &lt;Annotation&nbsp;Term="Core.Description"&nbsp;String="A currency code as specified in ISO 4217"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div><p></p><p>This is the rendering result:</p><div><div class="fig"><img src="loioedffc944650d4dcb89d9c0bde388e9b6_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Currency Code as Dropdown List Box</span></div><p></p><p>Value help with a dropdown list also supports text arrangement: <code>#textFirst/#textLast</code>.</p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

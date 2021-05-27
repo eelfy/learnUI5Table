@@ -1,0 +1,218 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio675c514720f04b06a6fdf7be42901187" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Dynamic Link List Card</h1><div class="fig"><h1 class="topictitle1 title">Configuring Dynamic Link List Card</h1><div class="shortdesc">Lets you display data (links and images/icons) in the form of list items.</div><section>
+			<p>You can set the <code>listFlavor</code> property in the card settings to display
+				information in standard link list type or as a carousel link list type.</p>
+			<p>Additionally, dynamic link list card supports contact annotation as default
+				annotation without qualifier to enable quick view information.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To add
+					annotations, use the SAP WebIDE annotation modular or code editor. For more
+					information, see <a href="#/topic/9834a0a3b9284a6197f116f6c377ed06.html" title="You have several options to build UI applications when using SAP Fiori elements." class="sap-doc">Building an App</a>.</p></div></div><p></p>
+		</section><section id="section_zln_qzv_kfb">
+			<ol>
+				<li class="li">
+					<p>1. Configure descriptor
+						settings</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">        "card017": {
+          "model": "salesOrder",
+          "template": "sap.ovp.cards.linklist",
+          "settings": {
+            "title": "Standard Dynamic Linklist Card",
+            "targetUri": "https://en.abc.org/wiki/xyz _2",
+            "subTitle": "Smartlink Feature Test",
+            "listFlavor": "standard",
+            "entitySet": "ProductSet",
+            "sortBy": "Name",
+            "sortOrder": "ascending",
+            "headerAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#header1",
+            "defaultSpan": {
+              "rows": 20,
+              "cols": 2
+            }
+          }
+        },
+</pre></div></section><p></p>
+				</li>
+				<li class="li">Configure list information in the <code>UI.HeaderInfo</code> annotation.<ul class="ul ">
+						<li class="li">
+							<p>List title: Set the <code>Title</code> property.</p>
+						</li>
+						<li class="li">
+							<p>List subtitle: Set the <code>Description</code> property.</p>
+						</li>
+						<li class="li">
+							<p>List item picture: Set the <code>ImageUrl</code> property  to
+								display list image. Or, set the <code>typeImageUrl</code>
+								property to display list icon.</p>
+						</li>
+						<li class="li">
+							<p>Carousel picture: Configuration is similar to the list item picture.
+								Additionally, the carousel picture reacts to a click event similar
+								to the list title.</p>
+						</li>
+					</ul><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.HeaderInfo" Qualifier="header1"&gt;
+   &lt;Record Type="com.sap.vocabularies.UI.v1.HeaderInfoType"&gt;
+      &lt;PropertyValue Property="TypeName" String="Product" /&gt;
+      &lt;PropertyValue Property="TypeNamePlural" String="Products" /&gt;
+      &lt;PropertyValue Property="Title"&gt;
+         &lt;Record Type="com.sap.vocabularies.UI.v1.DataField"&gt;
+            &lt;PropertyValue Property="Label" String="Product Name" /&gt;
+            &lt;PropertyValue Property="Value" Path="Name" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="Description"&gt;
+         &lt;Record Type="com.sap.vocabularies.UI.v1.DataField"&gt;
+            &lt;PropertyValue Property="Label" String="Product Description" /&gt;
+            &lt;PropertyValue Property="Value" Path="Description" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="TypeImageUrl" Path="ImageUrl" /&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section></li>
+				<li class="li">
+					<p>Configure contact annotation</p>
+					<p>A contact card is displayed as a popover. The data shown on the contact card
+						are taken from the communication contact annotation of the card. Currently
+						the following elements of the contact annotation are evaluated:</p><ul class="ul ">
+							<li class="li">
+								<p><code>fn</code> (Full name - used as headline of the contact
+									card header)</p>
+								<p><code>photo</code> (URL for a picture – used in the contact
+									card header)</p>
+								<p><code>role</code> (used as the description text in the
+									contact card header)</p>
+								<p><code>tel</code> (with property type “work” and “pref” the
+									contact card shows it as “Phone”, with property type “cell” and
+									“work” it is shown as “Mobile”</p>
+								<p><code>email</code> (with property type “work” and “pref” the
+									contact card shows it as “E-Mail”)</p>
+							</li>
+						</ul><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.Communication.v1.Contact"&gt;
+   &lt;Record&gt;
+       &lt;PropertyValue Property="fn" Path="FullName" /&gt;
+      &lt;PropertyValue Property="title" Path="Title" /&gt;
+      &lt;PropertyValue Property="org" Path="CompanyName" /&gt;
+      &lt;PropertyValue Property="role" Path="OrganizationRole" /&gt;
+      &lt;PropertyValue Property="tel"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type"
+                  EnumMember="com.sap.vocabularies.Communication.v1.PhoneType/fax" /&gt;
+               &lt;PropertyValue Property="uri" Path="FaxNumber" /&gt;
+            &lt;/Record&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type"
+                  EnumMember="com.sap.vocabularies.Communication.v1.PhoneType/work com.sap.vocabularies.Communication.v1.PhoneType/pref" /&gt;
+               &lt;PropertyValue Property="uri" Path="PhoneNumber" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="email"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type"
+                  EnumMember="com.sap.vocabularies.Communication.v1.ContactInformationType/pref com.sap.vocabularies.Communication.v1.ContactInformationType/work" /&gt;
+               &lt;PropertyValue Property="address" Path="EmailAddress" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section><p></p>
+				</li>
+				<li class="li">
+					<p>Configure navigation type.</p>
+					<p>Link list card supports the following navigation types:</p><ul class="ul ">
+							<li class="li">
+								<p>Intent based navigation: Define <code>SemanticObject</code>
+									and <code>Action</code> properties in the
+										<code>UI.Identification</code> annotation to set the
+									navigation target.</p>
+							</li>
+							<li class="li">
+								<p>Function import (<code>DataFieldForAction</code>): Define <code>Action</code>
+									property in the <code>LineItem</code> annotation to trigger
+									a function import that performs an OData action for an
+									entity.</p>
+							</li>
+							<li class="li">
+								<p>External navigation: Define <code>UI.LineItem</code> of type
+										<code>WITH_URL</code>. The URL for this navigation is
+									taken from the entity type field that is named in the line
+									item’s <code>url</code> property.</p>
+							</li>
+						</ul><div class="tableWrapper "><div class="fig"><tgroup>
+								
+								
+								</tgroup><table border="1" id="table_gym_22w_kfb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+									<tr>
+										<th colspan="1" rowspan="1">Annotation</th>
+										<th colspan="1" rowspan="1">Behavior</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>For any of the these annotation configuration:</p><ul class="ul ">
+												<li class="li">
+												<p><code>UI.Identification</code> annotation
+												with property <code>Action</code></p>
+												</li>
+												<li class="li">
+												<p><code>com.sap.vocabularies.UI.v1.LineItem</code>
+												annotation with property
+												<code>Action</code></p>
+												</li>
+												<li class="li">
+												<p><code>com.sap.vocabularies.UI.v1.LineItem</code>
+												annotation with property <code>Url</code></p>
+												</li>
+												</ul><p></p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">Navigation is available from line item</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>For any of the these annotation configuration +
+												default contact annotation:</p><ul class="ul ">
+												<li class="li">
+												<p><code>UI.Identification</code> annotation
+												with property <code>Action</code></p>
+												</li>
+												<li class="li">
+												<p><code>com.sap.vocabularies.UI.v1.LineItem</code>
+												annotation with property
+												<code>Action</code></p>
+												</li>
+												<li class="li">
+												<p><code>com.sap.vocabularies.UI.v1.LineItem</code>
+												annotation with property <code>Url</code></p>
+												</li>
+												</ul><p></p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">Navigation is available from line item and you can
+											see quick view information on click of the
+											title.</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>For only default contact annotation configuration</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>Quick view information is available on click of
+												title</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>If no navigation based annotation or contact
+												annotation</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>Only label is displayed</p>
+										</td>
+									</tr>
+								</tbody>
+							</table></div></div><p></p>
+				</li>
+			</ol>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

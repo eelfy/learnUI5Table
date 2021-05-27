@@ -1,0 +1,185 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio239b1922758645e7b451e01ded7f56bc" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using Messages</h1><div class="fig"><h1 class="topictitle1 title">Using Messages</h1><div class="shortdesc">The system generates messages in response to what users do in the SAP system. A message presents information, an instruction, or a
+		warning to users in a given situation.</div><section id="section_otc_1xw_cnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>Two types of messages are used in SAP Fiori elements (List report / object page and analytical list page only):</p><ul class="ul ">
+				<li class="li">
+					<p>Transient messages</p>
+					<p>Messages that refer to the current function, for example, "Document can't be printed as printer is not available".</p>
+					<p>The messages are only valid, and can be displayed, for a short period of time after the user has executed an action or an
+						operation. They are not saved to the database.</p>
+				</li>
+				<li class="li">
+					<p>State messages</p>
+					<p>Messages that refer to the state of an instance, for example, "Amount must not be negative".</p>
+					<p>These messages are displayed on the UI until the state of the related instance has been corrected, for example, by changing the
+						amount attribute to a positive value. The messages are displayed to the user and also persisted in the back-end system.</p>
+				</li>
+			</ul><p>By default, messages are handled as follows:</p><ul class="ul ">
+				<li class="li">
+					<p>General</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>After executing an action, all related transient messages are displayed in a dialog box. All new state messages are
+								shown in a message popover, together with the existing state messages.</p>
+						</li>
+						<li class="li">
+							<p>Draft operations are handled like actions, for example, activate, prepare, or validate operations.</p>
+							<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Avoid raising transient messages during prepare and validate operations. The user would be able to see them in a
+								dialog box and this UI behavior is not needed in edit mode.</p></div></div>
+						</li>
+						<li class="li">
+							<p>If only one transient success message is raised, this is shown in a toast message. In all other cases, the messages are
+								shown in a dialog box.</p>
+						</li>
+					</ul>
+				</li>
+				<li class="li">
+					<p>List report: Only transient messages are displayed, in a dialog box after an action has been executed</p>
+				</li>
+				<li class="li">
+					<p>Object page: </p>
+					<ul class="ul ">
+						<li class="li">
+							<p>In display mode, only transient messages are displayed after an action has been executed.</p>
+						</li>
+						<li class="li">In edit mode, all state messages related to the object are displayed in a popover message. The user can open the message
+							for the related object, for example, the displayed sales order. Messages related to items are also displayed in the main
+							object page and vice versa. The popover also displays client validation messages.</li>
+					</ul>
+				</li>
+			</ul></div></section><section id="section_zxr_fxw_cnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Handling Messages that Come from the Back End</h3>
+				<p>Whenever a back-end call or action is performed, the back end can, as part of the response, provide additional information to the
+					client in the form of a message. These (success or error) messages can be interpreted in the client and can be displayed to end
+					users in a suitable manner. SAP Fiori elements provides two main types of message handling, depending on whether the incoming
+					messages are bound, that is, specific to an instance (for example, the sales order that was chosen for the action to be executed)
+					or unbound, that is, not related to a specific instance (for example "No new sales order can be created until the end of this
+					quarter."). Message handling is available, irrespective of the control that triggers the request for the data or action.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Bound messages are not shown in the list report.</p>
+						</li>
+						<li class="li">
+							<p>Bound messages are also not shown in the object page (or sub-object page) in display mode.</p>
+						</li>
+						<li class="li">
+							<p>When editing within a dialog (for example, in the action parameter dialog), the footer is not shown and no bound
+								messages are sent. The dialog is modal and any field validation error is only shown in the field.</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+				<ul class="ul ">
+					<li class="li">
+						<p>Handling Bound Messages</p>
+						<p>A message popover is used to display a summarized list of different types of bound messages (messages that are specific to
+							a particular instance, for example for a sales order selected in a list report and shown in an object page). It provides a
+							handy and systemized way to navigate and explore details for every message. The message popover automatically displays
+							messages that are sent from the back end as part of the request-response cycle. The messages for subitems are also shown
+							(for example, if the message popover is bound to a sales order item, the messages for the underlying sales order items are
+							shown as well).  In addition, messages are grouped by the name of the message group the current item belongs to, or else
+							categorized under ‘General’. </p>
+						<p>Usage</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>You want to display multiple messages to the user.</p>
+							</li>
+							<li class="li">
+								<p>You do not want to interrupt the user flow while still retaining the messages corresponding to the operations they
+									perform.</p>
+							</li>
+						</ul>
+						<p>Layout: Message Button</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>You want to display multiple messages to the user.</p>
+							</li>
+							<li class="li">
+								<p>You do not want to interrupt the user flow while still retaining the messages corresponding to the operations they
+									perform.</p>
+							</li>
+							<li class="li">
+								<p>The message button is only available if there are bound messages.</p>
+							</li>
+							<li class="li">
+								<p>The message button is colored to indicate the highest severity among all the incoming bound messages. In addition, it displays the total
+									count of error messages.</p>
+							</li>
+						</ul>
+						<p>Layout: Message Popover</p>
+						<p>The message popover consists of the following components:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Filter: You use the filter function to filter messages based on their severity (for example error, success, or
+									warning messages).</p>
+							</li>
+							<li class="li">
+								<p>Group Name: Name of the message group the current item belongs to (otherwise categorized under 'General').</p>
+							</li>
+							<li class="li">
+								<p>Short description of the message.</p>
+							</li>
+							<li class="li">
+								<p>Subtitle label for additional information.</p>
+							</li>
+							<li class="li">
+								<p>Chevron navigation to the detailed description of the message (if this is supplied by the back end).</p>
+								<p>If the message model provides a long text from the back end, the user is able to navigate to the details section
+									from the message popover. There, the user will typically find more detailed information.</p>
+								<div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Message Popover: Chevron Navigation to Message Details</span></div>
+							</div></li>
+						</ul>
+						<p>Navigation is also supported from the messages. This allows end users to navigate directly to the place where the
+							error/warning occurs on the UI by simply clicking on the respective message in the message pop-over.</p>
+						<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+							</p><p>Bound transition messages are also shown in a message pop-over (and not in a message dialog).</p>
+						<p></p></div></div>
+					</li>
+					<li class="li">
+						<p>Handling Unbound Messages</p>
+						<p>A message dialog is used to display a summarized list of different types of unbound messages (messages that are not
+							associated with any specific instance, for example a message like “No new sales order can be created since the system is
+							under maintenance until the end of the week.”). It provides a handy and systemized way to navigate and explore the
+							technical details of every message. It automatically displays messages related to a user action connected to the back end,
+							or to service failures or errors.</p>
+						<p>Usage</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>You want to display unbound messages that provide immediate feedback to end users on an operation they
+									performed.</p>
+							</li>
+						</ul>
+						<p>Layout: Message Dialog</p>
+						<p>The message dialog consists of the following components:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Filter: You use the filter function to filter messages based on their severity (for example error, success, or
+									warning messages).</p>
+							</li>
+							<li class="li">
+								<p>Type: Indicates the type of the message.</p>
+							</li>
+							<li class="li">
+								<p>Title/Subtitle: Use this feature to provide a title and subtitle for the message.</p>
+							</li>
+							<li class="li">
+								<p>Description: Provides the long text of the message with detailed information.</p>
+							</li>
+							<li class="li">
+								<p>Chevron navigation to the detailed description of the message (if this is supplied by the back end).</p>
+								<p>If the message cannot be fully displayed or includes a description, the
+										<span class="ph sap-technical-name">MessageDialog</span> enables the navigation to the detailed description of
+									the message, along with the technical details of the message (for example status code, status text, or
+									description), application details (component ID, service ID, or service repository) and error resolution details
+									(analysis, exception category, or timestamp).</p>
+								<div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Message Dialog: Chevron Navigation to Message Details</span></div>
+							</div></li>
+						</ul>
+					</li>
+				</ul>
+				<p>For more information, refer to <a href="#/topic/fbe1cb5613cf4a40a841750bf813238e.html" title="The OData V4 model supports server messages sent via an OData V4 service." class="sap-doc">Server Messages in OData V4 Model</a>.</p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,47 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 1558,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 715
+		},
+		{
+			"name": "CondensedBarList.fragment.xml",
+			"size": 10003
+		},
+		{
+			"name": "ExtendedBarList.fragment.xml",
+			"size": 13843
+		},
+		{
+			"name": "List-dbg.controller.js",
+			"size": 19372,
+			"isDebug": true
+		},
+		{
+			"name": "List.controller.js",
+			"size": 7042
+		},
+		{
+			"name": "List.fragment.xml",
+			"size": 3334
+		},
+		{
+			"name": "ObjectList.fragment.xml",
+			"size": 7801
+		},
+		{
+			"name": "StandardList.fragment.xml",
+			"size": 1452
+		},
+		{
+			"name": "StandardListImage.fragment.xml",
+			"size": 2330
+		}
+	]
+}

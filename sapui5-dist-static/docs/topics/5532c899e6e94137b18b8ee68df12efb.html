@@ -1,0 +1,155 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5532c899e6e94137b18b8ee68df12efb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Segmented Buttons to a Table Toolbar</h1><div class="fig"><h1 class="topictitle1 title">Adding Segmented Buttons to a Table Toolbar</h1><div class="shortdesc">You can add segmented buttons to the toolbar, to enable switching between the table content using a selection variant
+    annotation.</div><p>You can associate every button of the segmented buttons (or every list item in the select box) with a selection variant that filters the table
+      according to the selection variant filters once a user has clicked it. This means that the user has multiple views in a single table of the
+      object page. You can enable this feature for any table on the object page.</p><p>To implement this feature, make a <code>"quickVariantSelection"</code> entry in the manifest. See the separate sections below for further
+      details.</p><p>You can define a simple or a complex filter condition inside the <code>SelectionVariant</code>. While the simple condition has only one
+      property in the <code>SelectionVariant</code>, the complex filter condition can have more than one property to be filtered.</p><p>The annotations defined in the variants are:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+      </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">   
+&lt;Annotation Term="UI.SelectionVariant" Qualifier="SimpleFilter"&gt;
+      &lt;Record&gt;
+         &lt;PropertyValue Property="Text" String="Tax amount less than 10 USD" /&gt;
+         &lt;PropertyValue Property="SelectOptions"&gt;
+            &lt;Collection&gt;
+               &lt;Record Type="UI.SelectOptionType"&gt;
+                  &lt;PropertyValue Property="PropertyName" PropertyPath="tax_amount" /&gt;
+                  &lt;PropertyValue Property="Ranges"&gt;
+                     &lt;Collection&gt;
+                        &lt;Record Type="UI.SelectionRangeType"&gt;
+                           &lt;PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I" /&gt;
+                           &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LT" /&gt;
+                           &lt;PropertyValue Property="Low" String="10" /&gt;
+                        &lt;/Record&gt;
+                     &lt;/Collection&gt;
+                  &lt;/PropertyValue&gt;
+               &lt;/Record&gt;
+            &lt;/Collection&gt;
+         &lt;/PropertyValue&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+   &lt;Annotation Term="UI.SelectionVariant" Qualifier="ComplexFilter"&gt;
+      &lt;Record&gt;
+         &lt;PropertyValue Property="Text" String="Net Amount between 10 and 40 And Gross Amount Less than 100 USD" /&gt;
+         &lt;PropertyValue Property="SelectOptions"&gt;
+            &lt;Collection&gt;
+               &lt;Record Type="UI.SelectOptionType"&gt;
+                  &lt;PropertyValue Property="PropertyName" PropertyPath="net_amount" /&gt;
+                  &lt;PropertyValue Property="Ranges"&gt;
+                     &lt;Collection&gt;
+                        &lt;Record&gt;
+                           &lt;PropertyValue Property="Sign" EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" /&gt;
+                           &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/BT" /&gt;
+                           &lt;PropertyValue Property="Low" String="10" /&gt;
+                           &lt;PropertyValue Property="High" String="40" /&gt;
+                        &lt;/Record&gt;
+                     &lt;/Collection&gt;
+                  &lt;/PropertyValue&gt;
+               &lt;/Record&gt;
+               &lt;Record Type="UI.SelectOptionType"&gt;
+                  &lt;PropertyValue Property="PropertyName" PropertyPath="gross_amount" /&gt;
+                  &lt;PropertyValue Property="Ranges"&gt;
+                     &lt;Collection&gt;
+                        &lt;Record Type="UI.SelectionRangeType"&gt;
+                           &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LT" /&gt;
+                           &lt;PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I" /&gt;
+                           &lt;PropertyValue Property="Low" String="100" /&gt;
+                        &lt;/Record&gt;
+                     &lt;/Collection&gt;
+                  &lt;/PropertyValue&gt;
+               &lt;/Record&gt;
+            &lt;/Collection&gt;
+         &lt;/PropertyValue&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+</pre></div></section>
+    <p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If the <code>SelectionVariant</code> has multiple <code>&lt;SelectionOptionType&gt;</code>, filters that have the same target
+      property are combined with an OR condition. Filters that have different target properties are combined with an AND condition.</p></div></div><p>The table containing the segmented buttons looks like this: </p><div><div class="fig"><img src="loio3d9da3f6ad0346aa845aac9b45c2b574_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Segmented button 1 selected</span></div><div><div class="fig"><img src="loioe1d19dc79e9e4985a64acebdf0559923_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Segmented button 2 selected</span></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+      </p><p>When the table is initially loaded, two calls are made to determine the number of the records in the table. These are shown in the button
+        text.</p>
+      <p>In SAP Fiori elements for OData
+                            V2, setting <code>showCounts</code> to <code>false</code>
+        will not show the number in the button text. This means that in this case no count calls are made.</p>
+      <p>In SAP Fiori elements for OData
+                            V4, <code>showCounts</code> is set to <code>false</code> by
+        default.</p>
+    <p></p></div></div><section id="section_wyn_r1c_2nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>Every variant corresponds to its filter on the UI. A segmented button is rendered when the number of variants defined is less than or equal
+        to 3. Defining 4 or more variants in the manifest renders a selection box.</p><p>The following manifest settings are required for adding segmented buttons:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"component": {
+  "name": "sap.suite.ui.generic.template.ObjectPage",
+  "settings": {
+    "showConfirmationOnDraftActivate": false,
+    "sections": {
+      "SalesOrderItemsID": {
+        "navigationProperty": "to_Item",
+        "entitySet": "C_STTA_SalesOrderItem_WD_20",
+        "createMode": "inline",
+        "quickVariantSelection": {
+          "showCounts": true,
+          "variants": {
+            "0": {
+              "key": "_tab2",
+              "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#SimpleFilter"
+            },
+            "1": {
+              "key": "_tab3",
+              "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#ComplexFilter"
+            }
+          }
+        }
+      }
+    },
+    "showRelatedApps": true
+  }
+}
+</pre></div></section>
+      <p></p></div></div><p>To show the number of records available next to the title of the segmented button, set <code>showCounts</code> to
+        <code>true</code>.</p></div></section><section id="section_lym_v1c_2nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>Every <code>"paths"</code> entry corresponds to its filter on the UI. A segmented button is rendered when the number of variants defined
+        is less than or equal to 3. Defining 4 or more variants in the manifest renders a selection box.</p><p>The following manifest settings are required for adding segmented buttons:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage": {
+	"type": "Component",
+	"id": "SalesOrderManageObjectPage",
+	"name": "sap.fe.templates.ObjectPage",
+	"options": {
+		"settings": {
+			"entitySet": "SalesOrderManage",
+			"navigation": {
+	           ...
+			},
+			"controlConfiguration": {
+				"_Item/@com.sap.vocabularies.UI.v1.LineItem": {
+					"tableSettings": {
+						"type": "GridTable",
+						"quickVariantSelection": {
+							"paths": [
+								{
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#SimpleFilter"
+								},
+								{
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#ComplexFilter"
+								}
+							],
+							"showCounts": true,
+							"hideTableTitle": true
+						},
+	                  ...
+					}
+				}
+			}
+		}
+	}
+}</pre></div></section>
+      <p></p></div></div><p>To show the number of records available next to the title of the segmented button, set <code>showCounts</code> to
+        <code>true</code>.</p><p>To hide the title of the table and show only the segmented buttons or the <code>selectionBox</code>, set the
+          <code>hideTableTitle</code> to <code>true</code>. You should use this option only if the title of your
+          <code>SelectionVariant</code> is self-explanatory and can replace the table title.</p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+    <li><a href="#/topic/0d390fed360c4c58a0f0619338938de1.html" title="You can define multiple views of a table and display them in single table mode. Users can switch between views using a segmented button." class="sap-doc">Defining Multiple Views on a List Report Table - Single Table Mode</a></li>
+  </ul></section></div></section></div></body></html>

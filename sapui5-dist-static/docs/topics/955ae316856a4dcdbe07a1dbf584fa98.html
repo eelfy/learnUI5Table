@@ -1,0 +1,76 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio955ae316856a4dcdbe07a1dbf584fa98" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using the Global Side Effect</h1><div class="fig"><h1 class="topictitle1 title">Using the Global Side Effect</h1><div class="shortdesc">To optimize performance, make the annotations for the desired side effects as specific
+      as possible.</div><p>You can define a side effect without any source properties or source entities. This is
+         called the global side effect. In this case, when you choose the <span class="keyWrap"><kbd class="key">Enter</kbd></span> key, the
+         side effect is triggered. If no target is defined, it triggers the refresh of the whole
+         entity. This is not recommended. You can avoid this by specifying the target properties or
+         target entities, and <code>forceGlobalRefresh</code> parameter. The
+            <code>forceGlobalRefresh</code> parameter in the manifest.json defines the global
+         refresh behavior.</p><p>
+         
+         </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "inboundParameters": {
+                "Supplier": {
+                    "useForCreate": true
+                }
+            },</pre></div></section>
+         <p></p></div></div>
+         <ul class="ul ">
+            <li class="li">
+               <p>If the parameter is set to <code>true</code>, a global refresh is triggered
+                  when the user chooses <span class="keyWrap"><kbd class="key">Enter</kbd></span>, even if
+                  a
+                  side effect with no source properties or target have been
+                  annotated..</p>
+            </li>
+            <li class="li">
+               <p>If the parameter is set to <code>false</code>, the system reacts according to
+                  what has been annotated.</p>
+            </li>
+            <li class="li">
+               <p>If the parameter is not set, for compatibility reasons, the (runtime) default is
+                     <code>true</code>.</p>
+            </li>
+         </ul>
+      <p></p><p>For newly generated apps, the (design time) default is <code>false</code>,
+         that
+         is, the project generation wizard generates
+         <code>"forceGlobalRefresh": false</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Example
+         of a global side
+         effect</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="NAMESPACE.ENTITYTYPE"&gt;
+&lt;Annotation Term="com.sap.vocabularies.Common.v1.SideEffects" Qualifier="GlobalSideEffect"&gt;
+   &lt;Record&gt;
+      
+      &lt;PropertyValue Property="TargetProperties"&gt;
+         &lt;Collection&gt;
+            &lt;String&gt;TaxAmount&lt;/String&gt;
+            &lt;String&gt;NetAmount&lt;/String&gt;
+            &lt;String&gt;GrossAmount&lt;/String&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+         </p><p>Global side effect is currently only applicable for draft applications.</p>
+      <p></p></div></div><p>We recommend that you use <a href="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" title="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" class="external-link" target="_blank" rel="noopener">SAP Fiori tools</a>, which is a set of extensions for SAP Business Application Studio and Visual Studio Code, to build your apps. You can
+         also use SAP Web IDE.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+         </p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+      <p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

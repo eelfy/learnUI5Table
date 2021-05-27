@@ -1,0 +1,11 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio91f1454b6f4d1014b6dd926db0e91070" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Compiling Declarative HTML</h1><div class="fig"><h1 class="topictitle1 title">Compiling Declarative HTML</h1><div class="shortdesc">SAPUI5 provides a plugin for controls that are defined as declarative markup on
+		startup time.</div><p>To compile the declarative UI markup deferred, for example, when the markup is dynamically loaded
+			and added to the DOM you can call the
+				<code>sap.ui.core.plugin.DeclarativeSupport</code>.compile method, see the
+			following code snippet:  </p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;div id="button"&gt;
+  &lt;div data-sap-ui-type="sap.m.Button" data-text="This button is added dynamically"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  sap.ui.core.plugin.DeclarativeSupport.compile(document.getElementById("button"));
+&lt;/script&gt;</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

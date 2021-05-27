@@ -1,0 +1,157 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod3234bc1b7b64af99a3d6990039f7eed" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Table Design</h1><div class="fig"><h1 class="topictitle1 title">Table Design</h1><div class="shortdesc">The table design in SAPUI5
+    can be changed by using various table and column features, such as the pop-in
+    design.</div><section>
+			<h2 class="title ">Pop-in Design</h2>
+			<p>When displaying information in a pop-in, the information, typically a column header and the
+        column (cell) content, can be displayed in an <code>Inline</code> or in a
+          <code>Block</code> display style. The difference between these two can be seen in the
+        following example.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">   &lt;columns&gt;
+      &lt;Column
+        width="12em"&gt;
+        &lt;Text text="Product" /&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        popinDisplay: "Block"
+        minScreenWidth="Tablet"
+        demandPopin="true"&gt;
+        &lt;Text text="Supplier" /&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        popinDisplay: "Inline"
+        minScreenWidth="Tablet"
+        hAlign="End"&gt;
+        &lt;Text text="Dimensions" /&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        popinDisplay: "Inline"
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center"&gt;
+        &lt;Text text="Weight" /&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        hAlign="End"&gt;
+        &lt;Text text="Price" /&gt;
+      &lt;/Column&gt;
+    &lt;/columns&gt;
+</pre></div></section>
+			<p>The <span class="ph uicontrol">Dimension</span> column is hidden, the <span class="ph uicontrol">Weight</span>
+        column is displayed in a pop-in when the screen size is smaller than a desktop. The
+          <span class="ph uicontrol">Supplier</span> is to be displayed in <code>Block</code> mode, with
+        the header and content arranged vertically, whereas the two prices are to be displayed in
+          <code>Inline</code> mode, with the header and content arranged next to each other. </p>
+			<p><img src="loioec5a03af10ce4a289359b6f11307581f_LowRes.png" usemap="#"></p>
+		</section><section><h2 class="title ">Merging Duplicate Values</h2><p>When you have repeated values in your table,
+        you can use the <code>mergeDuplicate</code> feature of the <code>sap.m.Column</code>
+        control. There are two properties that are related to merging duplicate values:</p><ul class="ul ">
+        <li class="li">
+          <p><code>mergeDuplicates</code>: Set this to true if you want duplicate values for the
+            given column to be merged</p>
+        </li>
+        <li class="li">
+          <p><code>mergeFunctionName</code>: Use this to specify the name of the getter function
+            of the control in the column</p>
+        </li>
+      </ul><p>Duplicate values will only be merged if they are adjacent. This means that you should
+        sort your data first before binding it.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+        </p><p>When using <code>sap.m.Column</code> in a table, the column merging feature is not
+          supported when used in combination with two-way binding.</p>
+      <p></p></div></div><p>Here's an example of how to use the <code>mergeDuplicates</code> feature. We'll
+        set up a table of sales data and display the data in a table, merging any duplicate regions.
+        When the <span class="ph uicontrol">Mix Up</span> button is pressed to lightly shuffle the
+          <code>salesFigures</code> array of objects, you will see that only adjacent duplicates
+        are merged. Press the <span class="ph uicontrol">Sort</span> button again to see the ideal
+        merging.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Table
+    headerText="Products"
+    items="{
+      path:'/ProductCollection',
+      sorter: {
+        path: 'SupplierName',
+        descending: false
+      }
+    }" &gt;
+    &lt;columns&gt;
+      &lt;Column mergeDuplicates="true"&gt;
+        &lt;header&gt;
+          &lt;Text text="Supplier" /&gt;
+        &lt;/header&gt;
+      &lt;/Column&gt;
+      &lt;Column mergeDuplicates="true"&gt;
+        &lt;header&gt;
+          &lt;Text text="Product" /&gt;
+        &lt;/header&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="End" &gt;
+        &lt;header&gt;
+          &lt;Text text="Dimensions" /&gt;
+        &lt;/header&gt;
+      &lt;/Column&gt;
+      &lt;Column
+        minScreenWidth="Tablet"
+        demandPopin="true"
+        hAlign="Center" &gt;
+        &lt;header&gt;
+          &lt;Text text="Weight" /&gt;
+        &lt;/header&gt;
+      &lt;/Column&gt;
+      &lt;Column hAlign="End" &gt;
+        &lt;header&gt;
+          &lt;Text text="Price" /&gt;
+        &lt;/header&gt;
+      &lt;/Column&gt;
+    &lt;/columns&gt;
+    &lt;ColumnListItem&gt;
+      &lt;Text text="{SupplierName}" /&gt;
+      &lt;ObjectIdentifier title="{Name}" text="{ProductId}" class="sapUiTinyMarginTopBottom" /&gt;
+      &lt;Text text="{Width} x {Depth} x {Height} {DimUnit}" /&gt;
+      &lt;ObjectNumber
+        number="{WeightMeasure}" unit="{WeightUnit}"
+        state="{
+          path: 'WeightMeasure',
+          formatter: 'sap.m.sample.TableMergeCells.Formatter.weightState'
+        }" /&gt;
+      &lt;ObjectNumber
+        number="{Price}"
+        unit="{CurrencyCode}" /&gt;
+    &lt;/ColumnListItem&gt;
+  &lt;/Table&gt;
+</pre></div></section><img src="loio32ef8dc03ad44224994aeab8279bf5c6_LowRes.png" usemap="#"></section><section><h2 class="title ">Highlighting Rows and Columns</h2><p>You can use CSS to achieve striping for
+        table rows, as you might do in other web-based applications, for example to highlight
+        alternate rows in the table above so that it looks like this:</p><img src="loioc15900388cb447fd96d2dbdaa264cb77_LowRes.png" usemap="#"><p>You just need to
+        note the ID of the <code>sap.m.List</code> or <code>sap.m.Table</code> control (in
+        this case it is <code>"salesdata"</code>) and then apply some appropriate CSS such
+        as:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">#ProductsView-ProductsTable tbody tr:nth-child(even) {
+	background: rgb(245, 245, 245);
+}
+</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+        </p><p>Use <var class="varname">even</var>, rather than <var class="varname">odd</var> for the sibling
+          specification. This way, the pop-in highlighting will be correct.</p>
+      <p></p></div></div><p>It's also possible to highlight table columns by using the
+          <code>styleClass</code> property of the <code>sap.m.Column</code> control. The
+        value of this property is applied as a class to the whole column (header, cells and footer)
+        and can be used in the following way: specify a class name for the
+          <code>styleClass</code> property of your column, and set the style as you
+        wish:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;style&gt;
+#products .MyPrice {
+  background: @sapUiNeutralBG;
+}
+&lt;/style&gt;
+
+...
+
+&lt;Column
+   hAlign="End"
+   class="myPrice"&gt;
+   &lt;Text text="Price" /&gt;
+&lt;/Column&gt;
+</pre></div></section><p>This
+        highlights the <span class="ph uicontrol">Price</span> column in our example table, as shown
+        below:</p><img src="loiod90af7b06b7b43e69ecfb9116b99da73_LowRes.png" usemap="#"></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

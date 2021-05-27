@@ -1,0 +1,265 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio112d7b417e914a5a951abc6411d6f6c4" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 3: 3D Viewer Using the Viewport Control</h1><div class="fig"><h1 class="topictitle1 title">Step 3: 3D Viewer Using the Viewport Control</h1><div class="shortdesc">In this step, you will be creating a 3D Viewer application using the
+            sap.ui.vk.Viewport control.</div><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>The controls in the <code>sap.ui.vk</code> library are currently
+            flagged as experimental. For more information, see <a href="#/topic/91f087396f4d1014b6dd926db0e91070.html" title="The following sections describe what SAP can change in major, minor, and patch releases. Always consider these rules when developing apps, features, or controls with or for SAPUI5." class="sap-doc">Compatibility Rules</a>.</p></div></div><p>In previous steps, we utilized the <code>sap.ui.vk.Viewer</code> composite control to
+            create a Viewer application capable of loading a 2D or 3D resource. Now, we will create
+            a Viewer application with a pre-loaded resource without using the composite
+                <code>sap.ui.vk.Viewer</code> control. Instead, we will use the following
+            controls and library in <code>sap.ui.vk</code>, which are what you'll need at a
+            minimum to display a 3D model in your application. </p><ul class="ul ">
+                <li class="li"><code>Viewport</code> control</li>
+                <li class="li"><code>ContentResource</code> control</li>
+                <li class="li"><code>GraphicsCore</code> library</li>
+            </ul><p></p><p>We will build on this sample application in later steps of the 3D Viewer tutorial by
+            introducing the other non-composite <code>sap.ui.vk</code> controls to create more
+            complex Viewer applications.</p><section>
+            <h2 class="title ">Preview</h2>
+            <div><div class="fig"><img src="loio2864ebcea6924cdb9813434157f6b3f6_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Viewer application that consists solely of a Viewport</span></div>
+        </section><section><h2 class="title ">Coding</h2><p>You can view and download all files at <a href="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.03" title="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.03" class="sap-doc" alt="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.03">3D Viewer - Step 3 - 3D Viewer Using the Viewport Control</a>.</p><section>
+                <h3 class="title ">index.html</h3>
+                <p>Update the <code>index.html</code> file to reference the
+                        <code>standaloneViewport</code> namespace, which will be the namespace
+                    we'll use for the sample application in this step.</p>
+                <section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/&gt;
+        &lt;script id="sap-ui-bootstrap"
+            src="../../../../../../../../../resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.ui.vk"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{
+                <span class="emphasis">"standaloneViewport": "./"</span>
+            }'&gt;
+        &lt;/script&gt;
+        &lt;script&gt;
+        sap.ui.getCore().attachInit(function(){
+            new sap.m.Shell({
+                app: new sap.ui.core.ComponentContainer({
+                    <span class="emphasis">name : "standaloneViewport"</span>
+                })
+            }).placeAt("content");
+        });
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body id="content" class="sapUiBody"&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre></div></section>
+            </section><section>
+                <h3 class="title ">Component.js</h3>
+                <p>Update the <code>Component.js</code> file to reference the namespace
+                    specified for this application.</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+        "sap/ui/core/UIComponent"
+], function (UIComponent) {
+        "use strict";
+        <span class="emphasis">return UIComponent.extend("standaloneViewport.Component",</span> {
+        metadata: {
+            manifest: "json"
+        },
+        init: function () {
+            // call the init function of the parent
+            UIComponent.prototype.init.apply(this, arguments);
+        }
+    });
+});</pre></div></section>
+            </section><section>
+                <h3 class="title ">i18n.properties</h3>
+                <p>Because we are not creating any fields that a user can interact with, we only
+                    have one line of code which specifies what the label for the page title is.</p>
+                <section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Page Descriptor
+<span class="emphasis">pageTitle=Standalone Viewport</span></pre></div></section>
+            </section><section>
+                <h3 class="title ">manifest.json</h3>
+                <p>Update the <code>manifest.json</code> file so that it references the correct
+                    files.</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "_version": "1.8.0",
+    "sap.app": {
+        <span class="emphasis">"id": "standaloneViewport",</span>
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        <span class="emphasis">"rootView": "standaloneViewport.view.App",</span>
+        "dependencies": {
+            "minUI5Version": "1.30",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    <span class="emphasis">"bundleName": "standaloneViewport.i18n.i18n"</span>
+                }
+            }
+        }
+    }
+}</pre></div></section>
+            </section><section>
+                <h3 class="title ">App.view.xml</h3>
+                <p>Because the Viewport is the only item that we need to display on the application
+                    screen, we only need to have the <code>&lt;vk:Viewport&gt;</code> element
+                    added to this file. In the element's attributes, we specify the Viewport's width
+                    and height on the screen, and also give it an arbitrary identifier value.</p>
+                <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+        <span class="emphasis">controllerName="standaloneViewport.controller.App"</span>
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:vk="sap.ui.vk"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:u="sap.ui.unified"
+        displayBlock="true"&gt;
+<span class="emphasis">    &lt;App id="standaloneViewport"&gt;
+        &lt;Page
+            title="{i18n&gt;pageTitle}"&gt;
+            &lt;vk:Viewport
+                    id="viewport"
+                    width="100%"
+                    height="50%"/&gt;
+        &lt;/Page&gt;
+    &lt;/App&gt;</span>
+&lt;/mvc:View&gt;</pre></div></section>
+            </section><section>
+                <h3 class="title ">App.controller.js</h3>
+                <p>The logic in this <code>App.controller.js</code> file can be summarized as
+                        follows:</p><ol>
+                        <li class="li">Create a Content Resource that stores a pre-specified model</li>
+                        <li class="li">Initiate a scene in our application in the following order:<ol>
+                                <li class="li">Create a Graphics Core instance</li>
+                                <li class="li">Create a Viewport that is bound to the Graphics Core
+                                    instance</li>
+                                <li class="li">Load the Content Resource to the Graphics Core for rendering on
+                                    the Viewport</li>
+                            </ol></li>
+                    </ol><p></p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+    "sap/base/Log",
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/vk/ContentResource",
+    "sap/ui/vk/GraphicsCore"
+], <span class="emphasis">function (Log, Controller, JSONModel, ContentResource, GraphicsCore) {
+    "use strict";
+
+    var contentResource = new sap.ui.vk.ContentResource({
+        source: "/models/boxTestModel.vds",
+        sourceType: "vds",
+        id: "abc123"
+    });
+
+    return Controller.extend("standaloneViewport.controller.App",{
+        onInit: function() {
+
+            var mainScene;
+
+            var graphicsCore = new GraphicsCore({},{
+                antialias: true,
+                alpha: true,
+                premultipliedAlpha: false
+            });
+
+            var view = this.getView();
+            var viewport = view.byId("viewport");
+            
+            viewport.setGraphicsCore(graphicsCore);
+            graphicsCore.loadContentResourcesAsync([contentResource], function(sourcesFailedToLoad){
+                if (sourcesFailedToLoad){
+                    Log.error("Some of content resources cannot be loaded.");
+                } else {
+                    var scene = graphicsCore.buildSceneTree([contentResource]);
+                    if (scene){
+                        mainScene = scene;
+                        viewport.setScene(mainScene);
+                    } else {
+                        Log.error("Failed to load viewport");
+                    }
+                }
+            });
+        }
+    });</span>
+});</pre></div></section>
+                <p>We'll now break the code down to look at each part in more detail.</p>
+                <span class="emphasis">Create a New Content Resource</span>
+                <p>Create a <code>contentResource</code> object that specifies the resource to
+                    load. In this case, we're pre-loading the <code>boxTestModel.vds</code>
+                    model into the application. This occurs before the scene in our Viewer
+                    application is
+                    initiated.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/vk/ContentResource",
+], function (Controller, JSONModel, ContentResource) {
+    "use strict";
+
+    var contentResource = new sap.ui.vk.ContentResource({
+        source: "/models/boxTestModel.vds",
+        sourceType: "vds",
+        id: "abc123"
+</pre></div></section><p></p>
+                <span class="emphasis">Create a New Graphics Core Instance</span>
+                <p>Create a new Graphics Core instance. We're only specifying one input parameter,
+                    which is for the WebGL context attributes. We then get the current viewport, and
+                    attach it to the Graphics Core instance so the model we've loaded can be
+                    rendered.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">return Controller.extend("standaloneViewport.controller.App",{
+    onInit: function() {
+ 
+    var mainScene;
+        var graphicsCore = new GraphicsCore({},{
+            antialias: true,
+            alpha: true,
+            premultipliedAlpha: false
+        });
+
+        var view = this.getView();
+        var viewport = view.byId("viewport");
+         
+        viewport.setGraphicsCore(graphicsCore);</pre></div></section><p></p>
+                <span class="emphasis">Load the Content Resource for Rendering</span>
+                <p>Now that we've associated the viewport with the Graphics Core, we can load our
+                    model to be displayed on the Viewport. In the following code block, we have
+                    specified some checks to make sure that the model loads correctly. If no
+                    resource is loaded, or if there is an error loading the resource, we throw the
+                    following error on the screen "Some of content resources cannot be loaded".
+                    Otherwise, we build a scene with the loaded resource, and then display this
+                    scene on the viewport. If the scene itself does not load into the Viewport, we
+                    throw an error saying the scene could not be built "Failed to build the
+                    scene."</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">graphicsCore.loadContentResourcesAsync([contentResource], function(sourcesFailedToLoad){
+    if (sourcesFailedToLoad){
+        Log.error("Some of content resources cannot be loaded.");
+    } else {
+        var scene = graphicsCore.buildSceneTree([contentResource]);
+            if (scene){
+                mainScene = scene;
+                viewport.setScene(mainScene);
+            } else {
+                Log.error("Failed to load viewport");
+            }
+    }
+});
+}
+});</pre></div></section><p></p>
+            </section></section><section>
+            <h2 class="title ">API Reference</h2>
+            <ul class="ul ">
+                <li class="li"><a href="#/api/sap.ui.vk.Viewport" title="#/api/sap.ui.vk.Viewport" class="sap-doc" alt="#/api/sap.ui.vk.Viewport"><code>sap.ui.vk.Viewport</code></a></li>
+            </ul>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,136 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio21515f09c0324218bb705b27407f5d61" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using Controller Extension</h1><div class="fig"><h1 class="topictitle1 title">Using Controller Extension</h1><div class="shortdesc">Controller extensions allow you to add functionality to existing applications. They can be used for extensibility purposes, for example by
+        a customer wishing to extend SAP-delivered applications, or as a reusable part that is added to the original application.</div><section id="section_p4y_nvy_32b"><h2 class="title ">Overview</h2>The following sample code shows how to define an extension for an existing
+                controller.<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/core/mvc/OverrideExecution'], function(ControllerExtension, OverrideExecution) {
+  "use strict";
+  return ControllerExtension.extend("my.extension.SampleExtension", {
+    metadata: {
+      // extension can declare the public methods
+      // in general methods that start with "_" are private
+      methods: {
+        publicMethod: {
+          public: true /*default*/ ,
+          final: false /*default*/ ,
+          overrideExecution: OverrideExecution.Instead /*default*/
+        },
+        finalMethod: {
+          final: true
+        },
+        onMyHook: {
+          public: true /*default*/ ,
+          final: false /*default*/ ,
+          overrideExecution: OverrideExecution.After
+        },
+        couldBePrivate: {
+          public: false
+        }
+      }
+    },
+
+    // adding a private method, only accessible from this controller extension
+    _privateMethod: function() {},
+    // adding a public method, might be called from or overridden by other controller extensions as well
+    publicMethod: function() {},
+    // adding final public method, might be called from, but not overridden by other controller extensions as well
+    finalMethod: function() {},
+    // adding a hook method, might be called from but not overridden by other controller extensions
+    // overriding these method does not replace the implementation, but executes after the original method
+    onMyHook: function() {},
+    // method public by default, but made private via metadata
+    couldBePrivate: function() {},
+    // this section allows to extend lifecycle hooks or override public methods of the base controller
+    override: {
+      // override onInit of base controller
+      onInit: function() {},
+      // override public method of the base controller
+      basePublicMethod: function() {}
+    }
+  });
+});
+</pre></div></section><p>For
+                more detailed information on lifecycle hooks and controller metadata, see <a href="#/topic/121b8e6337d147af9819129e428f1f75.html" title="A controller contains methods that define how models and views interact." class="sap-doc">Controller</a>.</p><section>
+                <h3 class="title ">Custom Lifecycle Events</h3>
+                <p>If you want to have additional lifecycle events like the standard <code>onInit</code> or <code>onExit</code> for developers
+                    extending the controller, you can define them as described in this section.</p>
+                <p>Controller extensions allow you to define custom lifecycle hooks. In the <a href="#/sample/sap.ui.core.sample.ControllerExtension/preview" title="#/sample/sap.ui.core.sample.ControllerExtension/preview" class="sap-doc" alt="#/sample/sap.ui.core.sample.ControllerExtension/preview"><code>Sample</code></a>, the <code>ReuseExtension.js</code> defines a custom lifecycle hook by
+                    specifying an <code>overrideExecution</code> function:</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">return ControllerExtension.extend("sap.my.ReuseExtension", {
+        metadata: {
+            methods: {
+                "onFilterHook": {"public": true, "final": false, overrideExecution: OverrideExecution.After}
+            }
+        },
+        //...
+        /**
+         * @abstract
+         */
+        onFilterHook: function(aFilter) {
+        }
+    });
+</pre></div></section>
+                <p>With <code>OverrideExecution.After</code>, the extensions are called in the order they are provided, with
+                        <code>OverrideExecution.Before</code> the order is reversed and the last extension is called first.</p>
+            </section><section>
+                <h3 class="title ">Final Methods in Controller Extensions</h3>
+                <p>Adding <code>“final”: true</code> metadata to the public method makes it available for execution (call) but not for overriding
+                    in the next controller extension.</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">return ControllerExtension.extend("sap.my.ReuseExtension", {
+        metadata: {
+            methods: {
+                "myPublicMethod": {"public": true, "final": true}
+            }
+        },
+        myPublicMethod: function() {
+        }
+    });
+</pre></div></section>
+            </section></section><section><section>
+				<h3 class="title ">Accessing Controls in Controller Extensions</h3>
+				<p>Only controls that belong to an extension are accessible by the <code>byId</code>
+					function in a controller extension. These controls must be prefixed by the
+					namespace of the controller extension. The namespace can be retrieved by calling
+						<code>getMetadata().getNamespace()</code>. Here is an example of a valid
+					ID: <code>my.controller.extension.MyControlId</code>.</p>
+				<p>Using the <code>byId</code> of the base controller allows the accessing of all controls
+					of the corresponding view by calling
+						<code>this.base.byId(myControlId)</code>.</p>
+			</section></section><section id="section_hrv_gcz_32b">
+			<h2 class="title ">Integrating Controller Extensions into Controllers</h2>
+			<p>Controller extensions can serve for reuse purposes. You can achieve this by including a
+				controller extension to your controller as a member.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(['sap/ui/core/mvc/Controller', 'my/extension/SampleExtension'], function(Controller, SampleExtension) {
+    "use strict";
+    return Controller.extend("sample.Main", {
+        //include the extension
+        sample: SampleExtension,
+         
+        _basePrivateMethod: function() {
+            ...
+        },
+        basePublicMethod: function() {
+     ...
+    });
+});
+</pre></div></section>
+			<p>If the controller is instantiated, all members that have a
+          <code>ControllerExtension</code> associated will create an instance of these
+        controller extensions.</p>
+			<p>You can also override an extension directly in a controller.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(['sap/ui/core/mvc/Controller', 'my/extension/SampleExtension'],
+    function(Controller, SampleExtension) {
+    "use strict";
+    return MainController = Controller.extend("sample.Main", {
+        //inline override of an extension. E.g. to provide a hook implementation
+        sample: SampleExtension.override({
+            someHook: function() {},
+            someOtherMethod: function() {}
+        }),
+        onLifecycleHook: function() {
+        }
+    });
+});
+</pre></div></section>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

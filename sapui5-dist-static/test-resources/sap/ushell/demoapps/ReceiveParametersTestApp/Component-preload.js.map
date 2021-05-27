@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/demoapps/ReceiveParametersTestApp/Component-preload.js",
+"sourceroot":".",
+"sources":["Main-dbg.controller.js","Main.view.xml","manifest.json","messagebundle.properties","messagebundle_de.properties"],
+"names":["sComponentId","myComponent","sViewNameUnderTest"],
+"mappings":";;;;AAEA,SAAU,EAAG,CACT,aAEA,kEAAmE,CAC/D,eAAgB,QAAS,EAAG,CACxB,IAAIA,CAAa,CAAE,oDACnB,IAAIC,CAAY,CAAE,iBAAiBD,CAAY,EAC/C,OAAOC,CAAW,CACtB,EAOA,OAAQ,QAAS,EAAG,CAAE,EAEtB,SAAU,QAAS,CAAuB,CAAE,CAAE,EAE9C,gBAAiB,QAAS,CAACC,CAAkB,CAAE,CAC3C,MAAO,QAAQA,CAAmB,GAAI,SAAU,EAAG,WAAY,QAAS,QAAS,QAAS,iBAAiBA,CAAkB,CAAE,EAAG,GACtI,EAEA,WAAY,QAAS,CAAuB,CAAE,CAAE,EAMhD,OAAQ,QAAS,EAAG,CAChB,+HAAgI,CAAE,wBAClI,sBAAuB,CAAE,GACzB,EAAG,sBAAuB,CACtB,+BACJ,CACJ,CACJ,GACJ;;;;;;;;",
+"x_com_sap_openui5_sections":[172,900,964,1981,2045,4821,4896,5053,5131,5289]
+}

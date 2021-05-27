@@ -1,0 +1,108 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioab267a6b958e46a28f3437154b2a1b2f" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Value Lists</h1><div class="fig"><h1 class="topictitle1 title">Value Lists</h1><div class="shortdesc">The OData V4 model supports the access to value list metadata and data.</div><p>Value lists enable you to read the possible values for a given property, such as
+				<code>Category</code> in the <code>Product</code> entity type. A value list
+			is typically visualized as a dropdown list, or as a value help dialog, that is, a popup
+			with additional features such as filters which help finding the correct value. For
+			performance reasons, you can reduce the service <code>$metadata</code> document size
+			by outsourcing value list information to value list services. Consequently, the value
+			list information is accessed in two steps:</p><ol>
+			<li class="li">
+				<p>Determine the value list type that is available for a given property via
+						<code>ODataPropertyBinding.requestValueListType</code> without loading
+					the value list service. This is typically called to determine the visualization
+					of this property.</p>
+				<p>The <code>sap.ui.model.odata.v4.ValueListType</code>, that the promise
+					delivers, can have the following values:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>None</code>: No value list exists.</p>
+					</li>
+					<li class="li">
+						<p><code>Fixed</code>: One enumeration of fixed values exists.</p>
+					</li>
+					<li class="li">
+						<p><code>Standard</code>: A dynamic value list with multiple queries
+							including selection criteria exists.</p>
+					</li>
+				</ul>
+			</li>
+			<li class="li">
+				<p>Determine the value list detail information on demand via <code>ODataPropertyBinding.requestValueListInfo</code> which returns a map of all
+					annotations <code>com.sap.vocabularies.Common.v1.ValueList</code> or
+						<code>com.sap.vocabularies.Common.v1.ValueListMapping</code> by qualifier. Each mapping has the
+						<code>ValueListMappingType</code> type as specified in the OData 4.0 Common Vocabulary, see <a href="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListMappingType" title="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListMappingType" class="external-link" target="_blank" rel="noopener">OData 4.0 Vocabularies - SAP Common</a>. Each mapping is enriched by a <code>$model</code> property of type
+						<code>sap.ui.model.odata.v4.ODataModel</code> which can be used to access the value list metadata and retrieve value list
+					data. The annotation <code>com.sap.vocabularies.Common.v1.ValueListRelevantQualifiers</code> is automatically taken into
+					account.</p>
+				<p>For value lists of type <code>Fixed</code>, only one mapping is expected and
+					the qualifier is ignored. The mapping is available with key "".</p>
+			</li>
+		</ol><p>Additionally, you can use the synchronous method
+				<code>ODataPropertyBinding.getValueListType</code> if the metadata for the
+			property is already available. If this is not the case, an exception is thrown. The API
+			is available in <code>sap.ui.model.odata.v4.ODataMetaModel</code> analogously for
+			use cases where controls are not yet in place, for example, during XML templating.</p><p><span class="emphasis">Example: Retrieving the value list type for a property</span></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>#js</code>   
+       onModelContextChange : function (oEvent) {
+        var oBinding = this.getBinding("value");
+ 
+        if (oBinding && oBinding.isResolved()) {
+            oBinding.requestValueListType().then(function (sValueListType) {
+ 
+ 
+                // render the control depending on the value list type and attach the below
+                // event handler onValueHelp which is invoked when the user requests value help
+ 
+                switch (sValueListType) {
+                    case ValueListType.Standard:
+                        ...
+                        break;
+                    case ValueListType.Fixed:
+                        ...
+                        break;
+                    case ValueListType.None:
+                        ...
+                        break;
+                }
+                that.setAggregation("field", oField);
+            });
+        }
+    },
+...
+    onValueHelp : function (oEvent) {
+        var oBinding = this.getBinding("value");
+ 
+        oBinding.requestValueListInfo().then(function (mValueListInfo) {
+            // this assumes value list type "Fixed"
+            var oValueListMapping = mValueListInfo[""],
+                oValueListMetaModel = oValueListMapping.$model.getMetaModel();
+  
+            ...
+        ]);
+    },
+...</pre></div></section><section id="section_azb_gwg_jfb">
+			<h2 class="title ">The <code>ValueList</code> Annotation</h2>
+			<p>There are two options to place the <code>ValueList</code> annotation:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>In the value list service (the preferred way): When adding a value list for a property, the OData service only contains an
+						annotation with the property as target and the term com.sap.vocabularies.Common.v1.ValueListReferences pointing to the
+						metadata of the value list service. The ValueList annotation itself is in the referenced service. It must not have the
+						properties CollectionRoot and SearchSupported.</p>
+				</li>
+				<li class="li">
+					<p>In the OData service itself: In this case, the <code>ValueList</code> annotation must have the property
+							<code>CollectionRoot</code> pointing to the metadata of the value list service. The annotation
+							<code>com.sap.vocabularies.Common.v1.ValueListReferences</code> is not needed.</p>
+					<p>The disadvantage of this solution is that the complete value list information for all properties of the service is preloaded
+						when the application is initialized.</p>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/648e360fa22d46248ca783dc6eb44531.html" title="648e360fa22d46248ca783dc6eb44531.xml" class="sap-doc">Data Reuse</a></li>
+		<li><a href="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListType" title="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListType" class="sap-doc">OData 4.0 Vocabularies - SAP Common &gt; ValueListType</a></li>
+		<li><a href="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListMappingType" title="https://wiki.scn.sap.com/wiki/display/EmTech/OData+4.0+Vocabularies+-+SAP+Common#ValueListMappingType" class="sap-doc">OData 4.0 Vocabularies - SAP Common &gt; ValueListMappingType</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v4.ValueListType" title="#/api/sap.ui.model.odata.v4.ValueListType" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ValueListType">sap.ui.model.odata.v4.ValueListType</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/getValueListType" title="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/getValueListType" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/getValueListType">sap.ui.model.odata.v4.ODataPropertyBinding#getValueListType</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/requestValueListInfo" title="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/requestValueListInfo" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataPropertyBinding/methods/requestValueListInfo">sap.ui.model.odata.v4.ODataPropertyBinding#requestValueListInfo</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/getValueListType" title="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/getValueListType" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/getValueListType">sap.ui.model.odata.v4.ODataMetaModel#getValueListType</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/requestValueListInfo" title="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/requestValueListInfo" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataMetaModel/methods/requestValueListInfo">sap.ui.model.odata.v4.ODataMetaModel#requestValueListInfo</a></li>
+	</ul></section></div></section></div></body></html>

@@ -1,0 +1,102 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio91f1f4536f4d1014b6dd926db0e91070" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Standard Variant for Bootstrapping</h1><div class="fig"><h1 class="topictitle1 title">Standard Variant for Bootstrapping</h1><div class="shortdesc">The standard variant for bootstrapping loads all JavaScript modules of a library in
+		advance with one single request for performance reasons.</div><p>The library preload file <code>library-preload.js</code> contains all modules of a certain
+			library. These modules will only be executed on demand, if the application requires
+			them. Using preloads significantly reduces the number of roundtrips since the single
+			modules are bundled in one file.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>An application must <span class="emphasis">not</span> reference the
+				<code>library-preload.js</code>. If preload files exist, SAPUI5 automatically loads
+			them. The dependencies to libraries are defined as part of the manifest namespace
+				<code>sap.ui5/dependencies/libs</code>. For further information, see <a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html" title="The descriptor for applications, components, and libraries (in short: app descriptor) is inspired by the WebApplication Manifest concept introduced by the W3C. The descriptor provides a central, machine-readable, and easy-to-access location for storing metadata associated with an application, an application component, or a library." class="sap-doc">Descriptor for Applications, Components, and Libraries</a>.</p></div></div><section id="section_ob3_llh_1gb">
+			<h2 class="title ">Option 1 (Recommended)</h2>
+			<p>By setting the <code>async=true</code> configuration parameter, the module loader
+				loads the modules and preload files asynchronously. You can enable it in an existing
+				application by specifying the <code>sap-ui-async</code> configuration parameter
+				in the start URL, or by adding the <code>data-sap-ui-async</code> attribute to
+				the bootstrap tag:</p>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script
+    id="sap-ui-bootstrap"
+    src="resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-async="true"
+    data-sap-ui-onInit="module:my/app/main"
+    data-sap-ui-resourceRoots='{"my.app": "./"}'
+&gt;&lt;/script&gt;</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Before you use the <code>async</code> configuration parameter, make sure your
+				app is ready for asynchronous loading, see <a href="#/topic/00737d6c1b864dc3ab72ef56611491c4.html" title="This section provides best practices for SAPUI5 module loading patterns." class="sap-doc">Best Practices for Loading Modules</a> and <a href="#/topic/493a15aa978d4fe9a67ea9407166eb01.html" title="Find a collection of information that helps you to find out if your application is ready for asynchronous loading." class="sap-doc">Is Your Application Ready for Asynchronous Loading?</a>.</p></div></div>
+		</section><section id="section_ypn_xlh_1gb">
+			<h2 class="title ">Option 2</h2>
+			<p>Alternatively, you can influence the loading behavior of the preload files without
+				affecting other single modules by setting the <code>preload</code> configuration
+				parameter to one of the following values:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p><code>async</code> (recommended)</p>
+					<p>If you set the <code>preload</code> configuration option to
+							<code>async</code>, the runtime loads the modules for all declared
+						libraries asynchronously. Thus, for any code that follows the SAPUI5
+						bootstrap tag, the framework cannot make sure that the classes are already
+						available. Therefore, the application must delay the access to the SAPUI5 APIs by
+						using the <code>Core.attachInitEvent</code> method. SAPUI5 supports
+						the <code>async</code> mode only for libraries that are loaded by the
+							SAPUI5
+						core. Libraries that are loaded dynamically by using the
+							<code>sap.ui.getCore().loadLibrary()</code> API will be loaded
+						synchronously by default for compatibility reasons. Only when a
+						configuration object with a property of <code>async:true</code> is
+						passed, the bundle is loaded asynchronously.</p>
+				</li>
+				<li class="li">
+					<p><code>sync</code></p>
+					<p>If you set the <code>preload</code> configuration parameter to
+							<code>sync</code>, the runtime loads the modules for all declared
+						libraries synchronously. After processing the bootstrap tag, all preload
+						files of all libraries are loaded and the libraries are initialized as
+						usual. The <code>preload=sync</code> mode should be transparent for most
+						applications.</p>
+				</li>
+				<li class="li">
+					<p><code>auto</code></p>
+					<p>The <code>preload=auto</code> configuration parameter is the default
+						value. This mode checks whether SAPUI5 runtime
+						uses optimized sources. If optimized sources are used, it enables the
+							<code>preload=sync</code> option to further optimize the runtime.
+						For normal or debug sources, the preload is deactivated.</p>
+				</li>
+			</ul>
+			<p>You can easily check this with an existing application by specifying the
+					<code>sap-ui-preload=&lt;mode&gt;</code> parameter in the start URL or by
+				adding the <code>data-sap-ui-preload</code> attribute to the bootstrap tag:</p>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script
+    id="sap-ui-bootstrap"
+    src="resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-preload="async"
+    data-sap-ui-onInit="module:my/app/main"
+    data-sap-ui-resourceRoots='{"my.app": "./"}'
+&gt;&lt;/script&gt;</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Using the <code>async=true</code> or <code>preload=async</code>
+				configuration parameters requires extensive testing and cooperation on application
+				side to ensure a stable and fully working application. It is, therefore, not
+				activated automatically, but only by configuration. If you encounter issues, or if
+				you want to prepare your application in advance, see <a href="#/topic/493a15aa978d4fe9a67ea9407166eb01.html" title="Find a collection of information that helps you to find out if your application is ready for asynchronous loading." class="sap-doc">Is Your Application Ready for Asynchronous Loading?</a>.</p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Preload sources are always optimized. However, using the
+					<code>debug=true</code> configuration parameter always disables the loading
+				of preload files.</p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You can combine the <code>async</code> or <code>preload</code>
+				configuration parameters with other bootstrap variants such as
+					<code>sap-ui-core-noJQuery</code>.</p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		
+		<li><a href="#/topic/91f1dd0c6f4d1014b6dd926db0e91070.html" title="The noJQuery variant supports bootstrapping for an application that already integrates jQuery or uses a different jQuery version than SAPUI5." class="sap-doc">noJQuery Variant for Bootstrapping</a></li>
+		<li><a href="#/topic/91f08de06f4d1014b6dd926db0e91070.html" title="SAPUI5 provides several options for the configuration of the SAPUI5 runtime. The possible ways to provide input for the available configuration options are described in detail." class="sap-doc">Configuration of the SAPUI5 Runtime</a></li>
+		<li><a href="#/topic/493a15aa978d4fe9a67ea9407166eb01.html" title="Find a collection of information that helps you to find out if your application is ready for asynchronous loading." class="sap-doc">Is Your Application Ready for Asynchronous Loading?</a></li>
+	</ul></section></div></section></div></body></html>

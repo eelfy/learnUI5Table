@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Value Help templating - check control templating -  Properties of type date will have a value help  1`] = `
+"<root> </root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Properties with unit will have a value help on that unit  1`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/quantityUnit', conditionModel: ''}}\\"
+    id=\\"ValueHelp::quantity::quantityUnit\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"false\\"
+    noDialog=\\"false\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"\\"
+    ns3:sourcePath=\\"/Items/quantityUnit\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Properties with unit will have not have value help on that unit in the filter field  1`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns1:id=\\"ValueHelpMacroFragmentWithDateTimeFilters\\"
+    id=\\"ValueHelp::quantity\\"
+    showConditionPanel=\\"true\\"
+    title=\\"\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns2:requestGroupId=\\"\\"
+  >
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Value with value help 1`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/vhReference', conditionModel: '$conditions'}}\\"
+    id=\\"VH::vhReference\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"false\\"
+    noDialog=\\"false\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"Yolo\\"
+    ns3:sourcePath=\\"/Items/vhReference\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Value with value help 2`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/vhReference', conditionModel: '$conditions'}}\\"
+    id=\\"VH::vhReference\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"false\\"
+    noDialog=\\"false\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"Yolo\\"
+    ns3:sourcePath=\\"/Items/vhReference\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Value with value help following navproperty 1`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/toSubItems/subvhReference', conditionModel: '$conditions'}}\\"
+    id=\\"VH::toSubItems::subvhReference\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"false\\"
+    noDialog=\\"false\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"Yolo\\"
+    ns3:sourcePath=\\"/Items/toSubItems/subvhReference\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Value with value help following navproperty 2`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/toSubItems/subvhReference', conditionModel: '$conditions'}}\\"
+    id=\\"MyFlexID\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"false\\"
+    noDialog=\\"false\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"Yolo\\"
+    ns3:sourcePath=\\"/Items/toSubItems/subvhReference\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;
+
+exports[`Value Help templating - check control templating -  Value with value help with fixed values 1`] = `
+"<root>
+  <mdcField:FieldValueHelp
+    xmlns:mdcField=\\"sap.ui.mdc.field\\"
+    xmlns:ns1=\\"sap.ui.core\\"
+    ns1:require=\\"{ValueListHelper: 'sap/fe/macros/internal/valuehelp/ValueListHelper'}\\"
+    xmlns:ns2=\\"http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1\\"
+    ns2:id=\\"ValueHelpMacroFragment\\"
+    delegate=\\"{name: 'sap/fe/macros/FieldValueHelpDelegate', payload: {propertyPath: '/Items/vhReferenceWithFixedValues', conditionModel: '$conditions'}}\\"
+    id=\\"VH::vhReferenceWithFixedValues\\"
+    showConditionPanel=\\"false\\"
+    validateInput=\\"true\\"
+    noDialog=\\"true\\"
+    xmlns:ns3=\\"http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1\\"
+    ns3:requestGroupId=\\"Yolo\\"
+    ns3:sourcePath=\\"/Items/vhReferenceWithFixedValues\\"
+  >
+    <mdcField:FieldValueHelpMTableWrapper />
+  </mdcField:FieldValueHelp>
+</root>
+"
+`;

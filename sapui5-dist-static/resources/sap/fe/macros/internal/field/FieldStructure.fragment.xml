@@ -1,0 +1,53 @@
+<!--
+    /**
+     * This fragment renders a DataField
+     * @param entitySet context to the EntitySet
+     * @param dataField context to the DataField
+     * @param property context to the Property Path
+	 * @param wrap wrapping allowed for a field or not
+	 * wrap Boolean: true, false
+	 * Incoming from Field.fragment.xml
+ 	 * 	 @param idPrefix default 'F' Prefix for the id
+ 	 * 	 @param vhIdPrefix default 'FieldValueHelp' Prefix for the value help id
+     * @returns
+     */
+-->
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							Property: 'sap/fe/core/templating/PropertyFormatters'
+						 }"
+>
+	<template:if test="{= ${this>displayStyle}==='Avatar' || ${this>displayStyle}==='Contact' || ${this>displayStyle}==='Button' }">
+		<template:then>
+			<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+		</template:then>
+		<template:else>
+			<control:FieldWrapper
+				id="{= ${this>_flexId} || (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-content']) : undefined) }"
+				emptyIndicatorTrigger="{= FIELD.getEmptyIndicatorTrigger(${this>formatOptions/showEmptyIndicator},${this>valueBindingExpression}, ${this>text})}"
+				editMode="{this>editMode}"
+				visible="{= ${dataField>@@COMMON.getHiddenPathExpression}}"
+				required="{= FIELD.getRequiredForDataField(${property>$Path@@FIELD.fieldControl}, ${this>editMode})}"
+				width="100%"
+				class="{this>class}"
+			>
+				<control:contentDisplay>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+				</control:contentDisplay>
+				<template:if test="{= ${this>editMode}!=='Display'  &amp;&amp; !!${this>editStyle}}">
+					<control:contentEdit>
+						<core:Fragment fragmentName="sap.fe.macros.internal.field.editStyle.{this>editStyle}" type="XML" />
+					</control:contentEdit>
+				</template:if>
+			</control:FieldWrapper>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

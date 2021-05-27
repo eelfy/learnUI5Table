@@ -1,0 +1,48 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio7471c1f3a8ed4f6db2401246edbb573f" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Scatter Chart Card</h1><div class="fig"><h1 class="topictitle1 title">Scatter Chart Card</h1><div class="shortdesc">With a scatter chart card, you can visualize the distribution of data points over two
+		measures.</div><section>
+			<p>For the first measure, the role is set to an axis is assigned to the
+					<code>valueAxis</code> feed UID makes up the x-axis.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The role is set to <code>axis1</code>, <code>axis2</code> (if there's
+						no <code>axis1</code>), or <code>axis3</code> (if there's no
+							<code>axis2</code>).</p>
+				<p></p></div></div>The other measure is plotted on the y-axis.<p></p>
+			<p>A scatter chart card supports a maximum of two dimensions. If the dimension is not
+				marked with a role, then all members of the dimension are plotted as equal-sized
+				bubbles of the same color in the chart. You can assign only one dimension to the
+					<code>Series</code> role and all members of this dimension get a different
+				color. A maximum of only one dimension can be assigned to the
+					<code>Category</code> role and all members of such a dimension get a
+				different shape. </p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="Eval_by_Currency_Scatter"&gt;
+    &lt;Record Type="UI.ChartDefinitionType"&gt;
+        &lt;PropertyValue Property="Title" String="Scatter Chart no role" /&gt;
+        &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Scatter" /&gt;
+        &lt;PropertyValue Property="MeasureAttributes"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                    &lt;PropertyValue Property="Measure" PropertyPath="salesshare" /&gt;
+                    &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" /&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                    &lt;PropertyValue Property="Measure" PropertyPath="totalsales" /&gt;
+                    &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="DimensionAttributes"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.ChartDimensionAttributeType"&gt;
+                    &lt;PropertyValue Property="Dimension" PropertyPath="suppliercompany" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+			<p></p></div></div>
+			<div><div class="fig"><img src="loiof264ec17c13a4ad58652bf9f447d2350_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Example of a Scatter Chart Card</span></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

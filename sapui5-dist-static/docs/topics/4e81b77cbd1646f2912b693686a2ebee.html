@@ -1,0 +1,108 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4e81b77cbd1646f2912b693686a2ebee" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Static Link List Card</h1><div class="fig"><h1 class="topictitle1 title">Configuring Static Link List Card</h1><div class="shortdesc">Lets you display static data (static links and images/icons) in the form of list
+		items.</div><section>
+			<p>You can set the <code>listFlavor</code> property in the card settings to display
+				information in standard link list type or as a carousel link list type.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To add
+					annotations, use the SAP WebIDE annotation modular or code editor. For more
+					information, see <a href="#/topic/9834a0a3b9284a6197f116f6c377ed06.html" title="You have several options to build UI applications when using SAP Fiori elements." class="sap-doc">Building an App</a>.</p></div></div><p></p>
+		</section><section id="section_n1z_hyv_kfb">
+			<ol>
+				<li class="li">
+					<p>Configure card <code>title</code>, <code>subtitle</code>, and
+							<code>listFlavor</code>.</p>
+				</li>
+				<li class="li">
+					<p>Configure staticContent properties such as <code>title</code>,
+							<code>subtitle</code>, <code>imageUri</code>,
+							<code>imageAltText</code></p>
+				</li>
+				<li class="li">
+					<p>Configure navigation properties</p><ul class="ul ">
+							<li class="li">
+								<p>Url based navigation: Define <code>targetUri</code> and
+										<code>openInNewWindow</code> properties</p>
+								<p>
+									</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Target Uri Based
+										Navigation</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"card010_QuickLinks": {
+  "model": "salesOrder",
+  "template": "sap.ovp.cards.linklist",
+  "settings": {
+    "title": "Quick Links",
+    "subTitle": "Standard Link List With Static Data",
+    "listFlavor": "standard",
+    "staticContent": [
+      {
+        "title": "Jim Smith",
+        "subTitle": "Sales",
+        "imageUri": "img/JD.png",
+        "imageAltText": "Jim Smith",
+        "targetUri": "https://abc.com",
+        "openInNewWindow": true
+      },
+      {
+        "title": "Alice Wilson",
+        "subTitle": "Sales",
+        "imageUri": "img/AW.png",
+        "imageAltText": "Jim Smith",
+        "targetUri": "https://abc.com",
+        "openInNewWindow": true
+      }
+    ]
+  }
+}
+</pre></div></section><p></p></div></div>
+								<p></p>
+							</li>
+							<li class="li">
+								<p>IntentBasedNavigation: Define <code>semanticObject</code> and
+										<code>action</code> properties</p>
+								<p>
+									</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+										IntentBasedNavigation</p><section class="Collapsible"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"card010_QuickLinks": {
+  "model": "salesOrder",
+  "template": "sap.ovp.cards.linklist",
+  "settings": {
+    "title": "Quick Links",
+    "subTitle": "Standard Link List With Static Data",
+    "listFlavor": "standard",
+    "defaultSpan": {
+      "rows": 15,
+      "cols": 1
+    },
+    "staticContent": [
+      {
+        "title": "Create Purchase Order",
+        "imageUri": "sap-icon://Fiori6/F0865",
+        "imageAltText": "{{card30_icon_prod_man}}",
+        "semanticObject": "Action",
+        "action": "toappnavsample",
+        "disableInCard": true
+      },
+      {
+        "title": "Create Supplier",
+        "imageUri": "sap-icon://Fiori2/F0246",
+        "imageAltText": "{{card30_icon_so_man}}",
+        "semanticObject": "Action",
+        "action": "toappnavsample"
+      },
+      {
+        "title": "Create Contact",
+        "imageUri": "sap-icon://Fiori6/F0866",
+        "imageAltText": "{{card30_icon_so_man}}",
+        "semanticObject": "Action",
+        "action": "toappnavsample"
+      }
+    ]
+  }
+},</pre></div></section><p></p></div></div>
+								<p></p>
+							</li>
+						</ul><p></p>
+				</li>
+			</ol>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

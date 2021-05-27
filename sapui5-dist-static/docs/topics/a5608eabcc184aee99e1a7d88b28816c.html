@@ -1,0 +1,401 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa5608eabcc184aee99e1a7d88b28816c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Field Help</h1><div class="fig"><h1 class="topictitle1 title">Field Help</h1><div class="shortdesc">A field can be associated with a helper control, depending on how the field is configured.</div><p>Fields can have an associated value help, or a drop-down list for several fixed values, for example. Fields can also have a date or date-time
+            picker. This topic provides information about the supported associations and how applications can enable them.</p><section id="section_crm_mzx_q4b"><h2 class="title ">Value Help</h2><p>Applications can bring up value help for fields, allowing end users to choose from
+                existing values for the field. Once the field is annotated to use the value help, it is displayed along with an input field that has a
+                value help icon. The value help dialog supports full-text search and a filter bar to help users find the right value. If annotated,
+                the value help dialog is opened in single value mode ‒ users can only select one entry and the value help is immediately closed.</p><section>
+                <h3 class="title ">Using <code>ValueList</code> Annotations</h3>
+                <p>Direct <code>ValueList</code> annotations under the property level annotations:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>ValueList</code>
+                    Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Self.ArtistsType/CountryOfOrigin"&gt;
+    &lt;Annotation Term="Common.ValueList"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="CollectionPath" String="I_AIVS_CountryCode"/&gt;
+            &lt;PropertyValue Property="SearchSupported" Bool="true"/&gt;
+            &lt;PropertyValue Property="Parameters"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="Common.ValueListParameterInOut"&gt;
+                        &lt;PropertyValue Property="LocalDataProperty" PropertyPath="CountryOfOrigin"/&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryCode"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryCode_Text"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryIndicator"/&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Using <code>ValueListMapping</code> Annotations</h3>
+                <p>Direct <code>ValueListMapping</code> annotations under the property level annotations:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>ValueListMapping</code>
+                    Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Self.ArtistsType/CountryOfOrigin"&gt;
+    &lt;Annotation Term="Common.ValueListMapping"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Label" String="Country Code Value Help"/&gt;
+            &lt;PropertyValue Property="CollectionPath" String="I_AIVS_CountryCode"/&gt;
+            &lt;PropertyValue Property="Parameters"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="Common.ValueListParameterInOut"&gt;
+                        &lt;PropertyValue Property="LocalDataProperty" PropertyPath="RegionCode"/&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="RegionID"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryCode_Text"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryIndicator"/&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Using <code>ValueListReference</code> Annotations</h3>
+                <p><code>ValueListReference</code> annotations pointing to another metadata source (service) as a reference for the value
+                    help:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>a) <code>ValueListReference</code>
+                    Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Self.ArtistsType/CountryOfOrigin"&gt;
+    &lt;Annotation Term="Common.ValueListReferences"&gt;
+        &lt;Collection&gt;
+            &lt;String&gt;
+                ../../../../srvd_f4/sap/i_aivs_countrycode/0001;ps='srvd-sadl_gw_appmusicdr_definition-0001';va='com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.et-c_mdbu_v4_artisttp.countryoforigin'/$metadata
+            &lt;/String&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                <p>The string here is the path relative to the main metadata file containing these <code>ValueListReference</code>
+                    annotations.</p>
+                <p><code>ValueListMapping</code> annotations in the referenced metadata file:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>b) Annotation in the Referenced
+                    Metadata</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="ParentService.ArtistsType/CountryOfOrigin"&gt;
+    &lt;Annotation Term="Common.ValueListMapping"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Label" String="Country Code Value Help"/&gt;
+            &lt;PropertyValue Property="CollectionPath" String="I_AIVS_CountryCode"/&gt;
+            &lt;PropertyValue Property="Parameters"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="Common.ValueListParameterInOut"&gt;
+                        &lt;PropertyValue Property="LocalDataProperty" PropertyPath="CountryOfOrigin"/&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryCode"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryCode_Text"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                        &lt;PropertyValue Property="ValueListProperty" String="CountryIndicator"/&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                <p>The <code>"ParentService"</code> here is the service metadata from sample code a) through which the referenced metadata given
+                    in sample code b) is called.</p>
+            </section><section>
+                <h3 class="title ">Filter Fields Within the Value Help Dialog</h3>
+                <p>Use the <code>SelectionFields</code> annotation on the entity of the value help to define the filter fields that are to be
+                    displayed in the filter panel of the value help dialog. Application developers must ensure that all relevant fields are part of
+                    the <code>SelectionFields</code>.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>If no <code>SelectionFields</code> are annotated on the entity of the value help, all properties of the entity are
+                        displayed as filter fields. If there are no filterable fields (see <a href="https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.xml#L430" title="https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.xml#L430" class="external-link" target="_blank" rel="noopener">Filter Restrictions</a>) within the value help entity, then the filter panel isn't
+                        visible.</p>
+                <p></p></div></div>
+                <p><span class="emphasis">Help Icon for Fields Within the Filter Panel</span></p>
+                <p>Filter fields always get a help icon ‒ irrespective of whether a value list annotation is defined or not. This default value help
+                    icon opens up the value help dialog with only the <span class="ph uicontrol">Define Conditions</span> tab. If the value list annotation is
+                    defined, then the value help dialog also contains the <span class="ph uicontrol">Select from List</span> tab. If a
+                        <code>"ValueListWithFixedValues"</code> annotation is defined, then a drop-down menu is provided for the filter field
+                    instead of the value help icon. Similarly, a date picker is provided instead of the value help icon if the filter field is a
+                    date-based field with a single value.</p>
+                <p><span class="emphasis">Filter Operators</span></p>
+                <p>The filter operators offered within the value help dialog (under the <span class="ph uicontrol">Define Conditions</span> tab) can be
+                    restricted according to the <a href="https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.md#FilterExpressionType" title="https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.md#FilterExpressionType" class="external-link" target="_blank" rel="noopener">Filter Expression Restrictions</a>.</p>
+                <p>For each filter expression type, the operators shown in the value help dialog depend on the base type of the property (String,
+                    Date, DateTime, Time, Boolean, Unit, Numeric). For filter fields with no defined filter expression type, or if it is incompatible
+                    with the base type, the complete default set of operators for the respective base type are used.</p>
+                <p>For <code>Date</code> and <code>DateTime</code> fields that have the filter expression type "Single Value", instead of the
+                    filter conditions dialog a <code>Date</code> or <code>DateTime</code> picker is shown directly in the filter field.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>The expression type "Single Range" for <code>Date</code> or <code>DateTime</code> fields currently results in a
+                            <code>Date</code> or <code>DateTime</code> picker control instead of the value help. To avoid this, use the filter
+                        expression type "MultiRange".</p>
+                <p></p></div></div>
+                <p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CDS Annotation for Filter
+                    Restrictions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">entity SalesOrderManage                                                     @(
+    title : 'Manage Sales Order',
+    Capabilities.NavigationRestrictions : {RestrictedProperties : [{
+        NavigationProperty : _Item,
+        InsertRestrictions : {Insertable : true}
+    }]},
+    Capabilities.FilterRestrictions     : {FilterExpressionRestrictions : [{
+        Property          : 'SoldToParty',
+        AllowedExpressions : 'SingleValue'
+    },
+    {
+        Property          : 'LastChangedDateTime',
+        AllowedExpressions : 'MultiRange'
+    }
+    ]},
+...</pre></div></section><p></p></div></div>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>XML Annotation for Filter
+                    Restrictions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.EntityContainer/SalesOrderManage"&gt;
+    &lt;Annotation Term="Capabilities.FilterRestrictions"&gt;
+        &lt;Record Type="Capabilities.FilterRestrictionsType"&gt;
+            &lt;PropertyValue Property="FilterExpressionRestrictions"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="Capabilities.FilterExpressionRestrictionType"&gt;
+                        &lt;PropertyValue Property="Property" PropertyPath="SoldToParty"/&gt;
+                        &lt;PropertyValue Property="AllowedExpressions" String="SingleValue"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record Type="Capabilities.FilterExpressionRestrictionType"&gt;
+                        &lt;PropertyValue Property="Property" PropertyPath="LastChangedDateTime"/&gt;
+                        &lt;PropertyValue Property="AllowedExpressions" String="MultiRange"/&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Handling IN-Only <code>ValueListMapping</code></h3>
+                <p>Value help fields that are only part of the IN <code>ValueListMapping</code> (meaning they don't figure in an INOUT or OUT
+                    mapping) are shown in read-only format within the filter panel of the value help dialog ‒ irrespective of the field state for the
+                    field in the local entity set. If the same value help entity field is also part of an INOUT or OUT mapping, then the field within
+                    the filter panel of the value help dialog is editable.</p>
+            </section><section>
+                <h3 class="title ">Search Field Within a Value Help Dialog</h3>
+                <p>Application developers can control the visibility of the search field within a value help dialog by using the
+                        <code>Searchable</code> annotation set for the entity set of the value help.</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate Customer with @(Capabilities.SearchRestrictions : {
+    Searchable : true
+});</pre></div></section>
+                <p></p></div></div>
+                <p>By default, the entity set of a value help is searchable.</p>
+            </section><section>
+                <h3 class="title ">Controlling the Columns to be Displayed in the Type-Ahead List of a Value Help Field</h3>
+                <p>Application developers can control the number of columns shown in the type-ahead list of a value help field by using the
+                        <code>Importance</code> annotation on a parameter of the value list. Only those columns that are annotated with
+                        <code>"@Importance":#High</code> are shown. If there is no <code>"Importance"="High"</code> annotation, the number of
+                    columns that are shown corresponds to the number in the value help dialog.</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Controlling the Column
+                    Number</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ValueList             : {
+    Label          : 'Sold-to Party',
+    CollectionPath : 'Customer',
+    Parameters     : [
+        {
+            $Type             : 'Common.ValueListParameterInOut',
+            LocalDataProperty : SoldToParty,
+            ValueListProperty : 'Customer',
+            "@UI.Importance" : #High
+        },
+        {
+            $Type             : 'Common.ValueListParameterDisplayOnly',
+            ValueListProperty : 'CustomerName',
+            "@UI.Importance" : #High
+        },
+...</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Sorting Within Value Help Dialogs and Type-Ahead Tables</h3>
+                <p>A default sorting mechanism is applied to the first column of the value help table, as well as to the type-ahead table.
+                    Text-arrangement annotations for <code>TextOnly</code> are also taken into account: If the first column has a
+                        <code>TextOnly</code> annotation, the sorting is applied to the column to which the text arrangement refers.</p>
+                <p>When using the importance annotation (as explained in this topic), please also apply this annotation to the first column to ensure
+                    that a proper sorting is still provided within the type-ahead list.</p>
+            </section><section>
+                <h3 class="title ">Client Validation Against Value Help</h3>
+                <p>You can use the <code>ValueListForValidation</code> annotation to configure that the values of certain fields entered in the UI
+                    are checked at the client against the value help (<code>ValueList</code> or <code>ValueListMapping</code>) entity set
+                    associated to the field.</p>
+                <p>Use <code>ValueListForValidation</code> annotations under property level annotations:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>Common.ValueListForValidation</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/IncotermsVersion"&gt;
+    &lt;Annotation Term="Common.IsUpperCase" Bool="true"/&gt;
+    &lt;Annotation Term="Common.Label" String="Incoterms Version"/&gt;
+    &lt;Annotation Term="Common.Text" Path="_IncotermsVersion/IncotermsVersion_Text"/&gt;
+    &lt;Annotation Term="Common.ValueListForValidation" String=""/&gt;
+    &lt;Annotation Term="Common.ValueList"&gt;
+        ...Definition of ValueList...
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>Values that are not maintained correctly in the annotation <code>ValueListForValidation</code> aren't stored in the back
+                        end (not even for drafts).</p>
+                <p></p></div></div>
+            </section><section>
+                <h3 class="title ">Context-Dependent Value Help</h3>
+                <p>Some scenarios require different value help dialogs based on a context. This context is determined by a property other than the
+                    annotated property.</p>
+                <p>You can use the annotation term <code>Common.ValueListRelevantQualifiers</code> to configure that valid qualifiers for a value
+                    help are determined, dependent on the value of another field.</p>
+                <div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+                    </p><p>A sales order has different types of assigned partners. Depending on the partner function, you have to provide different
+                        details in the value help to which the partner can be added. If the partner function is <code>"WE"</code>, the value help
+                        with qualifier <code>"BusinessPartner"</code> should be determined. In all other cases, the value help without a qualifier
+                        should be determined.</p>
+                <p></p></div></div>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>Common.ValueListRelevantQualifiers</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.HeaderPartner/BusinessPartner"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.Common.v1.ValueListRelevantQualifiers"&gt;
+        &lt;Collection&gt;
+            &lt;String /&gt;
+            &lt;If&gt;
+                &lt;Eq&gt;
+                    &lt;Path&gt;PartnerFunction&lt;/Path&gt;
+                    &lt;String&gt;WE&lt;/String&gt;
+                &lt;/Eq&gt;
+                &lt;String&gt;BusinessPartner&lt;/String&gt;
+            &lt;/If&gt;
+        &lt;/Collection&gt;
+        &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.ValueList" Qualifier="BusinessPartner"&gt;
+        ...Definition of ValueList...
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.ValueList"&gt;
+        ...Definition of ValueList w/o qualifier...
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Initial Value for Value Help IN Parameters</h3>
+                <p>The annotation <code>InitialValueIsSignificant</code> allows you to identify an initial value, for example an empty string, as
+                    a valid and significant value for value help IN parameters.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>Please note that the annotation below is currently only supported for parameters of data type <code>Edm.String</code>.</p>
+                <p></p></div></div>
+                <div class="note other samplecode lang-cds"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CDS Annotation for
+                    <code>InitialValueIsSignificant</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ShippingCondition             : ShippingCondition : ShippingCondition @(Common : {
+    Text            : _ShippingCondition.ShippingCondition_Text,
+    TextArrangement : #TextFirst,
+    IsUpperCase     : true,
+    ValueList       : {
+        Label          : 'Shipping Condition',
+        CollectionPath : 'ShippingCondition',
+        Parameters     : [
+        {
+            $Type             : 'Common.ValueListParameterInOut',
+            LocalDataProperty : ShippingCondition,
+            ValueListProperty : 'ShippingCondition'
+        },
+        {
+            $Type             : 'Common.ValueListParameterIn',
+            LocalDataProperty : SoldToParty,
+            ValueListProperty : 'SoldToParty',
+            InitialValueIsSignificant: true
+        },
+        {
+            $Type             : 'Common.ValueListParameterDisplayOnly',
+            ValueListProperty : 'ShippingCondition_Text'
+        }
+        ]
+    }
+});</pre></div></section><p></p></div></div>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>XML Annotation for
+                    <code>InitialValueIsSignificant</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Common.ValueList"&gt;
+    &lt;Record Type="Common.ValueListType"&gt;
+        &lt;PropertyValue Property="CollectionPath" String="ShippingCondition"/&gt;
+        &lt;PropertyValue Property="Label" String="Shipping Condition"/&gt;
+        &lt;PropertyValue Property="Parameters"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="Common.ValueListParameterInOut"&gt;
+                    &lt;PropertyValue Property="LocalDataProperty" PropertyPath="ShippingCondition"/&gt;
+                    &lt;PropertyValue Property="ValueListProperty" String="ShippingCondition"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="Common.ValueListParameterIn"&gt;
+                    &lt;PropertyValue Property="LocalDataProperty" PropertyPath="SoldToParty"/&gt;
+                    &lt;PropertyValue Property="ValueListProperty" String="SoldToParty"/&gt;
+                    &lt;PropertyValue Property="InitialValueIsSignificant" Bool="true"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="Common.ValueListParameterDisplayOnly"&gt;
+                    &lt;PropertyValue Property="ValueListProperty" String="ShippingCondition_Text"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+            </section><section>
+                <h3 class="title ">Multiple Value Help Dialogs / Collective Search Help</h3>
+                <p>Some scenarios require more than one value help.</p>
+                <div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>If the partner function of the field is <code>"WE"</code>, the value help of the field
+                        <code>"BusinessPartner"</code> has a value help with qualifier <code>"BusinessPartner"</code> as well as a value help
+                    with qualifier <code>"SingleColumn"</code>. The value help without a qualifier is also maintained, but not determined in this
+                    case.</p></div></div>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Multiple Value Help
+                    Dialogs</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.HeaderPartner/BusinessPartner"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.Common.v1.ValueListRelevantQualifiers"&gt;
+        ...Definition of ValueListRelevantQualifiers...
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.ValueList" Qualifier="BusinessPartner"&gt;
+        ...Definition of ValueList...
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.ValueList" Qualifier="SingleColumn"&gt;
+        ...Definition of ValueList...
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.ValueList"&gt;
+        ...Definition of ValueList w/o qualifier...
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+            </section></section><section id="section_c4b_x5y_q4b">
+            <h2 class="title ">Fixed Values</h2>
+            <p>For information about fixed values, please see the topic <a href="#/topic/2a0a630e50c7472b803fb94dab922d18.html" title="If your value help contains a fixed number of values, a dropdown list will be rendered." class="sap-doc">Value Help as a Dropdown List</a>.</p>
+		</section><section id="section_jxp_rtv_s4b">
+            <h2 class="title ">Date Picker and Date/Time Picker</h2>
+            <p>Based on the data type of the property, you can also render a date picker or a date/time picker.</p>
+            <p>When you choose a property with the data type "<code>Edm.Date</code>", a date picker is rendered:</p>
+            <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Date
+                Picker</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="SalesOrderManage"&gt;
+   ...&lt;Property Name="SalesOrderDate" Type="Edm.Date"/&gt;
+&lt;/EntityType&gt;</pre></div></section><p></p></div></div>
+            <div><div class="fig"><img src="loiobba0ad9e1a5a4f3885448c79581ae550_LowRes.png" usemap="#"></div></div>
+            <p>When you choose a property with the data type "<code>Edm.DateTimeOffset</code>", a date/time picker is rendered:</p>
+            <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Date/Time
+                Picker</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="SalesOrderManage"&gt;
+   ...&lt;Property Name="LastChangedDateTime" Type="Edm.DateTimeOffset"/&gt;
+&lt;/EntityType&gt;</pre></div></section><p></p></div></div>
+            <div><div class="fig"><img src="loioda94d133e72f428d8bc9a677e0c2ca18_LowRes.png" usemap="#"></div></div>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

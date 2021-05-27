@@ -1,0 +1,1109 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiocbf16c599f2d4b8796e3702f7d4aae6c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Actions</h1><div class="fig"><h1 class="topictitle1 title">Actions</h1><div class="shortdesc">You can use generic actions provided by SAP Fiori elements and  implement
+		application-specific actions using annotations or extension points.</div><p>Application-specific actions either trigger an interaction with the back end, calling an OData service, or they trigger navigation. Depending on
+			where you want to place an action, and how you want to use it, specific attributes, prerequisites, and guidelines apply. Details are
+			described in this topic and in the floorplan-specific sections. For details about navigation, see <a href="#/topic/a42427550b72436a8bdf53045b06effb.html" title="SAP Fiori elements control the navigation within an app (internal navigation) and the navigation to and from an app (external navigation)." class="sap-doc">Configuring Navigation</a>.</p><section id="section_rkb_c1j_l4b">
+			<h2 class="title ">Overview</h2>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					
+					</tgroup><table border="1" id="table_nhl_s1j_l4b" class=" "><colgroup><col width="1"><col width="1"><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+							</th><th colspan="1" rowspan="1">Action Type</th>
+							<th colspan="1" rowspan="1">Context Dependency</th>
+							<th colspan="1" rowspan="1">Usage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">Global Actions</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="4" valign="top">
+							</td><td colspan="1" rowspan="3" valign="top">
+								<p>custom action</p>
+							</td>
+							<td colspan="1" rowspan="3" valign="top">
+								<p>context independent</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List Report</p>
+								<p>Object Page</p>
+								<p><a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Overview Page</p>
+								<p><a href="#/topic/02fb273ee1024fec914b11befe2b1887.html" title="You can assign custom actions to quick view cards that open in the object stream of the stack card. These custom actions are displayed as buttons in the card footer." class="sap-doc">Custom Actions</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+								<p><a href="#/topic/c3de5c0b3c5043a4b683151dab526b01.html" title="Define custom actions by using the extensions in the app-descriptor file. You can also define these custom actions so that they appear on charts, tables, or header toolbars based on the filter property value (chart/table/global)." class="sap-doc">Defining Custom Actions</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>SAP Fiori elements for OData
+                            V2: page content is passed</p>
+									</li>
+									<li class="li">
+										<p>SAP Fiori elements for OData
+                            V4: dependent on whether action is defined as bound or
+											unbound</p>
+									</li>
+								</ul>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object Page</p>
+								<p><a href="#/topic/5fe439613f9c4e259015951594c423dc.html" title="You can enable generic actions in your object header." class="sap-doc">Enabling Actions in Object Page Header</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">
+								<p>Actions in the Table Toolbar</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="5" valign="top">
+								<p>
+							</p></td>
+							<td colspan="1" rowspan="3" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="3" valign="top">
+								<p>depends</p>
+								<p>(see linked topics)</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List Report</p>
+								<p>Object Page</p>
+								<p><a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a></p>
+								<p><a href="#/topic/d27ae998a20a4dbead161e3e7c0ac2e8.html" title="You can use annotations to enable generic actions in tables on the object page." class="sap-doc">Generic Action Buttons in Tables on the Object Page: Additional Considerations</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/d074e26b013647c7a93b8a9db9b51d2d.html" title="Displays transactional data in a tabular format. Use table-only mode to view individual records within the transactional data." class="sap-doc">Table-Only View</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>custom action</p>
+							</td>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>context independent</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List Report</p>
+								<p>Object Page</p>
+								<p><a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+								<p><a href="#/topic/c3de5c0b3c5043a4b683151dab526b01.html" title="Define custom actions by using the extensions in the app-descriptor file. You can also define these custom actions so that they appear on charts, tables, or header toolbars based on the filter property value (chart/table/global)." class="sap-doc">Defining Custom Actions</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>More Information About Actions in the Object Page</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">n/a</td>
+							<td colspan="1" rowspan="1" valign="top">n/a</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/f65e8b196335457cbfc891418ec25cfd.html" title="f65e8b196335457cbfc891418ec25cfd.xml" class="sap-doc">Displaying Actions on the Object Page</a></p>
+								<p><a href="#/topic/8dcfe2e4555f49db8859cb6eb838692e.html" title="By default, the Related Apps button is disabled on object pages created with the object page template. If you want, you can enable this button, which allows you to provide a link to any of the semantic object's navigation targets." class="sap-doc">Enabling the Related Apps Button</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">
+								<p>Actions in Forms in Sections on the Object Page</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>depends</p>
+								<p>(see linked topics)</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/e64efdad5bdf4264b54052bd7ab2229a.html" title="You can add action buttons to the forms contained in sections. These forms are indicated by com.sap.vocabularies.UI.v1.FieldGroup. A form action button is then displayed in the toolbar of the object page section that contains the form." class="sap-doc">Adding Action Buttons to Forms in Sections</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>custom action</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>context independent</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">
+								<p>Actions in the Chart Toolbar</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="3" valign="top">
+							</td><td colspan="1" rowspan="2" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>depends</p>
+								<p>(see linked topics)</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/7d1fa8399f714cf6a657ac5467a70d4a.html" title="You can add action buttons to the chart toolbar by defining the Actions property in the annotation term UI.Chart." class="sap-doc">Defining Actions in the Chart Toolbar</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+								<p><a href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" title="Uses a smart chart that provides visual representation of analytical data." class="sap-doc">Chart-Only View</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>using manifest settings</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>depends</p>
+								<p>(see linked topics)</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+								<p><a href="#/topic/c3de5c0b3c5043a4b683151dab526b01.html" title="Define custom actions by using the extensions in the app-descriptor file. You can also define these custom actions so that they appear on charts, tables, or header toolbars based on the filter property value (chart/table/global)." class="sap-doc">Defining Custom Actions</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">
+								<p>Determining Actions</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="3" valign="top">
+							</td><td colspan="1" rowspan="2" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>SAP Fiori elements for OData
+                            V2: page content is passed</p>
+									</li>
+									<li class="li">
+										<p>SAP Fiori elements for OData
+                            V4: dependent on whether action is defined as bound or
+											unbound</p>
+									</li>
+								</ul>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object Page</p>
+								<p><a href="#/topic/1743323829e5474eb3829d2e9ab022ae.html" title="You can add a determining action button to the footer of the object page." class="sap-doc">Defining Determining Actions</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>available content is passed</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Analytical List Page</p>
+								<p><a href="#/topic/d074e26b013647c7a93b8a9db9b51d2d.html" title="Displays transactional data in a tabular format. Use table-only mode to view individual records within the transactional data." class="sap-doc">Table-Only View</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>custom action</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>context independent</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object Page</p>
+								<p><a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" rowspan="1" valign="top">
+								<p>Actions in the Quick View Card</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+							</td><td colspan="1" rowspan="2" valign="top">
+								<p>annotation-based</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>context dependent</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Overview Page</p>
+								<p><a href="#/topic/c4bd35e657df4285bb6d4b2a6c51a5af.html" title="Quick view cards display detailed information about a single record, in greater depth than would be displayed in a table or list." class="sap-doc">Quick View Cards</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">
+								<p>List Report</p>
+								<p>Object Page</p>
+								<p><a href="#/topic/307ced1bc98c4e3d93ecbe9658dc9176.html" title="You can enrich the popovers for smart link navigation with additional information to display quick views." class="sap-doc">Enabling Quick Views for Smart Link Navigation</a></p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section id="section_ck5_zhl_ylb">
+			<h2 class="title ">Generic and Application-Specific Actions</h2>
+		</section><section id="section_akm_d3l_ylb"><section>
+				<h3 class="title ">Generic Actions</h3>
+				<p>In the list report and on the object page, the standard actions
+						<span class="uinolabel">Create</span> (+), <span class="uinolabel">Delete</span>, and
+						<span class="uinolabel">Edit</span>, as well as actions that trigger external
+					navigation to related apps, are provided by SAP Fiori elements. You can enable
+					or disable these actions. </p>
+				<p>For more information, see:</p><ul class="ul ">
+						<li class="li">
+							<p><a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a></p>
+						</li>
+						<li class="li">
+							<p><a href="#/topic/993e99eae4414b73bc7afef9518c79bf.html" title="The list report supports various types of actions." class="sap-doc">Actions in the List Report</a></p>
+						</li>
+						<li class="li">
+							<p><a href="#/topic/8dcfe2e4555f49db8859cb6eb838692e.html" title="By default, the Related Apps button is disabled on object pages created with the object page template. If you want, you can enable this button, which allows you to provide a link to any of the semantic object's navigation targets." class="sap-doc">Enabling the Related Apps Button</a></p>
+						</li>
+					</ul><p></p>
+			</section><section>
+				<h3 class="title ">App-Specific Actions</h3>
+				<p>As an application developer, there are different ways in which you can configure
+					custom actions.</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Annotation-based actions</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Actions that require user confirmation, for example, those for
+									critical actions that can have severe consequences. The system
+									opens a dialog in which the user has to confirm the action.</p>
+							</li>
+							<li class="li">
+								<p>Actions that require additional user input, for example, an
+									approval comment. The system opens a dialog with one or more
+									entry elements in which the user enters the required data. The
+									system can prefill data, if applicable. </p>
+							</li>
+							<li class="li">
+								<p>Actions that require none of the above. The system triggers the
+									action. </p>
+							</li>
+						</ul>
+					</li>
+					<li class="li">
+						<p>Custom actions (via manifest extension)</p>
+						<p>Application developers can also configure custom actions by changing the manifest.json file. For more information, see <a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a></p>
+					</li>
+				</ul>
+			</section></section><section id="section_ukw_hvb_jmb"><h2 class="title ">Application-Specific Actions by Position on the
+				UI</h2><section>
+				<h3 class="title ">Global Actions</h3>
+				<p>Global actions are placed at the top of the page and refer to the whole page (for
+					example <span class="uinolabel">Display Log</span>). They can be configured either via
+					annotations (this is applicable for the object page only), or via manifest
+					entries (this is applicable for the list report and object page).</p>
+			</section></section><section id="section_nqn_zbm_ylb"><section>
+				<h3 class="title ">Actions in the Table Toolbar</h3>
+				<p>You can display actions in the toolbar to allow users to perform an action for
+					one or more lines in the table.</p>
+				<p>You can also configure inline actions. They are displayed in a column (specified in the annotation) in the individual line item. When the user
+					triggers the action, it affects only the individual line item.</p>
+			</section><section>
+				<h3 class="title ">Determining Actions</h3>
+				<p>Determining actions are placed in the footer of the app. These actions are also
+					called finalizing actions and are meant for those actions that are finalizing in
+					nature, that is, that apply for the whole page. You should not define actions
+					that are specific to a control or parts of the page as finalizing actions.</p>
+				<p>Example: <span class="ph uicontrol">Save</span> or <span class="ph uicontrol">Accept/Reject</span> in
+					an object page.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Determining actions are not appropriate for the list report, since the list
+						report holds several records and the finalizing actions should be applicable
+						to the whole page (and not just some selected records of the list report
+						table).</p>
+				<p></p></div></div>
+			</section></section><section id="section_ax2_h1m_ylb"><h2 class="title ">Context-Dependent and Context-Independent
+				Actions</h2><p>Both actions calling OData function imports
+					(<code>UI.DataFieldForAction</code>) and actions for external navigation
+					(<code>UI.DataFieldForIntentBasedNavigation</code>) can be either
+				context-independent or context-dependent. For context-dependent actions, users have
+				to select line items in a table. Only then are the buttons that visualize these
+				actions enabled. However, they are always visible. For context-independent actions,
+				users do not have to select line items in a table. Buttons visualizing
+				context-independent actions are always enabled.</p><section>
+				<h3 class="title ">Handling Within
+						<code>UI.DataFieldForIntentBasedNavigation</code>
+					Buttons</h3>
+			</section><p>When you configure navigation buttons, you have two options:</p><ul class="ul ">
+				<li class="li">
+					<p>you can configure the button so that the end user must explicitly select a
+						context (<code>RequiresContext=true</code>)</p>
+				</li>
+				<li class="li">
+					<p>you can configure the button so that the end user does not need to select a
+						context (<code>RequiresContext=false</code>), meaning the available
+						context is passed</p>
+				</li>
+			</ul><p><span class="emphasis">Context-Independent Actions for External
+				Navigation</span></p><p>The following coding sample shows the annotations for a
+				context -independent action for external navigation
+					(<code>UI.DataFieldForIntentBasedNavigation</code>)
+					(Property="<code>RequiresContext</code>" Bool="<code>false</code>"):</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForIntentBasedNavigation" &gt;
+            &lt;PropertyValue Property="Label" String="Navigation Tester with RequiresContext"/&gt;
+            &lt;PropertyValue Property="SemanticObject" String="Object"/&gt;
+            &lt;PropertyValue Property="Action" String="Action"/&gt;
+            &lt;PropertyValue Property="RequiresContext" Boolean="false"/&gt;
+       &lt;/Record&gt; </pre></div></section>
+				<p></p></div></div><p></p><p><span class="emphasis">Context-Dependent Actions for External
+					Navigation</span></p><p>The following coding sample shows the annotations
+				for a context-dependent action for external navigation
+					(<code>UI.DataFieldForIntentBasedNavigation</code>).</p><p>
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForIntentBasedNavigation" &gt;
+            &lt;PropertyValue Property="Label" String="Navigation Tester with RequiresContext"/&gt;
+            &lt;PropertyValue Property="SemanticObject" String="Object"/&gt;
+            &lt;PropertyValue Property="Action" String="Action"/&gt;
+            &lt;PropertyValue Property="RequiresContext" Boolean="true"/&gt;
+       &lt;/Record&gt; </pre></div></section>
+				<p></p></div></div>
+			<p></p><section>
+				<h3 class="title ">Handling Within <code>UI.DataFieldForAction</code>
+					Buttons</h3>
+				<p>In SAP Fiori elements for OData
+                            V2, you can choose to pass the context when the
+						<code>UI.DataFieldForAction</code> button is invoked.</p>
+				<p>In SAP Fiori elements for OData
+                            V4, it depends on the configuration of the <code>IsBound</code>
+					property. Context is only passed for actions with <code>IsBound=true</code>.</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Action Name="REUNION" IsBound="true"&gt; &lt;!-- Bound action having a parameter --&gt;
+   &lt;Parameter Name="_it" Type="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.ArtistsType" Nullable="false" /&gt;
+   &lt;ReturnType Type="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.ArtistsType" Nullable="false" /&gt;
+&lt;/Action&gt;</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<p><span class="emphasis">Grouping of Multiple Invocations of the Same Action via Multiple
+						Selections in the Table</span></p>
+				<p>Application developers can control the grouping of the multiple invocations of the action for each instance when an action is executed.</p>
+				<p>To do so, use the <code>UI.DataFieldForAction</code> annotation.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForAction"&gt;
+  &lt;PropertyValue Property="Label" String="My Action"/&gt;
+  &lt;PropertyValue Property="Action" String="STTA_SALES_ORDER_WD_20_SRV.STTA_SALES_ORDER_WD_20_SRV_Entities/C_STTA_SalesOrder_WD_20My_FunctionImport"/&gt;
+  &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+&lt;/Record&gt;
+</pre></div></section>
+				<p></p></div></div>
+				<p><code>InvocationGrouping</code> property denotes how multiple invocations of
+					the same action on multiple instances are grouped. This annotation is optional.
+					The value is <code>String enum</code>. These enumerations are
+						available:</p><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_cwb_tyy_ylb" class=" "><thead>
+							<tr><th colspan="1" rowspan="1">Value</th>
+							<th colspan="1" rowspan="1">Description</th>
+						</tr></thead><tbody><tr>
+							<td colspan="1" rowspan="1" valign="top">UI.OperationGroupingType/Isolated</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Describes error handling when an action cannot be executed on all
+									selected instances.</p>
+								<ul class="ul ">
+									<li class="li">
+										<p>The action is executed on all selected instances except
+											for cases in which it cannot be done.</p>
+									</li>
+									<li class="li">
+										<p>In case of multiple selection in table, it creates a new
+												<code>changeset</code> for each request in a
+											request payload.</p>
+									</li>
+								</ul>
+							</td>
+						</tr><tr>
+							<td colspan="1" rowspan="1" valign="top">UI.OperationGroupingType/ChangeSet</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Describes error handling when an action cannot be executed on all
+									selected instances.</p>
+								<ul class="ul ">
+									<li class="li">
+										<p>If an action cannot be executed on one of the selected
+											instances, the action is not executed on any of the
+											selected instances.</p>
+									</li>
+									<li class="li">
+										<p>In case of multiple selection in a table, it sends all
+											the requests with the same <code>changeset</code> in
+											a request payload.</p>
+									</li>
+								</ul>
+							</td>
+						</tr></tbody></table></div></div><p></p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">If you use context-free actions, you need to label them in a way that
+							makes it clear to the app user that the action is context-free.</li>
+						<li class="li">
+							<p>Actions with input parameter are only supported for context-dependent actions.</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+			</section></section><section id="section_egb_j2l_ylb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V2</h2></div><div class="fig"><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The overview page only supports micro actions, for example, actions
+				in the quick view cards that open when you click the right-hand side of the stack
+				card. For more information, see <a href="#/topic/c4bd35e657df4285bb6d4b2a6c51a5af.html" title="Quick view cards display detailed information about a single record, in greater depth than would be displayed in a table or list." class="sap-doc">Quick View Cards</a> and <a href="#/topic/02fb273ee1024fec914b11befe2b1887.html" title="You can assign custom actions to quick view cards that open in the object stream of the stack card. These custom actions are displayed as buttons in the card footer." class="sap-doc">Custom Actions</a>.</p></div></div><section>
+				<h3 class="title ">App-Specific Actions</h3>
+				<p>You can implement your own actions also by using extension points. </p>
+				<p> For the analytical list page, you can define actions in the chart toolbar. For
+					more information, see <a href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" title="Uses a smart chart that provides visual representation of analytical data." class="sap-doc">Chart-Only View</a> and
+						<a href="#/topic/c3de5c0b3c5043a4b683151dab526b01.html" title="Define custom actions by using the extensions in the app-descriptor file. You can also define these custom actions so that they appear on charts, tables, or header toolbars based on the filter property value (chart/table/global)." class="sap-doc">Defining Custom Actions</a>.</p>
+			</section><section>
+				<h3 class="title ">Actions Calling OData Function Imports</h3>
+				<p>Context-dependent function imports provide an <code>sap:action-for</code>
+					annotation defining the entity type for the required context.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;FunctionImport Name="C_STTA_SalesOrder_WD_20Setdisabledstatus"
+ReturnType="STTA_SALES_ORDER_WD_20_SRV.C_STTA_SalesOrder_WD_20Type"
+EntitySet="C_STTA_SalesOrder_WD_20" m:HttpMethod="POST" sap:action-for="STTA_SALES_ORDER_WD_20_SRV.C_STTA_SalesOrder_WD_20Type"
+sap:applicable-path="Setdisabledstatus_ac"&gt;</pre></div></section>
+				<p></p></div></div>
+				<p>Context-independent function imports do not provide an
+						<code>sap:action-for</code> annotation.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;FunctionImport Name="C_STTA_SalesOrder_WD_20Create_simple" 
+ReturnType="STTA_SALES_ORDER_WD_20_SRV.C_STTA_SalesOrder_WD_20Type" 
+EntitySet="C_STTA_SalesOrder_WD_20" m:HttpMethod="POST" /&gt;</pre></div></section>
+				<p></p></div></div>
+				<p>Context-independent actions calling OData function imports can be placed in the
+					table and smart chart toolbars of the list report and the object page as
+					determining actions in the list report or in the object page header.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>You can also call function imports with or without input parameters
+								using multi-selection in tables.</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Context-Independent Actions for External
+					Navigation</h3>
+				
+				
+			</section><section>
+				<h3 class="title ">Context-Dependent Actions for External Navigation</h3>
+				
+				
+			</section></div></section><section id="section_ntd_h2l_ylb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Annotation-Based Actions Requiring Parameters</h3>
+				<p><span class="emphasis">Prefilling Fields When Triggering an Action Which is Configured to Have Action Parameters</span></p>
+				<p>There are two options for supporting the prefilling of fields on the UI:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Default values defined by the application</p>
+					</li>
+					<li class="li">
+						<p>Default values coming from user default settings on the SAP Fiori launchpad
+								(FLP)</p>
+					</li>
+				</ul>
+				<p><span class="emphasis">Default Values Defined by the Application</span></p>
+				<p>The application can define <code>ParameterDefaultValue</code> annotations for action parameters. A
+						<code>ParameterDefaultValue</code> annotation contains either some path or a fixed string for describing the source value.
+					The path typically points to a value inside a table column (as in the example below), but could also point to values placed
+					outside the table:</p>
+				<div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SalesOrder.CreateWithSalesOrderType/SalesOrderType"&gt;
+   &lt;Annotation Term="UI.ParameterDefaultValue" Path="_it/SalesOrderType"/&gt;
+&lt;/Annotations&gt;
+&lt;Annotations Target="SalesOrder.CreateWithSalesOrderType/SalesOrganization"&gt;
+   &lt;Annotation Term="UI.ParameterDefaultValue" String="0001"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+				<p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-abap"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate sd.param.SalesOrderType with @(UI.ParameterDefaultValue: _it.SalesOrderType);
+annotate sd.param.SalesOrganization with @(UI.ParameterDefaultValue: '0001');</pre></div></section>
+				<p></p></div></div>
+				<p><span class="emphasis">Default Values Coming from User Default Settings on the SAP Fiori launchpad (FLP)</span></p>
+				<p>The other default currently considered are the values coming from the user default settings on the FLP.  The parameters in the action parameter dialog get prefilled with
+					the values set in user defaults on the FLP. The parameter in the
+					dialog gets the value of the user default settings parameter on the FLP with the same technical name. The <code>User Default
+						Parameters</code> to be configured appropriately in FLP:</p>
+				<p>User defaults configured as <code>UserDefault.&lt;parameterName&gt;</code>  are single-valued and hence its value will always
+					be considered for the action parameter with the same technical name.</p>
+				<p>User defaults configured as <code>UserDefault.extended.&lt;parameterName&gt;</code>  may result in multiple values. Since only
+					single values are supported, a value added in the additional parameters dialog will be considered only when the condition is set
+					as <span class="ph uicontrol">EQ</span> (equal to). Also, only one such condition is allowed.</p>
+				<p>If multiple conditions are found for the same property, then the values are ignored for the action parameter with the same
+					technical name.</p>
+				<div><div class="fig"><img src="loio24511af66c7e42038c988c5752310128_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Action Parameter Dialog with Default Values</span></div>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p><span class="emphasis">Defaulting with Values:</span></p>
+					<p>Hidden or read-only parameter fields are intended to not allow data input by the user. However, you can still pass values via
+							<code>parameterDefault</code>- annotation or user defaults on the FLP.</p>
+				<p></p></div></div>
+				<p><span class="emphasis">Evaluation Order:</span></p>
+				<p>When determining the default value for an action parameter X, <code>ParameterDefaultValue</code> - <code>wins</code> over
+					user default settings on the FLP. Therefore, the evaluation order is
+					as follows:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If there's a <code>ParameterDefaultValue</code> annotation for parameter X, it is evaluated.</p>
+					</li>
+					<li class="li">
+						<p>If there's a common source value (which could also be null), this value is used as a default and displayed in the action
+							parameter dialog.</p>
+					</li>
+					<li class="li">
+						<p>If there are different source values (which could only be the case in multi-select scenarios), no default value is
+							displayed in the action parameter dialog.</p>
+					</li>
+					<li class="li">
+						<p>If there's no <code>ParameterDefaultValue</code> annotation for parameter X, the user default settings on the SAP Fiori
+							launchpad are checked. If there's a corresponding value for parameter X here, then this value is used as a default and
+							displayed in the action parameter dialog.</p>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Enabling Custom Actions Defined via Annotations </h3>
+				<p>The enablement of operations (actions) can be controlled by annotations - the term  <code>Core.OperationAvailable</code>  can
+					be used for this. With a static setting to <code>true</code> or <code>false</code>, the operation is always enabled or
+					always disabled. Application developers should not add actions with <code>OperationAvailable=false</code> to the service
+					metadata.</p>
+				<p>In addition, static value <code>null</code> can be used to declare that the enablement cannot be defined on metadata level.
+					Instead, you must use the action advertisement to determine if an operation is enabled for a specific instance or not.
+					Alternatively, you can use the <code>Core.OperationAvailable</code> annotation dynamically by referring to another property
+					that controls the enablement of a specific operation. <code>OperationAvailable</code> supports both Boolean and path values.
+					The default Boolean value is <code>true</code>.</p>
+			</section><p><span class="emphasis"><code>OperationAvailable</code> with Boolean <code>false</code>: If you explicitly set to
+						<code>false</code>, the buttons are never rendered.</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.CreateWithSalesOrderType&gt;
+   &lt;Annotation Term="SAP__Core.OperationAvailable" Bool="false "/&gt;
+&lt;/Annotations&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate SAP__self.CreateWithSalesOrderType @(
+  Core.OperationAvailable : false 
+);
+</pre></div></section></div></section><p><span class="emphasis"><code>OperationAvailable</code> with <code>path</code>: If you set to <code>path</code>, then
+						<code>OperationAvailable</code> is <code>true</code>, which means the button is always enabled with no regard to
+					the action advertisement. If there is at least one context for which <code>OperationAvailable</code> path evaluates to
+						<code>true</code>, the button is enabled.</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.CreateWithSalesOrderType&gt;
+   &lt;Annotation Term="SAP__Core.OperationAvailable" path="Delivered"/&gt;
+&lt;/Annotations&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate SAP__self.CreateWithSalesOrderType @(
+  Core.OperationAvailable : Delivered
+);
+</pre></div></section></div></section><p>Note that <code>OperationAvailable</code> can have path-based values instead of static Boolean values. The path can
+				point to a field in the parent entity set. See the example below:</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.SalesOrderItems&gt;
+   &lt;Annotation Term="SAP__UI.CreateHidden" Path="_SalesOrder/Delivered"&gt;
+&lt;/Annotations&gt;
+&lt;EntityType Name="SalesOrderItemType"&gt;
+    ...
+    &lt;NavigationProperty Name="_SalesOrder" Type="SAP__self.SalesOrderType" Partner="_SalesOrderItem" /&gt;
+    ...
+&lt;EntityType Name="SalesOrderType"&gt;
+    ...
+    &lt;Property Name="Delivered" Type="Edm.Boolean" /&gt;
+    ...
+    &lt;NavigationProperty Name="_SalesOrderItem" Type="SAP__self.SalesOrderItemType" /&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate SAP__self.SalesOrderItems @(
+  UI.CreateHidden : _SalesOrder.Delivered
+);
+</pre></div></section></div></section><p>In the example above, the <span class="ph uicontrol">Create</span> button on the sales order item list is no longer visible for
+				delivered sales orders. The <code>Partner</code> property associates <code>_SalesOrder</code> as the alias for the parent
+				entity set of <code>_SalesOrderItem</code>, that is, to the <code>SalesOrder</code> entity set.</p><section>
+				<h3 class="title ">Static Actions</h3>
+				<p>Unlike bound actions, where a context must be passed, static actions do not need a user-selected context to be passed. But, in
+					contrast to unbound actions, some context is always passed to static actions, namely the header context of the collection for
+					which the static action is defined.</p>
+				<p>You define a static action via the <code>"Collection(...)"</code> in the <code>Type</code> property of the
+						<code>"_it"</code> parameter as shown below:</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Action Name="createActiveTravel" EntitySetPath="_it" IsBound="true"&gt;
+            &lt;Parameter Name="_it" Type="Collection(com.sap.gateway.srvd.dmo.ui_travel_processor_uuid.v0001.TravelType)"/&gt;
+            &lt;Parameter Name="travel_id" Type="Edm.String" Nullable="false" MaxLength="8"/&gt;
+            &lt;ReturnType Type="com.sap.gateway.srvd.dmo.ui_travel_processor_uuid.v0001.TravelType" Nullable="false"/&gt;
+       &lt;/Action&gt;</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+			</section><section>
+				<h3 class="title ">Action Parameters</h3>
+				<p>Bound and unbound actions can have associated parameters. The back end that defines the action also defines the parameters
+					associated with the action. Some of these actions might be marked as mandatory, which means that the action cannot be invoked
+					without supplying a value for the parameter.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Action parameters currently can have only single values.</p>
+				<p></p></div></div>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Action Name="CreateWithSalesOrderType" EntitySetPath="_it" IsBound="true"&gt;
+    &lt;Parameter Name="_it" Type="Collection(com.sap.gateway.srvd.c_salesordermanage_sd.v0001.SalesOrderManageType)" Nullable="false"/&gt; &lt;!-- This one is ignored --&gt;
+    &lt;Parameter Name="SalesOrderType" Type="Edm.String" Nullable="false" MaxLength="4"/&gt;
+    &lt;Parameter Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/&gt;
+    &lt;Parameter Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/&gt;
+    &lt;Parameter Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/&gt;
+    &lt;ReturnType Type="com.sap.gateway.srvd.c_salesordermanage_sd.v0001.SalesOrderManageType" Nullable="false"/&gt;
+&lt;/Action&gt;</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Bound actions will have <code>"_it"</code> as the first parameter.</p>
+				<p></p></div></div>
+				<p>More information about the parameter itself, such as the label for the parameter, or whether it is mandatory or not, comes via the
+					annotation for the action:</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.CreateWithSalesOrderType/SalesOrderType"&gt;
+    &lt;Annotation Term="SAP__common.Label" String="SalesOrder Type"/&gt;
+    &lt;Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/&gt;
+    &lt;Annotation Term="SAP__common.ValueListReferences"&gt;
+        &lt;Collection&gt;
+            &lt;String&gt;
+                ../../../../srvd_f4/sap/c_salesordertypevh_f1873/0001;ps='srvd-c_salesordermanage_sd-0001';va='com.sap.gateway.srvd.c_salesordermanage_sd.v0001.ae-c_salesordermanage.createwithsalesordertype.salesordertype'/$metadata
+            &lt;/String&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<p>When an action with parameters is invoked, an action parameter dialog opens up showing all the parameter fields. An exception is
+					the <i>New</i> action, where the action dialog only comes up if there are mandatory parameters.</p>
+				<div><div class="fig"><img class="minimize-small" src="loioe79706e8125140058961eec23d71d12b_LowRes.png" usemap="#"></div></div>
+				<p><span class="emphasis">Default Values for Action Parameters</span></p>
+				<p>Applications can ensure that the action parameter dialogs are filled with default values. Currently, there are two possible sources
+					for prefilling the parameter dialog:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Paths or fixed values defined via <code>ParameterDefaultValue</code> annotations (these are the default values defined
+							by the application)</p>
+					</li>
+					<li class="li">
+						<p>Values from the FLP user default settings (these are the default values defined by the user)</p>
+					</li>
+				</ul>
+				<p>- Default Values Defined by the Application -</p>
+				<p>Applications can define <code>ParameterDefaultValue</code> annotations for action parameters. A
+						<code>ParameterDefaultValue</code> annotation contains either a path, or a fixed string to describe the source value. The
+					path typically points to a value inside a table column (as in the example given below), but could also point to values placed
+					outside the table (like singletons).</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CDS Annotation for
+						<code>ParameterDefaultValue</code></p><section class="lang-cds"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate sd.param.SalesOrderType with @(UI.ParameterDefaultValue : _it.SalesOrderType);
+annotate sd.param.SalesOrganization with @(UI.ParameterDefaultValue : '0001');</pre></div></section><p></p></div></div>
+				<p></p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>OData Annotation for
+						<code>ParameterDefaultValue</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SalesOrder.CreateWithSalesOrderType/SalesOrderType"&gt;
+    &lt;Annotation Term="UI.ParameterDefaultValue" Path="_it/SalesOrderType"/&gt;
+&lt;/Annotations&gt;
+&lt;Annotations Target="SalesOrder.CreateWithSalesOrderType/SalesOrganization"&gt;
+    &lt;Annotation Term="UI.ParameterDefaultValue" String="0001"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+				<p></p>
+				<p>Result on the UI: When the user opens the action parameter dialog, the parameter fields are prefilled with the corresponding source
+					values based on the <code>ParameterDefaultValue</code> annotation.</p>
+				<p>In case of multi-selection scenarios (when the user has selected multiple table lines to execute a bound action), the parameter
+					value is only prefilled if all source values are the same.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The path inside a <code>ParameterDefaultValue</code> annotation should reference values that have already been loaded into
+						the table. If you want to reference values that are not loaded by default (for example if there is no corresponding table
+						column on the UI), you can use the <code>PresentationVariant</code> or the <code>RequestAtLeast</code> annotation to
+						ensure that the needed values are being requested as well.</p>
+				<p></p></div></div>
+				<p>- Default Values that are 'Late Properties' -</p>
+				<p>If you define a property whose value is to be used as the default for a parameter value, and this property is not in the current
+					binding, it is known as a 'Late Property'. This means that the OData binding has to read this property from the back end. In case
+					you have set up eTags, OData will recognize when the data in the back end has been updated since it was read in the current user
+					session. When this occurs, the system provides a warning message and leaves the default parameter empty. Depending on the action
+					implementation, the action might not be executed correctly.</p>
+				<p>- Default Values Coming From FLP User Default Settings -</p>
+				<p>The default value that is currently considered is the one from the FLP user default settings. The parameters in the action
+					parameter dialog get prefilled with the values set in the FLP user defaults. The parameter in the dialog gets the value of the FLP
+					user default settings parameter with the same technical name. The user default parameters must be configured appropriately in
+					FLP:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>User defaults configured as <code>UserDefault.&lt;parameterName&gt;</code> are single-valued, so the value will always
+							be considered for the action parameter with the same technical name.</p>
+						<div><div class="fig"><img src="loioe34341467f9147feb3bda718a89abc87_LowRes.png" usemap="#"></div></div>
+						<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loiob73e0378eb4c4698ad77cc8c4f981ce3_LowRes.png"></div></div></div>
+					</li>
+					<li class="li">
+						<p>User defaults configured as <code>UserDefault.extended.&lt;parameterName&gt;</code> may result in multiple values.
+							Since only single values are supported, a value added in the additional parameters dialog will be considered only when the
+							condition is set as ‘EQ’ (equal to). Note that only one such condition is allowed.</p>
+					</li>
+					<li class="li">
+						<p>If multiple conditions are found for the same property, then the values are ignored for the action parameter with the same
+							technical name.</p>
+						<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio1c51a286aae04cc7965140325901c5cc_LowRes.png"></div></div></div>
+					</li>
+				</ul>
+				<p>- Default Values Calculated in the Back End -</p>
+				<p>You can calculate default values for action parameters through a back-end function. As a result on the UI, when the user opens the
+					action parameter dialog, the parameter fields are prefilled with the returned values of the back-end function.</p>
+				<p>To achieve this, application developers must annotate the action with <code>Common.DefaultValuesFunction</code>.</p>
+				<p>A returned value of the function is taken into account only if there is not already a default coming from either the user
+					application preferences or the <code>UI. ParameterDefaultValue</code> annotation set on the corresponding action
+					parameter.</p>
+				<p>In case of multi-selection scenarios (when the user has selected multiple table lines to execute a bound action), the function is
+					called for each context. The parameter value is only prefilled if all returned values are the same.</p>
+				<p>When you define such functions, consider the following:</p><ul class="ul ">
+						<li class="li">
+							<p>Annotation on the action</p>
+							<p>For a custom action, annotate on the action level:</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="myService.CustomAction(myService.SalesOrderManage)"&gt;
+         &lt;Annotation Term="Common.DefaultValuesFunction" String=" myService.GetDefaultParamsForCustomAction " /&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+							<p></p></div></div>
+							<p>For a default create action, annotate at the entity level:</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target=" myService.EntityContainer/SalesOrderManage"&gt;
+         &lt;Annotation Term="Common.DefaultValuesFunction" String="GetDefaultParamsForSalesOrderCreate" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+							<p></p></div></div>
+						</li>
+						<li class="li">
+							<p>Declaration of the function</p>
+							<p>Function <code>GetDefaultParamsForSalesOrderCreate()</code> returns
+									<code>defaultParamsForSalesOrderCreate</code>. Note that the function returns a complex type that embeds all
+								or just a set of the underlying action parameters. The name and type of the action parameters have to match the name
+								and type returned by the function:</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">service myService {
+  type defaultParamsForSalesOrderCreate {
+     SalesOrderType: db.SalesOrderManage : SalesOrderType;
+     IncotermsLocation1: db.SalesOrderManage:IncotermsLocation1;
+      CustomerPaymentTerms: db.SalesOrderManage: CustomerPaymentTerms;
+      OverallSDProcessStatus: db.SalesOrderManage: OverallSDProcessStatus;
+      DescriptionFieldForOPACleanup: db.SalesOrderManage: DescriptionFieldForOPACleanup
+};
+</pre></div></section>
+							<p></p></div></div>
+						</li>
+						<li class="li">
+							<p>Code of the function</p>
+							<p>The function is implemented in the service in the same way that any action is built:</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">srv.on("GetDefaultParamsForCustomAction", "SalesOrderManage", async req =&gt; {
+        const tx = cds.transaction(req);
+        const salesOrderItem = await tx.run(SELECT.one.from(SalesOrderManage).where(req.query.SELECT.from.ref[0].where));
+        if (!salesOrderItem) throw new Error("Not found");
+        const overallSDProcessStatus = salesOrderItem.OverallSDProcessStatus;
+        var currentDateTime = getCurrentDateTime();
+
+        return {
+            OverallSDProcessStatus: overallSDProcessStatus,
+            SalesOrderType: "SE",
+            LastChangedDateTime: currentDateTime
+        };
+});
+</pre></div></section>
+							<p></p></div></div>
+							<p>In the sample code above, the default parameter values in the dialog (if no <code>UI.ParameterDefaultValue</code>
+								is used for the action) are:</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>the current <code>overallSDProcessStatus</code> value of the selected item</p>
+								</li>
+								<li class="li">
+									<p>a hardcoded <code>SalesOrderType</code></p>
+								</li>
+								<li class="li">
+									<p>the current date time</p>
+								</li>
+							</ul>
+							<p>If several items are selected and if the <code>overallSDProcessStatus</code> values are not all the same, this
+								parameter will be kept empty in the dialog.</p>
+						</li>
+					</ul><p></p>
+				<p>- Evaluation Order -</p>
+				<p>When determining the default value for an action parameter X, the <code>ParameterDefaultValue</code> takes precedence over the
+					FLP user default settings. So the evaluation order is as follows:</p>
+				<ol>
+					<li class="li">
+						<p>If there is a <code>ParameterDefaultValue</code> annotation for parameter X, it is evaluated.</p>
+						<ol>
+							<li class="li">
+								<p>If there is a common source value (which can also be null), this value is used as a default and displayed in the
+									action parameter dialog.</p>
+							</li>
+							<li class="li">
+								<p>If there are different source values (which can only occur in multi-selection scenarios), no default value is
+									displayed in the action parameter dialog.</p>
+							</li>
+						</ol>
+					</li>
+					<li class="li">
+						<p>If there is no <code>ParameterDefaultValue</code> annotation for parameter X, the FLP user default settings are
+							checked. If there is a corresponding value for parameter X there, then this value is used as a default and displayed in
+							the action parameter dialog.</p>
+					</li>
+				</ol>
+			</section><section>
+				<h3 class="title ">Grouping Actions as Menu Buttons</h3>
+				<p>Actions that have a similar business purpose can be grouped together and rendered in the form of menu buttons. Listing actions
+					(custom actions from the manifest and actions from annotations) in the form of menu buttons is currently possible for header
+					actions, table toolbar actions, and form actions. The footer action does not support menu buttons.</p>
+				<p>In the screenshot below, <span class="uinolabel">My Menu Button</span> has grouped three actions:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><span class="uinolabel">My First Action</span> and <span class="uinolabel">My Second Action</span> are actions from the manifest</p>
+					</li>
+					<li class="li">
+						<p><span class="uinolabel">Bound Action with params</span> is an action maintained via annotations</p>
+					</li>
+				</ul>
+				<div><div class="fig"><img src="loiod7ed70dd6d1d4ede94b9116b17b49691_LowRes.png" usemap="#"></div></div>
+				<p>If a <code>DataField</code> action is named as <code>com.c_salesordermanage_sd.BoundActionWithParams</code>, its
+					corresponding key is <code>DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams</code>. If the action name
+					contains brackets, as in
+						<code>DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams(com.c_salesordermanage_sd.SalesOrderManage)</code>,
+					the corresponding key is
+						<code>DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams::com.c_salesordermanage_sd.SalesOrderManage</code>.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>When all the menu items are disabled, the menu button as a whole is disabled.</p>
+						</li>
+						<li class="li">
+							<p>When all the menu items are hidden, the menu button as a whole is hidden.</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+				<p>Make the following settings in the manifest to group your desired actions under a menu button for header actions:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Grouping Header
+					Actions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage": {
+    "type": "Component",
+    "id": "SalesOrderManageObjectPage",
+    "name": "sap.fe.templates.ObjectPage",
+    "options": {
+        "settings": {
+           "content": {
+              "header": {
+                "actions": {
+                    "myFirstAction": {
+                        "press": "SalesOrder.custom.CustomActions.message",
+                        "text": "My First Action"
+                    },
+                    "mySecondAction": {
+                        "press": "SalesOrder.custom.CustomActions.message",
+                        "text": "My Second Action"
+                    },
+                    "MenuActions": {
+                        "text": "My Menu Button",
+                        "menu": [
+                            "myFirstAction",
+                            "mySecondAction",
+                            "DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+				<p>Make the following settings in the manifest to group your desired actions under a menu button for form actions:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Grouping Form
+					Actions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"options": {
+    "settings": {
+        "entitySet": "SalesOrderManage",
+        "variantManagement": "Page",
+        "initialLoad": true,
+        "controlConfiguration": {
+            "@com.sap.vocabularies.UI.v1.FieldGroup#OrderData": {
+                "actions": {
+                    "myFirstAction": {
+                        "press": "SalesOrder.custom.CustomActions.getCustomerName",
+                        "visible": true,
+                        "enabled": true,
+                        "text": "My First Action"
+                    },
+                    "mySecondAction": {
+                        "press": "SalesOrder.custom.CustomActions.message",
+                        "text": "My Second Action"
+                    },
+                    "MenuActions": {
+                        "text": "My Menu Button",
+                        "menu": [
+                           "myFirstAction",
+                           "mySecondAction",
+                           "DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams"
+                        ]
+                    }
+                }
+            }
+        } 
+    }
+}</pre></div></section><p></p></div></div>
+				<p>Make the following settings in the manifest to group your desired actions under a menu button for table toolbar actions:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Grouping Table
+					Actions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"options": {
+    "settings": {
+        "entitySet": "SalesOrderManage",
+        "variantManagement": "Page",
+        "initialLoad": true,
+        "controlConfiguration": {
+            "@com.sap.vocabularies.UI.v1.LineItem": {
+                "actions": {
+                    "myFirstAction": {
+                        "press": "SalesOrder.custom.CustomActions.getCustomerName",
+                        "visible": true,
+                        "enabled": true,
+                        "text": "My First Action"
+                    },
+                    "mySecondAction": {
+                        "press": "SalesOrder.custom.CustomActions.message",
+                        "text": "My Second Action"
+                    },
+                    "MenuActions": {
+                        "text": "My Menu Button",
+                        "menu": [
+                           "myFirstAction",
+                           "mySecondAction",
+                           "DataFieldForAction::com.c_salesordermanage_sd.BoundActionWithParams"
+                        ]
+                    }
+                }
+            }
+        }  
+    }
+}</pre></div></section><p></p></div></div>
+			</section><section>
+				<h3 class="title ">Overriding Annotation-Based Actions via the Manifest</h3>
+				<p>For certain properties, you can overwrite the annotation-based values via the manifest.</p>
+				<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+					</p><p>By doing so, the annotation-based logic is ignored for the specified action and does not consider any default behavior (like a
+						bound action only being enabled when an item in a table is selected).</p>
+				<p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Manifest Configuration for Adjusting an Annotation-Based
+					Action</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"controlConfiguration": {
+    "@com.sap.vocabularies.UI.v1.LineItem": {
+        "actions": {
+            "DataFieldForAction::com.c_salesordermanage_sd.CreateWithSalesOrderType": {
+                "enabled": "SalesOrder.custom.CustomActions.enabledIfTwoSelected"
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+				<p>Currently, the only behavior you can overwrite is the enablement through the property <code>enabled</code>. As shown in the
+					sample code above, you can combine this with a handler function. For more information, see <a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a>.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The functionality is currently only available as follows:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>for header actions on the object page</p>
+						</li>
+						<li class="li">
+							<p>for table actions, regardless of where you place them</p>
+						</li>
+						<li class="li">
+							<p>for footer actions on the object page</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+				<p>You need to add this function to <code>CustomActions.js</code>:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>CustomActions.js</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">enabledIfTwoSelected: function(oBindingContext, aSelectedContexts) {
+    return aSelectedContexts.length === 2;
+}</pre></div></section><p></p></div></div>
+				<p>To get the key you need to select the action applicable in your specific scenario, see <a href="#/topic/6ffb084e6d8247d1863005c14e8d5894.html" title="For the correct positioning of your custom elements, you need to identify an anchor element using the browser's developer tools." class="sap-doc">Finding the Right Key for the Anchor</a>.</p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/87130de10c8a44269c605b0322df6b1a.html" title="You can display a popover when a user triggers an action." class="sap-doc">Adding Confirmation Popovers for Actions</a></li>
+		<li><a href="#/topic/5b0b686a3b7a491a9ec654b4f1536fa8.html" title="Action control refers to the ability of applications to be able to configure the app-specific actions so that they are only enabled for certain instances of the object, but not others." class="sap-doc">Using Action Control for Context-Dependent Actions</a></li>
+		<li><a href="#/topic/f5a04c7ddd054a33a84e48525a51b5fb.html" title="You can create message texts for specific critical actions. They are displayed in the confirmation dialog box for the action." class="sap-doc">Adding Action-Specific Messages to Confirmation Dialog Boxes</a></li>
+		<li><a href="#/topic/a42427550b72436a8bdf53045b06effb.html" title="SAP Fiori elements control the navigation within an app (internal navigation) and the navigation to and from an app (external navigation)." class="sap-doc">Configuring Navigation</a></li>
+	</ul></section></div></section></div></body></html>

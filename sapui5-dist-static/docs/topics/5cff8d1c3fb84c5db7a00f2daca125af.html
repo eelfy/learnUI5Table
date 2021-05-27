@@ -1,0 +1,161 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5cff8d1c3fb84c5db7a00f2daca125af" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 14: Expression Binding</h1><div class="fig"><h1 class="topictitle1 title">Step 14: Expression Binding</h1><div class="shortdesc">Expression binding allows you to display a value on the screen that has been calculated
+		from values found in some model object. This way simple formatting or calculations can be
+		inserted directly into the data binding string. In this example, we will change the color of
+		the price depending on whether it is above or below some arbitrary threshold. The threshold
+		value is also stored in the JSON model. </div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loiob9fb758efb0a481cb88a412a0712972f_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Values formatted</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.14/preview" title="#/sample/sap.ui.core.tutorial.databinding.14/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.14/preview">Data Binding - Step 14</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/App.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+		&lt;/content&gt;
+	&lt;/Panel&gt;
+	&lt;Panel headerText="{i18n&gt;panel3HeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;List headerText="{i18n&gt;productListTitle}" items="{products&gt;/Products}"&gt;
+			&lt;items&gt;
+				&lt;ObjectListItem
+					press=".onItemSelected"
+					type="Active"
+					title="{products&gt;ProductName}"
+					number="{
+						parts: [
+							{path: 'products&gt;UnitPrice'},
+							{path: '/currencyCode'}
+						],
+						type: 'sap.ui.model.type.Currency',
+						formatOptions: { showMeasure: false }
+					}"
+					numberUnit="{/currencyCode}"
+<span class="emphasis">					numberState="{= ${products&gt;UnitPrice} &gt; ${/priceThreshold} ? 'Error' : 'Success' }"&gt;</span>
+					&lt;attributes&gt;
+						&lt;ObjectAttribute text="{products&gt;QuantityPerUnit}"/&gt;
+						&lt;ObjectAttribute title="{i18n&gt;stockValue}"
+							text="{
+								parts: [
+									{path: 'products&gt;UnitPrice'},
+									{path: 'products&gt;UnitsInStock'},
+									{path: '/currencyCode'}
+								],
+								formatter: '.formatStockValue'
+							}"/&gt;
+					&lt;/attributes&gt;
+				&lt;/ObjectListItem&gt;
+			&lt;/items&gt;
+		&lt;/List&gt;
+	&lt;/Panel&gt;
+...</pre></div></section>
+			<p>In the XML view, we add a new <code>numberState</code> property to the
+					<code>ObjectListItem</code> element within the <code>List</code>. The
+				value of this property is an expression that will be evaluated for each item.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView",
+	"sap/ui/model/resource/ResourceModel"
+], function (JSONModel, XMLView, ResourceModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+
+		var oProductModel = new JSONModel();
+		oProductModel.loadData("./model/Products.json");
+		sap.ui.getCore().setModel(oProductModel, "products");
+
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true,
+			address: {
+				street: "Dietmar-Hopp-Allee 16",
+				city: "Walldorf",
+				zip: "69190",
+				country: "Germany"
+			},
+			salesAmount: 12345.6789,
+<span class="emphasis">			priceThreshold: 20,</span>
+			currencyCode: "EUR"
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		var oResourceBundle = new ResourceModel({
+			bundleName: "sap.ui.demo.db.i18n.i18n",
+			supportedLocales: ["", "de"],
+			fallbackLocale: ""
+		});
+
+		sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+		// Display the XML view called "App"
+		var oView = new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		});
+
+		// Register the view with the message manager
+		sap.ui.getCore().getMessageManager().registerObject(oView, true);
+
+		// Insert the view into the DOM
+		oView.placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>We add a new property called <code>priceThreshold</code> against which each
+				invoice value will be checked.</p>
+			<p> As a result of binding an expression to the <code>numberState</code> property, the error
+				status (color) of the price field will change depending on the invoice value.</p>
+			<p>Look at the following two expressions:</p><ul class="ul ">
+					<li class="li">
+						<p><code>numberState="{= ${products&gt;UnitPrice} &gt; ${/priceThreshold} ? 'Error' :
+								'Success' }"</code></p>
+					</li>
+					<li class="li">
+						<p><code>numberState="{= ${products&gt;UnitPrice} &lt;= ${/priceThreshold} ? 'Success' :
+								'Error' }"</code></p>
+					</li>
+				</ul> Can you see why one of these expressions will work, and the other will not? <p></p>
+			<p>Logically, both expressions are identical; yet the first one works, and the second
+				does not: it produces only an empty screen and an "Invalid XML" message in the
+				browser's console… Hmmm, what's going on here?</p>
+			<p>In order to understand why this situation occurs, you must understand how XML files are
+				parsed.</p>
+			<p>When an XML file is parsed, certain characters have a special (that is, high
+				priority) meaning to the XML parser. When such characters are encountered, they are
+					<span class="emphasis">always</span> interpreted to be part of the XML definition itself
+				and not part of any other content that might exist within the XML document.</p>
+			<p>As soon as the XML parser encounters one of these high-priority characters (in this
+				case, a less-than (<code>&lt;</code>) character), it will always be interpreted
+				as the start of a new XML tag – irrespective of any other meaning that character
+				might have within the context of the expression. This is known as a <span class="emphasis">syntax
+					collision</span>. </p>
+			<p>In this case, the collision occurs between the syntax of XML and the syntax of the
+				JavaScript-like expression language used by SAPUI5.</p>
+			<p>Therefore, this statement fails because the less-than character is interpreted as the start of
+				an XML tag: <code>numberState="{= ${products&gt;UnitPrice} &lt;=
+					${/priceThreshold} ? 'Success' : 'Error' }"</code></p>
+			<p>This particular problem can be avoided in one of two ways:</p><ul class="ul ">
+					<li class="li">
+						<p>Reverse the logic of the condition (use "greater than or equal to"
+							instead of "less than")</p>
+					</li>
+					<li class="li">
+						<p> Use the escaped value for the less-than character: <code>numberState="{=
+								${products&gt;UnitPrice} &amp;lt;= ${/priceThreshold} ? 'Success' :
+								'Error' }"</code>
+						</p>
+					</li>
+				</ul>Since the use of an escaped character is not so easy to read, the preferred
+				approach is to reverse the logic of the condition and use a greater-than character
+				instead.<p></p>
+			<p>The ampersand (<code>&</code>) character also has a high priority meaning to the XML parser. This character will always be interpreted to mean
+				"The start of an escaped character". So if you wish to use the Boolean <code>AND</code> operator (<code>&&</code>) in a
+				condition, you must escape both ampersand characters (<code>&amp;amp;&amp;amp;</code>).</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/6c7c5c266b534e7ea9a28f861dc515f5">Step 13: Element Binding</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/284a036c8ff943238fb65bf5a2676fb7">Step 15: Aggregation Binding Using a Factory Function</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/daf6852a04b44d118963968a1239d2c0.html" title="Expression binding is an enhancement of the SAPUI5 binding syntax, which allows for providing expressions instead of custom formatter functions." class="sap-doc">Expression Binding</a></li>
+	</ul></section></div></section></div></body></html>

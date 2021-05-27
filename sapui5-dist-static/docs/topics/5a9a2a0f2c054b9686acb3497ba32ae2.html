@@ -1,0 +1,63 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5a9a2a0f2c054b9686acb3497ba32ae2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Custom Messages</h1><div class="fig"><h1 class="topictitle1 title">Adding Custom Messages</h1><div class="shortdesc">You can use the securedExecution method from the API for developers
+		of template extensions to add and display custom messages.</div><p>This concept for message handling is based on the SAPUI5 MessageManager. For more
+				information, see the API Reference for <a href="#/api/sap.ui.core.message.MessageManager" title="#/api/sap.ui.core.message.MessageManager" class="sap-doc" alt="#/api/sap.ui.core.message.MessageManager">MessageManager</a>.</p><p>When a busy session starts, all transient messages that are still in the MessageManager
+			are removed automatically since the system assumes that they belong to previous user
+			interaction. </p><p>When the busy session ends, all transient messages that have been collected by the
+			MessageManager are automatically displayed to the user in a well-defined way, based on
+			the severity of the message. This applies to (transient) messages that have been pushed
+			into the MessageManager automatically (for example, because they come from the OData
+			model). This also applies to transient messages that are pushed to the MessageManager
+			explicitly by way of application coding. See the sample coding below for more
+			details:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">onCustomButtonPressed: function(oEvent){
+  var oSource = oEvent.getSource();
+  var oModel = oSource.getModel();
+  var sBindingPath = ...; // binding path to retrieve some information
+  var fnFunction = function(){
+    return new Promise(function(fnResolve, fnReject){
+      oModel.read(sBindingPath, {
+        success: function(oResponse){
+          var oMessage = new sap.ui.core.message.Message({
+            message: "We have received the following response: " + oResponse,
+            persistent: true, // make message transient
+            type: sap.ui.core.MessageType.Success
+          });
+          var oMessageManager = sap.ui.getCore().getMessageManager();
+          oMessageManager.addMessages(oMessage);
+          fnResolve();
+        },
+        error: fnReject
+    });  
+  };
+  var mParameters = {
+        "sActionLabel":  oEvent.getSource().getText() // or "Your custom text" 
+   };
+  this.extensionAPI.securedExecution(fnFunction, mParameters);
+} </pre></div></section>
+		<p></p></div></div><p>You can use this option for sending messages without performing an asynchronous
+			operation. If you do, the busy session is stopped immediately after the start. The only
+			visible consequence of the busy session is the display of all transient messages that
+			have been pushed to the MessageManager within this session.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The sample code above shows that a message is marked as transient, by setting the
+			attribute <code>persistent</code> to <code>true</code>. This attribute describes
+			the lifetime of this message from the perspective of the SAPUI5 MessageManager. The
+			lifecycle of transient messages is not relevant to the MessageManager. This means that
+			they are persisted until another agent deletes them from the MessageManager. The SAP
+			Fiori elements framework triggers the deletions, which effectively limits the lifetime
+			of these messages.</p><p>The lifecycle of messages with the attribute
+					<code>persistent</code> : <code>false</code> is controlled by the
+				MessageManager. This kind of message is automatically removed when the entity this
+				message has been bound to is reloaded from the backend.</p><p>The
+					<code>sActionLabel</code> parameter is used to show a custom title for the
+				message popup which is displayed if multiple messages come from the backend. The
+				default title is<span class="uinolabel"> Messages</span>. For a single transient info
+					message,<code> sActionLabel</code> has no effect, since a message toast is
+				shown.</p><p></p></div></div><p>For more information on the <code>securedExecution</code> method, see <a href="#/topic/6a39150ad3e548a8b5304d32d560790a.html" title="The API for developers of extensions for SAP Fiori elements provides the securedExecution method that can be used for various purposes." class="sap-doc">Using the SecuredExecution Method</a> and the API Reference for <a href="#/api/sap.suite.ui.generic.template.ListReport.extensionAPI.ExtensionAPI/methods/securedExecution" title="#/api/sap.suite.ui.generic.template.ListReport.extensionAPI.ExtensionAPI/methods/securedExecution" class="sap-doc" alt="#/api/sap.suite.ui.generic.template.ListReport.extensionAPI.ExtensionAPI/methods/securedExecution">securedExecution</a>.</p><p>For general information on messages, see <a href="#/topic/239b1922758645e7b451e01ded7f56bc.html" title="The system generates messages in response to what users do in the SAP system. A message presents information, an instruction, or a warning to users in a given situation." class="sap-doc">Using Messages</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

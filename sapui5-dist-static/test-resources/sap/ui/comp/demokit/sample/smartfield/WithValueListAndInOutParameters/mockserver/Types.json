@@ -1,0 +1,10 @@
+[{
+	"__metadata": {
+		"id": "smartfield.SmartField/Types('1001')",
+		"uri": "smartfield.SmartField/Types('1001')",
+		"type": "ZEPM_C_SALESORDERITEMQUERYResult"
+	},
+	"ID": "1001",
+  	"InKey": "Walldorf",
+  	"InKeyFixedValues": "Berlin"
+}]

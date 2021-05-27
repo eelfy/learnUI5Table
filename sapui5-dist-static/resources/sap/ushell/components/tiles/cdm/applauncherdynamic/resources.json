@@ -1,0 +1,167 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/Component.js",
+			"size": 4529,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/UIComponent.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/Component-h2-preload.js",
+			"size": 3505,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/merge.js",
+				"sap/m/GenericTile.js",
+				"sap/m/NumericContent.js",
+				"sap/m/TileContent.js",
+				"sap/m/library.js",
+				"sap/ui/core/UIComponent.js",
+				"sap/ui/core/format/NumberFormat.js",
+				"sap/ui/core/library.js",
+				"sap/ui/core/mvc/Controller.js",
+				"sap/ui/model/json/JSONModel.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/tiles/utils.js",
+				"sap/ushell/library.js",
+				"sap/ushell/services/AppType.js",
+				"sap/ushell/utils/DynamicTileRequest.js",
+				"sap/ushell/utils/WindowUtils.js"
+			],
+			"included": [
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/Component.js",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/manifest.json",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.controller.js",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.view.js"
+			]
+		},
+		{
+			"name": "Component-h2-preload.js.map",
+			"size": 1916,
+			"isDebug": true
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/Component-preload.js",
+			"size": 12085,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/merge.js",
+				"sap/m/GenericTile.js",
+				"sap/m/NumericContent.js",
+				"sap/m/TileContent.js",
+				"sap/m/library.js",
+				"sap/ui/core/UIComponent.js",
+				"sap/ui/core/format/NumberFormat.js",
+				"sap/ui/core/library.js",
+				"sap/ui/core/mvc/Controller.js",
+				"sap/ui/model/json/JSONModel.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/tiles/utils.js",
+				"sap/ushell/library.js",
+				"sap/ushell/services/AppType.js",
+				"sap/ushell/utils/DynamicTileRequest.js",
+				"sap/ushell/utils/WindowUtils.js"
+			],
+			"included": [
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/Component.js",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.controller.js",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.view.js",
+				"sap/ushell/components/tiles/cdm/applauncherdynamic/manifest.json"
+			]
+		},
+		{
+			"name": "Component-preload.js.map",
+			"size": 12480,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/Component.js",
+			"size": 1519,
+			"required": [
+				"sap/ui/core/UIComponent.js",
+				"sap/ui/core/library.js"
+			]
+		},
+		{
+			"name": "DynamicTile-dbg.controller.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.controller.js",
+			"size": 22369,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/merge.js",
+				"sap/m/library.js",
+				"sap/ui/core/format/NumberFormat.js",
+				"sap/ui/core/mvc/Controller.js",
+				"sap/ui/model/json/JSONModel.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/tiles/utils.js",
+				"sap/ushell/library.js",
+				"sap/ushell/services/AppType.js",
+				"sap/ushell/utils/DynamicTileRequest.js",
+				"sap/ushell/utils/WindowUtils.js"
+			]
+		},
+		{
+			"name": "DynamicTile-dbg.view.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.view.js",
+			"size": 3143,
+			"isDebug": true,
+			"required": [
+				"sap/m/GenericTile.js",
+				"sap/m/NumericContent.js",
+				"sap/m/TileContent.js",
+				"sap/m/library.js"
+			]
+		},
+		{
+			"name": "DynamicTile.controller.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.controller.js",
+			"size": 7889,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/merge.js",
+				"sap/m/library.js",
+				"sap/ui/core/format/NumberFormat.js",
+				"sap/ui/core/mvc/Controller.js",
+				"sap/ui/model/json/JSONModel.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/components/tiles/utils.js",
+				"sap/ushell/library.js",
+				"sap/ushell/services/AppType.js",
+				"sap/ushell/utils/DynamicTileRequest.js",
+				"sap/ushell/utils/WindowUtils.js"
+			]
+		},
+		{
+			"name": "DynamicTile.view.js",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/DynamicTile.view.js",
+			"size": 1428,
+			"required": [
+				"sap/m/GenericTile.js",
+				"sap/m/NumericContent.js",
+				"sap/m/TileContent.js",
+				"sap/m/library.js"
+			]
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/components/tiles/cdm/applauncherdynamic/manifest.json",
+			"size": 1438
+		},
+		{
+			"name": "resources.json",
+			"size": 3143
+		}
+	]
+}

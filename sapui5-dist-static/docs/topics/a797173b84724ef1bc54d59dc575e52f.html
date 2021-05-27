@@ -1,0 +1,47 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa797173b84724ef1bc54d59dc575e52f" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding a Rating Indicator to a
+		Table</h1><div class="fig"><h1 class="topictitle1 title">Adding a Rating Indicator to a
+		Table</h1><div class="shortdesc">You can add a read-only rating indicator to a table.</div><section id="section_vqx_4s1_xlb">
+			<p>The rating indicator allows you to visually represent the value of a field from the
+				back-end system with the corresponding number of stars (configurable). This field
+				can indicate a rating or classification for a specific object or item.</p>
+			<p>Decimal values are rounded up or down accordingly. If a value falls between x.25 and
+				x.74, a half star is displayed.</p>
+			<div><div class="fig"><img src="loiof83c4d3d8765428aa7afdf6a7e19f55e_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Rating Indicator in Table</span></div>
+		</section><section id="section_dbl_sw1_xlb">
+			<h2 class="title ">Code Samples (OData Annotations)</h2>
+			<p>Use the following annotations to enable the rating indicator and define the maximum
+				number of stars:</p>
+			<p>
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+              &lt;Annotation Term="UI.DataPoint" Qualifier="Rating"&gt;
+                            &lt;Record&gt;
+                                          &lt;PropertyValue Property="Value" Path="to_StockAvailability/StockAvailability" /&gt;
+                                          &lt;PropertyValue Property="TargetValue" Decimal="4" /&gt;
+                                          &lt;PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating" /&gt;
+                            &lt;/Record&gt;
+              &lt;/Annotation&gt;
+              &lt;Annotation Term="UI.LineItem"&gt;
+                            &lt;Collection&gt;
+                                          &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+                                                         &lt;PropertyValue Property="Label" String="Rating" /&gt;
+                                                         &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Rating" /&gt;
+                                          &lt;/Record&gt;
+                                          …
+                            &lt;/Collection&gt;
+                            …
+              &lt;/Annotation&gt;
+              …
+&lt;/Annotations&gt;
+</pre></div></section>
+				<p></p></div></div>
+			<p></p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The <code>TargetValue</code> property defines the maximum number of stars. In
+					this case, it is 4.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/demo/bookmark/Component-h2-preload.js",
+"sourceroot":".",
+"sources":["Component-dbg.js","manifest.json"],
+"names":[],
+"mappings":";;;;;;AAKA,yDACA,8CAGA,oEAAqE,CACjE,SAAU,CACN,WAAY,MAChB,CACJ;;;;;;;;;;;;;;",
+"x_com_sap_openui5_sections":[129,431,475,1503]
+}

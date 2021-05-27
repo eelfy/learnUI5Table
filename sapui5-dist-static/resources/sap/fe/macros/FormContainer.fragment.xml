@@ -1,0 +1,128 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:dt="sap.ui.dt"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FORM: 'sap/fe/macros/form/FormHelper'
+	}"
+>
+	<f:FormContainer
+		unittest:id="formC"
+		dt:designtime="sap/fe/macros/FormContainer.designtime"
+		id="{= ${this>id} || undefined}"
+		title="{this>title}"
+		binding="{= FORM.generateBindingExpression(${this>navigationPath},${entitySet>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+		visible="{= ${this>visibilityPath} ? ('{= !${' + ${this>visibilityPath} + '} }') : true }"
+		macrodata:navigationPath="{this>navigationPath}"
+	>
+		<f:dependents>
+			<!-- Create the value help dialogs for fields inside form container -->
+			<template:repeat list="{path:'dataFieldCollection>'}" var="dataField">
+				<template:with path="dataField>annotationPath" var="dataField">
+				<!-- <template:if test="{= ${dataField>$Type} !== 'com.sap.vocabularies.UI.v1.DataFieldForAction' &amp;&amp; !${formElements>Target}}"> -->
+					<template:if test="{this>id}">
+						<macro:ValueHelp
+							idPrefix="{= ID.generate([${this>id}, 'FieldValueHelp']) }"
+							property="{dataField>Value}"
+							requestGroupId="{this>valueHelpRequestGroupId}"
+						/>
+					</template:if>
+				<!-- </template:if> -->
+				</template:with>
+			</template:repeat>
+		</f:dependents>
+		<f:formElements>
+			<template:with path="dataFieldCollection>" var="formElements">
+				<template:if test="{= ${formElements>0/annotationPath}.indexOf('com.sap.vocabularies.UI.v1.DataPoint') > -1 }">
+					<template:then>
+						<template:with path="formElements>0/annotationPath" var="dataPoint">
+							<f:FormElement
+								id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${dataPoint>}]) : undefined}"
+								label="{dataPoint>Title@@MODEL.value}"
+							>
+								<f:fields>
+									<internalMacro:Field
+										idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${dataPoint>}]) : '' }"
+										vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : ''}"
+										entitySet="{entitySet>}"
+										dataField="{dataPoint>}"
+										editMode="{= ${this>displayMode} === 'true' ? 'Display' : undefined}"
+										onChange="{this>onChange}"
+									>
+										<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" />
+									</internalMacro:Field>
+								</f:fields>
+							</f:FormElement>
+						</template:with>
+					</template:then>
+					<template:elseif test="{= ${formElements>0/annotationPath}.indexOf('com.sap.vocabularies.Communication.v1.Contact') > -1 }">
+						<template:with path="formElements>0/annotationPath" var="contact">
+							<f:FormElement>
+								<f:label>
+									<Label text="{contact>fn/$Path@com.sap.vocabularies.Common.v1.Label}">
+										<layoutData>
+											<f:ColumnElementData cellsLarge="12" />
+										</layoutData>
+									</Label>
+								</f:label>
+								<f:fields>
+									<macro:Contact contact="{contact>}" visible="true" />
+								</f:fields>
+							</f:FormElement>
+						</template:with>
+					</template:elseif>
+					<template:else>
+						<template:repeat list="{path: 'formElements>'}" var="dataField">
+							<template:if test="{= ${dataField>type} === 'Annotation'}">
+							<template:then>
+								<template:with path="dataField>annotationPath" var="annotationDataField">
+									<f:FormElement
+											id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>}]) : undefined }"
+											label="{annotationDataField>@@MODEL.label}"
+											visible="{annotationDataField>@@COMMON.getHiddenPathExpression}"
+										>
+										<f:fields>
+											<internalMacro:Field
+													idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>}]) : '' }"
+													vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : '' }"
+													entitySet="{entitySet>}"
+													dataField="{annotationDataField>}"
+													onChange="{this>onChange}"
+												>
+												<macro:formatOptions
+														textLinesDisplay="{dataField>formatOptions/textLinesDisplay}"
+														textLinesEdit="{dataField>formatOptions/textLinesEdit}"
+														textAlignMode="Form"
+														showEmptyIndicator="true"
+													/>
+											</internalMacro:Field>
+										</f:fields>
+									</f:FormElement>
+								</template:with>
+							</template:then>
+							<template:elseif test="{= ${dataField>type} === 'Default'}">
+								<f:FormElement label="{dataField>label}" visible="{dataField>visible}">
+									<f:fields>
+										<template:with path="dataField>" var="formElement">
+										<core:Fragment fragmentName="sap.fe.macros.fpm.CustomFormElement" type="XML" />
+										</template:with>
+									</f:fields>
+								</f:FormElement>
+							</template:elseif>
+							</template:if>
+						</template:repeat>
+					</template:else>
+				</template:if>
+			</template:with>
+		</f:formElements>
+	</f:FormContainer>
+</core:FragmentDefinition>

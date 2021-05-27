@@ -1,0 +1,43 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:codeeditor="sap.ui.codeeditor"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:inputhelp="sap.ushell.renderers.fiori2.search.inputhelp"
+    controllerName="sap.ushell.shells.demo.searchInputhelp.Main">
+    <layout:VerticalLayout width="inherit">
+        <HBox alignItems="Center" wrap="Wrap">
+            <Label class="sapUiSmallMarginEnd" design="Bold" labelFor="selectEntitySet" text="Select Entity Set" />
+            <Select
+                id="selectEntitySet"
+                class="sapUiSmallMarginEnd"
+                change="onChangeType"
+                items="{ui>/entitySet}"
+                selectedKey="{ui>/selectedEntitySet}">
+                <core:ListItem text="{ui>name}" key="{ui>name}" />
+            </Select>
+            <Label class="sapUiSmallMarginEnd" design="Bold" labelFor="selectInstance" text="Select Instance" />
+            <Select class="sapUiSmallMarginEnd" id="selectInstance" change="onChangeInstance" selectedKey="{ui>/selectedInstance}">
+                <!-- aggregation items is bound in controller  -->
+            </Select>
+            <Label class="sapUiSmallMarginEnd" design="Bold" labelFor="selectInstance" text="Enterprise Search Input Help" />
+            <inputhelp:SearchInputHelp
+                id="searchInputHelp"
+                class="sapUiSmallMarginEnd"
+                width="300px"
+                change="onChangeSearchInputHelp"
+                dataSource="CS9002~Z_EPM_BPA_DEMO~"
+                displayAttribute="BP_ID" />
+        </HBox>
+        <Panel
+            class="sapUiResponsiveMargin"
+            expandable="false"
+            headerText="Source Code after Templating"
+            visible="{ui>/bCodeVisible}"
+            width="inherit">
+            <codeeditor:CodeEditor editable="false" height="500px" type="xml" value="{ui>/sCode}" />
+        </Panel>
+        <layout:HorizontalLayout id="detailBox" />
+    </layout:VerticalLayout>
+</mvc:View>

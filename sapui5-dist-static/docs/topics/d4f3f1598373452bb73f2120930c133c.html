@@ -1,0 +1,272 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod4f3f1598373452bb73f2120930c133c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">sap.ui.richtexteditor</h1><div class="fig"><h1 class="topictitle1 title">sap.ui.richtexteditor</h1><div class="shortdesc">The sap.ui.richtexteditor offers functionality for text editing - like, for example,
+		bullets, indentation, fonts, and coloring.   </div><section id="section_lld_djj_wz"><h2 class="title ">Overview</h2><p>The <code>RichTextEditor</code>
+				uses an open-source library called TinyMCE. Beside the native toolbar, it can also
+				use a toolbar built with sap.m controls.</p><section>
+				<h3 class="title ">Preamble</h3>
+				<p>The <code>RichTextEditor</code> uses a third-party component and therefore some
+					additional restrictions apply for its proper usage and support:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If you use API calls to the native API of TinyMCE, we
+								<span class="emphasis">cannot</span> guarantee backwards compatibility after
+							an upgrade of the TinyMCE library.</p>
+					</li>
+					<li class="li">
+						<p>As of version 1.60, the native editor type is TinyMCE4. Keep in mind that TinyMCE3 is no
+							longer supported and cannot be used. With version 1.79 we have updated
+							the TinyMCE library with version 4.9.10, in order to be in sync with the
+							latest fixes and updates.</p>
+					</li>
+					<li class="li">
+						<p>As of version 1.86, you can use TinyMCE version 5 with the
+								<code>RichTextEditor</code>, by setting the following property:
+								<code>editorType</code>:
+								<code>sap.ui.richtexteditor.RichTextEditor.EDITORTYPE_TINYMCE5</code>.
+							For more information about the TinyMCE version 5, see <a href="https://www.tiny.cloud/docs/release-notes/release-notes50/" title="https://www.tiny.cloud/docs/release-notes/release-notes50/" class="external-link" target="_blank" rel="noopener">https://www.tiny.cloud/docs/release-notes/release-notes50/</a>.</p>
+							<p>If you are using the native API and want to trnasfer to version 5, follow the TinyMCE
+							migration guide: <a href="https://www.tiny.cloud/docs/migration-from-4x/" title="https://www.tiny.cloud/docs/migration-from-4x/" class="external-link" target="_blank" rel="noopener">https://www.tiny.cloud/docs/migration-from-4x/</a></p>
+								
+							
+					</li>
+					<li class="li">
+						<p>Accessibility features that the wrapper control provides, like
+							high-contrast themes and keyboard handling, are not fully available for
+							the native toolbar.</p>
+					</li>
+					<li class="li">
+						<p>The third-party component TinyMCE does not fully support the High Contrast themes. The
+							control, which internally uses TinyMCE, is thus also not compliant to
+							this product standard. Applications, which embed the
+								<code>RichTextEditor</code> control and use the high-contrast
+							theme, will not have a full High Contrast support. Certain buttons,
+							menus etc. are available in the correct theme, but many elements are
+							still showing up with a normal, noncontrast style.</p>
+					</li>
+					<li class="li">
+						<p>The <code>RichTextEditor</code> uses a third-party component, which might in some cases
+							not be completely compatible with the way UI5's (re-)rendering mechanism
+							works. <span class="emphasis">If you keep hidden instances of the control (instances
+								that are not visible in the DOM), you might run into problems with
+								some browser versions</span>. In this case, please make sure
+							that you destroy the <code>RichTextEditor</code> instance instead of
+							hiding it, and create a new one when you show it again.</p>
+					</li>
+					<li class="li">
+						<p>Known cases that might cause Content Security Policy relevant issues:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>If you are using one of the following plugins:
+										<code>compat3x</code>, <code>linkchecker</code>,
+										<code>preview</code>.</p>
+							</li>
+							<li class="li">
+								<p>If you are using the <code>tinymce.ui.Iframe</code>
+									widget.</p>
+							</li>
+						</ul>
+					</li>
+					<li class="li">
+						<p>If you want to use the custom toolbar, you need to instantiate the
+								<code>RichTextEditor</code> in the application’s controller.
+							This way the controller can check and wait for the
+								<code>sap.m</code> library to be loaded and then init the
+							controls. RichTextEditor can be embedded in an XML view, but as the XML
+							view adds an additional layer, this may lead to problems while loading
+							the custom toolbar. The sap.m library cannot be required from TinyMCE.
+							This means that <code>sap.m</code> may not be available in time for
+							the rendering of the custom toolbar.</p>
+						<p>See <a href="#/topic/363cd16eba1f45babe3f661f321a7820.html" title="SAPUI5 provides a set of JavaScript and CSS libraries, which can be combined in an application using the combinations that are supported." class="sap-doc">Supported Library Combinations</a>.</p>
+						<p>Using the native toolbar in an XML view is still possible.</p>
+					</li>
+					<li class="li">If your use case requires it and you have enabled the mobile theme, the custom toolbar
+						cannot be used and the TinyMCE native toolbar and layout are loaded. For
+						more information, see the Native TinyMCE Mobile Support section below.</li>
+					<li class="li">The <code>RichTextEditor</code> is not a form control and if is used in forms will
+						result in accessibility and responsiveness issues, and this is why it should
+						be avoided. Alternately you can add the <code>RichTextEditor</code>
+						underneath other form controls and link it to a title via the <a href="#/api/sap.ui.richtexteditor.RichTextEditor%23associations" title="#/api/sap.ui.richtexteditor.RichTextEditor%23associations" class="sap-doc" alt="#/api/sap.ui.richtexteditor.RichTextEditor%23associations"><code>ariaLabelledBy</code></a>
+						association.</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Guidelines</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>Do not instantiate the <code>RichTextEditor</code> from a hidden
+							container (for example a <code>div</code> with
+								<code>visibility="hidden"&gt;</code>).</p>
+					</li>
+					<li class="li">
+						<p> Make sure that you destroy the <code>RichTextEditor</code> instance
+							instead of hiding it, and create a new one when you show it again.</p>
+					</li>
+					<li class="li">
+						<p>The <code>RichTextEditor</code> has to be used only for desktop
+							scenarios.</p>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Custom <code>sap.m.Toolbar</code></h3>
+				<p>To replace the native toolbar, set the following properties:</p><ul class="ul ">
+						<li class="li">
+							<p><code>customToolbar=true</code></p>
+						</li>
+						<li class="li">
+							<p><code>editorType = tinyMCE4</code></p>
+						</li>
+						<li class="li">
+							<p>If you want to use the custom toolbar, you need to instantiate the
+									<code>RichTextEditor</code> in the application’s controller.
+								It cannot be embedded in an XML view.</p>
+						</li>
+					</ul><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+						</p><p>In order to render the custom toolbar, make sure that your application
+							has loaded the sap.m library.</p>
+					<p></p></div></div><p></p>
+			</section><section>
+				<h3 class="title ">Custom Buttons</h3>
+				<p>With version 1.48, you can add your own buttons to the custom toolbar. The buttons are stored
+					in the <code>customButtons</code> aggregation. Make sure that you provide
+					dedicated click events for your buttons.</p>
+			</section><section>
+				<h3 class="title ">Tables</h3>
+				<p>As of version 1.50, the table functionality is available just by adding the table
+					button group for both toolbars (TinyMCE and custom).</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>This changes won't affect applications already using a
+							<code>sap.ui.richtexteditor.RichTextEditor</code> with an added
+						table plugin.</p>
+					<p>When the table button group is added and the <code>customToolbar</code>
+						property is set to <span class="emphasis"><code>true</code></span>, a button with
+						a table icon will be visible in the custom toolbar. This button opens a
+							<code>sap.m.Dialog</code> for inserting tables. You can choose how
+						many rows and columns your table will have and set the height and width
+						properties. After creating the table, the native TinyMCE context menu for
+						modifying the table properties, triggered from selecting the table in the
+						edit area, will be available.</p>
+				<p></p></div></div>
+			</section></section><section><section>
+				<h3 class="title ">Headings</h3>
+				<p>As of version 1.52, the heading functionality is available by adding the
+						<code>styleselect</code> or <code>formatselect</code> button group
+					to both toolbars (TinyMCE and custom). The available formatting options are
+					heading 1 to heading 6 and paragraph.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>These changes won't affect applications already using a
+								<code>sap.ui.richtexteditor.RichTextEditor</code> with an added
+								<code>styleselect</code> or <code>formatselect</code>
+							option.</p>
+					<p></p></div></div><p></p>
+			</section>For
+				more information, see the <a href="#/entity/sap.ui.richtexteditor.RichTextEditor" title="#/entity/sap.ui.richtexteditor.RichTextEditor" class="sap-doc" alt="#/entity/sap.ui.richtexteditor.RichTextEditor">sample</a>.</section><section id="section_ijc_cbg_x2b"><section>
+				<h3 class="title ">Custom Button Order</h3>
+				<p>As of version 1.54, you can customize the position of the button groups in the
+					custom toolbar. This can be done by supplying a value for the new
+						<code>customToolbarPriority</code> property of the button group. The
+					groups in the toolbar are placed in ascending order respective to their
+						<code>customToolbarPriority</code> values.</p>
+			</section><div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">RichTextEditor.setButtonGroups([{
+
+                       name: "font-style",
+
+                       visible: true,
+
+                       row: 0,
+
+                       priority: 10,
+
+                       customToolbarPriority: 30,
+
+                       buttons: [
+
+                              "bold", "italic", "underline", "strikethrough"
+
+                       ]
+
+               }, {
+
+                       name: "text-align",
+
+                       visible: true,
+
+                       row: 0,
+
+                       priority: 20,
+
+                       customToolbarPriority: 20,
+
+                       buttons: [
+
+                              "justifyleft", "justifycenter", "justifyright", "justifyfull"
+
+                       ]
+
+               }, {
+
+                       name: "clipboard",
+
+                       visible: true,
+
+                       row: 1,
+
+                       priority: 10,
+
+                       customToolbarPriority: 10,
+
+                       buttons: [
+
+                              "cut", "copy", "paste"
+
+                       ]
+
+               }]).</pre></div></section>
+			<p></p></div></div></section><section id="mobile_support"><section>
+				<h3 class="title ">Native TinyMCE Mobile Support</h3>
+				<p>Since version 4.7 onward TinyMCE provides native mobile support. You can enable it in your
+					app, after version 1.76 of SAPUI5. Keep in
+					mind that we do not recommend the use of it, as it comes with some restrictions
+					explained in the Preamble section of this chapter.</p>
+				<p>In order to enable the mobile theme use the below configuration:</p><div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+						</p><p>
+							</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oRichTextEditor = new sap.ui.richtexteditor.RichTextEditor();
+oRichTextEditor.attachBeforeEditorInit(function(oEvent) {
+	var oConfig = oEvent.getParameter('configuration');
+		oConfig.mobile = {
+			theme: "mobile"
+			toolbar: [
+				"undo",
+				"redo",
+				"bold",
+				"italic",
+				"underline",
+				"link",
+				"unlink",
+				"image",
+				"bullist",
+				"numlist",
+				"fontsizeselect",
+				"forecolor",
+				"styleselect",
+				"removeformat"
+			]
+		};
+	});</pre></div></section>
+							<p></p></div></div>
+						<p></p>
+					<p></p></div></div><p></p>
+			<p>For the full mobile TinyMCE configuration, see <a href="https://www.tinymce.com/docs-4x/mobile/" title="https://www.tinymce.com/docs-4x/mobile/" class="external-link" target="_blank" rel="noopener">https://www.tinymce.com/docs-4x/mobile/</a>.</p>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/363cd16eba1f45babe3f661f321a7820.html" title="SAPUI5 provides a set of JavaScript and CSS libraries, which can be combined in an application using the combinations that are supported." class="sap-doc">Supported Library Combinations</a></li>
+	</ul></section></div></section></div></body></html>

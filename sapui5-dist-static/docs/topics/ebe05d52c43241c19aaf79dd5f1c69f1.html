@@ -1,0 +1,89 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioebe05d52c43241c19aaf79dd5f1c69f1" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Form Facet</h1><div class="fig"><h1 class="topictitle1 title">Form Facet</h1><div class="shortdesc">You can add a form facet to the object page header. </div><p>To do so, add a <span class="ph sap-technical-name">UI.ReferenceFacet</span> that points to
+            <span class="ph sap-technical-name">UI.FieldGroup</span> or <span class="ph sap-technical-name">UI.Identification</span>. If you provide a
+         label in the <span class="ph sap-technical-name">UI.ReferenceFacet</span>, it is used as the form's title.</p><img src="loioe21bb0a11fec4650ba4f1df715d7f14a_LowRes.png" usemap="#"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+         </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.ReferenceFacet"&gt;
+
+    &lt;PropertyValue Property="Label" String="{@i18n&gt;@TechnicalData}"/&gt;
+
+    &lt;PropertyValue AnnotationPath="@UI.FieldGroup#TechnicalData" Property="Target"/&gt;
+
+&lt;/Record&gt;
+</pre></div></section>
+      <p></p></div></div><p>The header form facet supports the display of a contact with a quick view, as shown
+         below:</p><img src="loiode307c718d194490b5eda682733a22f9_LowRes.png" usemap="#"><p>The sample code below shows the <span class="ph sap-technical-name">UI.FieldGroup</span>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+         </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="Test"&gt;
+
+   &lt;Record&gt;
+
+      &lt;PropertyValue Property="Data"&gt;
+
+         &lt;Collection&gt;
+
+            &lt;Record Type="UI.DataField"&gt;
+
+               &lt;PropertyValue Property="Value" Path="Product" /&gt;
+
+               &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" /&gt;
+
+            &lt;/Record&gt;
+
+            &lt;Record Type="UI.DataField"&gt;
+
+               &lt;PropertyValue Property="Value" Path="ProductCategory" /&gt;
+
+               &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" /&gt;
+
+            &lt;/Record&gt;
+
+            &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+
+               &lt;PropertyValue Property="Label" String="Supplier" /&gt;
+
+               &lt;PropertyValue Property="Target" AnnotationPath="to_Supplier/@Communication.Contact" /&gt;
+
+            &lt;/Record&gt;
+
+            &lt;Record Type="UI.DataField"&gt;
+
+               &lt;PropertyValue Property="Value" Path="Price" /&gt;
+
+               &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium" /&gt;
+
+            &lt;/Record&gt;
+
+            &lt;Record Type="UI.DataFieldWithIntentBasedNavigation"&gt;
+
+               &lt;PropertyValue Property="Label" String="Weight (with IBN)" /&gt;
+
+               &lt;PropertyValue Property="Value" Path="Weight" /&gt;
+
+               &lt;PropertyValue Property="SemanticObject" String="EPMProduct" /&gt;
+
+               &lt;PropertyValue Property="Action" String="manage_st" /&gt;
+
+            &lt;/Record&gt;
+
+         &lt;/Collection&gt;
+
+      &lt;/PropertyValue&gt;
+
+      &lt;PropertyValue Property="Label" String="Product Information" /&gt;
+
+   &lt;/Record&gt;
+
+&lt;/Annotation&gt;
+</pre></div></section>
+      <p></p></div></div><p>In the sample code above, the third record is a
+            <span class="ph sap-technical-name">UI.DataFieldForAnnotation</span>, which, in this case,
+         points to a contact annotation on a different entity that has a 1:1 relation to the root
+         entity. The label is derived from the label in the
+            <span class="ph sap-technical-name">UI.DataFieldForAnnotation</span> and the value is the
+         fn property of the contact annotation. </p><p>The last record is a
+            <span class="ph sap-technical-name">UI.DataFieldWithIntentBasedNavigation</span> to render
+         the property value as a link, allowing for navigation to the semantic object. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Contacts on 1:n relations are not supported in the header.</p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

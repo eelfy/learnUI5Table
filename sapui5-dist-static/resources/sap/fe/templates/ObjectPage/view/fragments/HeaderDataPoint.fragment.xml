@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+>
+		<template:if test="{= ${converterHeaderFacet>headerDataPointData/type} === 'ProgressIndicator' }">
+		<template:then>
+			<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderProgressIndicator" type="XML" />
+		</template:then>
+		<template:elseif test="{= ${converterHeaderFacet>headerDataPointData/type} === 'RatingIndicator' }">
+			<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderRatingIndicator" type="XML" />
+		</template:elseif>
+		<template:elseif test="{= ${converterHeaderFacet>headerDataPointData/type} === 'Content' }">
+			<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderDataPointContent" type="XML" />
+		</template:elseif>
+	</template:if>
+</core:FragmentDefinition>

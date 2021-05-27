@@ -1,0 +1,94 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa77f2d29299247f8a3e30226507b1765" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Worklist Template</h1><div class="fig"><h1 class="topictitle1 title">Worklist Template</h1><div class="shortdesc">The SAP Fiori
+			Worklist Application template implements a typical worklist floorplan, one of
+		the patterns that is specified by the SAP Fiori design guidelines.</div><p>A worklist displays a collection of items to be processed by the user and usually
+			involves reviewing details of a list item and taking action. If the data needs to be
+			organized into columns or the overview of the items is more important than showing the
+			item details directly, this template can be used as a starting point. For more
+			information about worklist floorplans, see the 
+                                    <a href="https://experience.sap.com/fiori-design-web/" title="https://experience.sap.com/fiori-design-web/" class="external-link" target="_blank" rel="noopener">SAP Fiori
+                                            Design Guidelines</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>You have two options: You can use this template to build an <span class="emphasis">app for the
+						SAP Fiori launchpad (FLP)</span> or to
+				build <span class="emphasis">standalone apps</span>.</p><ul class="ul ">
+					<li class="li">
+						<p>If the app runs in FLP it also
+							contains additional features like <span class="ph uicontrol">Save as Tile</span> or
+								<span class="ph uicontrol">Share in SAP Jam</span> that depend on FLP at
+							runtime. This app cannot be run standalone, meaning no
+								<code>index.html</code> file is created but only files for
+							testing the app in the FLP
+							sandbox.</p>
+					</li>
+					<li class="li">
+						<p>Only standalone apps contain an <code>index.html</code> file that
+							is used to start the app.</p>
+					</li>
+				</ul><p></p>
+		<p></p></div></div><div><div class="fig"><img src="loio2c7e3b552825426d8840c83a6b0b029e_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Screenshot of the Worklist App</span></div><p>The <span class="ph uicontrol">Worklist</span> view is the main view that is initially displayed in
+			this app. When a user clicks or taps an item in the table, the
+				<span class="ph uicontrol">Object</span> view is displayed, showing more details for the
+			selected item. We use the semantic <code>FullscreenPage</code> control as the page
+			for both. A <code>SemanticPage</code> is an enhanced <code>sap.m.Page</code>
+			that contains controls with a semantic meaning and displays them according to the
+				SAP Fiori Design Guidelines, for example. For more details
+				about semantic controls, see the <a href="#/entity/sap.m.semantic.SemanticPage" title="#/entity/sap.m.semantic.SemanticPage" class="sap-doc" alt="#/entity/sap.m.semantic.SemanticPage">sample</a> in the Demo Kit.</p><p>The table in the <span class="ph uicontrol">Worklist</span> view displays a header area that shows
+			the current amount of items in the worklist and a search field. The number of items are
+			updated automatically and the search filters for a preconfigured column of the
+			table.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>As the use cases for apps using a worklist pattern differ greatly, we only show a
+			basic scenario in our template as a starting point for your individual development
+			activities. For more information, see <a href="#/topic/a77f2d29299247f8a3e30226507b1765.html#loioa77f2d29299247f8a3e30226507b1765/section_EnhanceTemplate" title="a77f2d29299247f8a3e30226507b1765.xml#loioa77f2d29299247f8a3e30226507b1765/section_EnhanceTemplate" class="sap-doc">How Do I
+				Enhance the Template?</a></p></div></div><section id="section_els_xvw_k1b">
+			<h2 class="title ">Where Can I Find the Worklist Template?</h2>
+			<p>You can find the template in the following places:</p><ul class="ul ">
+					<li class="li">
+						<p><span class="emphasis">SAP Fiori
+								Worklist Application</span> (for OData V2 models) and
+									<span class="emphasis">SAP Fiori
+								Worklist Application - OData V4</span> (for OData V4 models)
+							templates in SAP Web IDE</p>
+						<p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><p></p>
+					</li>
+					<li class="li">
+						<p><span class="emphasis">Worklist Template</span>
+							and <span class="emphasis">Worklist (FLP)
+									Template</span>
+							
+								under <a href="#/demoapps" title="#/demoapps" class="sap-doc" alt="#/demoapps">Demo Apps</a>.</p>
+					</li>
+					<li class="li">
+						<p><code>openui5-worklist-app</code> in the <a href="https://github.com/SAP" title="https://github.com/SAP" class="external-link" target="_blank" rel="noopener">SAP Repository on
+								GitHub</a></p>
+						<p>For more information on how to clone or download the template from
+							GitHub, refer to the template documentation on <a href="https://github.com/SAP/openui5-worklist-app/blob/master/README.md" title="https://github.com/SAP/openui5-worklist-app/blob/master/README.md" class="external-link" target="_blank" rel="noopener">GitHub</a> .</p>
+					</li>
+				</ul><p></p>
+		</section><section>
+			<h2 class="title ">Tutorial</h2>
+			<p>See the <a href="#/topic/6a6a621c978145ad9eef2b221d2cf21d.html" title="In this tutorial we will build an app using SAPUI5 that, for example, a shop owner can use to manage his product stock levels." class="sap-doc">Worklist App</a> tutorial for an example
+				of how this application can be extended. The result of this tutorial can be seen
+					as the <span class="ph uicontrol">Manage Products</span> app in the <span class="ph uicontrol">Demo
+						Apps</span> section of the Demo Kit.</p>
+		</section><section id="section_EnhanceTemplate">
+			<h2 class="title ">How Do I Enhance the Template?</h2>
+			<p>In our template, we use a simple layout that you can use as a basis for enhancements.
+				For example, if you want to use an object page with a dynamic header, you can use
+				one of the page-type <a href="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview" title="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview" class="sap-doc" alt="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview">Object Page Layout samples</a>.
+				 All you have
+				to do is replace the relevant content in the template with the content from the
+				sample. </p>
+			<p>You can find more information about the possibilities of object pages at <a href="https://experience.sap.com/fiori-design-web/object-page/" title="https://experience.sap.com/fiori-design-web/object-page/" class="sap-doc">SAP Fiori Design Guidelines -
+							Object Page</a>.</p>
+		</section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/106d2e9399704550ba290ded91b79710">Navigation</a></li><li><a href="topic/5cb1169c748b4da58a9c981fb0b491c7">Busy Indication</a></li><li><a href="topic/c2f4684363c64d5fbaf65662c11dc6ea">Model Instantiation</a></li><li><a href="topic/af1db3c03fee416e91b4b08cf359a929">Send Email</a></li><li><a href="topic/7bd4e6ebb9744c50b62ed048c93a2d9d">Testing</a></li><li><a href="topic/979f571fe9d948fb9ad666a8abcbe949">Device Adaptation</a></li><li><a href="topic/03b20076e8c64e5fb72c79445017d92b">Stable IDs</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/a3ab54ecf7ac493b91904beb2095d208.html" title="With the Demo Kit, we deliver some demo apps that show you how you can use the various features and controls of SAPUI5." class="sap-doc">Demo Apps</a></li>
+		<li><a href="#/topic/7bb04e05f9484e1b95b38a2e48ecef4f.html" title="This part of the documentation introduces you to some common and recommended use cases for the installation, configuration, and setup of SAPUI5 development environments." class="sap-doc">Development Environment</a></li>
+		<li><a href="#/topic/6a6a621c978145ad9eef2b221d2cf21d.html" title="In this tutorial we will build an app using SAPUI5 that, for example, a shop owner can use to manage his product stock levels." class="sap-doc">Worklist App</a></li>
+	</ul></section></div></section></div></body></html>

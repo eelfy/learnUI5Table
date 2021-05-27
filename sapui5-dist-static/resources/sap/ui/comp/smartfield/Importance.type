@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>smartfield/Importance</name>
+    <derived/>
+    <documentation>Provides information about the importance of the field</documentation>
+    <since>1.87</since>
+    <enumeration>
+        <value name="High">
+            <documentation>&lt;code&gt;SmartField&lt;/code&gt; with high importance</documentation>
+        </value>
+        <value name="Medium">
+            <documentation>&lt;code&gt;SmartField&lt;/code&gt; with medium importance</documentation>
+        </value>
+        <value name="Low">
+            <documentation>&lt;code&gt;SmartField&lt;/code&gt; with low importance</documentation>
+        </value>
+    </enumeration>
+</simple-type>

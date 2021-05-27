@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper'
+						 }"
+>
+	<template:if test="{= ${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldWithNavigationPath' }">
+		<template:then>
+			<Link
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				text="{this>text}"
+				press="{= 'FieldRuntime.onDataFieldWithNavigationPath(${$source>/}, $controller, \'' + ${dataField>Target/$NavigationPropertyPath} + '\')' }"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+			/>
+		</template:then>
+		<template:elseif test="{property>$Path@com.sap.vocabularies.Communication.v1.IsEmailAddress}">
+			<Link text="{this>text}" href="mailto:{property>@@MODEL.format}" ariaLabelledBy="{this>ariaLabelledBy}" />
+		</template:elseif>
+		<template:elseif test="{property>$Path@com.sap.vocabularies.Communication.v1.IsPhoneNumber}">
+			<Link text="{this>text}" href="tel:{property>@@MODEL.format}" ariaLabelledBy="{this>ariaLabelledBy}" />
+		</template:elseif>
+		<template:else>
+			<Link text="{this>text}" href="{dataField>Url@@MODEL.value}" wrapping="true" target="_blank" ariaLabelledBy="{this>ariaLabelledBy}" />
+		</template:else>
+	</template:if>
+
+
+</core:FragmentDefinition>

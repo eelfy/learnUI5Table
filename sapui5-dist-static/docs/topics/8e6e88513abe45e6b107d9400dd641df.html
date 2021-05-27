@@ -1,0 +1,237 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio8e6e88513abe45e6b107d9400dd641df" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Chart-Only View</h1><div class="fig"><h1 class="topictitle1 title">Chart-Only View</h1><div class="shortdesc">Uses a smart chart that provides visual representation of analytical data. </div><section><p>By selecting the chart context, users can navigate to other applications. A smart
+                chart provides:</p><ul class="ul ">
+                    <li class="li">Semantic object-based navigation</li>
+                    <li class="li">Easy changing of chart types</li>
+                    <li class="li">Customization of chart settings </li>
+                </ul><p></p><p>The chart-only view provides a way to analyze data from different
+                perspectives, step by step, to investigate a root causeby drilling down without
+                direct access to transactional content. The smart chart control is used to provide
+                the chart visualization.</p><p>You use this features to deal with analytical data
+                that can be visually represented using charts, without needing to link them to the
+                transactional data set.</p><div class="imagemap_sidebyside dark-overlays" data-static-type="false">
+                
+                
+                <p>This image is interactive. Hover over each area for a description. Click highlighted areas
+							for more information
+						</p><div class="imagemap fig"><img src="loiofc234b4ff62a4e8aa3d8103ae26ced0f_LowRes.png" usemap="#__im_imagemap1"><map name="__im_imagemap1"><area shape="rect" coords="133,3,358,43" originalcoords="133,3,358,43" alt="8e6e88513abe45e6b107d9400dd641df.xml#loio8e6e88513abe45e6b107d9400dd641df/subsection-im1" title="Descriptor settings for defining&#xD; qualifier" href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" class="sap-doc"><area shape="rect" coords="0,83,226,120" originalcoords="0,83,226,120" alt="8e6e88513abe45e6b107d9400dd641df.xml#loio8e6e88513abe45e6b107d9400dd641df/subsection-im2" title="SelectionPresentationVariant annotation example" href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" class="sap-doc"><area shape="rect" coords="286,82,512,121" originalcoords="286,82,512,121" alt="8e6e88513abe45e6b107d9400dd641df.xml#loio8e6e88513abe45e6b107d9400dd641df/subsection-im3" title="Presentation Variant annotation example" href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" class="sap-doc"><area shape="rect" coords="282,152,510,187" originalcoords="282,152,510,187" alt="8e6e88513abe45e6b107d9400dd641df.xml#loio8e6e88513abe45e6b107d9400dd641df/subsection-im4" title="Chart annotation example" href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" class="sap-doc"></map></div>
+                <section id="subsection-im0" class="visibility-trigger">
+                    <h3 class="title visibility-trigger">
+                    <p>Hover over each action for a description. Click the action for more
+                        information.</p>
+                </h3></section>
+                <section id="subsection-im1" class="visibility-trigger">
+                    <h3 class="title visibility-trigger">Descriptor Settings: Table-only view</h3>
+                    <p><span class="emphasis">Configuration
+                        Sample:</span></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app":{  
+   "pages":[  
+      {  
+         "entitySet":"SEPMRA_C_ALP_SlsOrdItemCube",
+         "component":{  
+            "name":"sap.suite.ui.generic.template.AnalyticalListPage",
+            "list":true,
+            "settings":{  
+                  "qualifier":"DefaultVariant",
+                  }
+            }
+      }
+},</pre></div></section><p></p>
+                </section>
+                <section id="subsection-im2" class="visibility-trigger">
+                    <h3 class="title visibility-trigger">Annotation: SelectionPresentationVariant with
+                        Qualifier="DefaultVariant"</h3>
+                    <p><span class="emphasis">Configuration Sample:</span></p>
+                    <p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionPresentationVariant" Qualifier="DefaultVariant"&gt;
+  &lt;Record&gt;
+    &lt;PropertyValue Property="Text" String="Product Financial Analysis"/&gt;
+    &lt;PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#DefaultSelectionVariant"/&gt;
+    &lt;PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#DefaultPresentationVariant"/&gt;
+  &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+                    <p></p>
+                </section>
+                <section id="subsection-im3" class="visibility-trigger">
+                    <h3 class="title visibility-trigger">Annotation: Presentation Variant</h3>
+                    <p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.PresentationVariant" Qualifier="DefaultPresentationVariant"&gt;
+  &lt;Record&gt;
+    &lt;PropertyValue Property="Text" String="Default"/&gt;
+    &lt;PropertyValue Property="SortOrder"&gt;
+      &lt;Collection&gt;
+        &lt;Record Type="Common.SortOrderType"&gt;
+          &lt;PropertyValue Property="Property" PropertyPath="NetAmount"/&gt;
+          &lt;PropertyValue Property="Descending" Bool="true"/&gt;
+        &lt;/Record&gt;
+      &lt;/Collection&gt;
+    &lt;/PropertyValue&gt;
+    &lt;PropertyValue Property="Visualizations"&gt;
+      &lt;Collection&gt;
+         &lt;AnnotationPath&gt;@UI.Chart#Default&lt;/AnnotationPath&gt;
+      &lt;/Collection&gt;
+   &lt;/PropertyValue&gt;
+  &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+                    <p></p>
+                    <p>Use the app-descriptor setting <code>chartPresentationQualifier</code> to
+                        render a chart based on a specific <code>PresentationVariant</code>
+                        annotation
+                        configuration.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"settings": {&nbsp;
+"chartPresentationQualifier":&nbsp;“qualifier”}</pre></div></section><p></p>
+                </section>
+                <section id="subsection-im4" class="visibility-trigger">
+                    <h3 class="title visibility-trigger">Annotation: Chart</h3>
+                    <p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="Default"&gt;
+  &lt;Record Type="UI.ChartDefinitionType"&gt;
+    &lt;PropertyValue Property="Title" String="Revenue by Customer"/&gt;
+    &lt;PropertyValue Property="Description" String="Net Revenue by Customer"/&gt;
+    &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/&gt;
+    &lt;PropertyValue Property="Dimensions"&gt;
+      &lt;Collection&gt;
+        &lt;PropertyPath&gt;SoldToParty&lt;/PropertyPath&gt;
+        &lt;PropertyPath&gt;DeliveryCalendarYear&lt;/PropertyPath&gt;
+      &lt;/Collection&gt;
+     &lt;/PropertyValue&gt;
+     &lt;PropertyValue Property="DimensionAttributes"&gt;
+       &lt;Collection&gt;
+          &lt;Record Type="UI.ChartDimensionAttributeType"&gt;
+             &lt;PropertyValue Property="Dimension" PropertyPath="SoldToParty"/&gt;
+             &lt;PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/&gt;
+          &lt;/Record&gt;
+          &lt;Record Type="UI.ChartDimensionAttributeType"&gt;
+             &lt;PropertyValue Property="Dimension" PropertyPath="DeliveryCalendarYear"/&gt;
+             &lt;PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/&gt;
+          &lt;/Record&gt;
+       &lt;/Collection&gt;
+     &lt;/PropertyValue&gt;
+     &lt;PropertyValue Property="Measures"&gt;
+       &lt;Collection&gt;
+         &lt;PropertyPath&gt;NetAmount&lt;/PropertyPath&gt;
+       &lt;/Collection&gt;
+     &lt;/PropertyValue&gt;
+     &lt;PropertyValue Property="MeasureAttributes"&gt;
+       &lt;Collection&gt;
+          &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+             &lt;PropertyValue Property="Measure" PropertyPath="NetAmount"/&gt;
+             &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/&gt;
+             &lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#NetAmount"/&gt;
+          &lt;/Record&gt;
+       &lt;/Collection&gt;
+     &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+                    <p></p>
+                </section>
+            </div></section><section>
+			<h2 class="title ">Semantic Navigation</h2>
+			<p>If you select a data point or segment from a chart, the smart chart checks the annotation of
+                any semantic object definition for these dimensions and uses it as a base to render
+                the navigation links. For example,</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Cost Center
+                    dimension</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns=http://docs.oasis-open.org/odata/ns/edm Target=”Emp_Line_Item.Item/Cost_Center”&gt;
+	&lt;Annotation Term=”com.sap.vocabularies.Common.v1.SemanticObject” String=”CostCenter”/&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p></div></div><p></p>
+			<p>In the preceding example, the smart charts retrieve all the navigation parameters for which
+                you have an authorization and that are defined for the <code>CostCenter</code>
+                semantic object. The selected chart and filter context is passed to the target
+                application through the navigation context.</p>
+			<p>Choose <span class="ph uicontrol">Details</span> on the toolbar, to view navigation links that define
+                actions associated with semantic objects.</p>
+		</section><section>
+			<h2 class="title ">Chart Operations</h2>
+			<p>You can perform several chart level operations on the toolbar. The
+                    <span class="ph uicontrol">Settings</span> option on the chart toolbar enables you to
+                include additional filters on the chart, or to change:</p><ul class="ul ">
+                    <li class="li">Dimensions and measures bound to a chart</li>
+                    <li class="li">Roles for dimensions and measures</li>
+                    <li class="li">Sort order in charts </li>
+                </ul>The <span class="ph uicontrol">Drilldown</span> option lets you change the chart grouping
+                dimension. If you have already made a chart selection before selecting the
+                    <span class="ph uicontrol">Drilldown</span> option and changing the grouping dimension,
+                analytical list page uses the earlier chart dimension selection as a filter context
+                for drilldown.<p></p>
+		</section><section id="section_f3l_m1p_wbb">
+            <h2 class="title ">Actions by Annotation</h2>
+            <p>Any action that you define in the <code>Actions</code> property of the chart
+                annotation (<code>DataFieldForAction</code> or
+                    <code>DataFieldForIntentBasedNavigation</code>), is displayed as an
+                additional button on the chart toolbar (when
+                    <code>determining=false</code>).</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To correctly integrate your app
+                    extension coding with SAP Fiori elements, use only the extensionAPI of SAP Fiori
+                    elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>.</p></div></div><p></p>
+            <p><span class="emphasis">Determining Button</span></p>
+            <p>You can configure the smart chart toolbar to contain action buttons defined with
+                annotations <code>com.sap.vocabularies.UI.v1.DataFieldForAction</code> and
+                    <code>com.sap.vocabularies.UI.v1.DataFieldForIntentBasedNavigation</code>.
+                Choosing <code>DataFieldForAction</code> executes the back-end function import
+                as identified by the <code>Action</code> property. When you choose
+                    <code>DataFieldForIntentBasedNavigation</code>, the appropriate SAP Fiori
+                app is launched. The determining buttons for the chart are found in the footer bar
+                and the chart buttons are ordered before the table
+                buttons.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="Actions"&gt;
+   &lt;Collection&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+         &lt;PropertyValue Property="Label" String="Copy"/&gt;
+         &lt;PropertyValue Property="Action" String="CZ_EASILINEITEMS_SADL_CDS.CZ_EASILINEITEMS_SADLType/Copy"/&gt;
+         &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+         <span class="emphasis">&lt;PropertyValue Property="Determining" Bool="true"/&gt; </span>
+
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+         &lt;PropertyValue Property="Label" String="Manage Products (STTA)"/&gt;
+         &lt;PropertyValue Property="SemanticObject" String="EPMProduct"/&gt;
+         &lt;PropertyValue Property="Action" String="manage_st"/&gt;
+         <span class="emphasis">&lt;PropertyValue Property="Determining" Bool="true"/&gt;</span>
+      &lt;/Record&gt;
+   &lt;/Collection&gt;
+&lt;/PropertyValue&gt;</pre></div></section><p></p>
+            <p>With the click of a button, the associated:</p><ul class="ul ">
+                    <li class="li">
+                        <p><code>DataFieldForAction</code> annotation handles the action as
+                            defined. The user application has to ensure that this points to the
+                            fully qualified action or function.</p>
+                    </li>
+                    <li class="li">
+                        <p><code>DataFieldForIntentBasedNavigation</code> annotation launches
+                            the SAP Fiori applications as specified in the action. If the action is
+                            configured to accept context, then the selected chart and filter context
+                            is passed to the target application through the navigation context.</p>
+                    </li>
+                </ul>
+            <p></p>
+            <p>
+                </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="Actions"&gt;
+   &lt;Collection&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+         &lt;PropertyValue Property="Label" String="Copy"/&gt;
+         &lt;PropertyValue Property="Action" String="CZ_EASILINEITEMS_SADL_CDS.CZ_EASILINEITEMS_SADLType/Copy"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+         &lt;PropertyValue Property="Label" String="Manage Products (STTA)"/&gt;
+         &lt;PropertyValue Property="SemanticObject" String="EPMProduct"/&gt;
+         &lt;PropertyValue Property="Action" String="manage_st"/&gt;
+      &lt;/Record&gt;
+   &lt;/Collection&gt;
+&lt;/PropertyValue&gt;</pre></div></section>
+            <p></p>
+        </section><section id="section_jwl_cb3_hmb"><h2 class="title ">Enabling Data Label in Smart Charts and KPI
+                Cards</h2><p>You can make data labels visible in smart charts and KPI cards.
+                </p><p>To do this, set the <code>showDataLabel</code> property to
+                    <code>True</code> in the manifest settings. The default value is
+                    <code>False</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": [{
+            "entitySet": "SEPMRA_C_ALP_SlsOrdItemCubeALPResults",
+            "component": {
+                "name": "sap.suite.ui.generic.template.AnalyticalListPage",
+                "list": true,
+                "settings": {
+                    "chartSettings": {
+                        "showDataLabel": true
+                    },</pre></div></section>
+                <p></p></div></div><p></p><div><div class="fig"><img src="loio5e203954c98749dfae45cbfe747a11f2_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Data Label in Smart Charts</span></div><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Data Label in KPI Cards</span></div><img src="loio4360c2c37e7d44439c2d7b117cb31290_LowRes.png" usemap="#"></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/fc7d73c3044649e8839925558afc2079.html" title="Visualize data from the main entity set and seamlessly navigate to an application. Define a valid chart or LineItem annotation to render content for the chart area and table area." class="sap-doc">Configuring the Content Area</a></li></ul></section></div></section></div></body></html>

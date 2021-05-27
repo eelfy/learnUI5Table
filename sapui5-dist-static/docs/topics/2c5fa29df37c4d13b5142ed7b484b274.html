@@ -1,0 +1,753 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2c5fa29df37c4d13b5142ed7b484b274" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting the UI: Analytical List Page</h1><div class="fig"><h1 class="topictitle1 title">Adapting the UI: Analytical List Page</h1><div class="shortdesc">You can extend and customize specific features of the analytical list page using the
+			SAPUI5 Visual Editor in SAP Web IDE.</div><section>
+			<p>You can also use <a href="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" title="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" class="external-link" target="_blank" rel="noopener">SAP Fiori tools</a> for SAPUI5 versions higher than
+				or equal to 1.52 to adapt the analytical list page.</p>
+			<p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Adapt the UI only for the use cases described here. Otherwise, control
+					replacements might lead to changes that can no longer be applied. </p></div></div>
+			<p></p>
+			<p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_bhy_pxw_dcb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Feature</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Collapse smart filter bar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the <code>Header Expanded</code> property for
+										the template (ID is <code>template:Page</code>) to
+										collapse and hide the filter bar.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Freeze filter bar on scroll</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the <code>Preserve header state on
+											scroll</code> property for the template (ID is
+											<code>template:Page</code>) to freeze the filter
+										bar.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Variant management options</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the following page variant (ID is
+											<code>template:PageVariant</code>) properties to
+										enable the variant management options:</p><ul class="ul ">
+											
+											<li class="li">
+												<p><code>Set as default</code>: This property
+												lets you set the default variant for a user</p>
+											</li>
+											<li class="li">
+												<p><code>Public</code>: This property lets you
+												make the variant as visible to users</p>
+											</li>
+										</ul><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Share icon</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the <code>Visibility</code> property to hide or
+										unhide the share icon (ID is
+										<code>template:Share</code>).</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Clear button</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>The clear button may appear on the smart filter bar or on the
+										header area based on the enabling of
+											<span class="ph uicontrol">Go</span> button. If the
+											<span class="ph uicontrol">Clear</span> button is on the:</p><ul class="ul ">
+											<li class="li">
+												<p>Smart filer bar: Configure the
+												<code>Visibility</code> property of the clear
+												button (ID is
+												<code>template:SmartFilterBar-btnClear</code>).</p>
+											</li>
+											<li class="li">
+												<p>Header bar: Configure the
+												<code>Visibility</code> property of the
+												<span class="ph uicontrol">Clear</span> button (ID is
+												<code>template:ClearButton</code>).</p>
+											</li>
+										</ul><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Table toolbar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the <code>Visibility</code> property of the
+										table toolbar (ID is <code>template:TableToolbar</code>)
+										to hide or unhide table toolbar.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Page footer</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configure the <code>Visibility</code> property of the
+										page footer (ID is <code>template:FooterToolbar</code>)
+										to hide or unhide page footer.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Use the following smart chart (ID is <code>chart</code>,
+										example C_ContrItemMonitoringResults--chart) properties on
+										the UI Adaptation layer:</p><ul class="ul ">
+											<li class="li">
+												<p>Ignored Chart Types</p>
+											</li>
+											<li class="li">
+												<p>Selection Mode</p>
+											</li>
+											<li class="li">
+												<p>Chart tool tip</p>
+											</li>
+											<li class="li">
+												<p>Chart type selection button</p>
+											</li>
+										</ul><p></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p>
+		</section><section><h2 class="title ">Adapting the UI: Chart</h2><p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_st5_xh5_jhb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Property</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Ignored chart types</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Comma-separated value fields do not show up in the list of
+										available chart types.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>No data</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Allows you to override the default text when chart has no
+										data to display.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Selection mode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Lets you select the mode (single, multiple, or none).</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show chart type selection button</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Controls the visibility of the chart type button (users could
+										change the chart type).</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show download button</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Controls the visibility of the chart download button (users
+										can download the chart as an image)</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show legend button</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Controls the visibility of the legend button (users can
+										toggle the visibility of the chart legends)</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p><section>
+				<h3 class="title ">Values for Ignored Chart Type</h3>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_j1w_shh_jkb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Chart Type</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>ignoredChartTypes value</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Bar Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Column Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Line Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>line</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combined Column Line Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Pie Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>pie</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Doughnut Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>donut</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Scatter Plot</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>scatter</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Bubble Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>bubble</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Heat Map</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>heatmap</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Bullet Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>bullet</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Vertical Bullet Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>vertical_bullet</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Stacked Bar Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>stacked_bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Stacked Column Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>stacked_column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combined Stacked Line Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>stacked_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Horizontal Combined Stacked Line Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>horizontal_stacked_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Bar Chart with 2 X-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Column Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Line Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_line</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Stacked Bar Chart with 2 X-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_stacked_bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Stacked Column Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_stacked_column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combined Column Line Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combined Bar Line Chart with 2 X-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_stacked_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combined Stacked Line Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_horizontal_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Horizontal Combined Stacked Line Chart with 2 X-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>dual_horizontal_stacked_combination</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100% Stacked Bar Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100_stacked_bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100% Stacked Column Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100_stacked_column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100% Stacked Bar Chart with 2 X-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100_dual_stacked_bar</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100% Stacked Column Chart with 2 Y-Axes</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>100_dual_stacked_column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Waterfall Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>waterfall</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Horizontal Waterfall Chart</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>horizontal_waterfall</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section></section><section id="section_tgz_r1x_dcb">
+			<h2 class="title ">Adapting the UI: Chart Toolbar</h2>
+			<p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_tx2_bbx_dcb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Sample ID</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--chart-btnPersonalisation</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Icon: For chart personalization</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--chart-btnDrillDownText</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Visibility: To drill down within the chart toolbar </p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p>
+		</section><section id="section_kfh_kxz_dcb">
+			<h2 class="title ">Adapting the UI: Table</h2>
+			<p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_off_nxz_dcb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Sample ID</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--table-nodata</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Allows you to override the default text when chart has no
+										data to display</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--table-btnPersonalisation</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Icon: Lets you configure the table personalization</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--table-btnExcelExport</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Icon: To export content to
+										Excel</p>
+									
+									
+									<p>The <span class="ph uicontrol"> Export to Excel</span> button is visible
+										on the UI by default. You can hide this button by setting
+										the <code>Use Export to Excel</code> property to
+											<code>False</code> via UI adaptation.</p>
+									
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>C_ContrItemMonitoringResults--table</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show Row Count</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p>
+		</section><section id="section_mqn_1zz_dcb">
+			<h2 class="title ">Adapting the UI: Table Column</h2>
+			<p>Each column of the smart table can also be tweaked in UI Adaptation (sample ID is
+					<code>C_ContrItemMonitoringResults--PurchaseContract</code>). The smart
+				table columns expose several properties for this purpose. Some of them are listed
+					here:</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_epw_fzz_dcb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Property</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Visible</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Hide or unhide a column</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Width</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p> Adjust the column width</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Auto Resizable</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p> Expand column to the maximum width of the content</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>InResult</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p> Ensures the column is always used in the query, which
+										affects the aggregation level</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Resizable</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Resize column width</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show Sort Menu Entry</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays column with a sort tab for personalization</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Sort Order </p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Allows sorting</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Sorted</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays sorted items when sort is available in column
+										header</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Summed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Displays the total sum of a column</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p>
+		</section><section id="section_efj_215_5mb">
+			<h2 class="title ">Adapting the UI: Visual Filters Dialog</h2>
+			<p>Each button of the <span class="ph uicontrol">Adapt Filters</span> dialog in Visual Filter mode
+				can be tweaked via UI adaptation. The buttons and micro charts expose several
+				properties for this purpose. Some of the button properties are listed here:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_hck_k15_5mb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Property</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Setting</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Visible</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Hide or
+									reveal
+									a button</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Width</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p> Adjust the width of a button</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Icon</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p> Lets you configure
+									a button icon</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Active Icon</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p> The source property of an alternative icon for the active (depressed) state of the
+									button</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Text</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Allows you to change button text</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Busy</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Denotes whether a control is currently in busy state</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Enabled </p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Enable or disable
+									a button</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Blocked</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Denotes whether a control is currently in blocked state</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

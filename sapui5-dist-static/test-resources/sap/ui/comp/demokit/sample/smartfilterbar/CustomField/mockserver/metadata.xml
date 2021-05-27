@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="com.sap.GL.zrha" sap:schema-version="1"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+		<EntityType Name="Item" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="ItemId" />
+				</Key>
+				<Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Item ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+				<Property Name="Company Code" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+				<Property Name="Count" Type="Edm.Int32" Nullable="false" MaxLength="20" sap:label="Count" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+			</EntityType>
+
+			<EntityContainer Name="com.sap.GL.zrha_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="Items" EntityType="com.sap.GL.zrha.Item" sap:creatable="false" sap:updatable="true" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+			</EntityContainer>
+			<Annotations Target="com.sap.GL.zrha.Item"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Company Code" />
+							<PropertyValue Property="Label" String="Company Code" />
+							<Annotation Term="com.sap.vocabularies.UI.v1.Importance"
+								EnumMember="com.sap.vocabularies.UI.v1.ImportanceType/High" />
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Count" />
+							<Annotation Term="com.sap.vocabularies.UI.v1.Importance"
+								EnumMember="com.sap.vocabularies.UI.v1.ImportanceType/Medium" />
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

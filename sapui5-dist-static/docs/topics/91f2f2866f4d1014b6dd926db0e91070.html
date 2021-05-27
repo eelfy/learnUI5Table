@@ -1,0 +1,398 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio91f2f2866f4d1014b6dd926db0e91070" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Number Format</h1><div class="fig"><h1 class="topictitle1 title">Number Format</h1><div class="shortdesc">The sap.ui.core.format.NumberFormat class can be used to parse a
+        string representing a number (float or integer) into a JavaScript number
+        and vice versa (also known as format).</div><p><code>NumberFormat</code> uses the parameters defined for the current locale. These
+            parameters can be overwritten on each instance by setting the format options.</p><p>There are four types of formatters defined in <code>NumberFormat</code>:</p><ul class="ul ">
+                <li class="li">
+                    <p>Integer formatter: formats and parses only the integer digits; decimal digits
+                        are ignored</p>
+                </li>
+                <li class="li">
+                    <p>Float formatter: formats and parses both integer and decimal digits.</p>
+                </li>
+                <li class="li">
+                    <p>Percent formatter: formats the number into a string with percentage sign. It
+                        validates the number whether it contains the right percentage sign in its
+                        parser.</p>
+                </li>
+                <li class="li">
+                    <p>Currency formatter: formats the number by using the parameters defined for
+                        the given currency code. Either currency symbol, currency code, or none of
+                        both can be included in the final formatted string. It parses the given
+                        string into an array which contains both the currency number and currency
+                        code.</p>
+                </li>
+            </ul><p></p><section>
+            <h2 class="title ">Instantiation</h2>
+            <p>The instantiation of <code>sap.ui.core.format.NumberFormat</code> is done by calling <code>getter</code> defined on
+					<code>NumberFormat</code> (and not by using the
+				constructor).</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "NumberFormat" required from module "sap/ui/core/format/NumberFormat"
+var oIntegerFormat = NumberFormat.getIntegerInstance();
+var oFloatFormat = NumberFormat.getFloatInstance();
+var oPercentFormat = NumberFormat.getPercentInstance();
+var oCurrencyFormat = NumberFormat.getCurrencyInstance();</pre></div></section><p></p>
+        </section><section><h2 class="title ">Parameters</h2><p>All parameters have their default value defined in the current locale. Therefore, if no parameter is
+				given when instantiating the formatter instance, it fetches the parameters from the current locale. The samples here assume that the
+				current locale is <code>en-US</code>.</p><p>All parameters can be overwritten by giving a format option object in the
+					<code>getter</code> of the formatter. There are a bunch of parameter defined for the four types of formatters. Most of them
+				are shared among the types, and the rest are specifically defined for a certain kind of formatter.</p><section>
+				<h3 class="title ">Integer and Decimal Digits</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>minIntegerDigits</code>: minimal number of non-fraction digits. If there are less integer digits in the number
+							than the value here, <code>'0'(s)</code> is prepended in the final result.</p>
+					</li>
+					<li class="li">
+						<p><code>maxIntegerDigits</code>: maximal number of non-fraction digits. If there are more digits in the number than the
+							value here, all integer digits in the final result are replace by <code>?</code>.</p>
+					</li>
+					<li class="li">
+						<p><code>minFractionDigits</code>: minimal number of fraction digits. If there are less decimal digits in the number than
+							the value here, '0'(s) is appended in the final result.</p>
+					</li>
+					<li class="li">
+						<p><code>maxFractionDigits</code>: maximal number of fraction digits. If there are more decimal digits in the number than
+							the value here, those digits are discarded from the result and the least significant digit is calculated by using the
+							given <code>roundingMode</code> parameter.</p>
+					</li>
+					<li class="li">
+						<p><code>decimals</code>: number of decimal digits in the final result. Same result is achieved by setting both
+								<code>minFractionDigits</code> and <code>maxFractionDigits</code> to this value.</p>
+					</li>
+					<li class="li">
+						<p><code>precision</code>: number of digits used to display the number, for example with precision 5 a number could be
+							1.3456 or 134.45.</p>
+					</li>
+					<li class="li">
+						<p><code>shortDecimals</code>: number of decimal digits in the shortifed number when parameter <code>style</code> is
+							set to <code>short</code> or <code>long</code>. If this isn't set, the parameter <code>decimal</code> is used
+							instead.</p>
+					</li>
+				</ul>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oFormatOptions = {
+    minIntegerDigits: 3,
+    maxIntegerDigits: 5,
+    minFractionDigits: 2,
+    maxFractionDigits: 4
+};
+
+// "NumberFormat" required from module "sap/ui/core/format/NumberFormat"
+var oFloatFormat = NumberFormat.getFloatInstance(oFormatOptions);
+oFloatFormat.format(1.1); // returns 001.10
+oFloatFormat.format(1234.567); // returns 1,234.567
+oFloatFormat.format(123456.56789); // returns ??,???.5679</pre></div></section>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oFormatOptions = {
+    style: "short",
+    decimals: 1,
+    shortDecimals: 2
+};
+
+// "NumberFormat" required from module "sap/ui/core/format/NumberFormat"
+var oFloatFormat = NumberFormat.getFloatInstance(oFormatOptions);
+oFloatFormat.format(1234.56); // returns 1.23K (shortified number takes the shortDecimals parameter)
+oFloatFormat.format(123.456); // returns 123.5 (non-shortified number takes the decimals parameter)</pre></div></section>
+			</section><section>
+				<h3 class="title ">Separator and Signs</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>groupingEnabled</code> defines whether the integer digits are put into groups which are separated by the
+								<code>groupingSeparator</code> parameter</p>
+					</li>
+					<li class="li">
+						<p><code>groupingType</code> defines the type of grouping. Either <code>Arabic</code> or <code>Indian</code> can
+							be set here.</p>
+					</li>
+					<li class="li">
+						<p><code>groupingSeparator</code> defines the separator of grouping.</p>
+					</li>
+					<li class="li">
+						<p><code>decimalSeparator</code> defines the symbol of decimal point.</p>
+					</li>
+					<li class="li">
+						<p><code>groupingSize</code> only used if you don't want the locale-dependent grouping, for example 3 digits for de or
+							en</p>
+					</li>
+					<li class="li">
+						<p><code>groupingBaseSize</code> only used if your locale uses a specific group size for the first group (like Indian),
+							and you don't want to use the standard</p>
+					</li>
+					<li class="li">
+						<p><code>plusSign</code></p>
+					</li>
+					<li class="li">
+						<p><code>minusSign</code></p>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Compact Format</h3>
+				<p>You can use compact format to format a number using a given scale. For example, 1000000 may be formatted under en-US locale as
+						<span class="ph uicontrol">1 Million</span>.</p>
+				<p>To format a number in compact format, set the option <code>style</code> to either <code>short</code> or
+						<code>long</code>. These styles control which version of scale name is used. For example, 1000000 is formatted as
+						<span class="ph uicontrol">1M</span> with <code>short</code> and <span class="ph uicontrol">1 Million</span> with <code>long</code>.</p>
+				<p>The scale can be selected automatically based on the given number, or you can set it explicitely by using
+						<code>shortRefNumber</code>. You can set this option with a number which is then used for calculating the scaling factor
+					for formatting all given numbers to this formatter.</p>
+				<p>To hide the scaling formatter from the formatted number and only be shown once on the screen, you can use option
+						<code>showScale</code>. In order to get the scaling factor name of the number set to <code>shortRefNumber</code> under
+					the current running locale, you use method <code>getScale</code>.</p>
+				<p>To control the start the starting point of numbers which should be displyed in compact format, you use
+					<code>shortLimit</code>.</p>
+				<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+					</p><p>In the following chart, all numbers both on the chart and axis should be formatted using the same scaling factor. The scaling
+						factor should only appear in the chart title and be hidden from the formatted number. In order to achieve this, the option
+							<code>shortRefNumber</code> is set to <code>1000000</code> and <code>showScale</code> is set to
+							<code>false</code>. The corresponding scaling factor name is returned by calling the <code>getScale</code>
+						method.</p>
+					<p><img src="loiodd8f106a130b484a86f4c56955006207_LowRes.png" usemap="#"></p>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Miscellaneous</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>emptyString</code> defines what empty string (<code>""</code>) is parsed as and what is formatted as
+								<code>emptyString</code>. The allowed values are only <code>NaN</code>, <code>null</code> or
+								<code>0</code>. Default setting is <code>NaN</code>.</p>
+					</li>
+					<li class="li">
+						<p><code>pattern</code>: a pattern which follows the CLDR syntax. The number is then formatted according to the given
+							pattern.</p>
+					</li>
+					<li class="li">
+						<p><code>roundingMode</code>: defines a rounding behavior for discarding the digits after the maximum decimal digits
+							defined by <code>maxFractionDigits</code> or <code>decimals</code>. Rounding will only be applied, if the
+							formatting value is of type number.</p>
+						<div class="tableWrapper "><div class="fig"><tgroup>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								</tgroup><table border="1" id="table_wdt_rpl_2y" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+									<tr>
+										<th colspan="1" rowspan="1">
+											<p>Number</p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>FLOOR</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>CEILING</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>TOWARDS_ZERO</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>AWAY_FROM_ZERO</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>HALF_FLOOR</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>HALF_CEILING</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>HALF_TOWARDS_ZERO</code></p>
+										</th>
+										<th colspan="1" rowspan="1">
+											<p><code>HALF_AWAY_FROM_ZERO</code></p>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.21</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.25</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.29</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3.</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>2.3</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.21</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.25</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.29</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.2</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+										<td colspan="1" rowspan="1" valign="top">
+											<p>-2.3</p>
+										</td>
+									</tr>
+								</tbody>
+							</table></div></div>
+					</li>
+				</ul>
+			</section></section><section>
+			<h2 class="title ">Parsing</h2>
+			<p>A formatted number which contains a locale-dependent grouping separator, decimal point, or percentage sign can be parsed into a number
+				object using <code>sap.ui.core.format.NumberFormat</code>. Those number string may not be correctly parsed by using
+					<code>parseInt</code> or <code>parseFloat</code> in JavaScript.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "NumberFormat" required from module "sap/ui/core/format/NumberFormat"
+var oFloatFormat = NumberFormat.getFloatInstance();
+
+oFloatFormat.parse("1,234.567"); // returns 1234.567
+oFloatFormat.parse("12.34%"); // returns 0.1234</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/api/sap.ui.core.format.NumberFormat" title="#/api/sap.ui.core.format.NumberFormat" class="sap-doc" alt="#/api/sap.ui.core.format.NumberFormat">API Reference: sap.ui.core.format.NumberFormat</a></li>
+        <li><a href="#/topic/8e618a8d93cb4f92adc911b96047eb8d.html" title="SAPUI5 supports the formatting and parsing of units. These unit formats are by default taken from the CLDR. Besides the default units defined in the CLDR, you can also define custom units." class="sap-doc">Unit Formatting</a></li>
+        <li><a href="#/topic/e978728a6ef6490c971248948f9101e0.html" title="e978728a6ef6490c971248948f9101e0.xml" class="sap-doc">Currency Formatting</a></li></ul></section></div></section></div></body></html>

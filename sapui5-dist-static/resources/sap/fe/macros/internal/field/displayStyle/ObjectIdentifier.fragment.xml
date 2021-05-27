@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							UI: 'sap/fe/core/templating/UIFormatters'
+						 }"
+>
+	<template:if test="{propertyPath>@com.sap.vocabularies.Common.v1.SemanticObject}">
+		<template:then>
+			<ObjectIdentifier
+				title="{= FIELD.getLabelTextForDataField(${entitySet>@}, ${propertyPath>@}, ${propertyPath>@@FIELD.buildExpressionForTextValue}, ${property>@@MODEL.format}, ${dataField>@sapui.name}, ${this>formatOptions/semanticKeyStyle}) }"
+				text="{= FIELD.getObjectIdentifierText(${propertyPath>@com.sap.vocabularies.Common.v1.Text}, ${propertyPath>@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${property>@@MODEL.value}, ${dataField>@sapui.name})}"
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				titleActive="{= FIELD.hasSemanticObjectTargets(${propertyPath>@com.sap.vocabularies.Common.v1.SemanticObject}, ${propertyPath>@com.sap.vocabularies.Common.v1.SemanticObjectUnavailableActions}, ${property>@@UI.getConverterContext} , ${property>@@UI.getDataModelObjectPath} ) }"
+				titlePress="FieldRuntime.pressLink"
+				unittest:id="MacroDataFieldObjectIdentifier"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+			>
+				<dependents>
+					<macro:QuickViewForm dataField="{dataField>}" />
+				</dependents>
+			</ObjectIdentifier>
+		</template:then>
+		<template:else>
+			<ObjectIdentifier
+				title="{= FIELD.getLabelTextForDataField(${entitySet>@}, ${propertyPath>@}, ${propertyPath>@@FIELD.buildExpressionForTextValue}, ${property>@@MODEL.format}, ${dataField>@sapui.name}, ${this>formatOptions/semanticKeyStyle}) }"
+				text="{= FIELD.getObjectIdentifierText(${propertyPath>@com.sap.vocabularies.Common.v1.Text}, ${propertyPath>@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${property>@@MODEL.value}, ${dataField>@sapui.name})}"
+			/>
+		</template:else>
+	</template:if>
+
+</core:FragmentDefinition>

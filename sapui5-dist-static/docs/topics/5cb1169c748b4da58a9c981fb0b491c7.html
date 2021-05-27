@@ -1,0 +1,29 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5cb1169c748b4da58a9c981fb0b491c7" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Busy Indication</h1><div class="fig"><h1 class="topictitle1 title">Busy Indication</h1><div class="shortdesc">The Worklist app implements a busy indication concept as specified by the SAP Fiori
+		Design Guidelines.</div><p>Calling the app will result in the following:</p><ul class="ul ">
+				<li class="li">
+					<p>Only initially a global busy indicator is displayed that overlays the whole
+						app until the metadata of the service is loaded.</p>
+				</li>
+				<li class="li">
+					<p>A local busy indicator is displayed on the worklist table or on the page of
+						the object view while the data from the service is loading.</p>
+				</li>
+				<li class="li">
+					<p>When controls are loading additional data or getting refreshed, a local busy
+						indication is displayed automatically.</p>
+				</li>
+			</ul><p></p><p>By default, the busy indicator delay is set to one second for all controls. This would first
+			show the UI for a second, then show a busy indication until the data is loaded. To avoid
+			this behavior initially and show the busy indicator immediately without delay the
+			following concept is implemented in the app: The <code>busyIndicatorDelay</code> and
+				<code>busy</code> properties of certain controls (<code>AppView</code>,
+				<code>Table</code> on the <span class="ph uicontrol">Worklist</span> page,
+				<code>FullScreenPage</code> on the <span class="ph uicontrol">Object</span> page) are bound
+			to the local view model and manipulated in the controllers of the app. The delay is
+			initially set to "0" for displaying the busy indicator immediately, and reset to the
+			previous value after the initial loading is done.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>You can find more information about busy indicators, busy states, and busy handling in general
+				in the <a href="https://experience.sap.com/fiori-design/" title="https://experience.sap.com/fiori-design/" class="external-link" target="_blank" rel="noopener">SAP Fiori Design Guidelines</a>.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

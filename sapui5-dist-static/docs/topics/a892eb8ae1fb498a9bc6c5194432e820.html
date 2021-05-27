@@ -1,0 +1,51 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa892eb8ae1fb498a9bc6c5194432e820" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Extending List Reports and Object Pages Using App Extensions</h1><div class="fig"><h1 class="topictitle1 title">Extending List Reports and Object Pages Using App Extensions</h1><div class="shortdesc">Various framework extension points are available for list reports and object pages. </div><p>Make sure you have read the following information: <a href="#/topic/d9c146a4e0f049108cf8231bfca5585b.html" title="Before you start creating an extension for your app, make sure you have read the information provided in this topic." class="sap-doc">Read Before Extending a Generated App</a>.</p><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div><p></p><section id="section_p1t_2px_znb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can either use the extension wizard in the SAP Web IDE to create extensions or
+				you can create them manually.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p><p>In list reports and object pages, you can use SAP Web IDE to add the following
+				extensions:</p><ul class="ul ">
+				<li class="li">
+					<p>List report</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>Filter</p>
+						</li>
+						<li class="li">
+							<p>Action</p>
+						</li>
+						<li class="li">
+							<p>Column</p>
+						</li>
+					</ul>
+				</li>
+				<li class="li">Object page<ul class="ul ">
+						<li class="li">
+							<p>Action</p>
+						</li>
+						<li class="li">
+							<p>Facet</p>
+						</li>
+						<li class="li">
+							<p>Column</p>
+						</li>
+						<li class="li">
+							<p>Header</p>
+						</li>
+						<li class="li">
+							<p>Form</p>
+						</li>
+					</ul></li>
+			</ul><p> While this documentation describes how to manually define app extensions, the following how-to video shows you how to create a section
+				extension on the object page using the extension wizard: .</p></div></section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/61cf0ee828824903907464c80dd0d88c">Extension Points for Object Page Header Facets</a></li><li><a href="topic/92ad9968e41748aeb74971f7a08a91c8">Extension Points for Sections on the Object Page</a></li><li><a href="topic/ce8d468269814077bc4b132572979b66">Extension Points for Subsections on the Object Page</a></li><li><a href="topic/4e49753530ad4a73a44a5f8efac238d6">Extension Points for Forms on the Object Page</a></li><li><a href="topic/6ffb084e6d8247d1863005c14e8d5894">Finding the Right Key for the Anchor</a></li><li><a href="topic/d525522c1bf54672ae4e02d66b38e60c">Extension Points for Tables</a></li><li><a href="topic/7619517a92414e27b71f02094bd08d06">Adding Custom Actions Using Extension Points</a></li><li><a href="topic/5fb9f57fcf12401bbe39a635e9a32a4e">Adding Custom Fields to the Filter Bar</a></li><li><a href="topic/25885b6f62ec4f61bf9271553ef369cd">Adapting Texts in the Delete Dialog Box Using Extensions (List Report)</a></li><li><a href="topic/1fd8e5201e3142d0bc002a078bb3da98">Adapting Texts in the Delete Dialog Box (Object Page Header)</a></li><li><a href="topic/b95adf3545fc4c578ca50d1ee3ec34a1">Adapting Texts in the Delete Dialog Box (Object Page with Nested Smart Table)</a></li><li><a href="topic/189e2d8a59f04a2693a4fde7f4a91a65">Prefilling Fields When Creating a New Entity Using an Extension Point</a></li><li><a href="topic/89fa878945294931b15a581a99043005">Custom State Handling for Extended Apps</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<macro:Form
+		id="{= ID.generate([${subSection>formDefinition/id}, 'MoreContent']) }"
+		facet="{subSection>annotationPath}"
+		entitySet="{entitySet>}"
+		useFormContainerLabels="{= ${subSection>formDefinition/useFormContainerLabels}}"
+		partOfPreview="false"
+		valueHelpRequestGroupId="$auto.Workers"
+		formContainers="{subSection>formDefinition/formContainers}"
+	/>
+</core:FragmentDefinition>

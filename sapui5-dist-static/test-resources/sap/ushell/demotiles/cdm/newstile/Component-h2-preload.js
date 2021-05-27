@@ -1,0 +1,14 @@
+//@ui5-bundle sap/ushell/demotiles/cdm/newstile/Component-h2-preload.js
+sap.ui.require.preload({
+	"sap/ushell/demotiles/cdm/newstile/Component.js":function(){
+// Copyright (c) 2009-2020 SAP SE, All Rights Reserved
+(function(){"use strict";jQuery.sap.declare("sap.ushell.demotiles.cdm.newstile.Component");sap.ui.define(["sap/ui/core/UIComponent"],function(U){return U.extend("sap.ushell.demotiles.cdm.newstile.Component",{metadata:{"manifest":"json"},tileSetVisible:function(n){},tileRefresh:function(){this._controller.refresh(this._controller);},tileSetVisualProperties:function(n){},createContent:function(){var t=sap.ui.view({viewName:"sap.ushell.demotiles.cdm.newstile.NewsTile",type:sap.ui.core.mvc.ViewType.JS,async:true});t.loaded().then(function(v){this._controller=t.getController();}.bind(this));return t;}});});}());
+},
+	"sap/ushell/demotiles/cdm/newstile/manifest.json":'{"_version":"1.1.0","sap.flp":{"type":"tile","tileSize":"1x2"},"sap.app":{"id":"sap.ushell.demotiles.cdm.newstile","_version":"1.0.0","i18n":"news_tile.properties","type":"application","applicationVersion":{"version":"1.0.0"},"title":"{{title}}","description":"{{description}}","tags":{"keywords":["{{keyword.news}}","{{keyword.feeds}}","RSS"]},"ach":"CA-UI2-INT-FE","crossNavigation":{"inbounds":{"My-newsTile":{"semanticObject":"My","action":"newsTile","signature":{"parameters":{}}}}}},"sap.ui":{"_version":"1.1.0","icons":{"icon":"sap-icon://favorite"},"deviceTypes":{"desktop":true,"tablet":true,"phone":true},"supportedThemes":["sap_hcb","sap_bluecrystal"]},"sap.ui5":{"_version":"1.1.0","componentName":"sap.ushell.demotiles.cdm.newstile","config":{"defaultImage":"","useDefaultImage":false,"cycleInterval":7000,"refreshInterval":0,"feed1":"../../../../sap/ushell/test/feeds/fakenews.rss","feed2":"","feed3":"","feed4":"","feed5":"","feed6":"","feed7":"","feed8":"","feed9":"","feed10":"","eFilter1":"","eFilter2":"","eFilter3":"","eFilter4":"","eFilter5":"","iFilter1":"","iFilter2":"","iFilter3":"","iFilter4":"","iFilter5":""},"dependencies":{"minUI5Version":"1.38","libs":{"sap.m":{}}},"models":{"i18n":{"type":"sap.ui.model.resource.ResourceModel","uri":"news_tile.properties"}},"rootView":{"viewName":"sap.ushell.demotiles.cdm.newstile.NewsTile","type":"JS"},"handleValidation":false}}'
+},"sap/ushell/demotiles/cdm/newstile/Component-h2-preload"
+);
+sap.ui.loader.config({depCacheUI5:{
+"sap/ushell/demotiles/cdm/newstile/NewsTile.controller.js":["sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js"],
+"sap/ushell/demotiles/cdm/newstile/NewsTile.view.js":["sap/suite/ui/commons/FeedItem.js","sap/suite/ui/commons/FeedTile.js","sap/suite/ui/commons/util/FeedAggregator.js","sap/ui/model/Sorter.js","sap/ushell/demotiles/cdm/newstile/NewsTileUtils.js"]
+}});
+//# sourceMappingURL=Component-h2-preload.js.map

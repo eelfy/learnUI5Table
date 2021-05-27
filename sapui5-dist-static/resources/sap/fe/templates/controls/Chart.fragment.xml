@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:core="sap.ui.core"
+>
+
+	<macro:Chart
+		id="{visualizationDefinition>id}"
+		collection="{visualizationDefinition>collection}"
+		presentation="{presentationContext>annotationPath}"
+		chartDefinition="{visualizationDefinition>}"
+		selectionMode="MULTIPLE"
+		p13nMode="{visualizationDefinition>p13nMode}"
+		navigationPath="{visualizationDefinition>navigationPath}"
+		width="100%"
+		vizProperties="{visualizationDefinition>vizProperties}"
+		actions="{visualizationDefinition>actions}"
+		filter="{visualizationDefinition>filterId}"
+		chartDelegate="{= '{name: \'sap/fe/templates/AnalyticalListPage/chart/FEChartDelegate\', payload: {collectionName: \'' + ${visualizationDefinition>entityName} + '\' }}' }"
+		dataPointsSelected=".handlers.onChartSelectionChanged"
+		onSegmentedButtonPressed="{= ${converterContext>isAlp} ? '.handlers.onSegmentedButtonPressed' : '' }"
+		visible="{= ${converterContext>isAlp} ? '{= ${pageInternal>alpContentView} !== \'Table\'}' : 'true' }"
+		noDataText="{= ${converterContext>template} === 'ObjectPage' ? ${sap.fe.i18n>T_OP_TABLE_AND_CHART_OP_NO_FILTERS_NO_DATA_TEXT} : ${sap.fe.i18n>T_OP_TABLE_AND_CHART_NO_FILTERS_NO_DATA_TEXT} }"
+	>
+	</macro:Chart>
+</core:FragmentDefinition>

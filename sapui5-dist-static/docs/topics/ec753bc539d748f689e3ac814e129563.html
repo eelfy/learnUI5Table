@@ -1,0 +1,116 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioec753bc539d748f689e3ac814e129563" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Supported Locales and Fallback</h1><div class="fig"><h1 class="topictitle1 title">Supported Locales and Fallback</h1><div class="shortdesc">A list of supported locales can be created to restrict the number of locales for which resource bundles may be requested. These can be
+		configured for a fallback chain, for which a custom fallback locale can be provided. </div><p> The localization configuration can be provided in the <code>manifest.json</code> file. It can either be configured using the
+				<code>i18n</code> property in the <code>sap.app</code> section or in the <code>sap.ui5</code> section via the
+				<code>models</code> configuration.</p><p>Sample configuration in <code>sap.ui5</code>:</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myapp.i18n.i18n"
+                }
+            }
+        }
+    }
+}
+...</pre></div></section><p>In this example a resource model with identifier <code>"i18n"</code> and resource root bundle name <code>"myapp.i18n.i18n"</code> has
+			been defined. This <code>bundleName</code> then resolves to a resource bundle root URL, e.g.
+				<code>"myapp/i18n/i18n.properties"</code>. Depending on the locale fallback chain, locales are applied to the resource bundle root
+			URL in order to load the specific bundles and the requested translation for text keys, e.g.
+				<code>"myapp/i18n/i18n_de.properties"</code>.</p><section id="section_FallbackChain">
+			<h2 class="title ">Locale Fallback Chain</h2>
+			<p>The locales are resolved using a locale fallback chain. Each fallback is checked in the order of resolution. The locale fallback is
+				used for loading resource bundles initially and when resolving texts.</p>
+			<ol>
+				<li class="li">
+					<p>determine the input language, e.g. <code>"de_CH"</code>. For more information, see <a href="#/topic/91f21f176f4d1014b6dd926db0e91070.html" title="For the identification of languages, the framework uses a language code of type string." class="sap-doc">Identifying the Language Code / Locale</a>.</p>
+				</li>
+				<li class="li">
+					<p>remove the region suffix from the locale code, e.g.<code> "de_CH"</code> -&gt; <code>"de"</code></p>
+				</li>
+				<li class="li">
+					<p>use the <code>fallbackLocale</code> configured, e.g. <code>"en"</code> (defaults to <code>"en"</code>)</p>
+				</li>
+				<li class="li">
+					<p>use the raw bundle, e.g. <code>""</code></p>
+				</li>
+			</ol>
+			<p>Sample fallback chains:</p><ul class="ul ">
+					<li class="li">
+						<p>input locale: <code>"de_CH"</code></p>
+						<p>
+							</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"de_CH" -&gt; "de" -&gt; "en" -&gt; ""</pre></div></section>
+						<p></p>
+					</li>
+					<li class="li">
+						<p>input locale: <code>"en_GB"</code></p>
+						<p>
+							</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"en_GB" -&gt; "en" -&gt; ""</pre></div></section>
+						<p></p>
+					</li>
+				</ul><p></p>
+			<p>The fallback chain can be configured using a custom fallback locale and a list of supported locales.</p>
+		</section><section id="section_SupportedLocales">
+			<h2 class="title ">Supported Locales and Fallback Locale</h2>
+			<p><span class="emphasis">Supported Locales</span> specifies a list of locales for which resource bundles may be requested. If this list is empty
+				or not specified, all locales are supported. </p>
+			<p> The <code>supportedLocales</code> work like a filter. Each locale in the fallback chain is checked against this list and only
+				applied if it is contained there.</p>
+			<p>The <span class="emphasis">Fallback Locale</span> specifies the custom fallback locale in the locale fallback chain. If not specified the
+					<code>fallbackLocale</code> defaults to <code>en</code>.</p>
+			<p>Sample configuration in <code>sap.ui5</code>:</p>
+			<section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myapp.i18n.i18n",
+                    "supportedLocales": ["de", "en"],
+                    "fallbackLocale": "de"
+                }
+            }
+        }
+    }
+}
+...</pre></div></section>
+			<p>In this sample the locales <code>de</code> and <code>en</code> are supported. This means that the following two resource bundle
+				files must exist:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p><code>myapp/i18n/i18n_de.properties</code></p>
+				</li>
+				<li class="li">
+					<p><code>myapp/i18n/i18n_en.properties</code></p>
+				</li>
+			</ul>
+			<p>The fallback locale <code>de</code> is applied if the current locale (e.g. browser locale) cannot be transformed to one of the
+					<code>supportedLocales</code> ( <code>de</code> or <code>en</code>) by removing the region postfix from the
+				locale.</p>
+			<p>Sample fallback chains:</p><ul class="ul ">
+					<li class="li">
+						<p>input locale: <code>"de_CH"</code></p>
+						<p>
+							</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"de_CH" -&gt; "de" (supported)</pre></div></section>
+						<p></p>
+					</li>
+					<li class="li">
+						<p>input locale: <code>"en_GB"</code></p>
+						<p>
+							</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"en_GB" -&gt; "en" (supported)</pre></div></section>
+						<p></p>
+					</li>
+					<li class="li">
+						<p>input locale: <code>"fr_FR"</code></p>
+						<p>
+							</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"fr_FR" -&gt; "fr" -&gt; "de" (supported)</pre></div></section>
+						<p></p>
+					</li>
+				</ul><p></p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>To skip the custom fallback locale, the empty string <code>""</code> can be configured as <code>fallbackLocale</code>.</p>
+				<p>If specified, the <code>fallbackLocale</code> must be present in the list of <code>supportedLocales</code>.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

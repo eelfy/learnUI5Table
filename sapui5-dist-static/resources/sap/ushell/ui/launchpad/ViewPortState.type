@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>ui/launchpad/ViewPortState</name>
+    <derived/>
+    <documentation>Denotes display states of the viewport</documentation>
+    <enumeration>
+        <value name="Left">
+            <documentation>Indicates state, when only left content is in the viewport.</documentation>
+        </value>
+        <value name="Center">
+            <documentation>Indicates state, when only center content is in the viewport.</documentation>
+        </value>
+        <value name="Right">
+            <documentation>Indicates state, when only right content is in the viewport.</documentation>
+        </value>
+        <value name="LeftCenter">
+            <documentation>Indicates state, when the left content as well as a part from the center content is in the viewport.</documentation>
+        </value>
+        <value name="CenterLeft">
+            <documentation>Indicates state, when the center content as well as a part from the left content is in the viewport.</documentation>
+        </value>
+        <value name="RightCenter">
+            <documentation>Indicates state, when the right content as well as a part from the center content is in the viewport.</documentation>
+        </value>
+        <value name="CenterRight">
+            <documentation>Indicates state, when the center content as well as a part from the right content is in the viewport.</documentation>
+        </value>
+    </enumeration>
+</simple-type>

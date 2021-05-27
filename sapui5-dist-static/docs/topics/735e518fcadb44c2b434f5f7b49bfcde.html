@@ -1,0 +1,47 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio735e518fcadb44c2b434f5f7b49bfcde" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Formatting Numeric Values</h1><div class="fig"><h1 class="topictitle1 title">Formatting Numeric Values</h1><div class="shortdesc">Numeric values in overview pages appear in their short format, using the SAPUI5
+			sap.ui.core.format.NumberFormat utility. You can configure the number
+		of decimal points to display by using information provided in the OData metadata file, or by
+		using annotations.</div><section>
+			<p>In the following example, the <code>scale</code> attribute in the OData metadata is set to
+				3, indicating that the properties <code>Price</code>, <code>Width</code>,
+					<code>Depth</code>, and <code>Height</code> will be displayed with three
+				decimal points. </p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="Product" sap:content-version="1"&gt;
+    ...
+    &lt;Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:label="Unit Price"/&gt;
+    &lt;Property Name="Width" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUnit" sap:label="Dimensions"/&gt;
+    &lt;Property Name="Depth" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUnit" sap:label="Dimensions"/&gt;
+    &lt;Property Name="Height" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="DimUnit" sap:label="Dimensions"/&gt;
+    ...
+&lt;/EntityType&gt;</pre></div></section>
+			<p></p></div></div>
+			<p>You can also provide number formatting information in the annotation document in the
+					<code>com.sap.vocabularies.UI.v1.DataPoint</code> term, by using the
+					<code>ValueFormat</code> property. The
+					<code>NumberOfFractionalDigits</code> property can be used to determine the
+				number of decimal points. </p>
+			<p>In the following example, using the <code>com.sap.vocabularies.UI.v1.DataPoint
+					ValueFormat</code> property, the number of decimal points displayed for the
+					<code>Price</code> property is 1, as defined in the
+					<code>NumberOfFractionalDigits</code> property.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.DataPoint" Qualifier="Price"&gt;
+    &lt;Record Type="com.sap.vocabularies.UI.v1.DataPointType"&gt;
+        &lt;PropertyValue Property="Title" String="Unit Price"/&gt;
+        &lt;PropertyValue Property="Description" Path="Name"/&gt;
+        &lt;PropertyValue Property="Value" Path="Price"/&gt;
+        &lt;PropertyValue Property="ValueFormat"&gt;
+            &lt;Record Type="com.sap.vocabularies.UI.v1.NumberFormat"&gt;
+                &lt;PropertyValue Property="ScaleFactor" Decimal="1000"/&gt;
+                &lt;PropertyValue Property="NumberOfFractionalDigits" int="1"/&gt;
+            &lt;/Record&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

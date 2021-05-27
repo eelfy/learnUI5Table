@@ -1,0 +1,44 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio492bc791a7bd41cd9932fdf5d3aa2656" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Displaying Images in Tables</h1><div class="fig"><h1 class="topictitle1 title">Displaying Images in Tables</h1><div class="shortdesc">To display images in tables, you must first add a data field with a value that relates to an image URL.</div><p> This is shown in the following example:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataField"&gt;
+    &lt;PropertyValue Property="Value" Path="ProductPictureURL"/&gt;
+    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+&lt;/Record&gt;
+</pre></div></section>
+			<p></p></div></div>You also need to add a property annotation to the local annotation
+			file that specifies that this property contains an image URL, as in the following example:<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/ProductPictureURL"&gt;
+    &lt;Annotation Term="UI.IsImageUrl" /&gt;
+    &lt;Annotation Term="Common.Text" String="{Product}" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p></p></div></div><p></p><p>The <code>Common.Text</code> annotation is optional. You can use it to provide
+			textual information for the image, for example, for accessibility purposes. This text is
+			not visible on the UI, but can be read by screen readers. From a technical perspective,
+			the provided string (in this example, the product) is assigned to the
+				<code>alt</code> property of the <code>sap.m.Image</code> instance.</p><section id="section_hwk_2nh_2nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>A property containing media data of type <span class="emphasis">stream</span>, such as an image, is also supported. The local annotation file
+				needs to specify that this property contains a URL and a Media Content Type set to <code>image/&lt;File_Format&gt;</code>, as in
+				the following example:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/ProductPictureURL"&gt;
+   &lt;Annotation Term="Common.Text" String="{Product}" /&gt; 
+   &lt;Annotation Term="Core.IsURL" Bool="true"/&gt;
+   &lt;Annotation Term="Core.MediaType" String="image/jpg"/&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p></p></div></div><p><span class="emphasis">Stream</span> properties are just supported for read-only cases, which means <span class="emphasis">stream</span> property data is
+				only read via URL and isn't editable via URL. For more information, see <a href="http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html#_Toc372793075" title="http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html#_Toc372793075" class="external-link" target="_blank" rel="noopener">Stream Properties on OData v4</a>.</p><p>You can also use media data of type <span class="emphasis">binary</span> instead of <span class="emphasis">stream</span>. The local annotation file only
+				needs to include the property containing the Media Content Type set to <code>image/&lt;File_Format&gt;</code>, as shown in the
+				example below:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/ProductPictureURL"&gt;
+   &lt;Annotation Term="Common.Text" String="{Product}" /&gt; 
+   &lt;Annotation Term="Core.MediaType" String="image/png"/&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

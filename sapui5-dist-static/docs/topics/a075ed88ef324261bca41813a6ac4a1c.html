@@ -1,0 +1,2396 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa075ed88ef324261bca41813a6ac4a1c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Legacy jQuery.sap Replacement</h1><div class="fig"><h1 class="topictitle1 title">Legacy jQuery.sap Replacement</h1><div class="shortdesc">Overview of the mapping of legacy APIs to the new APIs for the migration</div><p>The deprecation of the <code>jQuery.sap</code> API requires that it is replaced with the
+			new API. The following list provides an overview of the required replacements.</p><section><section>
+				<h3 class="title ">Replacement With New Modules</h3>
+				<p>To migrate the simple replacements, add the new module dependency and replace the call with
+					the added argument name as shown in the following example:</p>
+				<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p><img src="loio7d56a8eabb9e4426a7643e2f524015bd_LowRes.png" usemap="#"></p></div></div>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						
+						</tgroup><table border="1" id="table_nyq_zph_y2b" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Old API Call</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>New Module</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Replacement Type</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Replace with</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.assert</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/assert</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>assert</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.resources</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>sap/base/i18n/ResourceBundle</code></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>ResourceBundle.create</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>sap/base/Log</code></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.addLogListener</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.addLogListener</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.debug</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>Log.debug</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.error</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.error</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.fatal</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.fatal</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.getLevel</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.getLevel</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.getLog</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.getLogEntries</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.getLogEntries</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.getLogEntries</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.getLogger</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.getLogger</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.info</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.info</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.isLoggable</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.isLoggable</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.Level</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.Level</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.logSupportInfo</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.logSupportInfo</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.removeLogListener</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.removeLogListener</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.trace</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.trace</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.log.warning</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/Log</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Log.warning</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeCSS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeCSS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeCSS</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeJS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeJS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeJS</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeURL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeURL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeURL</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeURLParameters</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeURLParameters</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeURLParameters</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeHTML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeXML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeXML</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.encodeXML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/encodeXML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>encodeXML</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.addUrlWhitelist</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/URLListValidator</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>URLListValidator.add</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.clearUrlWhitelist</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/URLListValidator</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>URLListValidator.clear</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getUrlWhitelist</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/URLListValidator</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>URLListValidator.entries</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.removeUrlWhitelist</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/URLListValidator</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>URLListValidator.clear</code> and <code>URLListValidator.add</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.validateUrl</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/security/URLListValidator</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>URLListValidator.validate</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.camelCase</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/camelize</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>camelize</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.charToUpperCase</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/capitalize</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>capitalize</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.escapeRegExp</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/escapeRegExp</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>escapeRegExp</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.formatMessage</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/formatMessage</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>formatMessage</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.hashCode</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/hash</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>hash</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.hyphen</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code> sap/base/strings/hyphenate</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>hyphenate</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.unicode</code></p>
+									<p><code>jQuery.sap.isStringNFC</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/strings/NormalizePolyfill</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>NormalizePolyfill</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><code>sap/base/strings/toHex</code></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.arraySymbolDiff</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/array/diff</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>diff</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.unique</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/array/uniqueSort</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>uniqueSort</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.equal</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/deepEqual</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>deepEqual</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code> sap/base/util/defineLazyProperty</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.each</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/each</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>each</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.forIn</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/each</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>each</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>- </p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/includes</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.isPlainObject</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/isPlainObject</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isPlainObject</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.parseJS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/JSTokenizer</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>JSTokenizer.parseJS</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.extend</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/merge</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Old:</p>
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// Shallow
+jQuery.sap.extend({}, sContent);
+
+// Deep
+jQuery.sap.extend(true, {}, sContent)</pre></div></section>
+									<p>New:</p>
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// Shallow
+//
+// No actual replacement for shallow copies available, see the note below for more info.
+
+// Deep
+merge({}, sContent);</pre></div></section>
+									<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+										</p><p><span class="emphasis"><code>jQuery.sap.extend</code> vs.
+												<code>jQuery.extend</code></span></p>
+										<p>The use of <code>jQuery.sap.extend()</code> is the
+											same as <code>jQuery.extend()</code>, but arguments
+											that are <code>null</code> or
+												<code>undefined</code> are
+												<span class="emphasis">not</span> ignored.</p>
+										<p><span class="emphasis"><code>Object.assign</code></span></p>
+										<p>The <code>Object.assign()</code> method only copies
+											enumerable and own properties, but does not copy
+											properties on the prototype chain and non-enumerable
+											properties.</p>
+										<p>Considering this, <code>Object.assign()</code> might
+											be a suitable replacement for
+												<code>jQuery.sap.extend</code> for a shallow
+											copy.</p>
+										<p><code>null</code> and <code>undefined</code>
+											arguments are <span class="emphasis">not</span> ignored.</p>
+									<p></p></div></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.now</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/now</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>now</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getObject</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/ObjectPath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ObjectPath.get("some.object.path", "someProperty");</pre></div></section>
+									<p>If the object path does not exist, the method doesn't create
+										it anymore. If the path needs to be create it has do be done
+										separately:</p>
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ObjectPath.create("some.object.path", window.myLib);</pre></div></section>
+									<p>
+								</p></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.setObject</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/ObjectPath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ObjectPath.set("some.object.path", "myValue", window.myLib);</pre></div></section>
+									<p>The object path is created if it does not exist.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.properties</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/Properties</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Properties.create</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.uid</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/uid</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>uid</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getUriParameters</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/UriParameters</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Changed to class for instantiation</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oUriParameters = new UriParameters(window.location.href);
+oUriParameters.get("sap-ui-debug");</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/values</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.Version</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/base/util/Version</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Version</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/core/support/HotKeys</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.syncStyleClass</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/core/syncStyleClass</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>syncStyleClass</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.android_phone</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.android && Device.system.phone</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.android_tablet</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.android && Device.system.tablet</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.desktop</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.system.desktop</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.ipad</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.ios && Device.system.ipad</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.iphone</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.ios && Device.system.phone</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.landscape</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.orientation.landscape</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.phone</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.system.phone</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.portrait</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.orientation.portrait</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.device.is.tablet</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.system.tablet</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.Android</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "Android"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.bb</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "bb"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.fVersion</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.version</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.iOS</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "iOS"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.linux</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "linux"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.mac</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "mac"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.os</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.version</code>
+									</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.versionStr</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.win</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "win"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.os.winphone</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/Device</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Device.os.name === "winphone"</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.containsOrEquals</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/containsOrEquals</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>containsOrEquals</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.denormalizeScrollBeginRTL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/denormalizeScrollBeginRTL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>denormalizeScrollBeginRTL</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.denormalizeScrollLeftRTL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/denormalizeScrollLeftRTL</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>denormalizeScrollLeftRTL</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/getComputedStyleFix</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.ownerWindow</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/getOwnerWindow</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>getOwnerWindow</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.scrollbarSize</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/getScrollbarSize</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>getScrollbarSize</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.includeScript</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/includeScript</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>includeScript</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.includeStylesheet</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/includeStylesheet</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>includeStylesheet</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.replaceDOM</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/patch</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>patch</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.pxToRem</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/units/Rem</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Rem.fromPx</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.remToPx</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/dom/units/Rem</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Rem.toPx</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.checkMouseEnterOrLeave</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/checkMouseEnterOrLeave</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>checkMouseEnterOrLeave</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.bindAnyEvent</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/ControlEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>bindAnyEvent</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.ControlEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/ControlEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>events</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.unbindAnyEvent</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/ControlEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>unbindAnyEvent</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.handleF6GroupNavigation</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/F6Navigation</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>handleF6GroupNavigation</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.isMouseEventDelayed</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/isMouseEventDelayed</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isMouseEventDelayed</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.isSpecialKey</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/isSpecialKey</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isSpecialKey</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.touchEventMode</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/jquery/EventSimulation</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>touchEventMode</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.keycodes</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/events/KeyCodes</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>KeyCodes</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.PseudoEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code> sap/ui/events/PseudoEvents</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>PseudoEvents</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.disableTouchToMouseHandling</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code> sap/ui/events/TouchToMouseMapping</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>disableTouchToMouseHandling</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.registerModulePath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.loader.config({paths:{"myPath": "some/path"}});</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.registerResourcePath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.loader.config({paths:{"myPath": "some/path"}});</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.add</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.add</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.average</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.average</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.clear</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.clear</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.end</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.end</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.filterMeasurements</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.filterMeasurements</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.getActive</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.getActive</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.getAllMeasurements</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.getAllMeasurements</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.getMeasurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.getMeasurement</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.pause</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.pause</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.registerMethod</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.registerMethod</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.remove</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.remove</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.resume</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.resume</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.setActive</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.setActive</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.start</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.start</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.unregisterAllMethods</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.unregisterAllMethods</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.unregisterMethod</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/Measurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Measurement.unregisterMethod</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.fesr.getActive</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/FESR</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>FESR.getActive</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.fesr.setActive</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/FESR</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>FESR.setActive</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.fesr.addBusyDuration</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple Replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.addBusyDuration</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.interaction.*</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.*</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.clearInteractionMeasurements</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.clear</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.endInteraction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.end</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.filterInteractionMeasurements</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.filter</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.getAllInteractionMeasurements</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.getAll</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.getPendingInteractionMeasurement</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.getPending</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.measure.startInteraction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Interaction</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Interaction.start</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.fesr.getCurrentTransactionId</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Passport</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Passport.getTransactionId</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.fesr.getRootId</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Passport</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Passport.getRootId</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.passport.*</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/performance/trace/Passport</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Passport.*</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getModulePath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require.toUrl("some/path/to/module.js");</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getResourcePath</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>-</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Complex replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require.toUrl("some/path/to/resource.json");</pre></div></section>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.FrameOptions</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/security/FrameOptions</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>FrameOptions</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.act</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/ActivityDetection</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>ActivityDetection</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.initMobile</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/Mobile</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Mobile.init</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.setIcons</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/Mobile</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Mobile.setIcons</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.setMobileWebAppCapable</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/Mobile</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Mobile.setWebAppCabable</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.storage</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/Storage</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Storage</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.storage.Type.*</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/Storage</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Storage.Type</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.getParseError</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/XMLHelper</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Simple replacement</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Helper.getParseError</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.parseXML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/XMLHelper</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Helper.parse</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>jQuery.sap.serializeXML</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap/ui/util/XMLHelper</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Method changed</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Helper.serialize</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section><section>
+				<h3 class="title ">Replacement with Native Browser APIs</h3>
+				<div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_nlc_gqh_y2b" class=" "><thead>
+						<tr><th colspan="1" rowspan="1">
+							<p>Old API Call</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>New Native Replacement</p>
+						</th>
+					</tr></thead><tbody><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.device.is.standalone</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.navigator.standalone</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.inArray</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var b = (aElements ? Array.prototype.indexOf.call(aElements, 4) : -1);</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.isArray</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Array.isArray</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.clearDelayedCall</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.clearTimout</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.clearIntervalCall</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.clearInterval</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.delayedCall</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.setTimeout</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.domById</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.document.getElementById</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.endsWith</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sMyString.endsWith("abc")</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.endsWithIgnoreCase</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sMyString.toLowerCase().endsWith(sMyOtherString.toLowerCase())</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top"><code>jQuery.sap.getter</code></td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">function(value) { return function() { return value; }; }(myValue);</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.intervalCall</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.setInterval</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.isEqualNode</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Node.isEqualNode</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.newObject</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Object.create</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.padLeft</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"a".padStart(110, "0");</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.padRight</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"a".padEnd(110, "0");</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.resources.isBundle</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">instanceof</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.startsWith</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sMyString.startsWith("abc");</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.startsWithIgnoreCase</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sMyString.toLowerCase().startsWith(sMyOtherString.toLowerCase())</pre></div></section>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.support.retina</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">window.devicePixelRatio &gt;= 2</pre></div></section>
+						</td>
+					</tr></tbody></table></div></div>
+			</section><section>
+				<h3 class="title ">jQuery Extensions Dependencies</h3>
+				<p>jQuery extensions have been extracted into different modules. If the jQuery extension is
+					required, it needs to be added to the module dependencies.</p>
+				<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p></p><p>Change from the global dependencies to adding the module dependencies to the
+						jQuery extensions:</p><img src="loioff6352e35e6a4b9a9c16ee3c1fa4d740_LowRes.png" usemap="#"><p></p></div></div>
+				<div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_vqq_3qh_y2b" class=" "><thead>
+						<tr><th colspan="1" rowspan="1">
+							<p>jQuery Call</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>Old Module</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>New Module</p>
+						</th>
+					</tr></thead><tbody><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.*</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.global</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/thirdparty/jquery</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.position</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.sap.global</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/thirdparty/jqueryui/jquery-ui-position</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.control</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.ui</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/control</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.addLabelledBy</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Aria</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.removeLabelledBy</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Aria</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.addDescribedBy</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Aria</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.removeDescribedBy</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Aria</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.cursorPos</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/cursorPos</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.firstFocusableDomRef</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Focusable</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.lastFocusableDomRef</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Focusable</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.getSelectedText</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/getSelectedText</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.hasTabIndex</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/hasTabIndex</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.parentByAttribute</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/parentByAttribute</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.rect</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/rect</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.rectContains </code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/rectContains</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.scrollLeftRTL</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/scrollLeftRTL</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.scrollRightRTL</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/scrollRightRTL</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.enableSelection</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Selection</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.disableSelection</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Selection</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>:sapTabbable, :focusable, :sapFocusable</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/Selectors</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.selectText</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/selectText</code></p>
+						</td>
+					</tr><tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jQuery.fn.zIndex</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>jquery.sap.dom</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap/ui/dom/jquery/zIndex</code></p>
+						</td>
+					</tr></tbody></table></div></div>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

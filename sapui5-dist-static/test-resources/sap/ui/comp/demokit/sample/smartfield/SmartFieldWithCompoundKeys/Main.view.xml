@@ -1,0 +1,35 @@
+<mvc:View
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:smartField="sap.ui.comp.smartfield"
+		xmlns:m="sap.m" height="100%"
+		controllerName="sap.ui.comp.sample.smartfield.SmartFieldWithCompoundKeys.Main"
+		xmlns:form="sap.ui.comp.smartform">
+
+	<m:ScrollContainer id="SC1" height="100%" horizontal="false" vertical="true">
+		<form:SmartForm id="form" editable="true"
+			title="Smart Field with Coumpound Keys">
+			<form:layout>
+				<form:ColumnLayout
+						columnsM="1"
+						columnsL="1"
+						columnsXL="1"/>
+			</form:layout>
+			<form:Group label="Smart Field with Coumpound Keys without any parameters" >
+				<form:GroupElement>
+					<smartField:SmartField id="code" width="60%" value="{CODE}"/>
+				</form:GroupElement>
+			</form:Group>
+			<form:Group label="Smart Field with Coumpound Keys, In/Out and constant parameters" >
+				<form:GroupElement>
+					<smartField:SmartField change="changeSF" id="codeAsia" width="60%" value="{CODE_ASIA}" textInEditModeSource="ValueList"/>
+				</form:GroupElement>
+			</form:Group>
+		</form:SmartForm>
+		<m:VBox class="sapUiSmallMargin">
+			<m:Label class="sapUiFormTitleH5" text="Request URL"></m:Label>
+			<m:Text id="request"/>
+		</m:VBox>
+	</m:ScrollContainer>
+
+</mvc:View>

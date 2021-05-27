@@ -1,0 +1,58 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9bc298eeaeaa4bf39f1fae582c1443f6" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Customizing Table Card</h1><div class="fig"><h1 class="topictitle1 title">Customizing Table Card</h1><div class="shortdesc">You can customize the content on the table area with smart links, text alignment,
+		filtering or grouping information.</div><section>
+			<h2 class="title ">Adding Smart Links</h2>
+			<p>Define a semantic object for the entity set and its property using the annotation target to
+				add smart links. For
+				example:</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="GWSAMPLE_BASIC.SalesOrder/SalesOrderID"&gt;
+&lt;Annotation Term="com.sap.vocabularies.Common.v1.SemanticObject" String="OVP" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p>
+		</section><section id="section_khq_q32_2fb">
+			<h2 class="title ">Text Arrangement in Table Area</h2>
+			<p>Define <code>Text</code> arrangement annotation to format content on the table
+				area.</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="GWSAMPLE_BASIC.SalesOrder/CustomerID"&gt;
+&lt;Annotation Term="com.sap.vocabularies.Common.v1.Text" Path="Supplier_Name"/&gt;
+&lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement" EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextLast" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section>In
+				the preceding example, the text <code>Customer</code> is bound to the
+					<code>ContactID</code> property and appears as shown in the table:<p></p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_tqn_gj2_2fb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">Text Arrangement Type</th>
+							<th colspan="1" rowspan="1">Result</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code>TextLast</code></td>
+							<td colspan="1" rowspan="1" valign="top"><code>ContractID (Customer)</code></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code>TextFirst</code></td>
+							<td colspan="1" rowspan="1" valign="top"><code>Customer (ContractID)</code></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code>TextOnly</code></td>
+							<td colspan="1" rowspan="1" valign="top"><code>Customer</code></td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section id="section_z4h_pj2_2fb">
+			<h2 class="title ">Filtering</h2>
+			<p>You can add filters to table card by using the
+					<code>com.sap.vocabularies.UI.v1.SelectionVariant</code> annotation term, or
+				by passing filter parameter in the URL. For more information, see <a href="#/topic/ecde99ffaf2d4c5d8e95552415588b74.html" title="You can add filters to all card types, by using the com.sap.vocabularies.UI.v1.SelectionVariant annotation term or by passing filter parameter in the URL." class="sap-doc">Configuring Card Filters</a></p>
+		</section><section id="section_zmn_qj2_2fb">
+			<h2 class="title ">Sorting or Grouping</h2>
+			<p>You can sort information in the table card by using <code>sortBy</code> and
+					<code>sortOrder</code> properties in the application descriptor file. For
+				more information, see <a href="#/topic/41af842da7694ef1918fc06b75679ecc.html" title="All cards support sorting using the com.sap.vocabularies.UI.v1.PresentationVariant annotation term." class="sap-doc">Configuring Sort Properties</a></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

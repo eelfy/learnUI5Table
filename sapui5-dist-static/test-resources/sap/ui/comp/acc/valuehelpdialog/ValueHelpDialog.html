@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta charset="utf-8">
+
+	<title>ValueHelpDialog Accesibility Test Page</title>
+
+	<script id='sap-ui-bootstrap'
+		src="../../../../../../resources/sap-ui-core.js"
+		data-sap-ui-theme='sap_fiori_3'
+		data-sap-ui-libs='sap.m, sap.ui.comp'
+		data-sap-ui-compatVersion='edge'
+		data-sap-ui-resourceroots='{
+			"qunit.internal.acc": "../../../../test-resources/sap/ui/core/qunit/internal/acc"
+		}'></script>
+
+
+	<script id="myXml" type="text/xmldata">
+			<mvc:View height="100%" controllerName="myController"
+				xmlns:mvc="sap.ui.core.mvc"
+				xmlns:layout="sap.ui.layout"
+				xmlns:form="sap.ui.layout.form"
+				xmlns="sap.m"
+				xmlns:core="sap.ui.core">
+
+				<layout:Grid defaultSpan="L12 M12 S12">
+					<layout:content>
+						<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanM="12" labelSpanL="12" labelSpanXL="12" emptySpanL="6" emptySpanM="6">
+							<form:content>
+								<Label text="Conditional ValueHelpDialog" labelFor="conditionalValueHelpDialogMultiInput"/>
+								<MultiInput
+									id="conditionalValueHelpDialogMultiInput"
+									showValueHelp="true"
+									showSuggestion= "true"
+									maxSuggestionWidth= "auto"
+									valueHelpRequest=".onConditionalValueHelpRequested"
+									tokenUpdate= ".tokenUpdateConditionalValueHelpDialog"
+								/>
+								<Label text="Simple ValueHelpDialog - Single selection" labelFor="simpleValueHelpDialogInput"/>
+								<Input
+									id="simpleValueHelpDialogInput"
+									showValueHelp="true"
+									valueHelpRequest=".onSimpleValueHelpRequested"
+								/>
+								<Label text="FilterBar ValueHelpDialog" labelFor="filterBarValueHelpDialogInput"/>
+								<Input
+									id="filterBarValueHelpDialogInput"
+									showValueHelp="true"
+									valueHelpRequest=".onFilterBarValueHelpDialog"
+								/>
+							</form:content>
+						</form:SimpleForm>
+					</layout:content>
+				</layout:Grid>
+			</mvc:View>
+		</script>
+
+
+	<script>
+		jQuery.sap.require("sap.ui.comp.providers.TokenParser");
+
+		sap.ui.controller("myController", {
+			onInit: function () {
+				var ValueHelpRangeOperation = sap.ui.comp.valuehelpdialog.ValueHelpRangeOperation;
+
+				this._oConditionalVHDMultiInput = this.getView().byId("conditionalValueHelpDialogMultiInput");
+				this._oSimpleVHDInput = this.getView().byId("simpleValueHelpDialogInput");
+				this._oFilterBarVHDInput = this.getView().byId("filterBarValueHelpDialogInput");
+
+
+				this.oColModel = new sap.ui.model.json.JSONModel({
+					"cols": [{
+						label: "Company Code",
+						template: "CompanyCode"
+					}, {
+						label: "Company Name",
+						template: "CompanyName"
+					}, {
+						label: "City",
+						template: "City",
+					}, {
+						label: "Currency Code",
+						template: "CurrencyCode",
+					}, {
+						label: "Date",
+						template: "Date",
+						type: "date",
+						oType: new sap.ui.model.type.Date(),
+					}, {
+						label: "Boolean",
+						template: "BoolCode",
+						type: "boolean",
+					}]
+				});
+				this.aItems = [
+				{
+					"CompanyCode": "0001",
+					"CompanyName": "SAP SE",
+					"Email": "gatesfernandez@quintity.com",
+					"Phone": "+1 (826) 451-3236",
+					"Street": "River Street 835",
+					"City": "Veguita",
+					"Country": "Cocos (Keeling Islands)",
+					"Price": "2,904.03",
+					"CurrencyCode": "EUR",
+					"BoolCode": true,
+					"Date": new Date()
+				}, {
+					"CompanyCode": "0002",
+					"CompanyName": "SAP Labs India",
+					"Email": "gatesfernandez@zoarere.com",
+					"Phone": "+1 (990) 516-2987",
+					"Street": "Woodhull Street 740",
+					"City": "Babb",
+					"Country": "Western Sahara",
+					"Price": "2,999.79",
+					"CurrencyCode": "JPY",
+					"BoolCode": false,
+					"Date": new Date()
+				}, {
+					"CompanyCode": "0003",
+					"CompanyName": "ANDRYX",
+					"Email": "gatesfernandez@andryx.com",
+					"Phone": "+1 (877) 584-3223",
+					"Street": "Kingston Avenue 234",
+					"City": "Tyhee",
+					"Country": "Indonesia",
+					"Price": "3,787.33",
+					"CurrencyCode": "JPY",
+					"BoolCode": true,
+					"Date": new Date()
+				}, {
+					"CompanyCode": "0004",
+					"CompanyName": "NAXDIS",
+					"Email": "gatesfernandez@naxdis.com",
+					"Phone": "+1 (844) 406-3829",
+					"Street": "Kenmore Terrace 352",
+					"City": "Weogufka",
+					"Country": "Lebanon",
+					"Price": "1,409.28",
+					"CurrencyCode": "EUR",
+					"BoolCode": true,
+					"Date": new Date()
+				}, {
+					"CompanyCode": "0005",
+					"CompanyName": "ZILODYNE",
+					"Email": "gatesfernandez@zilodyne.com",
+					"Phone": "+1 (963) 499-2190",
+					"Street": "Conover Street 963",
+					"City": "Graball",
+					"Country": "Sudan",
+					"Price": "3,684.14",
+					"CurrencyCode": "JPY",
+					"BoolCode": true,
+					"Date": new Date()
+				}, {
+					"CompanyCode": "0006",
+					"CompanyName": "OPTICON",
+					"Email": "gatesfernandez@opticon.com",
+					"Phone": "+1 (974) 428-2229",
+					"Street": "Hicks Street 491",
+					"City": "Wauhillau",
+					"Country": "Macau",
+					"Price": "1,636.51",
+					"CurrencyCode": "USD",
+					"BoolCode": false,
+					"Date": new Date()
+				}
+					];
+				this.oRowsModel = new sap.ui.model.json.JSONModel();
+				this.oRowsModel.setData(this.aItems);
+
+				this.getView().setModel(this.oRowsModel);
+
+				this.aKeys = ["CompanyCode", "CompanyName"];
+
+				var token1 = new sap.m.Token({
+				key: "0001",
+				text: "SAP SE (0001)"
+				});
+				var token2 = new sap.m.Token({
+					key: "0002",
+					text: "SAP Labs India (0002)"
+				});
+				var rangeToken1 = new sap.m.Token({
+					key: "i1",
+					text: "a...z"
+				}).data("range", {
+					"exclude": false,
+					"operation": ValueHelpRangeOperation.BT,
+					"keyField": "CompanyCode",
+					"value1": "a",
+					"value2": "z"
+				});
+				var rangeToken2 = new sap.m.Token({
+					key: "i2",
+					text: "=foo"
+				}).data("range", {
+					"exclude": false,
+					"operation": ValueHelpRangeOperation.EQ,
+					"keyField": "CompanyCode",
+					"value1": "foo",
+					"value2": ""
+				});
+				var rangeToken3 = new sap.m.Token({
+					key: "e1",
+					text: "!(=foo)"
+				}).data("range", {
+					"exclude": true,
+					"operation": ValueHelpRangeOperation.EQ,
+					"keyField": "CompanyCode",
+					"value1": "foo",
+					"value2": ""
+				});
+
+				this.aTokens = [token1, token2, rangeToken1, rangeToken2, rangeToken3];
+				this._oConditionalVHDMultiInput.setTokens(this.aTokens);
+				var oTokenParser = new sap.ui.comp.providers.TokenParser("EQ");
+				oTokenParser.associateInput(this._oConditionalVHDMultiInput);
+				oTokenParser.addKeyField({ key: "CompanyName", label: "Name", type: "string", oType: new sap.ui.model.type.String() });
+
+			},
+
+			tokenUpdateConditionalValueHelpDialog: function(oControlEvent) {
+				var j
+				Tokenizer = sap.m.Tokenizer;
+				if (oControlEvent.getParameter("type") === Tokenizer.TokenChangeType.Removed) {
+					var aRemovedTokens = oControlEvent.getParameter("removedTokens");
+					for (j = 0; j < aRemovedTokens.length; j++) {
+						var sKey = aRemovedTokens[j].getKey();
+
+						for (var i in this.aTokens) {
+							if (this.aTokens[i].getKey() === sKey) {
+								this.aTokens.splice(i, 1);
+								break;
+							}
+						}
+					}
+				}
+
+				if (oControlEvent.getParameter("type") === Tokenizer.TokenChangeType.Added) {
+					var aAddedTokens = oControlEvent.getParameter("addedTokens");
+					for (j = 0; j < aAddedTokens.length; j++) {
+						this.aTokens.push(aAddedTokens[j]);
+					}
+				}
+			},
+
+			onConditionalValueHelpRequested: function () {
+
+				this._oConditionalValueHelpDialog = new sap.ui.comp.valuehelpdialog.ValueHelpDialog({
+					title: "Company",
+					ok: this.onValueHelpOkPress.bind(this),
+					cancel: this.onValueHelpCancelPress.bind(this),
+					afterClose: this.onValueHelpAfterClose.bind(this),
+
+					supportMultiselect: false,
+					key: this.aKeys[0],
+					descriptionKey: this.aKeys[1],
+					supportRanges: true,
+					supportRangesOnly: true
+				});
+				this._oConditionalVHDMultiInput.addDependent(this._oConditionalValueHelpDialog);
+
+				this._oConditionalValueHelpDialog.setRangeKeyFields([{
+					key: "CompanyCode",
+					label: "ID",
+					type: "string"
+					}
+				]);
+
+				this._oConditionalValueHelpDialog.open();
+			},
+
+			onValueHelpOkPress: function (oEvent) {
+				var aTokens = oEvent.getParameter("tokens");
+				this._oConditionalVHDMultiInput.addToken(aTokens[0]);
+				this._oConditionalValueHelpDialog.close();
+			},
+
+			onValueHelpCancelPress: function () {
+				this._oConditionalValueHelpDialog.close();
+			},
+
+			onValueHelpAfterClose: function () {
+				this._oConditionalValueHelpDialog.destroy();
+			},
+
+			onSimpleValueHelpRequested: function () {
+				var aCols = this.oColModel.getData().cols;
+
+				this._oSimpleValueHelpDialog = new sap.ui.comp.valuehelpdialog.ValueHelpDialog({
+					title: "Company",
+					ok: this.onSimpleValueHelpOkPress.bind(this),
+					cancel: this.onSimpleValueHelpCancelPress.bind(this),
+					afterClose: this.onSimpleValueHelpAfterClose.bind(this),
+					supportMultiselect: false,
+					key: this.aKeys[0],
+					descriptionKey: this.aKeys[1]
+				});
+
+				this._oSimpleValueHelpDialog.getTableAsync().then(function (oTable) {
+					oTable.setModel(this.oRowsModel);
+					oTable.setModel(this.oColModel, "columns");
+
+					if (oTable.bindRows) {
+						oTable.bindAggregation("rows","/");
+					}
+
+					if (oTable.bindItems) {
+						oTable.bindAggregation("items", "/", function () {
+							return new ColumnListItem({
+								cells: aCols.map(function (column) {
+									return new Label({ text: "{" + column.template + "}" });
+								})
+							});
+						});
+					}
+
+					this._oSimpleValueHelpDialog.update();
+				}.bind(this));
+
+				var oToken = new sap.m.Token();
+				oToken.setKey(this._oSimpleVHDInput.getSelectedKey());
+				oToken.setText(this._oSimpleVHDInput.getValue());
+				this._oSimpleValueHelpDialog.setTokens([oToken]);
+				this._oSimpleValueHelpDialog.open();
+			},
+
+			onSimpleValueHelpOkPress: function (oEvent) {
+				var aTokens = oEvent.getParameter("tokens");
+				this._oSimpleVHDInput.setSelectedKey(aTokens[0].getKey());
+				this._oSimpleVHDInput.setValue(aTokens[0].getText());
+				this._oSimpleValueHelpDialog.close();
+			},
+
+			onSimpleValueHelpCancelPress: function () {
+				this._oSimpleValueHelpDialog.close();
+			},
+
+			onSimpleValueHelpAfterClose: function () {
+				this._oSimpleValueHelpDialog.destroy();
+			},
+
+			onFilterBarValueHelpDialog: function () {
+				this._oFilterBarValueHelpDialog = new sap.ui.comp.valuehelpdialog.ValueHelpDialog({
+					title: "Company",
+					key: "CompanyCode",
+					descriptionKey:"CompanyName",
+					supportMultiselect: false,
+					ok: this.onFilterBarValueHelpDialogOkPress.bind(this),
+					cancel: this.onFilterBarValueHelpDialogCancelPress.bind(this),
+					afterClose: this.onFilterBarValueHelpDialogAfterClose.bind(this)
+				});
+
+				this._oFilterBarValueHelpDialog.getTableAsync().then(function (oTable) {
+					oTable.setModel(this.oRowsModel);
+					oTable.setModel(this.oColModel, "columns");
+
+					if (oTable.bindRows) {
+						oTable.bindAggregation("rows","/");
+					}
+
+					if (oTable.bindItems) {
+						oTable.bindAggregation("items", "/", function () {
+							return new ColumnListItem({
+								cells: aCols.map(function (column) {
+									return new Label({ text: "{" + column.template + "}" });
+								})
+							});
+						});
+					}
+					this._oFilterBarValueHelpDialog.update();
+				}.bind(this));
+
+				var oFilterBar = new sap.ui.comp.filterbar.FilterBar({
+					advancedMode:  true,
+					filterBarExpanded:true,
+					isRunningInValueHelpDialog:true,
+					filterGroupItems: [new sap.ui.comp.filterbar.FilterGroupItem({
+							groupTitle: "More Fields",
+							groupName: "gn1",
+							name: "n1",
+							label: "Company Code",
+							control: new sap.m.Input({
+									id:"inputCompanyCode",
+									name:"CompanyCode"}),
+							visibleInFilterBar: true
+						}),
+						new sap.ui.comp.filterbar.FilterGroupItem({
+							groupTitle: "More Fields",
+							groupName: "gn1",
+							name: "n2",
+							label: "Company Name",
+							control: new sap.m.Input({
+									id:"inputCompanyName",
+									name:"CompanyName"}),
+							visibleInFilterBar: true
+						}),
+						new sap.ui.comp.filterbar.FilterGroupItem({
+							groupTitle: "More Fields",
+							groupName: "gn1",
+							name: "n3",
+							label: "City",
+							control: new sap.m.Input({
+									id:"inputCity",
+									name:"City"}),
+							visibleInFilterBar: true
+						}),
+						new sap.ui.comp.filterbar.FilterGroupItem({
+							groupTitle: "More Fields",
+							groupName: "gn1",
+							name: "n4",
+							label: "Currency Code",
+							control: new sap.m.Input({
+									id:"inputCurrencyCode",
+									name:"CurrencyCode"}),
+							visibleInFilterBar: true
+						})
+					],
+					search: function(oEvent) {
+						var sSearchQuery = this._oFilterBarValueHelpDialog.getBasicSearchText(),
+						aSelectionSet = oEvent.getParameter("selectionSet");
+						var aFilters = aSelectionSet.reduce(function (aResult, oControl) {
+							if (oControl.getValue()) {
+								aResult.push(new sap.ui.model.Filter({
+									path: oControl.getName(),
+									operator: sap.ui.model.FilterOperator.Contains,
+									value1: oControl.getValue()
+								}));
+							}
+							return aResult;
+						}, []);
+						aFilters.push(new sap.ui.model.Filter({
+							filters: [
+								new sap.ui.model.Filter({ path: "CompanyCode", operator: sap.ui.model.FilterOperator.Contains, value1: sSearchQuery }),
+								new sap.ui.model.Filter({ path: "CompanyName", operator: sap.ui.model.FilterOperator.Contains, value1: sSearchQuery }),
+								new sap.ui.model.Filter({ path: "City", operator: sap.ui.model.FilterOperator.Contains, value1: sSearchQuery }),
+								new sap.ui.model.Filter({ path: "CurrencyCode", operator: sap.ui.model.FilterOperator.Contains, value1: sSearchQuery })
+							],
+							and: false
+						}));
+
+						this._filterTable(new sap.ui.model.Filter({
+							filters: aFilters,
+							and: true
+						}));
+
+					}.bind(this)
+				});
+
+				oFilterBar.setBasicSearch(new sap.m.SearchField({
+					showSearchButton: false,
+					placeholder: "Search",
+					search: function(event) {
+						oFilterBar.search();
+					}
+				}));
+
+				this._oFilterBarValueHelpDialog.setFilterBar(oFilterBar);
+				this._oFilterBarValueHelpDialog.open();
+			},
+
+			_filterTable: function (oFilter) {
+				var oValueHelpDialog = this._oFilterBarValueHelpDialog;
+
+				oValueHelpDialog.getTableAsync().then(function (oTable) {
+					if (oTable.bindRows) {
+						oTable.getBinding("rows").filter(oFilter);
+					}
+
+					oValueHelpDialog.update();
+				});
+			},
+			onFilterBarValueHelpDialogOkPress: function (oEvent) {
+				var aTokens = oEvent.getParameter("tokens");
+				for (var i = 0; i < aTokens.length; i++) {
+
+					this._oFilterBarVHDInput.setSelectedKey(aTokens[i].getKey());
+					this._oFilterBarVHDInput.setValue(aTokens[i].getText());
+				}
+
+				this._oFilterBarValueHelpDialog.close();
+			},
+
+			onFilterBarValueHelpDialogCancelPress: function () {
+				this._oFilterBarValueHelpDialog.close();
+			},
+
+			onFilterBarValueHelpDialogAfterClose: function () {
+				this._oFilterBarValueHelpDialog.destroy();
+			},
+		});
+
+		sap.ui.xmlview({ viewContent: jQuery('#myXml').html() }).placeAt("content");
+	</script>
+
+</head>
+
+<body id='content' class='sapUiBody'>
+</body>
+
+</html>

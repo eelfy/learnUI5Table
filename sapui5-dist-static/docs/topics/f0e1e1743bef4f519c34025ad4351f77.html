@@ -1,0 +1,80 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof0e1e1743bef4f519c34025ad4351f77" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Defining Line Items</h1><div class="fig"><h1 class="topictitle1 title">Defining Line Items</h1><div class="shortdesc"></div><p>To define the line items of a table, use <code>com.sap.vocabularies.UI.v1.LineItem</code>
+			as shown in the code samples below. The rendering result is as follows:</p><p>
+			</p><div><div class="fig"><img src="loio69a7c44950a042b68c1ef3cf9d7f811a_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">List Report: LineItem of Root EntitySet</span></div>
+		<p></p><section id="section_vmv_cyw_l4b"><h2 class="title ">Determining Column Names</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+&lt;Annotation Term="UI.LineItem"&gt;
+  &lt;Collection&gt;
+    &lt;Record Type="UI.DataField"&gt;
+      &lt;PropertyValue Property="Value" Path="Product"/&gt;
+      &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+    &lt;/Record&gt;
+    &lt;Record Type="UI.DataField"&gt;
+      &lt;PropertyValue Property="Value" Path="ProductCategory"/&gt;
+      &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+    &lt;/Record&gt;
+    &lt;Record Type="UI.DataField"&gt;
+      &lt;PropertyValue Property="Value" Path="Supplier"/&gt;
+      &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+    &lt;/Record&gt;
+  &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'PRODUCT',
+    type: #STANDARD,
+    position: 1 
+  }
+]
+PRODUCT;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'PRODUCTCATEGORY',
+    type: #STANDARD,
+    position: 2 
+  }
+]
+PRODUCTCATEGORY;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'SUPPLIER',
+    type: #STANDARD,
+    position: 3 
+  }
+]
+SUPPLIER;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+          Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.LineItem : [
+    {
+        $Type : 'UI.DataField',
+        Value : Product,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : ProductCategory,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : Supplier,
+        ![@UI.Importance] : #High
+    }
+]
+</pre></div></section></div></section><p>This video shows the step-by-step procedure for adding line items to a
+				list report table: 
+					
+					</p><div class="video-links-disclaimer"><span class="video-links-disclaimer-label">Disclaimer:</span>
+				The below video
+				<img class="link-external" title="Information published on non-SAP site" alt="Information published on non-SAP site">
+				is not part of the SAP product documentation. Please read the
+				<a href="http://help.sap.com/disclaimer?site=" target="_blank">legal disclaimer</a>
+				for video links before viewing this video.
+			</div><div class="videoMaxWidth" style="max-width: 448px;"><div class="videoWrapper" style="max-height: 252px"><iframe allowfullscreen="true" style="max-width: 448px; max-height: 252px" width="448" height="252" src="https://www.youtube.com/embed/FJp7636DeAw"><span style="display: none;">Hidden</span></iframe></div></div>
+				<p></p></section><section>
+			<h2 class="title ">More Information</h2>
+			<p>For information about adding actions for line items in the list report view, see <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+			<p>For information about responsiveness options in tables, see <a href="#/topic/69efbe747fc44c0fa445b24ed369cb1e.html" title="When using SAP Fiori elements, you can make use of specific responsiveness options. For example, in pages that have toolbars (such as list report tables, object page tables, and smart chart toolbars), the system evaluates the com.sap.vocabularies.UI.v1.Importance for each field:" class="sap-doc">Responsiveness Options: Example</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

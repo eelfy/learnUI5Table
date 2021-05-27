@@ -1,0 +1,49 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod9a45394165e439595cf0006924b6996" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Titles to Object Page
+		Tables</h1><div class="fig"><h1 class="topictitle1 title">Adding Titles to Object Page
+		Tables</h1><div class="shortdesc">You can add a title to an object page table.</div><p>To add a title to an object page table, provide a string value to the
+				<code>TypeNamePlural</code> property of the <code>UI.HeaderInfo</code>
+			annotation for the entity type with which the table is associated. </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductTextType"&gt;
+      &lt;Annotation Term="UI.HeaderInfo"&gt;
+          &lt;Record&gt;
+              &lt;PropertyValue Property="TypeName" String="Product Text" /&gt;
+              &lt;PropertyValue Property="TypeNamePlural" String="{@i18n&gt;@TableTitle}" /&gt;
+              &lt;PropertyValue Property="Title"&gt;
+                    &lt;Record Type="UI.DataField"&gt;
+                           &lt;PropertyValue Property="Value" Path="Name" /&gt;
+                    &lt;/Record&gt;
+              &lt;/PropertyValue&gt;
+             &lt;PropertyValue Property="Description"&gt;
+                    &lt;Record Type="UI.DataField"&gt;
+                        &lt;PropertyValue Property="Value" Path="Language" /&gt;
+                    &lt;/Record&gt;
+             &lt;/PropertyValue&gt;
+       &lt;/Record&gt;
+ &lt;/Annotation&gt;</pre></div></section>
+		<p></p></div></div><p>In SAP Fiori elements for OData
+                            V2,
+			use:</p><p>In SAP Fiori elements for OData
+                            V4,
+			use:</p><p>Take the following into account:</p><ul class="ul ">
+			<li class="li">
+				<p>As <code>TypeNamePlural</code> is a mandatory parameter, if the section title
+					and the table title are identical, the table title is not displayed.</p>
+			</li>
+			<li class="li">
+				<p>If the <code>UI.HeaderInfo</code> annotation hasn't been entered, the table
+					title is also not displayed.</p>
+			</li>
+			<li class="li">
+				<p>Make sure you provide the appropriate section titles if the same string is
+					maintained under <code>TypeNamePlural</code> in the
+						<code>UI.HeaderInfo</code> annotation.</p>
+			</li>
+		</ul><p>The results look like this:</p><div><div class="fig"><img src="loio8920264c0dd04fdba0f352accebc423e_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Title for single table in object page section</span></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>If the subsection has only one type of content (table or chart), and the subsection
+				title is same as the control title, then only the control title is displayed in the
+				subsection.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

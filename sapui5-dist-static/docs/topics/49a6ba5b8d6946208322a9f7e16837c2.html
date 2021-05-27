@@ -1,0 +1,151 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio49a6ba5b8d6946208322a9f7e16837c2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Key Annotations that Influence the Content</h1><div class="fig"><h1 class="topictitle1 title">Configuring Key Annotations that Influence the Content</h1><div class="shortdesc">SAP Fiori elements allows you to specify a SelectionPresentationVariant.</div><p>SAP Fiori elements uses the <code>UI.LineItem</code> annotation and the <code>UI.Chart</code> annotation to bring up tables and
+			charts.</p><p>These annotations are part of the <code>Common.PresentationVariant</code> annotation, which enables application developers to provide useful
+			information like the <code>SortOrder</code>. Applications can merge or package the <code>PresentationVariant</code> (PV) and the
+				<code>SelectionVariant</code> (SV) into a single annotation: the <code>Common.SelectionPresentationVariant</code> (SPV). This
+			is then provided to SAP Fiori elements via the manifest.</p><p>The <code>UI.Chart</code> annotation that is part of the <code>UI.PresentationVariant</code> linked to a
+				<code>UI.SelectionPresentationVariant</code> is currently not applicable for the list report, but is applicable for the analytical
+			list page.</p><p>The <code>SelectionPresentationVariant</code> can be provided with or without the qualifier: </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionPresentationVariant" Qualifier="OpenSPVWithPVPath"&gt;
+   &lt;Record&gt;
+    &lt;PropertyValue Property="Text" String="Open"&gt;
+    &lt;/PropertyValue&gt;
+    &lt;PropertyValue Property="SelectionVariant"&gt;
+        &lt;Record Type="UI.SelectionVariantType"&gt;
+            &lt;PropertyValue Property="Text" String="Open"&gt;
+            &lt;/PropertyValue&gt;
+            &lt;PropertyValue Property="SelectOptions"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="UI.SelectOptionType"&gt;
+                        &lt;PropertyValue Property="PropertyName" PropertyPath="OverallSDProcessStatus" /&gt;
+                        &lt;PropertyValue Property="Ranges"&gt;
+                            &lt;Collection&gt;
+                               &lt;Record Type="UI.SelectionRangeType"&gt;
+                                   &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ" /&gt;
+                                   &lt;PropertyValue Property="Low" String="A" /&gt;
+                                &lt;/Record&gt;
+                            &lt;/Collection&gt;
+                        &lt;/PropertyValue&gt;
+                     &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+     &lt;/PropertyValue&gt;
+     &lt;PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant" /&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+ 
+&lt;Annotation Term="UI.PresentationVariant"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="MaxItems" Int="2" /&gt;
+        &lt;PropertyValue Property="SortOrder"&gt;
+                            &lt;Collection&gt;
+                &lt;Record Type="Common.SortOrderType"&gt;
+                  &lt;PropertyValue Property="Property" PropertyPath="ID" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Visualizations"&gt;
+            &lt;Collection&gt;
+                &lt;AnnotationPath&gt;@UI.LineItem&lt;/AnnotationPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+		<p></p></div></div><div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+			</p><p>The <code>SelectionPresentationVariant</code> must be defined against the main entity set.</p>
+		<p></p></div></div><p>Application developers can provide the path to the SPV via the manifest using the <code>defaultTemplateAnnotationPath</code> property
+			to SAP Fiori elements: </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"targets": {
+    "SalesOrderManageList": {
+        "type": "Component",
+        "id": "SalesOrderManageList",
+        "name": "sap.fe.templates.ListReport",
+        "options": {
+            "settings": {
+                "entitySet": "SalesOrderManage",
+                "variantManagement": "Page",
+                "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#SPVPath", // This is where app developer provides fe the right SPV to be used
+                "initialLoad": true,
+                 .....
+                 .....
+            }
+        }
+    }
+}</pre></div></section>
+		<p></p></div></div><p>SAP Fiori elements then checks in the annotation for the SPV specified in the manifest, such as <code>SPVPath</code> in the example
+			above. This can lead to the following situations:</p><ul class="ul ">
+			<li class="li">
+				<p>If a SPV is found, SAP Fiori elements looks for the PV associated with this SPV.</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If a PV is found, SAP Fiori elements uses the <code>LineItem</code>, or, in case of an analytical list page, the
+								<code>Chart</code> that is associated with the PV. If no <code>LineItem</code> or <code>Chart</code> is
+							found, SAP Fiori elements renders a blank table or a chart, and users can still use the personalization of the control to
+							render the required table or chart.</p>
+					</li>
+					<li class="li">
+						<p>If a PV is <span class="emphasis">not</span> found, SAP Fiori elements raises an error and stops loading the application so that the
+							application developer can ensure the correct annotations.</p>
+					</li>
+				</ul>
+			</li>
+			<li class="li">
+				<p>If a SPV is <span class="emphasis">not</span> found, SAP Fiori elements raises an error and stops loading the application so that the
+					application developer can ensure the correct annotations.</p>
+			</li>
+		</ul><p>If the application developer has not explicitly specified the SPV to be used via the manifest entry, SAP Fiori elements looks for the
+			default (unqualified) SPV in the annotation. This can lead to the following situations:</p><ul class="ul ">
+			<li class="li">
+				<p>If a default SPV is found, SAP Fiori elements uses the associated PV and SV to determine the filter bar defaults for the table or
+					chart. If no PV is found, SAP Fiori elements raises an error and stops loading the application so that the application developer
+					can ensure the correct annotations.</p>
+			</li>
+			<li class="li">
+				<p>If a default SPV is <span class="emphasis">not</span> found, SAP Fiori elements checks for the default PV (unqualified PV) and default SV
+					(unqualified SV).</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If a default PV is found, SAP Fiori elements uses the associated <code>LineItem</code> or <code>Chart</code>
+							annotation. If a <code>LineItem</code> or <code>Chart</code> visualization is <span class="emphasis">not</span> found
+							within this PV, SAP Fiori elements renders a blank table or chart, and users can still use the personalization of the
+							control to render the required table or chart. </p>
+					</li>
+					<li class="li">
+						<p>If a default PV is <span class="emphasis">not</span> found, SAP Fiori elements looks for the default <code>LineItem</code>
+							(unqualified <code>LineItem</code>) or default <code>Chart</code> (unqualified <code>Chart</code>)
+							annotation.</p>
+					</li>
+					<li class="li">
+						<ul class="ul ">
+							<li class="li">
+								<p>If a default <code>LineItem</code> or <code>Chart</code> annotation is found, SAP Fiori elements renders
+									the table or chart accordingly. </p>
+							</li>
+							<li class="li">
+								<p>If a default <code>LineItem</code> or <code>Chart</code> annotation is <span class="emphasis">not</span> found, SAP
+									Fiori elements renders a blank table or chart, and users can still use the personalization of the control to
+									render the required table or chart. </p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>In multi-view tables, the SPV in the manifest will have no effect if an SPV has already been configured for the multi view. If no SPV
+				is configured, that is, if only an SV is configured, as is the case for the single table mode, or also for a tab within the multiple
+				table mode, then the PV is calculated based on the logic described above. </p>
+			<p>For more information, refer to <a href="#/topic/a37df408044e41ef84e67207c8658d4f.html" title="By default, the list report displays only one table. You can define multiple views of a table, and add a chart, if required." class="sap-doc">Multiple Views on List Report Tables</a>.</p>
+		<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

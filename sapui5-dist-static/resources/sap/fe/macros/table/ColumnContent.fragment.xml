@@ -1,0 +1,125 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcTable="sap.ui.mdc.table"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	template:require="{
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		TABLE: 'sap/fe/macros/table/TableHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		CORE: 'sap/fe/core/AnnotationHelper',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper'
+	}"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<template:if
+		test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') > -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('@com.sap.vocabularies.UI.v1.Chart') > -1)}"
+	>
+		<template:then>
+			<template:with path="dataField>Target/$AnnotationPath" var="collection" helper="MODEL.resolve$Path">
+				<template:with path="collection>" var="collection" helper="CORE.getNavigationContext">
+					<macro:MicroChart
+						collection="{collection>}"
+						chartAnnotation="{dataField>Target/$AnnotationPath/}"
+						renderLabels="{= TABLE.getChartRenderLabels(${this>}, ${column>}) }"
+						size="{= TABLE.getChartSize(${this>}, ${column>}) }"
+						hideOnNoData="true"
+						isAnalytics="{tableDefinition>enableAnalytics}"
+					/>
+				</template:with>
+			</template:with>
+		</template:then>
+		<template:elseif
+			test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') > -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('FieldGroup') > -1)}"
+		>
+			<template:with path="dataField>Target/$AnnotationPath/Data/" var="dataFieldCollections">
+				<VBox visible="{= TABLE.getVBoxVisibility( ${dataFieldCollections>}) }">
+						<template:repeat list="{dataFieldCollections>}" var="fieldGroupDataField">
+							<internalMacro:Field
+							vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+							editMode="{= ${this>displayMode} ? 'Display' : undefined}"
+							entitySet="{collection>}"
+							dataField="{fieldGroupDataField>}"
+							wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+							class="{= TABLE.getMarginClass( ${dataFieldCollections>}  , ${fieldGroupDataField>} , ${fieldGroupDataField>Target/$AnnotationPath/Visualization/$EnumMember}) }"
+							onChange="{this>onChange}"
+							ariaLabelledBy="{= TABLE.getColumnStableId(${this>id},${dataField>}) }"
+							navigateAfterAction="{column>isNavigable}"
+						>
+								<internalMacro:formatOptions
+								textLinesDisplay="{column>formatOptions/textLinesDisplay}"
+								textLinesEdit="{column>formatOptions/textLinesEdit}"
+								textAlignMode="Table"
+								semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+								showIconUrl="{= ${fieldGroupDataField>Inline} &amp;&amp; ${fieldGroupDataField>IconUrl} }"
+								ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+								isAnalytics="{tableDefinition>enableAnalytics}"
+							/>
+								<internalMacro:customData>
+									<core:CustomData
+									key="extraProperty"
+									value="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+								/>
+								</internalMacro:customData>
+							</internalMacro:Field>
+
+						</template:repeat>
+					</VBox>
+				</template:with>
+			</template:elseif>
+			<template:else>
+				<internalMacro:Field
+				vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+				editMode="{= ${this>displayMode} ? 'Display' : undefined}"
+				entitySet="{collection>}"
+				dataField="{dataField>}"
+				wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+				onChange="{this>onChange}"
+				navigateAfterAction="{column>isNavigable}"
+			>
+					<internalMacro:formatOptions
+					textLinesDisplay="{column>formatOptions/textLinesDisplay}"
+					textLinesEdit="{column>formatOptions/textLinesEdit}"
+					textAlignMode="Table"
+					semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+					showIconUrl="{= ${dataField>Inline} &amp;&amp; ${dataField>IconUrl} }"
+					ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+					isAnalytics="{tableDefinition>enableAnalytics}"
+				/>
+					<internalMacro:customData>
+						<core:CustomData
+						key="extraProperty"
+						value="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+					/>
+					</internalMacro:customData>
+				</internalMacro:Field>
+			<template:if test="{= ${this>creationMode} === 'CreationRow'}">
+				<mdcTable:creationTemplate>
+					<!-- the creation row shall use the form visualization (to be checked with UX)-->
+					<internalMacro:Field
+						core:require="{TableRuntime: 'sap/fe/macros/table/TableRuntime'}"
+						vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+						editMode="{= ${this>displayMode} ? 'Display' : undefined}"
+						entitySet="{collection>}"
+						dataField="{dataField>}"
+						wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+						onChange="TableRuntime.onFieldChangeInCreationRow($controller, $event, '{this>navigationPath}')}"
+					>
+						<internalMacro:formatOptions
+							textLinesDisplay="{column>formatOptions/textLinesDisplay}"
+							textLinesEdit="{column>formatOptions/textLinesEdit}"
+							textAlignMode="Table"
+							semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+							showIconUrl="{= ${dataField>Inline} &amp;&amp; ${dataField>IconUrl} }"
+							ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+						/>
+					</internalMacro:Field>
+					</mdcTable:creationTemplate>
+				</template:if>
+			</template:else>
+	</template:if>
+
+</core:FragmentDefinition>

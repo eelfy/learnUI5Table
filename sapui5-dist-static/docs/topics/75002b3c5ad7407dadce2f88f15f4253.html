@@ -1,0 +1,87 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio75002b3c5ad7407dadce2f88f15f4253" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Example: Enable Internal Navigation for a List Report to Object Pages of Different Entity
+		Sets</h1><div class="fig"><h1 class="topictitle1 title">Example: Enable Internal Navigation for a List Report to Object Pages of Different Entity
+		Sets</h1><div class="shortdesc">You can enable internal navigation to an object page for a list report with different
+		entity sets by using the onListNavigationExtension function.</div><p>
+			</p><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div>
+		<p></p><p>In the extension function, you can define the logic or condition that triggers the
+			navigation to the object page. If none of the conditions mentioned in the extension are
+			met, navigation to the default object page is triggered.</p><p>The figure below shows a sample navigation scenario:</p><div><div class="fig"><img src="loio11d89ac547ae424a98c8e306862418a7_LowRes.png" usemap="#"></div></div><p>The code snippet below shows a sample implementation of the
+				<code>onListNavigationExtension</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">onListNavigationExtension: function(oEvent) {
+			var oBindingContext = oEvent.getSource().getBindingContext();
+			var oObject = oBindingContext.getObject();
+			var sNavigationProperty;
+			switch (oObject.Column3){
+				case "100":
+					sNavigationProperty = "NavigationProperty1";
+					break;
+				case "200":
+					sNavigationProperty = "NavigationProperty2";
+					break;
+			}
+			if (sNavigationProperty){
+				var oExtensionAPI = this.extensionAPI;
+				var fnNavigate = function(){
+					return new Promise(function(fnResolve, fnReject){
+						var oModel = oBindingContext.getModel();
+						var oTarget;
+						oModel.createBindingContext(sNavigationProperty, oBindingContext, {}, function(oTarget){
+							var oNavigationController = oExtensionAPI.getNavigationController();
+							oNavigationController.navigateInternal(oTarget);
+							fnResolve();
+						});
+					});
+				};
+			oExtensionAPI.securedExecution(fnNavigate, {
+                busy: {
+                               check: false
+                },
+                dataloss: {
+                             popup: false
+                }
+});
+
+				return true;				
+			}
+			return false;
+		}
+
+Sample Implementation of Manifest changes:
+		"pages": {
+					"ObjectPage|EntitySet1 ": {
+						"entitySet": " EntitySet1",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						}
+					},					
+					"ObjectPage| EntitySet2 ": {
+						"entitySet": " EntitySet2",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						}
+					},
+					"ObjectPage| EntitySet3": {
+						"entitySet": " EntitySet3",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						}
+					}
+</pre></div></section>
+		<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,174 @@
+<mvc:View 
+		controllerName="intheme.zui5_example.controller.Main"
+		  xmlns:l="sap.ui.layout"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  displayBlock="true"
+		  xmlns="sap.m"
+		  xmlns:f="sap.f"
+		  xmlns:form="sap.ui.layout.form"
+
+		  >
+		  
+   
+       <Shell>
+			<App class="myAppDemoWT">
+				<pages>
+					<Page title="{i18n>homePageTitle}">
+						<headerContent>
+							<Button
+								icon="sap-icon://hello-world"
+								press=".onOpenDialog()"/>
+						</headerContent>
+
+						<content>
+							<Table 
+								id="idProductsTable"
+								inset="false" 
+								items="{
+									path: '/QuantitySet'
+								}"
+							>
+								<columns>
+									<Column width='12em'>
+										<Button
+											 text="{/#Quantity/Volume/@sap:label}"
+											press='.onDefaultDialogPress()'
+										/>
+									</Column>
+
+									<Column width='12em'>
+										<Button
+											 text="{/#Quantity/Unit/@sap:label}"
+											press='.btnWidth()'
+										/>
+									</Column>
+
+									<Column width='12em'>
+										<Button
+											text="{/#Quantity/Material/@sap:label}"
+											press='.btnWidth()'
+										/>
+									</Column>
+
+									<Column width='12em'>
+										<l:VerticalLayout
+											class="sapUiContentPadding"
+											width="100%">
+											<l:content>
+												<Button
+													text="{/#Quantity/Width/@sap:label}"
+													press="handlePopoverPress"
+													ariaHasPopup="Dialog" />
+											</l:content>
+										</l:VerticalLayout>
+									</Column>
+
+									<Column width='12em'>
+										<l:VerticalLayout
+											class="sapUiContentPadding"
+											width="100%">
+											<l:content>
+												<Button
+													text="btns"
+													press="handlePopoverPress"
+													ariaHasPopup="Dialog" />
+											</l:content>
+										</l:VerticalLayout>
+									</Column>
+									
+								</columns>
+
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Volume}"/>
+
+											<Text text="{Unit}"/>
+
+											<Text text="{Material}"/>
+
+											<Text text="{Width}"/>
+											<Button
+												text="{Width}"
+												width="15em"
+												press=".showDialog"
+												class="sapUiSmallMarginBottom"
+												ariaHasPopup="Dialog" />
+										</cells>
+									</ColumnListItem>
+								</items>
+								
+							</Table>
+
+							
+
+							<!-- <ObjectPageLayout
+								id="ObjectPageLayout"
+								showTitleInHeaderContent="true"
+								alwaysShowContentHeader="false"
+								preserveHeaderStateOnScroll="false"
+								headerContentPinnable="true"
+								isChildPage="true"
+								upperCaseAnchorBar="false">
+									<headerTitle>
+										
+									</headerTitle>
+
+									<headerContent>
+										
+									</headerContent>
+
+							<sections>
+								<ObjectPageSection title="General Information">
+									<subSections>
+										<ObjectPageSubSection>
+											<blocks>
+												<form:SimpleForm
+													maxContainerCols="2"
+													editable="false"
+													layout="ResponsiveGridLayout"
+													labelSpanL="12"
+													labelSpanM="12"
+													emptySpanL="0"
+													emptySpanM="0"
+													columnsL="1"
+													columnsM="1">
+													<form:content>
+														
+													</form:content>
+												</form:SimpleForm>
+											</blocks>
+										</ObjectPageSubSection>
+									</subSections>
+								</ObjectPageSection>
+
+								<ObjectPageSection title="Suppliers">
+									<subSections>
+										<ObjectPageSubSection>
+											<blocks>
+												<m:Table id="suppliersTable"
+														items="{path : '/QuantitySet'">
+													<m:columns>
+														<m:Column />
+													</m:columns>
+													<m:items>
+														<m:ColumnListItem type="Navigation" press="handleItemPress">
+															<m:cells>
+																<m:ObjectIdentifier text="texts" />
+															</m:cells>
+														</m:ColumnListItem>
+													</m:items>
+												</m:Table>
+											</blocks>
+										</ObjectPageSubSection>
+									</subSections>
+								</ObjectPageSection>
+							</sections>
+						</ObjectPageLayout> -->
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+
+</mvc:View>

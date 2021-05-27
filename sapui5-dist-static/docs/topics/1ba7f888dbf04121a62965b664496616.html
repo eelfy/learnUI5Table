@@ -1,0 +1,266 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio1ba7f888dbf04121a62965b664496616" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Placing Reuse Component Instances on the Object Page</h1><div class="fig"><h1 class="topictitle1 title">Placing Reuse Component Instances on the Object Page</h1><div class="shortdesc">Each reuse component instance defined for an object page belonging to an SAP Fiori elements-based app is realized by a
+		section.</div><section id="section_k55_d1t_d4b" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>Each reuse component instance defined for an object page belonging to an SAP Fiori elements-based app is realized by a
+				section that contains a subsection which in turn contains the content of the reuse component.</p><p>By default, these sections are
+				added to the end of the object page in the same order as the reuse component instances are defined in the manifest. You can use the
+				SAPUI5 Visual Editor to move these sections. </p><section>
+				<h3 class="title ">Adding a Reuse Component as a Subsection to an Existing Section</h3>
+				<p>You can add a reuse component to any existing section as a final subsection, using the manifest property
+						<code>"leadingSectionIdOrPath"</code> to link it with the desired section. In the annotations, collection facets are used
+					with their IDs, and reference facets are used with their annotation paths. This means you need to provide either the ID or the
+					path of the required facet as a value to this property. During templating, the reuse component is attached as a subsection to the
+					section. See an example manifest below:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"embeddedComponents": {
+                    "tableTest": {
+                        "id":"tableTest",
+                        "componentName": "STTA_MP.reuseComponents.tableTest",
+                        "title": "{{SalesPriceReuse}}",
+                        "leadingSectionIdOrPath": "GeneralInformation",
+                        "settings": {
+                            "navigationProperty": "to_ProductSalesPrice"
+                        }
+                    }
+                }</pre></div></section>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Grouping Reuse Components into a Single Section</h3>
+				<p>You can group reuse components into a single section. Each reuse component has an ID. You can choose one to be the leading
+					component, and the others can be grouped with it. See the example manifest below.</p>
+				<p>Use the <code>"groupTitle"</code> property for the title of the grouped reuse components. If there is no title, use the
+					existing title as the group (section) title. If the configuration is incorrect, for example, if a reuse component that has already
+					been used, is used in a grouping, the fallback solution is to show it as a separate section.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"embeddedComponents": {
+                    "stateTest": {
+                        "id": "stateTest",
+                        "componentUsage": "stateTest",
+                        "title": "{{stateReuse}}",
+                        "groupTitle":"{{reuseGroupTitle}}"
+                    },
+                    "situationsTest": {
+                        "id": "situationsTest",
+                        "componentName": "STTA_MP.reuseComponents.situationsTest",
+                        "title": "{{situationsReuse}}",
+                        "settings": {
+                            "productKey": "{ProductForEdit}"
+                        },
+                        "leadingSectionIdOrPath": "stateTest",
+                    }
+                }</pre></div></section>
+				<p></p></div></div>
+				<p>Reuse components grouped into a subsection in a existing section can be moved within the section, using the SAP Visual Editor. You
+					can move all reuse components grouped together as a single section within the section. </p>
+			</section><section>
+				<h3 class="title ">Hiding Reuse Components via API</h3>
+				<p>You can use the extension API <code>SetSectionHidden</code> to hide reuse components. Use this API to hide only reuse
+					components, not to hide other sections.</p>
+				<p><code>sap.suite.ui.generic.template.ObjectPage.extensionAPI.ExtensionAPI.SetSectionHidden</code> accepts only one Boolean
+					argument, either <code>"true"</code> or <code>"false"</code>.</p>
+				<p>Call this API in the component.js of the reusable components.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">function fnRegisterOnPageDataLoaded(oExtensionAPI){
+        oExtensionAPI.attachPageDataLoaded(function(oEvent){
+            var oContextData = oEvent.context.getObject();
+            (oExtensionAPI.setSectionHidden || jQuery.noop)(oContextData.ProductCategory !== "Notebooks"); 
+        });
+    }</pre></div></section>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Refreshing Reuse Components</h3>
+				<p>Reuse components expose a <code>stRefresh</code> function which is called by the SAP Fiori elements framework to refresh the
+					component. You can trigger it using the manifest property <code>stRefreshTrigger</code>.</p>
+				<p>For example, if the reuse component is to react to the value change of more than one property, such as a price change, then
+					annotate a side effect and add the target property<code>PriceTrigger</code>, as shown in the sample below. </p>
+				<p>This can also be achieved via a function import, by annotating a side effect against a function import.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Trigger refresh when changing the value of a
+					property</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"embeddedComponents": {        
+          "priceComponentEmbedding": {         
+             "id": "priceComponentEmbedding",         
+             "componentUsage": "priceComponentUsage",         
+             "title": "{{I18N_KEY_FOR_PRICE_COMPONENT_TITLE}}",
+             "settings": {
+                  "stRefreshTrigger": "{Price}"
+             }                 
+       },        
+</pre></div></section><p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Trigger refresh when changing the values of one of the
+					properties</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"embeddedComponents": {        
+          "priceComponentEmbedding": {         
+             "id": "priceComponentEmbedding",         
+             "componentUsage": "priceComponentUsage",         
+             "title": "{{I18N_KEY_FOR_PRICE_COMPONENT_TITLE}}",
+             "settings": {
+                  "stRefreshTrigger": "{Price}{Supplier}"
+             }                 
+       },        
+</pre></div></section><p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Trigger refresh when changing the values of a combination of
+					properties</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"embeddedComponents": {        
+          "priceComponentEmbedding": {         
+             "id": "priceComponentEmbedding",         
+             "componentUsage": "priceComponentUsage",         
+             "title": "{{I18N_KEY_FOR_PRICE_COMPONENT_TITLE}}",
+             "settings": {
+                  "stRefreshTrigger": "{= ${Price}+${Supplier}}"
+             }                 
+       },        
+</pre></div></section><p></p></div></div>
+			</section></div></section><section id="section_i1j_2bt_d4b" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>Each reuse component instance defined for an object page belonging to an SAP Fiori elements-based app is realized by a
+				section that contains a custom subsection which in turn contains the content of the reuse component.</p><p>These sections, like any
+				other custom sections, can be placed as described in the topic <a href="#/topic/92ad9968e41748aeb74971f7a08a91c8.html" title="You define application-specific sections in the form of annotations. However, in some cases you might need to integrate components into the front end, for example charts or attachments." class="sap-doc">Extension Points for Sections on the Object Page</a>.</p><section>
+				<h3 class="title ">Adding a Reuse Component</h3>
+				<p>You place reuse components into empty custom subsections using the SAPUI5
+					routing and the control ID of the subsection. This is possible either in an existing section, or as a new custom section. The
+					reuse component itself is then included as a separate target in your SAPUI5 routing and its name has to be added as another target in the route
+					to your object page.</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_bts_vjt_d4b" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Property</th>
+								<th colspan="1" rowspan="1">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">type</td>
+								<td colspan="1" rowspan="1" valign="top">component</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">controlAggregation</td>
+								<td colspan="1" rowspan="1" valign="top">blocks</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">clearControlAggregation</td>
+								<td colspan="1" rowspan="1" valign="top">true</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">name</td>
+								<td colspan="1" rowspan="1" valign="top">path to your reuse component</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">parent</td>
+								<td colspan="1" rowspan="1" valign="top">name of your object page</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">controlID</td>
+								<td colspan="1" rowspan="1" valign="top">ID of your custom subsection</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">options &gt; settings</td>
+								<td colspan="1" rowspan="1" valign="top">any settings of your reuse component</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>In the example below, two reuse components are added to the same object page: one to an existing section
+						(<code>mySection</code>) and one as a new section.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{ 
+   "sap.ui5": { 
+      "routing": { 
+         "routes": [ 
+            { 
+               "pattern": "myEntitySet({key}):?query:", 
+               "name": "myObjectPage", 
+               "target": ["myObjectPage", "ReuseComponent", "ReuseComponent2"] 
+            } 
+         ], 
+         "targets": { 
+            "myObjectPage": { 
+               "type": "Component", 
+               "id": "myObjectPage", 
+               "name": "sap.fe.templates.ObjectPage", 
+               "options": { 
+                  "settings": { 
+                     "content": { 
+                        "body": { 
+                           "sections": { 
+                              "mySection": { 
+                                 "subSections": { 
+                                    "ReuseContainer": { 
+                                       "title": "{i18n&gt;reuseTitle}", 
+                                       "controlId": "firstReuseContainer", 
+                                       "position": { 
+                                          "placement": "After", 
+                                          "anchor": "someSubSection" 
+                                       } 
+                                    } 
+                                 } 
+                              }, 
+                              "ReuseComponentContainer": { 
+                                 "position": { 
+                                    "placement": "Before", 
+                                    "anchor": "mySubSection" 
+                                 }, 
+                                 "title": "Reuse Container", 
+                                 "subSections": { 
+                                    "ReuseContainer": { 
+                                       "controlId": "secondReuseContainer" 
+                                    } 
+                                 } 
+                              } 
+                           } 
+                        } 
+                     } 
+                  } 
+               } 
+            }, 
+            "ReuseComponent": { 
+               "type": "Component", 
+               "id": "Reuse", 
+               "name": "path/to/reuseComponent", 
+               "options": { 
+                  "settings": { 
+                     "exampleSettings": "{somePropertyName}" 
+                  } 
+               }, 
+               "parent": "myObjectPage", 
+               "controlId": "firstReuseContainer", 
+               "controlAggregation": "blocks", 
+               "clearControlAggregation": true 
+            }, 
+            "ReuseComponent2": { 
+               "type": "Component", 
+               "id": "Reuse2", 
+               "name": "path/to/reuseComponent2", 
+               "options": { 
+                  "settings": { 
+                     "exampleSettings": "{somePropertyName}" 
+                  } 
+               }, 
+               "parent": "myObjectPage", 
+               "controlId": "secondReuseContainer", 
+               "controlAggregation": "blocks", 
+               "clearControlAggregation": true 
+            } 
+         } 
+      } 
+   } 
+} 
+</pre></div></section>
+				<p></p></div></div>
+				<p>For more information, see <a href="#/topic/a357047be956436ebb1dfebf1aa29af2.html" title="You can add an additional section to your object page, as described below." class="sap-doc">Adding a Section to an Object Page</a>.</p>
+			</section><section>
+				<h3 class="title ">Hiding Reuse Components</h3>
+				<p>A reuse component is bound to the subsection it is placed in. To hide a reuse component, the corresponding subsection must be
+					hidden as described in the topic <a href="#/topic/ce8d468269814077bc4b132572979b66.html" title="On the object page, you can use extension points to add additional subsections." class="sap-doc">Extension Points for Subsections on the Object Page</a>.</p>
+			</section><section>
+				<h3 class="title ">Refreshing Reuse Components</h3>
+				<p>A reuse component refreshes itself, based on its exposed properties. If a certain component property is changed due to a page change, then the
+               component must react in the corresponding setter method of this property.</p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

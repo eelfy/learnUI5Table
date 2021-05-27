@@ -1,0 +1,1012 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 64,
+			"theme": "base"
+		},
+		{
+			"name": "ActionListItem.less",
+			"size": 1514,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ActionSelect.less",
+			"size": 981,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ActionSheet.less",
+			"size": 3821,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "App.less",
+			"size": 174,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Avatar.less",
+			"size": 5177,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Bar.less",
+			"size": 4851,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "BarBase.less",
+			"size": 1613,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Breadcrumbs.less",
+			"size": 2693,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "BusyDialog.less",
+			"size": 1156,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "BusyIndicator.less",
+			"size": 1498,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Button.less",
+			"size": 26319,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Carousel.less",
+			"size": 12874,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CheckBox.less",
+			"size": 5607,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ColorPalette.less",
+			"size": 9838,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ColumnListItem.less",
+			"size": 4985,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ColumnResizer.less",
+			"size": 859,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ComboBox.less",
+			"size": 744,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ComboBoxBase.less",
+			"size": 828,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ComboBoxTextField.less",
+			"size": 187,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CustomListItem.less",
+			"size": 485,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "CustomTile.less",
+			"size": 600,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DatePicker.less",
+			"size": 610,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DateRangeSelection.less",
+			"size": 191,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DateTimePicker.less",
+			"size": 3199,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Dialog.less",
+			"size": 15708,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DisplayListItem.less",
+			"size": 1329,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "DraftIndicator.less",
+			"size": 341,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ExpandableText.less",
+			"size": 912,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FacetFilter.less",
+			"size": 3585,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FacetFilterItem.less",
+			"size": 852,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FacetFilterList.less",
+			"size": 1354,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FeedContent.less",
+			"size": 1815,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FeedInput.less",
+			"size": 3873,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FeedListItem.less",
+			"size": 9585,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FlexBox.less",
+			"size": 4851,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "FormattedText.less",
+			"size": 806,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "GenericTag.less",
+			"size": 4056,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "GenericTile.less",
+			"size": 18972,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "GroupHeaderListItem.less",
+			"size": 1844,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "HeaderContainer.less",
+			"size": 5323,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "IconTabBar.less",
+			"size": 31656,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "IconTabBarSelectList.less",
+			"size": 3843,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Image.less",
+			"size": 1373,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ImageContent.less",
+			"size": 998,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Input.less",
+			"size": 2839,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "InputBase.less",
+			"size": 14466,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "InputListItem.less",
+			"size": 1028,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Label.less",
+			"size": 13926,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "LightBox.less",
+			"size": 7763,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Link.less",
+			"size": 2966,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ListBase.less",
+			"size": 7049,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ListItemBase.less",
+			"size": 7577,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Menu.less",
+			"size": 450,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MenuButton.less",
+			"size": 4084,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MenuListItem.less",
+			"size": 2164,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageBox.less",
+			"size": 2021,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessagePage.less",
+			"size": 2149,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessagePopover.less",
+			"size": 1190,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageStrip.less",
+			"size": 2217,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageToast.less",
+			"size": 642,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MessageView.less",
+			"size": 4459,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MultiComboBox.less",
+			"size": 3616,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "MultiInput.less",
+			"size": 4487,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NavContainer.less",
+			"size": 7487,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NewsContent.less",
+			"size": 1361,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NotificationListBase.less",
+			"size": 1324,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NotificationListGroup.less",
+			"size": 2403,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NotificationListItem.less",
+			"size": 2574,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "NumericContent.less",
+			"size": 4201,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectAttribute.less",
+			"size": 4969,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectHeader.less",
+			"size": 24967,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectIdentifier.less",
+			"size": 1971,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectListItem.less",
+			"size": 5572,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectMarker.less",
+			"size": 900,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectNumber.less",
+			"size": 5669,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ObjectStatus.less",
+			"size": 18689,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "OverflowToolbarAssociativePopover.less",
+			"size": 2797,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nColumnsPanel.less",
+			"size": 1936,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nConditionPanel.less",
+			"size": 1141,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nDialog.less",
+			"size": 443,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nFilterPanel.less",
+			"size": 862,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nGroupPanel.less",
+			"size": 281,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "P13nSortPanel.less",
+			"size": 346,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PDFViewer.less",
+			"size": 499,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Page.less",
+			"size": 8476,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PagingButton.less",
+			"size": 214,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Panel.less",
+			"size": 3377,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PlanningCalendar.less",
+			"size": 9449,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PlanningCalendarHeader.less",
+			"size": 584,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PlanningCalendarLegend.less",
+			"size": 535,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Popover.less",
+			"size": 8949,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ProgressIndicator.less",
+			"size": 5059,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "PullToRefresh.less",
+			"size": 3602,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "QuickView.less",
+			"size": 7560,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RadioButton.less",
+			"size": 3684,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RadioButtonGroup.less",
+			"size": 1651,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RangeSlider.less",
+			"size": 1437,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "RatingIndicator.less",
+			"size": 4148,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ScrollBar.less",
+			"size": 872,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ScrollContainer.less",
+			"size": 822,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SearchField.less",
+			"size": 6621,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SegmentedButton.less",
+			"size": 6574,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Select.less",
+			"size": 13667,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SelectDialog.less",
+			"size": 624,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SelectList.less",
+			"size": 4556,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SelectionDetails.less",
+			"size": 260,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SelectionDetailsItem.less",
+			"size": 2183,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SemanticPage.less",
+			"size": 219,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Shell.less",
+			"size": 5977,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SimpleFixFlex.less",
+			"size": 413,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SinglePlanningCalendar.less",
+			"size": 1388,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SinglePlanningCalendarGrid.less",
+			"size": 19572,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SinglePlanningCalendarMonthGrid.less",
+			"size": 4345,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SlideTile.less",
+			"size": 3897,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Slider.less",
+			"size": 3300,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SliderTooltip.less",
+			"size": 1108,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SliderTooltipContainer.less",
+			"size": 361,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SplitButton.less",
+			"size": 2021,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SplitContainer.less",
+			"size": 6463,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "StandardListItem.less",
+			"size": 6924,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "StandardTile.less",
+			"size": 3773,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "StandardTreeItem.less",
+			"size": 430,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "StepInput.less",
+			"size": 1133,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SuggestionItem.less",
+			"size": 250,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "SuggestionsPopover.less",
+			"size": 3214,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Support.less",
+			"size": 1391,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Switch.less",
+			"size": 7578,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TabContainer.less",
+			"size": 1063,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TabStrip.less",
+			"size": 10435,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Table.less",
+			"size": 12808,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TablePersoDialog.less",
+			"size": 2874,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TableSelectDialog.less",
+			"size": 474,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Text.less",
+			"size": 3059,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TextArea.less",
+			"size": 3299,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Tile.less",
+			"size": 1683,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TileContainer.less",
+			"size": 6062,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TileContent.less",
+			"size": 2928,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TimePicker.less",
+			"size": 1537,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TimePickerSliders.less",
+			"size": 9162,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Title.less",
+			"size": 1811,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ToggleButton.less",
+			"size": 3931,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Token.less",
+			"size": 4058,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Tokenizer.less",
+			"size": 2427,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Toolbar.less",
+			"size": 3188,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ToolbarSeparator.less",
+			"size": 531,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ToolbarSpacer.less",
+			"size": 452,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "TreeItemBase.less",
+			"size": 1370,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "UploadCollection.less",
+			"size": 12881,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "UploadSet.less",
+			"size": 203,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ValueStateHeader.less",
+			"size": 1253,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ValueStateMessage.less",
+			"size": 749,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "ViewSettingsDialog.less",
+			"size": 1811,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "WheelSlider.less",
+			"size": 7031,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "WheelSliderContainer.less",
+			"size": 1265,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "Wizard.less",
+			"size": 2224,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "WizardProgressNavigator.less",
+			"size": 7676,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "WizardStep.less",
+			"size": 457,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.css",
+			"size": 38841,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.less",
+			"size": 234,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "css_variables.source.less",
+			"size": 131310,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 574971,
+			"theme": "base"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 16338,
+			"theme": "base"
+		},
+		{
+			"name": "library.css",
+			"size": 574885,
+			"theme": "base"
+		},
+		{
+			"name": "library.less",
+			"size": 674042,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library.source.less",
+			"size": 5110,
+			"designtime": true,
+			"theme": "base"
+		},
+		{
+			"name": "library_skeleton-RTL.css",
+			"size": 609681,
+			"theme": "base"
+		},
+		{
+			"name": "library_skeleton.css",
+			"size": 609595,
+			"theme": "base"
+		},
+		{
+			"name": "shared.less",
+			"size": 6767,
+			"designtime": true,
+			"theme": "base"
+		}
+	]
+}

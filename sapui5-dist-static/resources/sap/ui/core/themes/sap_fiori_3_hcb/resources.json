@@ -1,0 +1,205 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theme",
+			"size": 661,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": ".theming",
+			"size": 94,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "BrowserScrollbar.less",
+			"size": 536,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "LocalBusyIndicator.less",
+			"size": 567,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "Shadow.less",
+			"size": 201,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "base.less",
+			"size": 59276,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css_variables.css",
+			"size": 154184,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css_variables.less",
+			"size": 170432,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "css_variables.source.less",
+			"size": 170056,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold-full.woff",
+			"size": 65960,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold-full.woff2",
+			"size": 57472,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold.woff",
+			"size": 37584,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Bold.woff2",
+			"size": 26732,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light-full.woff",
+			"size": 71368,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light-full.woff2",
+			"size": 61768,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light.woff",
+			"size": 36172,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Light.woff2",
+			"size": 31756,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular-full.woff",
+			"size": 68984,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular-full.woff2",
+			"size": 57136,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular.woff",
+			"size": 38944,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72-Regular.woff2",
+			"size": 27844,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Bold-full.woff",
+			"size": 52776,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Bold-full.woff2",
+			"size": 44664,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Bold.woff",
+			"size": 24000,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Bold.woff2",
+			"size": 20512,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Regular-full.woff",
+			"size": 51692,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Regular-full.woff2",
+			"size": 43632,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Regular.woff",
+			"size": 23620,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "fonts/72Mono-Regular.woff2",
+			"size": 20252,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "global.less",
+			"size": 51239,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 102299,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 55821,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.css",
+			"size": 102285,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.less",
+			"size": 10415,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library.source.less",
+			"size": 350,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library_skeleton-RTL.css",
+			"size": 28531,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "library_skeleton.css",
+			"size": 28518,
+			"theme": "sap_fiori_3_hcb"
+		},
+		{
+			"name": "shared.less",
+			"size": 8432,
+			"designtime": true,
+			"theme": "sap_fiori_3_hcb"
+		}
+	]
+}

@@ -1,0 +1,51 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio8ce658e05498466d9a74823b94e840ac" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Managing Variants</h1><div class="fig"><h1 class="topictitle1 title">Managing Variants</h1><div class="shortdesc">Lets you manage variants with different structures in the filter and content
+		areas.</div><section id="context_wzz_hs3_lmb" class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+			<p>The list report provides variant management on page level and on control level.
+				Control level variant management can also be used on the object page.</p>
+			<p>Use page-level variant management to capture filter selection, filter mode, view
+				mode, auto-hide icon state (eye-icon), chart and table configuration (measures and
+				dimensions), sort order, and grouping. The page level variant is enabled by
+				default.</p>
+			<p>Use control-level variant management to define separate variants for filters and
+				table sections. The filter variant stores filter area selections and the filter
+				mode. When you load the stored variant, both the filter area selection and filter
+				mode appear. It is not possible to use control-level variant management and
+				page-level variant management together.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The SAPUI5 standard class <code>sap.ui.comp.variants.VariantManagement</code>
+					supports and manages variants.</p>
+			<p></p></div></div>
+		</div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/ebdb5da37eba4925b2ce692b85d42abb.html" title="The dynamic area of the analytical list page is the title area." class="sap-doc">Configuring the Title Area</a></li><li><a href="#/topic/d80a360638ad4cf193cc55eee92bff2e.html" title="The key performance indicator (KPI) tag is an abbreviated and clickable title with a KPI value." class="sap-doc">Creating Key Performance Indicator Tags</a></li><li><a href="#/topic/00c19e14b02c462c80566fa8b8751137.html" title="ALP offers compact and visual filter modes. You can choose to set filters from both modes." class="sap-doc">Choosing Filter Modes</a></li></ul></section><section id="topic_ar1_ws3_lmb" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">Additional Features in SAP Fiori Elements for OData V2</h1><div class="fig"><h1 class="topictitle1 title">Additional Features in SAP Fiori Elements for OData V2</h1><p>Variant management on page level and on control level is also available for the
+				analytical list page.</p><p>You can also use control-level variant management to define separate variants for
+				charts. Set <code>smartVariantManagement=false</code> in the app-descriptor file
+				to use control-level variant management.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="topic_djr_mt3_lmb" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">Additional Features in SAP Fiori Elements for OData V4</h1><div class="fig"><h1 class="topictitle1 title">Additional Features in SAP Fiori Elements for OData V4</h1><p>You can also use control-level variant management to define separate variants for
+				charts. Set <code>variantManagement</code> as follows:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+	"sap.ui5": {
+		"routing": {
+			"targets": {
+				"SalesOrderManageList": {
+					"options": {
+						"settings": {
+							"variantManagement": "Control"
+						}
+					}
+				},
+				"SalesOrderManageObject": {
+					"options": {
+						"settings": {
+							"variantManagement": "Control"
+						}
+					}
+				}
+			}
+		}
+	}
+}</pre></div></section>
+			<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="topic_n21_tt3_lmb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Limitations</h1><div class="fig"><h1 class="topictitle1 title">Limitations</h1><p>It is not possible to turn off variant management for selected controls (filter,
+				chart, or table area) in SAP Fiori elements for OData
+                            V2.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></section></div></body></html>

@@ -1,0 +1,157 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioce8d468269814077bc4b132572979b66" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Extension Points for Subsections on the
+		Object Page</h1><div class="fig"><h1 class="topictitle1 title">Extension Points for Subsections on the
+		Object Page</h1><div class="shortdesc">On the object page, you can use extension points to add additional
+		subsections.</div><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div><div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+			</p><p>In SAP Fiori elements for OData
+                            V2, you use the term <code>facet</code> to add a
+				subsection to the object page in the manifest.json.</p>
+			<p>In SAP Fiori elements for OData
+                            V4, you use the term <code>section</code> to add a
+				subsection to the object page in the manifest.json.</p>
+		<p></p></div></div><section id="section_bnv_vvn_d4b" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can add additional subsections in existing facets:</p><ul class="ul ">
+				<li class="li">
+					<p><code>BeforeSubSection</code>: The extension is inserted before a given subsection in a facet</p>
+				</li>
+				<li class="li">
+					<p><code>AfterSubSection</code>: The extension is inserted after a given subsection in a facet</p>
+				</li>
+				<li class="li">
+					<p><code>ReplaceSubSection</code>: The extension replaces an existing subsection in a facet.</p>
+				</li>
+			</ul><p>You must specify the subsection in the form of its annotation path. You also have to specify the entitySet name, as the same annotation
+				path may exist for various entity sets. You add this information to the manifest.json file, as in the example. For more information,
+				see <a href="#/topic/92ad9968e41748aeb74971f7a08a91c8.html" title="You define application-specific sections in the form of annotations. However, in some cases you might need to integrate components into the front end, for example charts or attachments." class="sap-doc">Extension Points for Sections on the Object Page</a>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.viewExtensions": {
+   "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+      "BeforeSubSection|STTA_C_MP_Product|to_ProductSalesData::com.sap.vocabularies.UI.v1.Chart":{
+         "className": "sap.ui.core.mvc.View",
+         "viewName": "STTA_MP.ext.view.ProductSalesPrice",
+         "type": "XML",
+         "sap.ui.generic.app": {
+            "title": "Target Sales Prices",
+            "enableLazyLoading": true
+         }
+      },
+      "AfterSubSection|STTA_C_MP_Product|to_ProductSalesData::com.sap.vocabularies.UI.v1.LineItem":{
+         "className": "sap.ui.core.mvc.View",
+         "viewName": "STTA_MP.ext.view.ProductSalesPrice",
+         "type": "XML",
+         "sap.ui.generic.app": {
+            "title": "Target Sales Prices",
+            "enableLazyLoading": true
+         }
+     "ReplaceSubSection|STTA_C_MP_Product|to_ProductTextType::com.sap.vocabularies.UI.v1.LineItem":{
+         "className": "sap.ui.core.mvc.View",
+         "viewName": "STTA_MP.ext.view.ProductSalesPrice",
+         "type": "XML",
+         "sap.ui.generic.app": {
+            "title": "Target Sales Prices",
+            "enableLazyLoading": true
+         }
+      },
+    .....
+</pre></div></section>
+			<p></p></div></div><p>The result looks as shown below. The highlighted subsection has been added using the extension point.</p><div><div class="fig"><img src="loio90b2aadf2fdc456892713885d9b6a441_LowRes.jpg" usemap="#"></div></div><p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>You can specify either a view or a fragment contained in the additional subsection. Either way, you do not need to use the
+						object page (uxap) tags <code>ObjectPageSection</code>, <code>subSections</code>, or
+							<code>ObjectPageSubSection</code>. These definitions are already part of the template for the object page view.
+						Additional sections are rendered if an extension exists. </p>
+				<p></p></div></div>
+			<p></p></div></section><section id="section_lwj_nwn_d4b" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Using Custom Subsections</h3>
+				<p>Custom subsections provide the following features:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>adding arbitrary subsections via an <code>xmlfragment</code> definition</p>
+					</li>
+					<li class="li">
+						<p>positioning relative to subsections defined by facets or other custom facets</p>
+					</li>
+					<li class="li">
+						<p>using a localized subsection title</p>
+					</li>
+				</ul>
+				<p>To define a subsection on UI level - you do this if you want to add a custom look and feel, or to use controls that are not
+					supported by default - you can extend the settings of the corresponding object page in the manifest.json with a
+						<span class="emphasis">content</span> block. You can enrich the body of the object page with additional subsections. To do so, you
+					define header facets by using a custom key that you later reference by providing the following properties:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>a title</p>
+					</li>
+					<li class="li">
+						<p>the name (which must point to the corresponding fragment and the outer section, which can be just the name of an existing
+							section or a custom section) and</p>
+					</li>
+					<li class="li">
+						<p>the corresponding fragment</p>
+					</li>
+				</ul>
+				<p>For more information, see <a href="#/topic/92ad9968e41748aeb74971f7a08a91c8.html" title="You define application-specific sections in the form of annotations. However, in some cases you might need to integrate components into the front end, for example charts or attachments." class="sap-doc">Extension Points for Sections on the Object Page</a>.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+	"sap.ui5": {
+		"routing": {
+			"targets": {
+				"SalesOrderManageObjectPage": {
+					"options": {
+						"settings": {
+							"content": {
+								"body": {
+									"sections": {
+										"myObjectPageSection": {
+											"subsections": {
+												"customSubSection": {
+													"type": "XMLFragment",
+													"name": "SalesOrder.custom.CustomSubSection",
+													"title": "{i18n&gt;customSubSection}",
+													"position": {
+														"placement": "After",
+														"anchor": "someSubSection"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}</pre></div></section>
+				<p></p></div></div>
+				<p>The result looks as shown below. The highlighted subsection has been added using the extension point.</p>
+				<div><div class="fig"><img src="loio90b2aadf2fdc456892713885d9b6a441_LowRes.jpg" usemap="#"></div></div>
+				<p>
+					</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>You can specify either a view or a fragment contained in the additional subsection. Either way, you do not need to use the
+							object page (uxap) tags <code>ObjectPageSection</code>, <code>subSections</code>, or
+								<code>ObjectPageSubSection</code>. These definitions are already part of the template for the object page view.
+							Additional sections are rendered if an extension exists.</p>
+					<p></p></div></div>
+				<p></p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

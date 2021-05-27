@@ -1,0 +1,713 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob623e0bbbb2b4147b2d0516c463921a0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Actions to Tables</h1><div class="fig"><h1 class="topictitle1 title">Adding Actions to Tables</h1><div class="shortdesc">The table control offers a possibility to show both the generic actions, such as Create and
+         Delete, as well as application-specific actions.</div><section id="section_nx4_qpb_2nb"><h2 class="title ">Generic Actions</h2><p>SAP Fiori elements provides
+            two generic actions (<span class="ph uicontrol">Create</span> and <span class="ph uicontrol">Delete</span>)
+            that can be rendered in the toolbar based on metadata
+               properties<code>sap:creatable=true</code> and <code>sap:deletable=true</code>
+            of the entity set.</p><p>Insert capability for the related entities in an object page
+            can be overridden using below options:</p><p><span class="emphasis">Option 1: Using
+                  <code>NavigationRestrictions</code></span></p><p>The system gives priority
+            to the
+               <span class="ph sap-technical-name">Org.OData.Capabilities.V1.NavigationRestrictions</span>
+            of the parent entity set if it is defined, and the <code>InsertRestrictions</code>
+            provided directly at the table entity set level (Option 2 below) is ignored. Depending
+            on the value of the <span class="ph sap-technical-name">Insertable</span> property of
+               <span class="ph sap-technical-name">InsertRestrictions</span>, the related (table)
+            entity set is made insertable or not insertable.</p><ul class="ul ">
+            <li class="li">
+               <p>If <code>Insertable</code> is set as <code>true</code>, the related entity
+                  set is insertable.</p>
+            </li>
+            <li class="li">
+               <p>If <code>Insertable</code> is set as <code>false</code>, the related
+                  entity set is not insertable.</p>
+            </li>
+         </ul><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_Product"&gt;
+  &lt;Annotation Term="Capabilities.NavigationRestrictions"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="RestrictedProperties"&gt;
+          &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ProductText"/&gt;
+               &lt;PropertyValue Property="InsertRestrictions"&gt;
+                  &lt;Record&gt;
+                     &lt;PropertyValue Property="Insertable" Bool="true"/&gt;
+				  &lt;!--Example with Boolean value for InsertRestriction--&gt;
+				  &lt;!-- &lt;PropertyValue Property="Insertable" Path="Insertable"/&gt;--&gt;
+				  &lt;!--Example with path for InsertRestriction--&gt;
+                  &lt;/Record&gt;
+               &lt;/PropertyValue&gt;
+           &lt;/Record&gt;
+        &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+  &lt;/Annotation&gt;
+&lt;/Annotation&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">define behavior for STTA_C_MP_Product
+{
+  create;
+  delete;
+  update;
+ 
+  association _ProductText
+  { create;  }
+};</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+               Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate STTA_PROD_MAN.STTA_C_MP_Product with @(
+  Capabilities.NavigationRestrictions : {
+    RestrictedProperties : [
+        {
+            NavigationProperty : to_ProductText,
+            InsertRestrictions : {
+                Insertable : true
+            }
+        }
+    ]
+  }
+);</pre></div></section></div></section><ul class="ul ">
+            <li class="li">
+               <p>If <code>Insertable</code> is set as <code>true</code>, the related entity
+                  set is insertable.</p>
+            </li>
+            <li class="li">
+               <p>If <code>Insertable</code> is set as <code>false</code>, the related
+                  entity set is not insertable.</p>
+            </li>
+         </ul><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductText"&gt;
+  &lt;Annotation Term="Capabilities.InsertRestrictions"&gt;
+    &lt;Record&gt;
+       &lt;PropertyValue Property="Insertable" Bool="true" /&gt;
+                    &lt;!--Example with Boolean value for InsertRestriction--&gt;
+        	    &lt;!-- &lt;PropertyValue Property="Insertable" Path="Insertable"/&gt;--&gt;
+         	    &lt;!--Example with path for InsertRestriction--&gt;
+    &lt;/Record&gt;
+  &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+               Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate STTA_PROD_MAN.STTA_C_MP_ProductText with @(
+  Capabilities.InsertRestrictions : {
+    Insertable : true,
+  }
+);</pre></div></section></div></section><p>See also <a href="#/topic/cfb04f0c58e7409992feb4c91aa9410b.html" title="You can enable the inline creation of table entries for apps that use draft handling." class="sap-doc">Enabling Inline Creation of Table Entries on Object Page</a>.</p><section>
+            <h3 class="title ">Delete Action</h3>
+            <p>The <span class="ph uicontrol">Delete</span> button can be seen as an action on the table and it
+               is disabled until a selection is made.</p>
+            <p><code>DeleteRestrictions</code> also supports path-based values.</p>
+            <p>The <span class="ph uicontrol">Delete</span> button is enabled by default if
+                  <code>DeleteRestrictions</code> is not provided.</p>
+         </section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.Container/SalesOrderManage"&gt;
+   &lt;Annotation Term="SAP__capabilities.DeleteRestrictions"&gt;
+      &lt;Record&gt;
+         &lt;PropertyValue Property="Deletable" Bool="false"/&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+               Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate SAP__self.SalesOrderManage with {
+  SAP__capabilities.DeleteRestrictions : {
+    Deletable : false
+  }
+};</pre></div></section></div></section><section>
+            <h3 class="title ">
+            <p><span class="emphasis">Enable or Disable <span class="ph uicontrol">Delete</span> Button (Using
+                  deletable-path Annotations)</span></p>
+            <p>You can enable or disable the <span class="ph uicontrol">Delete</span> button in the list report
+               based on conditions specified in the back-end system. For example, you can disable
+               deletion for a sales order that has already been paid. In this case, if a user
+               selects an item that cannot be deleted, the <span class="ph uicontrol">Delete</span> button is
+               disabled. In addition, if the user navigates from this item in the list report to the
+               object page, the <span class="ph uicontrol">Delete</span> button is hidden. </p>
+            <p>In your annotation, set the <code>deletable-path</code> to point to a particular
+               property of an object (entity) in the back-end system that is either
+                  <code>true</code> or <code>false</code>. If the value of this property is
+                  <code>true</code>, the <span class="ph uicontrol">Delete</span> button is enabled; if it
+               is <code>false</code>, it is disabled. If you want to use the
+                  <code>deletable-path</code> annotation to specify conditions for deletion, you
+               have to ensure that the setting <code>sap:deletable</code> is not present in your
+               annotations.</p>
+            <p>The code sample below shows you how to set up your annotation to enable or disable
+               the <span class="ph uicontrol">Delete</span> button, based on the value of the
+                  <code>Delete_mc</code> property in the back-end
+               system.</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_Product"&gt;
+    &lt;Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Deletable" Path="Delete_mc"/&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p>
+            
+            
+            
+            
+         </h3></section></section><section id="section_ifk_jqb_2nb"><h2 class="title ">App-Specific Actions</h2><p>Tables can also show
+            application-configured actions. These can either be custom actions configured in the
+            manifest.json, or can come from annotations.</p><p><span class="emphasis">Custom Actions
+               (manifest.json)</span></p><p>Applications can define custom table toolbar actions
+            via enhancements to the manifest.json file. For more information, refer to the
+            corresponding sections in <a href="#/topic/7619517a92414e27b71f02094bd08d06.html" title="You can use extension points to add custom actions to the list report and the object page." class="sap-doc">Adding Custom Actions Using Extension Points</a>.</p><p><span class="emphasis">Annotation-Based Actions</span></p><p>The following types of
+            actions are supported:</p><ul class="ul ">
+            <li class="li">
+               <p>Actions that trigger a back-end call through the OData service, for example,
+                     <span class="ph uicontrol">Approve</span> or <span class="ph uicontrol">Unblock</span>, represented
+                  by the complex type <code>DataFieldForAction</code></p>
+            </li>
+            <li class="li">Actions that trigger navigation, for example to a different app, represented by the
+               complex type <code>DataFieldForIntentBasedNavigation</code>. For more
+               information, see <a href="#/topic/d782acf8bfd74107ad6a04f0361c5f62.html" title="You can either specify a URL or associate a semantic object (= intent-based navigation) for external navigation targets." class="sap-doc">Navigation from an App (Outbound Navigation)</a>. </li>
+         </ul><p>Annotation-based actions can be inline actions. Inline actions are used to trigger
+            actions directly for a single table row. Such an action will show up within the table
+            control as a separate column. To set an action as an inline action, set the
+               <code>Inline</code> property to <code>true</code>. The line item actions are
+            then displayed as shown below:</p><div><div class="fig"><img src="loio856c5a455c9045cb9ec204f1106cd779_HiRes.jpg" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Example: Actions in the Table Toolbar</span></div><p><span class="emphasis">Specifying Text for App-Specific Actions</span></p><p>To specify a
+            text for your action, use the
+               <code>com.sap.vocabularies.UI.v1.DataFieldForAction</code> property and specify
+            the text to display. The example below shows you how to display an action to create a
+            copy of the list item in the toolbar:</p><div><div class="fig"><img src="loiofe9ce2db25234ed297289e5172b74a27_LowRes.png" usemap="#"></div></div><p><span class="emphasis">Sample Code</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"></pre></div></section><p></p><p>For more
+            information about adding a button triggering external navigation, see <a href="#/topic/d782acf8bfd74107ad6a04f0361c5f62.html" title="You can either specify a URL or associate a semantic object (= intent-based navigation) for external navigation targets." class="sap-doc">Navigation from an App (Outbound Navigation)</a>. </p><p></p><p>For information about
+            context-dependent and context-independent actions, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p><p>The following code sample
+            shows how to create your annotations for line item actions. Note that the
+               <code>UI.LineItem</code> vocabulary term is used to define the columns for the
+            smart table.</p><p><span class="emphasis">UI.LineItem</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.LineItem"&gt;
+   &lt;Collection&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+         &lt;PropertyValue Property="Label" String="Copy with new Supplier"/&gt;
+         &lt;PropertyValue Property="Action"
+            String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopywithparams"/&gt;
+         &lt;PropertyValue Property="InvocationGrouping"   
+            EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+         &lt;PropertyValue Property="Label" String="Activate"/&gt;
+         &lt;PropertyValue Property="Action"
+            String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductActivation"/&gt;
+         &lt;PropertyValue Property="InvocationGrouping" 
+            EnumMember="UI.OperationGroupingType/ChangeSet"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+         &lt;PropertyValue Property="Value" Path="Product"/&gt;
+         &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+         &lt;PropertyValue Property="Value" Path="ProductCategory"/&gt;
+         &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+         &lt;PropertyValue Property="Value" Path="to_Supplier/CompanyName"/&gt;
+         &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+         &lt;PropertyValue Property="Criticality" Path="to_StockAvailability/StockAvailability"/&gt;
+         &lt;PropertyValue Property="Value" Path="to_StockAvailability/StockAvailability"/&gt;
+         &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+         &lt;PropertyValue Property="Value" Path="Price"/&gt;
+         &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+         &lt;PropertyValue Property="Label" String="Copy"/&gt;
+         &lt;PropertyValue Property="Action"
+            String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopy"/&gt;
+         &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+         &lt;PropertyValue Property="InvocationGrouping"   
+            EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+         &lt;PropertyValue Property="Label" String="Manage Products (ST)"/&gt;
+         &lt;PropertyValue Property="SemanticObject" String="EPMProduct"/&gt;
+         &lt;PropertyValue Property="Action" String="manage_st"/&gt;
+         &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldWithIntentBasedNavigation"&gt;
+         &lt;PropertyValue Property="Label" String="Weight (with IBN)" /&gt;
+         &lt;PropertyValue Property="Value" Path="Weight"/&gt;
+         &lt;PropertyValue Property="SemanticObject" String="EPMProduct" /&gt;
+         &lt;PropertyValue Property="Action" String="manage_st"/&gt;
+      &lt;/Record&gt;
+   &lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.lineItem: [
+  {
+    label: 'Copy with new Supplier',
+    dataAction: 'PUSHDOWN:STTA_C_MP_ProductCopywithparams',
+    invocationGrouping: #ISOLATED,
+    type: #FOR_ACTION,
+    position: 1 
+  },
+  {
+    label: 'Activate',
+    dataAction: 'PUSHDOWN:STTA_C_MP_ProductActivation',
+    invocationGrouping: #CHANGE_SET,
+    type: #FOR_ACTION,
+    position: 2 
+  },
+ {
+    importance: #HIGH,
+    value: 'PRODUCT',
+    type: #STANDARD,
+    position: 3 
+  },
+  {
+    label: 'Copy',
+    dataAction: 'PUSHDOWN:STTA_C_MP_ProductCopy',
+    invocationGrouping: #ISOLATED,
+    type: #FOR_ACTION,
+    position: 8 
+  },
+  {
+    label: 'Manage Products (ST)',
+    semanticObjectAction: 'manage_st',
+    type: #FOR_INTENT_BASED_NAVIGATION,
+    position: 9 
+  }
+]
+
+PRODUCT;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'PRODUCTCATEGORY',
+    type: #STANDARD,
+    position: 4 
+  }
+]
+PRODUCTCATEGORY;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'TO_SUPPLIER/COMPANYNAME',
+    type: #STANDARD,
+    position: 5 
+  }
+]
+TO_SUPPLIER/COMPANYNAME;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    criticality: 'TO_STOCKAVAILABILITY/STOCKAVAILABILITY',
+    value: 'TO_STOCKAVAILABILITY/STOCKAVAILABILITY',
+    type: #STANDARD,
+    position: 6 
+  }
+]
+TO_STOCKAVAILABILITY/STOCKAVAILABILITY;
+
+@UI.lineItem: [
+  {
+    importance: #HIGH,
+    value: 'PRICE',
+    type: #STANDARD,
+    position: 7 
+  }
+]
+PRICE;
+
+@UI.lineItem: [
+  {
+    label: 'Weight (with IBN)',
+    value: 'WEIGHT',
+    semanticObjectAction: 'manage_st',
+    type: #WITH_INTENT_BASED_NAVIGATION,
+    position: 10 
+  }
+]
+
+@Consumption.semanticObject: 'EPMProduct'
+WEIGHT;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+               Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.LineItem : [
+    {
+        $Type : 'UI.DataFieldForAction',
+        Label : 'Copy with new Supplier',
+        Action : 'STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopywithparams',
+        InvocationGrouping : #Isolated
+    },
+    {
+        $Type : 'UI.DataFieldForAction',
+        Label : 'Activate',
+        Action : 'STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductActivation',
+        InvocationGrouping : #ChangeSet
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : Product,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : ProductCategory,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : to_Supplier.CompanyName,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Criticality : to_StockAvailability.StockAvailability,
+        Value : to_StockAvailability.StockAvailability,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : Price,
+        ![@UI.Importance] : #High
+    },
+    {
+        $Type : 'UI.DataFieldForAction',
+        Label : 'Copy',
+        Action : 'STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopy',
+        Inline : true,
+        InvocationGrouping : #Isolated
+    },
+    {
+        $Type : 'UI.DataFieldForIntentBasedNavigation',
+        Label : 'Manage Products (ST)',
+        SemanticObject : 'EPMProduct',
+        Action : 'manage_st',
+        Inline : true
+    },
+    {
+        $Type : 'UI.DataFieldWithIntentBasedNavigation',
+        Label : 'Weight (with IBN)',
+        Value : Weight,
+        SemanticObject : 'EPMProduct',
+        Action : 'manage_st'
+    }
+]
+</pre></div></section></div></section><p>In the example above, the order in which the record types are presented in
+            the annotation determines the order in which they appear in the table columns:</p><ul class="ul ">
+            <li class="li">
+               <p>For the first two record types, the <code>DataFieldForAction</code> complex
+                  type does not contain the <code>Inline</code> property, which means that the
+                  action button will appear in the smart table toolbar. If the
+                     <code>Inline</code> property is there and set to <code>false</code>,
+                  the action button is also displayed in the smart table toolbar. </p>
+            </li>
+            <li class="li">
+               <p>With the next five record types, the <code>DataField</code> complex type is
+                  used to define the data for a column within the smart table. </p>
+            </li>
+            <li class="li">
+               <p>With the last two record types, the <code>DataFieldForAction</code> and
+                     <code>DataFieldForIntentBasedNavigation</code> complex types are used and
+                  contain the <code>Inline</code> property which is set to
+                  <code>true</code>. This means the action buttons will appear in every row in
+                  the appropriate column within the smart table.</p>
+            </li>
+            <li class="li">
+               <p>With the last record type, the <code>DataFieldWithIntentBasedNavigation</code>
+                  complex type is used to render the property value as a link allowing for
+                  navigation to the semantic object.</p>
+            </li>
+         </ul></section><section id="section_cgn_hlf_nmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><section>
+            <h3 class="title ">Delete Action</h3>
+            <p>The <span class="ph uicontrol">Delete</span> button is enabled by default if
+                  <code>DeleteRestrictions</code> is not provided. Note that if you want to
+               specify conditions for deletion (using the <code>deletable-path</code>
+               annotation), you must ensure that the setting <code>sap:deletable</code> has not
+               been made.</p>
+         </section><section>
+            <h3 class="title ">Inline Deletion of Rows in Tables</h3>
+            <p>You can enable inline deletion in a table of list report and object page. This can be
+               enabled by setting the <code>inlineDelete</code> property to
+                  <code>true</code> for <code>tableSettings</code> as shown below:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                  </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"tableSettings": {
+     "inlineDelete": true
+}
+</pre></div></section>
+               <p></p></div></div>
+            <p></p>
+            <p>After you enable this setting, a <span class="ph uicontrol">Delete</span> button is displayed at
+               the end of the row in the table.</p>
+            <p><img src="loio3eaeca86540c41dc91db4ffc42276895_LowRes.png" usemap="#"></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+               </p><p>
+                  </p><ul class="ul ">
+                     <li class="li">
+                        <p>The inline deletion is only possible for responsive table types.</p>
+                     </li>
+                     <li class="li">
+                        <p>The <code>inlineDelete</code> and <code>multiselect</code> cannot
+                           be enabled simultaneously. If both are enabled, the application fails to
+                           load.</p>
+                     </li>
+                     <li class="li">
+                        <p>If you have set delete restrictions and the restriction path property is
+                           set to false for the item, the item cannot be deleted.</p>
+                     </li>
+                  </ul>
+               <p></p>
+            <p></p></div></div>
+         </section></div></section><section id="section_b1k_3lf_nmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+            <h3 class="title ">Show or Hide the <span class="ph uicontrol">Create</span> Button</h3>
+            <p>You can control the visibility of the <span class="ph uicontrol">Create</span> button depending
+               on the <code>UI.CreateHidden</code> annotation. The annotation can be a Boolean
+               value or can point to a path. In your annotation, set the path to point to a
+               particular property (either true or false) of the parent object. If the value of the
+               property is <code>true</code>, then the <span class="ph uicontrol">Create</span> button is
+               hidden; if it is <code>false</code>, it is visible.</p>
+            <p>The code sample below shows you how to hide or show the <span class="ph uicontrol">Create</span>
+               button, depending on the <code>isCreateHidden</code> property of the parent
+               entity.</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.EntityContainer/HeaderPartner"&gt; 
+   &lt;Annotation Term="UI.CreateHidden" Path="owner/isCreateHidden"/&gt; 
+&lt;/Annotations&gt; </pre></div></section>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Annotate com.c_salesordermanage_sd.HeaderPartner with @( UI.CreateHidden: owner.isCreateHidden);</pre></div></section>
+         </section><section>
+            <h3 class="title ">Show or Hide the <span class="ph uicontrol">Delete</span> Button</h3>
+            <p>You can control the visibility of the <span class="ph uicontrol">Delete</span> button depending
+               on the <code>UI.DeleteHidden</code> annotation. The annotation can be a Boolean
+               value or can point to a path. In your annotation, set the path to point to a
+               particular property (either true or false) of the parent object. If the value of the
+               property is <code>true</code>, then the <span class="ph uicontrol">Delete</span> button is
+               hidden; if it is <code>false</code>, it is visible.</p>
+            <p>The code sample below shows you how to hide or show the <span class="ph uicontrol">Delete</span>
+               button, depending on the <code>isDeleteHidden</code> property of the parent
+               entity.</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.EntityContainer/HeaderPartner"&gt; 
+   &lt;Annotation Term="UI.DeleteHidden" Path="owner/isDeleteHidden"/&gt; 
+&lt;/Annotations&gt; </pre></div></section>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate com.c_salesordermanage_sd.SalesOrderManage with @( UI.DeleteHidden: owner.isDeleteHidden);</pre></div></section>
+         </section><section>
+            <h3 class="title ">Enable the <code>Update</code> or <code>Delete</code> Feature
+               for the Table</h3>
+            <p>Application developers can control the editability of table fields using
+                  <code>UpdateRestrictions</code>.</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.EntityContainer/Material"&gt;
+    &lt;Annotation Term="Capabilities.UpdateRestrictions"&gt;
+        &lt;Record Type="Capabilities.UpdateRestrictionsType"&gt;
+            &lt;PropertyValue Property="Updatable" Path="owner.isUpdatable"/&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+            <p>Application developers can control the <code>Delete</code> functionality of
+               tables by using <code>DeleteRestrictions</code>.</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.EntityContainer/Material"&gt;
+    &lt;Annotation Term="Capabilities.DeleteRestrictions"&gt;
+        &lt;Record Type="Capabilities.DeleteRestrictionsType"&gt;
+            &lt;PropertyValue Property="Deletable" Path="owner.isDeletable"/&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+            <p>The system gives priority to the
+                  <code>Org.OData.Capabilities.V1.NavigationRestrictions</code> of the parent
+               entity set. Depending on the value of the <code>Deletable</code> property of
+                  <code>DeleteRestrictions</code>, the related <span class="ph uicontrol">Delete</span>
+               button is shown or not.</p>
+            <ul class="ul ">
+               <li class="li">
+                  <p>If <code>NavigationRestrictions</code> has the setting
+                        <code>Deletable=false</code>, the <span class="ph uicontrol">Delete</span> button
+                     for the child entity table is never visible.</p>
+               </li>
+               <li class="li">
+                  <p>If <code>NavigationRestrictions</code> has the setting
+                        <code>Deletable=true</code> or a path, the visibility of the
+                        <span class="ph uicontrol">Delete</span> button for the child entity table depends on
+                     the value of <code>UI.DeleteHidden</code> of the child entity (that is, the
+                     table entity).</p>
+               </li>
+            </ul>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_Product"&gt;
+  &lt;Annotation Term="Capabilities.NavigationRestrictions"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="RestrictedProperties"&gt;
+          &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ProductText"/&gt;
+               &lt;PropertyValue Property="DeleteRestrictions"&gt;
+                  &lt;Record&gt;
+                     &lt;PropertyValue Property="Deletable" Bool="false"/&gt;
+                  &lt;/Record&gt;
+               &lt;/PropertyValue&gt;
+           &lt;/Record&gt;
+        &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+  &lt;/Annotation&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+         </section><p><span class="emphasis">CDS annotation for
+            <code>deletable-path</code></span>:</p><p>
+            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate com.c_salesordermanage_sd.SalesOrderManagewith @Capabilities: {Insertable: false, Deletable:’isDeletable’, Updatable: true}</pre></div></section>
+         <p></p><section>
+            <h3 class="title ">Bound and Unbound Actions</h3>
+            <p>Actions can either be classified as bound or unbound. Bound actions are those that
+               need a context from the underlying control. Such actions cannot be invoked without
+               passing a context (usually selected by user actions, such as selecting a row from a
+               table). In the metadata, these actions are marked with the <code>IsBound</code>
+               property.</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Action Name="REUNION" IsBound="true"&gt; &lt;!-- Bound action having a parameter --&gt;
+   &lt;Parameter Name="_it" Type="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.ArtistsType" Nullable="false" /&gt;
+   &lt;ReturnType Type="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.ArtistsType" Nullable="false" /&gt;
+&lt;/Action&gt;</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+               </p><p>When an action is inside a control, the bound and unbound actions are referred
+                  differently. A bound action is referred via
+                     <code>&lt;SchemaNamespace&gt;.&lt;ActionName&gt;</code> whereas an unbound
+                  action is referred via
+                     <code>&lt;SchemaNamespace&gt;.&lt;EntityContainerName&gt;/&lt;ActionImportName&gt;</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                     </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.LineItem"&gt;
+    &lt;Collection&gt;
+        &lt;Record Type="UI.DataField"&gt;
+            &lt;PropertyValue Property="Value" Path="Name" /&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.DataFieldForAction"&gt;
+            &lt;PropertyValue Property="Label" String="Break Up" /&gt;
+            &lt;PropertyValue Property="Action" String="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.MyContainer/BREAK_ACTION" /&gt;
+                                              &lt;!-- An unbound action (BREAK_ACTION) referred via &lt;SchemaNamespace&gt;.&lt;EntityContainerName&gt;/&lt;ActionImportName&gt; --&gt;
+            &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated" /&gt;
+            &lt;PropertyValue Property="Determining" Bool="true" /&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.DataField"&gt;
+            &lt;PropertyValue Property="Label" String="My Country" /&gt;
+            &lt;PropertyValue Property="Value" Path="CountryOfOrigin" /&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.DataFieldForAction"&gt;
+            &lt;PropertyValue Property="Label" String="Reunion" /&gt;
+            &lt;PropertyValue Property="Action" String="com.sap.gateway.srvd.sadl_gw_appmusicro_definition.v0001.REUNION" /&gt; &lt;!-- A bound action (REUNION) referred via &lt;SchemaNamespace&gt;.&lt;ActionName&gt; --&gt;
+            &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated" /&gt;
+        &lt;/Record&gt;
+        ....
+        ....
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+                  <p></p></div></div><p></p>
+            <p></p></div></div>
+            <p>The visibility of the action is controlled via <code>UI.Hidden</code> annotation
+               and the enablement is controlled via <code>OperationAvailable</code> annotation.
+               For more information, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p>
+         </section><section>
+            <h3 class="title ">Enabling Single Selection for a Bound Action</h3>
+            <p>Applications can control the number of table records that need to be selected for the
+               action to be enabled. By default, for a bound action, this is 1 or more applicable
+               records (that is, 1 or more records for which <code>OperationAvailable</code>
+               evaluates to true). However, applications can change this configuration so that the
+               action is enabled only when a single applicable record is selected. If more records
+               are selected, then the action is disabled again. They can do this by specifying the
+                  <code>enableOnSelect</code> property in the manifest:</p>
+            <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Table
+               Actions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"@com.sap.vocabularies.UI.v1.LineItem": {
+    "actions": {
+        "DataFieldForAction::com.c_salesordermanage_sd.CreateWithSalesOrderType": {
+            "enableOnSelect": "single” // Possible values: "single", "multi" (default)
+        }
+    }
+}</pre></div></section><p></p></div></div>
+            <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Chart
+               Actions</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"@com.sap.vocabularies.UI.v1.Chart": {
+    "actions": {
+        "DataFieldForAction::com.c_salesordermanage_sd.CreateWithSalesOrderType": {
+            "enableOnSelect": "single” // Possible values: "single", "multi" (default)
+        }
+    }
+}</pre></div></section><p></p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+               </p><ul class="ul ">
+                  <li class="li">
+                     <p>The setting is not applicable for inline actions (where only the context of
+                        the row of the pressed button is passed) and for static or unbound actions
+                        (where no context is passed).</p>
+                  </li>
+                  <li class="li">
+                     <p>The feature is currently supported for annotation-based actions only.</p>
+                  </li>
+               </ul>
+            <p></p></div></div>
+         </section><section>
+            <h3 class="title ">Handling of Non-Computed Key Fields and Immutable
+               Fields</h3>
+            <p>When you create new table records using the <code>POST</code> mechanism, that is,
+               not using <code>NewAction</code>, and provided that the entity set on which the
+                  <code>create</code> is being performed has visible non-computed key fields,
+               then these fields are brought up in a dialog so that users can enter values before
+               the <code>create</code> is performed. Since the key fields are immutable, that
+               is, not changeable after the initial <code>create</code>, the dialog is the only
+               chance for users to enter values. This is also true for the other non-key immutable
+               fields (non-hidden and non-computed) in the main entity set.</p>
+         </section><section>
+            <h3 class="title ">Rendering Buttons with Icon Instead of Text</h3>
+            <p>The text for the inline <code>DataFieldForAction</code> and the
+                  <code>DataFieldForIntentBasedNavigation</code> buttons can be replaced with an
+               icon, as specified in the <code>"IconUrl"</code> annotation property. The label
+               of the button then appears as the tooltip of the button.</p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+               </p><ul class="ul ">
+                  <li class="li">
+                     <p>If you use icons, the <code>"Criticality"</code> of the
+                           <code>DataFieldForAction</code> and
+                           <code>DataFieldForIntentBasedNavigation</code> is ignored.</p>
+                  </li>
+                  <li class="li">
+                     <p>The feature is supported only for inline table actions and navigation
+                        buttons, not for buttons used elsewhere.</p>
+                  </li>
+                  <li class="li">
+                     <p>Use icon buttons only for very basic standard icon metaphors. For more
+                        information, see </p>
+                     <p><a href="https://experience.sap.com/fiori-design-web/button/#text-or-icon" title="https://experience.sap.com/fiori-design-web/button/#text-or-icon" class="external-link" target="_blank" rel="noopener">Button Content in SAP Fiori Design
+                        Guidelines</a>.</p>
+                  </li>
+               </ul>
+            <p></p></div></div>
+            <p><span class="emphasis">Sample Code</span></p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>UI Annotations for
+                     <code>"IconURL"</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForAction"&gt;
+    &lt;PropertyValue Property="Label" String="Navigate via Action"/&gt;
+    &lt;PropertyValue Property="Action" String="com.c_salesordermanage_sd.ActionNavigation"/&gt;
+    &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+    &lt;PropertyValue Property="IconUrl" String="sap-icon://arrow-right"/&gt;
+&lt;/Record&gt;
+  
+&lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+    &lt;PropertyValue Property="SemanticObject" String="v4Freestyle"/&gt;
+    &lt;PropertyValue Property="Action" String="Inbound"/&gt;
+    &lt;PropertyValue Property="Label" String="IBN Inline"/&gt;
+    &lt;PropertyValue Property="RequiresContext" Bool="true"/&gt;
+    &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+    &lt;PropertyValue Property=" IconUrl" String="sap-icon://arrow-left"/&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>SAP
+                  Cloud Application Programming Model CDS
+                  Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    $Type             : 'UI.DataFieldForAction',
+    Label             : 'Navigate via Action',
+    Action            : 'com.c_salesordermanage_sd.ActionNavigation',
+    Inline            : true,
+    IconUrl           : 'sap-icon://arrow-right'
+},
+{
+    $Type             : 'UI.DataFieldForIntentBasedNavigation',
+    SemanticObject    : 'v4Freestyle',
+    Action            : 'Inbound',
+    Label             : 'IBN Inline',
+    RequiresContext   : true,
+    Inline            : true,
+    IconUrl           : 'sap-icon://arrow-left'
+}</pre></div></section><p></p></div></div><p></p>
+         </section><section>
+            <h3 class="title ">Grouping Actions as Menu Buttons</h3>
+            <p>Actions that have a similar business purpose can be grouped together and rendered in
+               the form of menu buttons. For more information, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p>
+         </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

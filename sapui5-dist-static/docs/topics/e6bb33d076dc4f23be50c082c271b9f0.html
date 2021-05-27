@@ -1,0 +1,80 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe6bb33d076dc4f23be50c082c271b9f0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Typed View</h1><div class="fig"><h1 class="topictitle1 title">Typed View</h1><div class="shortdesc">A view can also be defined by extending the sap.ui.core.mvc.View class. Such a view is referred to as a typed view. This
+		means the view definition represents its own view class.</div><section id="section_qrl_5qz_y4b">
+			<p>A typed view implements its own <code>View#createContent</code> method. It must return one or several root controls, which will be
+				rendered as content of the view.</p>
+		</section><section id="section_fx1_wqz_y4b">
+			<h2 class="title ">View Definition</h2>
+			<p>The following example shows the definition of a view of type <code>myapp.views.MyView</code>:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"> sap.ui.define([
+  "sap/ui/core/mvc/View",
+  "my/views/MyViewRenderer",
+  "sap/m/Panel"
+], function(View, MyViewRenderer Panel) {
+  return View.extend("myapp.views.MyView", {
+    // define, which controller to use
+    getControllerName: function() {
+      return "myapp.controller.Main";
+    },
+    // whether the ID of content controls should be prefixed automatically with the view ID
+    getAutoPrefixId: function() {
+      return true; // default is false
+    },
+    // create view content and return the root control(s)
+    createContent: function() {
+      return new Promise(function(res, rej) {
+          res(new Panel({...}));
+      }).catch(function(err) {
+          rej(err);
+      });
+    }
+  });
+});</pre></div></section>
+			<p>Besides the <code>createContent</code> method, a view can implement the methods <code>getControllerName</code> and<code>
+					getAutoPrefixId</code>:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p><code>getControllerName</code>: Defines the name of the view controller that should be instantiated and used for the view.
+						The name must be in class name notation (i.e. dot notation) <span class="emphasis">without</span> the <code>.controller</code>
+						suffix. The suffix will be added by the framework when loading the module containing the controller.</p>
+				</li>
+				<li class="li">
+					<p><code>getAutoPrefixId</code>: Defines whether the IDs of controls created during the execution of <code>createContent</code> will
+						automatically be prefixed with the ID of the view. The default implementation of this method returns <code>false</code>.
+						Auto-prefixing is only available for synchronous content creation. For asynchronous content creation use 
+							<a href="#/api/sap.ui.core.mvc.View/methods/createId" title="#/api/sap.ui.core.mvc.View/methods/createId" class="sap-doc" alt="#/api/sap.ui.core.mvc.View/methods/createId"><code>sap.ui.core.mvc.View#createId</code></a>
+						 instead in order to
+						prefix the IDs programmatically.</p>
+				</li>
+			</ul>
+		</section><section id="section_w3x_msz_y4b">
+			<h2 class="title ">View Instantiation</h2>
+			<p>The preferred way of instantiating a typed view is via the factory function 
+					<a href="#/api/sap.ui.core.mvc.View/methods/sap.ui.core.mvc.View.create" title="#/api/sap.ui.core.mvc.View/methods/sap.ui.core.mvc.View.create" class="sap-doc" alt="#/api/sap.ui.core.mvc.View/methods/sap.ui.core.mvc.View.create"><code>sap.ui.core.mvc.View#create</code></a>
+				. When the <code>viewName</code> starts with the <code>module:</code>
+				prefix, the remainder of the name is assumed to be the name of a module that exports a typed view (a subclass of
+					<code>sap.ui.core.mvc.View</code>). The module name must use the same syntax as for <code>sap.ui.define</code> or
+					<code>sap.ui.require</code>, respectively, i.e. use slashes for separation.</p>
+			<p><span class="emphasis">Example:</span> Instantiating a typed view with <code>View.create</code>:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"> View.create({
+    viewName: "module:myapp/views/MyView"
+  }).then(oView) {
+    oView.placeAt("content");
+  });</pre></div></section>
+			<p>A typed view can also be instantiated by calling its constructor without any arguments:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(["myapp/views/MyView"], function(MainView) {
+    new MainView().placeAt("content");
+  });</pre></div></section>
+		</section><section id="section_wjs_psz_y4b">
+			<h2 class="title ">View Declaration in XML</h2>
+			<p>A typed view in XML can be declared via the classes <code>sap.ui.core.mvc.View</code> or <code>sap.ui.core.mvc.JSView</code>,
+				respectively. Using either of these classes requires a <code>module:</code> prefix in the <code>viewName</code> attribute.</p>
+			<p><span class="emphasis">Example:</span> View Declaration using class <code>sap.ui.core.mvc.View</code>:</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View viewName="module:myapp/views/MyView" /&gt;</pre></div></section>
+			<p><span class="emphasis">Example:</span> View Declaration using class <code>sap.ui.core.mvc.JSView</code>:</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:JSView viewName="module:myapp/views/MyView" /&gt;</pre></div></section>
+			<p>A typed view can also be declared via its own view class. You need to provide the namespace of the typed view in the XML.</p>
+			<p>View Declaration using a <code>myapp.views.MyView</code> class:</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;myapp:MyView xmlns:myapp="myapp.views" /&gt;</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/sap.ui.core.mvc.View" title="#/api/sap.ui.core.mvc.View" class="sap-doc" alt="#/api/sap.ui.core.mvc.View">API Reference: sap.ui.core.mvc.View</a></li>
+	</ul></section></div></section></div></body></html>

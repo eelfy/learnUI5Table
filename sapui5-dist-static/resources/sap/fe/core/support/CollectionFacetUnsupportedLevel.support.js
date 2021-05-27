@@ -1,0 +1,35 @@
+sap.ui.define(["sap/fe/core/support/CommonHelper", "sap/fe/core/converters/helpers/IssueManager"], function (CommonHelper, IssueManager) {
+  "use strict";
+
+  var _exports = {};
+  var IssueCategory = IssueManager.IssueCategory;
+  var Audiences = CommonHelper.Audiences;
+  var getIssueByCategory = CommonHelper.getIssueByCategory;
+  var Categories = CommonHelper.Categories;
+  var oCollectionFacetUnsupportedLevelIssue = {
+    id: "collectionFacetUnsupportedLevel",
+    title: "CollectionFacet: Unsupported Levels",
+    minversion: "1.86",
+    audiences: [Audiences.Application],
+    categories: [Categories.Usage],
+    description: "Collection facets at level 3 or lower (level 4, 5…) are not supported and will not be visible on the UI.",
+    resolution: "At level 3 you can only use reference facets, but not collection facets.",
+    resolutionurls: [{
+      "text": "CollectionFacets",
+      "href": "https://ui5.sap.com/#/topic/facfea09018d4376acaceddb7e3f03b6"
+    }],
+    check: function (oIssueManager, oCoreFacade)
+    /*oScope: any*/
+    {
+      getIssueByCategory(oIssueManager, oCoreFacade, IssueCategory.Facets, "UnsupportedLevel");
+    }
+  };
+
+  function getRules() {
+    return [oCollectionFacetUnsupportedLevelIssue];
+  }
+
+  _exports.getRules = getRules;
+  return _exports;
+}, false);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNvbGxlY3Rpb25GYWNldFVuc3VwcG9ydGVkTGV2ZWwuc3VwcG9ydC50cyJdLCJuYW1lcyI6WyJvQ29sbGVjdGlvbkZhY2V0VW5zdXBwb3J0ZWRMZXZlbElzc3VlIiwiaWQiLCJ0aXRsZSIsIm1pbnZlcnNpb24iLCJhdWRpZW5jZXMiLCJBdWRpZW5jZXMiLCJBcHBsaWNhdGlvbiIsImNhdGVnb3JpZXMiLCJDYXRlZ29yaWVzIiwiVXNhZ2UiLCJkZXNjcmlwdGlvbiIsInJlc29sdXRpb24iLCJyZXNvbHV0aW9udXJscyIsImNoZWNrIiwib0lzc3VlTWFuYWdlciIsIm9Db3JlRmFjYWRlIiwiZ2V0SXNzdWVCeUNhdGVnb3J5IiwiSXNzdWVDYXRlZ29yeSIsIkZhY2V0cyIsImdldFJ1bGVzIl0sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUVBLE1BQU1BLHFDQUFxQyxHQUFHO0FBQzdDQyxJQUFBQSxFQUFFLEVBQUUsaUNBRHlDO0FBRTdDQyxJQUFBQSxLQUFLLEVBQUUscUNBRnNDO0FBRzdDQyxJQUFBQSxVQUFVLEVBQUUsTUFIaUM7QUFJN0NDLElBQUFBLFNBQVMsRUFBRSxDQUFDQyxTQUFTLENBQUNDLFdBQVgsQ0FKa0M7QUFLN0NDLElBQUFBLFVBQVUsRUFBRSxDQUFDQyxVQUFVLENBQUNDLEtBQVosQ0FMaUM7QUFNN0NDLElBQUFBLFdBQVcsRUFBRSwwR0FOZ0M7QUFPN0NDLElBQUFBLFVBQVUsRUFBRSwwRUFQaUM7QUFRN0NDLElBQUFBLGNBQWMsRUFBRSxDQUFDO0FBQUUsY0FBUSxrQkFBVjtBQUE4QixjQUFRO0FBQXRDLEtBQUQsQ0FSNkI7QUFTN0NDLElBQUFBLEtBQUssRUFBRSxVQUFTQyxhQUFULEVBQTZCQyxXQUE3QjtBQUE4QztBQUFpQjtBQUNyRUMsTUFBQUEsa0JBQWtCLENBQUNGLGFBQUQsRUFBZ0JDLFdBQWhCLEVBQTZCRSxhQUFhLENBQUNDLE1BQTNDLEVBQW1ELGtCQUFuRCxDQUFsQjtBQUNBO0FBWDRDLEdBQTlDOztBQWFPLFdBQVNDLFFBQVQsR0FBb0I7QUFDMUIsV0FBTyxDQUFDbkIscUNBQUQsQ0FBUDtBQUNBIiwic291cmNlUm9vdCI6Ii4iLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDYXRlZ29yaWVzLCBnZXRJc3N1ZUJ5Q2F0ZWdvcnksIEF1ZGllbmNlcyB9IGZyb20gXCJzYXAvZmUvY29yZS9zdXBwb3J0L0NvbW1vbkhlbHBlclwiO1xuaW1wb3J0IHsgSXNzdWVDYXRlZ29yeSB9IGZyb20gXCJzYXAvZmUvY29yZS9jb252ZXJ0ZXJzL2hlbHBlcnMvSXNzdWVNYW5hZ2VyXCI7XG5jb25zdCBvQ29sbGVjdGlvbkZhY2V0VW5zdXBwb3J0ZWRMZXZlbElzc3VlID0ge1xuXHRpZDogXCJjb2xsZWN0aW9uRmFjZXRVbnN1cHBvcnRlZExldmVsXCIsXG5cdHRpdGxlOiBcIkNvbGxlY3Rpb25GYWNldDogVW5zdXBwb3J0ZWQgTGV2ZWxzXCIsXG5cdG1pbnZlcnNpb246IFwiMS44NlwiLFxuXHRhdWRpZW5jZXM6IFtBdWRpZW5jZXMuQXBwbGljYXRpb25dLFxuXHRjYXRlZ29yaWVzOiBbQ2F0ZWdvcmllcy5Vc2FnZV0sXG5cdGRlc2NyaXB0aW9uOiBcIkNvbGxlY3Rpb24gZmFjZXRzIGF0IGxldmVsIDMgb3IgbG93ZXIgKGxldmVsIDQsIDXigKYpIGFyZSBub3Qgc3VwcG9ydGVkIGFuZCB3aWxsIG5vdCBiZSB2aXNpYmxlIG9uIHRoZSBVSS5cIixcblx0cmVzb2x1dGlvbjogXCJBdCBsZXZlbCAzIHlvdSBjYW4gb25seSB1c2UgcmVmZXJlbmNlIGZhY2V0cywgYnV0IG5vdCBjb2xsZWN0aW9uIGZhY2V0cy5cIixcblx0cmVzb2x1dGlvbnVybHM6IFt7IFwidGV4dFwiOiBcIkNvbGxlY3Rpb25GYWNldHNcIiwgXCJocmVmXCI6IFwiaHR0cHM6Ly91aTUuc2FwLmNvbS8jL3RvcGljL2ZhY2ZlYTA5MDE4ZDQzNzZhY2FjZWRkYjdlM2YwM2I2XCIgfV0sXG5cdGNoZWNrOiBmdW5jdGlvbihvSXNzdWVNYW5hZ2VyOiBhbnksIG9Db3JlRmFjYWRlOiBhbnkgLypvU2NvcGU6IGFueSovKSB7XG5cdFx0Z2V0SXNzdWVCeUNhdGVnb3J5KG9Jc3N1ZU1hbmFnZXIsIG9Db3JlRmFjYWRlLCBJc3N1ZUNhdGVnb3J5LkZhY2V0cywgXCJVbnN1cHBvcnRlZExldmVsXCIpO1xuXHR9XG59O1xuZXhwb3J0IGZ1bmN0aW9uIGdldFJ1bGVzKCkge1xuXHRyZXR1cm4gW29Db2xsZWN0aW9uRmFjZXRVbnN1cHBvcnRlZExldmVsSXNzdWVdO1xufVxuIl19

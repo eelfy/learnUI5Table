@@ -1,0 +1,21 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4b50f214f2444de7b092684f4529f29a" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Fields</h1><div class="fig"><h1 class="topictitle1 title">Configuring Fields</h1><div class="shortdesc">A field can be represented in several ways.</div><p>A field can react to many different annotations and render additional artifacts or information, such as showing a value help to allow users to
+            choose a value, or showing semantic coloring to help indicate the criticality of the value it displays. A field can be rendered in many
+            different forms and its rendering can be controlled via annotations. As for input fields, application developers can control the field
+            editability, field help representations, and field validations ‒ to name only a few options. The subsequent topics provide detailed
+            information about field configuration.</p><section id="section_z5p_ml5_knb"><h2 class="title ">Setting Placeholder Texts for Input Fields</h2>
+            <p>Input fields, like <code>sap.m.Input</code> or <code>sap.m.ComboBox</code>, have a property placeholder that defines which
+                value is shown to users in edit mode before the users actively make any entries in these fields. You can use the
+                    <code>UI.Placeholder</code> annotation to define the value that is shown as a placeholder:</p>
+            <section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="sap.fe.manageitems.TechnicalTestingService.LineItems/multiLineTextField"&gt;
+    &lt;Annotation Term="Common.Label" String="Test Multi Line Text Field"/&gt;
+    &lt;Annotation Term="UI.MultiLineText" Bool="true"/&gt;
+    &lt;Annotation Term="UI.Placeholder" String="Enter a multi line text"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+            <div><div class="fig"><img src="loiob565a6c5aad64f559252eabc61403378_LowRes.png" usemap="#"></div></div></section><section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

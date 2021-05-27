@@ -1,0 +1,102 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio354f98ed2b514ba9960556333428d35e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 17: Fragment Callbacks</h1><div class="fig"><h1 class="topictitle1 title">Step 17: Fragment Callbacks</h1><div class="shortdesc">Now that we have integrated the dialog, it's time to add some user interaction. The user
+		will definitely want to close the dialog again at some point, so we add a button to close
+		the dialog and assign an event handler.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio2a0aee6164b24340b0d34a0515c82f19_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">The dialog now has an "OK" button</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.17/preview" title="#/sample/sap.m.tutorial.walkthrough.17/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.17/preview">Walkthrough - Step 17</a>.</p>
+			<h2 class="title ">webapp/controller/HelloPanel.controller.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageToast",
+	"sap/ui/core/Fragment"
+], function (Controller, MessageToast, Fragment) {
+	"use strict";
+
+	return Controller.extend("sap.ui.demo.walkthrough.controller.HelloPanel", {
+
+		onShowHello : function () {
+			// read msg from i18n model
+			var oBundle = this.getView().getModel("i18n").getResourceBundle();
+			var sRecipient = this.getView().getModel().getProperty("/recipient/name");
+			var sMsg = oBundle.getText("helloMsg", [sRecipient]);
+
+			// show message
+			MessageToast.show(sMsg);
+		},
+
+		onOpenDialog : function () {
+			var oView = this.getView();
+
+			if (!this.pDialog) {
+				this.pDialog = Fragment.load({
+					id: oView.getId(),
+					name: "sap.ui.demo.walkthrough.view.HelloDialog"<span class="emphasis">,
+					controller: this</span>
+				}).then(function (oDialog) {
+					// connect dialog to the root view of this component (models, lifecycle)
+					oView.addDependent(oDialog);
+					return oDialog;
+				});
+			} 
+			this.pDialog.then(function(oDialog) {
+				oDialog.open();
+			});
+		}<span class="emphasis">,
+
+		onCloseDialog : function () {
+			// note: We don't need to chain to the pDialog promise, since this event-handler
+			// is only called from within the loaded dialog itself.
+			this.byId("helloDialog").close();
+		}</span>
+	});
+
+});</pre></div></section>
+			<p>As previously described, fragments are pure UI reuse artifacts and do not have a controller. However, you can pass a controller object to the
+					<code>Fragment.load</code> API. For our dialog we reference the <code>HelloPanel</code> controller. However, the third
+				parameter does not necessarily have to be a controller but can be any object. Just don't forget the <code>this</code> keyword.</p>
+			<p>The event handler function is put into the same controller file and it closes the
+				dialog by accessing the internal helper function that returns the dialog.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/HelloDialog.fragment.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" &gt;
+   &lt;Dialog
+      id="helloDialog"
+      title ="Hello {/recipient/name}"&gt;
+<span class="emphasis">      &lt;beginButton&gt;
+         &lt;Button
+            text="{i18n&gt;dialogCloseButtonText}"
+            press=".onCloseDialog"/&gt;
+      &lt;/beginButton&gt;</span>
+   &lt;/Dialog&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section>
+			<p> In the fragment definition, we add a button to the <code>beginButton</code> aggregation of the dialog. The press handler is referring to an
+				event handler called <code>.onCloseDialog</code>, and since we passed in the reference to the <code>HelloPanel</code>
+				controller, the method will be invoked there when the button is pressed. The dialog has an aggregation named
+					<code>beginButton</code> as well as <code>endButton</code>. Placing buttons in both of these aggregations makes sure that
+				the <code>beginButton</code> is placed before the <code>endButton</code> on the UI. What <code>before</code> means,
+				however, depends on the text direction of the current language. We therefore use the terms <code>begin</code> and
+					<code>end</code> as a synonym to “left” and “right". In languages with left-to-right direction, the
+					<code>beginButton</code> will be rendered left, the <code>endButton</code> on the right side of the dialog footer; in
+				right-to-left mode for specific languages the order is switched. </p>
+		</section><section id="section_d5m_ypr_r2b">
+			<h2 class="title ">webapp/i18n/i18n.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># App Descriptor
+appTitle=Hello World
+appDescription=A simple walkthrough app that explains the most important concepts of SAPUI5
+
+# Hello Panel
+showHelloButtonText=Say Hello
+helloMsg=Hello {0}
+homePageTitle=Walkthrough
+helloPanelTitle=Hello World
+openDialogButtonText=Say Hello With Dialog
+<span class="emphasis">dialogCloseButtonText=Ok</span></pre></div></section>
+			<p>The text bundle is extended by the new text for the dialog’s close button.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/4da72985139b4b83b5f1c1e0c0d2ed5a">Step 16: Dialogs and Fragments</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/776f7352807e4f82b18176c8fbdc0c56">Step 18: Icons</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/36a5b130076e4b4aac2c27eebf324909.html" title="Fragments are light-weight UI parts (UI sub-trees) which can be reused, defined similar to views, but do not have any controller or other behavior code involved." class="sap-doc">Reusing UI Parts: Fragments</a></li>
+		<li><a href="#/topic/04129b2798c447368f4c8922c3c33cd7.html" title="SAPUI5 provides the generic function sap.ui.core.Fragment.load() to instantiate fragments." class="sap-doc">Instantiation of Fragments</a></li>
+	</ul></section></div></section></div></body></html>

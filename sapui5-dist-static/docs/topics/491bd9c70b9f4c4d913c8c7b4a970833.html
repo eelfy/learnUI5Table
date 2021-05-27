@@ -1,0 +1,330 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio491bd9c70b9f4c4d913c8c7b4a970833" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Legacy Factories Replacement</h1><div class="fig"><h1 class="topictitle1 title">Legacy Factories Replacement</h1><div class="shortdesc">Overview of the replacement of global functions with the factory
+		functions</div><p>The AMD module syntax already avoids Globals and enforces the strict dependency
+			declaration. The following table shows how APIs which use synchronous requests to fetch
+			modules or resources internally, can be replaced with asynchronous alternatives. The W3C
+			has already deprecated the use of synchronous requests in the browser main thread, so
+			this replacement prepares your applications for the removal of synchronous requests.</p><p>The SAPUI5 framework by default
+			uses synchronous requests internally in several places. Most have already been replaced
+			by asynchronous alternatives, or prepared to exchange the synchronous behaviour shown
+			below. The asynchronous adoption starts from the beginning with the bootstrap script
+			tag, where the <code>async</code> configuration parameter should be set to
+				<code>true</code>. Applications can register an event callback via <a href="#/api/sap.ui.core.Core/methods/attachInit" title="#/api/sap.ui.core.Core/methods/attachInit" class="sap-doc" alt="#/api/sap.ui.core.Core/methods/attachInit"><code>sap.ui.getCore()#attachInit</code></a>.
+				. The examples
+			below show only the most frequently used synchronous APIs. There are more of these APIs,
+			and most often the asynchronous alternatives return a <code>Promise</code> that can
+			be used to retrieve the former return value.</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				
+				</tgroup><table border="1" id="simpletable_bpv_cnv_cfb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+					<tr>
+						<th colspan="1" rowspan="1">
+							<p>Legacy, synchronous API</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>Modern API</p>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Declarative App Description</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.component({
+
+    name: "my.comp"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/Component'], function(Component){
+
+    Component.create({
+
+        name: "my.comp"
+
+        // default: manifest: true
+
+    }).then(function(oComp) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Components - Some API still experimental</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oComponentInstance = sap.ui.component({
+
+    name: "my.comp"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/Component'], function(Component){
+
+    Component.create({
+
+        name: "my.comp"
+
+    }).then(function(oComp) { ... });
+});</pre></div></section>
+							<p>Alternatively, migrate to <code>componentUsages</code> with an
+								additional adaption in the <code>manifest.json</code> file:</p>
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">createContent: function() {
+
+   var oReuseComponentPromise = this.createComponent({
+
+    "usage": "reuse"
+
+  }).then(function(oComp) { ... });
+
+}
+</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oComponentClass = sap.ui.component.load({
+
+    name: "my.comp"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/Component'], function(Component){
+
+    Component.load({
+
+        name: "my.comp"
+
+    }).then(function(oClass) {
+
+        var oComponentInstance = new oClass({...});
+
+    });
+
+});
+</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oComponentInstance = sap.ui.component("my-comp-id");</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/Component'], function(Component){
+
+ 
+
+    var oComponentInstance = Component.get("my-comp-id");
+
+});
+</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>i18n texts</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">jQuery.sap.resources({
+
+    url: "mybundle.properties"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// sap/ui/Resources -&gt; sap/base/i18n/ResourceBundle
+
+sap.ui.require(['sap/base/i18n/ResourceBundle'], function(Resource){
+
+    ResourceBundle.create({
+
+        url: "mybundle.properties",
+	   async: true
+
+    }).then(function(oResource) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Views</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oView = sap.ui.view({
+
+    viewName: "my.View",
+
+    type: "XML"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/mvc/View'], function(View){
+
+    View.create({ 
+
+        viewName: "my.View",
+
+        type: "XML"
+
+    }).then(function(oView) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oView = sap.ui.xmlview({
+
+    viewName: "my.View"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/mvc/XMLView'], function(XMLView){
+
+    XMLView.create({ 
+
+        viewName: "my.View"
+
+    }).then(function(oView) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oView = sap.ui.jsview({
+								
+    viewName: "my.View"
+								
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>JSView.create</code> loads and creates JSView instances. For defining JavaScript views, there's no substitute yet, and
+									<code>sap.ui.jsview</code> still has to be used.</p>
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/mvc/JSView'], function(JSView){
+								
+    JSView.create({ 
+								
+        viewName: "my.View"
+								
+    }).then(function(oView) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Controllers</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oController = sap.ui.controller({ ... });</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/mvc/Controller'], function(Controller){
+
+    Controller.create({ 
+
+        ...
+
+    }).then(function(oController) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Extension Points</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var aControls = sap.ui.extensionpoint( ... );</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/ExtensionPoint'], function(ExtensionPoint){
+
+    ExtensionPoint.load({ 
+
+        ...
+
+    }).then(function(aControls) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Fragments</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var aControls = sap.ui.fragment({ 
+
+    name: "my.fragment",
+
+    type: "XML"
+
+});
+</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/Fragment'], function(Fragment){
+
+    Fragment.load({
+
+        name: "my.fragment",
+
+        type: "XML"
+
+    }).then(function(aControls) { ... });
+});</pre></div></section>
+							<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+								</p><p>Please make sure that you are correctly chaining to the <code>Fragment.load</code> Promise!</p>
+								<p>Calling <code>sap.ui.getCore().byId("...")</code> or <code>oController.byId("...")</code> before the
+										<code>Fragment.load</code> Promise is resolved will result in <code>undefined</code>.</p>
+							<p></p></div></div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" rowspan="1" valign="top">
+							<p>Version Info</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oVersionInfo = sap.ui.getVersionInfo();</pre></div></section>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(['sap/ui/core/VersionInfo'], function(VersionInfo){
+
+    VersionInfo.load({ 
+
+        ...
+
+    }).then(function(oVersionInfo) { ... });
+});</pre></div></section>
+						</td>
+					</tr>
+				</tbody>
+			</table></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

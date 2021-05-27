@@ -1,0 +1,80 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio7ef32428dc7c4c048a8d7e8de0a556fb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Code Coverage Measurement</h1><div class="fig"><h1 class="topictitle1 title">Code Coverage Measurement</h1><div class="shortdesc">You can measure the code coverage for your test inside the
+			Control.qunit.html page either via HTML or JavaScript code using
+			Blanket.js.</div><section>
+			<h2 class="title ">HTML</h2>
+			<p>With the following line you enable <code>Blanket.js</code> to measure the
+				code
+				coverage:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script type="text/javascript" src="../../../../../resources/sap/ui/qunit/qunit-coverage.js"&gt;&lt;/script&gt;</pre></div></section>With
+				this argument, all files that are executed during the test run are added to the
+				result. <p></p>
+			<p>If you want to limit the test run, you can use the following code:</p><ul class="ul ">
+					<li class="li">
+						<p>Limit test to a single
+							file:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script type="text/javascript" src="../../../../../resources/sap/ui/qunit/qunit-coverage.js"
+	data-sap-ui-cover-<span class="emphasis">only</span>="sap/ui/core/Popup.js"
+&gt;&lt;/script&gt;</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Limit test to multiple files (provide an array with comma-separated
+							sources that should occur in the
+							result):</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script type="text/javascript" src="../../../../../resources/sap/ui/qunit/qunit-coverage.js"
+	data-sap-ui-cover-<span class="emphasis">only</span>="[sap/ui/core/Popup.js, sap/ui/core/EventProvider]"
+&gt;&lt;/script&gt;</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Limit test to a specific
+							library:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script type="text/javascript" src="../../../../../resources/sap/ui/qunit/qunit-coverage.js"
+	data-sap-ui-cover-<span class="emphasis">only</span>="sap/ui/core/"
+&gt;&lt;/script&gt;</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Exclude specific
+							objects:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script type="text/javascript" src="../../../../../resources/sap/ui/qunit/qunit-coverage.js"
+	data-sap-ui-cover-<span class="emphasis">never</span>="sap/m/"
+&gt;&lt;/script&gt;</pre></div></section><p></p>
+					</li>
+				</ul><p></p>
+		</section><section>
+			<h2 class="title ">JavaScript</h2>
+			<p>Inside your test page, you can add these lines before running the
+				tests:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(["sap/ui/qunit/qunit-coverage"], function(/*coverage*/){
+    // code
+});</pre></div></section><p></p>
+			<p>If you want to limit the test run, you can use the following code:</p><ul class="ul ">
+					<li class="li">
+						<p>Limit test to a single
+							file:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">if (window.blanket) {
+	blanket.options("sap-ui-cover-<span class="emphasis">only</span>", "sap/ui/core/Popup.js");
+}</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Limit test to multiple files (provide an array with comma-separated
+							sources that should occur in the
+							result):</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">if (window.blanket) {
+	blanket.options("sap-ui-cover-<span class="emphasis">only</span>", "[sap/ui/core/Popup.js, sap/ui/core/EventProvide]");
+}</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Limit test to a specific
+							library:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">if (window.blanket) {
+	blanket.options("sap-ui-cover-<span class="emphasis">only</span>", "sap/ui/core/");
+}</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Exclude specific
+							objects:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">if (window.blanket) {
+	blanket.options("sap-ui-cover-<span class="emphasis">never</span>", "sap/ui/example/thirdparty/");
+}</pre></div></section><p></p>
+					</li>
+				</ul><p></p>
+		</section><section>
+			<h2 class="title ">Results</h2>
+			<p>To view the results of the measurement, select the <span class="ph uicontrol">Enable
+					coverage</span> checkbox on the test page. This will trigger a new test
+				run. </p>
+			<p>In this example the coverage is limited to one specific file - the only one that is
+				important for this test.</p>
+			<div><div class="fig"><img src="loio358de53ac5684012b55fb043e1f6e999_LowRes.jpg" usemap="#"></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="https://github.com/alex-seville/blanket/blob/master/docs/intermediate_browser.md" title="https://github.com/alex-seville/blanket/blob/master/docs/intermediate_browser.md" class="external-link" target="_blank" rel="noopener">More information about Blanket.js</a></li>
+	</ul></section></div></section></div></body></html>

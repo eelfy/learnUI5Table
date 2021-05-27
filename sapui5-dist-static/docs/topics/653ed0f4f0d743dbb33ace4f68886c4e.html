@@ -1,0 +1,323 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio653ed0f4f0d743dbb33ace4f68886c4e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Chart Facet</h1><div class="fig"><h1 class="topictitle1 title">Chart Facet</h1><div class="shortdesc">You can add a chart facet to a content section within the object page.</div><p>A chart facet is suitable to use if you wish to present data graphically for analysis.</p><p>To add a chart facet, use the <code>UI.Facet</code> term and include the <code>UI.ReferenceFacet</code> complex type, and then reference
+         the <code>UI.Chart</code> annotation. This is displayed as shown below within a content section of the object page:</p><div><div class="fig"><img src="loio69b19777c32041c6926ebb71e975fe3b_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Chart in Object Page</span></div><section><h2 class="title ">Code Samples</h2><p>The following code samples show an example of how to create your annotations for the chart
+               facet:</p><p><span class="emphasis">UI.ReferenceFacet</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+   &lt;Annotation Term="UI.Facets"&gt;
+      &lt;Record Type="UI.ReferenceFacet"&gt;
+         &lt;PropertyValue Property="Label" String="{@i18n&gt;@SalesData}"/&gt;
+         &lt;PropertyValue Property="Target" AnnotationPath="to_ProductSalesData/@UI.Chart"/&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p><p><span class="emphasis">UI.Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductSalesDataType"&gt;
+   &lt;Annotation Term="UI.Chart"&gt;
+      &lt;Record&gt;
+         &lt;PropertyValue Property="Title" String="Test Chart"/&gt;
+         &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/&gt;
+         &lt;PropertyValue Property="Dimensions"&gt;
+            &lt;Collection&gt;
+               &lt;PropertyPath&gt;DeliveryMonth&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+         &lt;/PropertyValue&gt; 
+         &lt;PropertyValue Property="Measures"&gt;
+            &lt;Collection&gt;
+               &lt;PropertyPath&gt;Revenue&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+         &lt;/PropertyValue&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p><p>The
+            chart definition contains measures, on which the aggregations calculations are done, and dimensions, which categorize these measures. In
+            the chart, these are displayed as labels on the x and on the y axis. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p></p><p>The use of navigation properties within the <code>UI.Chart</code> term is not supported (see example
+               below).</p><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Navigation Property</span></div><img src="loio63620b40db464579b5306a5ded83981b_LowRes.png" usemap="#"><p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>The object page does not support the <code>UI.Chart</code> with qualifier (see example below).</p><div><div class="fig"><img src="loio02debb6e41424ba09ea3cc6ef0005ff7_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Navigation Property</span></div></div></section><section id="section_ymw_bdc_4nb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+                <h3 class="title ">Enabling Charts in the Main Content Area</h3>
+                <p>Application developers can add the <code>UI.Chart</code> as the first visualization to the
+                        <code>UI.PresentationVariant</code> and point the <code>AnnotationPath</code> of the <code>ReferenceFacet</code>
+                    to the <code>UI.PresentationVariant</code>.</p>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.ReferenceFacet"&gt;
+    &lt;PropertyValue Property="Label" String="Items"/&gt;
+    &lt;PropertyValue Property="ID" String="SalesOrderItems"/&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="_Item/@UI.PresentationVariant"/&gt;
+    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+&lt;/Record&gt;
+ 
+&lt;Annotation Term="UI.PresentationVariant"&gt;
+    &lt;Record Type="UI.PresentationVariantType"&gt;
+        &lt;PropertyValue Property="SortOrder"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="Common.SortOrderType"&gt;
+                    &lt;PropertyValue Property="Property" PropertyPath="SalesOrderItem"/&gt;
+                    &lt;PropertyValue Property="Descending" Bool="true"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Visualizations"&gt;
+            &lt;Collection&gt;
+                &lt;AnnotationPath&gt;@UI.LineItem&lt;/AnnotationPath&gt;
+                &lt;AnnotationPath&gt;@UI.Chart&lt;/AnnotationPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+                <p></p></div></div>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p> If a presentation variant has multiple visualizations, then only the first visualization is rendered.</p>
+                <p></p></div></div>
+                <p><span class="emphasis">Support for Criticality Coloring</span></p>
+                <p>SAP Fiori elements currently supports the criticality based on <code>UI.CriticalityType</code>. This annotation has to be
+                    wrapped with the <code>UI.ValueCriticality</code>, as shown below:</p>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd_aggregate.SalesOrderManage/SalesOrderType"&gt;
+    &lt;Annotation Term="UI.ValueCriticality"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="UI.ValueCriticalityType"&gt;
+                &lt;PropertyValue Property="Value" String="CCLN"/&gt;
+                &lt;PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Negative"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.ValueCriticalityType"&gt;
+                &lt;PropertyValue Property="Value" String="CR"/&gt;
+                &lt;PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Critical"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.ValueCriticalityType"&gt;
+                &lt;PropertyValue Property="Value" String="OR"/&gt;
+                &lt;PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section>
+                <p></p></div></div>
+                <p>This results in the following chart:</p>
+                <div><div class="fig"><img src="loio040e94800fd14bb9af262c2c5cb53741_LowRes.png" usemap="#"></div></div>
+                <p><span class="emphasis">Enabling Aggregation in the Back End</span></p>
+                <p>For charts to work, the entity set must support aggregation.
+                    SAP Fiori elements supports two types of aggregation: transformation aggregation and custom aggregation.
+                    </p>
+                
+                <p>- Transformation Aggregation -</p>
+                <p>In the metadata, such entity sets have the <code>Aggregation.ApplySupported</code> set and
+                        <code>Aggregation.ApplySupportedType</code> must be <code>Transformations</code>. The
+                        <code>Analytics.AggregatedProperties</code> must then list all the aggregatable measures/aggregation methods that are
+                    used.</p>
+                
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Aggregation.ApplySupported (&lt; SAP Cloud Application Programming Model-CDS Compiler
+                    1.44.0)</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd_aggregate.SalesOrderManage"&gt;
+    &lt;Annotation Term="Aggregation.ApplySupported"&gt;
+        &lt;Record Type="Aggregation.ApplySupportedType"&gt;
+            &lt;PropertyValue Property="Transformations"&gt;
+                &lt;Collection&gt;
+                    &lt;String&gt;aggregate&lt;/String&gt;
+                     ....
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Analytics.AggregatedProperties"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="minPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="min"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Minimal Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="maxPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="max"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Maximal Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="avgPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="average"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Average Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="totalPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="sum"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Total Net Amount"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                
+                
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Aggregation.ApplySupported (&gt;= SAP Cloud Application Programming Model-CDS Compiler
+                    1.44.0)</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd_aggregate.EntityContainer/SalesOrderManage"&gt;
+    &lt;Annotation Term="Aggregation.ApplySupported"&gt;
+        &lt;Record Type="Aggregation.ApplySupportedType"&gt;
+            &lt;PropertyValue Property="Transformations"&gt;
+                &lt;Collection&gt;
+                    &lt;String&gt;aggregate&lt;/String&gt;
+                    ....
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Analytics.AggregatedProperties"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="minPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="min"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Minimal Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="maxPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="max"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Maximal Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="avgPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="average"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Average Net Amount"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="Analytics.AggregatedPropertyType"&gt;
+                &lt;PropertyValue Property="Name" String="totalPricing"/&gt;
+                &lt;PropertyValue Property="AggregationMethod" String="sum"/&gt;
+                &lt;PropertyValue Property="AggregatableProperty" PropertyPath="NetPricing"/&gt;
+                &lt;Annotation Term="Common.Label" String="Total Net Amount"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                
+                <p>The properties specified within
+                        <code>Analytics.AggregatedProperties</code>
+                    are the ones that will be visible within the chart personalization. A dimension is annotated as follows:</p>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Dimension</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd_aggregate.SalesOrderManage/SalesOrder"&gt;
+    &lt;Annotation Term="Aggregation.Groupable" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                <p>A measure is annotated as follows:</p>
+                <div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Measure</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd_aggregate.SalesOrderManage/NetPricing"&gt;
+    &lt;Annotation Term="Aggregation.Aggregatable" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                
+                <p>For more information, see <a href="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html#_Toc378326290" title="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html#_Toc378326290" class="external-link" target="_blank" rel="noopener">Transformation Aggregation</a>.</p>
+                <p>- Custom Aggregation -</p>
+                <p>To use custom aggregation in the back end, application developers must ensure that the following annotations are enabled at the
+                    entity set level:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>UI Chart
+                    Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="sap.fe.managepartners.ManagePartnersService.EntityContainer/BusinessPartners"&gt;
+     &lt;Annotation Term="Aggregation.CustomAggregate" Qualifier="RequestedQuantity"&gt;
+        &lt;String&gt;Edm.Decimal&lt;/String&gt;
+     &lt;/Annotation&gt;
+     &lt;Annotation Term="Aggregation.CustomAggregate" Qualifier="RequestedQuantityLocalUnit"&gt;
+        &lt;String&gt;Edm.Decimal&lt;/String&gt;
+     &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+ 
+&lt;Annotations Target="sap.fe.managepartners.ManagePartnersService.BusinessPartners/Name"&gt;
+     &lt;Annotation Term="Aggregation.Groupable"&gt;
+        &lt;Bool&gt;true&lt;/Bool&gt;
+     &lt;/Annotation&gt;
+     &lt;Annotation Term="Common.Label"&gt;
+        &lt;String&gt;Partner Name&lt;/String&gt;
+     &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+                <p>In this example, the properties <code>"RequestedQuantity"</code> and <code>"RequestedQuantityLocalUnit"</code> are measures
+                    and use custom aggregation, whereas the property <code>"Name"</code> is a dimension that is marked with groupable true and can
+                    be used to plot the chart.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><ul class="ul ">
+                        <li class="li">
+                            <p>With custom aggregation (unlike the transformation aggregation, which allows the use of a virtual property), you cannot
+                                mark the same property as both a dimension (groupable) and a measure (aggregatable). If a chart is configured with
+                                such a property, then the chart returns an error.</p>
+                        </li>
+                        <li class="li">
+                            <p>The annotations for the custom aggregates are considered <span class="emphasis">only</span> if they are provided against the
+                                entity set. The entity type and the entity container are currently not supported.</p>
+                        </li>
+                        <li class="li">
+                            <p>The term <code>"PropertyRestrictions"</code> under <code>"Aggregation.ApplySupportedType"</code> is currently
+                                not considered when dealing with custom aggregates. You must ensure that all the properties corresponding to the
+                                dimensions are marked as groupable (as done in the annotation sample above).</p>
+                        </li>
+                        <li class="li">
+                            <p>If a property is configured both as a dimension and as a measure, then the chart returns an error as soon as the chart
+                                personalization is clicked. The error occurs even if the property is <span class="emphasis">not</span> specifically added as
+                                both a dimension and a measure to the same chart.</p>
+                        </li>
+                    </ul>
+                <p></p></div></div>
+                <p>For more information, see <a href="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html#_Toc378326320" title="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html#_Toc378326320" class="external-link" target="_blank" rel="noopener">Custom Aggregation</a>.</p>
+                
+                
+                
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>For the chart facet, the following applies:</p>
+                    <ul class="ul ">
+                        <li class="li">
+                            <p>Applications cannot control whether the chart selection can be configured to allow no selection or single selection.
+                                SAP Fiori elements always enables
+                                multi-selection
+                                for the chart control.</p>
+                        </li>
+                        <li class="li">
+                            <p>If a table refresh occurs (because a user makes changes to the table personalization, for example), the chart is also
+                                refreshed to keep the chart and table data synchronized. Chart selections are <span class="emphasis">not</span> maintained,
+                                however, since they are not stored in the <code>iAppState</code>.</p>
+                        </li>
+                        <li class="li">
+                            <p>The app descriptor setting <code>initialLoad=false</code> does not affect the chart and table. Currently, both the
+                                chart and the table load data the application is launched.</p>
+                        </li>
+                    </ul>
+                <p></p></div></div>
+            </section><section>
+                <h3 class="title ">Restrictions</h3>
+                <p>The following restrictions apply regarding the support of the chart control:</p>
+                <ul class="ul ">
+                    <li class="li">
+                        <p>Charts can be used only with entities that support aggregation. Currently, the entity set for which the chart annotation is
+                            configured cannot be a draft-enabled entity set – it has to be a read-only service. </p>
+                    </li>
+                    <li class="li">
+                        <p>SAP Fiori elements currently supports the transformation aggregates approach, not the custom aggregates approach.</p>
+                    </li>
+                    <li class="li">
+                        <p>Properties such as measures, dimensions, and text associations that come from associated entity sets are currently not
+                            supported.</p>
+                    </li>
+                    <li class="li">
+                        <p>Search is not supported when you are running the ALP flavor.</p>
+                    </li>
+                    <li class="li">
+                        <p>Chart personalization settings or selections are not part of the variant changes and are not saved in the
+                                <code>iAppState</code>.</p>
+                    </li>
+                    <li class="li">
+                        <p>The criticality via the <code>UI.CriticalityCalculation</code> annotation is currently not supported.</p>
+                    </li>
+                    <li class="li">
+                        <p>For SAP Cloud Application Programming Model CDS versions 3 or lower, the chart does not load properly if the parent entity
+                            set is non-aggregate based.</p>
+                    </li>
+                </ul>
+            </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

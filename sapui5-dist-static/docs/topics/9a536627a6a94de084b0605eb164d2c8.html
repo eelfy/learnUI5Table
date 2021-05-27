@@ -1,0 +1,128 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9a536627a6a94de084b0605eb164d2c8" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Confirmation Popups for
+                Actions</h1><div class="fig"><h1 class="topictitle1 title">Confirmation Popups for
+                Actions</h1><div class="shortdesc">You can configure confirmation popups for actions in list reports and object
+                pages.</div><p><span class="emphasis">Confirmation Popups for
+                                Deletion
+                                and Activation for Draft Apps, and Save for Non-Draft Apps and
+                                Function Import Actions</span></p><p>Based on the messages from the backend, you can configure confirmation popups for
+                        the following scenarios: </p><ul class="ul ">
+                                <li class="li">
+                                        <p>Activation triggered from an object page of draft
+                                                apps</p>
+                                </li>
+                                <li class="li">Save triggered from non-draft apps</li>
+                                <li class="li">
+                                        <p>Deletion of an object and performing a function import
+                                                action from a list report or an object page, in both
+                                                draft and non-draft apps</p>
+                                </li>
+                        </ul><p></p><p></p><p>When you delete an entry or perform any function import action from a list report
+                        or an object page, or when you activate or save an object on the object
+                        page, the system displays a confirmation dialog if the backend sends an
+                        appropriate warning message with the proper HTTP status code before
+                        executing the action. The process is as follows:</p><ul class="ul ">
+                                <li class="li">
+                                        <p>You trigger the <span class="ph uicontrol">Delete</span> action or
+                                                perform a function import action in a list report or
+                                                an object page. You can also trigger the
+                                                  <span class="ph uicontrol">Save</span> or
+                                                  <span class="ph uicontrol">Delete</span> actions in a
+                                                non-draft app or <span class="ph uicontrol">Activate</span>
+                                                action in a draft app. To delete an item, you can
+                                                select <span class="ph uicontrol">Delete</span> to continue.
+                                                The app
+                                                displays
+                                                a standard UI confirmation for
+                                                the <span class="ph uicontrol">Delete</span> action.</p>
+                                </li>
+                                <li class="li">
+                                        <p>The app sends the request with header <code>Prefer:
+                                                  handling=strict</code>.</p>
+                                </li>
+                                <li class="li">
+                                        <p> The action is not executed in the backend. Instead, an
+                                                HTTP response code 412 is issued with a message.</p>
+                                </li>
+                                <li class="li">
+                                        <p>The message type is persistent while saving or
+                                                activating, whereas it is transient for
+                                                  <span class="ph uicontrol">Delete</span> and function import
+                                                actions. If a wrong message type is sent, the system
+                                                will not display a confirmation popup.</p>
+                                </li>
+                                <li class="li">
+                                        <p>The app shows a confirmation popup with the message sent
+                                                from the backend.</p>
+                                </li>
+                                <li class="li">
+                                        <p>You can choose to
+                                                  <span class="ph uicontrol">Confirm</span>.
+                                                The app sends the request with header
+                                                  <code>Prefer: handling=lenient</code>.</p>
+                                </li>
+                                <li class="li">
+                                        <p> The selected action is executed in the backend and the
+                                                system responds with a message.</p>
+                                </li>
+                                <li class="li">
+                                        <p>You can choose to <span class="ph uicontrol">Cancel</span> in order
+                                                to terminate the operation. </p>
+                                </li>
+                        </ul><p></p><img src="loio47ffa9ef564f4742a913c96fd3b611ce_LowRes.png" usemap="#"><p><span class="emphasis">Confirmation Popup for Deletion and Function Import Actions from List
+                                Reports</span></p><p>When you want to delete or perform a function import action on more than one item
+                        in a list report, and the backend sends an HTTP response code 412, then
+                        instead of a confirmation popup, a message box is displayed with hints to
+                        delete or perform the function import action on objects individually.</p><img src="loio601bba80ff3548b0956eb47d3c1b1a08_LowRes.png" usemap="#"><p>An option to proceed is only available when you select only one item to delete in
+                        the list report and the backend sends an HTTP 412 status code with a warning
+                        message.</p><p>If you select multiple items, out of which one item sends a warning message, all
+                        warnings and errors from the backend are shown in a separate dialog. In such
+                        a case, you will not get an option to proceed with this warning. You can
+                        choose to delete the items or perform the function import action on items
+                        individually.</p><img src="loio02c4312098c84f988f25edd401e99b80_LowRes.png" usemap="#"><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>You cannot configure confirmation popups for a deletion triggered from
+                                object page tables.</p>
+                <p></p></div></div><p><span class="emphasis">Configuring Confirmation Popup for Save/Activation on Object
+                                Page</span></p><p>In draft scenarios, the system displays warning messages during the save process,
+                        for example, if fields have not been filled consistently or if entries are
+                        missing. You can enable a confirmation popup that displays all warning and
+                        error messages, asking users whether they still want to save the data. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>The <span class="ph uicontrol">Save</span> option is available only if there are no
+                                error messages.</p>
+                <p></p></div></div><p>To enable this popup, in the manifest.json under the object page settings, set
+                        the
+                        <code>showConfirmationOnDraftActivate</code>
+                        indicator to <code>true</code>.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": {
+    "ObjectPage|STTA_C_MP_Product": {
+           "entitySet": "STTA_C_MP_Product",
+            "component": {
+                "name": "sap.suite.ui.generic.template.ObjectPage",
+                 "settings": {
+                         "showRelatedApps": true,
+                          "tableType": "ResponsiveTable",
+                          "editableHeaderContent": true,
+                          "showConfirmationOnDraftActivate": true,
+                          "sections": {
+                                  "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+                                       "navigationProperty": "to_ProductText",
+                                        "entitySet": "STTA_C_MP_ProductText",
+                                        "multiSelect": true,
+                                        "createMode": "inline",
+                                        "tableType": "ResponsiveTable"
+                                    }
+                           }
+                      }
+              }
+     }
+}
+.
+.
+.</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+                <p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

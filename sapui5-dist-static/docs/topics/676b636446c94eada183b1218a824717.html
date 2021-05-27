@@ -1,0 +1,37 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio676b636446c94eada183b1218a824717" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Use Asynchronous Loading</h1><div class="fig"><h1 class="topictitle1 title">Use Asynchronous Loading</h1><div class="shortdesc">Asynchronous loading is the way to go: It makes your applications a lot faster and, through that, better to use.</div><p>As OpenUI5 is evolving, the loading processes in the background were significantly improved. To get the best out of these changes in the core and
+			to speed up your app, we recommend that you switch on asynchronous loading. With asynchronous loading, files are retrieved in parallel.
+			This is much quicker than with synchronous loading, where files are retrieved sequentially. There are a few possibilities to do that:</p><section id="section_ykw_py5_zfb">
+			<h2 class="title ">Use a Bootstrapping Tag in HTML Files</h2>
+			<p>Add the bootstrapping tag <code>data-sap-ui-async="true"</code> to your <code>index.html</code> file. This loads the modules for all
+				declared libraries asynchronously. If you have other HTML files in your app, you should do this there as well.</p>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;My App&lt;/title&gt;
+	&lt;script
+		id="sap-ui-bootstrap"
+		...
+		data-sap-ui-async="true"&gt;
+	&lt;/script&gt;
+...</pre></div></section>
+			<ul class="ul ">
+				<li class="li">Learn how: Walkthrough Tutorial <a href="#/topic/fe12df2e338e43598977d09f3d191b7b.html" title="Before we can do something with SAPUI5, we need to load and initialize it. This process of loading and initializing SAPUI5 is called bootstrapping. Once this bootstrapping is finished, we simply display an alert." class="sap-doc">Step 2: Bootstrap</a></li>
+				<li class="li">Find out more: <a href="#/topic/a04b0d10fb494d1cb722b9e341b584ba.html" title="To use SAPUI5 features in your HTML page, you have to load and initialize the SAPUI5 library." class="sap-doc">Bootstrapping: Loading and Initializing</a></li>
+			</ul>
+		</section><section>
+			<h2 class="title ">Add the <code>async</code> Property to the <code>manifest.json</code></h2>
+			<p>To also load all application-specific configuration settings asynchronously, set the <code>async</code> property in the metadata of
+				the <code>manifest.json</code> file to <code>true</code>.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.demo.worklist.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},</pre></div></section>
+			<ul class="ul ">
+				<li class="li">Learn how: Walkthrough Tutorial <a href="#/topic/8f93bf2b2b13402e9f035128ce8b495f.html" title="All application-specific configuration settings will now further be put in a separate descriptor file called manifest.json. This clearly separates the application coding from the configuration settings and makes our app even more flexible. For example, all SAP Fiori applications are realized as components and come with a descriptor file in order to be hosted in the SAP Fiori launchpad." class="sap-doc">Step 10: Descriptor for Applications</a></li>
+				<li class="li">Find out more: <a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html" title="The descriptor for applications, components, and libraries (in short: app descriptor) is inspired by the WebApplication Manifest concept introduced by the W3C. The descriptor provides a central, machine-readable, and easy-to-access location for storing metadata associated with an application, an application component, or a library." class="sap-doc">Descriptor for Applications, Components, and Libraries</a></li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

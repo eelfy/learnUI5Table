@@ -1,0 +1,49 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0d501b16e43d45d0a19ae54a3be883d3" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Highlighting Line Items Based on Criticality</h1><div class="fig"><h1 class="topictitle1 title">Highlighting Line Items Based on Criticality</h1><div class="shortdesc">You can add semantic highlights to line items in tables, based on their criticality.</div><p>The figure below shows an example of this:</p><div><div class="fig"><img src="loiocb0f238a30c44094ac5c2961d8289887_LowRes.png" usemap="#"></div></div><p>To do so, add a <code>LineItem</code> criticality annotation for the line items of the entity type that is used by a table, as
+			follows:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">              
+&lt;Annotation Term="UI.LineItem"&gt;
+  &lt;Annotation Term="UI.Criticality" Path="Element_transporting_criticality_of_complete_LineItem" /&gt;         //LineItem Criticality annotation
+  &lt;Collection&gt;
+    &lt;Record Type="UI.DataField"&gt;
+      ...
+    &lt;/Record&gt;
+  &lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+		<p></p></div></div><p>The property containing the criticality can have the following values (derived from the complex type <code>CriticalityType</code> of
+			the vocabulary <code>com.sap.vocabularies.UI.v1</code>):</p><ul class="ul ">
+				<li class="li">
+					<p>0 - Neutral</p>
+				</li>
+				<li class="li">
+					<p>1 - Negative (red)</p>
+				</li>
+				<li class="li">
+					<p>2 - Critical (orange)</p>
+				</li>
+				<li class="li">
+					<p>3 - Positive (green)</p>
+				</li>
+				<li class="li">
+					<p>5 - New Item (blue): Used to highlight new items which were created outside of the app (for example, through an API in the
+						back-end, or as a side effect), and need the user's attention</p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><ul class="ul ">
+							<li class="li">
+								<p>By default, SAP Fiori elements assumes that the <code>DataField</code> is also marked with
+									"CriticalityRepresentationType/WithIcon" and sets the icon of the <code>ObjectStatus</code> appropriately (for
+									example, for fields marked with "com.sap.vocabularies.UI.v1.CriticalityType/Negative", SAP Fiori elements sets the
+									'sap-icon://status-negative').</p>
+							</li>
+							<li class="li">
+								<p>If the field is marked with "CriticalityRepresentationType/WithoutIcon", then the <code>ObjectStatus</code> is
+									rendered without the icon.</p>
+							</li>
+						</ul>
+					<p></p></div></div>
+				</li>
+			</ul><p></p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

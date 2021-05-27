@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>IllustratedMessageType</name>
+    <derived/>
+    <documentation>Available &lt;code&gt;Illustration&lt;/code&gt; types for the {@link sap.f.IllustratedMessage} control.</documentation>
+    <developmentState state="experimental" since="1.88">This enum is experimental. Its properties may change.</developmentState>
+    <enumeration>
+        <value name="BeforeSearch" value="sapIllus-BeforeSearch">
+            <documentation>"Before Search" illustration type.</documentation>
+        </value>
+        <value name="NoActivities" value="sapIllus-NoActivities">
+            <documentation>"No Activities" illustration type.</documentation>
+        </value>
+        <value name="NoData" value="sapIllus-NoData">
+            <documentation>"No Data" illustration type.</documentation>
+        </value>
+        <value name="NoEmail" value="sapIllus-NoEmail">
+            <documentation>"No Email" illustration type.</documentation>
+        </value>
+        <value name="NoEntries" value="sapIllus-NoEntries">
+            <documentation>"No Entries" illustration type.</documentation>
+        </value>
+        <value name="NoNotifications" value="sapIllus-NoNotifications">
+            <documentation>"No Notifications" illustration type.</documentation>
+        </value>
+        <value name="NoSavedItems" value="sapIllus-NoSavedItems">
+            <documentation>"No Saved Items" illustration type.</documentation>
+        </value>
+        <value name="NoSearchResults" value="sapIllus-NoSearchResults">
+            <documentation>"No Search Results" illustration type.</documentation>
+        </value>
+        <value name="NoTasks" value="sapIllus-NoTasks">
+            <documentation>"No Tasks" illustration type.</documentation>
+        </value>
+        <value name="UnableToLoad" value="sapIllus-UnableToLoad">
+            <documentation>"Unable To Load" illustration type.</documentation>
+        </value>
+        <value name="UnableToUpload" value="sapIllus-UnableToUpload">
+            <documentation>"Unable To Upload" illustration type.</documentation>
+        </value>
+    </enumeration>
+</simple-type>

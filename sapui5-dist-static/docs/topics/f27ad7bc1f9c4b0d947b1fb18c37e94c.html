@@ -1,0 +1,274 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof27ad7bc1f9c4b0d947b1fb18c37e94c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Setting Default Filter Values</h1><div class="fig"><h1 class="topictitle1 title">Setting Default Filter Values</h1><div class="shortdesc">You can set default filter values in list report applications, for example.</div><section id="section_exn_2z1_snb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You
+				can set default filter values in list report and analytical list report
+				applications.</p><section>
+				<h3 class="title ">Using the <code>SelectionVariant</code>
+					Annotation</h3>
+				<p>You can set default values for smart filter bar fields using
+						<code>SelectionVariant</code> annotation in the
+						<code>annotationPath</code> app descriptor settings.</p>
+				<p> The default values from the <code>SelectionVariant</code> are displayed on
+					application load for standard variant. You can set more than one value as a
+					default value for a filter field. </p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Example with a qualified
+					path</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"ListReport|C_STTA_SalesOrder_WD_20": {
+      "entitySet": "C_STTA_SalesOrder_WD_20",
+      "component": {
+            "name": "sap.suite.ui.generic.template.ListReport",
+            "list": true,
+            "settings": {
+            "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#FilterDefaults"
+            }
+      }
+}
+
+&lt;Annotation Term="UI.SelectionVariant" Qualifier="FilterDefaults"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="SelectOptions"&gt;
+         &lt;Collection&gt;
+            &lt;Record Type="UI.SelectOptionType"&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="so_id" /&gt;
+               &lt;PropertyValue Property="Ranges"&gt;
+                  &lt;Collection&gt;
+                     &lt;Record Type="UI.SelectionRangeType"&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" /&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" /&gt;
+                        &lt;PropertyValue Property="Low" String="500009447" /&gt;
+                     &lt;/Record&gt;
+                     &lt;Record Type="UI.SelectionRangeType"&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" /&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" /&gt;
+                        &lt;PropertyValue Property="Low" String="500000841" /&gt;
+                     &lt;/Record&gt;
+                  &lt;/Collection&gt;
+               &lt;/PropertyValue&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section><p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Example with an unqualified
+					path</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"ListReport|C_STTA_SalesOrder_WD_20": {
+      "entitySet": "C_STTA_SalesOrder_WD_20",
+      "component": {
+            "name": "sap.suite.ui.generic.template.ListReport",
+            "list": true,
+            "settings": {
+            "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant "
+            }
+      }
+}
+
+&lt;Annotation Term="UI.SelectionVariant"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="SelectOptions"&gt;
+         &lt;Collection&gt;
+            &lt;Record Type="UI.SelectOptionType"&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="so_id" /&gt;
+               &lt;PropertyValue Property="Ranges"&gt;
+                  &lt;Collection&gt;
+                     &lt;Record Type="UI.SelectionRangeType"&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" /&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" /&gt;
+                        &lt;PropertyValue Property="Low" String="500009447" /&gt;
+                     &lt;/Record&gt;
+                     &lt;Record Type="UI.SelectionRangeType"&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" /&gt;
+                        &lt;PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" /&gt;
+                        &lt;PropertyValue Property="Low" String="500000841" /&gt;
+                     &lt;/Record&gt;
+                  &lt;/Collection&gt;
+               &lt;/PropertyValue&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section><p></p></div></div>
+				<div><div class="fig"><img src="loio2812a8941b7b4903ae4b909979a1081f_LowRes.png" usemap="#"></div></div>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>
+						</p><ul class="ul ">
+							<li class="li">
+								<p>This configuration overrides all the default values coming from
+									the <code>Common.FilterDefaultValue</code> annotations.</p>
+							</li>
+							<li class="li">
+								<p>The manifest property <code>annotationPath</code> takes both
+									qualified and unqualified annotation paths.</p>
+							</li>
+							<li class="li">
+								<p>The default values through the <code>annotationPath</code>
+									property can only be set via the
+										<code>UI.SelectionVariant</code> annotation.</p>
+							</li>
+							<li class="li">
+								<p>.If
+									the <code>UI.SelectionVariant</code> annotation configured
+									in the <code>annotationPath</code> does not exist, an error
+									page is loaded.</p>
+							</li>
+						</ul>
+					<p></p>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Using the <code>Common.FilterDefaultValue</code>
+					Annotation</h3>
+				<p>You can configure default filter values by defining the
+						<code>Common.FilterDefaultValue</code> annotation for a property type.
+					You can set only one value as a default value for a filter field. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The
+						default filter values from the <code>Common.FilterDefaultValue</code>
+						property are overwritten by the variant management or navigation context in
+						the specified order.</p></div></div><p></p>
+				<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/Supplier"&gt;
+    &lt;Annotation Term="Common.FilterDefaultValue" String="100000047"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			</section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>If you configure default filters via <code>UI.SelectionVariant</code>
+					annotation using the manifest property <code>annotationPath</code>, all
+					other filters configured via <code>Common.FilterDefaultValue</code>
+					annotation are ignored.</p>
+			<p></p></div></div><p>If you define user default filter values in SAP Fiori Launchpad, they are
+				combined with other default values. The priority is as following: </p><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_vj2_kr3_fhb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">Parameters coming from...</th>
+							<th colspan="1" rowspan="1">Result</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Navigation context</td>
+							<td colspan="1" rowspan="1" valign="top">Overrides user defined default variant and standard variant. The
+								navigation context is applied.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">User defined default variant (This variant is not equal to the
+								standard variant and there is no navigation context.)</td>
+							<td colspan="1" rowspan="1" valign="top">Overrides everything, including the SAP
+									Fiori launchpad user default parameters.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Only standard variant (There is no navigation context and no
+								other variant defined.) combined with optional
+									<code>UI.SelectionVariant</code> or
+									<code>Common.FilterDefaultValue</code> annotations</td>
+							<td colspan="1" rowspan="1" valign="top">User defined default parameters are applied and combined with the
+								values from the standard variant.</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_o4y_t5m_rnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>For the standard variant, application developer can configure default filter values by using the
+					<code>SelectionVariant</code> annotation or the <code>Common.FilterDefaultValue</code> annotation.</p><section>
+				<h3 class="title ">Using the <code>SelectionVariant</code> Annotation</h3>
+				<p>You can either provide the <code>UI.SelectionVariant</code> annotation directly, or as part of the
+						<code>UI.SelectionPresentationVariant</code>. For more information, refer to <a href="#/topic/094fe8c8d8ac4f0eb4724b1a52d2ad61.html" title="To make things easier, you may want to create an app without variant management. In this case, only the title of the app is displayed. You can create a custom title, if required." class="sap-doc">Creating a List Report Without Variant Management</a>.</p>
+				<p>If you provide the <code>UI.SelectionVariant</code>, then the default filter values are applied for the filter fields in
+					accordance with what is specified via the <code>UI.SelectionVariant</code> annotation. In the sample code below, the filter
+					field <code>OverallSDProcessStatus</code> is applied with value 'A':</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Default Filter Values via
+						<code>UI.SelectionVariant</code>
+					Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="SelectionVariant"&gt;
+    &lt;Record Type="UI.SelectionVariantType"&gt;
+        &lt;PropertyValue Property="Text" String="Open"&gt;&lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="SelectOptions"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.SelectOptionType"&gt;
+                    &lt;PropertyValue Property="PropertyName" PropertyPath="OverallSDProcessStatus" /&gt;
+                    &lt;PropertyValue Property="Ranges"&gt;
+                        &lt;Collection&gt;
+                            &lt;Record Type="UI.SelectionRangeType"&gt;
+                                &lt;PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ" /&gt;
+                                &lt;PropertyValue Property="Low" String="A" /&gt;
+                            &lt;/Record&gt;
+                        &lt;/Collection&gt;
+                    &lt;/PropertyValue&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/PropertyValue&gt;</pre></div></section><p></p></div></div>
+				
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CDS
+					Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">SelectionVariant : {
+ Text: 'Open',
+ SelectOptions: [
+    { $Type : 'UI.SelectOptionType',
+      PropertyName : OverallSDProcessStatus,
+      Ranges: [
+      {
+        $Type: 'UI.SelectionRangeType',
+        Option: #EQ,
+        Low: 'A'
+      }
+    ]
+   }
+ ]
+}</pre></div></section><p></p></div></div>
+				
+			</section><section>
+				<h3 class="title ">Using the <code>Common.FilterDefaultValue</code> Annotation</h3>
+				<p>If only single values need to be applied for the filter
+					fields, application developers can use the <code>Common.FilterDefaultValue</code>
+					annotation.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/OverallSDProcessStatus "&gt;
+    &lt;Annotation Term="Common.FilterDefaultValue" String="A"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p>
+				
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CDS
+					Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">OverallSDProcessStatus        : String(1)                           @(
+            Core.Immutable : true,
+            Common         : {
+                FilterDefaultValue      : 'A'
+            }
+);</pre></div></section><p></p></div></div>
+				
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This does not allow complex values ('Supplier StartsWith "AB"')
+					or
+					multiple values ('Status = "A" or Status = "B"'). Please
+					note the following behavior:</p><ul class="ul ">
+						<li class="li">
+							<p>If the <code>SelectionVariant</code> is provided, then this is used and the
+									<code>Common.FilterDefaultValue</code> is ignored for all other filter fields.</p>
+						</li>
+						<li class="li">
+							<p>The defaults via these annotations are only applied for the standard variant. When a user switches to other variants,
+								the annotations are no longer considered.</p>
+						</li>
+						<li class="li">
+							<p>The filter values applied via the above logic are always cleared completely and overwritten by the incoming navigation
+								context.</p>
+						</li>
+						<li class="li">
+							<p>The filter fields that are applied as the default value are always made visible in the filter bar ‒ even if they are
+								not configured as part of <code>UI.SelectionFields</code>.</p>
+						</li>
+					</ul><p></p></div></div>
+				
+			</section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p><code>DisplayCurrency</code> field also supports special handling. For more information, see section <span class="emphasis">Handling default
+						values from FLP</span> in <a href="#/topic/c337d8bde8c544598969c8e4edaab262.html" title="This topic describes the key features when navigating into an SAP Fiori elements template, that is, inbound navigation." class="sap-doc">Navigation to an App (Inbound Navigation)</a></p>
+			<p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/609c39a7498541559dbef503c1ffd194.html" title="You can define application-specific selection fields by using com.sap.vocabularies.UI.v1.SelectionFields and field groups for the filter popup." class="sap-doc">Adapting the Filter Bar</a></li>
+		<li><a href="#/topic/33f3d807c10b47d9a8141692d2619dc2.html" title="The section following the title area is the filter area. Set up filters to get the search results you want in the main content area." class="sap-doc">Configuring the Filter Area</a></li>
+	</ul></section></div></section></div></body></html>

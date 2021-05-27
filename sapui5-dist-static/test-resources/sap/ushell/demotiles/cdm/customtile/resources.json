@@ -1,0 +1,41 @@
+{
+	"_version":"1.1.0",
+	"resources":[
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/demotiles/cdm/customtile/Component-h2-preload.js",
+			"size": 2531,
+			"required" : ["sap/base/Log.js", "sap/base/util/UriParameters.js", "sap/ui/core/mvc/Controller.js", "sap/ui/model/json/JSONModel.js", "sap/ui/thirdparty/datajs.js", "sap/ui/thirdparty/jquery.js", "sap/ushell/Config.js", "sap/ushell/components/tiles/utils.js", "sap/ushell/components/tiles/utilsRT.js", "sap/ushell/utils/WindowUtils.js"],
+			"included" : ["sap/ushell/demotiles/cdm/customtile/Component.js", "sap/ushell/demotiles/cdm/customtile/manifest.json", "sap/ushell/demotiles/cdm/customtile/DynamicTile.controller.js", "sap/ushell/demotiles/cdm/customtile/DynamicTile.view.js"]
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/demotiles/cdm/customtile/Component-preload.js",
+			"size": 10109,
+			"required" : ["sap/base/Log.js", "sap/base/util/UriParameters.js", "sap/ui/core/mvc/Controller.js", "sap/ui/model/json/JSONModel.js", "sap/ui/thirdparty/datajs.js", "sap/ui/thirdparty/jquery.js", "sap/ushell/Config.js", "sap/ushell/components/tiles/utils.js", "sap/ushell/components/tiles/utilsRT.js", "sap/ushell/utils/WindowUtils.js"],
+			"included" : ["sap/ushell/demotiles/cdm/customtile/Component.js", "sap/ushell/demotiles/cdm/customtile/DynamicTile.controller.js", "sap/ushell/demotiles/cdm/customtile/DynamicTile.view.js", "sap/ushell/demotiles/cdm/customtile/manifest.json"]
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/demotiles/cdm/customtile/Component.js",
+			"size": 2393
+		},
+		{
+			"name": "DynamicTile.controller.js",
+			"module": "sap/ushell/demotiles/cdm/customtile/DynamicTile.controller.js",
+			"size": 17799,
+			"required" : ["sap/base/Log.js", "sap/base/util/UriParameters.js", "sap/ui/core/mvc/Controller.js", "sap/ui/model/json/JSONModel.js", "sap/ui/thirdparty/datajs.js", "sap/ui/thirdparty/jquery.js", "sap/ushell/Config.js", "sap/ushell/components/tiles/utils.js", "sap/ushell/components/tiles/utilsRT.js", "sap/ushell/utils/WindowUtils.js"]
+		},
+		{
+			"name": "DynamicTile.view.js",
+			"module": "sap/ushell/demotiles/cdm/customtile/DynamicTile.view.js",
+			"size": 2178,
+			"format":"raw"
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/demotiles/cdm/customtile/manifest.json",
+			"size": 1603
+		}
+	]
+}

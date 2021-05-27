@@ -1,0 +1,83 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc4b2a32bb72f483faa173e890e48d812" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 25: Sorting and Grouping</h1><div class="fig"><h1 class="topictitle1 title">Step 25: Sorting and Grouping</h1><div class="shortdesc">To make our list of invoices even more user-friendly, we sort it alphabetically instead
+		of just showing the order from the data model. Additionally, we introduce groups and add the
+		company that ships the products so that the data is easier to consume.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio80771b1120ce4d14b9d0ebf1fe98bce9_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">The list is now sorted and grouped by the shipping company</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.25/preview" title="#/sample/sap.m.tutorial.walkthrough.25/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.25/preview">Walkthrough - Step 25</a>.</p>
+			<h2 class="title ">webapp/view/InvoiceList.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+   controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"&gt;
+   &lt;List
+      id="invoiceList"
+      class="sapUiResponsiveMargin"
+      width="auto"
+      <span class="emphasis">items="{
+         path : 'invoice&gt;/Invoices',
+         sorter : {
+            path : 'ProductName' 
+         }
+      }"</span> &gt;
+      &lt;headerToolbar&gt;
+         ...
+      &lt;/headerToolbar&gt;
+      &lt;items&gt;
+         ...
+      &lt;/items&gt;
+   &lt;/List&gt;
+&lt;/mvc:View&gt;</pre></div></section>
+			<p>We add a declarative sorter to our binding syntax. As usual, we transform the simple binding
+				syntax to the object notation, specify the path to the data, and now add an
+				additional <code>sorter</code> property. We specify the data path by which the
+				invoice items should be sorted, the rest is done automatically. By default, the
+				sorting is ascending, but you could also add a property <code>descending</code>
+				with the value <code>true</code> inside the sorter property to change the
+				sorting order. </p>
+			<p>If we run the app now we can see a list of invoices sorted by the name of the
+				products.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/InvoiceList.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+xmlns="sap.m"
+xmlns:mvc="sap.ui.core.mvc"&gt;
+&lt;List
+		id="invoiceList"
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{
+			path : 'invoice&gt;/Invoices',
+			<span class="emphasis">sorter : {
+				path : 'ShipperName',
+				group : true
+			}</span>
+		}"&gt;
+	&lt;headerToolbar&gt;
+		&lt;Toolbar&gt;
+			&lt;Title text="{i18n&gt;invoiceListTitle}"/&gt;
+			&lt;ToolbarSpacer/&gt;
+			&lt;SearchField width="50%" search=".onFilterInvoices"/&gt;
+		&lt;/Toolbar&gt;
+	&lt;/headerToolbar&gt;
+	&lt;items&gt;
+		…
+	&lt;/items&gt;
+&lt;/List&gt;
+&lt;/mvc:View&gt;
+</pre></div></section>
+			<p>We modify the view and add a different sorter, or better; we change the sorter and
+				set the attribute <code>group</code> to true. We also specify the path to the
+					<code>ShipperName</code> data field. This groups the invoice items by the
+				shipping company.</p>
+			<p>As with the sorter, no further action is required. The list and the data binding features of SAPUI5 will do the trick to display group headers automatically and
+				categorize the items in the groups. We could define a custom group header factory if we wanted by setting the
+					<code>groupHeaderFactory</code> property, but the result looks already fine.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/5295470d7eee46c1898ee46c1b9ad763">Step 24: Filtering</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/44062441f3bd4c67a4f665ae362d1109">Step 26: Remote OData Service</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/sap.ui.model.Sorter" title="#/api/sap.ui.model.Sorter" class="sap-doc" alt="#/api/sap.ui.model.Sorter">API Reference: sap.ui.model.Sorter</a></li>
+			<li><a href="#/sample/sap.m.sample.ListGrouping/preview" title="#/sample/sap.m.sample.ListGrouping/preview" class="sap-doc" alt="#/sample/sap.m.sample.ListGrouping/preview">Sample: List - Grouping
+				</a></li>
+		
+	</ul></section></div></section></div></body></html>

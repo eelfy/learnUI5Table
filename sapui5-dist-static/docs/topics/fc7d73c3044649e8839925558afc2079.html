@@ -1,0 +1,64 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofc7d73c3044649e8839925558afc2079" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring the Content Area</h1><div class="fig"><h1 class="topictitle1 title">Configuring the Content Area</h1><div class="shortdesc">Visualize data from the main entity set and seamlessly navigate to an application.
+		Define a valid chart or LineItem annotation to render
+		content for the chart area and table area.</div><section id="section_tf3_2x5_fz">
+			<h2 class="title ">Context</h2>
+			<p>Analytical List Page (ALP) determines the content of the main area as follows:</p><ul class="ul ">
+					<li class="li">
+						<p>If you've set the value for a qualifier in the descriptor file, ALP looks
+							for the <code>SelectionPresentationVariant</code> with the same
+							qualifier. If the <code>SelectionPresentationVariant</code> is
+							found, then the associated <code>PresentationVariant</code> is
+								used.</p><ul class="ul ">
+								<li class="li">
+									<p>If the <code>SelectionPresentationVariant</code> is not
+										found, then the application looks for a
+											<code>PresentationVariant</code> with the same
+										qualifier. </p>
+								</li>
+								<li class="li">
+									<p>If <code>PresentationVariant</code> is not found, then an
+										error message is displayed.</p>
+								</li>
+							</ul><p></p>
+					</li>
+					<li class="li">
+						<p>If you haven't set the value for a qualifier in the descriptor file, ALP
+							looks for a default <code>SelectionPresentationVariant</code> and
+							uses the associated <code>PresentationVariant</code></p><ul class="ul ">
+								<li class="li">
+									<p>If the default <code>SelectionPresentationVariant</code>
+										is not found, ALP looks for a default
+											<code>PresentationVariant</code></p>
+								</li>
+								<li class="li">
+									<p>If default <code>PresentationVariant</code> also isn't
+										found, ALP looks for a default <code>chart</code> and
+											<code>LineItem</code> annotations.</p>
+								</li>
+							</ul><p></p>
+					</li>
+					<li class="li">If you've configured the content tile in the descriptor file, the
+							<code>FilterableKPI</code> view appears along with the segmented
+						buttons (Hybrid/Chart/Table) and the content area tile.</li>
+				</ul><p></p>
+		</section><section id="section_gc4_2x5_fz">
+			<p>You can choose to view the main entity set data in the following view modes:</p><ul class="ul ">
+					<li class="li">Table only</li>
+					<li class="li">Chart only</li>
+					<li class="li">Hybrid (chart and table)</li>
+				</ul><p></p>
+			<p>Configure the <code>contentTitle</code> property in the descriptor configuration file to
+				add title for the content area.</p>
+		</section><section id="section_k5n_c3x_1lb">
+			<h2 class="title ">Dynamic Page Header</h2>
+			<p>The dynamic page header is pinnable when the app has a responsive table in desktops, hybrid,
+				and ‘M' size devices such as tablets. A pin toggle button is available allowing the
+				header content to remain expanded when scrolling the page.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>For all other table types, the pin button is not available in an analytical list page.</p>
+				<p>Although the table is defaulted as responsive for all analytical list pages, the pin button
+					is not available for 'S' size devices such as mobile phones. </p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/3d33684b08ca4490b26a844b6ce19b83.html" title="Analytical List Page (ALP) is an SAP Fiori elements application for detailed analytics." class="sap-doc">Analytical List Page</a></li><li><a href="#/topic/d074e26b013647c7a93b8a9db9b51d2d.html" title="Displays transactional data in a tabular format. Use table-only mode to view individual records within the transactional data." class="sap-doc">Table-Only View</a></li><li><a href="#/topic/8e6e88513abe45e6b107d9400dd641df.html" title="Uses a smart chart that provides visual representation of analytical data." class="sap-doc">Chart-Only View</a></li><li><a href="#/topic/6615668828a7431c9ae38abe04d63feb.html" title="The hybrid view is the default data display mode in the ALP content area. It lets you view both analytical data (chart format) and transactional data (table format)." class="sap-doc">Hybrid View</a></li></ul></section></div></section></div></body></html>

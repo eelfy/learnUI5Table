@@ -1,0 +1,72 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4e593b44e78a431e8b21be6b3915fb55" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 7: (Optional) Resource Bundles and Multiple Languages</h1><div class="fig"><h1 class="topictitle1 title">Step 7: (Optional) Resource Bundles and Multiple Languages</h1><div class="shortdesc">The reason we have resource bundles is to allow an app to run in multiple languages without the need to change any code. To demonstrate
+		this feature, we will create a German version of the app – in fact all we need to do is create a German version of the resource bundle file.
+		In our code, the German locale needs to be activated for the ResourceModel.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loiod96cdf993b9f4344822d61d2a81d11ab_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">German version of our UI</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.07/preview" title="#/sample/sap.ui.core.tutorial.databinding.07/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.07/preview">Data Binding - Step 7</a>.</p>
+		</section><section id="section_stj_zdp_2mb">
+			<h2 class="title ">webapp/i18n/i18n_de.properties (New)</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Field labels
+firstName=<span class="emphasis">Vorname</span>
+lastName=<span class="emphasis">Nachname</span>
+enabled=<span class="emphasis">Aktiviert</span>
+
+# Screen titles
+panelHeaderText=<span class="emphasis">Data Binding Grundlagen</span></pre></div></section>
+			<p>In the <code>i18n</code> folder, make a copy of the file <code>i18n.properties</code> and call it
+					<code>i18n<span class="emphasis">_de</span>.properties</code>. The suffix <code>de</code> is the locale for German language. Change
+				the English text to the German text. Then, add the new locale <code>de</code> to the <code>supportedLocales</code>
+				configuration, so that it will be taken into account:</p>
+		</section><section id="section_ttj_zdp_2mb">
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView",
+	"sap/ui/model/resource/ResourceModel"
+], function (JSONModel, XMLView, ResourceModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		// Create a JSON model from an object literal
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		// Create a resource bundle for language-specific texts
+		// the configured supportedLocales represent the i18n files present:
+		// * "" - i18n/i18n.properties
+		// * "de" - i18n/i18n_de.properties
+		// a configured fallbackLocale should represent one of these files
+		// * "" - according to the fallback chain, the root bundle is the last fallback
+		//   which means that if "de" was requested here, the root bundle would never be loaded.
+		//   Configuring it explicitly avoids side effects when additional resource files are added.
+		// @see https://sapui5.hana.ondemand.com/#/topic/ec753bc539d748f689e3ac814e129563
+		var oResourceModel = new ResourceModel({
+			<span class="emphasis">bundleName: "sap.ui.demo.db.i18n.i18n",
+			supportedLocales: ["", "de"],
+			fallbackLocale: ""</span>
+		});
+
+		// Assign the model object to the SAPUI5 core using the name "i18n"
+		sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+		// Display the XML view called "App"
+		new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		}).placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>To test the outcome, change the default language of your browser to German and refresh your preview.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/9790d9aa686e4f818f2ad99057adb7ee">Step 6: Resource Models</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/9373793b290d429ba1bc6aea1ce5482f">Step 8: Binding Paths: Accessing Properties in Hierarchically Structured Models</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/91f217c46f4d1014b6dd926db0e91070.html" title="The framework concepts for text localization in SAPUI5 are aligned with the general concepts of the Java platform." class="sap-doc">Localization</a></li>
+	</ul></section></div></section></div></body></html>

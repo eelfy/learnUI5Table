@@ -1,0 +1,63 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio1743323829e5474eb3829d2e9ab022ae" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Defining Determining Actions</h1><div class="fig"><h1 class="topictitle1 title">Defining Determining Actions</h1><div class="shortdesc">You can add a determining action button to the footer of the object page.</div><p>Determining actions are used to trigger actions directly using the context of the page in
+         the object page.</p><p><code>DataFieldForAction</code> can be configured as a determining action.</p><div><div class="fig"><img src="loio5dc52f1ca65c47bc97cdd6e5bb800ea0_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: Determining Action in Footer</span></div><section id="section_tgj_nnh_qmb"><h2 class="title ">Code Samples</h2><section>
+            <h3 class="title ">Object Page</h3>
+            <p>The following code sample shows how to create your annotations for the determining
+               actions on the object
+               page:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Identification"&gt;
+
+    &lt;Collection&gt;
+
+       &lt;Record Type="UI.DataFieldForAction"&gt;
+
+          &lt;PropertyValue Property="Label" String="CWP"/&gt;
+
+          &lt;PropertyValue Property="Action"
+
+             String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/
+
+             STTA_C_MP_ProductCopywithparams"/&gt;
+
+          &lt;PropertyValue Property="InvocationGrouping"  
+
+             EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+
+          &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+
+       &lt;/Record&gt;
+
+       &lt;Record Type="UI.DataFieldForAction"&gt;
+
+          &lt;PropertyValue Property="Label" String="Copy"/&gt;
+
+          &lt;PropertyValue Property="Action"
+
+             String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopy"/&gt;
+
+          &lt;PropertyValue Property="Determining" Bool="true"/&gt;
+
+          &lt;PropertyValue Property="InvocationGrouping"  
+
+             EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+
+          &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+
+       &lt;/Record&gt;
+
+    &lt;/Collection&gt;
+
+ &lt;/Annotation&gt;
+</pre></div></section><p></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The <code>UI.Identification</code> vocabulary term is used to define the
+               actions on the object page.</p></div></div>
+            <p>In the example above for the first record type, the
+                  <code>DataFieldForAction</code> complex type does not contain the
+                  <code>Determining</code> property. That's why the action button will appear in
+               the object page header. </p>
+            <p>With the last record type, the <code>DataFieldForAction</code> complex type is
+               used and contains the <code>Determining</code> property, which is set to
+                  <code>true</code>. This means the action button will appear in the footer.
+               Note that if the <code>Determining</code> property is either not present or is
+               set to <code>false</code>, the action will not appear in the footer.</p>
+         </section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

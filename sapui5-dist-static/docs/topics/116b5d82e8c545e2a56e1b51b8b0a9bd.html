@@ -1,0 +1,247 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio116b5d82e8c545e2a56e1b51b8b0a9bd" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Multiple Selection in
+    Tables</h1><div class="fig"><h1 class="topictitle1 title">Enabling Multiple Selection in
+    Tables</h1><div class="shortdesc">This feature enables you to configure whether end users can select a single row or
+    multiple rows in a table while triggering table toolbar actions that require
+    context.</div><section id="section_ntz_dy1_jmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">
+        SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>Single
+        selection in tables is enabled by default. If you want, you can enable multi-select.</p><section>
+        <h3 class="title ">List Report Settings</h3>
+        <p>When <code>multiSelect</code> is set to <code>true</code> in the
+            <code>manifest.json</code> file of a list report table, the table switches from
+          single-select to multi-select, as shown in the this sample
+          code:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+  "_version": "1.3.0",
+  "pages": {
+  "ListReport|STTA_C_MP_Product": {
+    "entitySet": "STTA_C_MP_Product",
+    "component": {
+    "name": "sap.suite.ui.generic.template.ListReport",
+    "list": true,
+    "settings" : { 
+      "tableSettings": {
+        "multiSelect": true
+      }
+    }
+</pre></div></section><p></p>
+      </section><section>
+        <h3 class="title ">Object Page Settings</h3>
+        <p>You have two options:</p>
+        <ul class="ul ">
+          <li class="li">
+            <p>You can enable multiple selection at object page level for all tables on the object
+              page.</p>
+            <p>To do so, set <code>multiSelect</code> to <code>true</code> in the
+                <code>manifest.json</code> file of your object
+              page.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": {
+  "ObjectPage|STTA_C_MP_Product": {
+  "entitySet": "STTA_C_MP_Product",
+  "name": "sap.suite.ui.generic.template.ObjectPage",
+    "settings": {
+      "showRelatedApps": true,
+      "editableHeaderContent": true,
+      "tableSettings": {
+        "multiSelect": true
+      },
+      "sections": {
+        "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+          "navigationProperty": "to_ProductText",
+          "entitySet": "STTA_C_MP_ProductText",
+          "createMode": "inline"
+        }
+
+</pre></div></section><p></p>
+          </li>
+          <li class="li">
+            <p>You can enable multiple selection at table level, that is, individually for each
+              table.</p>
+            <p>To do so, set <code>multiSelect</code> to <code>true</code> for a specific
+              table in the <code>manifest.json</code> file of your object page:</p>
+            <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": {
+  "ObjectPage|STTA_C_MP_Product": {
+  "entitySet": "STTA_C_MP_Product",
+  "name": "sap.suite.ui.generic.template.ObjectPage",
+    "settings": {
+      "showRelatedApps": true,
+      "editableHeaderContent": true,
+      "sections": {
+        "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+          "navigationProperty": "to_ProductText",
+          "entitySet": "STTA_C_MP_ProductText",
+          "createMode": "inline”,
+          "tableSettings": {
+            "multiSelect": true
+          }
+        }
+</pre></div></section>
+          </li>
+        </ul>
+      </section><section>
+        <h3 class="title ">MultiSelectionPlugin</h3>
+        <p>The <span class="uinolabel">Select All</span> button is disabled by default. If you want to
+          enable it, set <code>selectAll : true</code>. If <code>selectAll : false</code>,
+          the following applies:</p>
+        <ul class="ul ">
+          <li class="li">
+            <p>The user can still select a range. If new data needs to be loaded from the back-end
+              system for this, the number of lines to be loaded is restricted to the specified
+              limit. The default value for this limit is 200. If <code>selectAll : true</code>,
+              the selection limit is not evaluated.</p>
+          </li>
+          <li class="li">
+            <p>The <span class="uinolabel">Undo Selection</span> button is displayed instead of the
+                <span class="uinolabel">Select All</span> button. The user can choose this button to reset
+              all selections.</p>
+          </li>
+        </ul>
+        <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If the user chooses <span class="uinolabel">Select All</span>, the system loads all data from
+          the back-end system, possibly in multiple sequential requests. For performance reasons,
+          set <code>selectAll : true</code> only if the expected amount of data is not too
+          high.</p></div></div>
+        <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Use the <code>MultiSelectionPlugin</code> for grid tables, analytical tables, and
+          tree tables.</p></div></div>
+        <p>For more
+            information, see <a href="#/api/sap.ui.table.plugins.MultiSelectionPlugin" title="#/api/sap.ui.table.plugins.MultiSelectionPlugin" class="sap-doc" alt="#/api/sap.ui.table.plugins.MultiSelectionPlugin">API Reference</a> and the <a href="#/entity/sap.ui.table.Table/sample/sap.ui.table.sample.MultiSelectionPlugin" title="#/entity/sap.ui.table.Table/sample/sap.ui.table.sample.MultiSelectionPlugin" class="sap-doc" alt="#/entity/sap.ui.table.Table/sample/sap.ui.table.sample.MultiSelectionPlugin">Sample</a> for
+              <code>MultiSelectionPlugin</code>.</p>
+        <p>The following sample code shows example table settings for a <code>GridTable</code>
+          with <code>MultiSelectionPlugin</code>. You can place these <code>"tableSettings"
+          </code> underneath <code>"settings"</code> at list report level as well as at object
+          page level.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">     <span class="emphasis">"tableSettings"</span>: {
+           "type": "GridTable",
+           "multiSelect": true,
+           "selectAll": false,
+           "selectionLimit": 150
+     }
+</pre></div></section>
+          <p></p></div></div>
+        <p></p>
+      </section></div></section><section id="section_cch_3z1_jmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">
+        SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>You can make
+        the table rows selectable or non-selectable based on settings. It is also possible to allow
+        single selction or multi-selection of rows in a table. This can be done by specifying
+        appropriate values for the <code>selectionMode</code> property. The following values are
+        possible: </p><ul class="ul ">
+          <li class="li">
+            <p><code>Auto</code>: This is the default value. Here, the application first checks
+              for a custom action or <code>UI.DataFieldForIntentBasedNavigation</code> in the
+              table toolbar that requires a context. If this is not found, then it is not possible
+              to allow table selection in display mode. In edit mode, selection including multiple
+              row selection is possible only when a <span class="ph uicontrol">Delete</span> button is
+              available in the table toolbar.</p>
+          </li>
+          <li class="li">
+            <p><code>Multi</code>: Setting this value allow end users to select multiple entries
+              in a table in both display and edit modes.</p>
+          </li>
+          <li class="li">
+            <p><code>Single</code>: Setting this value allow end users to select only a single
+              entry in a table in both display and edit modes.</p>
+          </li>
+          <li class="li">
+            <p><code>None</code>: Setting this value restricts end users to select any table
+              entries in display mode. However, in edit mode, selection including multiple row
+              selection is possible only when a <span class="ph uicontrol">Delete</span> button is available in
+              the table toolbar.</p>
+          </li>
+        </ul><p></p><section>
+        <h3 class="title ">List Report Settings</h3>
+        <p>When <code>selectionMode</code> is set to <code>Multi</code> in the
+            <code>manifest.json</code> file of a list report table, the table switches from
+          single-select to multi-select, as shown in the this sample code:</p><div class="note other samplecode lang-json"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+   "targets":{
+      "SalesOrderManageList":{
+         "type":"Component",
+         "id":"SalesOrderManageList",
+         "name":"sap.fe.templates.ListReport",
+         "options":{
+            "settings":{
+               "entitySet":"SalesOrderManage",
+               "variantManagement":"Page",
+               "controlConfiguration":{
+                  "@com.sap.vocabularies.UI.v1.LineItem":{
+                     "tableSettings":{
+                        "type":"ResponsiveTable",
+                        "selectionMode":"Multi"
+                     }
+                  }
+               },
+               "navigation":{
+                  "SalesOrderManage":{
+                     "detail":{
+                        "route":"SalesOrderManageObjectPage"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}</pre></div></section>
+          <p></p></div></div><p></p>
+      </section><section>
+        <h3 class="title ">Object Page Settings</h3>
+        <p>You can enable multiple selection at table level, that is, individually for each
+          table.</p>
+        <p>To do so, set <code>selectionMode</code> to <code>Multi</code> for a specific
+          table in the <code>manifest.json</code> file of your object page:</p>
+        <div class="note other samplecode lang-json"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+          </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+   "SalesOrderManageObjectPage":{
+      "type":"Component",
+      "id":"SalesOrderManageObjectPage",
+      "name":"sap.fe.templates.ObjectPage",
+      "options":{
+         "settings":{
+            "entitySet":"SalesOrderManage",
+            "navigation":{
+               "_Item":{
+                  "detail":{
+                     "route":"SalesOrderItemObjectPage"
+                  }
+               }
+            },
+            "variantManagement":"Control",
+            "showRelatedApps":true,
+            "editableHeaderContent":false,
+            "sectionLayout":"Tabs",
+            "controlConfiguration":{
+               "_Item/@com.sap.vocabularies.UI.v1.LineItem":{
+                  "tableSettings":{
+                     "type":"GridTable",
+                     "selectionMode":"Multi",
+                     "personalization":{
+                        "column":true,
+                        "sort":false
+                     },
+                     "creationMode":{
+                        "name":"CreationRow",
+                        "createAtEnd":true
+                     }
+                  }
+               },
+               "_Partner/@com.sap.vocabularies.UI.v1.LineItem":{
+                  "tableSettings":{
+                     "personalization":false
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+</pre></div></section>
+        <p></p></div></div>
+        <p>If you enable mutli-selection mode for the table, the <span class="ph uicontrol">Select All</span>
+          checkbox is enabled by default.</p>
+      </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

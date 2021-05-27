@@ -1,0 +1,493 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio408b40efed3c416681e1bd8cdd8910d4" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Performance: Speed Up Your App</h1><div class="fig"><h1 class="topictitle1 title">Performance: Speed Up Your App</h1><div class="shortdesc">If a web app has performance issues, finding the cause can be both a time-consuming
+		and nerve-consuming task. To help you avoid and solve performance issues in your app, here
+		are some good practices we've discovered while dealing with SAPUI5 apps. </div><p>SAPUI5 apps are basically
+			JavaScript files sent to a client by a server and interpreted by the browser. So it's
+			not only the coding of the app that can cause slow performance. It often turns out, for
+			example, that the configuration is wrong. Slow networks or servers may also have a heavy
+			impact on the performance of a web app. Let's have a look at the most common issues that
+			impact performance.</p><section id="section_AsyncLoading">
+			<h2 class="title ">Enable Asynchronous Loading in the Bootstrap</h2>
+			<p>Configuration issues are often caused by an old bootstrap or a wrong usage of the
+				activated features. Here's an example of what a bootstrap should look like for an
+				up-to-date SAPUI5
+				app:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script 
+	id="sap-ui-bootstrap"
+	src="/resources/sap-ui-core.js"
+	data-sap-ui-theme="sap_belize"
+	data-sap-ui-compatVersion="edge"
+	<span class="emphasis">data-sap-ui-async="true"</span>
+	data-sap-ui-onInit="module:my/app/main"
+	data-sap-ui-resourceroots='{"my.app": "./"}'
+&gt;</pre></div></section><p></p>
+			<p>The most important setting is <code>data-sap-ui-async="true"</code>. It enables
+				the runtime to load all the modules and preload files for declared libraries
+				asynchronously, if an asynchronous API is used. Setting <code>async=true</code>
+				leverages the browser's capabilities to execute multiple requests in parallel,
+				without blocking the UI.</p>
+			<p>The attribute <code>data-sap-ui-onInit</code> defines the module
+					<code>my.app.Main</code>, which will be loaded initially.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Configuration of the bootstrap can only be done for standalone applications and
+					when the bootstrap is under control of the developer. The bootstrap of
+					applications from a Fiori Launchpad is managed by the Launchpad.</p>
+			<p></p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The <code>data-sap-ui-async="true"</code> configuration option requires
+				extensive testing as well as cooperation on the application side to ensure a stable
+				and fully working application. It is, therefore, <span class="emphasis">not</span> activated
+				automatically, but needs to be configured accordingly. If you encounter issues or
+				want to prepare your application for asynchronous loading, see <a href="#/topic/493a15aa978d4fe9a67ea9407166eb01.html" title="Find a collection of information that helps you to find out if your application is ready for asynchronous loading." class="sap-doc">Is Your Application Ready for Asynchronous Loading?</a> The bootstrap attribute
+					<code>data-sap-ui-async="true"</code> affects both modules
+					<span class="emphasis">and</span> preload files. If it is not possible to load the
+				modules asynchronously (e.g. for compatibility reasons), use
+					<code>data-sap-ui-preload="async"</code> to configure at least the preloads
+				for asynchronous loading. For further information, see <a href="#/topic/91f1f4536f4d1014b6dd926db0e91070.html" title="The standard variant for bootstrapping loads all JavaScript modules of a library in advance with one single request for performance reasons." class="sap-doc">Standard Variant for Bootstrapping</a>.</p></div></div>
+			<p>If you listen to the <code>init</code> event as part of your
+					<code>index.html</code> page, make sure that you implement the asynchronous
+				behavior also here, as shown in the following code snippet:</p>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script&gt;
+	sap.ui.getCore().attachInit(function() {
+		sap.ui.require(["sap/ui/core/ComponentContainer"], function(ComponentContainer) {
+			new ComponentContainer({
+				name: "your.component",
+				manifest: true,
+				height: "100%",
+				componentCreated: function(oParams) {
+					var oComponent = oParams.getParameter("component");
+					// do something with the component instance
+				}
+			}).placeAt("content");
+		});
+	});
+&lt;/script&gt;</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this variant with inline scripting is not CSP-compliant. It is
+					better to create a module with <code>sap.ui.define</code> which contains the
+					startup code and load it via
+						<code>data-sap-ui-onInit="module:my/app/main"</code> ( this usually also
+					requires a declaration of <code>data-sap-ui-resourceroots</code>, e.g.:
+						<code>data-sap-ui-resourceroots='{"my.app": "./"}</code> ).</p>
+			<p></p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Applications without a descriptor file can declare additional dependencies
+				explicitly via the bootstrap parameter <code>data-sap-ui-libs</code>. If those
+				dependencies are not listed, such as transitive dependencies that are inherited from
+				a listed library, SAPUI5 will load them automatically, but then has to first read the configured libraries
+				and find out about these dependencies. This can take time as the application might
+				benefit less from parallel loading.</p></div></div>
+			
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li">For more information about bootstrap attributes, see <a href="#/topic/a04b0d10fb494d1cb722b9e341b584ba.html" title="To use SAPUI5 features in your HTML page, you have to load and initialize the SAPUI5 library." class="sap-doc">Bootstrapping: Loading and Initializing</a></li>
+				<li class="li">Walkthrough tutorial, <a href="#/topic/fe12df2e338e43598977d09f3d191b7b.html" title="Before we can do something with SAPUI5, we need to load and initialize it. This process of loading and initializing SAPUI5 is called bootstrapping. Once this bootstrapping is finished, we simply display an alert." class="sap-doc">Step 2: Bootstrap</a></li>
+				<li class="li"><a href="#/topic/91f1f4536f4d1014b6dd926db0e91070.html" title="The standard variant for bootstrapping loads all JavaScript modules of a library in advance with one single request for performance reasons." class="sap-doc">Standard Variant for Bootstrapping</a></li>
+				<li class="li"><a href="https://blogs.sap.com/2018/12/18/ui5ers-buzz-41-best-practices-for-async-loading-in-ui5/" title="https://blogs.sap.com/2018/12/18/ui5ers-buzz-41-best-practices-for-async-loading-in-ui5/" class="external-link" target="_blank" rel="noopener">Best Practices for Asynchronous Loading in UI5</a></li>
+			</ul>
+		</section><section id="section_RoutingConfigured">
+			<h2 class="title ">Ensure that Root View and Routing are Configured to Load Targets
+				Asynchronously</h2>
+			<p>Please check the <code>rootView</code> of the application's
+					<code>manifest.json</code> file for an <code>async=true</code>
+				parameter. This allows the root view to be loaded asynchronously.</p>
+			<p>To configure the targets for asynchronous loading, please also check the <a href="#/topic/902313063d6f45aeaa3388cc4c13c34e.html" title="Routing configuration consists of routes, targets, config, and owner." class="sap-doc">Routing Configuration</a> for the
+					<code>async=true</code> parameter.</p>
+			<section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+	"rootView": {
+        "viewName": "sap.ui.demo.walkthrough.view.App",
+        "type": "XML",
+        "id": "app",
+         <span class="emphasis">"async": true</span>
+    },
+    "routing": {
+        "config": {
+            "routerClass": "sap.m.routing.Router",
+            "viewType": "XML",
+            "viewPath": "sap.ui.demo.walkthrough.view",
+            "controlId": "app",
+            "controlAggregation": "pages",
+            <span class="emphasis">"async": true</span>
+        }
+    },
+...</pre></div></section>
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li">Walkthrough tutorial, <a href="#/topic/8f93bf2b2b13402e9f035128ce8b495f.html" title="All application-specific configuration settings will now further be put in a separate descriptor file called manifest.json. This clearly separates the application coding from the configuration settings and makes our app even more flexible. For example, all SAP Fiori applications are realized as components and come with a descriptor file in order to be hosted in the SAP Fiori launchpad." class="sap-doc">Step 10: Descriptor for Applications</a></li>
+			</ul>
+		</section><section id="section_AsyncModuleLoading">
+			<h2 class="title ">Make Use of Asynchronous Module Loading (AMD Style)</h2>
+			<p>If modules follow the Asynchronous Module Definition (AMD) standard and the bootstrap
+				flag <code>data-sap-ui-async</code> is set to <code>true</code>, custom
+				scripts and other modules can also be loaded asynchronously when a preload is not
+				available. It will help you in the future to enable asynchronous loading of
+				individual modules combined with the usage of HTTP/2 or AMD-based module bundlers.
+				It also ensures proper dependency tracking between modules.</p>
+			<p>But it isn't enough to write AMD modules. You also need to prevent access to SAPUI5 classes via
+				global names. For instance, do not use global namespaces like <code>new
+					sap.m.Button()</code> but require the <code>Button</code> and call its
+				constructor via the local AMD reference instead. </p>
+			 For more
+				information, see the <a href="#/api/sap.ui/methods/sap.ui.define" title="#/api/sap.ui/methods/sap.ui.define" class="sap-doc" alt="#/api/sap.ui/methods/sap.ui.define">API Reference:
+					<code>sap.ui.define</code></a>.
+			
+			<p>Always avoid usages of <code>sap.ui.requireSync</code> and
+					<code>jQuery.sap.require</code> ! In order to enable modules to load
+				asynchronously, use <code>sap.ui.define</code> to create modules (e.g.
+				controllers or components) or <code>sap.ui.require</code> in other cases.</p>
+			<p>Please follow the <a href="#/topic/00737d6c1b864dc3ab72ef56611491c4.html" title="This section provides best practices for SAPUI5 module loading patterns." class="sap-doc">Best Practices for Loading Modules</a>.</p>
+		</section><section id="section_ManifestJson">
+			<h2 class="title ">Use <code>manifest.json</code> Instead of the Bootstrap to Define
+				Dependencies</h2>
+			<p>Don't specify a link to the CSS in the bootstrap of your app; use the
+					<code>manifest.json</code> descriptor file instead.</p>
+			<p>Please use the <code>manifest.json</code> application descriptor file to declare
+				dependencies. This has several advantages:</p>
+			<ul class="ul ">
+				<li class="li">In the manifest, the dependency information is reusable; it works when the app
+					runs standalone and when it is embedded in the Fiori Launchpad or some other
+					launcher.</li>
+				<li class="li">Moving the dependencies to the manifest loads them later and can therefore make
+					the first rendering happen earlier. Obviously, that first rendering cannot come
+					from the component then.</li>
+				<li class="li">Design-time tools or runtime back-end services (e.g. AppIndex in ABAP systems)
+					can use the manifest entries to determine the transitive closure of dependencies
+					and thereby further optimise the parallel loading of dependencies. If the
+					dependencies are maintained in the bootstrap, developers can do this by hand,
+					but will have to update the information on each version upgrade.</li>
+			</ul>
+			<p>Make sure that you don't load too many dependencies. In most apps it's enough to load
+				the libraries <code>sap.ui.core</code> and <code>sap.m</code> by default,
+				and add additional libraries only when needed.</p>
+			<p>If you want to make additional libraries generally known in your app, without
+				directly loading them during the app start, you can add them to the dependency
+				declaration in the <code>manifest.json</code> file with the
+					<code>lazy</code> loading option. This makes sure that the libraries are
+				only loaded when they are
+				needed:</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+	"dependencies": {
+		"minUI5Version": "1.70.0",
+		"libs": {
+			"sap.ui.core": {},
+			"sap.m": {},
+			"sap.ui.layout": {
+				<span class="emphasis">"lazy": true</span>
+			}
+		},
+...</pre></div></section><p></p>
+			<p>If a library preload contains reuse components and this preload is configured to be
+				loaded lazily (via <code>"lazy": true</code> in the dependencies of the
+					<code>manifest.json</code>), the library is not available upon creation of
+				the related component.</p>
+			<p>In this case you need to use
+					<code>sap.ui.getCore().loadLibrary("my.library")</code> before creating the
+				component (e.g with <code>Component.create({ name: "my.component" })</code> or
+				component usage <code>myComponent.createComponent("myUsage") </code>).</p>
+			<p>An indicator that a component is inside a library is the existence of an entry
+					<code>sap.app/embeddedBy</code> in its <code>manifest.json</code>
+				file.</p>
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li"><a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html" title="The descriptor for applications, components, and libraries (in short: app descriptor) is inspired by the WebApplication Manifest concept introduced by the W3C. The descriptor provides a central, machine-readable, and easy-to-access location for storing metadata associated with an application, an application component, or a library." class="sap-doc">Descriptor for Applications, Components, and Libraries</a></li>
+			</ul>
+		</section><section id="section_LoadFromCDN">
+			<h2 class="title ">Load SAPUI5 from the
+				Content Delivery Network (CDN)</h2>
+			<p>In order to ensure that all static SAPUI5 resources are served with the lowest possible latency in SAP Business Technology Platform scenarios, you can load the resources from the Content Delivery
+				Network (CDN) cached by AKAMAI. Especially when running your app in the cloud, you benefit from the global distribution of servers.
+				For other scenarios, it is possible to configure a custom CDN of choice as an external location.</p>
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li"><a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a></li>
+			</ul>
+		</section><section id="section_Resources404">
+			<h2 class="title ">Ensure that all Resources are Properly Configured to Avoid 404 Errors</h2>
+			<p>Languages can be configured in your manifest since UI5 version 1.77. </p>
+			<p>The manifest configuration for i18n has now the option to provide the
+					<code>supportedLocales</code> and the <code>fallbackLocale</code>:</p><ul class="ul ">
+					<li class="li">The <code>supportedLocales</code> should contain all languages for which
+						you have i18n files. e.g. a file named <code>i18n_en.properties</code>
+						has the locale <code>en</code>.</li>
+					<li class="li">The <code>fallbackLocale</code> is the locale loaded before falling back
+						to the root bundle.</li>
+				</ul><p></p>
+			<p><span class="emphasis">Example:</span> If the following language files exist:</p><ul class="ul ">
+					<li class="li"><code>i18n_en.properties</code> (English version,
+						<code>"en"</code>)</li>
+					<li class="li"><code>i18n_de.properties</code> (German version,
+						<code>"de"</code>)</li>
+				</ul><p></p>
+			<p>they can be configured in your <code>manifest.json</code> in Section
+					<code>sap.ui5</code> under <code>models</code>:</p>
+			<section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+	"models": {
+		"i18n": {
+			"type": "sap.ui.model.resource.ResourceModel",
+			"settings": {
+				"bundleName": "sap.ui.demo.todo.i18n.i18n",
+				"supportedLocales": ["en", "de"],
+				"fallbackLocale": "en"
+			}
+		}
+	}
+}</pre></div></section>
+			<p>With AppDescriptor version 1.21.0 this is also possible in the <code>i18n</code>
+				section of <code>sap.app</code> in your <code>manifest.json</code>:</p>
+			<section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.app": {
+	"i18n": {
+		"bundleUrl": "i18n/i18n.properties",
+		"supportedLocales": ["en", "de"],
+		"fallbackLocale": "en"
+	}
+}</pre></div></section>
+			<p>For more informations, see:</p><ul class="ul ">
+					<li class="li"><a href="#/topic/91f21f176f4d1014b6dd926db0e91070.html" title="For the identification of languages, the framework uses a language code of type string." class="sap-doc">Identifying the Language Code / Locale</a></li>
+					<li class="li"><a href="#/topic/ec753bc539d748f689e3ac814e129563.html" title="A list of supported locales can be created to restrict the number of locales for which resource bundles may be requested. These can be configured for a fallback chain, for which a custom fallback locale can be provided." class="sap-doc">Supported Locales and Fallback</a></li>
+				</ul>
+			<p></p>
+		</section><section id="section_ManifestFirst">
+			<h2 class="title ">Use "manifest first" to Load the Component</h2>
+			<p>Load the <code>manifest.json</code> descriptor file of the component first to
+				analyze and preload the dependencies when loading the component. For more
+				information, see <a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html#loiobe0cf40f61184b358b5faedaec98b2da/manifirst" title="be0cf40f61184b358b5faedaec98b2da.xml#loiobe0cf40f61184b358b5faedaec98b2da/manifirst" class="sap-doc">Manifest First Function</a>.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "Component" required from module "sap/ui/core/Component"
+// load manifest.json from default location and evaluate it before creating an instance of the component 
+Component.create({
+  name: "my.component",
+});</pre></div></section>
+		</section><section id="section_LibraryPreloads">
+			<h2 class="title ">Ensure that Library Preloads are Enabled</h2>
+			<p>If the library preloads are disabled or not found, every module is loaded separately
+				by an own request. Depending on the server and network infrastructure, this can take
+				a lot of time. Except for debugging reasons, it is always recommended to make sure
+				library preloads are used. Fortunately, the library preloads are active by default
+				if the files are present.</p>
+			<p>In some cases it may happen that preloads are disabled:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>The <code>data-sap-ui-preload</code> bootstrap attribute is empty or set
+						to an invalid value. The attribute is optional and only necessary if the
+						loading behavior (sync / async) needs to be overwritten manually.</p>
+				</li>
+				<li class="li">Debug sources are enabled in the bootstrap
+						(<code>data-sap-ui-debug=true</code>) or via the URL
+						(<code>sap-ui-debug=true</code>).</li>
+			</ul>
+		</section><section id="section_ComponentPreload">
+			<h2 class="title ">Ensure that Application Resources are Loaded as Component Preload</h2>
+			<p>Application modules (e.g. components, controllers, views or resource bundles) should
+				be loaded asynchronously via the component preload file. Check (e.g. via the Network
+				tab in the Google Chrome developer tools) if a component preload
+					(<code>Component-preload.js</code>) is missing. If the application is not
+				configured to load modules asynchronously, required application files may be loaded
+				synchronously.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If a component preload does not exist yet, the bundle needs to be created. For
+				example, you may use the <a href="https://sap.github.io/ui5-tooling/" title="https://sap.github.io/ui5-tooling/" class="external-link" target="_blank" rel="noopener">UI5
+				Tooling</a>.</p></div></div>
+		</section><section id="section_NetworkRequests"><h2 class="title ">Check the Network Requests</h2><p>To quickly
+				check the network load caused by your app, look at your browser's developer tools,
+				for example the Network tab in the Google Chrome developer tools (<span class="keyWrap"><kbd class="key">F12</kbd></span>).
+				You'll see an overview of all requests being sent. Possible issues here may be: </p><section>
+				<h3 class="title ">Synchronous requests that block each other</h3>
+				<p>In this case, use the <code>data-sap-ui-async="true"</code> setting in the
+					bootstrap.</p>
+			</section><section>
+				<h3 class="title ">Too many requests</h3>
+				<p>You can use the <a href="https://sap.github.io/ui5-tooling/" title="https://sap.github.io/ui5-tooling/" class="external-link" target="_blank" rel="noopener">UI5 Tooling</a> to bundle and minimize all relevant
+					component files by creating a component-preload file.</p>
+				<p>If you're using  apps with grunt as a web server, you
+					can use the <code>openui5_preload</code> task; for more information see
+						<a href="http://scn.sap.com/community/developer-center/front-end/blog/2015/02/18/optimizing-openui5-apps" title="http://scn.sap.com/community/developer-center/front-end/blog/2015/02/18/optimizing-openui5-apps" class="external-link" target="_blank" rel="noopener">Optimizing OpenUI5/SAPUI5 Apps</a> in the
+					SAPUI5 Developer Center on SAP SCN.</p>
+				<p>If you're using SAP Web IDE,
+					refer to <a href="https://help.sap.com/viewer/825270ffffe74d9f988a0f0066ad59f0/CF/en-US/dfb26ef028624cf486a8bbb0bfd459ff.html" title="https://help.sap.com/viewer/825270ffffe74d9f988a0f0066ad59f0/CF/en-US/dfb26ef028624cf486a8bbb0bfd459ff.html" class="sap-doc">Application Build</a> in the SAP Web IDE documentation.</p>
+			</section><section>
+				<h3 class="title ">Back-end related performance issues</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>Slow database service (e.g. OData)</p>
+					</li>
+					<li class="li">Slow web server or CDN issues (e.g. serving of static resources)</li>
+					<li class="li">Slow network infrastructure (e.g. mobile network)</li>
+					<li class="li">The h2 protocol is not supported (only HTTP/1.1); ideally, the h2 protocol
+						should be supported by the web server</li>
+				</ul>
+				<p><span class="emphasis">Additional Information:</span></p>
+				<ul class="ul ">
+					<li class="li">To determine the minimum required bandwidth when using UI5-based
+						applications, you can find further information in SAP Note
+							<a title="https://launchpad.support.sap.com/#/notes/" href="https://launchpad.support.sap.com/#/notes/2240690" target="_blank" rel="noopener noreferrer">2240690</a> on front-end network bandwidth sizing.</li>
+				</ul>
+			</section></section><section id="section_MigrateJquery">
+			<h2 class="title ">Migrate <code>jquery.sap.*</code> Modules to their Modularised
+				Variants</h2>
+			<p>Since UI5 version 1.58, the global <code>jquery.sap.*</code> modules are
+				deprecated. Please use the modularised variant of the module. If you are still using
+				the <code>jquery.sap.*</code> variants, a so-called "stubbing layer" may load
+				the old module synchronously!</p>
+			<p>You can find a list of modules in the <a href="#/topic/a075ed88ef324261bca41813a6ac4a1c.html" title="Overview of the mapping of legacy APIs to the new APIs for the migration" class="sap-doc">Legacy jQuery.sap Replacement</a> documentation.</p>
+			<p>The usages can either be replaced manually or by the <a href="https://github.com/SAP/ui5-migration" title="https://github.com/SAP/ui5-migration" class="external-link" target="_blank" rel="noopener">UI5 Migration
+					Tool</a>.</p>
+			<p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Please make sure to declare the required modules in
+						<code>sap.ui.define</code> or <code>sap.ui.require</code> to ensure
+					that they get loaded asynchronously.</p></div></div>
+			<p></p>
+		</section><section id="section_MigrateFactories">
+			<h2 class="title ">Migrate Synchronous Variants of UI5 Factories to Asynchronous Variants</h2>
+			<p>Check if the application uses synchronous UI5 factories. Many asynchronous variants
+				are available, e.g. for Components, Resource Bundles, Controllers, Views and
+				Fragments. Please visit the following overview:<a href="#/topic/491bd9c70b9f4c4d913c8c7b4a970833.html" title="Overview of the replacement of global functions with the factory functions" class="sap-doc">Legacy Factories Replacement</a>.</p>
+		</section><section id="section_ModelPreload">
+			<h2 class="title ">Use the OData Model Preload</h2>
+			<p>Components can preload models for which modules are already loaded; otherwise a
+				warning will be shown. The OData model (V2 or V4) benefits especially, because the
+				metadata can be loaded in parallel during a component load.</p>
+			<p>
+				</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+  ...
+  "models": {
+      "mymodel": {
+          "preload": true,
+...</pre></div></section>
+			<p></p>
+			<p>For the OData V2 model, also consider using the model parameter
+					<code>earlyTokenRequest</code>. For more
+					information, see the <a href="#/api/sap.ui.model.odata.v2.ODataModel" title="#/api/sap.ui.model.odata.v2.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v2.ODataModel">API Reference:
+							<code>sap.ui.model.odata.v2.ODataModel</code></a>.
+				</p>
+			<p>For the OData V4 model, also consider using the model parameter
+					<code>earlyRequests</code>. For more
+					information, see the <a href="#/api/sap.ui.model.odata.v4.ODataModel" title="#/api/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataModel">API Reference:
+							<code>sap.ui.model.odata.v4.ODataModel</code></a>.
+				</p>
+			<p>For more information, see <a href="#/topic/26ba6a5c1e5c417f8b21cce1411dba2c.html" title="The preload flag enables a preload mode for a model, thus improving the startup performance of an app or component." class="sap-doc">Manifest Model Preload</a>.</p>
+		</section><section id="section_MetadataCaching">
+			<h2 class="title ">Use OData Metadata Caching</h2>
+			<p>To ensure fast loading times for <span class="emphasis">SAP Fiori applications started from the
+					SAP Fiori launchpad</span>, the OData metadata is cached on the web browser
+				using cache tokens. The tokens are added with the parameter
+					<code>sap-context-token</code> to the URL of metadata requests. Please check
+				via the developer tools of your browser (e.g. the Network tab in the Google Chrome
+				developer tools) if the token has been appended to the request URL. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This
+					feature is currently only supported for ABAP back ends.</p></div></div><p></p>
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li">
+					<p><a href="https://help.sap.com/viewer/a7b390faab1140c087b8926571e942b7/7.52.0/en-US/876e43a272cc45cb82dea640edff0ab2.html" title="https://help.sap.com/viewer/a7b390faab1140c087b8926571e942b7/7.52.0/en-US/876e43a272cc45cb82dea640edff0ab2.html" class="external-link" target="_blank" rel="noopener">Cache Buster for OData Metadata of SAP Fiori
+							Apps</a></p>
+				</li>
+				<li class="li">
+					<p><a href="https://help.sap.com/viewer/a7b390faab1140c087b8926571e942b7/7.52.0/en-US/2439967f0c284f6caf05e4323dd9292e.html" title="https://help.sap.com/viewer/a7b390faab1140c087b8926571e942b7/7.52.0/en-US/2439967f0c284f6caf05e4323dd9292e.html" class="external-link" target="_blank" rel="noopener">Scheduling Update of OData Metadata Caching</a></p>
+				</li>
+			</ul>
+		</section><section id="section_useSelectQuery">
+			<h2 class="title ">Use a <code>$select</code> Query when Binding an Aggregation in the OData V2 Model</h2>
+			<p>With a <code>$select</code> query you enable your application to fetch only necessary properties of an entity from the
+				collection.</p>
+			<p>As an example, consider the EntityType "Customers", which is available from the public Northwind OData service at <a href="https://services.odata.org/V2/Northwind/Northwind.svc/Customers?$format=json" title="https://services.odata.org/V2/Northwind/Northwind.svc/Customers?$format=json" class="external-link" target="_blank" rel="noopener">https://services.odata.org/V2/Northwind/Northwind.svc/Customers?$format=json</a>. It has
+				several properties.</p>
+			<p>If you have an <code>sap.m.List</code> that only needs to display the <code>CompanyName</code> from the collection, you could
+				add the following to your XML view:</p>
+			<p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+&lt;List
+    id="myList"
+    ...
+    items="{
+        path: '/Customers',
+        parameters: {
+            select: 'CustomerID,CompanyName'
+        }
+    }"&gt;
+    ...</pre></div></section>
+			<p></p>
+			<p>Note that all key properties, such as the <code>CustomerID</code>, should still be added, even though they're not directly relevant
+				to the user.</p>
+			<p>As a result, the response size of your application is reduced significantly. You also enable the back end to perform a more efficient
+				database query.</p>
+			<p>In the OData V4 model, <code>$select</code> and <code>$expand</code> values can be automatically defined. For more information,
+				see <a href="#/topic/10ca58b701414f7f93cd97156f898f80.html" title="10ca58b701414f7f93cd97156f898f80.xml" class="sap-doc">Automatic determination of $expand and $select</a>.</p>
+		</section><section id="section_ListsTables">
+			<h2 class="title ">Check Lists and Tables</h2>
+			<p>The performance limits are reached differently depending on the used browser, operating system and hardware. Therefore, it is important
+				to be mindful about the amount of controls and data bindings. This applies especially to lists and their variants (e.g.
+					<code>sap.m.Table</code> or <code>sap.ui.table.Table</code>):</p><ul class="ul ">
+					<li class="li">If a table needs to display more than 100 rows, please use <code>sap.ui.table.Table</code> instead of
+							<code>sap.m.Table</code> The reason for this is that <code>sap.m.Table</code> keeps every loaded row in memory,
+						even if not visible after scrolling. To choose the right table variant for your requirements, check out the documentation
+						about <a href="#/topic/148892ff9aea4a18b912829791e38f3e.html" title="The libraries provided by SAPUI5 contain various different table controls that are suitable for different use cases. The table below outlines which table controls are available, and what features are supported by each one." class="sap-doc">Tables: Which One Should I Choose?</a></li>
+					<li class="li">If the table rows contain multiple controls and/or custom-data fields, please check if they are required, or if another
+						control can replace them. For example, another list like a ComboBox inside of a table cell may create many controls for every
+						row, which can be very expensive.</li>
+					<li class="li">Check tables for hidden columns and load only the visible ones, if possible.</li>
+				</ul><p></p>
+			<p><span class="emphasis">Additional Information:</span></p>
+			<ul class="ul ">
+				<li class="li">
+					<p>
+						<a href="#/topic/f6a1a0ad49ca4d9facac222c4d372726.html" title="Mobile devices usually have a limited memory and processing power. Complex web pages may therefore have a negative impact on the application performance. This also depends on the mobile device and affects most likely the sap.m.List and sap.m.Table controls." class="sap-doc">Performance of Lists and Tables</a></p>
+				</li>
+			</ul>
+		</section><section id="section_OptimizeCode">
+			<h2 class="title ">Further Code Optimization</h2>
+			<p>You can further optimize your code by doing the following:</p><ul class="ul ">
+					<li class="li">
+						<p>Use asynchronous view loading as described here: <a href="#/topic/68d0e58857a647d49470d9f92dd859bd.html" title="To instantiate views asychronously, SAPUI5 provides the factory method View.create defined in module sap/ui/core/mvc/View." class="sap-doc">Instantiating Views</a>.</p>
+					</li>
+					<li class="li">
+						<p>Use the OData V4 model, which has an improved performance over the OData
+							V2 model.</p>
+						<p> Visit the <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>
+							documentation and ensure that all required features are available.</p>
+						<p>For a quick start, follow the <a href="#/topic/bcdbde6911bd4fc68fd435cf8e306ed0.html" title="In this tutorial, we explore how features of OData V4 can be used in SAPUI5. We write a small app that consumes data from an OData V4 service to understand how to access, modify, aggregate, and filter data in an OData V4 model." class="sap-doc">OData V4</a> tutorial.</p>
+					</li>
+					<li class="li">
+						<p>If you use data binding with an OData V2 service as a back end, you
+							should consider switching your OData model to our more updated OData V2
+							model. For more information, see <a href="#/topic/6c47b2b39db9404582994070ec3d57a2.html#loio6c47b2b39db9404582994070ec3d57a2" title="The OData V2 Model enables binding of controls to data from OData services." class="sap-doc">OData V2 Model</a>.</p>
+					</li>
+					<li class="li">
+						<p>Optimize dependent bindings as described here: <a href="#/topic/6c47b2b39db9404582994070ec3d57a2.html#loio62149734b5c24507868e722fe87a75db" title="The ODataModel V2 supports a flag called &quot;preliminaryContext&quot;. With this option set to true, the ODataModel is able to bundle the OData calls for dependent bindings together into fewer $batch requests." class="sap-doc">Optimizing Dependent Bindings</a>.</p>
+					</li>
+					<li class="li">
+						<p>Avoid the usage of <code>setTimeout()</code> calls with values
+							greater than <code>0</code>. This usually indicates an anti-pattern
+							in application code that is used as a workaround and should be avoided.
+							For more information, see also <a href="#/topic/030fcd14963048218488048f407f8f34.html#loio030fcd14963048218488048f407f8f34/11" title="030fcd14963048218488048f407f8f34.xml#loio030fcd14963048218488048f407f8f34/11" class="sap-doc">JavaScript Code
+								Issues: Don't use timeouts</a>.</p>
+					</li>
+					<li class="li">
+						<p>Don't use visibility for lazy instantiation. For more information, see
+								<a href="#/topic/966d67c8cc5046419d1b35556cd9e447.html#loio966d67c8cc5046419d1b35556cd9e447/1" title="966d67c8cc5046419d1b35556cd9e447.xml#loio966d67c8cc5046419d1b35556cd9e447/1" class="sap-doc">Performance
+								Issues: Don't use visibility for lazy instantiation</a>.</p>
+					</li>
+					<li class="li">Please ensure the application does not block the rendering while waiting for
+						back-end requests to respond. Waiting for data before rendering anything is
+						not the favored user experience. It is recommended to load data
+						asynchronously and already render the page while the request is pending.
+						Mostly, the requests won't fail, and if they do, it is better to show an
+						error or to navigate to an error page.</li>
+					<li class="li">If an <code>XML Preprocessor</code> is used, we recommend to use the
+							<a href="#/topic/3d85d5eec1594be0a71236d5e61f89aa.html" title="To be able to speed up processing times of XML views that make heavy use of the preprocessor feature, you can use the view cache to store its processed XML source. Then according network requests for the source and all preprocessor runs that modify the XML source are skipped and the source is taken from the cache." class="sap-doc">XML View Cache</a>. If configured in
+						the XML View and with a properly implemented key provider (for
+						invalidation), it is able to cache already processed XML View Preprocessor
+						results.</li>
+				</ul><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+
+		<li><a href="#/topic/966d67c8cc5046419d1b35556cd9e447.html" title="This section lists some of the most important issues that should be avoided to improve performance in SAPUI5 applications." class="sap-doc">Coding Issues to Avoid: Performance Issues</a></li>
+		<li><a href="#/topic/78880c09a1954a02b49c21357d45c91f.html" title="You can use sap/ui/performance/Measurement to measure the performance of your JavaScript code." class="sap-doc">Performance Measurement Using sap/ui/performance/Measurement Module</a></li>
+		<li><a href="https://blogs.sap.com/2016/10/29/sapui5-application-startup-performance-best-practices/" title="https://blogs.sap.com/2016/10/29/sapui5-application-startup-performance-best-practices/" class="sap-doc">Blog: SAPUI5 Application Startup Performance – Best Practices</a></li>
+		<li><a href="https://blogs.sap.com/2016/11/19/sapui5-application-startup-performance-advanced-topics/" title="https://blogs.sap.com/2016/11/19/sapui5-application-startup-performance-advanced-topics/" class="sap-doc">Blog: SAPUI5 Application Startup Performance – Advanced Topics</a></li>
+	</ul></section></div></section></div></body></html>

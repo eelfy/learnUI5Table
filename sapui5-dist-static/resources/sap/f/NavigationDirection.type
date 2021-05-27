@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>NavigationDirection</name>
+    <derived/>
+    <documentation>Enumeration for different navigation directions.</documentation>
+    <since>1.85</since>
+    <enumeration>
+        <value name="Up">
+            <documentation>The direction is up.</documentation>
+        </value>
+        <value name="Down">
+            <documentation>The direction is down.</documentation>
+        </value>
+        <value name="Left">
+            <documentation>The direction is left.</documentation>
+        </value>
+        <value name="Right">
+            <documentation>The direction is right.</documentation>
+        </value>
+    </enumeration>
+</simple-type>

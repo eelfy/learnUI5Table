@@ -1,0 +1,564 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio16d43eb0472c4d5a9439ca1bf92c915d" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Defining ValueList Annotation</h1><div class="fig"><h1 class="topictitle1 title">Defining ValueList Annotation</h1><div class="shortdesc">Lets you map an entity to another entity that is associated with a different entity set.
+		The value list annotation defines the relationship between filter fields of the main entity
+		set and the fields in the value help entity set.</div><section><p>You can map an entity from a value help entity set to derive value help for an entity
+				in the main entity set. Use this annotation to configure visual filters for
+					ALP.</p><span class="emphasis"><code>Common.ValueList</code></span><p>
+				</p><div class="tableWrapper "><div class="fig"><tgroup>
+						</tgroup><table border="1" class=" "><colgroup><col><col></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Property</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Details</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Label (Optional, String)</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Enter label information</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CollectionPath (Required, String)</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Entity set for retrieving value help</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>SearchSupported (Required, Bool)</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>True or False</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Parameters</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">Parameters to map a main entity set to a value help entity set.<p>
+										</p><ul class="ul ">
+											<li class="li">
+												<p>Record Type:
+												<code>Common.ValueListParameterOut</code>
+												determines the</p><ul class="ul ">
+												<li class="li">Elements of a main entity set that make it to
+												the filter query</li>
+												<li class="li">Field from a value help entity set that sets
+												the field value in the main entity set </li>
+												</ul><p></p>
+											</li>
+											<li class="li">
+												<p>Record Type:
+												<code>Common.ValueListParameterIn</code>
+												determines the filtering data set from a value
+												help entity set</p>
+											</li>
+											<li class="li">
+												<p>Record Type:
+												<code>Common.ValueListParameterInOut</code>
+												combination of both in and out parameters.</p>
+											</li>
+										</ul>
+									<p></p><p>Parameter properties:</p><ul class="ul ">
+											<li class="li">LocalDataProperty</li>
+											<li class="li">ValueListProperty </li>
+										</ul><p></p></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PresentationVariantQualifier (Required, String)</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Specify a qualifier name for the chart annotation</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p></section><section><h2 class="title ">Example</h2><p>Take a look at entity set "Z0020" (main entity set) with the
+				three filters: region, country, and plant. The <code>SelectionFields</code>
+				annotation has the following dimensions:</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionFields"&gt;
+	&lt;Collection&gt;
+		&lt;PropertyPath&gt;RegionID&lt;/PropertyPath&gt;
+		&lt;PropertyPath&gt;CountryID&lt;/PropertyPath&gt;
+		&lt;PropertyPath&gt;PlantID&lt;/PropertyPath&gt;
+	&lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.SelectionField: [
+  {
+    position: 1 ,
+    element: 'REGIONID'
+  }
+]
+REGIONID;
+
+@UI.SelectionField: [
+  {
+    position: 2 ,
+    element: 'COUNTRYID'
+  }
+]
+COUNTRYID;
+
+@UI.SelectionField: [
+  {
+    position: 3 ,
+    element: 'PLANTID'
+  }
+]
+PLANTID;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.SelectionFields : [
+    RegionID,
+    CountryID,
+    PlantID
+]</pre></div></section></div></section><p>The value help for these dimensions display values present in the main
+				entity set only. However, with the ValueList annotation you can retrieve records
+				from a master list.</p><p>Consider the following table in which all of the entity
+				sets refer to the same business object using different dimension names.</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						
+						
+						</tgroup><table border="1" id="table_cl1_ndh_yx" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Business Object</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0020 (Main Entity Set)</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0021 (Entity Set)</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0022 (Entity Set)</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0023 (Entity Set)</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Region</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionCode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionIdentifier</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionNumber</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Country</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryCode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryIdentifier</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryNumber</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Plant</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantCode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantIdentifier</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantNumber</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p></section><section>
+			<h2 class="title ">Region</h2>
+			<p><code>LocalDataProperty</code> maps to the <code>ValueListProperty</code>. The
+					<code>RegionID</code> is mapped to the <code>RegionCode</code> and the
+					<code>PlantID</code> is mapped to the <code>PlantCode</code>. In the
+				following annotation example, the <code>PlantCode</code> value help entity set
+				filters out regions based on the <code>PlantID</code> chosen from a main entity
+				set.</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					</tgroup><table border="1" id="table_y3q_dzm_yx" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Parameter</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Z0020 (LocalDataProperty)</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Z0021 (ValueListProperty)</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>ValueListParameterOut</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>RegionID</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>RegionCode</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>ValueListParameterIn</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>PlantID</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>PlantCode</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<p>The <code>PresentationVariantQualifier</code> is associated with a value help entity set.
+				This means that values for chart properties (measure and dimension) are from a value
+				help entity set. For example, if a <code>PresentationVariantQualifier</code> is
+				a bar chart with the dimension <code>RegionCode</code> and the measure is
+					<code>Net Sales</code>, then the ALP visual filter displays a bar chart that
+				shows the top three regions.</p>
+		</section><section><h2 class="title ">Annotation Example</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Z0020_CDS.Z0020Type/RegionID"&gt; // specifies the ValueList annotation is on the “RegionID” dimension in Z0020 entity set
+&lt;Annotation Term="Common.ValueList" Qualifier="0020_Region"&gt;
+&lt;Record&gt;
+		&lt;PropertyValue Property="Label" String="Region"/&gt;
+		&lt;PropertyValue Property="CollectionPath" String="Z0021"/&gt; // Specifies that the entity set for fetching the value help is Z0021
+		&lt;PropertyValue Bool="false" Property="SearchSupported"/&gt;
+		&lt;PropertyValue Property="Parameters"&gt; // In and Out parameters to map the main entity set with the value help entity set
+		&lt;Collection&gt;
+			&lt;Record Type="Common.ValueListParameterOut"&gt; // OUT  parameter determine elements in the main entity set that make it to the filter query and also determine the entity from the value help entity set that influences their value
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="RegionID"/&gt; // LocalDataProperty points to an entity in the main entity set – this is the entity used in forming the filter query
+				&lt;PropertyValue Property="ValueListProperty" String="RegionCode"/&gt; // ValueListProperty refers to the entity within the value help entity set that provides the “value” for the entity of the main entity set which makes up the filter query and is referred via the LocalDataProperty
+			&lt;/Record&gt;
+			&lt;Record Type="Common.ValueListParameterIn"&gt; // IN parameters help in filtering the data set of the value help entity set
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="PlantID"/&gt;
+				&lt;PropertyValue Property="ValueListProperty" String="PlantCode"/&gt;
+			&lt;/Record&gt;
+		&lt;/Collection&gt;
+		&lt;/PropertyValue&gt;
+		&lt;PropertyValue Property="PresentationVariantQualifier" String="Bar_0021_Region"/&gt; // The presence of a presentation variant means Region comes up as a visual filter.	
+	&lt;/Record&gt;
+&lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate view Z0020 with {
+	@Consumption.valueHelpDefinition:
+	[{
+	  entity :{
+		 name&nbsp;&nbsp;&nbsp; : 'Z0021',
+		 element : 'RegionCode'
+		},
+	&nbsp;&nbsp;&nbsp;&nbsp;label&nbsp; : 'Region',
+		qualifier: '0020_Region',
+		presentationVariantQualifier: 'Bar_0021_Region'
+	}]
+
+   RegionID;
+}</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate Z0020_CDS.Z0020Type with {
+  @Common.ValueList #0020_Region : {
+    Label : 'Region',
+    CollectionPath : 'Z0021',
+    SearchSupported : false,
+    Parameters : [
+        {
+            $Type : 'Common.ValueListParameterOut',
+            LocalDataProperty : RegionID,
+            ValueListProperty : 'RegionCode'
+        },
+        {
+            $Type : 'Common.ValueListParameterIn',
+            LocalDataProperty : PlantID,
+            ValueListProperty : 'PlantCode'
+        },
+    ],
+    PresentationVariantQualifier : 'Bar_0021_Region'
+  }
+  RegionID
+};</pre></div></section></div></section></section><section><h2 class="title ">Country</h2><p>The following annotation example defines the <code>CountryID</code><code>CountryIdentifier</code> entity present in the Z0022 entity set. If
+				you query values for the  value with the
+					<code>RegionID</code> of the main entity set, then the
+				value help for the <code>CountryID</code> field filters by the
+					<code>RegionIdentifier</code>.</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_kkv_2ln_yx" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Parameter</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0020 (LocalDataProperty)</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0021 (ValueListProperty)</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>ValueListParameterOut</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryIdentifier</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>ValueListParameterIn</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionIdentifier</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p></section><section><h2 class="title ">Annotation Example</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Z0020_CDS.Z0020Type/CountryID"&gt; 
+&lt;Annotation Term="Common.ValueList" Qualifier="0020_Country"&gt;
+&lt;Record&gt;
+		&lt;PropertyValue Property="Label" String="Country"/&gt;
+		&lt;PropertyValue Property="CollectionPath" String="Z0022"/&gt; // Note that country values come from Z0022 and is different from the value help entity set of region (Z0021) 
+		&lt;PropertyValue Bool="false" Property="SearchSupported"/&gt;
+		&lt;PropertyValue Property="Parameters"&gt; 
+		&lt;Collection&gt;
+			&lt;Record Type="Common.ValueListParameterOut"&gt; 
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="CountryID"/&gt; 
+				&lt;PropertyValue Property="ValueListProperty" String="CountryIdentifier"/&gt;
+			&lt;/Record&gt;
+			&lt;Record Type="Common.ValueListParameterIn"&gt;
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="RegionID"/&gt;
+				&lt;PropertyValue Property="ValueListProperty" String="RegionIdentifier"/&gt;
+			&lt;/Record&gt;
+		&lt;/Collection&gt;
+		&lt;/PropertyValue&gt;
+		&lt;PropertyValue Property="PresentationVariantQualifier" String="Country_Chart"/&gt;	
+	&lt;/Record&gt;
+&lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate view Z0020 with {
+	@Consumption.valueHelpDefinition:
+	[{
+	  entity :{
+		 name&nbsp;&nbsp;&nbsp; : 'Z0022',
+		 element : 'CountryIdentifier'
+		},
+	&nbsp;&nbsp;&nbsp;&nbsp;label&nbsp; : 'Country',
+		qualifier: '0020_Region',
+		presentationVariantQualifier: 'Country_Chart'
+	}]
+
+   CountryID;
+}</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate Z0020_CDS.Z0020Type with {
+  @Common.ValueList #0020_Country : {
+    Label : 'Country',
+    CollectionPath : 'Z0022',
+    SearchSupported : false,
+    Parameters : [
+        {
+            $Type : 'Common.ValueListParameterOut',
+            LocalDataProperty : CountryID,
+            ValueListProperty : 'CountryIdentifier'
+        },
+        {
+            $Type : 'Common.ValueListParameterIn',
+            LocalDataProperty : RegionID,
+            ValueListProperty : 'RegionIdentifier'
+        }
+    ],
+    PresentationVariantQualifier : 'Country_Chart'
+  }
+  CountryID
+};</pre></div></section></div></section></section><section>
+			<h2 class="title ">Plant</h2>
+			<p>The following example annotation configures the <code>PlantID</code> value with the with the Z0023 value
+				help entity set. Selecting a value for <code>PlantNumber</code> maps to
+					<code>PlantID</code> of the main entity set. You can also configure multiple
+					<code>Common.ValueListParameterIn</code> parameters to filter both region
+				and country in the filter query.</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_bgf_4mn_yx" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Parameter</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0020 (LocalDataProperty)</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Z0021 (ValueListProperty)</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>ValueListParameterOut</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>PlantNumber</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>ValueListParameterIn</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>RegionNumber</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>ValueListParameterIn</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryID</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>CountryNumber</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p>
+		</section><section><h2 class="title ">Annotation Example</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="Z0020_CDS.Z0020Type/PlantID"&gt; 
+&lt;Annotation Term="Common.ValueList" Qualifier="0020_Plant"&gt;
+&lt;Record&gt;
+		&lt;PropertyValue Property="Label" String="Plant"/&gt;
+		&lt;PropertyValue Property="CollectionPath" String="Z0023"/&gt; 
+		&lt;PropertyValue Bool="false" Property="SearchSupported"/&gt;
+		&lt;PropertyValue Property="Parameters"&gt; 
+		&lt;Collection&gt;
+			&lt;Record Type="Common.ValueListParameterOut"&gt; 
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="PlantID"/&gt;
+				&lt;PropertyValue Property="ValueListProperty" String="PlantNumber"/&gt;
+			&lt;/Record&gt;
+			&lt;Record Type="Common.ValueListParameterIn"&gt;
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="RegionID"/&gt;
+				&lt;PropertyValue Property="ValueListProperty" String="RegionNumber"/&gt;
+			&lt;/Record&gt;
+			&lt;Record Type="Common.ValueListParameterIn"&gt;
+				&lt;PropertyValue Property="LocalDataProperty" PropertyPath="CountryID"/&gt;
+				&lt;PropertyValue Property="ValueListProperty" String="CountryNumber"/&gt;
+			&lt;/Record&gt;
+		&lt;/Collection&gt;
+		&lt;/PropertyValue&gt;
+		&lt;PropertyValue Property="PresentationVariantQualifier" String="Plant_Chart"/&gt;	
+	&lt;/Record&gt;
+&lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate Z0020_CDS.Z0020Type with {
+  @Common.ValueList #0020_Plant : {
+    Label : 'Plant',
+    CollectionPath : 'Z0023',
+    SearchSupported : false,
+    Parameters : [
+        {
+            $Type : 'Common.ValueListParameterOut',
+            LocalDataProperty : PlantID,
+            ValueListProperty : 'PlantNumber'
+        },
+        {
+            $Type : 'Common.ValueListParameterIn',
+            LocalDataProperty : RegionID,
+            ValueListProperty : 'RegionNumber'
+        },
+        {
+            $Type : 'Common.ValueListParameterIn',
+            LocalDataProperty : CountryID,
+            ValueListProperty : 'CountryNumber'
+        }
+    ],
+    PresentationVariantQualifier : 'Plant_Chart'
+  }
+  PlantID
+}
+</pre></div></section></div></section></section><section>
+			<p>All three visual filters appear in the ALP header area if you have completed the chart
+				configuration for the respective PresentationVariantQualifier.</p>
+			<p>If your configuration has <span class="ph uicontrol">Net Sales</span> as a common measure in all three
+				entity sets, then the first chart displays the top three regions (each bar =
+					<code>RegionCode</code> from Z0021).- The second chart displays the top
+				three countries (each bar = <code>CountryIdentifier</code> from Z0022). The last
+				chart displays the top three plants (each bar = <code>PlantNumber</code> from
+				Z0023) as measured against Net Sales.</p>
+			<p><span class="emphasis">Scenario 1:</span> Selection in the Region Chart</p>
+			<p>If you select a bar in the region chart with this configuration, it then passes the
+					<code>RegionID</code>=&lt;chosen value from <code>RegionCode</code> of
+				Z0021&gt; to the filter query in the main entity set. As a result, ALP refreshes the
+				data in the main content area and the other two charts (A <code>RegionID</code>
+				is an IN parameter for the ValueList annotation of the <code>CountryID</code>
+				and <code>PlantID</code>). The top three countries and plants are displayed for
+				the chosen region.</p>
+			<p><span class="emphasis">Scenario 2:</span> Selection in the Region Chart and Country Chart</p>
+			<p>After selecting the region chart, if you select a bar in the country chart then it passes the
+					<code>CountryID</code>=&lt;chosen value from
+					<code>CountryIdentifier</code> of Z0022&gt; to the filter query in the main
+				entity set. As a result, the ALP refreshes data in the main content area and the
+				third chart (A <code>CountryID</code> is an IN parameter only for "PlantID").
+				Plants within the chosen region and country are displayed.</p>
+			<p><span class="emphasis">Scenario 3:</span> Selection in the Plant Chart</p>
+			<p><code>PlantID</code> is an IN parameter used only for the <code>RegionID</code>. This
+				means that along with the main content area only the first chart is refreshed and
+				displays the top three countries for the chosen plant. </p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The IN mapping defined for a field is ignored when the same field has a
+					<code>ValueList</code> annotation defined for it. For example, when
+					<code>PlantID</code> is the IN mapping for the <code>ValueList</code> of
+				the <code>PlantID</code>. However, the existing mapping values of the
+					<code>PlantID</code> in the filter query would have no impact on a visual
+				filter. The ignored value is considered for the main filter query and shows up in
+				the visual filter <span class="ph uicontrol">Selected</span> button.</p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/33f3d807c10b47d9a8141692d2619dc2.html" title="The section following the title area is the filter area. Set up filters to get the search results you want in the main content area." class="sap-doc">Configuring the Filter Area</a></li><li><a href="#/topic/00c19e14b02c462c80566fa8b8751137.html" title="ALP offers compact and visual filter modes. You can choose to set filters from both modes." class="sap-doc">Choosing Filter Modes</a></li><li><a href="#/topic/66f9c55623f243649f81be9d5a9574dc.html" title="Lets you specify filter field values based on the configuration in the sap:filter-restriction of the respective field in the entity set." class="sap-doc">Compact Filter Setup</a></li></ul></section></div></section></div></body></html>

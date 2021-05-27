@@ -1,0 +1,288 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofacfea09018d4376acaceddb7e3f03b6" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Defining and Adapting Sections</h1><div class="fig"><h1 class="topictitle1 title">Defining and Adapting Sections</h1><div class="shortdesc">The object page content is arranged into sections and subsections that you can
+		configure.</div><p>You use the <code>com.sap.vocabularies.UI.v1.Facets</code> annotations to build
+			sections. Different facets have been defined to display important information in the
+			content area sections.</p><section id="section_y4g_l1x_l4b"><p>A facet contains collection facets
+					(<code>UI.CollectionFacet</code>) as well as reference facets
+					(<code>UI.ReferenceFacet</code>). Collection facets are made up of a list of
+				records, each of which represents a reference facet to a field group,
+					<code>UI.LineItem</code>, <code>UI.Chart</code>, or another annotation.
+				Reference facets represent a reference, for example, to a
+					<code>UI.LineItem</code> (list on the object page),
+					<code>UI.Chart</code> (Chart), or <code>UI.Identification</code>
+				annotation.</p><p>A collection or reference facet directly under the
+					<code>UI.Facets</code> represents a section. A section can also have
+				subsections under it. This is achieved by adding a collection facet under the
+					<code>UI.Facet</code> and then adding reference or collection facets
+				underneath this collection facet. The contents of these reference facets are
+				arranged underneath.</p><p>In the figure below, the collection facet for
+					<span class="ph uicontrol">General Information</span> combines two reference facets that
+				both point to a field group.</p><div><div class="fig"><img src="loioa7f074e764414b29a38b50b9e44a0af4_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: CollectionFacet</span></div><p>Furthermore, reference facets can refer to identification sections, the field
+				group, contact or line item annotations. For line items, a list is rendered.</p><div><div class="fig"><img src="loio9fa2aecdeacc48b3a14ace5329ef834c_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: ReferenceFacet</span></div><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Facets"&gt;
+    &lt;Collection&gt;
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformation" /&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.CollectionFacet"&gt;
+            &lt;PropertyValue Property="ID" String="FurtherData"/&gt;
+            &lt;PropertyValue Property="Label" String="{@i18n&gt;@FurtherData}"/&gt;
+            &lt;PropertyValue Property="Facets"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="UI.CollectionFacet"&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.Facet: [
+  {
+    label: '{@i18n&gt;@GeneralInfoFacetLabel}',
+    targetQualifier: 'GeneralInformation',
+    type: #FIELDGROUP_REFERENCE,
+    purpose: #STANDARD
+  },
+  {
+    id: 'FurtherData',
+    label: '{@i18n&gt;@FurtherData}',
+    type: #COLLECTION,
+    purpose: #STANDARD
+  },
+  {
+    parentId: 'FurtherData',
+    purpose: #STANDARD
+  }
+]
+product;
+</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.Facets : [
+    {
+        $Type : 'UI.ReferenceFacet',
+        Label : '{@i18n&gt;@GeneralInfoFacetLabel}',
+        Target : '@UI.FieldGroup#GeneralInformation',
+    },
+    {
+        $Type : 'UI.CollectionFacet',
+        ID : 'FurtherData',
+        Label : '{@i18n&gt;@FurtherData}',
+        Facets : [
+            {
+                $Type : 'UI.CollectionFacet'
+            }
+        ]
+    }
+]</pre></div></section>
+				<p></p></div></div></div></section><p>You can hide and display sections based on properties.</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"> XML Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.ReferenceFacet"&gt;
+   &lt;Annotation Term="UI.Hidden" Path="IsActiveEntity"/&gt;
+   &lt;PropertyValue Property="Label" String="{@i18n&gt;@SalesData}" /&gt;
+   &lt;PropertyValue Property="Target" AnnotationPath="to_ProductSalesData/@UI.Chart" /&gt;
+&lt;/Record&gt;
+</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.facet: [
+ {
+  label: '{@i18n&gt;@SalesData}',
+  type:         #DATAPOINT_REFERENCE,
+  targetElement: '_PRODUCTSALESDATA',
+  purpose: #STANDARD
+ }
+]
+product;</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.Facets : {
+    $Type : 'UI.ReferenceFacet',
+    Label : '{@i18n&gt;@SalesData}',
+    Target : 'to_ProductSalesData/@UI.Chart',
+    ![@UI.Hidden] : IsActiveEntity
+}</pre></div></section>
+				<p></p></div></div></div></section><div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>If a subsection contains only one type of content, like a table or chart, and the
+					subsection title is the same as the control title, then only the control title
+					is displayed in the subsection.</p>
+				<div class="minimized-small"><div class="fig"><img src="loio34d0a6a5d6d84e0690a01774c4ae3b30_LowRes.png" usemap="#"></div></div>
+			<p></p></div></div></section><section id="section_utp_3gw_l4b">
+			<h2 class="title ">Adding a Field Group to a Section</h2>
+			<p>This video shows the step-by-step procedure for adding a field group to a section on
+				the object page: 
+					
+					</p><div class="video-links-disclaimer"><span class="video-links-disclaimer-label">Disclaimer:</span>
+				The below video
+				<img class="link-external" title="Information published on non-SAP site" alt="Information published on non-SAP site">
+				is not part of the SAP product documentation. Please read the
+				<a href="http://help.sap.com/disclaimer?site=" target="_blank">legal disclaimer</a>
+				for video links before viewing this video.
+			</div><div class="videoMaxWidth" style="max-width: 448px;"><div class="videoWrapper" style="max-height: 252px"><iframe allowfullscreen="true" style="max-width: 448px; max-height: 252px" width="448" height="252" src="https://www.youtube.com/embed/nJ2lmQvtg5k"><span style="display: none;">Hidden</span></iframe></div></div>
+				.<p></p>
+		</section><section id="section_r5n_cld_dmb">
+			<h2 class="title ">Rendering a Table in a Section</h2>
+			<p>To render a table in a section, here's what you do:</p>
+			<ol>
+				<li class="li">
+					<p>Include a list in the section, indicated by
+							<code>com.sap.vocabularies.UI.v1.LineItem</code>.</p>
+				</li>
+				<li class="li">
+					<p>To render a <span class="ph uicontrol">Create</span> button, set
+							<code>Org.OData.Capabilities.V1.InsertRestrictions/Insertable/Bool</code>
+						to <code>true</code> for the entity set. For more information, see the
+						section <span class="emphasis">Generic Actions</span> in <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</p>
+				</li>
+			</ol>
+			<p>See also <a href="#/topic/cfb04f0c58e7409992feb4c91aa9410b.html" title="You can enable the inline creation of table entries for apps that use draft handling." class="sap-doc">Enabling Inline Creation of Table Entries on Object Page</a>.</p>
+		</section><section id="section_scy_pxd_dmb">
+			<h2 class="title ">Increased Section and Table Height to use Available Free Space on the Object
+				Page</h2>
+			<p>If the object page contains only one section with just one table or if the object
+				page uses an icon tab bar for sections and any section has only one table, the
+				following system behavior applies:</p>
+			<p>If the table is a <code>ui.table</code>, the section and table expand to use the
+				full page height, showing more rows in the table.</p>
+			<p>If the table is a <code>sap.m.table</code>, the section and table expand to show
+				20
+				rows.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>For information about the icon tab bar, under <a href="#/topic/0d2f1a9ebd2d4a4c906216ded1d33783.html" title="You can extend and customize specific features of the list report and object page." class="sap-doc">Adapting the UI: List Report and Object Page</a>, see <span class="ph menucascade">
+						<span class="ph uicontrol">Adapting the UI: Object Page</span>
+						<span class="ph uicontrol">Switch to tabs</span>
+					</span>. </p>
+			<p></p></div></div>
+		</section><section id="section_lmy_1yd_dmb"><h2 class="title ">IDs for Collection Facets</h2><p>To enable
+				extensions, personalization, and automated testing, for example, you need to have
+				stable IDs for views and controls. In most cases, they are derived automatically
+				from existing annotations. For collection facets, you can use an annotation to set a
+				stable ID. The ID should be meaningful and must be unique within the entity type.
+				You should use only characters in camel case and without spaces.</p><p>If you define
+				your facets in an annotation file in your project, you can add the ID there
+				directly.</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Facets"&gt;
+  &lt;Collection&gt;
+    &lt;Record Type="UI.CollectionFacet"&gt;
+      &lt;PropertyValue Property="ID" String="GeneralInformation"/&gt;
+    &lt;/Record&gt;
+  &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.Facet: [
+  {
+    id: 'GeneralInformation',
+    type: #COLLECTION,
+    purpose: #STANDARD
+  }
+]</pre></div></section>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.Facets : [
+    {
+        $Type : 'UI.CollectionFacet',
+        ID : 'GeneralInformation'
+    }
+]</pre></div></section>
+				<p></p></div></div></div></section></section><section>
+			<p>It is mandatory to define an ID for collection facets but optional for reference
+				facets. If you have defined an ID for the facet of your table, use this ID in the
+				manifest instead of the generated one. If you have not defined an ID for the
+				reference facet of your table, the ID is derived from the annotation path by
+				replacing <i>/@</i> with <i>::</i>, for example,
+					<code>to_ProductText::com.sap.vocabularies.UI.v1.LineItem</code>. You should
+				refrain from adding an ID in the annotation after delivering your app, as this ID is
+				also used to build the stable IDs of all controls used in that section.</p>
+			<p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>All facets are displayed on the same page. The link from a facet leads you to
+					the related section on the same page. The facet annotation label is used twice:
+					Once for the facet in the header area and once for the section's title.</p></div></div>
+			<p></p>
+		</section><section id="section_mp4_yhd_dmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can define a hierarchy level. Instead of a reference facet, you can
+				add a collection facet that consists of several reference facets. The contents of
+				these reference facets are arranged underneath.</p><p>In the figure below, the
+				collection facet for <span class="ph uicontrol">Product Information</span> combines three
+				reference facets. Each reference facet refers to a field group or to an
+				identification annotation.</p><p>
+				</p><div><div class="fig"><img src="loio2bcb89d4d512428a91f7eab9994d3715_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: CollectionFacet</span></div>
+			<p></p><p>Further reference facets refer to identification sections, the field group,
+				contact, or line item annotations. For line items, a list is rendered.</p><p>
+				</p><div><div class="fig"><img src="loio2740bd6525d94685a170d868be542332_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: ReferenceFacets</span></div>
+			<p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>When rendering a table in a section, <code>NavigationRestrictions</code>
+				works only if <code>InlineCreate</code> is enabled for the related entity table.
+				The creation from a new object page is not supported using the annotation given
+				above .</p></div></div><p>When increasing the section and table height to use available free
+				space on the object page, you can also optimize the table visualization by using the
+				condensed mode. For more information, see <a href="#/topic/f3cc057e405c4fd58ee2ed42c557797c.html" title="You can set the content density to condensed for ui.table on the list report and object page applications." class="sap-doc">Using the Condensed Table Layout</a>. </p><p>If your table has a lot
+				of entries, see the information regarding the <code>MultiSelectionPlugin</code>
+				at <a href="#/topic/116b5d82e8c545e2a56e1b51b8b0a9bd.html" title="This feature enables you to configure whether end users can select a single row or multiple rows in a table while triggering table toolbar actions that require context." class="sap-doc">Enabling Multiple Selection in Tables</a>.</p></div></section><section id="section_wgv_fvx_4lb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>By default, all the facets are shown in the same page. The section navigation
+				placeholders are shown as anchors at the bottom of the header. All visible sections
+				are always visible, and when a user clicks on an anchor, there is an animation to
+				scroll to the selected section's contents.</p><p>You can choose if the section names are visualized as tabs instead of anchors. If the
+				tab representation is shown, there is no scroll animation to bring the content of
+				the specific section chosen. Instead, the new content just replaces the existing one
+				without the scroll animation.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>We recommend to use the tab representation when your page uses the
+						<code>UI.Table</code> (grid table).</p>
+			<p></p></div></div><p>To choose a tab visualization, you must use the <code>sectionLayout</code>
+				property in the manifest file as shown below:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage":{              
+    "type": "Component",                  
+    "id": "SalesOrderManageObjectPage",                  
+    "name": "sap.fe.templates.ObjectPage",                  
+    "options":{                      
+        "settings":{                          
+            "entitySet": "SalesOrderManage",                          
+            "navigation":{                              
+                "_Item":{                                  
+                    "detail":{                                      
+                        "route": "SalesOrderItemObjectPage"                                  
+                    }                              
+                },                              
+                "SalesOrderManage":{                                  
+                    "detail":{                                      
+                        "route": "SalesOrderManageObjectPage",                                      
+                        "parameters":{                                          
+                            "key": "{_ReferencedSalesOrder/ID}"                                      
+                        }                                  
+                    }         
+                }                          
+            }, // End of navigation                          
+            "variantManagement": "Control",                          
+            "showRelatedApps": true,                          
+            "editableHeaderContent": false,                          
+            "sectionLayout": "Tabs"    // Default value: Page. Possible values: Page (all sections are shown on same page) and Tabs (each top-level section is shown in an own tab)
+        }
+    }
+}</pre></div></section>
+			<p></p></div></div></div></section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/5c8763f0fb1f4cc7aaab6cc19d5ee45c">Controlling the Editability of Sections</a></li><li><a href="topic/a6a8c0c4849b483eb10e87f6fdf9383c">Adding a Contact Facet</a></li><li><a href="topic/9eb3aaecc09b431ca27f97eb1ee5d861">Address Facet in Sections</a></li><li><a href="topic/653ed0f4f0d743dbb33ace4f68886c4e">Chart Facet</a></li><li><a href="topic/9fcea86d8ffd48459dd053eb5255a046">Hiding and Showing Reference Facets Using See More and See Less Links</a></li><li><a href="topic/e64efdad5bdf4264b54052bd7ab2229a">Adding Action Buttons to Forms in Sections</a></li><li><a href="topic/0096cd2e7abb4c3fb11cf4dedc9fa740">Displaying Fields in Smartforms on Small Devices</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

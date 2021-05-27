@@ -1,0 +1,45 @@
+<mvc:View
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:smartField="sap.ui.comp.smartfield"
+		xmlns:m="sap.m" height="100%"
+		controllerName="sap.ui.comp.sample.smartfield.WithValueListAndInOutParameters.Main"
+		xmlns:form="sap.ui.comp.smartform">
+
+	<m:ScrollContainer id="SC1" height="100%" horizontal="false" vertical="true">
+		<form:SmartForm id="form" editable="true" editToggled="onEditToggled"
+			title="Smart Field with ValueList annotation">
+			<form:layout>
+				<form:ColumnLayout
+						columnsM="1"
+						columnsL="1"
+						columnsXL="1"/>
+			</form:layout>
+			<form:Group label="Smart Field with ValueList annotation and In/Out Parameters rendered as Input"  >
+				<form:GroupElement>
+					<smartField:SmartField id="inKey" width="60%" value="{InKey}" contextEditable="true"/>
+				</form:GroupElement>
+
+				<form:GroupElement>
+					<smartField:SmartField id="inOutKey" width="60%" value="{InOutKey}" contextEditable="true"/>
+				</form:GroupElement>
+				<form:GroupElement>
+					<smartField:SmartField id="outKey" width="60%" value="{OutKey}" contextEditable="true"/>
+				</form:GroupElement>
+			</form:Group>
+
+			<form:Group label="Smart Field with ValueList annotation and In/Out Parameters rendered as ComboBox (fixed-values)">
+				<form:GroupElement>
+					<smartField:SmartField id="inKeyFixedValues" width="60%" value="{InKeyFixedValues}" contextEditable="true"/>
+				</form:GroupElement>
+				<form:GroupElement>
+					<smartField:SmartField id="inOutKeyFixedValues" width="60%" value="{InOutKeyFixedValues}" contextEditable="true"/>
+				</form:GroupElement>
+				<form:GroupElement>
+					<smartField:SmartField id="outKeyFixedValues" width="60%" value="{OutKeyFixedValues}" contextEditable="true"/>
+				</form:GroupElement>
+			</form:Group>
+		</form:SmartForm>
+	</m:ScrollContainer>
+
+</mvc:View>

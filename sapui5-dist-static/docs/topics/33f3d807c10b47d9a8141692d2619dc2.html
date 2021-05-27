@@ -1,0 +1,186 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio33f3d807c10b47d9a8141692d2619dc2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring the Filter Area</h1><div class="fig"><h1 class="topictitle1 title">Configuring the Filter Area</h1><div class="shortdesc">The section following the title area is the filter area. Set up filters to get the
+		search results you want in the main content area. </div><p>You can use either a compact filter or a visual filter to perform the search operation (when
+			sap:filterable=true). To make sure the selection filter with incoming values, pass the
+			filter context through the navigation context.</p><p>You can also configure default filter values by defining the
+				<code>Common.FilterDefaultValue</code> annotation for a property type.
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Default filter value configuration annotation
+				sample</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SEPMRA_SO_ANA.SEPMRA_C_ALP_SlsOrdItemCubeType/DeliveryCalendarYear"&gt;
+    &lt;Annotation Term="Common.FilterDefaultValue" String="2018" /&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p></div></div><p></p><p>For more information, see <a href="#/topic/f27ad7bc1f9c4b0d947b1fb18c37e94c.html" title="You can set default filter values in list report applications, for example." class="sap-doc">Setting Default Filter Values</a>.</p><p>The filter dimensions shown in the filter dialog can belong to any of the following groups:</p><p><span class="emphasis">Basic Group</span></p><p>All filter dimensions listed within the SelectionField annotation property belong to the this
+			filter group. In addition, all mandatory filters, parameters, and data fields marked
+			with the <code>FieldGroup</code> annotation with qualifier <code>_BASIC</code>
+			are included in this group.</p><p><span class="emphasis">Field Group</span></p><p>Filter dimensions listed under a FieldGroup annotation property but not listed within the
+			SelectionField annotation property belong to this filter group. For example, a new group
+			with name <code>&lt;EntityTypeName&gt;</code> is created. If there are multiple
+				<code>entityTypes</code>, multiple <code>entityTypeName</code> groups are
+			created.</p><p>This kind of filter dimension is a part of the filter dialog but does not show up in the filter
+			bar unless it is explicitly added by means of a filter dialog or is part of a chosen
+			variant.</p><p><span class="emphasis">Entity Type Name Group</span></p><p>Filter dimensions that are not part of the <code>SelectionField</code> or do not have
+				<code>FieldGroup</code> annotation properties belong to this filter group. This
+			kind of filter dimension is part of the filter dialog but does not show up in the filter
+			bar unless it is explicitly added by means of a filter dialog or is part of a chosen
+			variant.</p><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="Group Name"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Data"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="Property Name"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Label" String="Group Name"/&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+		<p></p><section id="section_j3y_z3x_zy">
+			<h2 class="title "><span class="ph uicontrol">Go</span> Button</h2>
+			<p>The <span class="ph uicontrol">Go</span> button appears in the ALP filter area. Use this button to
+				refresh or load the main content area. By default, the <span class="ph uicontrol">Go</span>
+				button is disabled. To enable the <span class="ph uicontrol">Go</span> button, set
+					<code>"showGoButtonOnFilterBar": true</code> in the descriptor file
+					<code>sap.ui.generic.app settings</code> property.</p>
+			<p>If you enable the <span class="ph uicontrol">Go</span> button and modify the filter selection, the main
+				content area is not refreshed until you choose <span class="ph uicontrol">Go</span>.</p>
+			<p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+		"_version": "1.1.0",
+		"pages": [{
+			"entitySet": "SEPMRA_C_ALP_SlsOrdItemCube",
+			"component": {
+				"name": "sap.suite.ui.generic.template.AnalyticalListPage",
+				"list": true,
+				"settings": {
+                  				"showGoButtonOnFilterBar": true,
+                  			    }
+				      }
+			}]
+		       }</pre></div></section>
+			<p></p>
+		</section><section id="section_dbj_mvc_sfb">
+			<h2 class="title ">Default Values in Filter Bar</h2>
+			<p>The new <code>filterDefaultsFromSelectionVariant</code> app descriptor setting, lets you
+				to add default values for <code>FilterBar</code> using
+					<code>SelectionVariant</code> annotation.</p>
+			<p>The analytical list page selects <code>SelectionVariant</code> default values for
+				filter bar depending on the qualifier setting in the descriptor file. For
+					example:</p><ul class="ul ">
+					<li class="li">
+						<p>Scenario 1: If the ‘<code>qualifier</code>’ property is set,
+							analytical list page looks for</p><ul class="ul ">
+								<li class="li">
+									<p><code>SelectionVariant</code> configuration within the
+											<code>SelectionPresentationVariant</code> (with a
+											<code>qualifier</code>)</p>
+								</li>
+								<li class="li">
+									<p><code>SelectionVariant</code> (with a
+											<code>qualifier</code>) when
+											<code>SelectionPresentationVariant</code> is
+										missing</p>
+								</li>
+							</ul><p></p>
+					</li>
+					<li class="li">
+						<p>Scenario 2: If the ‘<code>qualifier</code>’ property is not set,
+							analytical list page looks for</p><ul class="ul ">
+								<li class="li">
+									<p><code>SelectionVariant</code> configuration within the
+										default <code>SelectionPresentationVariant</code>
+										(without qualifier)</p>
+								</li>
+								<li class="li">
+									<p>Default <code>SelectionVariant</code> when default
+											<code>SelectionPresentationVariant</code> is
+										missing</p>
+								</li>
+							</ul><p></p>
+					</li>
+				</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If <code>SelectionVariant</code> configuration is missing then the
+					analytical list page logs a warning message and do not pass the default values
+					to the filter bar fields.</p></div></div><p></p>
+			<p>
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.SelectionVariant" Qualifier="Default"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Parameters"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.Parameter"&gt;
+                    &lt;PropertyValue Property="PropertyName" PropertyPath="P_CompanyCode" /&gt;
+                    &lt;PropertyValue Property="PropertyValue" String="EASI" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="SelectOptions"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.SelectOptionType"&gt;
+                    &lt;PropertyValue Property="PropertyName" PropertyPath="Customer"/&gt;
+                    &lt;PropertyValue Property="Ranges"&gt;
+                        &lt;Collection&gt; 
+                            &lt;Record Type="UI.SelectionRangeType"&gt;
+                                &lt;PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign"/&gt;
+                                &lt;PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option"/&gt;
+                                &lt;PropertyValue Property="Low" String="ABC"/&gt;
+                            &lt;/Record&gt;
+                        &lt;/Collection&gt;
+                    &lt;/PropertyValue&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+				<p></p></div></div>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_vj2_kr3_fhb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Parameteres coming from...</th>
+								<th colspan="1" rowspan="1">Overrides...</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Navigation context</td>
+								<td colspan="1" rowspan="1" valign="top">User default variant settings</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">User default variant settings</td>
+								<td colspan="1" rowspan="1" valign="top">SAP Fiori Launch Pad user default settings</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">SAP Fiori Launch Pad user default settings</td>
+								<td colspan="1" rowspan="1" valign="top">SelectionVariant default values</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">SelectionVariant default values</td>
+								<td colspan="1" rowspan="1" valign="top"><code>Common.FilterDefaultValue</code></td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			<p></p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>The default values coming from the <code>SelectionVariant</code> are
+							considered on application load for standard variant. The default values
+							do not persist if you switch to another variant and return to the
+							standard variant.</p>
+					</li>
+					<li class="li">
+						<p>If <code>DisplayCurrency</code> value is missing during navigation
+							context, analytical list pages looks for this value from the SAP Fiori
+							Launch Pad user default settings.</p>
+					</li>
+				</ul>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/3d33684b08ca4490b26a844b6ce19b83.html" title="Analytical List Page (ALP) is an SAP Fiori elements application for detailed analytics." class="sap-doc">Analytical List Page</a></li><li><a href="#/topic/66f9c55623f243649f81be9d5a9574dc.html" title="Lets you specify filter field values based on the configuration in the sap:filter-restriction of the respective field in the entity set." class="sap-doc">Compact Filter Setup</a></li><li><a href="#/topic/1714720cae984ad8b9d9111937e7cd38.html" title="An intuitive way of choosing filter values from an associated measure value.This setup supports line, bar, and donut charts." class="sap-doc">Visual Filter Setup</a></li><li><a href="#/topic/16d43eb0472c4d5a9439ca1bf92c915d.html" title="Lets you map an entity to another entity that is associated with a different entity set. The value list annotation defines the relationship between filter fields of the main entity set and the fields in the value help entity set." class="sap-doc">Defining ValueList Annotation</a></li></ul></section></div></section></div></body></html>

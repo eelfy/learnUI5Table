@@ -1,0 +1,17 @@
+[
+	{
+		"name": "SelectionVariant",
+		"group": ["navigation"],
+		"module": "./navigation/SelectionVariantTest.qunit"
+	},
+	{
+		"name": "PresentationVariant",
+		"group": ["navigation"],
+		"module": "./navigation/PresentationVariantTest.qunit"
+	},
+	{
+		"name": "NavigationHandler",
+		"group": ["navigation"],
+		"module": "./navigation/NavigationHandlerTest.qunit"
+	}
+]

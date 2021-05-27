@@ -1,0 +1,18 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2613ebc835764abd9aefd2e6fa8b7392" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Deleting an Entity</h1><div class="fig"><h1 class="topictitle1 title">Deleting an Entity</h1><div class="shortdesc">The Context.delete method deletes an entity on the server and
+		updates the user interface accordingly.</div><p>When you delete the entity from a list binding, the corresponding row is removed. When
+			you delete the entity from a context binding, the binding and all dependent bindings
+			lose the reference.</p><p><span class="emphasis">Example: Delete From a Table</span></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">onDeleteSalesOrder : function () {
+    var oTable = this.getView().byId("SalesOrders"),
+        oSalesOrderContext = oTable.getSelectedItem().getBindingContext();
+ 
+    oSalesOrderContext.delete("$auto").then(function () {
+        oTable.removeSelections();
+        MessageBox.alert("Deleted Sales Order",
+            {icon : MessageBox.Icon.SUCCESS, title : "Success"});
+    }, function (oError) {
+        MessageBox.alert("Could not delete Sales Order: "
+            + oError.message, {icon : MessageBox.Icon.ERROR, title : "Error"});
+    });
+},</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/sap.ui.model.odata.v4.Context/methods/delete" title="#/api/sap.ui.model.odata.v4.Context/methods/delete" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.Context/methods/delete">Context.delete</a></li>
+	</ul></section></div></section></div></body></html>

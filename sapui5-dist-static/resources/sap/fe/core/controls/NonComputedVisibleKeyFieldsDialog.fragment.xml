@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcField="sap.ui.mdc.field"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<template:with path="fields>" var="allFields">
+		<form:SimpleForm>
+			<template:repeat list="{allFields>}" var="key">
+				<template:with path="key>" helper="COMMON.getPathToKey" var="immutableKey">
+					<Label text="{= ${immutableKey>@com.sap.vocabularies.Common.v1.Label}}" />
+					<mdc:Field
+						delegate="{name: 'sap/ui/mdc/odata/v4/FieldBaseDelegate'}"
+						id="{= ID.generate(['CreateDialog', ${entitySet>@sapui.name}, ${immutableKey>@sapui.name}]) }"
+						value="{immutableKey>@@MODEL.format}"
+						width="100%"
+						required="{= ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl} &amp;&amp; ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl/$EnumMember} &amp;&amp; ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl/$EnumMember} === 'com.sap.vocabularies.Common.v1.FieldControlType/Mandatory'}"
+						display="{immutableKey>@@FIELD.getAPDialogDisplayFormat}"
+						change="{= '.handleChange($event, \'' + ${immutableKey>@sapui.name} + '\')' }"
+						liveChange=".handleLiveChange"
+						fieldHelp="{= ${immutableKey>@@Property.hasValueHelp} ? ID.generate([${immutableKey>@sapui.name},'VH']) : undefined }"
+						customData:fieldName="{immutableKey>@sapui.name}"
+					>
+
+						<template:if test="{immutableKey>@@Property.hasValueHelp}">
+							<template:then>
+								<mdc:dependents>
+									<mdcField:FieldValueHelp
+										id="{= ID.generate([${immutableKey>@sapui.name},'VH']) }"
+										delegate="{= '{name:\'sap/fe/macros/FieldValueHelpDelegate\', payload: {propertyPath: \''+${immutableKey>@@Property.getPropertyPath}+'\' } }' }"
+										validateInput="{= ValueHelpTemplating.requiresValidation(${immutableKey>@@Property.getProperty})}"
+										noDialog="{= ${immutableKey>@@Property.hasValueHelpWithFixedValues}}"
+									>
+										<mdcField:FieldValueHelpMTableWrapper />
+									</mdcField:FieldValueHelp>
+								</mdc:dependents>
+							</template:then>
+						</template:if>
+					</mdc:Field>
+				</template:with>
+			</template:repeat>
+		</form:SimpleForm>
+	</template:with>
+</core:FragmentDefinition>

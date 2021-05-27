@@ -1,0 +1,205 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio06a4c3ac1cf545a7b51864e7f3aa02da" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Smart Variant Management </h1><div class="fig"><h1 class="topictitle1 title">Smart Variant Management </h1><div class="shortdesc">The sap.ui.comp.smartvariants.SmartVariantManagement control
+		provides an interface to enable a simple integration of the
+			sap.ui.comp.variants.VariantManagement
+		control and access to the layered repository of SAPUI5 flexibility for easy
+		communication.</div><p>The frequently asked questions section below aims at answering some
+				basic questions that you might have when using this control.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The code samples in this section reflect examples of possible use
+				cases and might not always be suitable for your purposes. Therefore, we recommend
+				that you do not copy and use them directly.</p></div></div><p>For more
+				information about this control, see the <a href="#/api/sap.ui.comp.smartvariants.SmartVariantManagement" title="#/api/sap.ui.comp.smartvariants.SmartVariantManagement" class="sap-doc" alt="#/api/sap.ui.comp.smartvariants.SmartVariantManagement">API Reference</a> and the
+				<a href="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" title="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" class="sap-doc" alt="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07">sample</a>.</p><section>
+			<h2 class="title ">Overview</h2>
+			<p>The <code>SmartVariantManagement</code> control is a specialization of the
+					<code>VariantManagement</code> control. This basic control handles the
+				visual representation of variants, or views, on the user interface.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You can define views for specific selections of data on the user interface, for
+				example, based on filter settings. Views are also called variants, usually in a more
+				technical context, for example, in the API names and texts of the control.</p></div></div>
+			<p>The <code>SmartVariantManagement</code> control communicates with the layered
+				repository. The layered repository provides a way to store and retrieve flexibility
+				information, such as personalization data and views for other controls.</p>
+			
+			<p>End
+				users can create, change, and save
+				views
+				that will then be stored in the <code>USER</code> or <code>CUSTOMER</code>
+				layer of the layered repository depending on the relevant use case.</p>
+			<p>For more information about SAPUI5 flexibility and
+				the layering concept, see <a href="#/topic/a8e55aa2f8bc4127923b20685a6d1621.html" title="Modification-free, cost-saving, easy to use, and performant: Discover the new flexibility when adapting SAP Fiori UIs using SAPUI5 flexibility." class="sap-doc">SAPUI5 Flexibility: Adapting UIs Made Easy</a>.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>We recommend to use the <code>SmartVariantManagement</code> control rather
+				than the <code>VariantManagement</code> control, because it enables the
+				communication with the layered repository.</p></div></div>
+			<p>The <code>SmartVariantManagement</code> control can be used in combination with
+				the following smart controls:</p>
+			<ul class="ul ">
+				<li class="li"><code>SmartFilterBar</code>
+				</li>
+				<li class="li"><code>SmartTable</code></li>
+				<li class="li"><code>SmartChart</code></li>
+			</ul>
+		</section><section>
+			<h2 class="title ">Prerequisites</h2>
+			<p>To use the <code>SmartVariantManagement</code> control, consuming applications
+				have to provide the following information and comply with the interface standard: </p>
+			<ul class="ul ">
+				<li class="li">The control using the personalization data </li>
+				<li class="li">A type</li>
+				<li class="li">The name of the property describing the key</li>
+				<li class="li">Optional information about the data source</li>
+			</ul>
+			<p>This information has to be transferred to the <code>SmartVariantManagement</code>
+				control during creation using the <code>personalizableControls</code>
+				association. To transfer the data, the
+					<code>sap.ui.comp.smartvariants.PersonalizableInfo</code> class must be
+				used.</p>
+			<p>The control using the personalization data must also be attached to the
+					<code>Initialise</code> event of the control and call the
+					<code>initialise</code> method of the control, as shown in the following
+				example:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+    'sap/ui/comp/smartvariants/SmartVariantManagement',
+    'sap/ui/comp/smartvariants/PersonalizableInfo'
+], function (SmartVariantManagement, PersonalizableInfo) {
+
+    var oSmartVariantManagement = new SmartVariantManagement();
+    var oPersInfo = new PersonalizableInfo({
+        type: "filterBar",
+        keyName: "persistencyKey",
+        dataSource: this.getEntityType()
+         control: this
+    });
+
+    oSmartVariantManagement.addPersonalizableControl(oPersInfo);
+
+    oSmartVariantManagement.attachInitialise(this.fnInitialiseVariants.bind(this));
+
+    oSmartVariantManagement.initialise(function () {
+             // get informed about init
+        },
+        this
+    );
+})
+</pre></div></section>
+			<p>Once the <code>SmartVariantManagement</code> control has initialized the layered
+				repository and retrieved the relevant changes, it informs the control using the
+				personalization data about the end of the initialization phase with the
+					<code>Initialise</code> event.</p>
+		</section><section><h2 class="title ">Details</h2><p>To exchange data with the layered repository, the control using
+				the personalization data has to provide the following methods that can return and
+				retrieve variants:</p><ul class="ul ">
+				<li class="li"><code>fetchVariant</code></li>
+				<li class="li"><code>applyVariant</code> (<code>oVariant</code>) </li>
+			</ul><p>The <code>fetchVariant</code> method is called by the
+					<code>SmartVariantManagement</code> control
+				every
+				time an interaction takes place with the
+				<code>VariantManagement</code> control and when executing a
+					<code>Save</code>. In the latter case, the control using the personalization
+				data has to return a JSON-compliant object. The layered repository treats this
+				information as a black box. It does not manipulate this object in any way.</p><p>The
+					<code>applyVariant</code> method is called by the
+					<code>SmartVariantManagement</code> control every time the user selects a
+				new entry in the view list. The previously stored JSON object will be transferred to
+				the <code>applyVariant</code> method, and the control using the personalization
+				data can now respond to the information stored in this object.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The JSON object that represents the variant is serialized to a string during
+					processing. Therefore, the JSON object must contain only data that can be
+					serialized and deserialized.</p>
+			<p></p></div></div><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.comp.smartfilterbar.SmartFilterBar.prototype.fetchVariant = function() {
+         var oVariant = {};
+         
+         // Retrieve the variant’s content e.g. from input controls and add it to oVariant
+
+         return oVariant;
+};
+
+sap.ui.comp.smartfilterbar.SmartFilterBar.prototype.applyVariant = function(oVariant) {
+
+         // Use the content of a user-selected variant and apply it e.g. to input controls
+};
+</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The
+					<code>SmartVariantManagement</code> control triggers the
+					<code>fetchVariant</code> method without any user interaction right after it
+				fires the <code>Initialise</code> event. This enables the
+					<code>SmartVariantManagement</code> control to handle the standard view.
+				This view represents the state of the user interface that is delivered by default.
+				The control can revert the data to this view every time the user selects the
+				standard view at a later point in
+				time.</p></div></div><section>
+				<h3 class="title ">Page
+					Variants</h3>
+				<p> A page variant is a single UI instance of the
+						<code>SmartVariantManagement</code> control that can personalize
+						<span class="emphasis">multiple</span> smart controls instead of only one.</p>
+				<p>To use this enhanced function of the <code>SmartVariantManagement</code>
+					control, take the following into consideration:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p> The <code>SmartVariantManagement</code> control has a
+								<code>persistencyKey</code> property of its own.</p>
+						<p>This is the key for storing the personalization data of the smart
+							controls that you want to personalize.</p>
+					</li>
+					<li class="li">
+						<p>For each smart control, a persistency key has to be provided.</p>
+						<p>Within the personalization data, this key will identify the specific data
+							for each individual smart control.</p>
+					</li>
+					<li class="li">
+						<p>The smart controls support the <code>smartVariant</code> association
+							which has to be assigned along with the page variant reference.</p>
+					</li>
+				</ul>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If the page variant is
+					used
+					by the <code>SmartFilterBar</code> control, the persistency key of the page
+					variant has to be assigned using the <code>pageVariantPersistencyKey</code>
+					custom data of the <code>SmartFilterBar</code> control. The
+						<code>SmartFilterBar</code> control internally adapts the related
+						<code>SmartChart</code> or <code>SmartTable</code> controls, and
+					therefore, the <code>smartVariant</code> association doesn't have to be
+					assigned. </p></div></div>
+				For more
+					information about page variants, see the <a href="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.08" title="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.08" class="sap-doc" alt="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.08">sample</a>.
+				
+			</section><section>
+				<h3 class="title ">Favorites</h3>
+				<p>If you want to use favorites to manage your views, you have to set the
+						<code>useFavorites</code>
+					property in the <code>VariantManagement</code> control to
+						<code>true</code> (default is <code>false</code>).</p>
+				<p>In the <code>VariantManagement</code> control, each
+						<code>VariantItem</code> has a <code>favorite</code> property that
+					determines if the <code>VariantItem</code> in question is treated as a
+					favorite.</p>
+				<p>The <code>SmartVariantManagement</code> control automatically starts in a
+					mode where favorites are activated. </p>
+				<p>You can define favorites in the <span class="ph uicontrol">Manage Views</span> dialog.
+					Favorites selected in the dialog are stored as changes in the layered repository
+					that are applied each time the <code>SmartVariantManagement</code> control
+					is initiated.</p>
+			</section></section><section><h2 class="title ">FAQ</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">How can I share my views?</h3></div><div class="fig"><p>The <code>SmartVariantManagement</code> control allows you as the end user to
+					share your views with other users. This can be done by making them public by
+					selecting <span class="ph uicontrol">Public</span> in the <span class="ph uicontrol">Save View</span>
+					dialog when saving a new view.</p><p>When you want to save the view, you have to select a transport request. The
+					selection you get depends on the setup of your system and how you use SAPUI5 flexibility.
+					The transport function for the layered repository has to be enabled.
+						For more information about sharing views, see the <a href="#/api/sap.ui.comp.variants.VariantManagement/methods/getShowShare" title="#/api/sap.ui.comp.variants.VariantManagement/methods/getShowShare" class="sap-doc" alt="#/api/sap.ui.comp.variants.VariantManagement/methods/getShowShare">API Reference</a> and the
+						<a href="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" title="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" class="sap-doc" alt="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07">sample</a>.</p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">How can I make sure that only key users can make views
+					public?</h3></div><div class="fig"><p>You can use a setting in SAPUI5 flexibility
+					that determines whether views can be shared or made public by all users
+					(default) or key users only. For more information on how to activate the related
+					key user check, see <a title="https://launchpad.support.sap.com/#/notes/" href="https://launchpad.support.sap.com/#/notes/2658662" target="_blank" rel="noopener noreferrer">2658662</a>. For more information about
+					making views public, see <a href="#/topic/97fc0eaaf8b045779878ea829586da1a.html" title="The VariantManagement control allows you to handle views and makes it possible for the user to persist changes carried out on the UI and then later retrieve these changes." class="sap-doc">Step 7: View Management</a>.</p></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

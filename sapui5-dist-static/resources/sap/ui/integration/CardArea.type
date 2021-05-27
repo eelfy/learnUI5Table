@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simple-type xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>CardArea</name>
+    <derived/>
+    <documentation>Defines the areas in a card.</documentation>
+    <since>1.86</since>
+    <enumeration>
+        <value name="Header">
+            <documentation>The header.</documentation>
+        </value>
+        <value name="Filters">
+            <documentation>The filters area.</documentation>
+        </value>
+        <value name="Content">
+            <documentation>The content area.</documentation>
+        </value>
+    </enumeration>
+</simple-type>

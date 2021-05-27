@@ -1,0 +1,175 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe1ce1de315994a02bf162f4b3b5a9f09" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 28: Unit Test with QUnit</h1><div class="fig"><h1 class="topictitle1 title">Step 28: Unit Test with QUnit</h1><div class="shortdesc">Now that we have a test folder in the app, we can start to increase our test
+		coverage. </div><p>Actually, every feature that we added to the app so far, would require a separate test case. We have totally neglected this so far, so
+			let’s add a simple unit test for our custom formatter function from Step 23. We will test if the long text for our status is correct by
+			comparing it with the texts from our resource bundle.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>In this tutorial, we focus on a simple use case for the test implementation. If you want to learn more about QUnit tests, have a look at
+			our <a href="#/topic/291c9121e6044ab381e0b51716f97f52.html" title="In this tutorial we will test application functionality with the testing tools that are delivered with SAPUI5. At different steps of this tutorial you will write tests using QUnit, OPA5, and the OData V2 mock server. Additionally, you will learn about testing strategies, Test Driven Development (TDD), and much more." class="sap-doc">Testing</a> tutorial, especially <a href="#/topic/b81736e0fcb246efb3b0cf0ca422f8fd.html" title="In this step we will analyze the unit testing infrastructure and write a first unit test." class="sap-doc">Step 2: A First Unit Test</a>.</p></div></div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loioa933bc8e1b8c45a88252f1aecff7ba36_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">A unit test for our formatters is now available</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.28/preview" title="#/sample/sap.m.tutorial.walkthrough.28/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.28/preview">Walkthrough - Step 28</a>.</p>
+			<div><div class="fig"><img src="loio1b5613ac3ab94757af2c7823039222a9_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Folder Structure for this Step</span></div>
+			<p>We add a new folder <code>unit</code> under the <code>test</code> folder and a <code>model</code> subfolder where we will
+				place our formatter unit test. The folder structure matches the app structure to easily find the corresponding unit tests.</p>
+		</section><section>
+			<h2 class="title ">webapp/test/unit/model/formatter.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">/*global QUnit*/
+
+sap.ui.define([
+	"sap/ui/demo/walkthrough/model/formatter",
+	"sap/ui/model/resource/ResourceModel"
+], function (formatter, ResourceModel) {
+	"use strict";
+
+	QUnit.module("Formatting functions", {
+		beforeEach: function () {
+			this._oResourceModel = new ResourceModel({
+				bundleUrl: sap.ui.require.toUrl("sap/ui/demo/walkthrough") + "/i18n/i18n.properties"
+			});
+		},
+		afterEach: function () {
+			this._oResourceModel.destroy();
+		}
+	});
+
+
+	QUnit.test("Should return the translated texts", function (assert) {
+
+		// Arrange
+		// this.stub() does not support chaining and always returns the right data
+		// even if a wrong or empty parameter is passed.
+		var oModel = this.stub();
+		oModel.withArgs("i18n").returns(this._oResourceModel);
+		var oViewStub = {
+			getModel: oModel
+		};
+		var oControllerStub = {
+			getView: this.stub().returns(oViewStub)
+		};
+
+		// System under test
+		var fnIsolatedFormatter = formatter.statusText.bind(oControllerStub);
+
+		// Assert
+		assert.strictEqual(fnIsolatedFormatter("A"), "New", "The long text for status A is correct");
+
+		assert.strictEqual(fnIsolatedFormatter("B"), "In Progress", "The long text for status B is correct");
+
+		assert.strictEqual(fnIsolatedFormatter("C"), "Done", "The long text for status C is correct");
+
+		assert.strictEqual(fnIsolatedFormatter("Foo"), "Foo", "The long text for status Foo is correct");
+	});
+
+});</span></pre></div></section>
+			<p>We create a new <code>formatter.js</code> file under <code>webapp/test/unit/model</code> where the unit test for the custom
+				formatter is implemented. The <code>formatter</code> file that we want to test is loaded as a dependency. We also need a
+				dependency to the <code>ResourceModel</code>, because we want to check if the translated texts are correct.</p>
+			<p>The formatter file just contains one QUnit module for our formatter function. It instantiates our <code>ResourceBundle</code> with
+				the localized texts in the <code>beforeEach</code> function and destroys it again in the <code>afterEach</code> function.
+				These functions are called before and after each test is executed.</p>
+			<p>Next is our unit test for the formatter function. In the implementation of the <code>statusText</code> function that we created in
+				step 23 we access the <code>ResourceBundle</code> with the following queued call: <code>var resourceBundle =
+					this.getView().getModel("i18n").getResourceBundle();</code>.</p>
+			<p>Since we do not want to test the controller, the view, or the model functionality, we first remove the dependencies by replacing these
+				calls with empty hulls with the help of <code>SinonJS</code> and its stub method. This happens in the <code>Arrange</code>
+				section of the unit test. SinonJS injects a stub method for all objects so we can simply call <code>this.stub()</code> to create a
+				new stub for any behavior we need to mock.</p>
+			<p>Test stubs are functions with pre-programmed behavior. They support the full SinonJS test spy API in addition to methods which can be
+				used to alter the stub’s behavior. If this part is a bit confusing have a look at the official SinonJS documentation for test spies or
+				ignore it for now, it will become clear later on.</p>
+			<p>Then we bind our stub to the <code>statusText</code> formatter by calling the <code>bind</code> function of JavaScript. The
+					<code>this</code> pointer is now bound to our controller stub when the function is invoked using the variable
+					<code>fnIsolatedFormatter</code> and we can still pass in arguments as we like. This happens in the "system under test" part
+				of the test.</p>
+			<p>Finally we perform our assertions. We check each branch of the formatter logic by invoking the isolated formatter function with the
+				values that we expect in the data model (<code>A</code>, <code>B</code>, <code>C</code>, and everything else). We strictly
+				compare the result of the formatter function with the hard-coded strings that we expect from the resource bundle and give a meaningful
+				error message if the test should fail. We hard-code the strings here to identify issues with the resource bundle properties. If a
+				property was missing, the test would still be successful if we check against the real value (that would be an empty string on both
+				sides) from the resource bundle.</p>
+		</section><section id="section_gnt_54c_yfb">
+			<h2 class="title ">webapp/test/unit/unitTests.qunit.html (New)</h2>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;Unit tests for SAPUI5 Walkthrough&lt;/title&gt;
+	&lt;meta charset="utf-8"&gt;
+
+	&lt;script
+		id="sap-ui-bootstrap"
+		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-resourceroots='{
+			"sap.ui.demo.walkthrough": "../../"
+		}'
+		data-sap-ui-async="true"&gt;
+	&lt;/script&gt;
+
+	&lt;link rel="stylesheet" type="text/css" href="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/qunit-2.css"&gt;
+
+	&lt;script src="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/qunit-2.js"&gt;&lt;/script&gt;
+	&lt;script src="https://openui5.hana.ondemand.com/resources/sap/ui/qunit/qunit-junit.js"&gt;&lt;/script&gt;
+	&lt;script src="https://openui5.hana.ondemand.com/resources/sap/ui/qunit/qunit-coverage.js"&gt;&lt;/script&gt;
+	&lt;script src="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/sinon.js"&gt;&lt;/script&gt;
+	&lt;script src="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/sinon-qunit.js"&gt;&lt;/script&gt;
+
+	&lt;script src="unitTests.qunit.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id="qunit"/&gt;
+	&lt;div id="qunit-fixture"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</span></pre></div></section>
+			<p>The so-called QUnit test suite is an HTML page that triggers all QUnit tests for the application. Most of it is generating the layout
+				of the result page that you can see in the preview and we won’t further explain these parts but focus on the application parts
+				instead. </p>
+			<p>Let’s start with the namespaces. Since we are now in the <code>webapp/test/unit</code> folder, we actually need to go up two levels
+				to get the <code>src</code> folder again. This namespace can be used inside the tests to load and trigger application
+				functionality.</p>
+			<p>First, we load some basic QUnit functionality via script tags. Other QUnit tests can be added here as well. Then the HTML page loads
+				another script called <code>unitTests.qunit.js</code>, which we will create next. This script will execute our formatter.</p>
+		</section><section id="section_hnt_54c_yfb">
+			<h2 class="title ">webapp/test/unit/unitTests.qunit.js (New)</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">/* global QUnit */
+
+QUnit.config.autostart = false;
+
+sap.ui.getCore().attachInit(function () {
+	"use strict";
+
+	sap.ui.require([
+		"sap/ui/demo/walkthrough/test/unit/model/formatter"
+	], function () {
+		QUnit.start();
+	});
+});
+</pre></div></section>
+			<p>This script loads and executes our formatter. If we now open the <code>webapp/test/unit/unitTests.qunit.html</code> file in the
+				browser, we should see our test running and verifying the formatter logic.</p>
+		</section><section>
+			<h2 class="title "> Conventions</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p>All unit tests are placed in the webapp/test/unit folder of the app.</p>
+				</li>
+				<li class="li">
+					<p>Files in the test suite end with <code>*.qunit.html</code>.</p>
+				</li>
+				<li class="li">
+					<p>The <code>unitTests.qunit.html</code> file triggers all unit tests of the app.</p>
+				</li>
+				<li class="li">
+					<p>A unit test should be written for formatters, controller logic, and other individual functionality.</p>
+				</li>
+				<li class="li">
+					<p>All dependencies are replaced by stubs to test only the functionality in scope.</p>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/bae9d90d2e9c4206889368f04edab508">Step 27: Mock Server Configuration</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/9bf4dce43b7943d0909cd6c58a933589">Step 29: Integration Test with OPA</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/09d145cd86ee4f8e9d08715f1b364c51.html" title="QUnit is a powerful, easy-to-use JavaScript unit testing framework. It is used by the jQuery, jQuery UI and jQuery Mobile projects and is capable of testing any generic JavaScript code. It supports asynchronous tests out-of-the-box." class="sap-doc">Unit Testing with QUnit</a></li>
+		<li><a href="https://qunitjs.com/" title="https://qunitjs.com/" class="external-link" target="_blank" rel="noopener">QUnit Home Page</a></li>
+		<li><a href="http://sinonjs.org/" title="http://sinonjs.org/" class="external-link" target="_blank" rel="noopener">Sinon.JS Home Page</a></li>
+		<li><a href="#/topic/291c9121e6044ab381e0b51716f97f52.html" title="In this tutorial we will test application functionality with the testing tools that are delivered with SAPUI5. At different steps of this tutorial you will write tests using QUnit, OPA5, and the OData V2 mock server. Additionally, you will learn about testing strategies, Test Driven Development (TDD), and much more." class="sap-doc">Testing</a></li>
+	</ul></section></div></section></div></body></html>

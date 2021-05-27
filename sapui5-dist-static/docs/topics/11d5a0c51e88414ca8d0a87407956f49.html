@@ -1,0 +1,32 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio11d5a0c51e88414ca8d0a87407956f49" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Defining the Default Sort Order</h1><div class="fig"><h1 class="topictitle1 title">Defining the Default Sort Order</h1><div class="shortdesc">You can define whether the default sort order for tables is ascending or descending
+        by using the com.sap.vocabularies.UI.v1.PresentationVariant annotation term
+        and the SortOrder property. </div><p>
+            </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Presentation
+                Variant</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFAR_CUSTOMER_LINE_ITEMS2_SRV.Item"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Visualizations"&gt;
+                &lt;Collection&gt;
+                    &lt;AnnotationPath&gt;@UI.LineItem&lt;/AnnotationPath&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+            &lt;PropertyValue Property="SortOrder"&gt;
+                &lt;Collection&gt;
+                    &lt;Record&gt;
+                        &lt;PropertyValue Property="Property" PropertyPath="CompanyCode"/&gt;
+                        &lt;PropertyValue Property="Descending" Bool="true"/&gt;
+                    &lt;/Record&gt;
+                    &lt;Record&gt;
+                        &lt;PropertyValue Property="Property" PropertyPath="Customer"/&gt;
+                    &lt;/Record&gt;
+                &lt;/Collection&gt;
+            &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>If
+            no sort order is defined, the property value is <code>Ascending</code>.<p></p><section id="section_w1s_dmf_k4b">
+            <h2 class="title ">More Information</h2>
+            <p>For more information about the presentation variant, see <a href="#/topic/49a6ba5b8d6946208322a9f7e16837c2.html" title="SAP Fiori elements allows you to specify a SelectionPresentationVariant." class="sap-doc">Configuring Key Annotations that Influence the Content</a>.</p>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,57 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofe7a158313af4590ad60f844e5b43b80" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Continuous Integration: Ensure Code Quality </h1><div class="fig"><h1 class="topictitle1 title">Continuous Integration: Ensure Code Quality </h1><div class="shortdesc">This section describes the setup of a development project where multiple developers
+		work together on the same code.</div><p>When you develop an app, you want, of course, to deliver high code quality. To do so, you have
+			various tools at hand:</p><ul class="ul ">
+			<li class="li"><p>Unit and integration tests to make sure that your change doesn't break the app or other tests
+					(see <a href="#/topic/09d145cd86ee4f8e9d08715f1b364c51.html" title="QUnit is a powerful, easy-to-use JavaScript unit testing framework. It is used by the jQuery, jQuery UI and jQuery Mobile projects and is capable of testing any generic JavaScript code. It supports asynchronous tests out-of-the-box." class="sap-doc">Unit Testing with QUnit</a> and <a href="#/topic/2696ab50faad458f9b4027ec2f9b884d.html" title="OPA5 is an API for SAPUI5 controls. It hides asynchronicity and eases access to SAPUI5 elements. This makes OPA especially helpful for testing user interactions, integration with SAPUI5, navigation, and data binding." class="sap-doc">Integration Testing with One Page Acceptance Tests (OPA5)</a>) </p></li>
+			<li class="li"><p>Code analyzer (or "linter") to check whether the code follows the code style
+					conventions that apply to your project</p></li>
+			<li class="li"><p>A code coverage analyzer to check the test coverage of your code</p></li>
+			<li class="li"><p>A code collaboration tool to let other experts review your code</p></li>
+			<li class="li">
+				<p>An automation server that orchestrates the automated task</p>
+			</li>
+		</ul><p>If you work in a team where you share the same code with your colleagues, or if you work in a
+			continuous delivery context where an app is updated on a regular basis, you need the
+			support of automated continuous integration processes.</p><p>Continuous integration makes sure that only code that has passed various automated and manual
+			checks is merged to productive use.</p><p>In an SAPUI5 project, the process,
+			for example, can look like this:</p><ol>
+				<li class="li">
+					<p>When the code is ready, the developer commits the code to the source code
+						management system (SCMS, for example, <span class="ph uicontrol">Gerrit Code
+							Review</span>) and assigns experts that should review the code.
+					</p>
+				</li>
+				<li class="li">
+					<p>The SCMS calls an automation server (for example,
+							<span class="ph uicontrol">Jenkins</span>).</p>
+				</li>
+				<li class="li">
+					<p>The developer triggers the peer code review and the automation server starts
+						a voter job that triggers, among others:</p><ul class="ul ">
+							<li class="li">
+								<p>Static code checks (for example, <span class="ph uicontrol">ESLint</span>)
+									to check the code style</p>
+							</li>
+							<li class="li">
+								<p>Unit and integration test automated by a test runner (for
+									example, <span class="ph uicontrol">Karma</span>)</p>
+							</li>
+							<li class="li">
+								<p>Analysis to check whether all parts of the code are covered with automated tests (for
+									example, with <span class="ph uicontrol">Karma</span> plug-in
+										<span class="ph uicontrol">Istanbul Code Coverage</span>)</p>
+							</li>
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p>When the voter job and the human reviewer have both given their OK, the change can be
+						merged.</p>
+				</li>
+			</ol><div><div class="fig"><img src="loiob1c16e7bde8d466a804647f9c0fb9d37_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Code cannot be merged because automated tests failed</span></div><p></p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/7cdee404cac441888539ed7bfe076e57.html" title="SAPUI5 provides several testing options, like to unit and integration tests and the OData V2 mock server." class="sap-doc">Testing</a></li>
+		<li><a href="https://www.gerritcodereview.com" title="https://www.gerritcodereview.com" class="external-link" target="_blank" rel="noopener">Gerrit Code Review Home Page</a></li>
+		<li><a href="https://jenkins.io/" title="https://jenkins.io/" class="external-link" target="_blank" rel="noopener">Jenkins Home Page</a></li>
+		<li><a href="https://eslint.org/" title="https://eslint.org/" class="external-link" target="_blank" rel="noopener">ESLint Home Page</a></li>
+		<li><a href="https://karma-runner.github.io/" title="https://karma-runner.github.io/" class="external-link" target="_blank" rel="noopener">Karma Home Page</a></li>
+		<li><a href="https://istanbul.js.org/" title="https://istanbul.js.org/" class="external-link" target="_blank" rel="noopener">Istanbul Code Coverage Home Page</a></li>
+	</ul></section></div></section></div></body></html>

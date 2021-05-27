@@ -1,0 +1,188 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob20dc7a3d9ca41bebdb86fc3ae3295bf" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Example: Replacing Standard Navigation in a Responsive Table on the Object Page</h1><div class="fig"><h1 class="topictitle1 title">Example: Replacing Standard Navigation in a Responsive Table on the Object Page</h1><div class="shortdesc">You can replace the standard navigation from the object page with your own navigation to
+      an external or internal target.</div><section id="context_jdd_c22_scb" class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+         <p>
+            </p><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div>
+         <p></p>
+      </div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section><section id="task_vqm_nq1_34b" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">SAP Fiori Elements for OData V2</h1><div class="fig"><h1 class="topictitle1 title">SAP Fiori Elements for OData V2</h1><section id="context_dlq_4q1_34b" class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig"></div></section><section id="steps_z5r_p12_z1b" class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+            <li class="step">
+               <span class="cmd">Add a navigation target to the manifest.js file.</span>
+               <div class="itemgroup info">
+                  <p>In the example below, external navigation (outbound) via the SAP Fiori Launchpad has been added. </p>
+                  <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                     </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.app": {
+...
+  "crossNavigation": {
+     "inbounds": {},
+     "outbounds": {
+       "EPMProductManageSt": {
+         "semanticObject": "EPMProduct",
+         "action": "manage",
+         "parameters": {
+            "preferredMode": {
+               "value": {
+                  "value": "display"
+               }
+            }
+         }
+      }
+   }
+ }
+....
+</pre></div></section>
+                  <p></p></div></div>
+               </div>
+            </li>
+            <li class="step">
+               <span class="cmd">Register your extension in the manifest.js file.</span>
+               <div class="itemgroup info">
+                  <p>
+                     </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"extends": {
+   "extensions": {
+      ... 
+      "sap.ui.controllerExtensions": { 
+         ...
+         "sap.suite.ui.generic.template.ObjectPage.view.Details": { 
+            ... 
+            "controllerName": "STTA_MP.ext.controller.DetailsExtension",
+            ...
+         }
+      } 
+      ...
+</pre></div></section>
+                     <p></p></div></div>
+                  <p></p>
+               </div>
+            </li>
+            <li class="step">
+               <span class="cmd">Implement your controller extension.</span>
+               <div class="itemgroup info">
+                  <p>You have to implement the <span class="ph sap-technical-name">onListNavigationExtension</span> function within the object page
+                     controller extension.</p>
+                  <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                     </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">onListNavigationExtension: function(oEvent) {
+ var oNavigationController = this.extensionAPI.getNavigationController();
+ var oBindingContext = oEvent.getSource().getBindingContext();
+ var oObject = oBindingContext.getObject();
+ // for notebooks we trigger external navigation for all others we use internal navigation
+ if (oObject.ProductCategory == "Notebooks") {
+    oNavigationController.navigateExternal("EPMProductManageSt");
+ } else {
+    // return false to trigger the default internal navigation
+    return false;
+ }
+ // return true is necessary to prevent further default navigation
+ return true;
+ },
+</pre></div></section>
+                  <p></p></div></div>
+               </div>
+            </li>
+         </ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="task_txp_vq1_34b" class="collapsible section topic"><h1 class="collapsible-icon sap-icon innerTitle">SAP Fiori Elements for OData V4</h1><div class="fig"><h1 class="topictitle1 title">SAP Fiori Elements for OData V4</h1><section id="context_c4k_pyz_h4b" class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+            <p>Application developers can selectively change the target when chevron navigation is triggered from a table.</p>
+         </div></section><section id="steps_ovs_pzz_h4b" class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+            <li class="step">
+               <span class="cmd">Add an outbound navigation configuration pointing to the target app in the manifest.json file.</span>
+               <div class="itemgroup info">
+                  <p>
+                     </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.app": {
+    ...
+    "crossNavigation": {
+        "inbounds": {},
+        "outbounds": {
+            "FreestyleNav1": {
+                "semanticObject": "v4Freestyle",
+                "action": "Inbound",
+                "parameters": {
+                    "SoldToParty": {
+                        "value": {
+                            "value": "7P100001",
+                            "format": "plain"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section>
+                     <p></p></div></div>
+                  <p></p>
+               </div>
+            </li>
+            <li class="step">
+               <span class="cmd">Configure the extension with the controller for the object page in the manifest.json file.</span>
+               <div class="itemgroup info">
+                  <p>
+                     </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+    "extends": {
+        "extensions": {
+            "sap.ui.controllerExtensions": {
+                "sap.fe.templates.ListReport.ListReportController": {
+                    "controllerName": "SalesOrder.custom.LRExtend"
+                },
+                "sap.fe.templates.ObjectPage.ObjectPageController": {
+                    "controllerName": "SalesOrder.custom.OPExtend"
+                }
+            }
+        }
+    }
+}</pre></div></section>
+                     <p></p></div></div>
+                  <p></p>
+               </div>
+            </li>
+            <li class="step">
+               <span class="cmd">Implement the <code>onBeforeNavigation</code> extension method within your controller extension.</span>
+               <div class="itemgroup info">
+                  <p>
+                     </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">override: {
+    routing: {
+        onBeforeNavigation: function(oContextInfo) {
+            var oLineContext = oContextInfo.sourceBindingContext,
+            oNav = this.base.getExtensionAPI().intentBasedNavigation;
+            // for salesOrder 6437 navigate to FreeStyle App
+            if (oLineContext.SalesOrder === "6437") {
+                oNav.navigateOutbound("FreestyleNav", { "Customer": "10001" });
+            } else {
+                // return false to trigger the default internal navigation
+                return false;
+            }
+            // return true is necessary to prevent further default navigation
+            return true;                                                       
+        }
+    }
+}</pre></div></section>
+                     <p></p></div></div>
+                  <p></p>
+                  <p>In the example above, the navigation to an external application is configured and the values for the <code>Customer</code>
+                     parameters are passed when a user clicks the line item for sales order 6437.</p>
+                  <p><code>oContextInfo</code> includes the regular context that is passed to a target application upon navigation, that is the
+                     merged context <code>lineItem</code> + <code>ObjectPage</code>.</p>
+               </div>
+            </li>
+         </ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></section></div></body></html>

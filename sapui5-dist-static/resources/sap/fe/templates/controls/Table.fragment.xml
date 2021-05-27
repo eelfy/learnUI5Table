@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+>
+	<macro:Table
+		unittest:id="TablePropertyExpressionTest"
+		metaPath="{presentationContext>annotationPath}"
+		tableDefinition="{visualizationDefinition>}"
+		contextPath="{fullContextPath>}"
+		filterBarId="{= ${converterContext>filterBarId} ? ${converterContext>filterBarId} : undefined}"
+		noDataText="{= ${converterContext>template} === 'ObjectPage' ? ${sap.fe.i18n>T_OP_TABLE_AND_CHART_OP_NO_FILTERS_NO_DATA_TEXT} : ${sap.fe.i18n>T_OP_TABLE_AND_CHART_NO_FILTERS_NO_DATA_TEXT} }"
+		busy='{= ${converterContext>template} === "ObjectPage" ? "{ui>/busyLocal/"+${visualizationDefinition>annotation/id}+"}" : "{ui>/busy}"}'
+		onPatchSent="{= ${converterContext>template} === 'ObjectPage' ? '.handlers.handlePatchSent' : null }"
+		onPatchCompleted="{= ${converterContext>template} === 'ObjectPage' ? '.handlers.handlePatchCompleted' : null }"
+		onDataReceived=".handlers.handleErrorOfTable"
+		onContextChange="{= ${converterContext>template} === 'ObjectPage' ? '.handlers.onTableContextChange' : null }"
+		onChange="{= ${converterContext>template} === 'ObjectPage' ? undefined : '.handlers.onFieldValueChange($controller, $event)'}"
+		variantSelected=".handlers.onVariantSelected"
+		variantSaved=".handlers.onVariantSaved"
+		onBeforeExport="._onBeforeExport"
+		isAlp="{converterContext>isAlp}"
+		onSegmentedButtonPressed="{= ${converterContext>isAlp} ? '.handlers.onSegmentedButtonPressed' : undefined }"
+		visible="{= ${converterContext>isAlp} ? '{= ${pageInternal>alpContentView} !== \'Chart\'}' : 'true' }"
+	>
+	</macro:Table>
+</core:FragmentDefinition>

@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+
+	<IconTabBar
+		expandable="false"
+		headerMode="Inline"
+		id="fe::TabMultipleMode"
+		select=".handlers.onTabMultiModeChange"
+		stretchContentHeight="true"
+		customData:showCounts="{converterContext>showTabCounts}"
+	>
+            <items>
+                <template:repeat list="{converterContext>views}" var="view">
+					<template:with path="view>entitySet" var="entitySet">
+					<template:with path="entitySet>$Type" var="entityType">
+
+					<template:with path="view>presentation" var="presentationContext">
+						<IconTabFilter text="{view>title}" key="{view>tableControlId}" customData:selectionVariant="{view>selectionVariantPath}">
+							<content>
+							<MessageStrip
+										text="{= '{parts: [{path: \'internal>tabs/ignoredFields/' + ${view>tableControlId} + '\'}, {path: \'\', value: \'' + ${view>title} + '\' }], formatter: \'.formatters.setTabMessageStrip\'}' }"
+										type="Information"
+										showIcon="true"
+										showCloseButton="true"
+										class="sapUiSmallMargin"
+										visible="{= '{= (${internal>tabs/ignoredFields/' + ${view>tableControlId} + '} || []).length>0 }' }"
+									>
+								</MessageStrip>
+								<core:Fragment fragmentName="sap.fe.templates.ListReport.view.fragments.CollectionVisualization" type="XML" />
+							</content>
+						</IconTabFilter>
+					</template:with>
+					</template:with>
+					</template:with>
+                </template:repeat>
+            </items>
+	</IconTabBar>
+</core:FragmentDefinition>

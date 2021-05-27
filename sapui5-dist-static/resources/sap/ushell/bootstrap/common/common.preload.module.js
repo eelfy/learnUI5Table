@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2020 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/bootstrap/common/common.load.script"],function(l){"use strict";function p(r){l(r+"/sap/ushell/components/flp/Component-preload.js",null,null,true);}function P(r){l(r+"/sap/fiori/flp-controls.js",null,null,true).then(function(){sap.ui.predefine("sap/fiori/flp-controls",function(){},false);});}function f(r){P(r);p(r);}return{fnPreloadFlpComponent:p,fnPreloadFlpControls:P,fnPreloadHomeBundle:f};});

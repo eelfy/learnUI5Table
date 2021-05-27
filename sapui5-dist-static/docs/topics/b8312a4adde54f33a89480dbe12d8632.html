@@ -1,0 +1,447 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob8312a4adde54f33a89480dbe12d8632" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding a
+        Micro Chart to a Table</h1><div class="fig"><h1 class="topictitle1 title">Adding a
+        Micro Chart to a Table</h1><div class="shortdesc">You can add a micro chart to a column
+        in both
+        the list report and the object page.</div><p>To add a micro chart to a
+            table, use the annotation term
+                <code>UI.LineItem</code> and the complex type <code>DataFieldForAnnotation</code>. The
+            micro charts are then displayed within the table column
+            as shown below:</p><div><div class="fig"><img src="loiob010c1358bd841b9be0c318ab00e1d7e_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Micro Chart in List Report</span></div><section id="section_yvw_mdf_tnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><section>
+                <h3 class="title ">Code Samples</h3>
+            </section><section>
+                <h3 class="title ">UI.LineItem and UI.DataFieldForAnnotation</h3>
+                <p>The <code>Label</code> property of the <code>UI.DataFieldForAnnotation</code> is used for the text of the table column
+                    header.</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+  &lt;Annotation Term="UI.LineItem"&gt;
+    &lt;Collection&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+        &lt;PropertyValue Property="Label" String="Copy with new Supplier"/&gt;
+        &lt;PropertyValue Property="Action" String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopywithparams"/&gt;
+        &lt;Annotation Term="UI.OperationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+        &lt;PropertyValue Property="Label" String="Activate"/&gt;
+        &lt;PropertyValue Property="Action" String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductActivation"/&gt;
+        &lt;PropertyValue Property="Determining" Bool="true"/&gt;
+        &lt;Annotation Term="UI.OperationGrouping" EnumMember="UI.OperationGroupingType/ChangeSet"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+        &lt;PropertyValue Property="Value" Path="Product"/&gt;
+        &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+        &lt;PropertyValue Property="Value" Path="ProductCategory"/&gt;
+        &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+        &lt;PropertyValue Property="Value" Path="to_Supplier/CompanyName"/&gt;
+        &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+        &lt;PropertyValue Property="Criticality" Path="to_StockAvailability/StockAvailability"/&gt;
+        &lt;PropertyValue Property="Value" Path="to_StockAvailability/StockAvailability"/&gt;
+        &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataField"&gt;
+        &lt;PropertyValue Property="Value" Path="Price"/&gt;
+        &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAction"&gt;
+        &lt;PropertyValue Property="Label" String="Copy"/&gt;
+        &lt;PropertyValue Property="IconUrl" String="sap-icon://copy"/&gt;
+        &lt;PropertyValue Property="Action" String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopy"/&gt;
+        &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+        &lt;PropertyValue Property="Determining" Bool="true"/&gt;
+        &lt;Annotation Term="UI.OperationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+        &lt;PropertyValue Property="Label" String="Manage Products (ST)"/&gt;
+        &lt;PropertyValue Property="SemanticObject" String="EPMProduct"/&gt;
+        &lt;PropertyValue Property="Action" String="manage_st"/&gt;
+        &lt;PropertyValue Property="Inline" Bool="true"/&gt;
+        &lt;PropertyValue Property="Determining" Bool="true"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+        &lt;PropertyValue Property="Label" String="Rating"/&gt;
+        &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Rating"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+        &lt;PropertyValue Property="Label" String="Progress"/&gt;
+        &lt;PropertyValue Property="Criticality" Path="to_StockAvailability/Quantity"/&gt;
+        &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Progress"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+        &lt;PropertyValue Property="Label" String="Sales"/&gt;
+        &lt;PropertyValue Property="Target" AnnotationPath="to_ProductSalesPrice/@UI.Chart#AreaChartQualifier"/&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+        &lt;PropertyValue Property="Label" String="Revenue"/&gt;
+        &lt;PropertyValue Property="Target" AnnotationPath="to_ProductSalesRevenue/@UI.Chart#BulletChartQualifier"/&gt;
+      &lt;/Record&gt;
+    &lt;/Collection&gt;
+  &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p>
+            </section><section>
+                <h3 class="title ">UI.Chart Annotations</h3>
+                <p><span class="emphasis">Smart Area Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="AreaChartQualifier"&gt;
+    &lt;Record Type="UI.ChartDefinitionType"&gt;
+        &lt;PropertyValue Property="Title" String="Sales Price" /&gt;
+        &lt;PropertyValue Property="Description" String="Area Micro Chart" /&gt;
+        &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Area" /&gt;
+        &lt;PropertyValue Property="Dimensions"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;PriceDay&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Measures"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;AreaChartPrice&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="MeasureAttributes"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                    &lt;PropertyValue Property="Measure" PropertyPath="AreaChartPrice" /&gt;
+                    &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" /&gt;
+                    &lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#AreaChartPrice" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+                <p><span class="emphasis">Smart Bullet Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="BulletChartQualifier"&gt;
+    &lt;Record Type="UI.ChartDefinitionType"&gt;
+        &lt;PropertyValue Property="Title" String="Sales Revenue" /&gt;
+        &lt;PropertyValue Property="Description" String="Bullet Micro Chart" /&gt;
+        &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet" /&gt;
+        &lt;PropertyValue Property="Measures"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;BulletChartRevenue&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="MeasureAttributes"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                    &lt;PropertyValue Property="Measure" PropertyPath="BulletChartRevenue" /&gt;
+                    &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" /&gt;
+                    &lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#BulletChartRevenue" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+                <p>
+                    </p><div class="note other recommendation "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Recommendation
+				</strong></div></div><div class="fig"><p>
+                        </p><p>Refer the documentation for <a href="#/topic/e219fd0c85b842c69ac3a514e712ece5.html" title="You can add a MicroChart control to a facet within the header area on the object page." class="sap-doc">Micro Chart Facet</a> to see code samples for these micro
+                                charts:</p><ul class="ul ">
+                                <li class="li">
+                                    <p>Smart radial micro chart</p>
+                                </li>
+                                <li class="li">
+                                    <p>Smart column micro chart</p>
+                                </li>
+                                <li class="li">
+                                    <p>Smart line micro chart</p>
+                                </li>
+                                <li class="li">
+                                    <p>Smart harvey micro chart</p>
+                                </li>
+                                <li class="li">
+                                    <p>Smart stacked bar micro chart</p>
+                                </li>
+                            </ul>
+                        <p></p>
+                    <p></p></div></div>
+                <p></p>
+                <p><span class="emphasis">Limitation</span></p>
+                <p>Currently, the template doesn't currently support the use of navigation properties within the <code>UI.Chart</code> term for
+                    the smart micro chart (see example below).</p><div><div class="fig"><img src="loio02debb6e41424ba09ea3cc6ef0005ff7_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Navigation Property</span></div><p></p>
+            </section><section>
+                <h3 class="title ">UI.DataPoint Annotation</h3>
+                <p>The <code>DataPoint</code> property of the <code>MeasureAttributes</code> of the <code>UI.Chart</code> annotation
+                    should point to the <code>UI.DataPoint</code> annotation.</p>
+                <p>The <code>SmartMicroChart</code> control supports the <code>Criticality</code> and <code>CriticalityCalculation</code>
+                    properties of a <code>UI.DataPoint</code>. For an example of how to use the <code>CriticalityCalculation</code>, see the
+                    smart area micro chart annotation example. For an example of how to use the <code>Criticality</code> property, see the smart
+                    bullet micro chart annotation example.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>Although the <code>Title</code> for the <code>UI.DataPoint</code> is mandatory, it is not used by the smart micro
+                            chart.</p>
+                    <p></p></div></div><p></p>
+                <p><span class="emphasis">Smart Area Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="AreaChartPrice"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Title" String="Sales Price" /&gt;
+        &lt;PropertyValue Property="Value" Path="AreaChartPrice" /&gt;
+        &lt;PropertyValue Property="TargetValue" Path="TargetPrice" /&gt;
+        &lt;PropertyValue Property="CriticalityCalculation"&gt;
+            &lt;Record&gt;
+                &lt;PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Target" /&gt;
+                &lt;PropertyValue Property="DeviationRangeHighValue" Path="DeviationUpperBoundPrice" /&gt;
+                &lt;PropertyValue Property="DeviationRangeLowValue" Path="DeviationLowerBoundPrice" /&gt;
+                &lt;PropertyValue Property="ToleranceRangeHighValue" Path="ToleranceUpperBoundPrice" /&gt;
+                &lt;PropertyValue Property="ToleranceRangeLowValue" Path="ToleranceLowerBoundPrice" /&gt;
+            &lt;/Record&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+                <p><span class="emphasis">Smart Bullet Micro Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="BulletChartRevenue"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Title" String="Sales Revenue" /&gt;
+        &lt;PropertyValue Property="Value" Path="BulletChartRevenue" /&gt;
+        &lt;PropertyValue Property="TargetValue" Path="TargetRevenue" /&gt;
+        &lt;PropertyValue Property="ForecastValue" Path="ForecastRevenue" /&gt;
+        &lt;PropertyValue Property="MinimumValue" Decimal="100" /&gt;
+        &lt;PropertyValue Property="MaximumValue" Decimal="300" /&gt;
+        &lt;PropertyValue Property="Criticality" Path="Criticality" /&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>The following must all point to the same property in the <code>entityType</code>:</p><ul class="ul ">
+                                <li class="li">
+                                    
+                                    <p><code>Measure</code> property of the <code>Chart</code> annotation</p>
+                                </li>
+                                <li class="li"><code>Measure</code> property of the <code>MeasureAttributes</code> property of the <code>Chart</code>
+                                    annotation</li>
+                                <li class="li">Value property of the <code>DataPoint</code> annotation</li>
+                            </ul>
+                        <p></p>
+                    <p></p></div></div><p></p>
+            </section><section>
+                <h3 class="title ">CDS Annotations</h3>
+                <p><span class="emphasis">CDS Annotation Definition for
+                    UI.Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">chart : array of
+{
+    qualifier : String(120);
+    @LanguageDependency.maxLength : 40
+    title : String(60);
+    @LanguageDependency.maxLength : 80
+    description : String(120);
+    chartType : String enum
+    {
+       COLUMN;
+       COLUMN_STACKED;
+       COLUMN_STACKED_100;
+       COLUMN_DUAL;
+       COLUMN_STACKED_DUAL;
+       COLUMN_STACKED_DUAL_100;
+       BAR;
+       BAR_STACKED;
+       BAR_STACKED_100;
+       BAR_DUAL;
+       BAR_STACKED_DUAL;
+       BAR_STACKED_DUAL_100;
+       AREA;
+       AREA_STACKED;
+       AREA_STACKED_100;
+       HORIZONTAL_AREA;
+       HORIZONTAL_AREA_STACKED;
+       HORIZONTAL_AREA_STACKED_100;
+       LINE;
+       LINE_DUAL;
+       COMBINATION;
+       COMBINATION_STACKED;
+       COMBINATION_STACKED_DUAL;
+       HORIZONTAL_COMBINATION_STACKED;
+       HORIZONTAL_COMBINATION_STACKED_DUAL;
+       PIE;
+       DONUT;
+       SCATTER;
+       BUBBLE;
+       RADAR;
+       HEAT_MAP;
+       TREE_MAP;
+       WATERFALL;
+       BULLET;
+       VERTICAL_BULLET;
+    };
+    dimensions : array of elementRef;
+    measures : array of elementRef;
+    dimensionAttributes : array of
+    {
+       dimension : elementRef;
+       role : String(10) enum
+       {
+           CATEGORY;
+           SERIES;
+       };
+    };
+    measureAttributes : array of
+    {
+       measure : elementRef;
+       role : String(10) enum
+       {
+           AXIS_1;
+           AXIS_2;
+           AXIS_3;
+       };
+       asDataPoint : Boolean default true;
+    };
+}</pre></div></section><p></p>
+                <p><span class="emphasis">CDS Annotation for UI.Chart: Smart Area Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.chart:[{
+  title: 'Sales Price',
+  description: 'Area Micro Chart',
+  chartType: #AREA,
+  dimensions:['PriceDay'],
+  measures:['AreaChartPrice'],
+  measureAttributes: [
+    { measure: 'AreaChartPrice', role: #AXIS_1, asDataPoint: true }
+  ],
+  qualifier: 'AreaChartQualifier'
+}]</pre></div></section><p></p>
+                <p><span class="emphasis">CDS Annotation for UI.Chart: Smart Bullet Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.chart:[{
+  title:'Sales Revenue',
+  description: 'Bullet Micro Chart',
+  chartType: #BULLET,
+  measures:['BulletChartRevenue'],
+  measureAttributes: [
+    { measure: 'BulletChartRevenue', role: #AXIS_1, asDataPoint: true }
+  ],
+  qualifier: 'BulletChartQualifier'
+}]</pre></div></section><p></p>
+                <p><span class="emphasis">CDS Annotation Definition for
+                    UI.DataPoint</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">dataPoint
+{
+    @LanguageDependency.maxLength : 40
+    title : String(60);
+    @LanguageDependency.maxLength : 80
+    description : String(120);
+    @LanguageDependency.maxLength : 190
+    longDescription : String(250);
+    targetValue : DecimalFloat;
+    targetValueElement : elementRef;
+    forecastValue : elementRef;
+    minimumValue : DecimalFloat;
+    maximumValue : DecimalFloat;
+    visualization : String enum
+    {
+        NUMBER;
+        BULLET_CHART;
+        DONUT;
+        PROGRESS;
+        RATING;
+    };
+    valueFormat
+    {
+        scaleFactor : DecimalFloat;
+        numberOfFractionalDigits : Integer;
+    };
+    referencePeriod
+    {
+        @LanguageDependency.maxLength : 80
+        description : String(120);
+        start : elementRef;
+        end : elementRef;
+    };
+    criticality : elementRef;
+    criticalityCalculation
+    {
+        improvementDirection : String enum { MINIMIZE; TARGET; MAXIMIZE; };
+        toleranceRangeLowValue : DecimalFloat;
+        toleranceRangeLowValueElement : elementRef;
+        toleranceRangeHighValue : DecimalFloat;
+        toleranceRangeHighValueElement : elementRef;
+        deviationRangeLowValue : DecimalFloat;
+        deviationRangeLowValueElement : elementRef;
+        deviationRangeHighValue : DecimalFloat;
+        deviationRangeHighValueElement : elementRef;
+    };
+    trend : elementRef;
+    trendCalculation
+    {
+        referenceValue : elementRef;
+        isRelativeDifference : Boolean default false;
+        upDifference : DecimalFloat;
+        upDifferenceElement : elementRef;
+        strongUpDifference : DecimalFloat;
+        strongUpDifferenceElement : elementRef;
+        downDifference : DecimalFloat;
+        downDifferenceElement : elementRef;
+        strongDownDifference : DecimalFloat;
+        strongDownDifferenceElement : elementRef;
+    };
+    responsible : elementRef;
+    responsibleName : String(120);
+};</pre></div></section><p></p>
+                <p><span class="emphasis">CDS Annotation for UI.DataPoint: Smart Area Micro
+                    Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.dataPoint: {
+   title: 'Sales Price',
+   targetValueElement: 'TargetPrice',
+   criticalityCalculation: {
+      improvementDirection: #TARGET,
+      toleranceRangeLowValueElement: 'ToleranceLowerBoundPrice',
+      toleranceRangeHighValueElement: 'ToleranceUpperBoundPrice',
+     deviationRangeLowValueElement: 'DeviationLowerBoundPrice',
+     deviationRangeHighValueElement: 'DeviationUpperBoundPrice'
+   }
+}
+ProductSalesPrice.Price as AreaChartPrice</pre></div></section><p></p>
+                <p><span class="emphasis">CDS Annotation for UI.DataPoint: Smart Bullet Micro Chart</span></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.dataPoint: {
+   title:'Sales Revenue',
+   targetValueElement: 'TargetRevenue',
+   forecastValue: 'ForecastRevenue',
+   minimumValue: 100,
+   maximumValue: 300,
+   criticality: 'Criticality'   
+}
+ProductSalesRevenue.Revenue as BulletChartRevenue
+</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>Currently, the <code>UI.DataPoint</code> in the CDS views does not support <code>elementRef</code> for
+                                <code>minimumValue</code> and <code>maximumValue</code>. The values for these properties are hard-coded as in
+                            the example above.</p>
+                    <p></p></div></div><p></p>
+            </section></div></section><section id="section_hjf_4df_tnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The micro chart will not show any title,
+                description, dimension, measure labels or footers showing the unit of measure. By default, the size for a micro chart is
+                "XS".</p><p>To add a micro chart to a table, proceed as shown in the sample code:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Adding a Micro Chart to a
+                Table</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForAnnotation"&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="_CreditLimitDetails/@com.sap.vocabularies.UI.v1.Chart#RadialCriticalityPathHidden" /&gt;
+    &lt;PropertyValue Property="Label" String="Credit Limit Details" /&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div><section>
+                <h3 class="title ">Configuring a Micro Chart for a Responsive Table</h3>
+                <p>You can configure the size of a micro chart via the property <code>microChartSize</code> in the manifest. By default, the size
+                    for a micro chart is "XS". You can also influence if the chart labels are displayed or not via the property
+                        <code>showMicroChartLabel</code> in the manifest as shown in the sample code:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Configuration for a Responsive
+                    Table</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"options":{
+    "settings":{
+        "controlConfiguration": {
+            "@com.sap.vocabularies.UI.v1.LineItem": {
+                "actions":{},
+                "tableSettings":{
+                    "type": "ResponsiveTable"
+                },
+                "columns" : {
+                        "DataFieldForAnnotation::_CreditLimitDetails::Chart::RadialCriticalityPathHidden ": {
+                            "settings" : {
+                                " microChartSize": "M",
+                                " showMicroChartLabel ": true
+                            }
+                        }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+                <p>The default value is false and the labels are not shown.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>Unlike the micro chart used in an object page header, it is possible that the micro chart used in a table is not rendered at
+                        all. This happens if an error occurs when retrieving the data, or if no data is available in the back end.</p>
+                <p></p></div></div>
+            </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

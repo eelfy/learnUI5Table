@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:log="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+>
+	<macro:Table
+		presentation="{presentation>}"
+		collection="{collection>}"
+		parentEntitySet="{setup>/parentEntitySet}"
+		id="{setup>/id}"
+		create="{setup>/create}"
+		showDelete="{setup>/showDelete}"
+		actions="{setup>/actions}"
+		creationMode="{setup>/creationMode}"
+		onPatchSent="{setup>/onPatchSent}"
+		onDataReceived="{setup>/onDataReceived}"
+		requestGroupId="{setup>/requestGroupId}"
+		onPatchCompleted="{setup>/onPatchCompleted}"
+		hideTitle="{setup>/hideTitle}"
+	/>
+</core:FragmentDefinition>

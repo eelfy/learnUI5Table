@@ -1,0 +1,50 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio00c19e14b02c462c80566fa8b8751137" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Choosing Filter Modes</h1><div class="fig"><h1 class="topictitle1 title">Choosing Filter Modes</h1><div class="shortdesc">ALP offers compact and visual filter modes. You can choose to set filters from both
+		modes.</div><section>
+			<p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Based on the annotation configuration, filter dimensions show up in either of the filter
+					modes, or on both the filter modes. However, a filter field on the visual filter
+					always shows up in compact filter mode.</p></div></div>
+			<p></p>
+		</section><section>
+			<h2 class="title ">Filter Bar Customization</h2>
+			<p>You can customize filter fields or charts that show up on the filter bar. Use the
+					<span class="ph uicontrol">Adapt Filters (&lt;number&gt;)</span> option in the header area
+				to customize both filter modes. The filter fields in the</p><ul class="ul ">
+					<li class="li">Compact filter configuration dialog box are the fields in the entity set that have
+							<code>sap:filterable=”true”</code> in their metadata. Select the
+						filter fields that you want to use on the filter bar.</li>
+					<li class="li">Visual filter configuration dialog box are the fields in the entity set that have
+							<code>sap:filterable=”true”</code> in their metadata. The fields
+						need to have a <code>ValueList</code> annotation with a valid
+						presentation variant qualifier.</li>
+				</ul><p></p>
+			<p>In the visual filter mode, you can change the chart type, sort order, and measure according to
+				your needs. Visual filter supports three basic chart types (bar, donut, and line).
+				When you select a chart filter, the other chart filters are refreshed to provide the
+				appropriate fields. In some cases, some of the filters selected may no longer be
+				visible in the chart area. If this is the case, choose the <span class="ph uicontrol">Value
+					help</span> or <span class="ph uicontrol">Selected</span> icon, to view all of the
+				visual filter conditions that have been set.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The filter selection count depends
+					on the number of fields you select and is not based on the individual field
+					values set within the field. The count also includes filters set from the filter
+					dialog that are not seen on the filter bar.</p></div></div><p></p>
+		</section><section>
+			<h2 class="title ">Filter Modes</h2>
+			<p>Analytical List Page lets you toggle between the visual filter and compact filter, even while
+				filter conditions are applied. When you toggle, ALP ensures that the filter values
+				in one mode sync with those in the other mode. However, </p><ul class="ul ">
+					<li class="li">
+						<p>Filter selection in fields without visual filter configuration are seen only in compact
+							filters.</p>
+					</li>
+					<li class="li">
+						<p>Parameters do not show up in visual filters.</p>
+					</li>
+				</ul><p></p>
+			<p>Despite the prior conditions, all selections in the compact filter are included for the main
+				content area, even when visual filters are used.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/ebdb5da37eba4925b2ce692b85d42abb.html" title="The dynamic area of the analytical list page is the title area." class="sap-doc">Configuring the Title Area</a></li><li><a href="#/topic/8ce658e05498466d9a74823b94e840ac.html" title="Lets you manage variants with different structures in the filter and content areas." class="sap-doc">Managing Variants</a></li><li><a href="#/topic/16d43eb0472c4d5a9439ca1bf92c915d.html" title="Lets you map an entity to another entity that is associated with a different entity set. The value list annotation defines the relationship between filter fields of the main entity set and the fields in the value help entity set." class="sap-doc">Defining ValueList Annotation</a></li></ul></section></div></section></div></body></html>

@@ -1,0 +1,114 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio89de2f43b91d470daa8121a0b4ba35cc" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Navigation</h1><div class="fig"><h1 class="topictitle1 title">Navigation</h1><div class="shortdesc">The navigation flow of the Master-Detail app considers both the
+      Master and Detail pages, and is therefore
+    slightly more complex than a typical full-screen scenario.</div><p>With an empty hash in the URL, only the master view is shown initially. When the user enters
+      the app with an object id in the hash, both views are loaded at the same time, and methods in
+      the controller logic make sure that the pages are in sync. Additional <span class="ph uicontrol">not
+        found</span> pages display a message to the user in case of any navigation errors that
+      occur for the master and the detail page.</p><div><div class="fig"><img src="loioec746bc8018543fda1fae5230367dfc5_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Navigation Flow of the Master-Detail App</span></div><p>The two main views <span class="ph uicontrol">Master</span> and <span class="ph uicontrol">Object</span> each have
+      a route and two targets configured. When the route matches the URL, both targets are displayed
+      and the corresponding views are created. The target master puts the created view in the
+        <span class="keynote apiname">beginColumnPages</span> aggregation of the
+        <span class="keynote apiname">sap.f.FlexibleColumnLayout</span> control. All other targets put their created
+      views in the <span class="keynote apiname">midColumnPages</span> aggregation. For more information, see <a href="#/topic/3d18f20bd2294228acb6910d8e8a5fb5.html" title="SAPUI5 offers hash-based navigation, which allows you to build single-page apps where the navigation is done by changing the hash. In this way the browser does not have to reload the page; instead there is a callback to which the app and especially the affected view can react. A hash string is parsed and matched against patterns which will then inform the handlers." class="sap-doc">Routing and Navigation</a>.</p><p>Here is a sample implementation for navigating from the <span class="ph uicontrol">Master</span> to the
+        <span class="ph uicontrol">Object</span> page. The below<span class="keynote apiname"> _showDetail</span> method is
+      called by the <span class="keynote apiname">selectionChange</span> event handler of the
+        <span class="keynote apiname">sap.m.List</span> control. We need to change the layout parameter of the
+        <span class="keynote apiname">sap.f.FlexibleColumnLayout</span> to <span class="keynote apiname">TwoColumnsMidExpanded</span>
+      and navigate to the <span class="keynote apiname">object</span> route. Then, we extract the current ID of the
+      object pressed by using its binding context. We supply this parameter to the mandatory
+        <span class="keynote apiname">objectId</span> parameter and pass it to the <span class="keynote apiname">navTo</span> function,
+      as described in the
+          <a href="#/api/sap.ui.core.routing.Router/methods/navTo" title="#/api/sap.ui.core.routing.Router/methods/navTo" class="sap-doc" alt="#/api/sap.ui.core.routing.Router/methods/navTo"><code>sap.ui.core.routing.Routing#navTo</code></a>
+        section of the <span class="ph uicontrol">API
+        Reference</span> in the Demo Kit and shown here:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+/**
+  * Shows the selected item on the detail page
+  * On phones an additional history entry is created
+  * @param {sap.m.ObjectListItem} oItem selected Item
+  * @private
+  */
+_showDetail : function (oItem) {
+      var bReplace = !Device.system.phone;
+      // set the layout property of FCL control to show two columns
+      this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+      this.getRouter().navTo("object", {
+         objectId : oItem.getBindingContext().getProperty("ObjectID")
+      }, bReplace);
+},
+...</pre></div></section><p>After calling <code>navTo</code>, the hash of the browser is updated, and you get an
+      event on the <code>DetailController</code> when the route <span class="keynote apiname">object</span>
+      matches the current hash. In the <span class="keynote apiname">_onObjectMatched</span> handler that we register
+      in the <span class="keynote apiname">init</span> method of the controller, we extract the
+        <span class="keynote apiname">objectID</span> from the event arguments and create a valid model path with the
+      help of the <span class="keynote apiname">createKey</span> method of our OData model. We then bind the data to
+      the view:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+/**
+  * Binds the view to the object path and expands the aggregated line items.
+  * @function
+  * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
+  * @private
+  */
+<span class="emphasis">_onObjectMatched : function (oEvent) {</span>
+
+      var sObjectId =  oEvent.getParameter("arguments").objectId;
+<span class="emphasis">      this.getModel("appView").setProperty("/layout", "TwoColumnsMidExpanded");
+      this.getModel().metadataLoaded().then( function() {
+</span>
+        var sObjectPath = this.getModel().createKey("Objects", {
+          ObjectID :  sObjectId
+<span class="emphasis">        });
+        this._bindView("/" + sObjectPath);
+      }.bind(this));
+},</span>
+...</pre></div></section><section>
+      <h2 class="title ">notFound (similar to an HTTP 404 "not found" status code)</h2>
+      <p>The <span class="ph uicontrol">not found</span> pages are implemented using  an <a href="#/entity/sap.m.MessagePage" title="#/entity/sap.m.MessagePage" class="sap-doc" alt="#/entity/sap.m.MessagePage">sap.m.MessagePage</a>. They display an error message according to the
+        SAP Fiori UX specifications. There are different "not found" cases that each have a separate
+        target and a <span class="ph uicontrol">notFound</span> view.</p>
+      <p>If you have the following URL, no route will match:
+          <code>index.html/#/thisIsInvalid</code>. This means that the
+          <span class="ph uicontrol">notFound</span> view will be displayed, as the target
+          <span class="ph uicontrol">notFound</span> is defined in the bypassed section.</p>
+      <p>The code sample below shows the relevant parts of the configuration. In addition, we set
+        the layout property for the <span class="keynote apiname">sap.f.FlexibleColumnLayout</span> to
+          <span class="keynote apiname">OneColumn</span> in the controller of the <span class="ph uicontrol">notFound</span> page
+        so that only a single column is displayed in this case. For a full implementation of a
+          <span class="ph uicontrol">not found</span> page, see <a href="#/topic/e047e0596e8a4a1db50f4a53c11f4276.html" title="Sometimes it is important to display an indication that the requested resource was not found. To give you an example: If a user tries to access an invalid pattern which does not match any of the configured routes, the user is notified that something went wrong. You might also know this as a 404 or Not Found Page from traditional web pages. In this step, we will implement a feature that detects invalid hashes and visualizes this in a nice way." class="sap-doc">Step 3: Catch Invalid Hashes</a>.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"routing": {
+    "config": {
+    …
+    "bypassed": {
+    "target": "notFound"
+    }
+    }
+    …
+    "targets": {
+    …
+    "notFound": {
+      "viewName": "NotFound",
+      "viewId": "notFound"
+    }
+
+}</pre></div></section><p></p>
+    </section><section>
+      <h2 class="title ">detailObjectNotFound</h2>
+      <p>If the object route matches – an ID is passed (for example <code>#/Objects/1337</code>)
+        but the back end does not contain an object with the ID <code>1337</code>, then you need
+        to display the <span class="ph uicontrol">detailObjectNotFound</span> page. This is achieved by
+        listening to the “change” event of a binding. Inside this, you check if there is no data and
+        tell the router to display the <span class="ph uicontrol">detailObjectNotFound</span> target, as shown
+        in the sample code below:</p>
+      <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// inside of a controller
+this.getView().bindElement({
+    path: "/Objects/1337",
+    change: function () {
+      // there is no data
+      if (!this.getView().getElementBinding().getBoundContext()) {
+          this.getRouter().getTargets().display("detailObjectNotFound
+");
+      return;
+				}
+      // code handling the case if there is data in the backend
+      …
+};
+});</pre></div></section>
+    </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

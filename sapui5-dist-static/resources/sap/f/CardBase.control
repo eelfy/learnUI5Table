@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>CardBase</name>
+    <derived/>
+    <author>SAP SE</author>
+    <documentation>A base class for controls that represent a container with a predefined header and content.</documentation>
+    <baseType>sap.ui.core/Control</baseType>
+    <properties>
+        <property name="width" type="sap.ui.core/CSSSize" defaultValue="100%" group="Appearance">
+            <documentation>Defines the width of the card.</documentation>
+        </property>
+        <property name="height" type="sap.ui.core/CSSSize" defaultValue="auto" group="Appearance">
+            <documentation>Defines the height of the card.</documentation>
+        </property>
+    </properties>
+</control>

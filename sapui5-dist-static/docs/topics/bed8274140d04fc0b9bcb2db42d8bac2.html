@@ -1,0 +1,850 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiobed8274140d04fc0b9bcb2db42d8bac2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Smart Table</h1><div class="fig"><h1 class="topictitle1 title">Smart Table</h1><div class="shortdesc">The sap.ui.comp.smarttable.SmartTable control is used to create
+		different types of tables based on OData metadata. The control allows the user to define
+		personalized table settings.</div><p>The frequently asked questions section below aims at answering some
+				basic questions that you might have when using this control.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The code samples in this section reflect examples of possible use
+				cases and might not always be suitable for your purposes. Therefore, we recommend
+				that you do not copy and use them directly.</p></div></div><p>For more
+				information about this control, see the <a href="#/api/sap.ui.comp.smarttable.SmartTable" title="#/api/sap.ui.comp.smarttable.SmartTable" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable">API Reference</a> and the <a href="#/entity/sap.ui.comp.smarttable.SmartTable" title="#/entity/sap.ui.comp.smarttable.SmartTable" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable">samples</a>.</p><p>For more
+				information about annotations for this control, see the <a href="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Summary" title="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Summary" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Summary">API Reference</a>.
+			</p><section>
+			<h2 class="title ">Overview</h2>
+			<p>The <code>SmartTable</code> control is a wrapper control around any SAPUI5 table. The
+				control analyzes the <code>$metadata</code> document of an OData service and
+				renders a table for a specific <code>entitySet</code>. </p>
+			<p>The control allows the consuming application to build list patterns based on OData services in
+				an efficient and consistent way and thus makes it easy for the user to create tables
+				without much effort. For example, the control enables the automatic creation of
+				columns.</p>
+			<p>The consuming application can overwrite the OData default information. The
+					<code>SmartTable</code> control offers you additional built-in features,
+				such as a row count and an export to a spreadsheet application.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Once the <code>SmartTable</code> control has been initialized, most of the property and
+				aggregation changes (for example, for <code>entitySet</code> or
+					<code>persistencyKey</code>) won't have any effect. Also, any changes of the
+				inner table are not recognized, for example, by the personalization settings, and
+				therefore must not be made.</p></div></div>
+		</section><section>
+			<h2 class="title ">Details</h2>
+			<p>When using <code>SmartTable</code> with an internal responsive table, you can set
+				the <code>demandPopin</code> property to <code>true</code>. This property
+				renders columns that exceed the space available on the screen by displaying
+				popins.</p>
+			<p>
+				<code>SmartTable</code> checks the custom data section for the columns and reads
+				the <code>columnIndex</code> attribute to determine when the columns that are
+				defined in the XML view are rendered.</p>
+			<p>If you want to show and follow <code>navigationProperty</code> fields for
+					<code>EntityType</code>, the <code>SmartTable</code> control
+				automatically performs a <code>$expand</code> operation for these
+					fields.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If you perform <code>$expand</code> operations while doing an
+					export to a spreadsheet, the <code>$expand</code> parameters will
+					automatically be removed (only relevant for the Gateway export
+					type).</p></div></div><p></p>
+		</section><section>
+			<h2 class="title ">Integration with Other Controls</h2>
+			<p>The <code>SmartTable</code> control is closely linked to the following other
+				controls: </p><ul class="ul ">
+					<li class="li">
+						<p><code>VariantManagement</code></p>
+					</li>
+					<li class="li">
+						<p><code>SmartFilterBar</code></p>
+					</li>
+					<li class="li">
+						<p><code>P13nDialog</code></p>
+					</li>
+				</ul>The control also supports the popover of the <code>SmartLink</code>
+				control.<p></p>
+			<p> For more information about the various smart controls, see <a href="#/topic/0cbbeba6fa6c45e4a339bc75d56299a2.html" title="This library contains composite controls." class="sap-doc">sap.ui.comp</a>.</p>
+		</section><section id="FAQ_ST"><h2 class="title ">FAQ</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">1- How can I enable personalization for custom columns,
+					and how do they differ from the regular ones, especially when used with
+					personalization settings or the spreadsheet export?</h3></div><div class="fig"><p>You can specify custom data for the personalization of the columns in your table
+					as shown in the examples.</p><p>Example 1 for a normal aggregation:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;table:Column id="Ledger" minScreenWidth="Tablet" demandPopin="true"&gt;
+	&lt;table:customData&gt;
+		&lt;core:CustomData key="p13nData"
+		   value='\{"columnKey": "Ledger", "leadingProperty":"Ledger",
+		    "additionalProperty":"LedgerName", "sortProperty": "Ledger",
+		    "filterProperty": "Ledger", "type":"numeric"}' /&gt;
+	&lt;/table:customData&gt;
+	&lt;Label text="Ledger" /&gt;
+	&lt;table:template&gt;
+		&lt;Text text="{Ledger}" /&gt;
+	&lt;/table:template&gt;
+&lt;/table:Column&gt; </pre></div></section><p>To use the SAPUI5
+					shortcut notation, add the following namespace part in the XML view:</p><p><code>xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"</code></p><p>Example 2 for use of the shortcut notation:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;table:Column id="CompanyCode" minScreenWidth="Tablet" demandPopin="true"
+	 customData:p13nData='\{"columnKey": "CompanyCode", "leadingProperty":"CompanyCode", "additionalProperty":"CompanyName","sortProperty": "CompanyCode", "filterProperty": "CompanyCode", "type":"numeric", "maxLength":"4"}'&gt;
+	&lt;Label text="Company Code" /&gt;
+	&lt;table:template&gt;
+		&lt;Text text="{CompanyCode}" /&gt;
+	&lt;/table:template&gt;
+&lt;/table:Column&gt;</pre></div></section><p>In the <code>p13nData</code> object you can specify the following
+					properties:</p><ul class="ul ">
+					<li class="li"><code>columnKey</code><p>A unique key used to save, retrieve, or apply
+							personalization for a column.</p></li>
+					<li class="li"><code>leadingProperty</code><p>Retrieves data for the OData property
+							specified here from the backend system when the column is made
+							visible.</p><p>OData model property name must be used.</p></li>
+					<li class="li"><code>additionalProperty</code><p> Property has to be requested if a
+							column is visible.</p><p>OData model property name must be
+							used.</p><p>Multiple property names can be specified here as
+							comma-separated values (CSV).</p></li>
+					<li class="li"><code>sortProperty</code><p>Sorts the table based on the column
+							specified.</p><p>OData model property name must be used. </p><p>This
+							property is similar to <code>sortProperty</code> of
+								<code>sap.ui.table.Column</code>
+							of the grid table and should only be used if the latter does not support
+							this feature.</p></li>
+					<li class="li"><code>filterProperty</code><p>Filters the table with the condition that
+							has been defined.</p><p>OData model property name must be
+							used.</p><p>This property is similar to <code>filterProperty</code>
+							of
+								<code>sap.ui.table.Column</code>
+							of the grid table and should only be used if the latter does not support
+							this feature.</p></li>
+					<li class="li"><code>isGroupable</code><p>Shows a field in the
+								<span class="ph uicontrol">Group</span>
+							panel of the <span class="ph uicontrol">View Settings </span>
+							automatically; otherwise, a field might become visible only once the
+							table (rows) are bound.</p><p>This property is only required for the
+							type <code>AnalyticalTable</code>. <code>SmartTable</code>
+							automatically sets this property to <code>true</code> if a field is
+							sortable, filterable, and a dimension.</p></li>
+					<li class="li"><code>type</code><p>Determines the type of a control; its value can be
+								<code>date</code>, <code>time</code>,
+								<code>boolean</code>, <code>numeric</code>,
+								<code>stringdate</code>, <code>string</code>, or
+								<code>undefined</code>. The control will be adapted according to
+							the type.</p><p><code>stringdate</code> is used to export fields
+							with the <code>IsCalendarDate</code> annotation.</p></li>
+					<li class="li"><code>maxLength</code><p>Numeric value to restrict number of entries in
+							input fields</p></li>
+					<li class="li"><code>precision</code><p>Numeric value for precision </p></li>
+					<li class="li"><code>scale</code><p>Numeric value for scale</p></li>
+					<li class="li">
+						<p><code>nullable</code></p>
+						<p>Defines whether a field can have no value (and is then relevant for
+							filtering with the <span class="ph uicontrol">Empty</span> value). Consumers of the
+							control can use the string value <code>false</code> to indicate that
+							the field is not nullable. The default is <code>nullable</code>.</p>
+					</li>
+				</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Some properties that also exist in a table, for example, in
+						<code>sortProperty</code>, will take precedence if specified in both
+					places.</p></div></div><p>The following additional properties are required in
+						<code>P13ndata</code> for proper formatting of custom columns for an SAPUI5-client-side
+					export to the spreadsheet:</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_knq_5w2_5bb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Property</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Explanation</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>unit</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Name of the unit property to be used for unit of measure and
+										currency formatting</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isCurrency</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>If the column is of type <code>currency</code>, the
+										amount with the currency is shown in the exported
+										spreadsheet.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>align</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configures the alignment of the column, for which you can use
+										the same value
+										as
+										for the <code>hAlign</code>property
+										of the column.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>edmType</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Actual <code>Edm.Type</code> of the OData property, which
+										might be needed for proper formatting of columns in the
+										spreadsheet.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>description</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Field that points to the
+										description
+											(<code>UI.Text</code> annotation) of this
+										column,
+										or, if custom-formatted columns are used, you can use the
+										description that is used in the <code>formatter</code>
+										function.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>displayBehaviour</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Various combinations of the description that are displayed on
+										the UI in the
+										following
+										way: </p><ul class="ul ">
+											<li class="li">
+												<p><code>descriptionOnly</code>: Shows a
+												description only</p>
+											</li>
+											<li class="li">
+												<p><code>descriptionAndId</code>: Shows the
+												description followed by the ID</p>
+											</li>
+											<li class="li">
+												<p><code>idAndDescription</code>: Shows the ID
+												followed by the description </p>
+											</li>
+											<li class="li"><code>idOnly</code>: Shows the ID only </li>
+										</ul><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>width</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Width of the column, for which you should use the same value
+										as for the column itself</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isDigitSequence</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Can be used for <code>Edm.String</code> columns that
+										represent a numeric field with leading zeros. If set to
+											<code>true</code>, the leading zeros are removed
+										from this string field as the <code>number</code> format
+										will be used in the spreadsheet.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">2- Why do I not see data for my manually added column in
+					the XML view? And why do I get an error "Select at least one column to perform
+					the search" even though I have added several columns manually to the
+						<code>sap.m.Table</code> inside the <code> control?</code></h3></div><div class="fig"><p><code>You need to specify custom data with at least one
+						<code>leadingProperty</code> for the table columns without a
+						<code>leadingProperty</code> available in the control itself so the
+						<code>SmartTable</code> control can fetch the data correctly.</code></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;Column&gt; 
+    &lt;customData&gt; 
+          &lt;core:CustomData key="p13nData" value='\{"columnKey":"Id",<span class="emphasis">"leadingProperty": "Id"</span>,"sortProperty": "Id","filterProperty": "Id"}'/&gt;
+     &lt;/customData&gt;
+    &lt;Text text="Sales Order" /&gt; 
+&lt;/Column&gt;
+
+</code></pre></div></section><p><code>Without this, the <code>SmartTable</code> control cannot recognize the
+					column.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>3- How can I define columns with my own style, for
+					example, using the formatting or the controls I require, in a responsive
+						<code>SmartTable</code> control
+						(<code>tableType="ResponsiveTable")?</code></code></h3></div><div class="fig"><p><code>For the <code>sap.m.Table</code>/<code>ResponsiveTable</code>, you need
+					to provide a corresponding <code>ColumnListItem</code> in the
+						<code>items</code> aggregation in addition to the columns, as you would
+					when using this SAPUI5 table on its
+					own.</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;smartTable:SmartTable entitySet="Items"..&gt;
+	&lt;Table&gt;
+	      &lt;!-- Columns must have unique IDs if table personalization service is used --&gt;
+	      &lt;columns&gt;
+		 &lt;Column id="Name" width="auto" minScreenWidth="Tablet" visible="false"
+		     customData:p13nData='\{"leadingProperty":"Name", "columnKey":"Name", "sortProperty":"Name", "type":"numeric"\}'&gt;
+		     &lt;header&gt;
+			&lt;Label text="{/#Item/Name/@sap:label}"/&gt; 
+		     &lt;/header&gt;
+		 &lt;/Column&gt;    
+	     &lt;/columns&gt; 
+	     &lt;ColumnListItem id="columnListItem" vAlign="Middle" type="Navigation" press="onItemPressed"&gt;
+		&lt;cells&gt;
+	             &lt;Text text="{path:'Name', formatter:'my.own.formatter.functionName'}" maxLines="2"... /&gt;
+	        &lt;/cells&gt;
+	     &lt;/ColumnListItem&gt;
+      &lt;/Table&gt;
+ &lt;/smartTable:SmartTable&gt;  
+</code></pre></div></section><p><code>The <code>sap.m.Table</code> uses the <code>columns</code> aggregation
+					for the header and the <code>items</code> aggregation containing
+						<code>ColumnListItem</code> with cells for the template control that is
+					cloned for each row in the table.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>For any supported SAPUI5 table, you
+					can add custom columns in the XML view along with the required
+						<code>customData</code> for the column.</code></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>4- How do I use the <code>SmartField</code> control
+					in combination with the <code>SmartTable</code> control? And how can I make
+					use of metadata and field controls to manage the state of editable fields in my
+					table?</code></h3></div><div class="fig"><p><code>For editing scenarios with backend metadata and field controls, it is recommended
+					to use the <code>SmartField</code> control along with the
+						<code>SmartTable</code> control. You can have the
+						<code>SmartTable</code> automatically create <code>SmartField</code>
+					controls using the following code:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;smartTable:SmartTable id="ItemsST" entitySet="Items" customData:useSmartField="true"...&gt;</code></pre></div></section><p><code>To make this work, the <code>customData</code> namespace has to be defined
+					correctly in the XML view to enable SAPUI5 shortcut
+					notation for custom data aggregations:
+						<code>xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"</code>.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>5- How do I format the group headers shown in
+						<code>SmartTable</code> of type <code>ResponsiveTable</code>
+						(<code>sap.m.Table</code>)? And why is a technical key shown instead of
+					a description when grouping is done in <code>SmartTable</code> of type
+						<code>ResponsiveTable</code>?</code></h3></div><div class="fig"><p><code>Grouping in
+						<code>ResponsiveTable</code>
+					is done by sorting table entries. You can define your own formatting for the
+					group title in <code>ResponsiveTable</code> by specifying a group function
+					for the first sorter.</code></p><p><code>For more
+						information on how this can be done, see the <a href="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js" title="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js" class="sap-doc" alt="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js">code
+						sample</a>.</code></p><p><code>When using the <code>SmartTable</code> control, you can use the
+						<code>beforeRebindTable</code> event and get available sorters using the
+						<code>bindingParams</code> (event parameter). Check if the first sorter
+					there has a group.</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>onBeforeRebindTable: function(oEvent) {
+	var mBindingParams = oEvent.getParameter("bindingParams");
+	var oSorter = mBindingParams.sorter[0];
+ //Check if sorter is for Grouping
+	if(oSorter.vGroup){
+</code></pre></div></section><p><code>There are two options. The first option looks like this:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>//Replace the Group function
+		oSorter.fnGroup = this.mGroupFunctions[oSorter.sPath];
+</code></pre></div></section><p><code>You can also do the following:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>//Replace the Grouping sorter itself		
+		mBindingParams.sorter[0] = new Sorter(oSorter.sPath, bDescending, this.mGroupFunctions[oSorter.sPath]);
+ }
+ </code></pre></div></section><p><code>For more
+					information on how <code>this.mGroupFunction</code> has to be implemented,
+					see the
+					<a href="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js" title="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js" class="sap-doc" alt="#/sample/sap.m.sample.TableViewSettingsDialog/code/SettingsDialogController.controller.js">code sample</a> in the Demo Kit.</code></p><p><code>You can replace group functions for the sorter or the sorter itself with the ones
+					you have defined (with own formatter for grouping based on the property) if the
+					sorter is used for grouping.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>6- How do I create and pass a search query
+						(<code>$search="foo"</code>) when using the <code>SmartTable</code>
+					control?</code></h3></div><div class="fig"><p><code>Use the <code>beforeRebindTable</code> event and implement this manually.</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>onBeforeRebindTable: function(oEvent) {         var
+        mBindingParams = oEvent.getParameter( "bindingParams" );       
+		mBindingParams.parameters[ <span class="emphasis">"custom"</span> ] =
+        {                        "search-focus" :
+        sBasicSearchFieldName, //  the name of the search
+        field                        "search" :
+        sBasicSearchText //  the search text
+        itself!                };  }</code></pre></div></section><p><code>This will then be used internally when creating the table binding.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>In the same way, you can also add any custom URL parameters or use this event
+					to add OData <code>$expand</code> parameters: Instead of
+						<code>"custom"</code>, use <code>"expand"</code> as shown in the
+					example above.</code></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>7- How do I get data for custom columns (icons,
+					formatters etc.) that are not present in the columns/binding
+						(<code>select</code> = 'ColA,ColB,foo,bar') of the
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code>Use the <code>beforeRebindTable</code> event and implement this manually.</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>onBeforeRebindTable:  function  (oEvent) {  
+        var   oBindingParams = oEvent.getParameter( "bindingParams" );
+         if  (oBindingParams.parameters.select.search( "SomeIconCode1" ) &lt; 0) {
+                             oBindingParams.parameters.select +=  ",SomeIconCode1" ;
+         }
+      if (oBindingParams.parameters.select.search( "SomeIconCode2" ) &lt; 0) { 
+                             oBindingParams.parameters.select +=  ",SomeIconCode2" ;
+         } . . . 
+
+</code></pre></div></section><p><code>This will then be used internally when creating the table binding.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>If only one property is needed for a given column, you can also use
+						<code>additionalProperty</code> in <code>customData</code> as
+					already mentioned instead of the event-based approach as described here.</code></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>For an <code>AnalyticalTable</code> control or
+						<code>AnalyticalBinding</code>, you have to use a dummy column
+						(<code>visible="false"</code>) with the <code>leadingProperty</code>
+					you require and the set attribute <code>inResult="true"</code>
+					instead.</code></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>8- I would like to pass my own custom sorters, filters,
+					and binding parameters when binding the table data in the
+						<code>SmartTable</code> control. How do I do this? And how can I have my
+					own binding implementation for the <code>SmartTable</code>
+					control?</code></h3></div><div class="fig"><p><code>You can modify the array of filters before binding is triggered in the
+						<code>SmartTable</code> control by listening to the
+						<code>beforeRebindTable</code> event.</code></p><p><code>To enable this, your code in the XML view should look like this:</code></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;smartTable:SmartTable entitySet="LineItemsSet" beforeRebindTable="onBeforeRebindTable"…</code></pre></div></section><p><code>You can now get the list of filters and sorters to be used in table binding using
+					the following:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>...
+onBeforeRebindTable: function(oEvent) {
+              var mBindingParams = oEvent.getParameter("bindingParams");
+              var aFilters = mBindingParams.filters
+</code></pre></div></section><p><code>With this, you need to set back the value to
+						<code>mBindingParams.filters</code>, and you can pass a new filter array
+					as well.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>
+					</code></p><p><code>In some exceptional cases, you can set
+							<code>mBindingParams.preventTableBind="true"</code> to prevent table
+						binding from taking place (optional) and do the binding at a later point in
+						time. This is shown in the following method:</code></p><code>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">someMethod: function() {
+           //get the smartTable and call the method rebindTable()
+           oSmartTable.rebindTable();
+       }
+...</pre></div></section>
+				<p></p></code></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>If you would like to trigger the binding manually, use the
+						<code>rebindTable</code> method of the <code>SmartTable</code>
+					control and do not use <code>bindRows</code> in the underlying table.</code></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>For a <span class="emphasis">custom multi-filter scenario</span>: If you want to pass
+					multi-filters (filters combined with AND/OR explicitly) in your custom
+					implementation, the SAPUI5 default
+					logic in the core classes combines multiple multi-filters with an OR by default.
+					If you would like to use AND in combination with the multi-filters returned in
+					the <code>beforeRebindTable</code> event of the <code>SmartTable</code>
+					control (if a filter is set in <code>SmartFilter</code>) and your own
+						<code>MultiFilter</code>, you have to replace the filters in the
+						<code>beforeRebindTable</code> event with an explicit AND
+						<code>MultiFilter</code>. There is currently no way to combine multiple
+					multi-filters in the <code>SmartTable</code> control itself. You as the
+					consumer of the control have to make sure you combine these multi-filters
+					yourself by checking first if any internal multi-filters exist. You also have to
+					ensure that the internal multi-filter is added first in the array of filters
+					present in the <code>beforeRebindTable</code> event.</code></p></div></div><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>onBeforeRebindTable: function(e) {  
+                   var b = e.getParameter("bindingParams"); 
+                    var aDateFilters = [new sap.ui.model.Filter("BindingPeriodValidityEndDate",sap.ui.model.FilterOperator.LE,d), new sap.ui.model.Filter("BindingPeriodValidityEndDate",sap.ui.model.FilterOperator.GT, null).....];
+                    var oOwnMultiFilter = new sap.ui.model.Filter(aDateFilters, true);
+
+                    //Special handling for multiple multi-filters
+                    if (b.filters[0] && b.filters[0].aFilters) {
+                            var oSmartTableMultiFilter = b.filters[0];
+                            // if an internal multi-filter exists then combine custom multi-filters and internal multi-filters with an AND
+                            b.filters[0] = new sap.ui.model.Filter([oSmartTableMultiFilter, oOwnMultiFilter], true);
+                     } else {
+                          b.filters.push(oOwnMultiFilter);
+                    }
+}
+
+</code></pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>9- How do I add custom toolbar buttons in the
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code>You can do this using the <code>customToolbar</code> aggregation, as shown
+					below: </code></p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;smartTable:SmartTable id="ItemsST" entitySet="Items" ...  
+        &lt;smartTable:customToolbar&gt; 
+                &lt;OverflowToolbar design="Transparent"&gt; 
+                        &lt;ToolbarSpacer/&gt; 
+                        &lt;Button text="Test"/&gt; 
+                        &lt;Button text="Click me!"/&gt; 
+               &lt;/OverflowToolbar&gt; 
+       &lt;/smartTable:customToolbar&gt;
+</code></pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>We recommend to use <code>OverflowToolbar</code> instead of
+						<code>Toolbar</code>, as shown above, to make the toolbar
+					responsive.</code></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>10- How do I fetch data from
+						<code>navigationProperty</code> (or association entities) using the
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code><code>SmartTable</code> provides a <code>tableBindingPath</code> property
+					in addition to <code>entitySet</code>, which can be used to specify a
+					navigation property path, for example,
+						<code>SalesOrder(123)/toItems</code>.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>For an
+							<code>AnalyticalTable</code> control or
+							<code>AnalyticalBinding</code>, you might have to pass
+							<code>entitySet</code> in <code>bindingParameters</code> using
+						the <code>beforeRebindTable</code> event. This is necessary if the
+							<code>entitySet</code> path does not conform to the one that is
+						checked internally by <code>AnalyticalBinding</code>, for example, in
+						the <code>beforeRebindTable</code> event, as shown
+						here:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>var mBindingParams = oEvent.getParameter("bindingParams");
+
+mBindingParams.parameters.entitySet = "NameOfEntitySet";
+</code></pre></div></section><p></p></div></div><p></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>11- Why do I not see any columns in my
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code><code>SmartTable</code> creates the initially visible column based on the
+						<code>LineItem</code> or the <code>PresentationVariant</code>
+					annotations. You can either specify the initial fields there or create it
+					manually in the XML view by adding columns to the underlying table.</code></p><p><code>For more
+						information, see the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom">sample</a>.
+					</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>12- How can I use <code>applyVariant()</code> in
+					combination with the <code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code>The <code>applyVariant()</code> is an interface function for the
+						<code>SmartVariantManagement</code> control that sets the current view
+					for the <code>SmartTable</code> control.</code></p><p><code>Applications can also create their own application-specific views as the default,
+					which are <span class="emphasis">not</span> standard views defined by the
+						<code>SmartTable</code> control. These application views are only called
+					once during the initialization of the <code>SmartTable</code> control.</code></p><p><code>If an application default view has been defined, then all other views are based
+					on this application default view. Any change made to the
+						<code>SmartTable</code> control and saved as a view is merged with the
+					application default view by the <code>SmartTable</code> control. This data
+					is then stored as a <span class="emphasis">new</span> view, a combination of the change
+					made and the application default view.</code></p><p><code>For example, an application default view contains two groups that have been
+					defined for the <code>SmartTable</code> control. When a new group is added
+					and saved as a view, the new view will comprise the newly added group and the
+					application default view. Thus, the end result are three groups for the
+						<code>SmartTable</code> control.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>
+					</code></p><p><code>When the user selects <span class="ph uicontrol">Ungroup All</span> in the
+							<span class="ph uicontrol">Group Header Menu</span> on the UI of
+							<code>AnalyticalTable</code> in the <code>SmartTable</code>
+						control, and this is then stored as a view, the change is saved as a
+						combination of the ungrouping change and the application default view that
+						contains the grouping information. Thus, the end result will be the
+						application default view.</code></p><code>
+				<p></p></code></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>13- Why do I see an incorrect count in the header of my
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code>If the backend does not support count, if the count support has been disabled in
+					the model, or in case of a tree scenario, you have to set
+						<code>showRowCount="false"</code> in the <code>SmartTable</code>
+					control.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>14- Can I use annotations with qualifiers in the
+						<code>SmartTable</code> control? And, in particular, how can I use the
+						<code>LineItem</code> and <code>PresentationVariant</code>
+					annotations with a qualifier within the <code>SmartTable</code>
+					control?</code></h3></div><div class="fig"><p><code>As a general rule, the <code>SmartTable</code> control looks for annotations
+						<span class="emphasis">without</span> a qualifier, the primary annotations. However,
+					you can also use the <code>PresentationVariant</code> and
+						<code>LineItem</code> annotations with qualifiers as mentioned
+					below.</code></p><p><code>We first look for <code>PresentationVariant</code> and try to get the
+						<code>LineItem</code> annotation from there. If no such annotation
+					exists, we look for the <code>LineItem</code> annotation directly on the
+					entity.</code></p><p><code>You can set the qualifier that you want to use for the <code>LineItem</code>
+					annotation in the <code>SmartTable</code> control using
+						<code>lineItemQualifier</code>
+					<code>customData</code>:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;SmartTable customData:lineItemQualifier=”Customer360” …&gt;</code></pre></div></section><p><code>Or, if you want us to use a specific <code>PresentationVariant</code>,
+						<code>presentationVariantQualifier</code> is also supported, which can
+					be used as shown below:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;SmartTable customData:presentationVariantQualifier =”Customer360” …&gt;</code></pre></div></section><p><code>If <span class="emphasis">no qualifier</span> has been defined for the
+					presentation
+					variant, you can use the fallback option and check if there
+					is a <code>LineItem</code> annotation with or without a qualifier, as
+					specified by the application developer.</code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code>
+					</code></p><p><code><code>customData</code> is the shortcut notation for specifying custom
+						data for the control, provided you have added the following to the XML view:
+							<code>customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"</code>. </code></p><code>
+					<p>For more information on how to use custom data in XML views, see <a href="#/topic/91f0c3ee6f4d1014b6dd926db0e91070.html" title="SAPUI5 provides the data() method to attach data objects to controls." class="sap-doc">Custom Data - Attaching Data Objects to Controls</a>.</p>
+				<p></p></code></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>15- How can I dynamically switch between read-only and
+					editable controls in my table using the <code>editable</code>
+					property?</code></h3></div><div class="fig"><p><code>For the switch you have to enable the
+						<code>SmartToggle</code>
+					feature in the <code>SmartTable</code> controls as follows:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>&lt;smartTable:SmartTable id="ItemsST" entitySet="Items" customData:useSmartToggle="true"...&gt;</code></pre></div></section><p><code>In order for this to work, the <code>customData</code> namespace in the XML
+					view must be declared correctly to enable shortcut notation for custom data
+						aggregations:<code>customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"</code>. </code></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><code><strong>
+					Note
+				</strong></code></div></div><div class="fig"><p><code><code>SmartToggle</code> is a feature provided by the
+						<code>SmartTable</code> control that allows you to toggle between
+					display and edit mode for all the relevant controls in the cells of the
+						<code>SmartTable</code> control. </code></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>16- I did an export using the
+						<span class="ph uicontrol">Export
+						to Spreadsheet</span> button in the
+						<code>SmartTable</code> control. Why is the data in the
+					spreadsheet
+					different from the data I see on the UI?</code></h3></div><div class="fig"><p><code>The formatting in an SAPUI5 client-side
+					generated spreadsheet can differ slightly from the UI. However, if you notice
+					large differences, the issue might be due to custom columns that do not have
+					sufficient <code>P13ndata</code>, as required for a client-side export.</code></p><p><code>The following additional properties are required in
+						<code>P13ndata</code> for proper formatting of custom columns for an SAPUI5-client-side
+					export to the spreadsheet:</code></p><div class="tableWrapper "><div class="fig"><code><tgroup>
+						
+						
+						</tgroup></code><table border="1" id="p13n_properties" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Property</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Explanation</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>unit</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Name of the unit property to be used for unit of measure and
+										currency formatting</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isCurrency</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>If the column is of type <code>currency</code>, the
+										amount with the currency is shown in the exported
+										spreadsheet.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>align</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Configures the alignment of the column, for which you can use
+										the same value
+										as
+										for the <code>hAlign</code>property
+										of the column.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>edmType</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Actual <code>Edm.Type</code> of the OData property, which
+										might be needed for proper formatting of columns in the
+										spreadsheet.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>description</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Field that points to the
+										description
+											(<code>UI.Text</code> annotation) of this
+										column,
+										or, if custom-formatted columns are used, you can use the
+										description that is used in the <code>formatter</code>
+										function.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>displayBehaviour</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Various combinations of the description that are displayed on
+										the UI in the
+										following
+										way: </p><ul class="ul ">
+											<li class="li">
+												<p><code>descriptionOnly</code>: Shows a
+												description only</p>
+											</li>
+											<li class="li">
+												<p><code>descriptionAndId</code>: Shows the
+												description followed by the ID</p>
+											</li>
+											<li class="li">
+												<p><code>idAndDescription</code>: Shows the ID
+												followed by the description </p>
+											</li>
+											<li class="li"><code>idOnly</code>: Shows the ID only </li>
+										</ul><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>width</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Width of the column, for which you should use the same value
+										as for the column itself</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>isDigitSequence</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Can be used for <code>Edm.String</code> columns that
+										represent a numeric field with leading zeros. If set to
+											<code>true</code>, the leading zeros are removed
+										from this string field as the <code>number</code> format
+										will be used in the spreadsheet.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><p><code>Apart from the configuration, you can use the <code>beforeExport</code> event
+					to change the formatting and configuration of an SAPUI5 client-side
+					export to a spreadsheet as shown in the samples.</code></p><p><code>For more
+						information, see the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtableCustom">sample for
+							<code>SmartTable</code></a> and the <a href="#/entity/sap.ui.export.Spreadsheet" title="#/entity/sap.ui.export.Spreadsheet" class="sap-doc" alt="#/entity/sap.ui.export.Spreadsheet">samples for
+								<code>sap.ui.export.Spreadsheet</code></a> .</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>17- Why is the <code>SmartTable</code> control (of
+					type <code>AnalyticalTable</code>) showing the columns with the
+						<code>Text</code> annotation incorrectly in my app? Why is the
+						<code>SmartTable</code> control not using
+						<code>TextArrangement</code> annotations as I expected? </code></h3></div><div class="fig"><p><code>The <code>SmartTable</code> control supports the <code>Text</code> and
+						<code>TextArrangement</code> annotations which allow you to show
+					descriptions and ID fields together as annotated by the
+						<code>TextArrangement</code> annotation (or configured using
+						<code>displayBehaviour</code> custom data). The use of this annotation
+					has some restrictions. For more
+						information, see the <a href="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Text" title="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Text" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable/annotations/Text">API Reference: <code>Text</code>
+							annotation</a>.
+					</code></p><p><code>In addition, <code>AnalyticalBinding</code> ignores the entire
+						<code>$select</code> if the dimensions and measures do not match what
+					has been calculated internally. Using <code>Text</code> or
+						<code>TextArrangement</code> automatically only works if
+						<code>$select</code> contains the correct fields. If you add some
+					dimensions to <code>requestAtLeast</code>, <code>Criticality</code>, or
+					other fields, <code>$select</code> is ignored, and fetching the descriptions
+					and the criticality, for example, does not work. </code></p><p><code>During automatic dimension selection <code>AnalyticalBinding</code> ignores the specified
+						<code>$select</code> if a text or description column is added to the
+					table content <span class="emphasis">without</span> the corresponding
+					dimension.
+					To work around this binding restriction, the <code>SmartTable</code> control
+					calculates and adds the dimension of the property of the
+					<code>Text</code>
+					annotation to the <code>additionalProperty</code> custom
+					data (used to calculate <code>$select</code>) in the
+						<code>SmartTable</code> control wherever possible.</code></p><p><code>There are a few other things to keep in mind when using this feature: </code></p><ul class="ul "><code>
+					<li class="li">
+						<p>Multiple dimensions must not point to the same property of the
+								<code>Text</code>
+							annotation (only <span class="emphasis">one</span> will be used). </p>
+					</li>
+					<li class="li">
+						<p><code>Text</code>
+							annotation itself is marked as a dimension, the actual dimension field
+							is not automatically selected.</p>
+					</li>
+					<li class="li">
+						<p>The
+								<code>Text</code>
+							annotation for ignored or hidden dimension fields does not automatically
+							contain the dimension name in <code>additionalProperty</code>, as
+							metadata analysis for such fields is ignored. </p>
+					</li>
+				</code></ul></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>18- How come the column headers in the <code>SmartTable</code>
+					control of type <code>ResponsiveTable</code> are
+					clickable?</code></h3></div><div class="fig"><p><code><code>SmartTable</code> internally activates actions for the column headers
+					of a responsive table. Users can select a column and sort and filter it using
+					the buttons that are displayed.</code></p><p><code> Keep in mind that the following applies:</code></p><ul class="ul "><code>
+					<li class="li">
+						<p>The active column headers are only available if
+								<code>useTablePersonalisation="true"</code>.</p>
+					</li>
+					<li class="li">
+						<p>If a column has already been filtered, clicking the filter button will
+							not show the selected column directly (this is the same as in a grid
+							table, since there is a restriction for
+							<code>p13nFilterPanel</code>).</p>
+					</li>
+					<li class="li">
+						<p>Pressing the <span class="keyWrap"><kbd class="key">Ctrl</kbd></span> key and clicking on a column to add multiple
+							sorters is currently not supported.</p>
+					</li>
+				</code></ul><p><code>For more
+						information, see the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtable" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtable" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.mtable">sample</a>.
+					</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>19- How come the <span class="ph uicontrol">Export to
+						Spreadsheet</span> button of the <code>SmartTable</code> control
+					has a menu?</code></h3></div><div class="fig"><p><code>If <code>exportType="UI5Client"</code> for <code>SmartTable</code>, the
+						<span class="ph uicontrol">Export to Spreadsheet</span> button will be rendered as
+						<code>sap.m.MenuButton</code> with the menu options
+						<span class="ph uicontrol">Export</span> and <span class="ph uicontrol">Export As</span>.
+						<span class="ph uicontrol">Export As</span> provides a number of export settings that
+					can be configured by the user.</code></p><p><code>For more information about the spreadsheet export and the options on the export
+					UI, see <a href="#/topic/2691788a08fc43f7bf269ea7c6336caf.html" title="The spreadsheet export allows you to export data to an Office Open XML spreadsheet." class="sap-doc">Spreadsheet Export</a>.</code></p></div></section><section id="Reuse_initialize" class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>20- Why does the
+						<code>initialise</code> event of <code>SmartTable</code> not get
+					fired in my scenario?</code></h3></div><div class="fig"><p><code>The <code>SmartTable</code> control fires the <code>initialise</code>
+					event just <span class="emphasis">once</span> after it has completed analyzing the
+					metadata and has initialised its inner state for the first time. Therefore,
+					using <code>attachInitialise</code> does not help. However, the
+						<code>isInitialised</code> method can be used in such scenarios. </code></p><p><code>You can also use the following code sample to handle scenarios where you need to
+					trigger some function after this control has been initialized. It should work in
+					scenarios where the event has already been fired:</code></p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><code>if (oSmartControl.isInitialised()){
+  runSomeCodeAfterInit();
+} else {
+  oSmartControl.attachInitialise(runSomeCodeAfterInit);
+}
+</code></pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>21- How is sorting done in amount fields with multiple
+					currencies if <code>ApplyMultiUnitBehaviorForSortingAndFiltering</code> is
+					set?</code></h3></div><div class="fig"><p><code>The <code>SmartTable</code> control automatically adds the unit, in this case
+					the currency code, as an additional sorter before the amount unless the unit is
+					added as a sorter explicitly. This happens if the
+						<code>ApplyMultiUnitBehaviorForSortingAndFiltering</code> annotation is
+					applied. This behavior is applicable for all columns in the
+						<code>SmartTable</code> control.</code></p><p><code>For more information, see the <a href="#/api/sap.ui.comp.smarttable.SmartTable/annotations/ApplyMultiUnitBehaviorForSortingAndFiltering" title="#/api/sap.ui.comp.smarttable.SmartTable/annotations/ApplyMultiUnitBehaviorForSortingAndFiltering" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable/annotations/ApplyMultiUnitBehaviorForSortingAndFiltering">API Reference</a>.
+					</code></p><p><code>For custom columns, the required <code>p13nData</code> information has to be
+					provided by the consumers (<code>isCurrency</code> and
+					<code>unit</code>).</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>22- Which key combinations can be used for the
+						<code>SmartTable</code> control?</code></h3></div><div class="fig"><p><code>The following key combinations are supported:</code></p><ul class="ul "><code>
+					
+					<li class="li">
+						<p><span class="keys">
+								<span class="keyWrap"><kbd class="key">CTRL</kbd></span>
+								<span class="keyWrap"><kbd class="key">SHIFT</kbd></span>
+								<span class="keyWrap"><kbd class="key">E</kbd></span>
+							</span>
+							or <span class="keys">
+								<span class="keyWrap"><kbd class="key">⌘ / Command</kbd></span>
+								<span class="keyWrap"><kbd class="key">SHIFT</kbd></span>
+								<span class="keyWrap"><kbd class="key">E</kbd></span>
+							</span>: Opens the <span class="ph uicontrol">Export As</span>
+							dialog for the spreadsheet export</p>
+					</li>
+					<li class="li">
+						<p><span class="keys">
+								<span class="keyWrap"><kbd class="key">CTRL</kbd></span>
+								<span class="keyWrap"><kbd class="key">,</kbd></span>
+							</span> or <span class="keys">
+								<span class="keyWrap"><kbd class="key">⌘ / Command</kbd></span>
+								<span class="keyWrap"><kbd class="key">, </kbd></span>
+							</span>: Opens the
+							personalization
+							settings
+						</p>
+					</li>
+				</code></ul></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>23- Why does the first column not appear in the
+					personalization settings when using <code>treeTable</code> as the table
+					type?</code></h3></div><div class="fig"><p><code>The <code>SmartTable</code> control disables the personalization for the
+					first column if <code>tableType</code> is set to
+						<code>sap.ui.comp.smarttable.TableType.TreeTable</code>. The
+						<code>TreeTable</code> control provides a comprehensive set of features
+					for displaying hierarchical data where a table is displayed as a hierarchical
+					tree. <code>TreeTable</code> is designed to retain this structure also for
+					the first column of the table, which is why <code>SmartTable</code> excludes
+					it from personalization.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>24- Why is the unit of measure (UoM) or currency not
+					right aligned with the column header?</code></h3></div><div class="fig"><p><code>The currency and UoM columns in the <code>SmartTable</code> control are built
+					to be aligned at decimal point. Although the overall content is right aligned,
+					the header and cell might not be aligned as this is a generic control that is
+					not built to handle a single currency or UoM (for example, %,
+					h).</code></p><p><code>The UoM part always uses ~3em to prevent the content from being
+					cut
+					off. That is why there might be a
+					space
+					behind the unit in the cell in contrast to the header, depending on the UoM or
+					currency used.</code></p><p><code>Also, if either the <span class="ph uicontrol">Product Depth</span> or <span class="ph uicontrol">Product
+						Width</span> column is added to a <code>SmartTable</code> control,
+					the UoM, such as
+					m
+					or cm, might
+					not
+					be aligned, but the aim is to align the values at decimal
+					point and not at header and content level.</code></p><p><code>The application can use custom columns if an
+					exact
+					alignment of content and header is required.</code></p><p><code>For more
+						information, see the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality">Sample</a>.</code></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible"><code>25-
+					Why is a column suddenly added or removed by the <code>SmartTable</code>
+					control after the <span class="ph uicontrol">Settings</span> dialog has been
+					opened?</code></h3></div><div class="fig"><p><code>When using the <code>SmartTable</code> control with an active
+						<code>useTablePersonalisation</code> property, personalization and
+					persistence
+					for the control are activated as well if <code>VariantManagement</code> is
+					available, or if the <code>useVariantManagement</code> property has been set
+					to <code>false</code> (for implicit use of
+						<code>VariantManagement</code>) and the <code>persistencyKey</code>
+					property is used.</code></p><p><code>If <code>SmartTable</code> uses the personalization feature, the personalization is the
+					hub
+					for managing the visibility of columns. Any dynamic changes made to the
+					visibility of the columns must be
+					avoided.
+					Dynamic changes of column visibility by using bindings or other factors, such as
+					updating the visibility after an update event, might lead to mismatches with the
+					activated persistence setting of <code>SmartTable</code>.</code></p><p><code>If the visibility for a column changes after the <span class="ph uicontrol">Settings</span> dialog has
+					been opened, you should check if the
+					property
+					that determines the visibility of the column has been bound,
+					or if there are update-related event handlers that affect the visibility.</code></p></div></section></section><section class="contentInSection hidden"><h2><code>In this section:</code></h2></section><section class="familyLinks"><div class="parentLink hidden"><code><br><strong>Parent topic: </strong></code></div><div class="previousLink hidden"><code><br><strong>Previous: </strong></code></div><div class="nextLink hidden"><code><br><strong>Next: </strong></code></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2><code>Related information</code></h2></div><ul class="fig"></ul></section></div></section></div></body></html>

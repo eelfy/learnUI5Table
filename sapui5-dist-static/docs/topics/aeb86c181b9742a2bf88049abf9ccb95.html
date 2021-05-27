@@ -1,0 +1,26 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioaeb86c181b9742a2bf88049abf9ccb95" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using Dialogs Defined as Fragments</h1><div class="fig"><h1 class="topictitle1 title">Using Dialogs Defined as Fragments</h1><div class="shortdesc">The fragment instantiation function always returns the fragment's root control, which is
+		a dialog control that can be used like any dialog.</div><section class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+			<p>In the following example, the dialog is opened immediately:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "Fragment" required from module "sap/ui/core/Fragment"
+Fragment.load({type: "XML", name: "testdata.fragments.XMLFragmentDialog"}).then(function(oDialog) {
+	oDialog.open();
+});</pre></div></section>
+			<p>Note that any global model is available for data binding within this dialog. Also any model
+				set on the dialog itself. However, if this dialog is opened from a controller, the
+				model of this controller's view is NOT automatically available within the dialog
+				fragment. The reason for this is that the dialog is not part of the view UI. If the
+				above code for opening the fragment dialog is part of a controller, it could set the
+				view's model on the dialog: </p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "Fragment" required from module "sap/ui/core/Fragment"
+Fragment.load({type: "XML", name: "testdata.fragments.XMLFragmentDialog"}).then(function(oDialog) {
+	oDialog.setModel(this.getView().getModel());
+	oDialog.open();
+}.bind(this));</pre></div></section>
+			<p>Alternatively, the special aggregation <code>dependents</code> of <code>sap.ui.core.Element</code> can be used to connect the dialog to
+				the lifecycle management and data binding of the view:
+				</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "Fragment" required from module "sap/ui/core/Fragment"
+Fragment.load({type: "XML", name: "testdata.fragments.XMLFragmentDialog"}).then(function(oDialog) {
+	this.getView().addDependent(oDialog);
+	oDialog.open();
+}.bind(this));</pre></div></section><p></p>
+		</div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

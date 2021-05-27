@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>form/SemanticFormElement</name>
+    <derived/>
+    <author>SAP SE</author>
+    <documentation>A &lt;code&gt;SemanticFormElement&lt;/code&gt; element is a special &lt;code&gt;FormElement&lt;/code&gt; that contains semantically connected
+fields. These field controls are divided by delimiter controls. In display mode, they are rendered as one condensed string,
+in edit mode as separate fields.
+
+&lt;b&gt;Note:&lt;/b&gt; Please use the &lt;code&gt;ColumnLayout&lt;/code&gt; as &lt;code&gt;layout&lt;/code&gt; of the &lt;code&gt;Form&lt;/code&gt;. For other layouts, the
+field arrangement might not be suitable in every case.</documentation>
+    <since>1.86.0</since>
+    <developmentState state="experimental" since="1.86"></developmentState>
+    <baseType>sap.ui.layout/form/FormElement</baseType>
+    <properties>
+        <property name="delimiter" type="sap.ui.core/string" defaultValue="/" group="Data">
+            <documentation>Delimiter symbol to separate the fields.</documentation>
+        </property>
+    </properties>
+    <aggregations>
+        <aggregation name="fieldLabels" type="sap.ui.core/Label" cardinality="0..n">
+            <documentation>Labels of the individual fields. Can either be a &lt;code&gt;Label&lt;/code&gt; control or a string.
+
+If a &lt;code&gt;Label&lt;/code&gt; control is used, the properties of the &lt;code&gt;Label&lt;/code&gt; can be set.
+
+These labels are not rendered directly. If the &lt;code&gt;Label&lt;/code&gt; property of &lt;code&gt;SemanticFormElement&lt;/code&gt; is not set,
+the texts of the labels are concatenated into the &lt;code&gt;Label&lt;/code&gt; property of &lt;code&gt;SemanticFormElement&lt;/code&gt;. Otherwise the set
+&lt;code&gt;Label&lt;/code&gt; is shown.
+
+&lt;b&gt;Note:&lt;/b&gt; If this aggregation is used, a label is assigned to every single field of &lt;code&gt;SemanticFormElement&lt;/code&gt;.
+The order of the labels and the fields must be the same.</documentation>
+        </aggregation>
+        <aggregation name="_delimiters" type="sap.ui.core/Control" cardinality="0..n" visibility="hidden"/>
+        <aggregation name="_displayField" type="sap.ui.core/Control" cardinality="0..1" visibility="hidden"/>
+    </aggregations>
+</control>

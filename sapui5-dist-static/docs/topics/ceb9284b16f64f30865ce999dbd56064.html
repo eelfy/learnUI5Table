@@ -1,0 +1,69 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioceb9284b16f64f30865ce999dbd56064" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Object Creation Through Dialog in the List Report</h1><div class="fig"><h1 class="topictitle1 title">Enabling Object Creation Through Dialog in the List Report</h1><div class="shortdesc">You can enable the creation of objects that have a maximum of 8 data fields through a dialog in the list report page.</div><section id="section_wxx_bvy_cnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p><img src="loioac4a875e5d2a4af6a1cd39e3d0f71208_HiRes.png" usemap="#"></p><p>You can enable this feature on list reports and worklist applications having a single view in
+				a list page. This can be done in the manifest setting by adding the property
+					<code>createWithParameterDialog</code> and passing the properties of related
+				entity set as follows:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"createWithParameterDialog" : {
+               "fields" : {
+                  "&lt;fieldName&gt;" : {"path":"&lt;fieldname&gt;"},
+                  "&lt;fieldName&gt;" : {"path":"&lt;fieldname&gt;"}
+             }
+</pre></div></section>
+				<p></p></div></div><p></p><p>With this setting, the option to create objects using a dialog appears on the list report application.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "pages": {
+        "ListReport|STTA_C_SO_SalesOrder_ND": {
+            "entitySet": "STTA_C_SO_SalesOrder_ND",
+            "component": {
+                "name": "sap.suite.ui.generic.template.ListReport",
+                "list": true,
+                "settings": {
+                    "multiSelect": true,
+                    "isWorklist": true,
+                    "tableSettings": {
+                        "createWithParameterDialog" : {
+                            "fields" : {
+                                "BusinessPartnerID":{"path": "BusinessPartnerID"},
+                                "CurrencyCode" : {"path":"CurrencyCode"},
+                                "BillingStatus" : {"path":"BillingStatus"},
+                                "DeliveryStatus" : {"path":"DeliveryStatus"},
+                                "OpportunityID" : {"path":"OpportunityID"}
+                            }
+                        }
+                    }
+                }
+            },
+            "pages": {
+                ..............
+                ..............
+            }
+        }
+    }
+}</pre></div></section>
+				<p></p></div></div><p></p><p>This feature is only supported for main object creation from list report page. If this feature is enabled, navigation to an object page
+				in create mode is not allowed. However, you can navigate to the object page in display mode to modify objects.</p><p>Draft state is not maintained when an object is created using dialog. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>Ensure that the properties are related to the entities.</p>
+					</li>
+					<li class="li">
+						<p>Ensure that all the mandatory fields of the entities are part of the create dialog.</p>
+					</li>
+					<li class="li">
+						<p>Object creation via dialog is supported only in list reports and worklist
+							applications having a single table in a list page.</p>
+					</li>
+					<li class="li">
+						<p>It is currently not possible to create an object with prefilled default values and filters using the dialog. For more
+							information, see <a href="#/topic/189e2d8a59f04a2693a4fde7f4a91a65.html" title="When a user creates a new entity, it is possible to prefill fields with specific values." class="sap-doc">Prefilling Fields When Creating a New Entity Using an Extension Point</a>.</p>
+					</li>
+				</ul>
+			<p></p></div></div><p><span class="emphasis">Customization of Dialog Title and Buttons</span></p><p>The default title of the dialog is <span class="ph uicontrol">New Object</span> and the key in i18n file is <code>CREATE_DIALOG_TITLE</code>.
+				You can change this by redefining the key in application or in the SAPUI5 Visual Editor. The default values of the buttons on dialog
+				are <span class="ph uicontrol">Create</span> and <span class="ph uicontrol">Cancel</span>, which you can change in SAPUI5 Visual Editor.</p></div></section><section id="section_r2b_hvy_cnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The content for this feature for SAP Fiori elements for OData V4 is covered in the topic <a href="#/topic/11ff444f82e14eb3a2e8eca0065a5055.html" title="When a user creates a new entity, it is possible to prefill fields with specific values." class="sap-doc">Prefilling Fields When Creating a New Entity</a>.</p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,181 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio52fc48b479314d0688be24f699778c47" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Extending Delivered Apps Using Adaptation Extensions</h1><div class="fig"><h1 class="topictitle1 title">Extending Delivered Apps Using Adaptation Extensions</h1><div class="shortdesc">You can extend delivered apps based on SAP Fiori elements by using the SAPUI5 Visual Editor in SAP Web IDE.</div><section class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+			<p>You can implement extensibility functions as part of a UI adaptation project by using
+				the SAPUI5 Visual Editor
+				in SAP Web IDE. The adaptation
+				project references the applications delivered by SAP as base or parent
+				applications.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This procedure is relevant only for list reports, object pages, overview pages,
+				and analytical list pages. </p><p>The flexible column layout is not supported by the
+						SAPUI5 Visual
+					Editor in SAP Web IDE.</p><p></p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div>
+			<p>You can use adaptation extensions for these extensibility points:</p><ul class="ul ">
+					<li class="li">
+						<p>List report and analytical list page</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Add additional fields to the smart filter bar </p>
+							</li>
+							<li class="li">
+								<p>Add additional columns to tables </p>
+							</li>
+							<li class="li">
+								<p>Add additional table toolbar buttons and extension controller
+									logic</p>
+							</li>
+							<li class="li">
+								<p>Override extensibility functions</p>
+								<ul class="ul ">
+									<li class="li">
+										<p><code>onInitSmartFilterBar</code></p>
+									</li>
+									<li class="li">
+										<p><code>provideExtensionAppStateData</code></p>
+									</li>
+									<li class="li">
+										<p><code>restoreExtensionAppStateData</code></p>
+									</li>
+									<li class="li">
+										<p><code>ensureFieldsForSelect</code></p>
+									</li>
+									<li class="li">
+										<p><code>addFilters</code></p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div><div class="fig"><img src="loiod09b292f52fa462aa45c5dab394c260a_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Adaptation Extension Options in the List Report</span></div>
+					</li>
+					<li class="li">
+						<p>Object page</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Global actions </p>
+							</li>
+							<li class="li">
+								<p>Additional sections </p>
+							</li>
+							<li class="li">
+								<p>Add additional fields to the header facet </p>
+							</li>
+							<li class="li">
+								<p>Add additional fields and field groups to forms</p>
+							</li>
+							<li class="li">
+								<p>Override extensibility functions</p>
+								<ul class="ul ">
+									<li class="li">
+										<p><code>provideExtensionStateData</code></p>
+									</li>
+									<li class="li">
+										<p><code>restoreExtensionStateData</code></p>
+									</li>
+									<li class="li">
+										<p><code>ensureFieldsForSelect</code></p>
+									</li>
+									<li class="li">
+										<p><code>addFilters</code></p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div><div class="fig"><img src="loio07345eb1771743fcbd190efbc9a695d2_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Adaptation Extension Options on the Object Page</span></div>
+					</li>
+					<li class="li">
+						<p>Overview page</p><ul class="ul ">
+								<li class="li">
+									<p>Add additional fields to the smart filter bar </p>
+								</li>
+								<li class="li">
+									<p>Add global actions to filter bar</p>
+								</li>
+								<li class="li">
+									<p>Add additional extensions controller logic</p>
+								</li>
+								<li class="li">
+									<p>Add cards</p>
+								</li>
+								<li class="li">
+									<p>Clone cards</p>
+								</li>
+								<li class="li">
+									<p>Edit cards</p>
+								</li>
+								<li class="li">
+									<p>Override extensibility functions</p>
+									<ul class="ul ">
+										<li class="li">
+											<p><code>provideExtensionAppStateData</code></p>
+										</li>
+										<li class="li">
+											<p><code>restoreExtensionAppStateData</code></p>
+										</li>
+										<li class="li">
+											<p><code>addFilters</code></p>
+										</li>
+										<li class="li">
+											<p><code>provideStartupExtension</code></p>
+										</li>
+										<li class="li">
+											<p><code>provideExtensionNavigation</code></p>
+										</li>
+										<li class="li">
+											<p><code>provideCustomActionPress</code></p>
+										</li>
+										<li class="li">
+											<p><code>provideCustomParameter</code></p>
+										</li>
+									</ul>
+								</li>
+							</ul><p></p>
+					</li>
+				</ul><p></p>
+			<p>In SAP Web IDE, here's what you
+				do: </p>
+		</div></section><section class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+			<li class="step">
+				<span class="cmd">Choose <span class="ph menucascade">
+						<span class="ph uicontrol">File</span>
+						<span class="ph uicontrol">New</span>
+						<span class="ph uicontrol">Adaptation Project</span>
+					</span>.</span>
+			</li>
+			<li class="step">
+				<span class="cmd">Enter the project name and the application title and choose
+						<span class="ph uicontrol">Next</span>.</span>
+			</li>
+			<li class="step">
+				<span class="cmd">Select the system and the base application. Make sure you deselect
+						<span class="ph uicontrol">Enable Safe Mode</span> and choose
+						<span class="ph uicontrol">Finish</span>.</span>
+				<div class="itemgroup info">
+					<p>The system generates the adaptation project in your workspace.</p>
+				</div>
+			</li>
+			<li class="step">
+				<span class="cmd">Right-click your adaptation project and choose SAPUI5<span class="ph uicontrol"> Visual
+						Editor</span>.</span>
+				<div class="itemgroup info">
+					<p>The system starts the editor. You can make your adaptations on the
+							<span class="ph uicontrol">Edit</span> tab page. For an example, see <a href="#/topic/a269671fc49e4c75920c108961bf31f2.html" title="In this example, you add a button to the table toolbar in the list report and extend it to filter only the records which have a price that is greater than or equal to 1000." class="sap-doc">Adaptation Extension Example: Adding a Button to the Table Toolbar in the List Report</a>.</p>
+					<p>For information about adapting the UI in SAP Web IDE, choose <span class="ph menucascade">
+							<span class="ph uicontrol">Help</span>
+							<span class="ph uicontrol">Documentation</span>
+							<span class="ph uicontrol">Developing</span>
+							<span class="ph uicontrol">Developing Web Applications</span>
+							<span class="ph uicontrol">SAPUI5 Visual Editor</span>
+						</span>.</p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+					<p></p></div></div>
+				</div>
+			</li>
+		</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

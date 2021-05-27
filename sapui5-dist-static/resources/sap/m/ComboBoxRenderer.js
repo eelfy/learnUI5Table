@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2021 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(['./ComboBoxBaseRenderer','sap/ui/core/Renderer','sap/m/inputUtils/ListHelpers'],function(C,R,L){"use strict";var a=R.extend(C);a.apiVersion=2;a.CSS_CLASS_COMBOBOX="sapMComboBox";a.addOuterClasses=function(r,c){C.addOuterClasses.apply(this,arguments);r.class(a.CSS_CLASS_COMBOBOX);};a.addInnerClasses=function(r,c){C.addInnerClasses.apply(this,arguments);r.class(a.CSS_CLASS_COMBOBOX+"Inner");};a.addButtonClasses=function(r,c){C.addButtonClasses.apply(this,arguments);r.class(a.CSS_CLASS_COMBOBOX+"Arrow");};a.addPlaceholderClasses=function(r,c){C.addPlaceholderClasses.apply(this,arguments);r.class(a.CSS_CLASS_COMBOBOX+"Placeholder");};a.writeInnerAttributes=function(r,c){var s=c.getSelectedItem(),S=s&&L.getListItem(s);C.writeInnerAttributes.apply(this,arguments);if(!c.isOpen()){return;}if(c._getSuggestionsPopover().getValueStateActiveState()){r.attr("aria-activedescendant",c._getFormattedValueStateText().getId());}else if(S&&S.hasStyleClass("sapMLIBFocused")&&c.getFocusDomRef()===document.activeElement){r.attr("aria-activedescendant",S.getId());}};return a;},true);

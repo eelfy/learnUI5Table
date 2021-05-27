@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>APF TestSuite</title>
+	<script type="text/javascript" src="../../../../../../resources/sap/ui/qunit/qunit-redirect.js"></script>
+	<script id="sap-ui-bootstrap" src='../../../../../../resources/sap-ui-core.js'></script>
+</head>
+<body>
+	<script>
+		function suite() {
+			var suite = new top.jsUnitTestSuite();
+			var contextPath = "/" + window.location.pathname.split("/")[1];
+
+			suite.addTestPage(contextPath + "/test-resources/sap/apf/integration/cloudFoundry/tShareDialog.opa.html");
+			suite.addTestPage(contextPath + "/test-resources/sap/apf/integration/cloudFoundry/tValueHelp.opa.html");
+
+			return suite;
+		}
+	</script>
+</body>
+</html>

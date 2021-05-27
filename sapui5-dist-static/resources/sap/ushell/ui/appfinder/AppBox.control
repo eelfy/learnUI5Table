@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>ui/appfinder/AppBox</name>
+    <derived/>
+    <documentation>Add your documentation for the new ui/appfinder/AppBox</documentation>
+    <baseType>sap.ui.core/Control</baseType>
+    <properties>
+        <property name="title" type="sap.ui.core/string" group="Misc">
+            <documentation>Specifies the title of the appBox.</documentation>
+        </property>
+        <property name="subtitle" type="sap.ui.core/string" group="Misc">
+            <documentation>Specifies the subTitle of the appBox.</documentation>
+        </property>
+        <property name="icon" type="sap.ui.core/string" group="Misc">
+            <documentation>Specifies the icon url of the appBox.</documentation>
+        </property>
+        <property name="url" type="sap.ui.core/string" group="Misc">
+            <documentation>Specifies the url of the appBox.</documentation>
+        </property>
+        <property name="navigationMode" type="sap.ui.core/string" group="Misc">
+            <documentation>Specifies the navigationMode of the appBox.</documentation>
+        </property>
+    </properties>
+    <events>
+        <event name="press" allowPreventDefault="false">
+            <documentation>Fires when the appBox is pressed.</documentation>
+        </event>
+        <event name="afterRendering" allowPreventDefault="false">
+            <documentation>Fires after the appBox is rendered.</documentation>
+        </event>
+    </events>
+    <aggregations>
+        <aggregation name="pinButton" type="sap.m/Button" cardinality="0..1">
+            <documentation>The pinButton aggregation that can contain the pin button.</documentation>
+        </aggregation>
+    </aggregations>
+</control>

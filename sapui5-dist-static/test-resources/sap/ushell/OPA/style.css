@@ -1,0 +1,19 @@
+html {
+    overflow: auto !important;
+}
+
+.sapUiOpaComponent {
+    margin-left: 0;
+    height: 100%;
+}
+
+.sapUiOpaComponent > .sapUiComponentContainer > div {
+    height: 100vh;
+}
+
+body.sapUiOpaFLP {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 20%;
+}

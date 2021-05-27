@@ -1,0 +1,64 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio8e1aa45ac11b4894b7c3a9d46a0b3790" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Preparing OData Services</h1><div class="fig"><h1 class="topictitle1 title">Preparing OData Services</h1><div class="shortdesc"></div><p>You access the back-end system information using OData services. SAP Fiori elements support
+			OData version 2 with vocabulary-based annotations.</p><p>The qualities that your service requires depend on the template you are using and how you want
+			to use it, for example, whether it is read-only or editable. If it is editable, your
+			service must support create, read, update, and delete (CRUD) operations and draft
+			document handling.</p><p>Implement additional actions that must be supported as part of your OData service. If the data
+			is represented in a list page, <code>$count</code> must be supported as well as
+				<code>$filter</code> (for all filterable properties).</p><section>
+			<h2 class="title ">Creating a New OData Service</h2>
+			<p>The easiest way to create a new OData service in an ABAP back-end system is to establish a
+				Core Data Services (CDS) consumption view and generate the OData service from this
+				view (data-source driven service creation). Combined with Service Adaptation
+				Description Language (SADL) this provides the following advantages:</p><ul class="ul ">
+					<li class="li">
+						<p>CRUD request handling is covered by a Business Object Processing
+							Framework (BOPF) model that can be implicitly generated and controlled
+							by the following
+							annotations:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@ObjectModel.writeEnabled: true
+        @ObjectModel.writeDraftPersistance: '&lt;BO name&gt;' 
+</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Locking is handled by BOPF (implicit lock with modification requests)</p>
+					</li>
+					<li class="li">
+						<p>Paging is implicitly handled by SADL</p>
+					</li>
+					<li class="li">
+						<p>Draft document handling is implicitly covered if
+								<code>@ObjectModel.writeDraftPersistance</code> is specified.
+							However, you must also specify annotations, as defined in the draft
+							specification.</p>
+					</li>
+				</ul><p></p>
+			<p>For more information, see the <span class="ph uicontrol">SAP - ABAP Programming Model for SAP
+					Fiori</span> guide in the documentation for your SAP NetWeaver version on
+				SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>.</p>
+			<p>As an alternative, SADL support is also available in the SAP Gateway Service Builder
+				(transaction <code>SEGW</code>).  This option is described in detail in the
+					<span class="ph uicontrol">Generating an OData Service Based on a Referenced Data
+					Source</span> guide in the documentation for your SAP NetWeaver version on
+				SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>.</p>
+		</section><section>
+			<h2 class="title ">More Information</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p>For more information about the BOPF model, see <span class="ph uicontrol">SAP - BOPF Developer
+							Guide</span> in the documentation for your SAP NetWeaver version on
+						SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>. </p>
+				</li>
+				<li class="li">
+					<p>For more information about ABAP CDS development, see <span class="ph uicontrol">UI Annotations</span>
+						guide in the documentation for your SAP NetWeaver version on SAP Help Portal
+						at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>.</p>
+				</li>
+			</ul>
+			
+			
+		</section><section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic has not yet been updated with information specific to OData V4.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

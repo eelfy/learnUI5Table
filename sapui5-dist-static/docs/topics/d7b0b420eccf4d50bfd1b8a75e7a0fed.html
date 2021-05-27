@@ -1,0 +1,180 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod7b0b420eccf4d50bfd1b8a75e7a0fed" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Analytical Cards</h1><div class="fig"><h1 class="topictitle1 title">Analytical Cards</h1><div class="shortdesc">Analytical cards let you view data in a variety of chart formats. The card is divided
+		into two areas (header and chart).</div><section id="section_ipq_qlg_f1b">
+			<p>In the header area, you can view the aggregated value of a key performance indicator (KPI),
+				the trend, and percentage of change. In the chart area, you can view a graphical
+				representation of the data.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If you configure the chart title, chart
+					descriptions (x- and y-axis) are not displayed in the card (except for bubble
+					charts). For example, the chart title <span class="uinolabel">Net Sales by Days
+						Payable</span>, already conveys that the y-axis is <span class="uinolabel">Net
+						Sales</span> and the x-axis represents <span class="uinolabel">Days
+						Payable</span>.</p></div></div><p></p>
+		</section><section><section id="CR">
+				<h3 class="title ">Chart Responsiveness</h3>
+				<p>To improve the responsiveness of charts, you can use
+						<code>UI.PresentationVariant.MaxItems</code> to limit the number of
+					records fetched from the backend that are rendered on the screen. For
+					example:</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.PresentationVariant" Qualifier="Column_Eval_by_Country_123"&gt;
+    &lt;Record&gt;      
+          &lt;PropertyValue Property="MaxItems" Int="5" /&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+
+</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<p>
+					</p><div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>If there are too many data records displayed in the chart, it is difficult to
+						select a data point. If you are only interested in checking the top records,
+						then use <code>UI.PresentationVariant.SortOrder</code>. For more
+						information, see <a href="#/topic/53b07912070f4e52babd516d7e4e8074.html" title="This section provides the configuration items relevant for all overview page cards." class="sap-doc">Configuring Card Properties</a>. </p></div></div>
+				<p></p>
+			</section>
+			<section>
+				<h3 class="title ">Chart Interactivity</h3>
+				<p>Users can choose specific data points to pass data in URL parameters to the target
+					application. The target application can read these URL parameters and use them
+					as required (typically to filter the data set that they are displaying).</p>
+				<p>When a user select a particular data point, the system passes a technical ID
+						(<code>"RegionID"="001"</code>) instead of the display name
+						(<code>"Region"="EMEA"</code>).</p>
+			</section><section id="Axis">
+				<h3 class="title ">Axis Scaling</h3>
+				<p>Axis scaling lets you scale and display data for line, bubble, or scatter charts in the
+					analytics card. You can choose any of the following axis scaling types:</p>
+				<p><span class="emphasis">Type
+						1: Default property</span></p>
+				<p>The default behavior displays data in the respective chart format including the zero value.
+					The graph is adjusted according to the available data range. Set the following
+					property in the <code>UI.Chart</code>
+					annotation:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="AxisScaling" EnumMember="UI.ChartAxisScalingType/<span class="emphasis">AdjustToDataIncluding0</span>"/&gt;</pre></div></section><p></p>
+				<p><span class="emphasis">Type 2: Adjust scale property</span></p>
+				<p>The adjust scale property displays data in the respective chart format based on the available
+					data range. Set the following property in the <code>UI.Chart</code>
+					annotation:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="AxisScaling" EnumMember="UI.ChartAxisScalingType/AdjustToData"/&gt;</pre></div></section><p></p>
+				<p><span class="emphasis">Type 3: Min-Max property</span></p>
+				<p>The min-max property lets you define the minimum and maximum data range to
+					display data in the respective chart format. Set the following property in the
+						<code>UI.Chart</code> annotation:</p>
+				<p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;PropertyValue Property="AxisScaling" EnumMember="UI.ChartAxisScalingType/MinMaxValues"/&gt;</pre></div></section>
+				<p></p>
+				<p>You must define the <code>DataPoint</code> annotation to set the minimum and maximum
+					values.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="&lt;DataPoint Qualifier&gt;"&gt;
+
+  &lt;Record Type="UI.DataPointType"&gt;
+
+    &lt;PropertyValue Property="MinimumValue" Decimal="&lt;Minimum Value&gt;" /&gt;
+
+    &lt;PropertyValue Property="MaximumValue" Decimal="&lt;Maximum Value&gt;" /&gt;
+
+    &lt;PropertyValue Property="NumberFormat"&gt;
+
+     &lt;Record&gt;
+
+     .......
+
+     &lt;/Record&gt;
+
+     &lt;/PropertyValue&gt;
+
+   &lt;/Record&gt;
+
+&lt;/Annotation&gt;
+</pre></div></section><p></p>
+			</section></section><section id="section_vcd_dx3_b1b"><section>
+				<h3 class="title ">Descriptor Configuration Sample</h3>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>The following is a snippet of a sample descriptor
+					file:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.app": {
+   "_version": "1.1.0",
+   "id": "sap.ovp.demo",
+   "type": "application",
+   "i18n": "i18n/i18n.properties",
+   "applicationVersion": {
+                           "version": "1.2.2"
+                         },
+   "title": "{{app_title}}",
+   "description": "{{app_description}}",
+   "dataSources": {
+      "salesShare": {
+                       "uri": "https://abc.com/SalesShare.xsodata",
+                       "type": "OData",
+                       "settings": {
+                                     "odataVersion": "2.0",
+                                     "annotations": [
+		                             "salesShareAnno"
+	                                 ]
+                                    }
+                      },
+       "salesShareAnno": {
+                       "uri": "data/salesshare/annotations.xml",
+                       "type": "ODataAnnotation",
+                       "settings": {
+                                   }
+                          }
+                   }
+                }
+
+"sap.ovp": {
+    "globalFilterModel": "salesShare",
+    "globalFilterEntityType": "GlobalFilters",
+    "cards": {
+               "cardBubble": {
+                               "model": "salesShare",
+                               "template": "sap.ovp.cards.charts.analytical",
+                               "settings": {
+                                             "entitySet": "SalesShare",
+                                             "selectionAnnotationPath" : "com.sap.vocabularies.UI.v1.SelectionVariant#Eval_by_CtryCurr",
+                                             "chartAnnotationPath" : "com.sap.vocabularies.UI.v1.Chart#Eval_by_CtryCurr",
+                                             "presentationAnnotationPath" : "com.sap.vocabularies.UI.v1.PresentationVariant#Eval_by_CtryCurr",
+                                             "dataPointAnnotationPath" : "com.sap.vocabularies.UI.v1.DataPoint#Eval_by_CtryCurr",
+                                             "identificationAnnotationPath" : "com.sap.vocabularies.UI.v1.Identification#Eval_by_CtryCurr"
+                                            }
+                               },
+                "cardchartsline": {
+                                    "model": "salesShare",
+                                    "template": "sap.ovp.cards.charts.analytical",
+                                    "settings": {
+                                                  "entitySet": "SalesShare",
+                                                  "selectionAnnotationPath" : "com.sap.vocabularies.UI.v1.SelectionVariant#Eval_by_Country",
+                                                  "chartAnnotationPath" : "com.sap.vocabularies.UI.v1.Chart#Eval_by_Country",
+                                                  "presentationAnnotationPath" : "com.sap.vocabularies.UI.v1.PresentationVariant#Eval_by_Country",
+                                                  "dataPointAnnotationPath" : "com.sap.vocabularies.UI.v1.DataPoint#Eval_by_Country",
+                                                  "idenfiticationAnnotationPath" : "com.sap.vocabularies.UI.v1.Identification#Eval_by_Country"
+                                                 }
+                                          },
+                 "cardchartsdonut": {
+                                     "model": "salesShare",
+                                     "template": "sap.ovp.cards.charts.analytical",
+                                     "settings": {
+                                                   "entitySet": "SalesShare",
+                                                   "selectionAnnotationPath" : "com.sap.vocabularies.UI.v1.SelectionVariant#Eval_by_Currency",
+                                                   "chartAnnotationPath" : "com.sap.vocabularies.UI.v1.Chart#Eval_by_Currency",
+                                                   "presentationAnnotationPath" : "com.sap.vocabularies.UI.v1.PresentationVariant#Eval_by_Currency",
+                                                   "dataPointAnnotationPath" : "com.sap.vocabularies.UI.v1.DataPoint#Eval_by_Currency",
+                                                   "idenfiticationAnnotationPath" : "com.sap.vocabularies.UI.v1.Identification#Eval_by_Currency"
+                                                  }
+                                    }
+                                }
+                }</pre></div></section><p></p></div></div>
+			</section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>In SAP Fiori elements for OData V4, add
+						<code>sap.ovp.cards.charts.v4.analytical</code> as the
+						<code>template</code>. All other manifest settings are the same as in
+						SAP Fiori elements for OData V2.</p>
+			<p></p></div></div></section><section>
+			<h2 class="title ">Related Information</h2>
+			<p>For more information about configuring charts, see <a href="#/topic/c7c5a828fe69411da7d63e2e63086b59.html" title="Developers configure the measures and dimensions displayed in charts by setting the role property to the desired value per chart type. Additional definitions apply to all chart types." class="sap-doc">Configuring Charts</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,12 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6cbf1c9819a54eaa9cd43470870aca37" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Validating Currency and UoM Fields</h1><div class="fig"><h1 class="topictitle1 title">Validating Currency and UoM Fields</h1><div class="shortdesc">You can validate currency fields and unit of measurement fields also without a related "value" field.</div><p>To validate currency fields without a related "value" field, use the <code>isCurrency</code> annotation:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/TransactionCurrency"&gt;
+    &lt;Annotation Term="Common.isCurrency" Bool="true"/&gt;
+    ...some more definition of property and/or value help...
+&lt;/Annotations&gt;</pre></div></section><p>To validate unit of measurement fields without a related "value" field, use the <code>isUnit</code> annotation:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/DocumentUnit"&gt;
+    &lt;Annotation Term="Common.isUnit" Bool="true"/&gt;
+    ...some more definition of property and/or value help...
+&lt;/Annotations&gt;</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

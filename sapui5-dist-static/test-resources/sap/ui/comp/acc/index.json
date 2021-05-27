@@ -1,0 +1,19 @@
+{
+	"tests" : [
+		{
+			"control": "sap.ui.comp.SmartField",
+			"url": "./smartfield/SmartField.html",
+			"appComponent": "CA-UI5-CMP-SOF"
+		},
+		{
+			"control": "sap.ui.comp.ValueHelpDialog",
+			"url": "./valuehelpdialog/ValueHelpDialog.html",
+			"appComponent": "CA-UI5-CMP-SOF"
+		},
+		{
+			"control": "sap.ui.comp.SmartFilterBar",
+			"url": "./smartfilterbar/SmartFilterBar.html",
+			"appComponent": "CA-UI5-CMP-SOF"
+		}
+	]
+}

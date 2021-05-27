@@ -1,0 +1,78 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9c938378cf4245e9903e806cb4d41d97" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Stacked Bar Micro Chart</h1><div class="fig"><h1 class="topictitle1 title">Stacked Bar Micro Chart</h1><div class="shortdesc"></div><p><img src="loio606716a004d74a0088096019d3ab8f84_LowRes.png" usemap="#"></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>For more information on this chart type, refer <a href="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.StackedBarMicroChart" title="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.StackedBarMicroChart" class="external-link" target="_blank" rel="noopener">Samples</a> documentation.</p>
+		<p></p></div></div><section id="section_mhj_wgq_qmb"><section>
+				<h3 class="title ">UI.Chart Annotation</h3>
+				<p>The <code>UI.Chart Title</code> property is used for the title. </p>
+				<p>The <code>UI.Chart Description</code> property is used for the subtitle.</p>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="SalesPriceStackedBarChart"&gt;
+					&lt;Record Type="UI.ChartDefinitionType"&gt;
+						&lt;PropertyValue Property="Title" String="Sales Price"/&gt;
+						&lt;PropertyValue Property="Description" String="Stacked BarChart"/&gt;
+						&lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/BarStacked"/&gt;
+						&lt;PropertyValue Property="Dimensions"&gt;
+							&lt;Collection&gt;
+								&lt;PropertyPath&gt;Revenue&lt;/PropertyPath&gt;
+							&lt;/Collection&gt;
+						&lt;/PropertyValue&gt;
+						&lt;PropertyValue Property="Measures"&gt;
+							&lt;Collection&gt;
+								&lt;PropertyPath&gt;Width&lt;/PropertyPath&gt;
+							&lt;/Collection&gt;
+						&lt;/PropertyValue&gt;
+						&lt;PropertyValue Property="MeasureAttributes"&gt;
+							&lt;Collection&gt;
+								&lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+									&lt;PropertyValue Property="Measure" PropertyPath="Width"/&gt;
+									&lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/&gt;
+									&lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Width"/&gt;
+								&lt;/Record&gt;
+							&lt;/Collection&gt;
+						&lt;/PropertyValue&gt;
+					&lt;/Record&gt;
+				&lt;/Annotation&gt;
+</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+			</section><section>
+				<h3 class="title ">UI.DataPoint Annotation</h3>
+				<p>
+					</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Width"&gt;
+	&lt;Record&gt;
+		&lt;PropertyValue Property="Value" Path="Width"/&gt;
+                &lt;PropertyValue Path="Day1" Property="Title" /&gt;
+                &lt;PropertyValue Property="Description" String=“Stacked Bar Micro Chart"/&gt;
+                &lt;PropertyValue Property="TargetValue" Path="Weight"/&gt;
+                &lt;PropertyValue Property="ForecastValue" Path="Height"/&gt;
+                &lt;PropertyValue Property="MinimumValue" Decimal="0"/&gt;
+                &lt;PropertyValue Property="MaximumValue" Decimal="100"/&gt;
+                &lt;PropertyValue Property="Criticality" Path="criticalityValue"/&gt;
+	&lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+					<p></p></div></div>
+				<p></p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The following must all point to the same property in the
+							<code>entityType</code>:</p><ul class="ul ">
+							<li class="li">
+								<p><code>Measures</code> property of the <code>Chart</code>
+									annotation</p>
+							</li>
+							<li class="li"><code>Measure</code> property of the
+									<code>MeasureAttributes</code> property of the
+									<code>Chart</code> annotation</li>
+							<li class="li"><code>Value</code> property of the <code>DataPoint</code>
+								annotation</li>
+						</ul><p></p>
+				<p></p></div></div>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

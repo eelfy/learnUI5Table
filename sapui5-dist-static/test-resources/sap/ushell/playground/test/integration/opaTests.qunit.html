@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- This test is for internal resources only, therefore it should not be added to the Test suite -->
+    <title>Opa tests for control playgrounds</title>
+
+    <script src="../../../../../../resources/sap-ui-core.js"
+            data-sap-ui-bindingSyntax="complex"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-logLevel="ALL"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-resourceroots='{ "ControlPlaygrounds": "../../" }'
+            data-sap-ui-frameOptions="deny"
+            data-sap-ui-async="true"></script>
+    <link href="../../../../../../resources/sap/ui/thirdparty/qunit-2.css" rel="stylesheet" />
+    <script src="../../../../../../resources/sap/ui/thirdparty/qunit-2.js"></script>
+    <script src="../../../../../../resources/sap/ui/qunit/qunit-coverage.js" data-cover-flags="branchTracking"></script>
+    <script src="opaTests.qunit.js"></script>
+    <style>
+        html, body { width:100%; height:100%; margin:0; overflow:auto; }
+        #qunit-fixture { position:initial; width:initial; height:initial; }
+    </style>
+</head>
+<body class="sapUiBody">
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+</body>
+</html>

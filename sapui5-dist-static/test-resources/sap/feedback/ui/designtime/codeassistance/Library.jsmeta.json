@@ -1,0 +1,1 @@
+{"!name":"sap.feedback.ui","!version":"1.20.0","!define":{"sap":{"feedback":"sap.feedback","sap":"sap","!category":"namespace"},"sap.feedback.ui":{"!description":"UI5 library: sap.feedback.ui.","!module":"sap/feedback/ui/library","!helpDescription":"UI5 library: sap.feedback.ui.","!category":"namespace"},"sap.feedback":{"ui":"sap.feedback.ui","!category":"namespace"}}}

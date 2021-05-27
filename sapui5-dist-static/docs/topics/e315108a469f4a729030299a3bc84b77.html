@@ -1,0 +1,486 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe315108a469f4a729030299a3bc84b77" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">What's New in SAPUI5
+		1.87</h1><div class="fig"><h1 class="topictitle1 title">What's New in SAPUI5
+		1.87</h1><div class="shortdesc">With
+		this release SAPUI5 is upgraded
+		from version 1.86 to 1.87.</div><section id="section_yxw_pxt_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New
+				Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_krd_ltq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis">End of Support for Microsoft Internet Explorer 11
+										after SAPUI5 1.87</span></p>SAPUI5
+								1.87 is the last version to support Microsoft Internet Explorer 11.
+								For more information, see <a href="#/topic/74b59efa0eef48988d3b716bd0ecc933.html#loio74b59efa0eef48988d3b716bd0ecc933/MS_IE" title="74b59efa0eef48988d3b716bd0ecc933.xml#loio74b59efa0eef48988d3b716bd0ecc933/MS_IE" class="sap-doc">SAPUI5 Support Status for Microsoft Internet Explorer 11</a>.</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_bkm_s15_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New
+				Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_ejf_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.ExpandableText</code></span></p>
+								<p>You can use the control to display long texts, for example,
+									inside a table, list, or form. Only the first characters from
+									the text field and a <code>More</code> link are shown
+									initially, which allows the full text to be displayed. There are
+									two options for displaying the full text, which are defined by
+									the <code>overflowMode</code> property - in place (default)
+									or as a popover. The <code>maxCharacters</code> property
+									specifies the maximum number of characters from the beginning of
+									the text field, that are shown initially. For more information, see the <a href="#/api/sap.m.ExpandableText" title="#/api/sap.m.ExpandableText" class="sap-doc" alt="#/api/sap.m.ExpandableText">API Reference</a> and
+										the <a href="#/entity/sap.m.ExpandableText" title="#/entity/sap.m.ExpandableText" class="sap-doc" alt="#/entity/sap.m.ExpandableText">Samples</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_qwl_pb5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved
+				Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_tpj_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">New Type for Spreadsheet Export</span></p>
+								<p>The <code>sap.ui.export.EdmType.Percentage</code> data type
+									is now available for export. This type allows you to convert
+									numeric values into a percentage.</p>
+								<p>For more information, see <a href="#/topic/2691788a08fc43f7bf269ea7c6336caf.html" title="The spreadsheet export allows you to export data to an Office Open XML spreadsheet." class="sap-doc">Spreadsheet Export</a>, the
+											<a href="#/api/sap.ui.export.Spreadsheet/overview" title="#/api/sap.ui.export.Spreadsheet/overview" class="sap-doc" alt="#/api/sap.ui.export.Spreadsheet/overview">API Reference</a>,
+										and the <a href="#/entity/sap.ui.export.Spreadsheet" title="#/entity/sap.ui.export.Spreadsheet" class="sap-doc" alt="#/entity/sap.ui.export.Spreadsheet">Samples</a>.</p>
+								
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">SAPUI5 OData V4 Model</span></p>
+								<p>The new version of the SAPUI5 OData V4 model introduces the following features:</p>
+								<ul class="ul ">
+									<li class="li">
+										<p>A new <code>additionally</code> property within the
+												<code>group</code> map of the
+												<code>$$aggregation</code> list binding
+											parameter. This allows you to define properties that are
+											fetched together with a group level, such as a text for
+											a key. For more information, see <a href="#/api/sap.ui.model.odata.v4.ODataListBinding/methods/setAggregation" title="#/api/sap.ui.model.odata.v4.ODataListBinding/methods/setAggregation" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataListBinding/methods/setAggregation"><code>sap.ui.model.odata.v4.ODataListBinding#setAggregation</code></a>
+												and <a href="#/topic/7d914317c0b64c23824bf932cc8a4ae1.html" title="The OData V4 Model supports features of the OData Extension for Data Aggregation V4.0 specification." class="sap-doc">Extension for Data Aggregation</a>.</p>
+									</li>
+									<li class="li">
+										<p>Support of the
+												<code>sap.ui.model.odata.v4.Context#requestSideEffects</code>
+											method in combination with kept-alive contexts. A list
+											binding context can be kept alive with the
+												<code>sap.ui.model.odata.v4.Context#setKeepAlive</code>
+											method introduced with SAPUI5 1.81.</p>
+									</li>
+									<li class="li">
+										<p>Evaluation of the
+												<code>Org.OData.Core.V1.ContentID</code>
+											instance annotation in messages of error responses to
+											change sets, so that the message can be assigned to the
+											correct request and the message target can be calculated
+											correctly. For more information, see <a href="#/topic/fbe1cb5613cf4a40a841750bf813238e.html" title="The OData V4 model supports server messages sent via an OData V4 service." class="sap-doc">Server Messages in OData V4 Model</a>.</p>
+									</li>
+								</ul>
+								
+								<p>For more information, see <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>, the <a href="#/api/sap.ui.model.odata.v4" title="#/api/sap.ui.model.odata.v4" class="sap-doc" alt="#/api/sap.ui.model.odata.v4">API Reference</a>, and
+									the <a href="#/entity/sap.ui.model.odata.v4.ODataModel" title="#/entity/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/entity/sap.ui.model.odata.v4.ODataModel">Samples</a> in the Demo
+									Kit.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_rqn_wd5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved
+				Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_qcq_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.f.Card</code></span></p>
+								<p>We no longer apply default <code>min-height</code> in the
+									control, which allows smaller cards to be rendered properly. For more information, see the <a href="#/api/sap.f.Card" title="#/api/sap.f.Card" class="sap-doc" alt="#/api/sap.f.Card">API Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.f.GridList</code></span></p>
+								<p>We have improved the keyboard handling capabilities of the
+									control. Now, similar to <code>sap.f.GridContainer</code>,
+									the navigation with <span class="keyWrap"><kbd class="key">Arrow</kbd></span> keys follows the cells of
+									the underlying (virtual) grid. This behavior provides stable
+									navigation paths if there are items of different sizes. When any
+									of the borders are reached, the <code>borderReached</code>
+									event is fired. To navigate to another
+									<code>GridList</code>, you have two options:</p><ul class="ul ">
+										<li class="li">
+											<p>Navigate using the <span class="keyWrap"><kbd class="key">Tab</kbd></span> key.</p>
+										</li>
+										<li class="li">
+											<p>Configure navigation with the <span class="keyWrap"><kbd class="key">Arrow</kbd></span> keys.
+												This is achieved by using the
+												<code>focusItemByDirection</code> method and
+												requires additional logic from the application side
+												to determine the navigation direction in the actual
+												app layout.</p>
+										</li>
+									</ul>For more information, see the <a href="#/api/sap.f.GridList" title="#/api/sap.f.GridList" class="sap-doc" alt="#/api/sap.f.GridList">API Reference</a> and
+										the <a href="#/entity/sap.f.GridList" title="#/entity/sap.f.GridList" class="sap-doc" alt="#/entity/sap.f.GridList">Samples</a>.<p></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.BadgeCustomData</code></span></p>
+								<p>We have added a new <code>animation</code> property that
+									enables you to choose the animation type to be performed by the
+									badge element. For more information, see the <a href="#/api/sap.m.BadgeCustomData" title="#/api/sap.m.BadgeCustomData" class="sap-doc" alt="#/api/sap.m.BadgeCustomData">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.m.Dialog</span></code><p>You can now
+									drag and resize the dialog using the keyboard. To enable this
+									behavior, you have to set the <code>draggable</code> and/or
+										<code>resizable</code> properties to
+										<code>true</code>. While the keyboard focus is located
+									on the title bar, the dialog can then be moved with the
+										<span class="keyWrap"><kbd class="key">Arrow</kbd></span> keys and resized with <span class="keys">
+										<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+										<span class="keyWrap"><kbd class="key">Arrow</kbd></span>
+									</span> keys. For more information, see the <a href="#/entity/sap.m.Dialog/sample/sap.m.sample.Dialog" title="#/entity/sap.m.Dialog/sample/sap.m.sample.Dialog" class="sap-doc" alt="#/entity/sap.m.Dialog/sample/sap.m.sample.Dialog">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.Image</code></span></p>
+								<p>With the new <code>lazyLoading</code> property, you can now
+									ensure that off-screen images are loaded early enough so that
+									they finish loading once the user scrolls near them. For more information, see the <a href="#/api/sap.m.Image" title="#/api/sap.m.Image" class="sap-doc" alt="#/api/sap.m.Image">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.PlanningCalendar</code></span></p>
+								<p>As an application developer you can now use the following new
+										functions:</p><ul class="ul ">
+										<li class="li">
+											<p><code>GetEndDate</code> returns the end date that
+												is visible in current state of the control.</p>
+										</li>
+										<li class="li">
+											<p><code>GetVisibleIntervalsCount</code> returns the
+												number of intervals (for example, hours, days,
+												weeks) that are currently visible.</p>
+										</li>
+									</ul>For more information, see the <a href="#/api/sap.m.PlanningCalendar/methods" title="#/api/sap.m.PlanningCalendar/methods" class="sap-doc" alt="#/api/sap.m.PlanningCalendar/methods">API
+										Reference</a>.<p></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.Text</code></span></p>
+								<p>The new <code>emptyIndicatorMode</code> property allows
+									developers to display an empty text as a language dependent “-”
+									symbol. For more information, see the <a href="#/api/sap.m.Text" title="#/api/sap.m.Text" class="sap-doc" alt="#/api/sap.m.Text">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.Title</code></span></p>
+								<p>You can now place a link as a title. To enable this
+									functionality, we have introduced the <code>content</code>
+									aggregation, which accepts controls
+									(<code>sap.m.Link</code>) that implement the <a href="#/api/sap.ui.core.ITitleContent" title="#/api/sap.ui.core.ITitleContent" class="sap-doc" alt="#/api/sap.ui.core.ITitleContent"><code>sap.ui.core.ITitleContent</code></a>
+									interface. To place a link as a title you have to add the <a href="#/api/sap.m.Link" title="#/api/sap.m.Link" class="sap-doc" alt="#/api/sap.m.Link"><code>sap.m.Link</code></a> control to
+									the <code>content</code> aggregation. For more information, see the <a href="#/api/sap.m.Title" title="#/api/sap.m.Title" class="sap-doc" alt="#/api/sap.m.Title">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis"><code>sap.ui.comp.smartchart.SmartChart</code></span></p><p>Dates
+									and times in charts now have a format that is easier to read
+									than the more technical format before, for example,
+										<span class="ph uicontrol">CW15 2020</span>. This change applies to the
+									following annotations:</p><ul class="ul ">
+									<li class="li">
+										<p><code>Common.v1.IsCalendarYearWeek</code></p>
+									</li>
+									<li class="li">
+										<p><code>Common.v1.IsCalendarYearMonth</code></p>
+									</li>
+									<li class="li">
+										<p><code>Common.v1.IsCalendarYearQuarter</code></p>
+									</li>
+								</ul>For more information, see the <a href="#/api/sap.ui.comp.smartchart.SmartChart" title="#/api/sap.ui.comp.smartchart.SmartChart" class="sap-doc" alt="#/api/sap.ui.comp.smartchart.SmartChart">API Reference</a> and the
+										<a href="#/entity/sap.ui.comp.smartchart.SmartChart" title="#/entity/sap.ui.comp.smartchart.SmartChart" class="sap-doc" alt="#/entity/sap.ui.comp.smartchart.SmartChart">Samples</a>.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.comp.smartfield.SmartField,
+											sap.ui.comp.smartform.SmartForm</code></span></p>
+								<p><code>SmartForm</code> and <code>SmartField</code> now
+									support the <code>importance</code> property. Based on
+									this
+									property, the <code>SmartForm</code>
+									decides which <code>SmartFields</code> will be visible. This
+									feature makes the <code>SmartForm</code> more flexible if
+									you have limited screen real estate because it can display only
+									the fields that are important for the user. The following
+									options are available:</p>
+								<ul class="ul ">
+									<li class="li">
+										<p>If the <code>SmartForm</code> has
+												<code>high</code> importance, only smart fields
+											with <code>high</code> importance will be
+											visible.</p>
+									</li>
+									<li class="li">
+										<p>If the <code>SmartForm</code> has
+												<code>medium</code> importance, only smart
+											fields with <code>high</code> and
+												<code>medium</code> importance will be
+											visible.</p>
+									</li>
+									<li class="li">
+										<p>If the <code>SmartForm</code> has
+												<code>low</code> importance (default), all smart
+											fields will be visible, regardless of their
+											importance.</p>
+									</li>
+								</ul>
+								<p>
+									</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+										</p><p>If a <code>SmartField</code> is annotated as
+												<code>mandatory</code> or
+												<code>hidden</code>,
+											its
+											visibility is not affected by the
+												<code>importance</code> property.</p>
+									<p></p></div></div>
+								<p></p>
+								<p>The <code>SmartField</code> importance can also be set using
+									the <code>UI.Importance</code> annotation. For more information, see the <a href="#/api/sap.ui.comp.smartfield.SmartField%23annotations/Importance" title="#/api/sap.ui.comp.smartfield.SmartField%23annotations/Importance" class="sap-doc" alt="#/api/sap.ui.comp.smartfield.SmartField%23annotations/Importance">API Reference</a> in
+										the Demo Kit.
+								</p>
+								<p>If both the property and the annotation are set, the importance
+									of the property is taken into account.</p>
+								For more information, see the <a href="#/api/sap.ui.comp.smartform.SmartForm" title="#/api/sap.ui.comp.smartform.SmartForm" class="sap-doc" alt="#/api/sap.ui.comp.smartform.SmartForm">API Reference</a> and the
+										<a href="#/entity/sap.ui.comp.smartform.SmartForm/sample/sap.ui.comp.sample.smartformImportance" title="#/entity/sap.ui.comp.smartform.SmartForm/sample/sap.ui.comp.sample.smartformImportance" class="sap-doc" alt="#/entity/sap.ui.comp.smartform.SmartForm/sample/sap.ui.comp.sample.smartformImportance"> Smart Form using Importance
+										property Sample</a>.
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.comp.smartfield.SmartField</code></span></p>
+								<p><code>SmartField</code> now supports values that are not part
+									of the <code>ComboBox</code> list. As a result, such values
+									are no longer shown as invalid and are now sent to the
+									backend.</p>
+								<p>We have extended <code>sap.m.ComboBox</code> with our own
+									control <code>sap.ui.comp.smartfield.ComboBox</code>. The
+									bound property of the <code>SmartField</code> value of
+										<code>sap.ui.comp.smartfield.ComboBox</code> is
+										<code>enteredValue</code>. In this property, we store
+									the <code>selectedKey</code>
+									when
+									a selection is made inside the <code>ComboBox</code> from
+										<code>sap.m.List</code>, or a manually entered value.
+									For more information, see the <a href="#/entity/sap.ui.comp.smartfield.SmartField/sample/sap.ui.comp.sample.smartfield.SmartFieldWithValueHelp" title="#/entity/sap.ui.comp.smartfield.SmartField/sample/sap.ui.comp.sample.smartfield.SmartFieldWithValueHelp" class="sap-doc" alt="#/entity/sap.ui.comp.smartfield.SmartField/sample/sap.ui.comp.sample.smartfield.SmartFieldWithValueHelp">Smart Field with
+											ValueHelp Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.comp.smarttable.SmartTable</code></span></p>
+								<p>We have done some fine-tuning regarding the handling of the
+									column width for all supported table types: The
+										<code>enableAutoColumnWidth</code> property, which
+									enables the automatic resizing of columns, is no longer
+									experimental. Column resizing now takes various factors into
+									account, for example, long column header texts, the width of
+									icons, or paddings of input fields in edit mode.
+									End
+									users can now also adjust the column size in
+									responsive tables based on their specific needs.</p>
+								<p>For more information, see the <a href="#/api/sap.ui.comp.smarttable.SmartTable%23methods/getEnableAutoColumnWidth" title="#/api/sap.ui.comp.smarttable.SmartTable%23methods/getEnableAutoColumnWidth" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable%23methods/getEnableAutoColumnWidth">API Reference</a> and
+										the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis"><code>sap.ui.comp.smartvariants.SmartVariantManagement</code></span></p><p>We
+									have made some changes in the <span class="ph uicontrol">Manage
+										Views</span> dialog:</p><ul class="ul ">
+									<li class="li">
+										
+										<p>To ensure consistent usability, we
+											changed the <span class="ph uicontrol">OK</span> button to
+												<span class="ph uicontrol">Save</span>.</p>
+									</li>
+									<li class="li">
+										<p>For standard views, you can now show your company name as
+											the author instead of <span class="ph uicontrol">SAP</span> under
+												<span class="ph uicontrol">Created By</span>.</p>
+									</li>
+								</ul>For more information, see the <a href="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" title="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07" class="sap-doc" alt="#/entity/sap.ui.comp.tutorial.smartControls/sample/sap.ui.comp.tutorial.smartControls.07">Sample</a>.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.integration.widgets.Card</code></span></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>Integration cards now allow you to use arrays as values
+											in the manifest parameters. One example scenario is to
+											use an array parameter in expression binding inside the
+											visible property and to display only the elements that
+											have values. For more information, see the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/object/arrayParameters" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/object/arrayParameters" class="sap-doc">Sample</a> in
+												the Card Explorer.</p>
+									</li>
+									<li class="li">
+										<p>Two new experimental actions are now available in the
+											Calendar card that you can use to set dynamic data
+											fetching to be dependent of the selected date/month:</p><ul class="ul ">
+												<li class="li">
+												<p><code>DateChange</code> – triggered when a
+												date is selected.</p>
+												</li>
+												<li class="li">
+												<p><code>MonthChange</code> – triggered when
+												the currently displayed month is changed from the
+												pickers or from the arrow buttons.</p>
+												</li>
+											</ul>Both <code>DateChange</code> and
+												<code>MonthChange</code> actions are triggered
+											when the <code>Today</code> button is pressed. For more information, see the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/calendar/extension" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/calendar/extension" class="sap-doc">Samples</a> and
+												the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/types/calendar" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/types/calendar" class="sap-doc">Calendar
+												Card</a> section in the Card Explorer.<p></p>
+									</li>
+									<li class="li">The <code>Extension</code> feature is no longer in
+										experimental state. For more information, see the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/extension" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/extension" class="sap-doc">Samples</a> and
+											the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/extension" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/extension" class="sap-doc">Card
+												Extension</a> section in the Card
+										Explorer.</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.layout.cssgrid.ResponsiveColumnLayout</code></span></p>
+								<p>We have enhanced the layout with higher density of responsive
+									breakpoints, providing flexibility and allowing developers to
+									configure the grid settings and display the content in the best
+									possible way. For more information, see the <a href="#/api/sap.ui.layout.cssgrid.ResponsiveColumnLayout" title="#/api/sap.ui.layout.cssgrid.ResponsiveColumnLayout" class="sap-doc" alt="#/api/sap.ui.layout.cssgrid.ResponsiveColumnLayout">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_g3r_bf5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">SAP Fiori Elements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_fm5_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">The following changes and new features are available for SAP Fiori elements for OData V2:<ul class="ul ">
+									<li class="li">
+										<p>If <code>UI.Importance</code> is not defined, the
+											default value is set as <code>None</code>, except
+											for semantic key fields. Before this release, the
+											default value was set as <code>High</code>. For more
+											information, see <a href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" title="Both the list report and the object page support several table types." class="sap-doc">Tables</a>.
+										</p>
+									</li>
+									<li class="li">
+										<p>In a draft application with a flexible column layout, the
+											subobject page closes and returns to the main object if
+											you click the <span class="ph uicontrol">Apply</span> button. For
+											more information, see <a href="#/topic/645e27ae85d54c8cbc3f6722184a24a1.html" title="The object page lets you display, edit, and create objects, as well as save drafts. It is suitable for both simple objects and more complex, multi-faceted objects. The object page view gives you optimal support for multiple devices." class="sap-doc">Object Page Elements</a>.</p>
+									</li>
+									<li class="li">
+										<p>You can now see tooltips for images in list reports and
+											object pages.</p>
+									</li>
+									<li class="li">
+										<p>A data loss warning message is now shown to the user
+											while navigating away from a non-draft page with unsaved
+											changes through the shell menu. </p>
+									</li>
+									<li class="li">
+										<p>A new <code>TriggerAction</code> annotation is now
+											supported for side effects. For more information, see
+												<a href="#/topic/18b17bdd49d1436fa9172cbb01e26544.html" title="If a user changes the content of a field or performs another activity, this change can potentially influence other fields on the UI. This system behavior is called a side effect." class="sap-doc">Side Effects</a> and <a href="#/topic/61cf21d50ed34cbf888713496c618904.html" title="This topic provides some examples for annotating side effects." class="sap-doc">Side Effect Annotations: Examples</a>.</p>
+									</li>
+								</ul></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">The following changes and new features are available for SAP Fiori elements for OData V4:<ul class="ul ">
+									<li class="li">
+										<p>Application developers can now calculate default values
+											for action parameters through a back-end function. As a
+											result, on the UI, when the user opens the action
+											parameter dialog, the parameter fields are prefilled
+											with the returned values of the back-end function. For
+											more information, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p>
+									</li>
+									<li class="li">
+										<p>Key users can now embed, update, move, and remove
+											IFrame
+											content (that is, embedded content) on object page
+											headers and sections. For more information, see <a href="https://help.sap.com/viewer/0f8b49c4dfc94bc0bda25a19aa93d5b2/Cloud/en-US/bfdf15154f16419fb60ce598b21fe515.html?q=embedding%20content" title="https://help.sap.com/viewer/0f8b49c4dfc94bc0bda25a19aa93d5b2/Cloud/en-US/bfdf15154f16419fb60ce598b21fe515.html?q=embedding%20content" class="external-link" target="_blank" rel="noopener">Embedding Content.</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now add custom fields to forms
+											on the object page. For more information, see <a href="#/topic/4e49753530ad4a73a44a5f8efac238d6.html" title="On the object page, you can use extension points to extend forms in sections." class="sap-doc">Extension Points for Forms on the Object Page</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now override the horizontal
+											alignment of table columns via the manifest. For more
+											information, see <a href="#/topic/fb93920a2ee145c5bf2b5d1bacb79ab3.html" title="Application developers can override the horizontal alignment of table columns via the manifest." class="sap-doc">Overriding the Horizontal Alignment of Annotation-Based Table Columns</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now overwrite the
+											annotation-based values via the manifest for certain
+											properties. For more information, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now add dynamic side content
+											to sections on the object page. For more information,
+											see <a href="#/topic/8e01a463d3984bfa8b23c2270d40e38c.html" title="Sometimes it might be necessary to add additional information that is not available with annotations to object page sections or subsections." class="sap-doc">Adding Dynamic Side Content to Object Page Sections</a>.</p>
+									</li>
+									<li class="li">
+										<p>When application developers enable full-screen mode for
+											tables, a button on the table toolbar allows users to
+											open the table in full-screen mode. This provides more
+											space for displaying and working with table entries. For
+											more information, see <a href="#/topic/1d3c2ff9fb1e4807ad2cc28f8c65e56b.html" title="When application developers enable the full-screen mode for tables, a button on the table toolbar is displayed that allows users to open the table in full-screen mode. This provides more space for displaying and working with table entries." class="sap-doc">Enabling the Full-Screen Mode for Tables</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now selectively enable
+												<code>DataFieldForIntentBasedNavigation</code>
+											buttons using the
+												<code>NavigationAvailable</code>
+											property of the
+												<code>DataFieldForIntentBasedNavigation</code>
+											annotation. For more information, see <a href="#/topic/d782acf8bfd74107ad6a04f0361c5f62.html" title="You can either specify a URL or associate a semantic object (= intent-based navigation) for external navigation targets." class="sap-doc">Navigation from an App (Outbound Navigation)</a>.</p>
+									</li>
+									<li class="li">
+										<p>Application developers can now overwrite the behavior of
+											the <code>Common.Text</code> annotation via the
+												<code>TextArrangementType</code>
+											<code>#TextSeparate</code>. For more information,
+											see <a href="#/topic/f49a0f7eaafe444daf4cd62d48120ad0.html" title="Application developers can control important features of the field." class="sap-doc">Further Features of the Field</a>.</p>
+									</li>
+								</ul></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_r5v_3h5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Demo Kit
+				Improvements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_e2h_2vq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">Demo Kit HTML Title</span></p>
+								<p>We’ve improved the HTML title tag of the Demo Kit app to contain
+									more information about the page that is currently loaded. Now,
+									if you have multiple tabs with different Demo Kit content loaded
+									on them, you can see the specific page names directly from the
+									browser tab.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

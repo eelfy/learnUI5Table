@@ -1,0 +1,94 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioca00ee45fe344a73998f482cb2e669bb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Hiding Features Using the UI.Hidden Annotation</h1><div class="fig"><h1 class="topictitle1 title">Hiding Features Using the UI.Hidden Annotation</h1><div class="shortdesc">You can use the UI.Hidden annotation to hide or display specific
+		features on the object page.</div><p>The default value of the <code>UI.Hidden</code> annotation is <code>true</code>, that is, a feature using the
+				<code>UI.Hidden</code> annotation term is not visible on the UI. These are the values you can set: </p><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_pbl_mgl_fmb" class=" "><thead>
+				<tr><th colspan="1" rowspan="1">Annotation</th>
+				<th colspan="1" rowspan="1">System Behavior</th>
+			</tr></thead><tbody><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>Hiding Features Using&lt;Annotation Term="UI.Hidden" Bool="false"/&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">The feature is visible</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Hidden" Bool="true"/&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">The feature is not visible</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Hidden" Path="Edit_ac"/&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">The feature is visible if the path evaluates to <code>false</code> and is not visible if the path evaluates to
+						<code>true</code>. <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The path must point to a Boolean property. Expression bindings, for instance, using a negation
+						with !, are not supported behind the path. For more information, see <a href="#/topic/daf6852a04b44d118963968a1239d2c0.html" title="Expression binding is an enhancement of the SAPUI5 binding syntax, which allows for providing expressions instead of custom formatter functions." class="sap-doc">Expression Binding</a>.</p></div></div></td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Hidden" /&gt;</code>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>The default value is <code>true</code> so the feature will not be visible</p>
+				</td>
+			</tr></tbody></table></div></div><section id="section_wr1_hxz_dnb">
+			<h2 class="title ">Header Facets on Object Page</h2>
+			<p>You can hide header facets as shown below:</p>
+			<div><div class="fig"><img src="loioe374fdbf71024b6d88477fea43152c3a_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Header Facets on Object Page</span></div>
+			<div><div class="fig"><img src="loiod7d98522d8b248369b7f134b44aa9482_LowRes.png" usemap="#"></div></div>
+		</section><section id="section_ng3_mxz_dnb">
+			<h2 class="title ">Sections on Object Page</h2>
+			<p>You can hide an entire section. To hide one subsection, you can hide content within a section.
+				See also the section about DataField Records in Header Facets in this topic.</p>
+			<div><div class="fig"><img src="loio4d0d97044f9c4777861f1fc3b8e155b1_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Sections on Object Page</span></div>
+			<div><div class="fig"><img src="loiof9220d6f240642069beb87697a2f6979_LowRes.png" usemap="#"></div></div>
+		</section><section id="section_mxq_rxz_dnb">
+			<h2 class="title ">Content in Quick Views</h2>
+			<p>You can hide content in quick views, such as field groups like this:</p>
+			<div><div class="fig"><img src="loio5ee9d69a75c9482d896d8af3ec8546bc_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Field Groups in Quick Views on Object Page</span></div>
+			<div><div class="fig"><img src="loioe620a5517f024f2ea559f7b65889cceb_LowRes.png" usemap="#"></div></div>
+			<p>You can also use this annotation to hide the content in quick views in the list report.</p>
+		</section><section id="section_ivf_xxz_dnb">
+			<h2 class="title ">DataField Records in Header Facets</h2>
+			<p>You can hide DataField records, for example, UI.DataField, UI.DataFieldForAnnotation in facets as shown below:</p>
+			<div><div class="fig"><img src="loioba72afcfa4af412e9e7af2855ad3d085_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">DataField Records in Header Facets</span></div>
+			<div><div class="fig"><img src="loio2ea0099701084437b195a383c36d6d64_LowRes.png" usemap="#"></div></div>
+		</section><section id="section_odp_cyz_dnb">
+			<h2 class="title ">DataField Records in Facets</h2>
+			<p>You can hide DataField records, for example, UI.DataField, UI.DataFieldForAnnotation in facets as shown below:</p>
+			<div><div class="fig"><img src="loiob6dea7ae7b6d40efa2ca72e347d15ff1_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">DataField Records in Facets</span></div>
+			<div><div class="fig"><img src="loio5793f0c72da241888a3fbf1aaa9d1fc0_LowRes.png" usemap="#"></div></div>
+		</section><section id="section_bnn_hyz_dnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><span class="emphasis">Header Facets on the Object
+				Page</span><p>You cannot use the <code>UI.Hidden</code> annotation to hide the entire <code>UI.FieldGroup</code> and
+					<code>UI.Identification</code>. If you want to hide these, you have to hide all <code>DataField</code> records in
+				them.</p><span class="emphasis">DataField Records in Facets</span><p>You cannot use the <code>UI.Hidden</code> annotation to hide the
+				entire <code>UI.FieldGroup</code> and <code>UI.Identification</code>. If you want to hide these, you have to hide all
+					<code>DataField</code> records within them or use the <code>UI.Hidden</code> to hide the wrapper around the
+					<code>FieldGroup</code> which is normally the <code>ReferenceFacet</code> or the <code>DataFieldForAnnotation</code>
+				as shown in the examples in this page.</p><p><span class="emphasis">DataField Records in Tables</span></p><p>To hide table columns, the
+					<code>UI.Hidden</code> path needs to refer to the property of the header instance, for example:</p><p><code>&lt;Annotation
+					Term="UI.Hidden" Path="to_Product/Edit_ac"&gt;</code></p><p>In the following example, <code>STTA_C_MP_Product</code> is the
+				entity set of the object page header and <code>STTA_C_MP_ProductText</code> is the entity set of the smart table on the object
+				page, and <code>to_Product</code> is the navigation property from <code>STTA_C_MP_ProductText</code> to
+					<code>STTA_C_MP_Product</code>.</p><div><div class="fig"><img src="loio74a9d7581abd4000b64ff4d51ca1615d_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">DataField Records in Tables</span></div><div><div class="fig"><img src="loiob3c4ac161c184c77a20a8b51146a78a9_LowRes.png" usemap="#"></div></div><p><span class="emphasis">Notes on Hiding DataField Records</span></p><ul class="ul ">
+				<li class="li">
+					<p>Even if you hide all determining actions in the footer, the footer is still displayed on the UI since it is required to show
+						any bound messages coming from the back end. This also applies to determining actions added via the manifest.</p>
+				</li>
+				<li class="li">
+					<p>The <span class="ph uicontrol">See More</span> button is visible even if the content within it is hidden.</p>
+				</li>
+			</ul></div></section><section id="section_lvf_5yz_dnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><span class="emphasis">Header Facets on the Object
+				Page</span><p>You cannot use the <code>UI.Hidden</code> annotation to hide the entire <code>UI.FieldGroup</code> and
+					<code>UI.Identification</code>. If you want to hide these, you have to hide all <code>DataField</code> records in them or
+				use the <code>UI.Hidden</code> to hide the wrapper around the <code>FieldGroup</code> which is normally the
+					<code>ReferenceFacet</code> or the <code>DataFieldForAnnotation</code> as shown in the examples in this
+				page.</p><span class="emphasis">DataField Records in Facets</span><p>You cannot use the <code>UI.Hidden</code> annotation to hide the
+				entire <code>UI.FieldGroup</code> and <code>UI.Identification</code>. If you want to hide these, you have to hide all
+					<code>DataField</code> records within them or use the <code>UI.Hidden</code> to hide the wrapper around the
+					<code>FieldGroup</code> which is normally the <code>ReferenceFacet</code> or the <code>DataFieldForAnnotation</code>
+				as shown in the examples in this page.</p><p><span class="emphasis">DataField Records in Tables</span></p><p>If <code>UI.Hidden</code> is
+				provided a static <code>true</code> value for any field, then the column is not rendered at all. But if there is a path based
+				value for this, the field is not shown for the instances for which the <code>UI.Hidden</code> evaluates to
+				<code>true</code>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>For a path based value for <code>UI.Hidden</code>, even if the path evaluates to <code>true</code> for all the rows, only
+					the field is hidden and not the entire table column.</p>
+			<p></p></div></div><div><div class="fig"><img src="loiobd2e691eea614cee94379414652c4839_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">DataField Records in Tables</span></div><div><div class="fig"><img src="loio6783165b08fc4e10866fe85d1ad92722_LowRes.png" usemap="#"></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Even if you hide all determining actions in the footer, the footer is still displayed on the UI since it is required to show any
+					bound messages coming from the back end.</p>
+			<p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

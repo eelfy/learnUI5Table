@@ -1,0 +1,2136 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6c47b2b39db9404582994070ec3d57a2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">OData V2 Model</h1><div class="fig"><h1 class="topictitle1 title">OData V2 Model</h1><div class="shortdesc">The OData V2 Model enables binding of controls to data from OData
+		services.</div><p>The OData model is a server-side model, meaning that the data set is only available on
+			the server and the client only knows the currently visible (requested) data. Operations,
+			such as sorting and filtering, are done on the server. The client sends a request to the
+			server and shows the returned data.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Requests to the back end are triggered by list bindings (<code>ODataListBinding</code>),
+				context bindings (<code>ODataContextBinding</code>), and CRUD functions provided
+				by the <code>ODataModel</code>. Property bindings
+					(<code>ODataPropertyBindings</code>) do not trigger requests.</p>
+		<p></p></div></div><p>The OData model currently supports OData version 2.0.</p><p>The following two versions of the OData model are implemented:
+				<code>sap.ui.model.odata.ODataModel</code> and
+				<code>sap.ui.model.odata.v2.ODataModel</code>. The
+				<code>v2.ODataModel</code> has an improved feature set and new features will
+			only be implemented in this model. <code>sap.ui.model.odata.ODataModel</code> is
+			deprecated. We recommend to only use <code>v2.ODataModel</code>.</p><p>The following table shows the supported features for both OData models:</p><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_hmd_jlr_qr" class=" "><thead>
+				<tr><th colspan="1" rowspan="1">
+					<p>Feature</p>
+				</th>
+				<th colspan="1" rowspan="1">
+					<p><code>sap.ui.model.odata.v2.ODataModel</code></p>
+				</th>
+				<th colspan="1" rowspan="1">
+					<p><code>sap.ui.model.odata.ODataModel</code></p>
+				</th>
+			</tr></thead><tbody><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>OData version support</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>2.0</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>2.0</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>JSON format</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes (default)</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>XML format</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes (default)</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Support of two-way binding mode</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes; for property changes only, not yet implemented for aggregations</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Experimental; only properties of one entity can be changed at the same
+						time</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Default binding mode</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>One-way binding</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>One-way binding</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Client-side sorting and filtering</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes</p>
+					<p>For
+							more information, see <a href="#/api/sap.ui.model.odata.OperationMode" title="#/api/sap.ui.model.odata.OperationMode" class="sap-doc" alt="#/api/sap.ui.model.odata.OperationMode">API Reference:
+								sap.ui.model.odata.OperationMode</a>.
+						</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>No</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>$batch</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes; all requests can be batched</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Only manual batch requests are possible</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Data cache in model</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>All data is cached in the model</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Manually requested data is <span class="emphasis">not</span> cached</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Automatic refresh</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes (default)</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Message handling</p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>Yes, see <a href="#/topic/62b1481d3e084cb49dd30956d183c6a0.html" title="SAPUI5 provides a central place for storing and managing info, warning, and error messages." class="sap-doc">Error, Warning, and Info Messages</a></p>
+				</td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>No</p>
+				</td>
+			</tr></tbody></table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Be aware of the Same-Origin-Policy security concept which prevents access to back
+				ends on different domains or sites.</p>
+		<p></p></div></div><p>The requests to the service to fetch data are made automatically based on the data
+			bindings that are defined for the controls.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/sap.ui.model.odata.v2.ODataModel" title="#/api/sap.ui.model.odata.v2.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v2.ODataModel">API Reference: sap.ui.model.odata.v2.ODataModel</a></li>
+	</ul></section><section id="loio218afa0780da42fd982b72e992fb57d2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Creating the Model Instance</h1><div class="fig"><h1 class="topictitle1 title">Creating the Model Instance</h1><div class="shortdesc">One OData model instance can only cover one OData service. For accessing multiple
+		services, you have to create multiple OData model instances.</div><p>The only mandatory parameter when creating an <code>ODataModel</code> instance is the
+			service URL. It can be passed as first parameter or within the
+				<code>mParameters</code> map to the constructor.</p><section id="section_dky_hrz_xbb">
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel("http://services.odata.org/Northwind/Northwind.svc/");
+var oModel = new ODataModel({serviceUrl: "http://services.odata.org/Northwind/Northwind.svc"});</pre></div></section>
+			<p>When creating an <code>ODataModel</code> instance, a request is sent to retrieve
+				the service metadata:</p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">http://services.odata.org/Northwind/Northwind.svc/$metadata</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio71a3ae02691147abaf6d78a553d50161" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Service Metadata</h1><div class="fig"><h1 class="topictitle1 title">Service Metadata</h1><div class="shortdesc">The service metadata is cached per service URL. Multiple OData models that are using the
+		same service can share this metadata.</div><p>Only the first model instance triggers a <code>$metadata</code> request. A JSON representation of the service metadata can be accessed by
+			calling the <code>getServiceMetadata()</code> method on an OData model instance.</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oMetadata = oModel.getServiceMetadata();</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>In the <code>v2.ODataModel</code>, the service metadata is loaded asynchronously.
+				It is not possible to load it synchronously. To get notified when the loading is
+				finished, attach the <code>metadataLoaded</code> event.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio82afe9152177428290cc9d5dbd90e245" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Additional URL Parameters</h1><div class="fig"><h1 class="topictitle1 title">Adding Additional URL Parameters</h1><div class="shortdesc">For OData services, you can use URL parameters for configuration. SAPUI5 sets most URL parameters
+		automatically, according to the respective binding.</div><p>For authentication tokens or general configuration options, for example, you can add additional
+			arguments to the request URL. Some of the parameters must not be included in every
+			request, but should only be added to specific list or context bindings, such as
+				<code>$expand</code> or <code>$select</code>. For this, the binding methods
+			provide the option to pass a map of parameters, which are then included in all requests
+			for this specific binding. The OData model currently only supports
+				<code>$expand</code> and <code>$select</code>.</p><p>There are different ways to add URL parameters to the requests:</p><ul class="ul ">
+			<li class="li">
+				<p>Appending parameters to the service URL:</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel("http://myserver/MyService.svc/?myParam=value&myParam2=value");</pre></div></section>
+				<p>These parameters will be included in every request sent to the OData server.</p>
+			</li>
+			<li class="li">
+				<p>Passing URL parameters with the <code>mparameters</code> map</p>
+				<p>You can pass URL parameters that are used for <code>$metadata</code> requests
+					only (<code>metadataUrlParams</code>) as well as URL parameters that are
+					included only in data requests (<code>serviceUrlParams</code>). The
+					parameters are passed as maps:</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel({ 
+    serviceUrl: "http://services.odata.org/Northwind/Northwind.svc",    
+    serviceUrlParams: {
+        myParam: "value1",
+        myParam2: "value2"
+    },
+    metadataUrlParams: {
+        myParam: "value1",
+        myParam2: "value2"
+    }
+});</pre></div></section>
+			</li>
+		</ul><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio7370a173015e49929e011d6ab6b4885c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Custom HTTP Headers</h1><div class="fig"><h1 class="topictitle1 title">Custom HTTP Headers</h1><div class="shortdesc"></div><p>You can add custom headers which are sent with each request.</p><p>To do this, provide a map of headers to the OData model constructor or use the
+				<code>setHeaders()</code> function:</p><ul class="ul ">
+			<li class="li">
+				<p>Passing custom headers with the <code>mparameters</code> map</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oModel = new sap.ui.model.odata.v2.ODataModel({
+    headers: {
+        "myHeader1" : "value1",
+        "myHeader2" : "value2"
+    }
+});</pre></div></section>
+			</li>
+			<li class="li">
+				<p>Setting custom headers globally on a model instance</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.setHeaders({"myHeader1" : "value1", "myHeader2" : "value2"});</pre></div></section>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>When you add custom headers, all previous custom headers are removed if not
+						specified again in the headers map. Some headers are private, that is, they
+						are set by the OData model internally and cannot be set:</p>
+					<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"accept"
+"accept-language"
+"maxdataserviceversion"
+"dataserviceversion"
+"x-csrf-token"</pre></div></section>
+					<p>For additional methods and parameters, see the <a href="#/api/sap.ui.model.odata.v2.ODataModel" title="#/api/sap.ui.model.odata.v2.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v2.ODataModel">API Reference:
+								sap.ui.model.odata.v2.ODataModel</a>.
+						</p>
+				<p></p></div></div>
+			</li>
+		</ul><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loioc4be40ce21ff4d0485b1d8f8114f7426" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Addressing Entities: Binding Path Syntax</h1><div class="fig"><h1 class="topictitle1 title">Addressing Entities: Binding Path Syntax</h1><div class="shortdesc">The binding path syntax for OData models matches the URL path relative to the service
+		URL used in OData to access specific entities or entity sets.</div><p>You access the data provided by the OData model according to the structure of the OData service
+			as defined in the metadata of a service. URL parameters, such as filters, cannot be
+			added to a binding path. A binding path can be absolute or relative. Absolute binding
+			paths are resolved immediately. A relative path can only be resolved if it can be
+			automatically converted into an absolute binding path. If, for example, a property is
+			bound to a relative path and the parent control is then bound to an absolute path, the
+			relative property path can be resolved to an absolute path.</p><section id="section_uhj_csz_xbb">
+			<p>The following binding samples within the <code>ODataModel</code> are taken from
+				the Northwind demo service.</p>
+			<p>Absolute binding path (starting with a slash ('/')): </p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"/Customers"
+"/Customers('ALFKI')/Address"</pre></div></section>
+			<p>Relative binding paths that can be resolved with a context (for example
+					<code>"/Customer('ALFKI')"</code>): </p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"CompanyName"
+"Address"
+"Orders"</pre></div></section>
+			<p>Resolved to:</p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"/Customer('ALFKI')/CompanyName"
+"/Customer('ALFKI')/Address"
+"/Customer('ALFKI')/Orders"</pre></div></section>
+			<p>Navigation properties, used to identify a single entity or a collection of
+				entities:</p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"/Customers('ALFKI')/Orders"
+"/Products(1)/Supplier"</pre></div></section>
+			<p>For more information on addressing OData entries, see the URI conventions
+				documentation on <a href="http://www.odata.org" title="http://www.odata.org" class="external-link" target="_blank" rel="noopener">http://www.odata.org</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loioadd47c3966dd40489e952bb4f5f74a7c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Accessing Data from an OData Model</h1><div class="fig"><h1 class="topictitle1 title">Accessing Data from an OData Model</h1><div class="shortdesc">The data requested from an OData service is cached in the OData model.</div><p>It can be accessed by the <code>getProperty()</code> method, which returns the entity object or value. This method does not request data from
+			the back end, so you can only access already requested and cached entities:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.getProperty("/Customer('ALFKI')/Address");</pre></div></section><p>You can only access single entities and properties with this method. To access entity sets, you can get the binding contexts of all read entities
+			via a list binding. The values returned by this method are copies of the data in the model, not references as in the JSONModel.</p><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Do <span class="emphasis">not</span> modify objects or values inside the model
+			manually; always use the provided API to change data in the model, or use two-way
+			binding (see <i>Two-way Binding</i> section below).</p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The ODataModel uses the <code>$skip</code> and <code>$top</code> URL parameters for paging. It is possible that data is modified
+			between two paging requests, for example entities could be added or removed, and this may lead to data inconsistencies.</p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio4c4cd99af9b14e08bb72470cc7cabff4" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Creating Entities</h1><div class="fig"><h1 class="topictitle1 title">Creating Entities</h1><div class="shortdesc">To create entities for a specified entity set, call the createEntry()
+		method. The method returns a context object that points to the newly created
+		entity.</div><p>The application can bind against these objects and change the data by means of two-way
+			binding. To store the entities in the OData backend, the application calls
+				<code>submitChanges()</code>. To reset the changes, the application can call the
+				<code>deleteCreatedEntry()</code> method.</p><p>The application can choose the properties that shall be included in the created object and can
+			pass its own default values for these properties. Per default, all property values are
+			empty, that is, undefined.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>The entity set and the passed properties must exist in the metadata definition of the
+				OData service.</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// create an entry of the Products collection with the specified properties and values
+var oContext = oModel.createEntry("/Products", { properties: { ID:99, Name:"Product", Description:"new Product", ReleaseDate:new Date(), Price:"10.1", Rating:1} });
+// binding against this entity
+oForm.setBindingContext(oContext);
+// submit the changes (creates entity at the backend)
+oModel.submitChanges({success: mySuccessHandler, error: myErrorHandler});
+// delete the created entity
+oModel.deleteCreatedEntry(oContext);
+</pre></div></section>
+			<p>If created entities are submitted, the context is updated with the path returned from
+				the creation request and the new data is imported into the model. So the context is
+				still valid and points to the new created entity. </p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loioff667e12b8714f3595e68f3e7c0e7a14" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">CRUD Operations</h1><div class="fig"><h1 class="topictitle1 title">CRUD Operations</h1><div class="shortdesc">The OData model allows manual CRUD (create, read, update, delete) operations on the
+		OData service. If a manual operation returns data, the data is imported into the data cache
+		of the OData model. All operations require a mandatory sPath parameter as
+		well as an optional mParameters map.</div><section id="section_ffp_lsz_xbb">
+			<p>The <code>create</code> and <code>update</code> methods also require a
+				mandatory <code>oData</code> parameter for passing the created or changed data
+				object. Each operation returns an object containing a function abort, which can be
+				used to abort the request. If the request is aborted, the error handler is called.
+				This ensures that the success or the error handler is executed for every request. It
+				is also possible to pass additional header data, URL parameters, or an eTag.</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>Creating entities</p>
+					<p>The <code>create</code> function triggers a <code>POST</code> request
+						to an OData service which was specified at creation of the OData model. The
+						application has to specify the entity set, in which the new entity and the
+						entity data is to be created.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oData = {
+    ProductId: 999,
+    ProductName: "myProduct"
+}
+oModel.create("/Products", oData, {success: mySuccessHandler, error: myErrorHandler});</pre></div></section>
+				</li>
+				<li class="li">
+					<p>Reading entities</p>
+					<p>The <code>read</code> function triggeres a <code>GET</code> request
+						to a specified path. The path is retrieved from the OData service which was
+						specified at creation of the OData model. The retrieved data is returned in
+						the <code>success</code> callback handler function.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.read("/Products(999)", {success: mySuccessHandler, error: myErrorHandler});</pre></div></section>
+				</li>
+				<li class="li">
+					<p>Updating entities</p>
+					<p>The <code>update</code> function triggers a
+							<code>PUT</code>/<code>MERGE</code> request to an OData service
+						which was specified at creation of the OData model. After a successful
+						request to update the bindings in the model, the refresh is triggered
+						automatically.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oData = {
+    ProductId: 999,
+    ProductName: "myProductUpdated"
+}
+oModel.update("/Products(999)", oData, {success: mySuccessHandler, error: myErrorHandler});</pre></div></section>
+				</li>
+				<li class="li">
+					<p>Deleting entities</p>
+					<p>The <code>remove</code> function triggers a <code>DELETE</code>
+						request to an OData service which was specified at creation of the OData
+						model. The application has to specify the path to the entry which should be
+						deleted.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.remove("/Products(999)", {success: mySuccessHandler, error: myErrorHandler});</pre></div></section>
+				</li>
+				<li class="li">
+					<p>Refresh after change</p>
+					<p>The model provides a mechanism to automatically refresh bindings that depend
+						on changed entities. If you carry out a <code>create</code>,
+							<code>update</code> or <code>remove</code> function, the model
+						identifies the bindings and triggers a refresh for these bindings. If the
+						model runs in batch mode, the refresh requests are bundled together with the
+						changes in the same batch request. You can disable the auto refresh by
+						calling <code>setRefreshAfterChange(false)</code>. If the auto refresh
+						is disabled, the application has to take care of refreshing the respective
+						bindings.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.setRefreshAfterChange(false);</pre></div></section>
+				</li>
+				<li class="li">
+					<p>Deep create</p>
+					<p>Creation of an entity as a child to a newly created parent entity is not possible with one single API call. To achieve this,
+						you may chain two API calls to create parent and child entities with two requests, as shown in the following sample, which
+						creates both a sales order and a sales order item:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oParentContext,
+    oModel = this.getView().getModel();
+
+oParentContext = oModel.createEntry("SalesOrderSet", {
+   properties : {
+      // properties for the new sales order
+   },
+   success : function () {
+      oChildContext = oModel.createEntry("ToLineItems", {
+         context : oParentContext,
+         properties : {
+            // properties for the new item of the new sales order
+         },
+         success : function () {
+            // ...
+         }
+      });
+      oModel.submitChanges();
+   }
+});
+
+oModel.submitChanges();</pre></div></section>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio94e302455f8044e79de759c86bb295a2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Concurrency Control and ETags</h1><div class="fig"><h1 class="topictitle1 title">Concurrency Control and ETags</h1><div class="shortdesc"></div><p>OData uses HTTP ETags for optimistic concurrency control. The service must be configured
+			to provide them. The ETag can be passed within the parameters map for every CRUD
+			request. If no ETag is passed, the ETag of the cached entity is used, if it is loaded
+			already.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio30362c1cafd244dd86752e28993bbcdd" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">XSRF Token</h1><div class="fig"><h1 class="topictitle1 title">XSRF Token</h1><div class="shortdesc"></div><p>To address cross-site request forgery, an OData service may require XSRF tokens for change
+			requests by the client application. In this case, the client has to fetch a token from
+			the server and send it with each change request to the server. The OData model fetches
+			the XSRF token when reading the metadata and then automatically sends it with each write
+			request header. If the token is no longer valid, a new token can be fetched by calling
+			the <code>refreshSecurityToken</code> function on the OData model. The token is
+			fetched with a request to the service root URL, which usually responds with the service
+			document. To get a valid token, make sure that the response is <span class="emphasis">not</span>
+			cached.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio66a130fa4d10411b8fc90df00185554b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Refreshing the Model</h1><div class="fig"><h1 class="topictitle1 title">Refreshing the Model</h1><div class="shortdesc"></div><p>The <code>refresh</code> function refreshes all data within an OData model. Each binding
+			reloads its data from the server. For list or context bindings, a new request to the
+			back end is triggered. If the XSRF token is no longer valid, it has to be fetched again
+			with a <code>read</code> request to the service document. Data that has been
+			imported via manual CRUD requests is <span class="emphasis">not</span> reloaded
+			automatically.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio8a6ae1d390534d05a560bf350af59c29" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Batch Processing</h1><div class="fig"><h1 class="topictitle1 title">Batch Processing</h1><div class="shortdesc"></div><p>The <a href="#/api/sap.ui.model.odata.v2.ODataModel" title="#/api/sap.ui.model.odata.v2.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v2.ODataModel"><code>v2.ODataModel</code></a> supports
+			batch processing (<code>$batch</code>) in two different ways:</p><ul class="ul ">
+			<li class="li">
+				<p>Default: All requests in a thread are collected and bundled in batch requests,
+					meaning that request is sent in a timeout immediately after the current call
+					stack is finished. This includes all manual CRUD requests as well as requests
+					triggered by a binding.</p>
+			</li>
+			<li class="li">
+				<p>Deferred: The requests are stored and can be submitted with a manual
+						<code>submitChanges()</code> call by the application. This also includes
+					all manual CRUD requests as well as requests triggered by a binding.</p>
+			</li>
+		</ul><p>The model cannot decide how to bundle the requests. For this, SAPUI5 provides the
+				<code>groupId</code>. For each Context and List Binding and each manual request, a <code>groupId</code> can be specified. All
+			requests belonging to the same group are bundled into one batch request. Request without a <code>groupId</code> are bundled in the
+			default batch group. You can use a <code>changeSetId</code> for changes. The same principle applies: Each change belonging to the same
+				<code>changeSetId</code> is bundled into one <code>changeSet</code> in the batch request. Per default, all changes have their
+			own <code>changeSet</code>.</p><p>You can use the <code>setDeferredGroups()</code> method to set a subset of previously
+			defined groups to deferred.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The same is also valid for <code>setChangeGroups()</code> and
+						<code>getChangeGroups()</code>.</p>
+			<p></p></div></div> All requests belonging to the <code>group</code> are then stored in a
+			request queue. The deferred batch group must then be submitted manually by means of the
+				<code>submitChanges()</code> method. If you do <span class="emphasis">not</span> specify
+			a batch group ID when calling <code>submitChanges</code>, all deferred batch groups
+			are submitted.<p></p><div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+			</p><p>Set a subset of groups to deferred:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel(myServiceUrl);</pre></div></section>
+			<p>Pass the <code>groupId</code> to a binding:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{path:"/myEntities", parameters: {groupId: "myId"}}</pre></div></section>
+			<p>Set the <code>groupId</code> to deferred:</p>
+			<ol>
+				<li class="li">Get the list of deferred groups:<p>
+						</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var aDeferredGroups = oModel.getDeferredGroups();</pre></div></section>
+					<p></p></li>
+				<li class="li">Append your <code>groupId</code> to the list:<p>
+						</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">aDeferredGroups=aDeferredGroups.concat(["myId"]);</pre></div></section>
+					<p></p></li>
+				<li class="li">Set all groups to deferred: <p>
+						</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.setDeferredGroups(aDeferredGroups);</pre></div></section>
+					<p></p></li>
+			</ol>
+			<p>Submit all deferred groups:</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.submitChanges({success: mySuccessHandler, error: myErrorHandler});</pre></div></section>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio42b3ca19a47d49a3b4ba5f34ca0d1f7e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Two-Way Binding</h1><div class="fig"><h1 class="topictitle1 title">Two-Way Binding</h1><div class="shortdesc">The v2.ODataModel enables two-way binding. Per default, all changes are
+		collected in a batch group called "changes" which is set to deferred.</div><p>To submit the changes, use <code>submitChanges()</code>. The data changes are made on
+			a data copy. This enables you to reset the changes without sending a new request to the
+			backend to fetch the old data again. With <code>resetChanges()</code> you can reset
+			all changes. You can also reset only specific entities by calling
+				<code>resetChanges</code> with an array of entity paths.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Filtering and sorting is not possible if two-way changes are present as this would
+				cause inconsistent data on the UI. Therefore, before you carry out sorting or
+				filtering, you have to submit or reset the changes.</p>
+		<p></p></div></div><p>You can collect the changes for different entities or types in different batch groups. To
+			configure this, use the <code>setChangeGroups()</code> method of the model:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel(myServiceUrl);
+oModel.setDeferredGroups(["myGroupId", "myGroupId2"]);
+oModel.setChangeGroups({
+    "EntityTypeName": {
+        groupId: "myGroupId",  
+        changeSetId: "ID",/*optional*/
+        single: true, /*optional, can be true or false*/
+    }
+});
+oModel.submitChanges({groupId: "myGroupId", success: mySuccessHandler, error: myErrorHandler});</pre></div></section><p>To collect the changes for all entity types in the same batch group, use '*’ as
+				<code>EntityType</code>. If the change is not set to deferred, the changes are
+			sent to the backend immediately. By setting the <code>single</code> parameter for
+				<code>changeSet</code> to true or false, you define if each change results in
+			its own change set (<code>true</code>) or if all changes are collected in one change
+			set (<code>false</code>). The model only takes care of the
+				<code>changeSetId</code> if <code>single</code> is set to
+				<code>false</code>.</p><div class="note note  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>The first change of an entity defines the order in the change set.</p>
+		<p></p></div></div><p><span class="emphasis">Example</span></p><p>Reset changes:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">// "ODataModel" required from module "sap/ui/model/odata/v2/ODataModel"
+var oModel = new ODataModel(myServiceUrl);
+//do a change
+oModel.setProperty("/myEntity(0)", oValue);
+
+//reset the change
+oModel.resetChanges(["/myEntity(0)"]);</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loiobf1fc3b4c9ab4bbc845a3f0e0940c004" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Binding-specific Parameters</h1><div class="fig"><h1 class="topictitle1 title">Binding-specific Parameters</h1><div class="shortdesc"></div><p>The OData protocol specifies different URL parameters.</p><section id="section_egd_htz_xbb">
+			<p>You can use these parameters in bindings in addition to the parameters described
+				above:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>Expand parameter</p>
+					<p>The <code>expand</code> parameter allows the application to read
+						associated entities with their navigation properties:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oControl.bindElement("/Category(1)", {expand: "Products"}); 
+
+oTable.bindRows({
+    path: "/Products",
+    parameters: {expand: "Category"}
+});</pre></div></section>
+					<p>In this example, all products of <code>"Category(1)"</code> are embedded
+						inline in the server response and loaded in one request. The category for
+						all <code>"Products"</code> is embedded inline in the response for each
+						product.</p>
+				</li>
+				<li class="li">
+					<p>Select parameter</p>
+					<p>The <code>select</code> parameter allows the application to define a
+						subset of properties that is read when requesting an entity.</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oControl.bindElement("/Category(1)", {expand: "Products", select: "Name,ID,Products"}); 
+
+oTable.bindRows({
+    path: "/Products",
+    parameters: {select: "Name,Category"}
+});</pre></div></section>
+					<p>In this example, the properties <code>Name</code>, <code>ID</code>
+						and <code>ofCategory(1)</code> as well as all properties of the embedded
+						products are returned. The properties <code>Name</code> and
+							<code>Category</code> are included for each product. The
+							<code>Category</code> property contains a link to the related
+						category entry.</p>
+				</li>
+				<li class="li">
+					<p>Custom query options</p>
+					<p>You can use custom query options as input parameters for service operations. When creating
+						the list binding, specify these custom parameter as follows:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTable.bindRows({
+        path: "/Products", 
+        parameters: {
+        custom: {
+            param1: "value1",
+            param2: "value2"
+        }
+    },
+    template: rowTemplate
+});</pre></div></section>
+					<p>If you use <code>bindElement</code>, you can specify custom parameters as
+						follows:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTextField.bindElement("/GetProducts", {
+    custom: {
+        "price" : "500"
+    }
+});</pre></div></section>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio62149734b5c24507868e722fe87a75db" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Optimizing Dependent Bindings</h1><div class="fig"><h1 class="topictitle1 title">Optimizing Dependent Bindings</h1><div class="shortdesc">The ODataModel V2 supports a flag called "preliminaryContext". With this option set to
+		true, the ODataModel is able to bundle the OData calls for dependent bindings together into
+		fewer $batch requests.</div><section id="section_mjn_51f_zbb">
+			<h2 class="title ">Introduction</h2>
+			<p>Two bindings are considered "dependent" if one cannot be resolved without the other
+				being resolved first, for example a relative binding cannot be resolved without a
+				resolved absolute binding.</p>
+			<p>If the <code>preliminaryContext</code> option is set to <code>false</code>,
+				each binding will be resolved once its preceding binding has been resolved or if it
+				is an absolute binding itself.</p>
+			<p>The <code>preliminaryContext</code> option can also be activated/deactivated per
+				binding instance. This overwrites the default value set on the ODataModel
+				instance.</p>
+		</section><section id="section_svw_z1f_zbb"><h2 class="title ">Settings and Usage</h2><section>
+				<h3 class="title ">ODataModel v2</h3>
+				<p>The constructor parameter is named <span class="parmname">preliminaryContext</span> (type
+					Boolean) and has the following properties:</p><ul class="ul ">
+						<li class="li">
+							<p>Default value is <code>false</code>.</p>
+						</li>
+						<li class="li">
+							<p>It is used by the <code>ContextBinding</code> as a default value
+								for <code>createPreliminaryContext</code> if not given in the
+								constructor. For examples on its usage see "ContextBinding".</p>
+						</li>
+						<li class="li">
+							<p>It is used by the <code>ContextBinding</code> as a default value
+								for <code>usePreliminaryContext</code> if not given in the
+								constructor. For examples on its usage see "ContextBinding"..</p>
+						</li>
+					</ul><p></p>
+			</section><section>
+				<h3 class="title ">ODataListBinding v2</h3>
+				<p>The constructor parameter is named <span class="parmname">usePreliminaryContext</span>
+					(type Boolean) and has the following properties:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Default value is <code>false</code>, as it is derived from the ODataModel's
+							default.</p>
+					</li>
+					<li class="li">
+						<p>If set to true:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>The <code>ODataListBinding </code>accepts preliminary
+									contexts (for example. in a <code>setContext()</code>
+									call).</p>
+							</li>
+							<li class="li">
+								<p>The <code>ODataListBinding</code> fires a change event with
+										<code>ChangeReason.Context</code>, if the binding is
+									updated and a preliminary context was set.</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">ODataContextBinding</h3>
+				<p>The <code>ODataContextBinding</code> supports two different parameters:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>usePreliminaryContext</code> (same as a ODataListBinding
+							v2)</p>
+					</li>
+					<li class="li">
+						<p><code>createPreliminaryContext</code></p>
+						<ul class="ul ">
+							<li class="li">
+								<p>If the binding cannot be resolved, it still creates a preliminary
+									binding context, which can be used by other subordinate
+									dependent bindings, which have set the
+										<code>usePreliminaryContext</code> option to
+										<code>true</code>.</p>
+							</li>
+							<li class="li">
+								<p>A change event with <code>ChangeReason.Context</code> is
+									fired once the data is loaded for the currently preliminary
+										<code>Context</code> instance. Afterwards, the existing
+										<code>Context</code> instance is not considered
+									"preliminary" anymore.</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section></section><section id="section_wr4_fhf_zbb"><h2 class="title ">Relationship Between Binding and Model Settings</h2><section>
+				<h3 class="title ">Default Behavior</h3>
+				<p>To describe the preliminary context feature in more detail, we first have to look
+					at the default Model/Binding behavior. Let's look at the simple example in the
+					following graphic.</p>
+				<div><div class="fig"><img src="loioe2fe691bea0f4181b6d835c11c92e9ba_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Simple Binding Example</span></div>
+				<p>Without using preliminary contexts, <span class="parmname">Binding 1</span> resolves only
+					after <span class="parmname">Binding 0</span> is resolved.</p>
+				<p>For example, if <span class="parmname">Binding 1</span> is a relative
+						<code>ODataListBinding</code> on a <code>Table</code> control, its
+					OData request will only be sent, once the data for the absolute
+						<span class="parmname">Binding 0</span> is available, for example by using an Element
+					binding on a <code>Panel</code> control.</p>
+				<p>This leads to two subsequent OData requests, one for <span class="parmname">Binding
+						0</span> and afterwards one for <span class="parmname">Binding 1</span>, as shown
+					in the following table:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_xww_51z_zbb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Request Number</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Content</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>1</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>2</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)/Supplier</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>Now let's look at a more complex example.</p>
+				<div><div class="fig"><img src="loio410269787de249dc8b573954dd0adc86_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Complex Binding Example</span></div>
+				<p>In this example we add another binding, which will be resolved once
+						<span class="parmname">Binding 0</span> and <span class="parmname">Binding 1</span> are
+					resolved. This leads to the following three individual <code>$batch</code>
+					requests:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_ssr_ddz_zbb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Request Number</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Content</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>1</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>2</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)/Supplier</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>3</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Suppliers(1)/Products</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section>
+			<section id="section_zx5_sdz_zbb">
+				<h3 class="title ">Optimized Behavior</h3>
+				<p> Let's look at the same simple example but with some optimizations.</p>
+				<div><div class="fig"><img src="loio57a4d12d4e5d41ecb74298a55b60d0fb_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Simple Binding Example - Optimized</span></div>
+				<p>Here <span class="parmname">Binding 1</span> uses the preliminary context created by
+						<span class="parmname">Binding 0</span>, and thus the request URL can directly be
+					resolved.</p>
+				<p>This now leads to only a single <code>$batch</code> request:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_mwj_pgz_zbb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Request Number</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Content</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>1</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)</code></p>
+									<p><code>GET Products(1)/Supplier</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>In this example <span class="parmname">Binding 1</span> has set its
+						<code>usePreliminaryContext</code> flag to <code>true</code>, and
+					thus accepts preliminary contexts to be set.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>If either <code>createPreliminaryContext</code> or
+							<code>usePreliminaryContext</code> is set to <code>false</code>,
+						the default behavior is active.</p>
+				<p></p></div></div>
+				<p>Now let's see how this works in the complex example.</p>
+				<div><div class="fig"><img src="loioe02b1d8006634769b0094215622c626d_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Complex Binding Example - Optimized</span></div>
+				<p>In this example we added another binding to the scenario. <span class="parmname">Binding
+						2</span> is again a relative binding, which can only resolve once
+						<span class="parmname">Binding 1</span> is resolved. <span class="parmname">Binding 1</span>
+					behaves just as before.</p>
+				<p>In this case the single, generated request looks like this:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_ihd_nhz_zbb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Request Number</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Content</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>1</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>GET Products(1)</code></p>
+									<p><code>GET Products(1)/Supplier</code></p>
+									<p><code>GET Products(1)/Supplier/Products</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section><section>
+				<h3 class="title ">Results and Conclusion</h3>
+				<p>Notice how the <span class="parmname">Products</span> list of the
+						<span class="parmname">Supplier</span> is referenced through the entity
+						<span class="parmname">Products(1)</span>.This is a result of bundling all data
+					requests into one single <code>$batch</code> request, without waiting for
+					the <span class="parmname">Products(1)</span> entity and its associated
+						<span class="parmname">Supplier</span> entity to be loaded.</p>
+				<p>As opposed to the default behavior, we do not require to have the
+						<span class="parmname">Products(1)</span> and <span class="parmname">Supplier</span> entities
+					loaded before sending the data request for the Supplier's
+						<span class="parmname">Products.Supplier</span>.So in this case we use a data path
+					based on <span class="parmname">Products(1)</span> and not the <span class="parmname">ID</span> of
+					the Supplier. You can compare that to the default behavior of the complex
+					example described above.</p>
+				<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>What would happen if one binding in the above chain does not set the
+						<code>usePreliminaryContext</code> or the
+						<code>createPreliminaryContext</code> option to true?</p><p>For example, if
+							<span class="parmname">Binding 2</span> sets its
+							<code>usePreliminaryContext</code> option to <code>false</code>,
+						the resolution chain is broken and we have a mixed scenario. Here one part
+						is loaded optimized in one <code>$batch</code>, and the second part is
+						loaded in a separate <code>$batch</code>:</p><div class="tableWrapper "><div class="fig"><tgroup>
+							
+							
+							</tgroup><table border="1" id="table_zr4_m3z_zbb" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+								<tr>
+									<th colspan="1" rowspan="1">
+										<p>Request Number</p>
+									</th>
+									<th colspan="1" rowspan="1">
+										<p>Content</p>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>1</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p><code>GET Products(1)</code></p>
+										<p><code>GET Products(1)/Supplier</code></p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>2</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p><code>GET Products(1)/Supplier/Products</code></p>
+									</td>
+								</tr>
+							</tbody>
+						</table></div></div><p></p></div></div>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>With the <code>$expand</code> query option you can load all associated
+						entities of another entity. In the previous examples we requested the
+							<span class="parmname">Product</span> list of a certain
+							<span class="parmname">Supplier</span> via a separate request. When using a
+							<code>$expand</code> query instead, you could request the same
+						information within one single request:</p>
+					<p><code>GET Products(1)?$expand=Supplier/Products</code></p>
+					<p>Even though you now also achieved to have less requests, using <code>$expand</code> has
+						a couple of drawbacks. These can be circumvented by using the preliminary
+						context feature, which does not have these restrictions.</p>
+					<p>In OData V2, with a <code>$expand</code> you cannot use additional
+						filters and sorters for the expanded entries. In addition, the
+							<code>$expand</code> option always loads <span class="emphasis">ALL</span>
+						associated entities, so paging with <code>$skip</code> or
+							<code>$top</code> is also not possible. Using the preliminary
+						context feature, you get multiple sub-requests in a single
+							<code>$batch</code>, yet you can easily include additional filters
+						and sorters on the related subordinate entries.</p>
+				<p></p></div></div>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio6cb8d585ed594ee4b447b5b560f292a4" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Function Import</h1><div class="fig"><h1 class="topictitle1 title">Function Import</h1><div class="shortdesc">The ODataModel supports the invoking of function imports or actions by
+		the callFunction method.</div><p>
+			</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oModel.callFunction("/GetProductsByRating",{method:"GET", urlParameters:{"rating":3}, success:fnSuccess, error: fnError})</pre></div></section>
+		<p></p><p>If the <code>callFunction</code> request is deferred, it can be submitted via the
+				<code>submitChangesmethod</code>. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Only "IN" parameters of function imports are currently supported.</p>
+			<p></p></div></div><p></p><section id="section_qwk_mtz_xbb">
+			<h2 class="title ">Binding of Function Import Parameters</h2>
+			<p>OData Model V2 supports the binding against function import parameters. This is
+				similar to the <code>createEntry</code> method which supports binding against
+				entity properties. The <code>callFunction</code> method returns a request handle
+				that has a <code>promise</code>. This <code>promise</code> is resolved when
+				the context to which it is bound is created successfully or is rejected if
+				not:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">var oHandle = oModel.callFunction("/GetProductsByRating", {urlParameters: {rating:3}});
+oHandle.contextCreated().then(function(oContext) {
+      oView.setBindingContext(oContext);
+});</pre></div></section><p></p>
+			<p>If the function import returns result data, then the result data can be accessed and
+				bound against in the <code>$result</code> property using the
+				context:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;form:SimpleForm&gt;
+   &lt;core:Title text="Parameters" /&gt;
+   &lt;Label text="Rating" /&gt;
+   &lt;Input value="{rating}" /&gt;
+   &lt;Button text="Submit" press=".submit" /&gt;
+   &lt;core:Title text="Result" /&gt;
+   &lt;List items="{$result}"&gt;
+    &lt;StandardListItem title="{Name}" /&gt;
+   &lt;/List&gt;
+&lt;/form:SimpleForm&gt;</pre></div></section><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loioc40fc72612754bad877f374bdeb0f893" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Language</h1><div class="fig"><h1 class="topictitle1 title">Language</h1><div class="shortdesc"></div><p>SAPUI5 uses the concept of a
+			"current language" (see <a href="#/topic/91f21f176f4d1014b6dd926db0e91070.html" title="For the identification of languages, the framework uses a language code of type string." class="sap-doc">Identifying the Language Code / Locale</a>). This
+			language is automatically propagated to the OData service by the OData V2 model. For
+			this reason, applications must not hard code the language themselves, e.g. they must not
+			specify the <code>"sap-language"</code> URL parameter as a custom query option.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section><section id="loio341823349ed04df1813197f2a0d71db2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Meta Model for OData V2</h1><div class="fig"><h1 class="topictitle1 title">Meta Model for OData V2</h1><div class="shortdesc">The implementation sap.ui.model.odata.ODataMetaModel offers a unified
+        access to both OData Version 2.0 metadata and Version 4.0 annotations.</div><p>It uses the existing <code>sap.ui.model.odata.ODataMetadata</code> as a foundation and
+            merges the OData Version 4.0 annotations from the existing
+                <code>sap.ui.model.odata.ODataAnnotations</code> directly into the corresponding
+            entity or property.</p><p>You can get an instance of <code>sap.ui.model.odata.ODataMetaModel</code> from an
+            instance of <code>sap.ui.model.odata.v2.ODataModel</code>, see <a href="#/topic/5ee619fc1370463ea674ee04b65ed83b.html" title="The XML templating concept enables you to use an XML view as a template. This template is transformed by an XML preprocessor on the source level, the XML DOM, at runtime just before an SAPUI5 control tree is created from the XML source." class="sap-doc">XML Templating</a>.</p><section>
+            <h2 class="title ">Basic Structure</h2>
+            <p>The basic structure of <code>sap.ui.model.odata.ODataMetadata</code> is shown in
+                the following code snippet. It shows you how the most important elements of the
+                entity model are nested. Each of these elements (except <i>association set end</i>)
+                can have <code>extensions</code>, that is, XML attribute values from some
+                namespace. The code snippets below show how these extensions are stored and
+                processed.</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"dataServices": {
+    "schema": [{
+      "association": [{
+        "end": []
+      }],
+      "complexType": [{
+        "property": []
+      }],
+      "entityContainer": [{
+        "associationSet": [{
+          "end": []
+        }],
+        "entitySet": [],
+        "functionImport": [{
+          "parameter": []
+        }]
+      }],
+      "entityType": [{
+        "property": [],
+        "navigationProperty": []
+      }]
+    }]
+  }
+}</pre></div></section>
+            <p>The following code snippet gives a closer look and has more properties:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+  "version": "1.0",
+  "dataServices": {
+    "dataServiceVersion": "2.0",
+    "schema": [{
+      "namespace": "GWSAMPLE_BASIC",
+      "entityType": [{
+        "name": "BusinessPartner",
+        "key": {
+          "propertyRef": [{
+            "name": "BusinessPartnerID"
+          }]
+        },
+        "property": [{
+          "name": "BusinessPartnerID",
+          "type": "Edm.String",
+          "nullable": "false",
+          "maxLength": "10"
+        }],
+        "navigationProperty": [{
+          "name": "ToSalesOrders",
+          "relationship": "GWSAMPLE_BASIC.Assoc_BusinessPartner_SalesOrders",
+          "fromRole": "FromRole_Assoc_BusinessPartner_SalesOrders",
+          "toRole": "ToRole_Assoc_BusinessPartner_SalesOrders"
+        }]
+      }],
+      "complexType": [{
+        "name": "CT_Address",
+        "property": [{
+          "name": "City",
+          "type": "Edm.String",
+          "maxLength": "40"
+        }]
+      }],
+      "association": [{
+        "name": "Assoc_BusinessPartner_SalesOrders",
+        "end": [{
+          "type": "GWSAMPLE_BASIC.BusinessPartner",
+          "multiplicity": "1",
+          "role": "FromRole_Assoc_BusinessPartner_SalesOrders"
+        }, {
+          "type": "GWSAMPLE_BASIC.SalesOrder",
+          "multiplicity": "*",
+          "role": "ToRole_Assoc_BusinessPartner_SalesOrders"
+        }],
+        "referentialConstraint": {
+          "principal": {
+            "role": "FromRole_Assoc_BusinessPartner_SalesOrders",
+            "propertyRef": [{
+              "name": "BusinessPartnerID"
+            }]
+          },
+          "dependent": {
+            "role": "ToRole_Assoc_BusinessPartner_SalesOrders",
+            "propertyRef": [{
+              "name": "CustomerID"
+            }]
+          }
+        }
+      }],
+      "entityContainer": [{
+        "name": "GWSAMPLE_BASIC_Entities", 
+        "isDefaultEntityContainer": "true",
+        "entitySet": [{
+          "name": "BusinessPartnerSet",
+          "entityType": "GWSAMPLE_BASIC.BusinessPartner"
+        }],
+        "associationSet": [{
+          "name": "Assoc_BusinessPartner_SalesOrders_AssocS",
+          "association": "GWSAMPLE_BASIC.Assoc_BusinessPartner_SalesOrders",
+          "end": [{
+            "entitySet": "BusinessPartnerSet",
+            "role": "FromRole_Assoc_BusinessPartner_SalesOrders"
+          }, {
+            "entitySet": "SalesOrderSet",
+            "role": "ToRole_Assoc_BusinessPartner_SalesOrders"
+          }]
+        }],
+        "functionImport": [{
+          "name": "SalesOrder_Confirm",
+          "returnType": "GWSAMPLE_BASIC.SalesOrder",
+          "entitySet": "SalesOrderSet",
+          "httpMethod": "POST",
+          "parameter": [{
+            "name": "SalesOrderID",
+            "type": "Edm.String",
+            "mode": "In",
+            "maxLength": "10"
+          }]
+        }]
+      }]
+    }]
+  }}</pre></div></section>
+        </section><section><h2 class="title ">Accessing Objects and Properties</h2><p>The objects in the OData meta model
+        are arranged in arrays. <code>/dataServices/schema</code>, for example, is an array of
+        schemas where each schema has an <code>entityType</code> property with an array of
+        entity types, and so on. So, <code>/dataServices/schema/0/entityType/16</code> can be
+        the path to the entity type with name "Order" in the schema with namespace
+        "MySchema".</p><p>However, these paths are not stable: If an entity type with lower index is
+        removed from the schema, the path to "Order" changes to
+          <code>/dataServices/schema/0/entityType/15</code>. To avoid problems with changing
+        indexes, <code>getObject</code> and <code>getProperty</code> support XPath-like
+        queries for the indexes. Each index can be replaced by a query in square brackets. You can,
+        for example, address the schema by using the path
+          <code>/dataServices/schema/[${namespace}==='MySchema']</code> or address the entity by
+        using the path
+          <code>/dataServices/schema/[${namespace}==='MySchema']/entityType/[${name}==='Order'</code>].</p><p>The
+        syntax inside the square brackets corresponds to the expression binding syntax. The query is
+        executed for each object in the array until the result is true (truthy) for the first time.
+        This object is then chosen. To embed such a path into an expression binding, use a complex
+        binding syntax: <code>${path:'...'}</code>. Example: <code>{:= ${path:'target&gt;extensions/[${name} === \'semantics\']/value'} === 'email'}</code></p><p>Each of these queries is self-contained. The query can refer to
+        properties of the current candidate via a relative path, for example
+          <code>${name}</code>, but it <span class="emphasis">cannot</span> refer to variables such as
+          <code>${meta&gt;}</code> that are available in XML templating at that
+        point.</p></section><section>
+            <h2 class="title ">Extensions</h2>
+            <p><code>extensions</code> array and transformed from objects
+                into simple properties with an <code>sap:</code> prefix added to their name, see
+                line number 8 in the following code snippet.</p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>As this happens in addition, the following example shows both representations. By
+        this, the respective annotations can be addressed via a simple relative path instead of
+        searching an array.</p></div></div>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">1  {
+2    "name": "BusinessPartnerID",
+3    "extensions": [{
+4      "name": "label",
+5      "value": "Bus. Part. ID",
+6      "namespace": "http://www.sap.com/Protocols/SAPData"
+7    }],
+8    "sap:label": "Bus. Part. ID"
+9  }</pre></div></section>
+        </section><section>
+            <h2 class="title ">OData v4 Annotations</h2>
+            <p>Each element of the entity model (except <i>association set end</i>) can be
+                annotated. These annotations from the existing
+                    <code>sap.ui.model.odata.ODataAnnotations</code> are merged directly into
+                the corresponding element. The following code snippet shows how the structure from
+                the existing <code>sap.ui.model.odata.ODataMetadata</code>, as explained above
+                and including extensions and constraints such as <code>nullable</code> or
+                    <code>maxLength</code>, is fleshed out with lifted v2 annotations and
+                inlined v4 annotations, such as <code>Org.OData.Measures.V1.Unit</code> or
+                    <code>com.sap.vocabularies.UI.v1.Identification</code>. If you want to
+                navigate the structure, for example for XML templating, it is important to
+                understand this structure.</p>
+            <p>ODataMetaModel JSON Format:</p>
+            <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"dataServices" : {
+    "schema" : [{
+        "namespace" : "GWSAMPLE_BASIC",
+        "entityType" : [{
+            "name" : "Product",
+            "property" : [{
+                "name" : "ProductID",
+                "type" : "Edm.String",
+                "nullable" : "false",
+                "maxLength" : "10"
+            }, {
+                "name" : "SupplierName",
+                "type" : "Edm.String",
+                "maxLength" : "80",
+                "extensions" : [{
+                  "name" : "label",
+                  "value" : "Company Name",
+                  "namespace" : "http://www.sap.com/Protocols/SAPData"
+                }, {
+                  "name" : "creatable",
+                  "value" : "false",
+                  "namespace" : "http://www.sap.com/Protocols/SAPData"
+                }, {
+                  "name" : "updatable",
+                  "value" : "false",
+                  "namespace" : "http://www.sap.com/Protocols/SAPData"
+                }],
+                "sap:label" : "Company Name",
+                "sap:creatable" : "false",
+                "sap:updatable" : "false"
+                "Org.OData.Core.V1.Computed" : {
+                    "Bool" : "true"
+                }
+            }, {
+                "name" : "WeightMeasure",
+                "type" : "Edm.Decimal",
+                "precision" : "13",
+                "scale" : "3",
+                "Org.OData.Measures.V1.Unit" : {
+                    "Path" : "WeightUnit"
+                }
+            }, {
+                "name" : "WeightUnit",
+                "type" : "Edm.String",
+                "maxLength" : "3"
+            }],
+            "com.sap.vocabularies.UI.v1.DataPoint" : {
+                "Value" : {
+                    "Path" : "WeightMeasure",
+                    "EdmType" : "Edm.Decimal"
+                }
+            },
+            "com.sap.vocabularies.UI.v1.Identification" : [{
+                "Value" : {"Path" : "ProductID"}
+            }, {
+                "Value" : {"Path" : "SupplierName"}
+            }, {
+                "Value" : {"Path" : "WeightMeasure"}
+            }]
+        }]
+    }]
+}</pre></div></section>
+        </section><section id="Enhancement">
+      <h2 class="title ">Enhancement of the OData Meta Model</h2>
+      <p>In addition to the easy access to the SAP-specific OData annotations, such as
+          <code>sap:label</code>, corresponding vocabulary-based annotations are mixed in if
+        they are not yet defined in the OData Version 4.0 annotations of the existing
+          <code>sap.ui.model.odata.ODataAnnotations</code>.</p>
+      <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Annotation terms are not merged, but replaced as a whole ("PUT" semantics). If the same
+        annotation term with the same target is also contained in an annotation file, the complete
+        OData V4 annotation converted from the OData V2 annotation is replaced by the one contained
+        in the annotation file for the specified target. Converted annotations never use a qualifier
+        and are only overwritten by the same annotation term without a qualifier.</p></div></div>
+      <p>The following tables show the transformations that are implemented with version 1.30 of SAPUI5 (variatons of this are
+        marked accordingly). In the examples shown below, <code>AnyPath</code> is a path
+        expression as defined in the <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html" title="http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html" class="external-link" target="_blank" rel="noopener">OData Version 4.0 specification</a>, section 14.5.12.</p>
+      <p>Transformations defined at <code>EntitySet</code>:</p>
+      <div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_mrv_c43_qr" class=" "><thead>
+          <tr><th colspan="1" rowspan="1">
+            <p>OData V2 SAP Extension</p>
+          </th>
+          <th colspan="1" rowspan="1">
+            <p>Resulting OData V4 Annotation</p>
+          </th>
+        </tr></thead><tbody><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:creatable = "false"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.InsertRestrictions": { "Insertable" : { "Bool" : "false" } }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:deletable = "false"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.DeleteRestrictions": { "Deletable" : { "Bool" : "false" } }
+</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If both, <code>sap:deletable</code> and <code>sap:deletable-path</code>
+              are given, the service is broken and it is handled as
+                <code>sap:deletable="false"</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:deletable-path = "AnyPath"</pre></div></section>
+            <p>Where <code>AnyPath</code> is a path expression that identifies a Boolean
+              property in the context of the entity type of the entity set. The value of this
+              property indicates whether the entity can be deleted or not.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.DeleteRestrictions": { "Deletable" : { "Path" : "AnyPath" } }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If both, <code>sap:deletable</code> and <code>sap:deletable-path</code>
+              are given, the service is broken and it is handled as
+                <code>sap:deletable="false"</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:label = "foo"</pre></div></section>
+            <p>Where <code>foo</code> is any text.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.Label": {"String" : "foo" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:pageable = "false"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.SkipSupported": {"Bool" : "false" },
+"Org.OData.Capabilities.V1.TopSupported": {"Bool" : "false" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:requires-filter = "true"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.FilterRestrictions": { "RequiresFilter" : { "Bool" : "true" } }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:searchable = "false"
+</pre></div></section>
+            <p>Alternatively, do not use the <code>sap:searchable</code> annotation.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.SearchRestrictions": { "Searchable" : { "Bool" : "false" } }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:topable = "false"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.TopSupported": {"Bool" : "false" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:updatable = "false"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.UpdateRestrictions": { "Updatable" : { "Bool" : "false" } }
+</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If both, <code>sap:updatable</code> and <code>sap:updatable-path</code>
+              are given, the service is broken and it is handled as
+                <code>sap:updatable="false"</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:updatable-path = "AnyPath"</pre></div></section>
+            <p>Where <code>AnyPath</code> is a path expression that identifies a Boolean
+              property in the context of the entity type of the entity set. The value of this
+              property indicates whether the entity can be updated or not.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.UpdateRestrictions": { "Updatable" : { "Path" : "AnyPath" } }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If both, <code>sap:updatable</code> and <code>sap:updatable-path</code>
+              are given, the service is broken and it is handled as
+                <code>sap:updatable="false"</code>.</p></div></div>
+          </td>
+        </tr></tbody></table></div></div>
+      <p>Transformations defined at <code>Property</code>:</p>
+      <div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_v5f_pzn_ks" class=" "><thead>
+          <tr><th colspan="1" rowspan="1">
+            <p>OData V2 SAP Extension</p>
+          </th>
+          <th colspan="1" rowspan="1">
+            <p>Resulting OData V4 Annotation</p>
+          </th>
+        </tr></thead><tbody><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:label = "foo"</pre></div></section>
+            <p>Where <code>foo</code> is any text.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.Label": {"String" : "foo" }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added at different places, not to the
+                <code>Property</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:creatable = "true" </pre></div></section>
+            <p>and</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:updatable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Core.V1.Immutable": { "Bool" : "true" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:creatable = "false"</pre></div></section>
+            <p>and</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:updatable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Core.V1.Computed": { "Bool" : "true"}
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:display-format = "NonNegative"</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p><code>NonNegative</code> indicates that only non-negative numeric values are
+              provided and persisted, other input leads to errors; intended for
+                <code>Edm.String</code> fields that are internally stored as
+                <code>NUMC</code>.</p></div></div>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsDigitSequence": { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:display-format = "UpperCase"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsUpperCase": { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:field-control = "AnyPath"</pre></div></section>
+            <p>Where <code>AnyPath</code> is a path expression that identifies a property
+              containing a numeric value that controls visibility..</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.FieldControl": { "Path" : "AnyPath" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:filterable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.FilterRestrictions":
+{ "NonFilterableProperties" : [
+{ "PropertyPath" : "PropA " },
+{ "PropertyPath" : "PropC " }] }</pre></div></section>
+            <p>For example, if <code>sap:filterable</code> is set to <code>false</code> for
+              properties <code>PropA</code> and <code>PropC</code>.</p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>, not to the
+                <code>Property</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:filter-restriction="multi-value"</pre></div></section>
+            <p>For example, at a <code>BusinessPartnerID</code> property of a
+                <code>BusinessPartner</code> type.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.FilterExpressionRestrictions":
+[{ "Property" : { "PropertyPath" : "BusinessPartnerID" },
+"AllowedExpressions" : { "EnumMember":
+"com.sap.vocabularies.Common.v1.FilterExpressionType/MultiValue" } }]</pre></div></section>
+            <p>At the corresponding entity set, for example,
+                <code>BusinessPartnerSet.multi-value</code> is mapped to
+                <code>MultiValue</code>, <code>single-value</code> is mapped to
+                <code>SingleValue</code>, and <code>interval</code> is mapped to
+                <code>SingleInterval</code>.</p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>, not to the
+                <code>Property</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:heading = "foo"</pre></div></section>
+            <p>Where <code>foo</code> is any text.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.Heading": { "String" : "foo" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:precision = "AnyPath"
+</pre></div></section>
+            <p>Where <code>AnyPath</code> is a path expression that identifies a property in the
+              context of the entity type containing the number of significant decimal places for a
+              numeric value.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Measures.V1.Scale": { "Path" : "AnyPath" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:quickinfo = "foo"</pre></div></section>
+            <p>Where <code>foo</code> is any text.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.QuickInfo": { "String" : "foo" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:required-in-filter = "true"
+</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>If <code>sap:required-in-filter</code> is set to <code>TRUE</code> for the
+                <code>PropA</code> and <code>PropC</code> properties:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.FilterRestrictions": {
+"RequiredProperties" : [
+{ "PropertyPath" : "PropA " },
+ { "PropertyPath" : "PropC " }] }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>, not to the
+                <code>Property</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:sortable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>If <code>sap:sortable</code> is set to <code>FALSE</code> for the
+                <code>PropA</code> and <code>PropC</code> properties:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.SortRestrictions": {
+"NonSortableProperties" : [ 
+{ "PropertyPath" : "PropA " }, 
+{ "PropertyPath" : "PropC " }]}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>, not to the
+                <code>Property</code>.</p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:text = "AnyPath"</pre></div></section>
+            <p>Where <code>AnyPath</code> is a path expression that identifies a property in the
+              context of the entity type containing a human-readable text for the value of this
+              property.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.Text":{ "Path" : "AnyPath" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:unit="WeightUnit"</pre></div></section>
+            <p>or</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:unit="CurrencyCode"</pre></div></section>
+            <p>Where <code>WeightUnit</code> and <code>CurrencyCode</code> are names of
+              properties in the same entity and <code>WeightUnit</code> points to a property
+              with <code>sap-semantics:unit-of-measure</code> and
+              <code>CurrencyCode</code>points to a property with
+                <code>sap-semantics:currency-code</code>.</p>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Measures.V1.Unit": { "Path" : "WeightUnit" }</pre></div></section>
+            <p>or</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Measures.V1.ISOCurrency": { "Path" : "CurrencyCode" }
+</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:visible="false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.UI.v1.Hidden" : { "Bool" : "true" }</pre></div></section>
+            <p>Deprecated as of SAPUI5 1.44:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.FieldControl": { "EnumMember" :
+"com.sap.vocabularies.Common.v1.FieldControlType/Hidden" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:aggregation-role="dimension"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Analytics.v1.Dimension" : { "Bool" : "true" }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.46.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:aggregation-role="measure"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Analytics.v1.Measure" : { "Bool" : "true" }</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.46.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="year"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsCalendarYear" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.50.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="yearmonth"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsCalendarYearMonth" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.50.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="yearmonthday"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsCalendarDate" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.50.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = url</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Core.V1.IsURL" : { "Bool" : "true" }
+</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.52.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="yearquarter"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsCalendarYearQuarter" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="yearweek"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsCalendarYearWeek" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="fiscalyear"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsFiscalYear" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics="fiscalyearperiod"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Common.v1.IsFiscalYearPeriod" : {"Bool" : "true"}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr></tbody></table></div></div>
+      <p>Transformations defined at <code>NavigationProperty</code>:</p>
+      <div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_hqv_xtl_tw" class=" "><thead>
+          <tr><th colspan="1" rowspan="1">
+            <p>OData V2 SAP Extension</p>
+          </th>
+          <th colspan="1" rowspan="1">
+            <p>Resulting OData V4 Annotation</p>
+          </th>
+        </tr></thead><tbody><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:filterable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.FilterRestrictions": {
+    "NonFilterableProperties" : [
+    { "PropertyPath" : "PropA " },
+    { "PropertyPath" : "PropC " }
+    ]
+}</pre></div></section>
+            <p>For example, if <code>sap:filterable</code> is set to <code>false</code> for
+              properties <code>PropA</code> and <code>PropC</code></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>,
+                <span class="emphasis">not</span> to the <code>NavigationProperty</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.42.</p>
+            <p></p></div></div>
+            <div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+              </p><p>Deprecated with version 1.54. See entry below.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:filterable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.NavigationRestrictions": {
+  "RestrictedProperties": [
+    {
+      "FilterRestrictions": {"Filterable": false},
+      "NavigationProperty": {"NavigationPropertyPath": "NavPropA"}
+    },
+    {
+      "FilterRestrictions": {"Filterable": false},
+      "NavigationProperty": {"NavigationPropertyPath": "NavPropB"}
+    }
+  ]
+}</pre></div></section>
+            <p>For example, if <code>sap:filterable</code> is set to false for navigation
+              properties <code>NavPropA</code> and <code>NavPropB</code>.</p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>,
+                <span class="emphasis">not</span> to the <code>NavigationProperty</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:creatable = "false"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.InsertRestrictions": {
+
+    "NonInsertableNavigationProperties" : [
+    { "NavigationPropertyPath" : "NavPropA " },
+    { "NavigationPropertyPath" : "NavPropC " }
+    ]
+
+}</pre></div></section>
+            <p>For example, if <code>sap:creatable</code> is set to <code>false</code> for
+              navigation properties <code>NavPropA</code> and <code>NavPropC</code></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>,
+                <span class="emphasis">not</span> to the <code>NavigationProperty</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If <code>sap:creatable</code> and <code>sap:creatable-path</code> are
+              given, the service is broken and it is handled as
+                <code>sap:creatable="false"</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.42.</p>
+            <p></p></div></div>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:creatable-path="Creatable"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"Org.OData.Capabilities.V1.InsertRestrictions": {
+
+    "NonInsertableNavigationProperties" : [{
+        "IF" : [{
+            "Not" : {
+                "Path" : "Creatable"
+            }
+        }, {
+            "NavigationPropertyPath" : "NavPropA"
+        }]
+    }]
+}</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The resulting annotation is added to the <code>EntitySet</code>,
+                <span class="emphasis">not</span> to the <code>NavigationProperty</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If <code>sap:creatable</code> and <code>sap:creatable-path</code> are
+              given, the service is broken and it is handled as
+                <code>sap:creatable="false"</code>.</p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.42.</p>
+            <p></p></div></div>
+          </td>
+        </tr></tbody></table></div></div>
+      <p>Transformations defined at <code>Schema</code>:</p>
+      <div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_ax1_r3p_hdb" class=" "><thead>
+          <tr><th colspan="1" rowspan="1">
+            <p>OData V2 SAP Extension</p>
+          </th>
+          <th colspan="1" rowspan="1">
+            <p>Resulting OData V4 Annotation</p>
+          </th>
+        </tr></thead><tbody><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">schema-version="foo"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"@Org.Odata.Core.V1.SchemaVersion" : "foo"</pre></div></section>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+              </p><p>Implemented with version 1.54.</p>
+            <p></p></div></div>
+          </td>
+        </tr></tbody></table></div></div>
+      <p>Depending on the value of the <code>sap:semantics</code> annotation, different
+        vocabulary-based annotations are generated. The following transformations are implemented
+        and defined at <code>property</code>. In the examples of the resulting JSON at the
+        "defined at" object, <code>PROPERTY</code> is a placeholder for the name of the property
+        at which the <code>sap:semantics</code> annotation is defined.</p>
+      <div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_o1g_1vh_ls" class=" "><thead>
+          <tr><th colspan="1" rowspan="1">
+            <p>OData V2 SAP Extension</p>
+          </th>
+          <th colspan="1" rowspan="1">
+            <p>Resulting OData V4 Annotation</p>
+          </th>
+        </tr></thead><tbody><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "currency-code"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>see <code>sap:unit</code> above</p>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "unit-of-measure"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>see <code>sap:unit</code> above</p>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "name"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "fn" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "givenname"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "n" : { "given" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "middlename"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "n" : { "additional" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "familyname"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "n" : { "surname" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "nickname"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "nickname" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "honorific"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "n" : { "prefix" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "suffix"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "n" : { "suffix" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "note"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "note" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "photo"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "photo" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "city"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "locality" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "street"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "street" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "country"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "country" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "region"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "region" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "zip"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "code" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "pobox"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "adr" : { "pobox" : { "Path" : "PROPERTY" } } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "org"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "org" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "org-unit"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "orgunit" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "org-role"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "role" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "title"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "title" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "bday"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { "bday" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "dtstart"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "dtstart" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "dtend"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "dtend" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "duration"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "duration" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "class"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "class" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "status"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "status" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "transp"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "transp" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "fbtype"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "fbtype" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "wholeday"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "wholeday" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "location"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Event" : { "location" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "due"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Task" : { "due" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "completed"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Task" : { "completed" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "percent-complete"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Task" : { "percentcomplete" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "priority"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Task" : { "priority" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "from"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Message" : { "from" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "sender"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Message" : { "sender" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "subject"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Message" : { "subject" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "body"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Message" : { "body" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "received"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Message" : { "received" : { "Path" : "PROPERTY" } }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "tel"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>At the <code>EntityType</code> or <code>ComplexType</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { 
+"tel" : [{
+"uri" : { "Path" : "ATTRIBUTE" }
+}]}</pre></div></section>
+            <p>Where <code>ATTRIBUTE</code> is the name of the annotated attribute of an
+                <code>EntityType</code> or <code>ComplexType</code>.</p>
+            <p>At <code>Property</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.IsPhoneNumber" : { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "tel";type=cell,work</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>At the <code>EntityType</code> or <code>ComplexType</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { 
+"tel" : [{
+"type" : {
+"EnumMember": "com.sap.vocabularies.Communication.v1.PhoneType/cell"
++ " com.sap.vocabularies.Communication.v1.PhoneType/work"
+},
+"uri" : { "Path" : "ATTRIBUTE" }
+}]}</pre></div></section>
+            <p>Where <code>ATTRIBUTE</code> is the name of the annotated attribute of an
+                <code>EntityType</code> or <code>ComplexType</code>.</p>
+            <p>At <code>Property</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.IsPhoneNumber" : { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "email"</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>At the <code>EntityType</code> or <code>ComplexType</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { 
+"address" : [{
+"uri" : { "Path" : "ATTRIBUTE" }
+}]}</pre></div></section>
+            <p>Where <code>ATTRIBUTE</code> is the name of the annotated attribute of an
+                <code>EntityType</code> or <code>ComplexType</code>.</p>
+            <p>At <code>Property</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.IsEmailAddress" : { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr><tr>
+          <td colspan="1" rowspan="1" valign="top">
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap:semantics = "email";type=work,pref</pre></div></section>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">
+            <p>At the <code>EntityType</code> or <code>ComplexType</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.Contact" : { 
+"email" : [{
+"address" : { "Path" : "ATTRIBUTE" },
+"type" : {
+"EnumMember" : "com.sap.vocabularies.Communication.v1.ContactInformationType/work"
++ "com.sap.vocabularies.Communication.v1.ContactInformationType/preferred"
+}
+}]}</pre></div></section>
+            <p>Where <code>ATTRIBUTE</code> is the name of the annotated attribute of an
+                <code>EntityType</code> or <code>ComplexType</code>.</p>
+            <p>At <code>Property</code>:</p>
+            <section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"com.sap.vocabularies.Communication.v1.IsEmailAddress" : { "Bool" : "true" }</pre></div></section>
+          </td>
+        </tr></tbody></table></div></div>
+    </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+        <li><a href="#/topic/5ee619fc1370463ea674ee04b65ed83b.html" title="The XML templating concept enables you to use an XML view as a template. This template is transformed by an XML preprocessor on the source level, the XML DOM, at runtime just before an SAPUI5 control tree is created from the XML source." class="sap-doc">XML Templating</a></li>
+    <li><a href="#/topic/6c47b2b39db9404582994070ec3d57a2.html#loio6c47b2b39db9404582994070ec3d57a2" title="The OData V2 Model enables binding of controls to data from OData services." class="sap-doc">OData V2 Model</a></li>
+    <li><a href="#/api/sap.ui.model.odata.ODataMetaModel" title="#/api/sap.ui.model.odata.ODataMetaModel" class="sap-doc" alt="#/api/sap.ui.model.odata.ODataMetaModel">Class sap.ui.model.odata.ODataMetaModel</a></li>
+	</ul></section></div></section></div></section></div></body></html>

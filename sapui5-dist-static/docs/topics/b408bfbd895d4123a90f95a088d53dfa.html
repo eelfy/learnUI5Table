@@ -1,0 +1,106 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob408bfbd895d4123a90f95a088d53dfa" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring the Table Area</h1><div class="fig"><h1 class="topictitle1 title">Configuring the Table Area</h1><div class="shortdesc">The LineItem annotation lets you configure the table header title
+		(label property) and the corresponding values (value property) for the column
+		items.</div><section id="section_yvp_b2m_cfb">
+			<p>
+				</p><ol>
+					<li class="li">
+						<p>Define <code>DataField</code> property to display values (text) for
+							the table column. For
+							example:</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.LineItem" Qualifier="View4"&gt;
+   &lt;Collection&gt;
+      &lt;Record Type="com.sap.vocabularies.UI.v1.DataField"&gt;
+         &lt;PropertyValue Property="Label" String="Order ID" /&gt;
+         &lt;PropertyValue Property="Value" Path="SalesOrderID" /&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="com.sap.vocabularies.UI.v1.DataField"&gt;
+         &lt;PropertyValue Property="Label" String="Customer" /&gt;
+         &lt;PropertyValue Property="Value" Path="ToBusinessPartner/EmailAddress" /&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="com.sap.vocabularies.UI.v1.DataField"&gt;
+         &lt;PropertyValue Property="Label" String="Customer" /&gt;
+         &lt;PropertyValue Property="Value" Path="CustomerName" /&gt;
+      &lt;/Record&gt;
+      &lt;Record Type="com.sap.vocabularies.UI.v1.DataFieldForAnnotation"&gt;
+         &lt;PropertyValue Property="Label" String="TaxAmount" /&gt;
+         &lt;PropertyValue Property="Target" AnnotationPath="@com.sap.vocabularies.UI.v1.DataPoint#TaxAmount" /&gt;
+      &lt;/Record&gt;
+   &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>(Optional) Define <code>DataFieldforAnnotation</code> property using
+							these annotations:</p><ul class="ul ">
+								<li class="li">
+									<p><code>DataPoint</code>: To view numeric values in the
+										table. For
+										example:</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.DataPoint" Qualifier="TaxAmount"&gt;
+   &lt;Record Type="com.sap.vocabularies.UI.v1.DataPointType"&gt;
+      &lt;PropertyValue Property="Title" String="TaxAmount" /&gt;
+      &lt;PropertyValue Property="Value" Path="TaxAmount" /&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+								</li>
+								<li class="li">
+									<p><code>Contact</code>: To view quick view information in
+										the table. For example, you can configure the table card to
+										display contact information as shown
+										here:</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.Communication.v1.Contact"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="tel"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type" EnumMember="com.sap.vocabularies.Communication.v1.PhoneType/fax" /&gt;
+               &lt;PropertyValue Property="uri" Path="FaxNumber" /&gt;
+            &lt;/Record&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type" EnumMember="com.sap.vocabularies.Communication.v1.PhoneType/work com.sap.vocabularies.Communication.v1.PhoneType/pref" /&gt;
+               &lt;PropertyValue Property="uri" Path="PhoneNumber" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="email"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="type" EnumMember="com.sap.vocabularies.Communication.v1.ContactInformationType/pref com.sap.vocabularies.Communication.v1.ContactInformationType/work" /&gt;
+               &lt;PropertyValue Property="address" Path="EmailAddress" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p>
+								</li>
+							</ul><p></p>
+					</li>
+					<li class="li">
+						<p>(Optional) Define navigation properties for table area.</p>
+						<p>For configuring navigation information:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Use com.sap.vocabularies.UI.v1.DataFieldForIntentBasedNavigation
+									to define intent based navigation to SAP Fiori application.</p>
+							</li>
+							<li class="li">
+								<p>Use com.sap.vocabularies.UI.v1.DataFieldWithUrl term to configure
+									navigation to external apps and websites.</p>
+							</li>
+						</ul>
+					</li>
+				</ol>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>The recommended way to configure intent-based navigation using
+							<code>DataFieldForIntentBasedNavigation</code> property. However,
+						you can also use <code>DataFieldWithUrl</code> for navigation to a
+						specific application route that is not configured as target map. The
+						overview page identify this as an intent-based navigation and opens the
+						application in the same tab with relevant context.</p>
+				<p></p></div></div>
+			<p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

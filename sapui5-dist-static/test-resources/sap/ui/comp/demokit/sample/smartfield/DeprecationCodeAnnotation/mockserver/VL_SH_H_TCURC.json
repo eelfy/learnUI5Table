@@ -1,0 +1,92 @@
+[
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('EUR')",
+			"uri": "smartfield/VL_SH_H_TCURC('EUR')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "EUR",
+		"KTEXT": "European Euro",
+		"DeprecationCode": ""
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('HUF')",
+			"uri": "smartfield/VL_SH_H_TCURC('HUF')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "HUF",
+		"KTEXT": "Hungarian Forint",
+		"DeprecationCode": ""
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('USD')",
+			"uri": "smartfield/VL_SH_H_TCURC('USD')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "USD",
+		"KTEXT": "United States Dollar",
+		"DeprecationCode": ""
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('GBP')",
+			"uri": "smartfield/VL_SH_H_TCURC('GBP')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "GBP",
+		"KTEXT": "British Pound",
+		"DeprecationCode": "W"
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('DKK')",
+			"uri": "smartfield/VL_SH_H_TCURC('DKK')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "DKK",
+		"KTEXT": "Danish Krone",
+		"DeprecationCode": "W"
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('INR')",
+			"uri": "smartfield/VL_SH_H_TCURC('INR')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "INR",
+		"KTEXT": "Indian Rupee",
+		"DeprecationCode": "W"
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('NOK')",
+			"uri": "smartfield/VL_SH_H_TCURC('NOK')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "NOK",
+		"KTEXT": "Norwegian Krone",
+		"DeprecationCode": "E"
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('SEK')",
+			"uri": "smartfield/VL_SH_H_TCURC('SEK')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "SEK",
+		"KTEXT": "Swedish Krona",
+		"DeprecationCode": "E"
+	},
+	{
+		"__metadata": {
+			"id": "smartfield/VL_SH_H_TCURC('CHF')",
+			"uri": "smartfield/VL_SH_H_TCURC('CHF')",
+			"type": "com.sap.GL.zrha.VL_SH_H_TCURC"
+		},
+		"WAERS": "CHF",
+		"KTEXT": "Swiss Franc",
+		"DeprecationCode": "E"
+	}
+]

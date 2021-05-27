@@ -1,0 +1,27 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob564935324f449209354c7e2f9903f22" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using CSS Style Sheets in XML Views</h1><div class="fig"><h1 class="topictitle1 title">Using CSS Style Sheets in XML Views</h1><div class="shortdesc">Style sheets are included in XML views in the same way as plain HTML. To add further
+		CSS classes to SAPUI5 controls,
+		use the class attribute.</div><section class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+			<p> The effect is the same as calling <code>myButton.addStyleClass(...)</code>. </p>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>We recommend to carefully choose the
+				elements that you style as the CSS always affects the whole page and is <b>not</b>
+				restricted to the view. </p></div></div>
+		</div></section><section class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+			<li class="step">
+				<span class="cmd">To add a style sheet, add the style definition. </span>
+				<div class="stepxmp">To add a style class and define a button that uses it, add the following
+					coding:
+					<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View controllerName="sap.hcm.Address" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+           xmlns:html="http://www.w3.org/1999/xhtml"&gt;
+   &lt;html:style&gt;
+      .mySuperRedButton {
+         color: red;
+      }
+   &lt;/html:style&gt;
+   &lt;Panel&gt;
+      &lt;Button class="mySuperRedButton" text="Press Me"/&gt;
+   &lt;/Panel&gt;
+&lt;/mvc:View&gt;</pre></div></section></div>
+			</li>
+		</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

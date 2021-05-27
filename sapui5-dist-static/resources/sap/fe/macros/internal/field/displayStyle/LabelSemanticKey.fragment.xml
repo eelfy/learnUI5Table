@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							UI: 'sap/fe/core/templating/UIFormatters'
+						 }"
+>
+	<template:if test="{propertyPath>@com.sap.vocabularies.Common.v1.SemanticObject}">
+		<template:then>
+			<control:ConditionalWrapper
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				condition="{= FIELD.hasSemanticObjectTargets(${propertyPath>@com.sap.vocabularies.Common.v1.SemanticObject}, ${propertyPath>@com.sap.vocabularies.Common.v1.SemanticObjectUnavailableActions}, ${property>@@UI.getConverterContext} , ${property>@@UI.getDataModelObjectPath} ) }"
+			>
+				<control:contentTrue>
+					<Link
+						text="{this>text}"
+						wrapping="true"
+						core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						press="FieldRuntime.pressLink"
+						ariaLabelledBy="{this>ariaLabelledBy}"
+					>
+						<dependents>
+							<macro:QuickViewForm dataField="{dataField>}" entityType="{entityType>}" />
+						</dependents>
+					</Link>
+				</control:contentTrue>
+				<control:contentFalse>
+					<Label
+						unittest:id="MacroDataFieldLabel"
+						text="{= FIELD.getLabelTextForDataField(${entitySet>@}, ${propertyPath>@}, ${propertyPath>@@FIELD.buildExpressionForTextValue}, ${property>@@MODEL.format}, ${dataField>@sapui.name}, ${this>formatOptions/semanticKeyStyle}) }"
+						design="Bold"
+					/>
+				</control:contentFalse>
+			</control:ConditionalWrapper>
+		</template:then>
+		<template:else>
+			<Label
+				unittest:id="MacroDataFieldLabel"
+				text="{= FIELD.getLabelTextForDataField(${entitySet>@}, ${propertyPath>@}, ${propertyPath>@@FIELD.buildExpressionForTextValue}, ${property>@@MODEL.format}, ${dataField>@sapui.name}, ${this>formatOptions/semanticKeyStyle}) }"
+				design="Bold"
+			/>
+		</template:else>
+	</template:if>
+
+</core:FragmentDefinition>

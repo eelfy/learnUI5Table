@@ -1,0 +1,39 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob430345887f1419fba50320b57c1bdf9" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Methods Controlling the Initial Instantiation</h1><div class="fig"><h1 class="topictitle1 title">Methods Controlling the Initial Instantiation</h1><div class="shortdesc">SAPUI5 provides two
+		methods for the initial instantiation of the component.</div><p>You can use the following methods:</p><ul class="ul ">
+			<li class="li">
+				<p><code>init</code></p>
+				<p>Overwrite this method for example to connect the model between the control and the component.
+					This method is <b>not</b> called by the application directly, but called
+					automatically when you create the instance of the component. The routing
+					instance needs to be initialized here, see <a href="#/topic/acdb6cd408ec4b9eb5e1fe45e607abdd.html" title="This topic describes how to initialize routing in a component and access the routing functions." class="sap-doc">Initializing and Accessing a Routing Instance</a>.</p>
+			</li>
+			<li class="li">
+				<p><code>createContent</code></p>
+				<p>By default, the UI component creates the <code>sap.ui5/rootView</code>
+					declared in the manifest as the root control, see <a href="#/topic/8521ad1955f340f9a6207d615c88d7fd.html" title="Description of the performance-relevant attributes that are available for the descriptor for applications, components and libraries" class="sap-doc">Descriptor Dependencies to Libraries and Components</a>.</p>
+				<p>Alternatively, you can overwrite this method and programmatically create the root
+					control:</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/ui/core/UIComponent", "sap/m/Label"], function(UIComponent, Label) {
+    return UIComponent.extend("my.app.Component", {
+        metadata: {
+            manifest: "json"
+        },
+
+        createContent: function () {
+            return new Label({ text: "Hello!" });
+        }
+
+    });
+
+});</pre></div></section>
+			</li>
+		</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>The configuration properties for a component, that is, the settings given in the constructor
+				or the <code>sap.ui.core.Component.create</code> or
+					<code>sap.ui.component</code> call, are not available in the
+					<code>Init</code> and <code>createContent</code> methods. Use
+					<code>componentData</code> instead. For more information, see <a href="#/api/sap.ui.core.Component/methods/sap.ui.core.Component.create" title="#/api/sap.ui.core.Component/methods/sap.ui.core.Component.create" class="sap-doc" alt="#/api/sap.ui.core.Component/methods/sap.ui.core.Component.create"><code>sap.ui.core.Component.create</code></a>.</p>
+		<p></p></div></div><p>You can also overwrite the getters and setters for component properties in the
+				<code>Component.js</code> file.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

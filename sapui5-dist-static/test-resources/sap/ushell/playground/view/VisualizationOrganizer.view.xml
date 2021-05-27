@@ -1,0 +1,7 @@
+<View xmlns="sap.m" controllerName="sap.ushell.playground.controller.VisualizationOrganizer">
+    <Page title="Visualization Organizer" class="sapUiStdPage sapUiContentPadding">
+        <Button id="tile1" icon="sap-icon://add" press=".buttonPress" class="sapUiMediumMarginBeginEnd" />
+        <Button id="tile2" icon="sap-icon://add" press=".buttonPress" class="sapUiMediumMarginBeginEnd" />
+        <Button id="tile3" icon="sap-icon://add" press=".buttonPress" class="sapUiMediumMarginBeginEnd" />
+    </Page>
+</View>

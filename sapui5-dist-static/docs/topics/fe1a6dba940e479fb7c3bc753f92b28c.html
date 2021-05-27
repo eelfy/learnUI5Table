@@ -1,0 +1,139 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofe1a6dba940e479fb7c3bc753f92b28c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Content Security Policy</h1><div class="fig"><h1 class="topictitle1 title">Content Security Policy</h1><div class="shortdesc">Content Security Policy (CSP) adds an additional layer of security that enables the
+		detection and mitigation of certain types of attacks including cross site scripting and data
+		injection.</div><p>CSP restricts the sources from which the browser is allowed to load resources, such as scripts,
+			fonts, and images:</p><ul class="ul ">
+			<li class="li">
+				<p>CSP mitigates and reports XSS attacks; CSP compatible browsers only execute scripts loaded in
+					source files that are received from allowed sources.</p>
+			</li>
+			<li class="li">
+				<p>CSP also mitigates packet sniffing attacks by specifying the protocols that are
+					allowed to be used in the web server, for example, specifying that content must
+					only be loaded from HTTPS.</p>
+			</li>
+		</ul><p>CSP is either enabled via a configuration in the web server to return the
+			Content-Security-Policy HTTP header (preferred solution), or via the &lt;meta&gt;
+			element in the meta tags of an HTML page.</p><p>For generic information about CSP, see <a href="https://www.w3.org/TR/CSP2/" title="https://www.w3.org/TR/CSP2/" class="external-link" target="_blank" rel="noopener">https://www.w3.org/TR/CSP2/</a>.</p><p>For SAPUI5, we recommend that
+			developers build their apps CSP-compliant, in particular regarding the loading of
+			resources and the use of inline scripts. <code>eval()</code> is currently still
+			required in SAPUI5 for
+			synchronous loading. However, we recommend to load JavaScript resources asynchronously
+			and this also avoids the use of <code>eval()</code>. For more information about
+			asynchronous loading, see <a href="#/topic/91f23a736f4d1014b6dd926db0e91070.html" title="The SAPUI5 framework has built-in support for modularizing comprehensive JavaScript applications. That means, instead of defining and loading one large bundle of JavaScript code, an application can be split into smaller parts which then can be loaded at runtime at the time when they are needed. These smaller individual files are called modules." class="sap-doc">Modules and Dependencies</a>. For
+			more information about avoiding synchronous APIs which might lead to synchronous
+			loading, see <a href="#/topic/491bd9c70b9f4c4d913c8c7b4a970833.html" title="Overview of the replacement of global functions with the factory functions" class="sap-doc">Legacy Factories Replacement</a>.</p><p>To build CSP-compliant applications without inline scripts, you must avoid the following when
+			developing SAPUI5 apps:</p><ul class="ul ">
+			<li class="li">
+				<p>Script element with inlined source code</p>
+			</li>
+			<li class="li">
+				<p>Inline event handler</p>
+			</li>
+			<li class="li">
+				<p><code>javascript</code>: URL</p>
+			</li>
+			<li class="li">
+				<p><code>document.write()</code>, <code>createElement('script')</code>, and
+					so on, if they are used to create inline scripts. Creating script references,
+					such as <code>&lt;script src="..."&gt;&lt;/script&gt;</code> or non-script
+					content with them is okay.</p>
+			</li>
+		</ul><p>To be prepared for a CSP policy, which does not allow <code>eval()</code>, you must also
+			avoid the following elements when developing SAPUI5 apps:</p><ul class="ul ">
+			<li class="li">
+				<p><code>new Function()</code></p>
+			</li>
+			<li class="li">
+				<p><code>setTimeout(&lt;non-fn&gt;)</code></p>
+				<p>This will be ignored silently and not create a timer without <code>'unsafe-eval'</code>,
+					that is, <code>&lt;non-fn&gt;</code> is never executed.
+						<code>setTimeout(&lt;fn&gt;)</code> will work with and without
+						<code>'unsafe-eval'</code>.</p>
+			</li>
+			<li class="li">
+				<p><code>setInterval(&lt;non-fn&gt;)</code></p>
+				<p>This will be ignored silently and not create a repeated timer without
+						<code>'unsafe-eval'</code>, that is, the <code>&lt;non-fn&gt;</code>
+					is never executed. <code>setInterval(&lt;fn&gt;)</code> will work with and
+					without the <code>'unsafe-eval'</code>.</p>
+			</li>
+		</ul><p>To run in an environment in which CSP has been enabled, SAPUI5 requires the
+			following directives:</p><ul class="ul ">
+			<li class="li">
+				<p><code>script-src 'self' 'unsafe-eval' &lt;source hosting UI5&gt;;</code></p>
+				<p>SAPUI5 itself does not require
+						<code>‘unsafe-inline’</code>, but still requires
+						<code>‘unsafe-eval’</code> for synchronous loading of JavaScript
+					resources. <code>‘self’</code> is required for loading application
+					resources. If SAPUI5 is not hosted with the application, an additional source entry
+						(<code>&lt;source hosting UI5&gt;</code>) is required.</p>
+			</li>
+			<li class="li">
+				<p><code>style-src 'self' 'unsafe-inline' &lt;source hosting UI5&gt;;</code></p>
+				<p>SAPUI5 requires
+						<code>'unsafe-inline'</code> as it is used by many controls. In
+					addition, <code>'self'</code> may be needed for loading styles from the
+					application. If SAPUI5 is hosted
+					with the application, <code>'self'</code> is required for loading the SAPUI5 styles.
+					Otherwise, an additional source entry (<code>&lt;source hosting UI5&gt;</code>)
+					is required. Similarly, the location of custom themes needs to be added.</p>
+			</li>
+			<li class="li">
+				<p><code>font-src 'self' &lt;source hosting UI5&gt;;</code></p>
+				<p><code>'self'</code> may be needed for loading fonts from the application. If SAPUI5 is hosted
+					with the application, <code>'self'</code> is required for loading the SAPUI5 fonts,
+					otherwise an additional source entry (<code>&lt;source hosting
+						UI5&gt;</code>) is required. Similarly, the location of custom fonts needs
+					to be added.</p>
+				<p>Some specific SAPUI5
+					functionality may require specifying <code>data:</code> as source.</p>
+			</li>
+			<li class="li">
+				<p><code>img-src 'self' &lt;source hosting UI5&gt;;</code></p>
+				<p><code>'self'</code> may be needed for loading images from the application. If SAPUI5 is hosted
+					with the application, <code>'self'</code> is required for loading the SAPUI5 images,
+					otherwise an additional source entry (<code>&lt;source hosting
+						UI5&gt;</code>) is required. Similarly, the location of custom themes
+					needs to be added, if they contain images.</p>
+				<p>If the backend provides additional links to images, their location needs to be
+					added as well.</p>
+				<p>Some specific SAPUI5
+					functionality may additionally require <code>data:</code> and/or
+						<code>blob:</code>.</p>
+			</li>
+			<li class="li">
+				<p><code>frame-src &lt;source hosting UI5&gt;;</code></p>
+				<p>For using the support assistant and/or the diagnostics tool, the location of the
+						SAPUI5
+					framework (could be <code>'self'</code>) needs to be added as a source
+					entry.</p>
+				<p>Additional entries may be required depending on the integration, application, or
+					test scenario.</p>
+				<p>Some specific SAPUI5
+					functionality may additionally require <code>data:</code> and/or
+						<code>blob:</code>.</p>
+			</li>
+			<li class="li">
+				<p><code>worker-src &lt;source hosting UI5&gt;;</code></p>
+				<p>Some specific SAPUI5
+					functionality may require the source hosting SAPUI5 (could be
+						<code>'self'</code>), <code>data:</code> and/or
+						<code>blob:</code>.</p>
+			</li>
+			<li class="li">
+				<p><code>child-src ;</code></p>
+				<p>For browsers not supporting <code>worker-src</code>, the corresponding
+					entries need to be done here. This is the deprecated predecessor of
+						<code>worker-src</code> and <code>frame-src</code>.</p>
+			</li>
+			<li class="li">
+				<p><code>connect-src 'self' &lt;source hosting UI5&gt;;</code></p>
+				<p><code>‘self’</code> is required for loading application resources. If SAPUI5 is
+						<span class="emphasis">not</span> hosted with the application, an additional source
+					entry (<code>&lt;source hosting UI5&gt;</code>) is required.</p>
+				<p>Some specific SAPUI5
+					functionality may require <code>wss:</code>.</p>
+			</li>
+		</ul><p>To setup a most restrictive policy, setup CSP in report-only mode and start with a
+			minimal policy. Monitor the reports to add missing sources. Finally switch CSP to
+			enforcing the policy. </p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>Extension</name>
+    <derived/>
+    <author>SAP SE</author>
+    <documentation>Brings JavaScript capabilities for an {@link sap.ui.integration.widgets.Card} where custom logic can be implemented.</documentation>
+    <since>1.75</since>
+    <properties>
+        <property name="actions" type="sap.ui.integration/CardMenuAction[]">
+            <documentation>The actions configuration.</documentation>
+            <developmentState state="experimental" since="1.75">Disclaimer: this property is in a beta state - incompatible API changes may be done before its official public release. Use at your own discretion.</developmentState>
+            <deprecation since="1.85">This property is replaced by the &lt;code&gt;actions&lt;/code&gt; aggregation of the card;</deprecation>
+        </property>
+        <property name="formatters" type="sap.ui.core/object">
+            <documentation>The formatters, which can be used in the manifest.</documentation>
+            <developmentState state="experimental" since="1.79"></developmentState>
+        </property>
+    </properties>
+    <events>
+        <event name="action" allowPreventDefault="true">
+            <documentation>Fired when an action is triggered in the card.</documentation>
+            <developmentState state="experimental" since="1.75">Disclaimer: this event is in a beta state - incompatible API changes may be done before its official public release. Use at your own discretion.</developmentState>
+            <parameters>
+                <parameter name="card" type="sap.ui.core/Control">
+                    <documentation>The card the action is fired from.</documentation>
+                </parameter>
+                <parameter name="actionConfig" type="sap.ui.core/object">
+                    <documentation>The action configuration.</documentation>
+                </parameter>
+                <parameter name="actionSource" type="sap.ui.core/Control">
+                    <documentation>The action source.</documentation>
+                </parameter>
+                <parameter name="parameters" type="sap.ui.core/object">
+                    <documentation>The parameters related to the triggered action.</documentation>
+                </parameter>
+                <parameter name="type" type="sap.ui.integration/CardActionType">
+                    <documentation>The type of the action.</documentation>
+                </parameter>
+            </parameters>
+        </event>
+    </events>
+</control>

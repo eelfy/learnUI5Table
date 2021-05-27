@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>cards/BaseHeader</name>
+    <derived/>
+    <author>SAP SE</author>
+    <documentation>Provides basic functionality for header controls that can be used in &lt;code&gt;sap.f.Card&lt;/code.</documentation>
+    <since>1.86</since>
+    <abstract/>
+    <baseType>sap.ui.core/Control</baseType>
+    <aggregations>
+        <aggregation name="toolbar" type="sap.ui.core/Control" since="1.86" cardinality="0..1">
+            <documentation>Defines the toolbar.</documentation>
+            <developmentState state="experimental" since="1.86"></developmentState>
+        </aggregation>
+    </aggregations>
+</control>

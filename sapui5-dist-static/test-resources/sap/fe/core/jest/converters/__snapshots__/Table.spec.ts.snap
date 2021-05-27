@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Converter - #getTableManifestConfiguration  works with basic configuration 1`] = `
+Object {
+  "createAtEnd": true,
+  "creationMode": "NewPage",
+  "disableAddRowButtonForEmptyData": false,
+  "enableExport": true,
+  "enableFullScreen": false,
+  "enablePaste": false,
+  "filters": undefined,
+  "headerVisible": true,
+  "selectionLimit": 200,
+  "type": "ResponsiveTable",
+  "useCondensedTableLayout": false,
+}
+`;

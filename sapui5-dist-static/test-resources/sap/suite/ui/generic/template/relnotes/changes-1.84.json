@@ -1,0 +1,193 @@
+{
+	"1.84.0": {
+		"date": "November 2020",
+		"notes": [
+			{
+				"id": "6eba005536f4b0ef26f56a866d3ac5458b59578b",
+				"type": "FEATURE",
+				"text": "OP: Enabled table toolbar button on an object page"
+			},
+			{
+				"id": "028abb7d42971285e33f6d63ac83080a9959b518",
+				"type": "FEATURE",
+				"text": "LROP : Used aria-haspopup (Aria 1.1) for better accessibility"
+			},
+			{
+				"id": "cd57d9f4b910225756fcc229c2fb03a1421e06d4",
+				"type": "FEATURE",
+				"text": "Enabled passing of multi contexts in external navigation without any parameters"
+			},
+			{
+				"id": "39d361d15afc1371fdc045fb68e426a197291f5a",
+				"type": "FEATURE",
+				"text": "OP: Provided an option to retrieve descriptive texts for SmartFields in Display mode from the resource path mentioned in ValueList annotation"
+			},
+			{
+				"id": "4f22ea99bf85da228232461d8d510e9b3f5daa4e",
+				"type": "FEATURE",
+				"text": "ALP: Merged user default filters with standard variant defaults from vendor layer"
+			},
+			{
+				"id": "2943cfecb42eec66ffc47862fac315f78e684e55",
+				"type": "FEATURE",
+				"text": "Provide a meaningful e-Tag message"
+			},
+			{
+				"id": "7070638926fb3a61c7e61f12e168ddb9a33031bf",
+				"type": "FEATURE",
+				"text": "Removed properties marked with annotations UI.ExcludeFromNavigationContext or PersonalData.IsPotentiallySensitive from the navigation context when navigating through a smart link"
+			},
+			{
+				"id": "d9be67109f636ef53d56af97467d1dd6d4cda126",
+				"type": "FEATURE",
+				"text": "ALP: Support provided for parameter based visual filters"
+			},
+			{
+				"id": "01c8d86499c1fb6d9320b066668914bf9303521c",
+				"type": "FEATURE",
+				"text": "ALP: ariaHasPopup updated with multiple changes"
+			},
+			{
+				"id": "d56c63f7d89a379cb4bddaf0e40f627188948e31",
+				"type": "FEATURE",
+				"text": "ALP: Calls are postponed from value list compact filter drop-down"
+			},
+			{
+				"id": "798ecd9a807cc8bfbf44a68170dff39c21c0237a",
+				"type": "FEATURE",
+				"text": "ALP: Visual filter dropdown now supports In Parameters."
+			},
+			{
+				"id": "0a8d4be5b5d86c7318ad9179b6237d6ea3b1a183",
+				"type": "FEATURE",
+				"text": "Clubbed header calls while editing drafts"
+			},
+			{
+				"id": "d89dd3f5d91584243fa6518b992a1b20c869e454",
+				"type": "FEATURE",
+				"text": "Ignore passing blank values in SV while navigating to external app"
+			},
+			{
+				"id": "04a5f142f618f5fdf97d1fc8d11313fdc3e7fd8e",
+				"type": "FIX",
+				"text": "Altered response structure for custom action",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070339027"
+					}
+				]
+			},
+			{
+				"id": "bd250d4343a3ea312e46d3c714e07858534b61aa",
+				"type": "FIX",
+				"text": "Fixed safety net issue caused due to undefined technical details in messages",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070404290"
+					}
+				]
+			},
+			{
+				"id": "0363839f03b3517cc0ffa6463b6f4f3cbf8fb164",
+				"type": "FIX",
+				"text": "OP: Re-added tolerance for wrong annotations",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070388639"
+					}
+				]
+			},
+			{
+				"id": "ea2588c3a7f040b62b5169cf963cd81fd5e7b091",
+				"type": "FIX",
+				"text": "LR: Refactored code for TextArrangement visibility changes in a table",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070380687"
+					}
+				]
+			},
+			{
+				"id": "4aeb0c102a0c202b53923f60441511b11ec5dc7f",
+				"type": "FIX",
+				"text": "Updated TextArrangement visibility in list report tables",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2080346018"
+					}
+				]
+			},
+			{
+				"id": "0d95f31e7714d08a59c8d1aa068d0a0cc5c1b5d4",
+				"type": "FIX",
+				"text": "LROP: New check added for column header during popup display is not available for DataFieldForIntentBasedNavigation and DataFieldForAction",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070365544"
+					}
+				]
+			},
+			{
+				"id": "bcbef7d3464197b93e45206a94815e429d6aeab2",
+				"type": "FIX",
+				"text": "OP: Fallback possible to read settings defined for a section",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2080214657"
+					}
+				]
+			},
+			{
+				"id": "ddb0ffd410b90bd8201a05eb15fa6e38adae608e",
+				"type": "FIX",
+				"text": "LR: Table is not blurred when adapt filter dialog is cancelled",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070327708"
+					}
+				]
+			},
+			{
+				"id": "d9a48d90f870c9a7b6d7cb0772a68623e811e310",
+				"type": "FIX",
+				"text": "ALP: Set Smartchart height to 50vH",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2040472772 2040628355 2030375081"
+					}
+				]
+			},
+			{
+				"id": "d4aba7287dfdf64d5c766038e44d78f0be526ce0",
+				"type": "FIX",
+				"text": "LR: Re-enabled 'Execute on Select' with user default values",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070323842"
+					}
+				]
+			},
+			{
+				"id": "1cabb0b33edb3f7c46e77a9c603a8cab18ee3fb7",
+				"type": "FIX",
+				"text": "OP: Fixed horizontal alignment issue of chart title in the header section",
+				"references": [
+					{
+						"type": "BCP",
+						"reference": "2070324164"
+					}
+				]
+			}
+		]
+	}
+}

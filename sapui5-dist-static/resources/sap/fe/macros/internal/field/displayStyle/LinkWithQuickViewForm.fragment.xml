@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper'
+						 }"
+>
+	<Link
+		text="{this>text}"
+		wrapping="true"
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		press="FieldRuntime.pressLink"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+	>
+		<dependents>
+			<template:if test="{property>@@FIELD.getNavigationEntity}">
+				<template:then>
+			<template:with path="property>" helper="FIELD.getNavigationEntity" var="entityType">
+			<macro:QuickViewForm dataField="{dataField>}" entityType="{entityType>}" />
+			</template:with>
+				</template:then>
+			<template:else>
+				<macro:QuickViewForm dataField="{dataField>}" />
+			</template:else>
+			</template:if>
+		</dependents>
+	</Link>
+</core:FragmentDefinition>

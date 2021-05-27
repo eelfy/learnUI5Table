@@ -1,0 +1,77 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5f224ec48bdb4fcdaa1796ea82b296da" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Support for Terminologies</h1><div class="fig"><h1 class="topictitle1 title">Support for Terminologies</h1><div class="shortdesc">By defining terminologies together with additional resource bundles, an application can easily be switched from one scenario or industry
+		to another.</div><p>To use the concept of terminologies provided by SAPUI5, the "model" definition in the app descriptor must
+			first be enhanced with the terminologies:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"models": {
+    "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": ["en", “de”],
+            "fallbackLocale": "en",
+            "terminologies": {
+                "travel": {
+                    "bundleUrl": "i18n/terminologies/travel/i18n.terminologies.travel.properties",
+                    "bundleUrlRelativeTo": "manifest",
+                    "supportedLocales": ["en", "de"]
+                }
+            }
+        }
+    },
+    ...
+    ...
+    ...
+}</pre></div></section><p>In the sample above, the resource model <code>i18n</code> is enhanced with a <code>travel</code> terminology.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Enhancing resource models does not make them available to SAP Fiori elements, so you must add this model to the
+					<code>enhanceI18n</code> setting of the SAP Fiori elements template.</p>
+		<p></p></div></div><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"targets": {
+    "LineItemsList": {
+        "type": "Component",
+        "id": "LineItemsList",
+        "name": "sap.fe.templates.ListReport",
+        "options": {
+            "settings": {
+                "entitySet": "LineItems",
+                "enhanceI18n": ["i18n/ManageItemsListReport.properties", "i18n"],
+                "variantManagement": "Page",
+                "initialLoad": true,
+                "navigation": {
+                    "LineItems": {
+                        "detail": {
+                            "route": "LineItemsObjectPage"
+                        }
+                    }
+                }
+        }
+    }
+}</pre></div></section><p>In the sample above, the list report is enhanced with an <code>i18n</code> bundle
+				(<code>i18n/ManageItemsListReport.properties</code>) and a resource model (<code>i18n</code>) to which a terminology has
+			already been added.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p><code>enhanceI18n</code> can take any combination of resource files and resource models. In the example above, a
+							resource file <code>i18n/ManageItemsListReport.properties</code> and a resource model <code>i18n</code> are
+							provided, but you can add further files and models.</p>
+					</li>
+					<li class="li">
+						<p><code>enhanceI18n</code> can also take models without terminology. In this case, even if a terminology is activated, it
+							does not affect the UI.</p>
+					</li>
+					<li class="li">
+						<p>When you enhance the SAP Fiori elements template texts via <code>enhanceI8n</code>, the last enhancement wins. In the
+							example above, the template first looks for the keys in the <code>i18n</code> model, because it is the last
+							enhancement (that is, the last element in the array). If the text is not found, the template looks in
+								<code>i18n/ManageItemsListReport.properties</code>. If the text is still not found, the template falls back to the
+							default texts.</p>
+					</li>
+				</ul>
+			<p></p>
+		<p></p></div></div><p>For more information about the concept of terminologies, refer to <a href="#/topic/eba8d25a31ef416ead876e091e67824e.html" title="By defining terminologies together with additional resource bundles, an application can easily be switched from one scenario or industry to another." class="sap-doc">Terminologies</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

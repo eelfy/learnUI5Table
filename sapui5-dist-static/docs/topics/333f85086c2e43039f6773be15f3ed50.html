@@ -1,0 +1,37 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio333f85086c2e43039f6773be15f3ed50" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting the Object Page
+		Header
+		Title and
+		Description</h1><div class="fig"><h1 class="topictitle1 title">Adapting the Object Page
+		Header
+		Title and
+		Description</h1><div class="shortdesc">You can use annotations to adapt the object page
+		header
+		title and
+		description.</div><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Object Page
+				Header: Title and Description
+				</span></div><p>To define or change the object
+			page
+			header title and
+			description,
+			adapt the OData annotations:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+              &lt;Annotation Term="UI.HeaderInfo"&gt;
+                            &lt;Record&gt;
+                                   &lt;PropertyValue Property="Title"&gt;
+                                         &lt;Record Type="UI.DataField"&gt;
+                                                &lt;PropertyValue Property="Value" Path="to_ProductTextInOriginalLang/Name"/&gt;
+                                         &lt;/Record&gt;
+                                   &lt;/PropertyValue&gt;
+                                   &lt;PropertyValue Property="Description"&gt;
+                                         &lt;Record Type="UI.DataField"&gt;
+                                                &lt;PropertyValue Property="Value" Path="ProductForEdit"/&gt;
+                                         &lt;/Record&gt;
+                                   &lt;/PropertyValue&gt;
+                            &lt;/Record&gt;
+              &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p></p></div></div>
+		<p></p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></div></section></div></body></html>

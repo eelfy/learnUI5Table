@@ -1,0 +1,248 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio3294c688331c4e918a22dc0bb0892ff8" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">What's New in SAPUI5
+		1.80</h1><div class="fig"><h1 class="topictitle1 title">What's New in SAPUI5
+		1.80</h1><div class="shortdesc">With
+		this release SAPUI5 is upgraded
+		from version 1.79 to 1.80.</div><section id="section_bkm_s15_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New
+				Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_ejf_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.BadgeCustomData</code>,
+											<code>sap.m.IBadgeEnabler</code></span></p>
+								<p>To facilitate control developers working on implementations of
+									badges, we created a new <code>sap.m.BadgeCustomData</code>
+									type to handle the badge data. Control developers can now use
+									the new <code>sap.m.IBadgeEnabler</code> utility that helps
+									working with badge data. For more information, see the <a href="#/api/sap.m.IBadgeEnabler" title="#/api/sap.m.IBadgeEnabler" class="sap-doc" alt="#/api/sap.m.IBadgeEnabler">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_qwl_pb5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved
+				Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_tpj_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">SAPUI5 OData V4 Model</span></p>
+								<p>The new version of the SAPUI5 OData V4 model introduces the following features:</p>
+								<ul class="ul ">
+									<li class="li">When using <code>groupLevels</code> with the
+											<code>$$aggregation</code> binding parameter, we now
+										support paging and expanding of several levels.</li>
+									<li class="li">The new <code>$$sharedRequest</code> parameter is
+										available for OData list bindings. This parameter leads to
+										the reuse of data requested previously for the same resource
+										path with identical parameters in bindings where
+											<code>$$sharedRequest</code> is set. Note that a
+										binding becomes read-only by using this parameter. <p>For a comprehensive description of the restrictions,
+											see the <a href="#/api/sap.ui.model.odata.v4.ODataModel%23methods/bindList" title="#/api/sap.ui.model.odata.v4.ODataModel%23methods/bindList" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.ODataModel%23methods/bindList">API
+											Reference</a>.</p><p>Note also that
+												<code>$$sharedRequest</code> is automatically
+											set for list bindings of value list models returned by
+												<code>sap.ui.model.odata.v4.ODataPropertyBinding#requestValueListInfo</code>
+											and
+												<code>sap.ui.model.odata.v4.ODataMetaModel#requestValueListInfo</code>.</p></li>
+								</ul>
+								<div class="note restriction  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Restriction
+				</strong></div></div><div class="fig"><p>Due to the limited feature scope of this
+									version of the SAPUI5 OData V4 model, check that all required features are in place
+									before developing applications. Double-check the detailed
+									documentation of the features, as certain parts of a feature may
+									be missing. While we aim to be compatible with existing
+									controls, some controls might not work due to small
+									incompatibilities compared to
+										<code>sap.ui.model.odata.(v2.)ODataModel</code>, or due
+									to missing features in the model (such as tree binding). This
+									also applies to smart controls (<code>sap.ui.comp</code> library) that
+										do not support the SAPUI5 OData V4 model, as well as controls such as
+										<code>TreeTable</code> and
+										<code>AnalyticalTable</code>, which are not supported in
+									combination with the SAPUI5 OData V4 model. The interface for applications has been
+									changed for easier and more efficient use of the model. For a
+									summary of these changes, see <a href="#/topic/abd4d7c7548d4c29ab8364d3904a6d74.html" title="This section outlines the main differences between the OData V2 and OData V4 models." class="sap-doc">Changes Compared to OData V2 Model</a>.</p></div></div>
+								
+								<p>For more information, see <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>, the <a href="#/api/sap.ui.model.odata.v4" title="#/api/sap.ui.model.odata.v4" class="sap-doc" alt="#/api/sap.ui.model.odata.v4">API Reference</a>, and
+									the <a href="#/entity/sap.ui.model.odata.v4.ODataModel" title="#/entity/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/entity/sap.ui.model.odata.v4.ODataModel">Samples</a> in the Demo
+									Kit.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_rqn_wd5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved
+				Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_qcq_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.f.GridContainer</code></span><p>
+									</p><ul class="ul ">
+										<li class="li">We have enhanced drag and drop between two containers.
+											When you drag one element over another container, the
+											element in the original position is not visible, but
+											keeps its place so that you can return the element back
+											to its original place if you need to.</li>
+										<li class="li">We have improved focus visualization and handling. You
+											can now easily move the focus through the items in the
+											container using the <span class="keyWrap"><kbd class="key">Arrow Keys</kbd></span>. For more information, see the <a href="#/entity/sap.f.GridContainer" title="#/entity/sap.f.GridContainer" class="sap-doc" alt="#/entity/sap.f.GridContainer">Samples</a>.</li>
+									</ul>
+								<p></p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.m.IconTabBar</code></span><p>When you
+									drag one tab over a tab with nested tabs, only one drop zone is
+									available, but the list of nested tabs expands and you can drop
+									the tab where it is needed. For more information, see the <a href="#/entity/sap.m.IconTabBar/sample/sap.m.sample.IconTabBarDragDrop" title="#/entity/sap.m.IconTabBar/sample/sap.m.sample.IconTabBarDragDrop" class="sap-doc" alt="#/entity/sap.m.IconTabBar/sample/sap.m.sample.IconTabBarDragDrop">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.m.TablePersoDialog</code></span><p>The
+									look and feel of the control has been improved based on the
+									latest
+									design
+									guidelines and the SAP Fiori 3 user
+									experience. For example, the <span class="ph uicontrol">Move column
+										up/down</span> buttons are now right next to the search
+									field using different icons; the <span class="ph uicontrol">Reset</span>
+									button is
+									no
+									longer an icon button and has been moved up
+									to the header section; <code>sap.m.Table</code> is now used
+									for the columns instead of <code>sap.m.List</code>,
+									including multiple selection and the <span class="ph uicontrol">Select
+										All</span> checkbox. For more information, see the <a href="#/api/sap.m.TablePersoDialog" title="#/api/sap.m.TablePersoDialog" class="sap-doc" alt="#/api/sap.m.TablePersoDialog">API Reference</a> and
+										the <a href="#/entity/sap.m.Table/sample/sap.m.sample.TablePerso" title="#/entity/sap.m.Table/sample/sap.m.sample.TablePerso" class="sap-doc" alt="#/entity/sap.m.Table/sample/sap.m.sample.TablePerso">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.tnt.NavigationListItem</code></span><p>We
+									have added <code>href</code> and <code>target</code>
+									properties to improve the SEO capabilities of the control. Now
+									developers can use these new properties in the navigation within
+									the application, so that search engines can discover and index
+									the application pages. For more information, see the <a href="#/api/sap.tnt.NavigationListItem" title="#/api/sap.tnt.NavigationListItem" class="sap-doc" alt="#/api/sap.tnt.NavigationListItem">API
+										Reference</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.comp.smarttable.SmartTable</code></span></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>Descriptions in columns annotated with
+												<code>com.sap.vocabularies.UI.v1.TextArrangement</code>
+											are now no longer automatically right-aligned when the
+											description for a numeric field is made visible. For more information, see the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartTableWithCriticality">Sample</a>.</p>
+									</li>
+									<li class="li">
+										<p>In tables of type <code>AnalyticalTable</code>, a
+												<span class="ph uicontrol">Show Details</span> link is now
+											displayed if various units of measurement (UoMs) are
+											used in a table. The link opens a
+												<code>Totals</code> popover with the sum of all
+											the rows for each UoM. This is now supported in addition
+											to the support of various currency
+											units.</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.ui.integration.widgets.Card</code></span><p>
+									</p><ul class="ul ">
+										<li class="li">We have added support (experimental) for microcharts in
+											the List card. To allow a chart for every item in the
+											list, we have introduced the <code>chart</code>
+											property in the descriptor for
+												<code>sap.ui.integration.widgets.Card</code> of
+											type List. Supported chart types are
+												<code>StackedBar</code> and
+												<code>Bullet</code>. For details about their properties, see the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/microcharts" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/microcharts" class="sap-doc">Card
+												Microcharts</a> section in the Card
+												Explorer.</li>
+										<li class="li">We have redefined the dynamic filtering feature
+											(experimental), which allows developers to create custom
+											filters in the manifest of the card. We have introduced
+											a dedicated <code>filters</code> section for
+											user-friendly visualization when working with
+											design-time configuration tools. For more information, see the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/filters" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/learn/features/filters" class="sap-doc">Filters</a>
+												section and the <a href="test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/filters" title="https://sapui5.hana.ondemand.com/test-resources/sap/ui/integration/demokit/cardExplorer/webapp/index.html#/explore/filters" class="sap-doc">Sample</a> in
+												the Card Explorer.</li>
+									</ul>
+								<p></p></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_g3r_bf5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">SAP Fiori Elements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_fm5_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>The SAP Fiori elements object page now supports SAP Icons within
+											smart forms in object page sections. For more
+											information, see <a href="#/topic/c3cede510e43446f831bc1d3b09d2619.html" title="c3cede510e43446f831bc1d3b09d2619.xml" class="sap-doc">.</a></p><a href="#/topic/c3cede510e43446f831bc1d3b09d2619.html" title="c3cede510e43446f831bc1d3b09d2619.xml" class="sap-doc">
+									</a></li><a href="#/topic/c3cede510e43446f831bc1d3b09d2619.html" title="c3cede510e43446f831bc1d3b09d2619.xml" class="sap-doc">
+									</a><li class="li"><a href="#/topic/c3cede510e43446f831bc1d3b09d2619.html" title="c3cede510e43446f831bc1d3b09d2619.xml" class="sap-doc">
+										</a><p><a href="#/topic/c3cede510e43446f831bc1d3b09d2619.html" title="c3cede510e43446f831bc1d3b09d2619.xml" class="sap-doc">The SAP Fiori elements now provide an extension in the object page
+											table to add user defined input filter fields to the
+											table toolbar. For more information, see </a><a href="#/topic/e34f78f40c3c447eb53322dc4dafe12a.html" title="To add custom filter fields in a table toolbar, follow the steps described below:" class="sap-doc">Example: Adding Custom Filter Fields in Table Toolbar</a>.</p>
+									</li>
+									<li class="li">
+										<p>The SAP Fiori elements list report and object page tables now
+											provide <span class="ph uicontrol">Show Detail</span> and
+												<span class="ph uicontrol">Hide Details</span> buttons to
+											display or hide columns of low and medium importance in
+											a popin. For more information, see <a href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" title="Both the list report and the object page support several table types." class="sap-doc">Tables</a>.</p>
+									</li>
+									<li class="li">
+										<p>The SAP Fiori elements object page now supports decimal formatter
+											for data points. With annotation
+												<code>NumberOfFractionalDigits</code>, you have
+											the option to override the scale and precision defined
+											in metadata to display the decimal formatted value on
+											the UI. For more information, see <a href="#/topic/c2a389a11a704b00886440031a3d43f9.html" title="c2a389a11a704b00886440031a3d43f9.xml" class="sap-doc">Data Points</a>.</p>
+									</li>
+									<li class="li">
+										<p>The SAP Fiori elements overview page now supports data label
+											visibility in analytical charts. To enable this, set the
+											property
+												<code>showDataLabelForAnalyticalCards</code> to
+												<code>True</code> in the manifest file.</p>
+									</li>
+									<li class="li">
+										<p>The SAP Fiori elements overview page now provides an option to
+											specify a subtitle if variant management is not
+											available.</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_r5v_3h5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Demo Kit
+				Improvements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_e2h_2vq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis">Demo Kit Language</span></p><p>You can now
+									change the language of the Demo Kit app from the <span class="ph uicontrol">More
+										information</span> menu at the top of the app header.
+									By default, the app opens in English. If you want your browser
+									to remember the chosen language setting, make sure to accept our
+									cookies policy.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+									</p><p>Keep in mind that the selected language applies only to the
+										Demo Kit application user interface. The content provided in
+										the application in the different sections, such as
+											<span class="ph uicontrol">Documentation</span>, <span class="ph uicontrol">API
+											Reference</span>, and
+											<span class="ph uicontrol">Samples</span> is available only in
+										English.</p>
+								<p></p></div></div><img src="loioeb91a45367664216ac5b9a8aa05a38db_HiRes.gif" usemap="#"></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis">Samples</span></p><p>You can now view the sample
+									description and any additional details directly from the sample
+									window by choosing <span class="ph uicontrol">Sample information</span> at
+									the top of the sample window.</p><img src="loioc2dca89c7a1740ffbec6bebb687178b5_HiRes.gif" usemap="#"></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/6660a59a8a22460a91fe65a0d96a567e">Previous Versions</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks"><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="topic/067e2fb0165145a5ac9b128b5853f7c9">What's New in SAPUI5 1.86</a></li><li><a href="topic/eeb5bd913fe448598e0449050143027a">What's New in SAPUI5 1.85</a></li><li><a href="topic/ccf76b76327c421e9d87ff7fc3d7ba41">What's New in SAPUI5 1.84</a></li><li><a href="topic/f081cf0a64784c62aa653e80036659f0">What's New in SAPUI5 1.82</a></li><li><a href="topic/f71563ccd2294cf0a59d16b62be0f7eb">What's New in SAPUI5 1.81</a></li><li><a href="topic/edf8e35377d4452491cdc488030feb13">What's New in SAPUI5 1.79</a></li><li><a href="topic/d176be37229a45dbb1d6d0a1ae2f3167">What's New in SAPUI5 1.78</a></li><li><a href="topic/2ec6b6b03ee249928bba929eec3d2d74">What's New in SAPUI5 1.77</a></li><li><a href="topic/b9b0a3f223c14b9d99e0d86e649cafec">What's New in SAPUI5 1.76</a></li><li><a href="topic/dc3d3ce46105441db5543049fb1c11e7">What's New in SAPUI5 1.75</a></li><li><a href="topic/21fc6cb77b0c44aab55f045812e69c98">What's New in SAPUI5 1.74</a></li><li><a href="topic/7b826642c45d4b8d97c5013cdc240ad6">What's New in SAPUI5 1.73</a></li><li><a href="topic/25e532617b7f4b9bad842757324151ed">What's New in SAPUI5 1.72</a></li><li><a href="topic/609fd015eaf64bd2a4a5c0331590eb4c">What's New in SAPUI5 1.71</a></li><li><a href="topic/4e89fee547a24385826cddcfdf4df238">What's New in SAPUI5 1.70</a></li><li><a href="topic/41203fd3272b479d8c665357e3b21a43">What's New in SAPUI5 1.69</a></li><li><a href="topic/5531aef1adc8462392a5b8fe1178606e">What's New in SAPUI5 1.68</a></li><li><a href="topic/0968958c4143469d941dbe3b59e06142">What's New in SAPUI5 1.67</a></li><li><a href="topic/ebe7fda555aa466782090053d6f54f21">What's New in SAPUI5 1.66</a></li><li><a href="topic/9d2b1897722a4e99b60580fb09aa35e0">What's New in SAPUI5 1.65</a></li><li><a href="topic/1975e304ab924fb3b799240fdd9fe59b">What's New in SAPUI5 1.64</a></li><li><a href="topic/77e1dcc27c494d60ba0a03759b706e89">What's New in SAPUI5 1.63</a></li><li><a href="topic/27eea38eeb7b40d19d0dfe3ddf513175">What's New in SAPUI5 1.62</a></li><li><a href="topic/de4d50b6c0f649fa859e4657ff8557a6">What's New in SAPUI5 1.61</a></li><li><a href="topic/2a70354a2a38492a873333edc4b9a303">What's New in SAPUI5 1.60</a></li><li><a href="topic/b28edde1f4ad425d9247f3bbcdc5d9b7">What's New in SAPUI5 1.58</a></li><li><a href="topic/53b4b5ec2c83408a8da2cb6b9154c246">What's New in SAPUI5 1.56</a></li><li><a href="topic/f29023ebf9dc4a43b98516a5e2c43837">What's New in SAPUI5 1.54</a></li><li><a href="topic/a09dd79a24c041d288402768558a1d1a">What's New in SAPUI5 1.52</a></li><li><a href="topic/a8449849c81249bb8abd98b4b9342a4a">What's New in SAPUI5 1.50</a></li><li><a href="topic/2818f800e7424c5c91dbd495f8cb757b">What's New in SAPUI5 1.48</a></li><li><a href="topic/4cf0986450ca43e5a8d12dd66e999a77">What's New in SAPUI5 1.46</a></li><li><a href="topic/05ce1dc72c74475bada39234f6721f21">What's New in SAPUI5 1.44</a></li><li><a href="topic/4768f1ac7f0645929b4e9ea9981bb65e">What's New in SAPUI5 1.42</a></li><li><a href="topic/e659bd2383524a05b716916bcda9b368">What's New in SAPUI5 1.40</a></li><li><a href="topic/6a875f998994489483e8085705347d72#loio6a875f998994489483e8085705347d72">What's New in SAPUI5 1.38</a></li></ul></section></div></section></div></body></html>

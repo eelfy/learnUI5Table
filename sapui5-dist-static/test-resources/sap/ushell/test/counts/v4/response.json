@@ -1,0 +1,13 @@
+{
+    "icon": "sap-icon://travel-expense",
+    "info": "OData v4",
+    "infoState": "Critical",
+    "number": 43.333,
+    "numberDigits": 1,
+    "numberFactor": "k",
+    "numberState": "Positive",
+    "numberUnit": "EUR",
+    "stateArrow": "Up",
+    "subtitle": "Quarterly overview",
+    "title": "Travel Expenses"
+}

@@ -1,0 +1,45 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio43f6f0faa1b64c5aa92bcde379be9054" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding a Progress Indicator to a Table</h1><div class="fig"><h1 class="topictitle1 title">Adding a Progress Indicator to a Table</h1><div class="shortdesc">You can add a progress indicator to a table.</div><p>The progress indicator allows you to visually represent the level of completion of a project or a goal, for example.</p><p>It can be used to express completion values either as a percentage or as absolute numbers (for example, 8 of 10).</p><div><div class="fig"><img src="loioc6d1e04ecd9d48be8ff75e7d662f9734_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Progress Indicator</span></div><section id="section_ipd_h4l_hmb">
+			<h2 class="title ">Code Samples</h2>
+			<p>The following code sample shows how to implement a progress indicator using annotations.
+					<code>AnnotationPath="@UI.DataPoint#Progress</code> references the <code>Qualifier="Progress"</code>.
+					<code>EnumMember="UI.VisualizationType/Progress"</code> defines the actual visualization as a progress indicator. </p>
+			<p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+                &lt;Annotation Term="UI.DataPoint" Qualifier="Progress"&gt;
+                               &lt;Record&gt;
+                                               &lt;PropertyValue Property="Value" Path="to_StockAvailability/Quantity" /&gt;
+                                               &lt;PropertyValue Property="TargetValue" Decimal="100" /&gt;
+                                               &lt;PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress" /&gt;
+                               &lt;/Record&gt;
+                &lt;/Annotation&gt;
+                &lt;Annotation Term="UI.LineItem"&gt;
+                               &lt;Collection&gt;
+                                               &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+                                                               &lt;PropertyValue Property="Label" String="Progress" /&gt;
+                                                               &lt;PropertyValue Property="Criticality" Path="to_StockAvailability/Quantity" /&gt;
+                                                               &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Progress" /&gt;
+                                               &lt;/Record&gt;
+                               &lt;Collection&gt;
+                &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p></p>
+		</section><section id="section_fbt_vql_hmb">
+			<h2 class="title ">Change Color of Progress Bar</h2>
+			<p>If required, you can set up the progress bar so that it changes color to reflect the state of the progress depending on the
+					<code>criticality</code> value as shown in the figure below.</p>
+			<div><div class="fig"><img src="loio5fc72657bf704c5289ae4794fb1e36ab_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Progress Indicator: Colors Reflect State of Progress</span></div>
+			<p>To do so, assign a value to the <code>criticality</code> property. </p>
+			<p>The path references the property (in this case, <code>Path="StockAvailability</code>") that defines the color. </p>
+			<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Quantity"&gt;
+               &lt;Record&gt;
+                       &lt;PropertyValue Property="Value" Path="Quantity"/&gt;
+                       &lt;PropertyValue Property="Title" String="{@i18n&gt;@Availability}"/&gt;
+                       &lt;PropertyValue Property="Description" String="Progress Indicator"/&gt;
+                       &lt;PropertyValue Property="TargetValue" Decimal="150"/&gt;
+                       &lt;PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/&gt;
+                       &lt;PropertyValue Property="Criticality" Path="StockAvailability"/&gt;
+               &lt;/Record&gt;
+        &lt;/Annotation&gt;
+</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

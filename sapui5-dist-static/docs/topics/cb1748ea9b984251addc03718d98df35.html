@@ -1,0 +1,295 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiocb1748ea9b984251addc03718d98df35" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Grouping
+      of Fields</h1><div class="fig"><h1 class="topictitle1 title">Grouping
+      of Fields</h1><div class="shortdesc">Application
+      developers can group fields that should be shown together, such as various address fields (the street, house number, and postal
+      code).</div><p>The grouping can be done in several ways, depending on the use case.</p><section id="section_lhq_n1g_k4b">
+         <h2 class="title ">Grouping Fields via the <code>FieldGroup</code> Annotation</h2>
+         <p>Using
+            a <code>FieldGroup</code> allows the grouped fields to be shown in a similar manner. The fields are typically arranged one beneath the
+            other, but they can also spill over to the next column if a form is used, for example.</p>
+         
+      </section><section id="section_m2z_jqt_n4b"><h2 class="title ">Form Implementation</h2><p>Use an OData form and pass the <code>UI.ReferenceFacet</code> to it.
+            This, in turn, has a <code>UI.FieldGroup</code> associated with it.</p><p><span class="emphasis"><code>UI.FieldGroup Definition</code> in
+               Object Page</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="Dimensions"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="Label" String="Dimensions"/&gt;
+      &lt;PropertyValue Property="Data"&gt;
+         &lt;Collection&gt;
+            &lt;Record Type="UI.DataField"&gt;
+               &lt;PropertyValue Property="Value" Path="BaseUnit"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.DataField"&gt;
+               &lt;PropertyValue Property="Value" Path="Height"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.DataField"&gt;
+               &lt;PropertyValue Property="Value" Path="Width"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.DataField"&gt;
+               &lt;PropertyValue Property="Value" Path="Depth"/&gt;
+            &lt;/Record&gt;
+            &lt;Record Type="UI.DataField"&gt;
+               &lt;PropertyValue Property="Value" Path="Weight"/&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 1 ,
+    qualifier: 'Dimensions',
+    groupLabel: 'Dimensions'
+  }
+]
+BaseUnit;
+
+@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 2 ,
+    qualifier: 'Dimensions'
+  }
+]
+Height;
+
+@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 3 ,
+    qualifier: 'Dimensions'
+  }
+]
+Width;
+
+@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 4 ,
+    qualifier: 'Dimensions'
+  }
+]
+Depth;
+
+@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 5 ,
+    qualifier: 'Dimensions'
+  }
+]
+Weight;
+</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.FieldGroup #Dimensions : {
+    $Type : 'UI.FieldGroupType',
+    Label : 'Dimensions',
+    Data : [
+        {
+            $Type : 'UI.DataField',
+            Value : BaseUnit
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : Height
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : Width
+        },
+	{
+            $Type : 'UI.DataField',
+            Value : Depth
+        },
+	{
+            $Type : 'UI.DataField',
+            Value : Weight
+        }
+    ]
+}
+</pre></div></section>
+            <p></p></div></div></div></section><p><span class="emphasis">Reference of <code>UI.FieldGroup</code> in <code>UI.Facets</code></span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Facets"&gt;
+   &lt;Collection&gt;
+      &lt;Record Type="UI.ReferenceFacet"&gt;
+         &lt;PropertyValue Property="Label" String="Dimensions" /&gt;
+         &lt;PropertyValue Property="Target"AnnotationPath="@UI.FieldGroup#Dimensions"/&gt;
+      &lt;/Record&gt;
+   &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.Facet: [
+  {
+    label: 'Dimensions',
+    targetQualifier: 'Dimensions',
+    type: #FIELDGROUP_REFERENCE,
+    purpose: #STANDARD
+  }
+]</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.Facets : [
+    {
+        $Type : 'UI.ReferenceFacet',
+        Label : 'Dimensions',
+        Target : '@UI.FieldGroup#Dimensions'
+    }
+]</pre></div></section>
+            <p></p></div></div></div></section><p>This will bring up the fields grouped in a form-like display, as shown in the screenshot below:</p><div><div class="fig"><img src="loiob9b30bdbb53a4cc3ad3e2c3c1ec0bb35_LowRes.png" usemap="#"></div></div></section><section id="section_fmx_nrt_n4b"><h2 class="title ">Table Implementation</h2><p>Please note the following:</p><ul class="ul ">
+            <li class="li">
+               <p>Currently, you cannot use a table implementation if you need a label to be displayed alongside each field value.</p>
+            </li>
+            <li class="li">
+               <p>You should not use a grid table, as the row height truncates the UI elements.</p>
+            </li>
+         </ul><p>The fields will be displayed beneath each other within the table cell. Application developers can add multiple field types within the
+            cell. The annotation-driven design that is utilized here uses <code>UI.FieldGroup</code> inside a
+            <code>UI.LineItem</code>.</p><p>To enable this feature, application developers should proceed as follows:</p><p>
+            </p><ol>
+               <li class="li">
+                  <p>Add a <code>UI.DataFieldForAnnotation</code> under the <code>LineItem</code> annotation for the table.</p>
+               </li>
+               <li class="li">
+                  <p>Ensure that the <code>DataFieldForAnnotation</code> record refers to a <code>UI.FieldGroup</code> annotation, where you
+                     can define multiple fields.</p>
+               </li>
+            </ol>
+         <p></p><p>The following annotation types are currently supported:</p><ul class="ul ">
+            <li class="li">
+               <p><code>DataField</code></p>
+            </li>
+            <li class="li">
+               <p><code>DataFieldForAction</code></p>
+            </li>
+            <li class="li">
+               <p><code>DataFieldForAnnotation</code></p>
+               <p>This points either to a data point (in combination with rating indicators and progress indicators), or a contact
+                  card.</p>
+            </li>
+         </ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><p>If you use multiple <code>DataFieldForAction</code> buttons, you must ensure that you do not show a column header. You achieve this
+               by not specifying a “Label” for the <code>DataFieldForAnnotation</code> that is under the <code>LineItem</code> definition and
+               holds the <code>FieldGroup</code>.</p>
+         <p></p></div></div><p><span class="emphasis">Linking a <code>FieldGroup</code> in the <code>LineItem</code> Annotations</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.LineItem"&gt;                              
+    &lt;Collection&gt;   
+    ………………………………
+    .……………………………     
+        &lt;Record Type="UI.DataFieldForAnnotation"&gt;         
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FieldGroup1" /&gt;          
+            &lt;PropertyValue Property="Label" String="Type Information"/&gt;      
+        &lt;/Record&gt;      
+        …………………     
+        …………………  
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.lineItem: [
+  {
+    label: 'Type Information',
+    type: #AS_FIELDGROUP,
+    valueQualifier: 'FieldGroup1'
+  }
+]
+producttype;</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.LineItem : [
+    {
+        $Type : 'UI.DataFieldForAnnotation',
+        Target : '@UI.FieldGroup#FieldGroup1',
+        Label : 'Type Information'
+    }
+]
+</pre></div></section>
+            <p></p></div></div></div></section><p><span class="emphasis"><code>FieldGroup</code> Annotation</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="FieldGroup1"&gt;             
+    &lt;Record&gt;                                                      
+        &lt;PropertyValue Property="Data"&gt;                                           
+            &lt;Collection&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="ContractType"/&gt;
+                &lt;/Record&gt;                                                          
+                &lt;Record Type="UI.DataFieldForAction"&gt;                                                            
+                    &lt;PropertyValue Property="Label" String="Dummy Button"/&gt;                                                                        
+                    &lt;PropertyValue Property="Action" String="com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.SOME_ACTION_2"/&gt;
+                &lt;/Record&gt;                               
+            &lt;/Collection&gt;                            
+        &lt;/PropertyValue&gt;             
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.fieldGroup: [
+  {
+    type: #STANDARD,
+    position: 1 ,
+    qualifier: 'FieldGroup1'
+  }
+]
+ContractType;
+
+@UI.fieldGroup: [
+  {
+    label: 'Dummy Button',
+    dataAction: 'com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.SOME_ACTION_2',
+    type: #FOR_ACTION,
+    position: 2 ,
+    qualifier: 'FieldGroup1'
+  }
+]
+contractName;
+</pre></div></section>
+            <p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS Annotation</h3></div><div class="fig"><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+               </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">UI.FieldGroup #FieldGroup1 : {
+    Data : [
+        {
+            $Type : 'UI.DataField',
+            Value : ContractType
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Label : 'Dummy Button',
+            Action : 'com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.SOME_ACTION_2'
+        }
+    ]
+}</pre></div></section>
+            <p></p></div></div></div></section><p>This will bring up a <code>DataField</code> and a dummy button, as shown in the screenshot below:</p><div><div class="fig"><img src="loio8c91e4e94ddc44c4bb81872147e49e92_LowRes.png" usemap="#"></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><ul class="ul ">
+               <li class="li">
+                  <p>The <code>FieldGroup</code> is currently not supported in grid tables.</p>
+               </li>
+               <li class="li">
+                  <p>If you use a table personalization, users can only filter, sort, and group the semantically connected columns based on the
+                     individual properties (of the same entity type as the <code>UI.LineItem</code>) given in the <code>UI.FieldGroup</code>
+                     collection.</p>
+               </li>
+               
+               
+               
+            </ul>
+         <p></p></div></div></section><section id="section_yr3_gt2_m4b">
+         <h2 class="title ">More Information</h2>
+         <p>For more information about forms and form groups in the object page, see the page <i>Form / Simple Form</i> in the <a href="https://experience.sap.com/fiori-design-web/form/" title="https://experience.sap.com/fiori-design-web/form/" class="external-link" target="_blank" rel="noopener">SAP Fiori Design Guidelines</a> and also the section about
+               <i>Forms</i> in the <a href="https://experience.sap.com/fiori-design-web/object-page/#structure" title="https://experience.sap.com/fiori-design-web/object-page/#structure" class="external-link" target="_blank" rel="noopener">SAP
+               Fiori Design Guidelines</a>.</p>
+      </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

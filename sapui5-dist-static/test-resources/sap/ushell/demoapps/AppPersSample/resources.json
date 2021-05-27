@@ -1,0 +1,47 @@
+{
+	"_version":"1.1.0",
+	"resources":[
+		{
+			"name": "App.controller.js",
+			"module": "sap/ushell/demo/AppPersSample/App.controller.js",
+			"size": 10772,
+			"required" : ["sap/base/Log.js", "sap/m/MessageToast.js"]
+		},
+		{
+			"name": "App.view.xml",
+			"module": "sap/ushell/demo/AppPersSample/App.view.xml",
+			"size": 2607,
+			"required" : ["sap/m/Button.js", "sap/m/CheckBox.js", "sap/m/Panel.js", "sap/m/VBox.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/AppPersSample/App.controller.js"]
+		},
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/demo/AppPersSample/Component-h2-preload.js",
+			"size": 2183,
+			"required" : ["sap/base/Log.js", "sap/m/Button.js", "sap/m/CheckBox.js", "sap/m/MessageToast.js", "sap/m/Panel.js", "sap/m/VBox.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/XMLView.js"],
+			"included" : ["sap/ushell/demo/AppPersSample/Component.js", "sap/ushell/demo/AppPersSample/manifest.json", "sap/ushell/demo/AppPersSample/App.controller.js", "sap/ushell/demo/AppPersSample/App.view.xml", "sap/ushell/demo/AppPersSample/i18n/i18n.properties"]
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/demo/AppPersSample/Component-preload.js",
+			"size": 8952,
+			"required" : ["sap/base/Log.js", "sap/m/Button.js", "sap/m/CheckBox.js", "sap/m/MessageToast.js", "sap/m/Panel.js", "sap/m/VBox.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/XMLView.js"],
+			"included" : ["sap/ushell/demo/AppPersSample/App.controller.js", "sap/ushell/demo/AppPersSample/App.view.xml", "sap/ushell/demo/AppPersSample/Component.js", "sap/ushell/demo/AppPersSample/i18n/i18n.properties", "sap/ushell/demo/AppPersSample/manifest.json"]
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/demo/AppPersSample/Component.js",
+			"size": 545,
+			"required" : ["sap/ui/core/UIComponent.js"]
+		},
+		{
+			"name": "i18n/i18n.properties",
+			"module": "sap/ushell/demo/AppPersSample/i18n/i18n.properties",
+			"size": 588
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/demo/AppPersSample/manifest.json",
+			"size": 2230
+		}
+	]
+}

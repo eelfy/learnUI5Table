@@ -1,0 +1,38 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob31162d62a864e6bb8e3ea8b3dfc384b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Displaying the Editing Status</h1><div class="fig"><h1 class="topictitle1 title">Displaying the Editing Status</h1><div class="shortdesc">In draft-enabled applications, the Draft, Unsaved
+			Changes by Another User and Locked by Another User
+		statuses are displayed in the first column to which you can add the semantic key using the
+		semantic key annotation.</div><p>For more information, see <a href="#/topic/668ea184f58c4378a5394f54b4ae205d.html" title="The editing status reflects the state of the object or entry in terms of the processing cycle. For example, it can give the user information about whether the item can be accessed or its level of completion." class="sap-doc">Editing Status</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This is only available for the default <code>DataField</code>.</p></div></div><p></p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+	&lt;Annotation Term="Common.SemanticKey"&gt;
+		&lt;Collection&gt;
+			&lt;PropertyPath&gt;ProductForEdit&lt;/PropertyPath&gt;
+		&lt;/Collection&gt;
+	&lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+		<p></p></div></div><p>If applicable, this column is displayed in bold font. Additionally, the editing status is
+			added, if available.</p><section id="section_lqs_jzb_2nb">
+			<h2 class="title ">Additional Features in SAP Fiori Elements for OData V2</h2>
+			<p>If you have not added a semantic key to the line items, the editing status is
+				displayed in the <span class="ph uicontrol">Title</span> or <span class="ph uicontrol">Description</span>
+				column, depending on the available information:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>If a semantic key is available for the <code>entityType</code> and is
+						part of the table, the draft information is shown in the column where the
+						first semantic key is displayed.</p>
+				</li>
+				<li class="li">
+					<p>If no semantic key annotation is available, the system checks whether the
+							<code>headerInfo/Title/Value/Path</code> is available under the
+							<code>LineItem</code> annotation.</p>
+				</li>
+			</ul>
+		</section><section id="section_un3_nzb_2nb">
+			<h2 class="title ">More Information</h2>
+			<p>For more information, see <a href="#/api/sap.ui.comp.smarttable.SmartTable/Annotations/SemanticKey" title="#/api/sap.ui.comp.smarttable.SmartTable/Annotations/SemanticKey" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable/Annotations/SemanticKey"><code>SemanticKey</code></a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

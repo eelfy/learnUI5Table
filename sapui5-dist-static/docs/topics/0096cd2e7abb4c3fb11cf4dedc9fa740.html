@@ -1,0 +1,76 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0096cd2e7abb4c3fb11cf4dedc9fa740" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Displaying Fields in Smartforms on Small
+		Devices</h1><div class="fig"><h1 class="topictitle1 title">Displaying Fields in Smartforms on Small
+		Devices</h1><div class="shortdesc">SAP Fiori elements provide an
+		option to show or hide fields based on their importance in small screen devices. </div><p>Using the <code>UI.Importance</code> annotation, you can set the importance of a
+			field. Based on the value set for this annotation, namely <code>High</code>,
+				<code>Medium</code>, or <code>Low</code>, the fields are shown or hidden as
+			depending on the screen size.</p><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_gnw_d2j_qlb" class=" "><thead>
+				<tr><th colspan="1" rowspan="1">Annotation</th>
+				<th colspan="1" rowspan="1">Behavior</th>
+			</tr></thead><tbody><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Importance"
+						EnumMember="UI.ImportanceType/High" /&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>The field is visible in all device types (desktops, tablets, or mobiles).</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Importance"
+						EnumMember="UI.ImportanceType/Medium" /&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>The field is visible in desktops and tablets.</p>
+				</td>
+			</tr><tr>
+				<td colspan="1" rowspan="1" valign="top"><code>&lt;Annotation Term="UI.Importance"
+						EnumMember="UI.ImportanceType/Low" /&gt;</code></td>
+				<td colspan="1" rowspan="1" valign="top">
+					<p>The field is visible only in desktops.</p>
+				</td>
+			</tr></tbody></table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>If you do not specify the <code>UI.Importance</code> annotation, the default is
+				set to <code>High</code> and the field is shown in all device types.</p>
+		<p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="GeneralInformation"&gt;
+	&lt;Record&gt;
+		&lt;PropertyValue Property="Data"&gt;
+			&lt;Collection&gt;
+				&lt;Record Type="UI.DataField"&gt;
+					&lt;PropertyValue Property="Value" Path="SalesOrder"/&gt;
+					&lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+				&lt;/Record&gt;
+				&lt;Record Type="UI.DataField"&gt;
+					&lt;PropertyValue Property="Label" String="Business Partner ID"/&gt;
+					&lt;PropertyValue Property="Value" Path="BusinessPartnerID"/&gt;
+					&lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/&gt;
+				&lt;/Record&gt;
+				&lt;Record Type="UI.DataField"&gt;
+					&lt;PropertyValue Property="Label" String="Opportunity ID"/&gt;
+					&lt;PropertyValue Property="Value" Path="OpportunityID"/&gt;
+					&lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/&gt;
+				&lt;/Record&gt;
+				&lt;Record Type="UI.DataField"&gt;
+					&lt;PropertyValue Property="Label" String="Enabled"/&gt;
+					&lt;PropertyValue Property="Value" Path="EnabledStatus"/&gt;
+				&lt;/Record&gt;
+			&lt;/Collection&gt;
+		&lt;/PropertyValue&gt;
+		&lt;PropertyValue Property="Label" String="General Information"/&gt;
+	&lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+		<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>You cannot use the <code>UI.Importance</code> annotation to hide the entire
+					<code>FieldGroup</code> and <code>Identification</code> on small
+				screens. You have to set the <code>UI.Importance</code> for each of the data
+				fields within a group. It is important to note that data fields rendered within the
+				smartform are impacted by the <code>UI.Importance</code> settings.</p>
+		<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

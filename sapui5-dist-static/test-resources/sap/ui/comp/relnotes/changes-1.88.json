@@ -1,0 +1,45 @@
+{
+  "1.88.0": {
+    "date": "March 2021",
+    "notes": [
+      {
+        "id": "03cb912b35211ab3bd82f298d8bbd44ad186b6d1",
+        "type": "FIX",
+        "text": " SmartField: Loaded description in case TextArrangment",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2170005255"
+          }
+        ]
+      },
+      {
+        "id": "617d715cf153d30db4345ba6e63ae8f4bbaedf14",
+        "type": "FIX",
+        "text": " SmartField: Fix list not to show default GUID when is not in the list",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2180109398"
+          }
+        ]
+      },
+      {
+        "id": "5d919a80f0f51bc92abea7a0f66a5072ce46e0a0",
+        "type": "FIX",
+        "text": " SmartField: Currency in upper case is now correctly displayed",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2180082478"
+          }
+        ]
+      },
+      {
+        "id": "397459212e705ffbec39f05a6a47a0e70a8b4c4c",
+        "type": "FEATURE",
+        "text": " SmartFilterBar: Event fired after VHD annotation of all fields is loaded"
+      }
+    ]
+  }
+}

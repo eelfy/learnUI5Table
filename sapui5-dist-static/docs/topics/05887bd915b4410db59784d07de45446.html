@@ -1,0 +1,193 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio05887bd915b4410db59784d07de45446" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring the Table Card Header Area (Optional)</h1><div class="fig"><h1 class="topictitle1 title">Configuring the Table Card Header Area (Optional)</h1><div class="shortdesc">You can configure the header area from the app descriptor file and
+		annotations.</div><section>
+			<ol>
+				<li class="li">
+					<p>Configure card header properties (card title, subtitle, KPI value, and view
+						switch settings in the descriptor file as shown here):</p><ul class="ul ">
+							<li class="li">
+								<p>Card <code>title</code> and <code>subTitle</code></p>
+								<section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ovp": {
+"globalFilterModel": "salesOrder",
+"globalFilterEntityType": "GlobalFilters",
+      ...
+      ...
+"cards": {
+  "card014": {
+    "model": "salesOrder",
+    "template": "sap.ovp.cards.table",
+    "settings": {
+       "title": "Sales Forecast",
+       "subTitle": "per Supplier",
+       "entitySet": "SalesShare",
+    ...
+    ...
+      }
+    ]
+  }
+},</pre></div></section>
+							</li>
+							<li class="li">
+								<p>KPI information</p>
+								<p><span class="emphasis">Annotation Sample</span></p>
+								<p>Descriptor
+									Settings</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ovp": {//section for ovp-specific app descriptor settings
+	...
+
+	"kpiAnnotationPath":"com.sap.vocabularies.UI.v1.KPI#AllActualCosts", // Represents the KPI annotation path
+	
+     ...
+}
+}
+</pre></div></section><p></p>
+								<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>DataPoint</code>
+									annotation</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Eval_by_Country-Generic"&gt;
+   &lt;Record Type="UI.DataPointType"&gt;
+      &lt;PropertyValue Property="Title" String="Sales India - Generic Card" /&gt;
+      &lt;PropertyValue Property="Value" Path="Sales" /&gt;
+      &lt;PropertyValue Property="ValueFormat"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ScaleFactor" Int="2" /&gt;
+            &lt;PropertyValue Property="NumberOfFractionalDigits" Int="1" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="CriticalityCalculation"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimizing" /&gt;
+            &lt;PropertyValue Property="DeviationRangeHighValue" String="7300" /&gt;
+            &lt;PropertyValue Property="ToleranceRangeHighValue" String="7200" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="TargetValue" String="2.000 " /&gt;
+      &lt;PropertyValue Property="TrendCalculation"&gt;
+         &lt;Record&gt;
+            &lt;PropertyValue Property="ReferenceValue" String="5201680" /&gt;
+            &lt;PropertyValue Property="DownDifference" Int="10000000.0" /&gt;
+         &lt;/Record&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+							</li>
+							<li class="li">
+								<p>View switch: Configuring this property allows you to define a
+									dropdown list to filter/view data at the card level.</p>
+								<section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ovp": {
+	"globalFilterModel": "salesOrder",
+	"globalFilterEntityType": "GlobalFilters",
+	"showDateInRelativeFormat": false,
+	"disableTableCardFlexibility": false,
+	"considerAnalyticalParameters": true,
+	"useDateRangeType": false,
+	"cards": {
+     "card014": {
+         "model": "salesOrder",
+         "template": "sap.ovp.cards.table",
+         "settings": {
+     "title": "Sales Forecast",
+     "subTitle": "per Supplier",
+     "valueSelectionInfo": "Value Selection Info",
+     "entitySet": "SalesShare",
+     "tabs": [
+           {
+     "dynamicSubtitleAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#dynamicSubtitle",
+     "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#View1",
+     "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#line1",
+     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#line",
+     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#line",
+     "value": "{{dropdown_value2}}"
+           },
+           {
+     "dynamicSubtitleAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#dynamicSubtitle",
+     "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#View4",
+     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#item2",
+     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#line",
+     "value": "{{dropdown_value4}}"
+    }
+   ]
+  }
+},</pre></div></section>
+							</li>
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p>Define the <code>DataPoint</code> annotation to complete configuring KPI
+						information on the card header area. The following are the annotation
+							properties:</p><ul class="ul ">
+							<li class="li">
+								<p>Add <code>Title</code> property to configure the table column
+									name, and also to display as a title on the KPI header</p>
+							</li>
+							<li class="li">
+								<p>Add <code>Value</code> property to display KPI measure</p>
+							</li>
+							<li class="li">
+								<p>Add <code>ValueFormat</code> to define number format</p>
+							</li>
+							<li class="li">
+								<p>Add criticality to highlight the KPI measure value. You can
+									define criticality as a path or enum value. The supported enum
+									values are:</p><ul class="ul ">
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Neutral</code>
+												- default neutral color is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Negative</code>
+												- Red is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Critical</code>
+												- Orange is considered</p>
+										</li>
+										<li class="li">
+											<p><code>com.sap.vocabularies.UI.v1.CriticalityType/Positive</code>
+												- Green is considered</p>
+										</li>
+									</ul><p></p>
+							</li>
+						</ul>You can also define criticality using a path property that returns
+							value:<ul class="ul ">
+							<li class="li">
+								<p>0 for Neutral- default neutral colour is considered</p>
+							</li>
+							<li class="li">
+								<p>1 for Negative – Red is considered</p>
+							</li>
+							<li class="li">
+								<p>2 for Critical – Orange is considered</p>
+							</li>
+							<li class="li">
+								<p>3 for Positive – Green is considered</p>
+							</li>
+						</ul><p></p>
+				</li>
+			</ol>
+			<section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint"></pre></div></section>
+		</section><section id="section_kcq_1g2_2fb">
+			<h2 class="title ">Configuring the Table Header Navigation (Optional)</h2>
+			<p>The identification annotation lets you configure navigation (from header and table
+				area) within an application. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>In case of table area navigation, the navigation settings configured using
+						the <code>LineItem</code> annotation takes precedence over the
+						navigation settings configured using the identification annotation.</p>
+				<p></p></div></div><p></p>
+			<p>
+				</p><section class="collapsible"><div class="collapsible-icon sap-icon title"><strong>
+						Sample Code
+					</strong></div><div class="fig fig-codeblock"><pre class="codeblock prettyprint"></pre></div></section>
+			<p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

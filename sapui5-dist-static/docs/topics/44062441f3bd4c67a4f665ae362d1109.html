@@ -1,0 +1,102 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio44062441f3bd4c67a4f665ae362d1109" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 26: Remote OData Service</h1><div class="fig"><h1 class="topictitle1 title">Step 26: Remote OData Service</h1><div class="shortdesc">So far we have worked with local JSON data, but now we will access a real OData service to visualize remote data.</div><section id="section_kgq_kvp_r2b">
+			<p>In the real world, data often resides on remote servers and is accessed via an OData service. We will add a data source configuration
+				to the manifest and replace the JSONModel type for our <code>invoice</code> model with the publicly available Northwind OData
+				service to visualize remote data. You will be surprised how little needs to be changed in order to make this work!</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If you cannot get it to run, don't worry too much, the remaining steps will also work with the local JSON data you have used so far. In <a href="#/topic/bae9d90d2e9c4206889368f04edab508.html" title="We just ran our app against a real service, but for developing and testing our app we do not want to rely on the availability of the “real” service or put additional load on the system where the data service is located." class="sap-doc">Step 27: Mock Server Configuration</a>, you will learn how to simulate a back-end system to achieve a similar working
+				scenario. However, you should at least read this chapter about remote OData services to learn about non-local data sources.</p></div></div>
+		</section><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio99a649180be34423b9c6ba8379b26098_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Products from the OData invoices test service are now shown within our
+					app</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.26/preview" title="#/sample/sap.m.tutorial.walkthrough.26/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.26/preview">Walkthrough - Step 26</a>.</p>
+			<h2 class="title ">webapp/manifest.json</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+	"_version": "1.21.0",
+	"sap.app": {
+		...
+		"applicationVersion": {
+			"version": "1.0.0"
+		}<span class="emphasis">,
+		"dataSources": {
+			"invoiceRemote": {
+				"uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}</span>
+	},
+	"sap.ui": {
+		...
+	},
+	"sap.ui5": {
+		...
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui.demo.walkthrough.i18n.i18n",
+					"supportedLocales": [
+						""
+					],
+					"fallbackLocale": ""
+				}
+			},
+			"invoice": {
+<span class="emphasis">				"dataSource": "invoiceRemote"</span>
+			}
+		},
+		"resources": {
+		...</pre></div></section>
+			<p>In the <code>sap.app</code> section of the descriptor file, we add a data source
+				configuration. With the <code>invoiceRemote</code>, key we specify a
+				configuration object that allows automatic model instantiation. We specify the type
+				of the service (<code>OData</code>) and the model version
+				(<code>2.0</code>). In this step, we want to use the publicly available
+				Northwind OData service located at
+					<code>https://services.odata.org/V2/Northwind/Northwind.svc/</code>.
+				Therefore, the URI points to the official Northwind OData service.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>In order to avoid the Cross-Origin Resource Sharing problem described below, the typical procedure is to maintain only a path, e.g.
+					<code>/V2/Northwind/Northwind.svc/</code>, in the <code>URI</code> property of the data source. This, however, also makes
+				the usage of a proxy necessary if the actual OData server resides at a different address.</p></div></div>
+			<p>In the <code>models</code> section, we replace the content of the
+					<code>invoice</code> model. This key is still used as model name when the
+				model is automatically instantiated during the component initialization. However,
+				the <code>invoiceRemote</code> value of the <code>dataSource</code> key is a
+				reference to the data source section that we specified above. This configuration
+				allows the component to retrieve the technical information for this model during the
+				start-up of the app.</p>
+			<p>Our component now automatically creates an instance of <code>sap.ui.model.odata.v2.ODataModel</code> according to the settings we specified
+				above, and makes it available as a model named <code>invoice</code>. When you use the <code>invoiceRemote</code> data source,
+				the <code>ODataModel</code> fetches the data from the real Northwind OData service. The invoices we receive from the Northwind
+				OData service have identical properties as the JSON data we used previously (except for the <code>status</code> property, which is
+				not available in the Northwind OData service).</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If you want to have a default model on the component, you can change the name of the model to an empty string in the descriptor
+				file. Automatically instantiated models can be retrieved by calling <code>this.getModel</code> in the component. In the
+				controllers of component-based apps you can call <code>this.getView().getModel()</code> to get the automatically instantiated
+				model. For retrieving a named model you have to pass on the model name defined in the descriptor file to <code>getModel</code>,
+				that is, in the component you would call <code>this.getModel("invoice")</code> to get our automatically generated
+					<code>invoice</code> model that we defined in the descriptor.</p></div></div>
+			<p>You can now try to run the app and see what happens - we will see an error related to our new configuration in the console:</p>
+			<div><div class="fig"><img src="loio2c36d72282e34903a97197783fe92122_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Violations of the same-origin policy in Google Chrome</span></div>
+			<p>Due to the so called same-origin policy, browsers deny AJAX requests to service endpoints in
+				case the service endpoint has a different domain/subdomain, protocol, or port than
+				the app. The browser refuses to connect to a remote URL directly for security
+				reasons. Depending on your development environment you have different options to
+				overcome this restriction. For more information, see <a href="#/topic/5bb388fc289d44dca886c8fa25da466e.html" title="5bb388fc289d44dca886c8fa25da466e.xml" class="sap-doc">Request Fails Due to Same-Origin Policy (Cross-Origin Resource Sharing - CORS)</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/c4b2a32bb72f483faa173e890e48d812">Step 25: Sorting and Grouping</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/bae9d90d2e9c4206889368f04edab508">Step 27: Mock Server Configuration</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="http://www.odata.org/" title="http://www.odata.org/" class="external-link" target="_blank" rel="noopener">OData Home Page</a></li>
+		<li><a href="#/api/sap.ui.model.odata.v2.ODataModel" title="#/api/sap.ui.model.odata.v2.ODataModel" class="sap-doc" alt="#/api/sap.ui.model.odata.v2.ODataModel">API Reference: sap.ui.model.odata.v2.ODataModel</a></li>
+		<li><a href="#/topic/dfe4f79843c44c40b3fb95ebffb65646.html" title="This section contains the most common issues that you might face when developing SAPUI5 apps and how to solve them." class="sap-doc">First-Aid Kit</a></li>
+		<li><a href="#/topic/5bb388fc289d44dca886c8fa25da466e.html" title="5bb388fc289d44dca886c8fa25da466e.xml" class="sap-doc">Request Fails Due to Same-Origin Policy (Cross-Origin Resource Sharing - CORS)</a></li>
+		
+	</ul></section></div></section></div></body></html>

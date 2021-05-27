@@ -1,0 +1,82 @@
+[
+    {
+        "help-id": "Space-/UI2/FLP_DEMO_PAGE",
+        "title": "Menu entry 1",
+        "intent": "#Launchpad-openFLPPage?spaceId=/UI2/FLP_DEMO_PAGE&pageId=/UI2/FLP_DEMO_PAGE",
+        "type": "IBN",
+        "target": {
+            "semanticObject": "Launchpad",
+            "action": "openFLPPage",
+            "parameters": [
+                {
+                    "name": "spaceId",
+                    "value": "/UI2/FLP_DEMO_PAGE"
+                },
+                {
+                    "name": "pageId",
+                    "value": "/UI2/FLP_DEMO_PAGE"
+                }
+            ]
+        }
+    },
+    {
+        "title": "Menu entry 2",
+        "help-id": "Space-ZPAGE2",
+        "intent": "#Launchpad-openFLPPage?spaceId=ZPAGE2&pageId=ZPAGE2",
+        "type": "IBN",
+        "target": {
+            "semanticObject": "Launchpad",
+            "action": "openFLPPage",
+            "parameters": [
+                {
+                    "name": "spaceId",
+                    "value": "ZPAGE2"
+                },
+                {
+                    "name": "pageId",
+                    "value": "ZPAGE2"
+                }
+            ]
+        },
+        "menuEntries": [
+            {
+                "help-id": "Page-ZPAGE2",
+                "title": "Sub entry 2.1",
+                "type": "IBN",
+                "target": {
+                    "semanticObject": "Launchpad",
+                    "action": "openFLPPage",
+                    "parameters": [
+                        {
+                            "name": "spaceId",
+                            "value": "ZPAGE2"
+                        },
+                        {
+                            "name": "pageId",
+                            "value": "ZPAGE2"
+                        }
+                    ]
+                }
+            },
+            {
+                "help-id": "Page-ZPAGE3",
+                "title": "Sub entry 2.2",
+                "type": "IBN",
+                "target": {
+                    "semanticObject": "Launchpad",
+                    "action": "openFLPPage",
+                    "parameters": [
+                        {
+                            "name": "spaceId",
+                            "value": "ZPAGE2"
+                        },
+                        {
+                            "name": "pageId",
+                            "value": "ZPAGE3"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

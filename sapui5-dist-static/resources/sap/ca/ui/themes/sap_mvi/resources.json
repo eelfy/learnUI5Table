@@ -1,0 +1,70 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".theming",
+			"size": 86,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "ChartToolBar.less",
+			"size": 406,
+			"designtime": true,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "css_variables.css",
+			"size": 113,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "css_variables.less",
+			"size": 81927,
+			"designtime": true,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "css_variables.source.less",
+			"size": 81627,
+			"designtime": true,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library-RTL.css",
+			"size": 23473,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library-parameters.json",
+			"size": 2,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library.css",
+			"size": 23474,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library.less",
+			"size": 722,
+			"designtime": true,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library.source.less",
+			"size": 178,
+			"designtime": true,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library_skeleton-RTL.css",
+			"size": 23897,
+			"theme": "sap_mvi"
+		},
+		{
+			"name": "library_skeleton.css",
+			"size": 23898,
+			"theme": "sap_mvi"
+		}
+	]
+}

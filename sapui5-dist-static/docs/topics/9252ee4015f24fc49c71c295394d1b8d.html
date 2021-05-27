@@ -1,0 +1,130 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9252ee4015f24fc49c71c295394d1b8d" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 10: Property Formatting Using Data Types</h1><div class="fig"><h1 class="topictitle1 title">Step 10: Property Formatting Using Data Types</h1><div class="shortdesc">SAPUI5 provides a set of simple data types such as Boolean,
+			Currency, Date and Float. These data types can then be applied to controls in order to
+		ensure that the value presented on the screen is formatted correctly, and, if the field is open for input, that the value entered by the user
+		adheres to the requirements of that data type. We will now add a new field called Sales Amount of type
+			Currency. </div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loiod15f8bc61efe47d9af2afdeea943cd9c_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">New Sales Amount input field </span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.10/preview" title="#/sample/sap.ui.core.tutorial.databinding.10/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.10/preview">Data Binding - Step 10</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView",
+	"sap/ui/model/resource/ResourceModel"
+], function (JSONModel, XMLView, ResourceModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true,
+			address: {
+				street: "Dietmar-Hopp-Allee 16",
+				city: "Walldorf",
+				zip: "69190",
+				country: "Germany"
+			}<span class="emphasis">,
+			salesAmount: 12345.6789,
+			currencyCode: "EUR"
+</span>
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		var oResourceBundle = new ResourceModel({
+			bundleName: "sap.ui.demo.db.i18n.i18n",
+			supportedLocales: ["", "de"],
+			fallbackLocale: ""
+		});
+
+		sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+		// Display the XML view called "App"
+		new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		}).placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>We create two new model properties <code>salesAmount</code> and <code>currencyCode</code>. </p>
+		</section><section>
+			<h2 class="title ">webapp/view/App.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">...
+	&lt;Panel headerText="{i18n&gt;panel1HeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;form:SimpleForm editable="true" layout="ColumnLayout"&gt;
+			&lt;Label text="{i18n&gt;firstName}"/&gt;
+			&lt;Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="{i18n&gt;lastName}"/&gt;
+			&lt;Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="{i18n&gt;enabled}"/&gt;
+			&lt;CheckBox selected="{/enabled}"/&gt;
+		&lt;/form:SimpleForm&gt;
+	&lt;/Panel&gt;
+	&lt;Panel headerText="{i18n&gt;panel2HeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;content&gt;
+			&lt;l:HorizontalLayout&gt;
+				&lt;l:VerticalLayout&gt;
+					&lt;Label labelFor="address" text="{i18n&gt;address}:"/&gt;
+					&lt;FormattedText class="sapUiSmallMarginBottom"
+						htmlText="{/address/street}&amp;lt;br&gt;{/address/zip} {/address/city}&amp;lt;br&gt;{/address/country}"
+						id="address" width="200px"/&gt;
+					&lt;Link href="{
+							parts: [
+								'/firstName',
+								'/lastName'
+							],
+							formatter: '.formatMail'
+						}"
+						text="{i18n&gt;sendEmail}"/&gt;
+				&lt;/l:VerticalLayout&gt;
+<span class="emphasis">				&lt;l:VerticalLayout&gt;
+					&lt;Label labelFor="salesAmount" text="{i18n&gt;salesAmount}:"/&gt;
+					&lt;Input description="{/currencyCode}" enabled="{/enabled}" id="salesAmount"
+						value="{
+							parts: [
+								{path: '/salesAmount'},
+								{path: '/currencyCode'}
+							],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {showMeasure: false}
+						}" width="200px"/&gt;
+				&lt;/l:VerticalLayout&gt;</span>
+			&lt;/l:HorizontalLayout&gt;
+		&lt;/content&gt;
+	&lt;/Panel&gt;
+&lt;/mvc:View&gt;</pre></div></section>
+			<p>A new pair of <code>Label</code> and <code>Input</code> elements have been created for the <code>salesAmount</code> model property.
+				The description property of the <code>Input</code> element has been bound to the <code>currencyCode</code> model property. The
+				value property of the <code>Input</code> element has been bound to the model properties <code>salesAmount</code> and
+					<code>currencyCode</code>. The <code>{showMeasure: false}</code> parameter switches off the display of the currency symbol
+				within the input field itself. This is not needed because it is being displayed using the <code>Input</code> element's description
+				property.</p>
+		</section><section>
+			<h2 class="title ">webapp/i18n/i18n.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Field labels
+firstName=Vorname
+lastName=Nachname
+enabled=Enabled
+address=Address
+<span class="emphasis">salesAmount=Sales Amount</span>...</pre></div></section>
+		</section><section>
+			<h2 class="title ">webapp/i18n/i18n_de.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Field labels
+firstName=Vorname
+lastName=Nachname
+enabled=Aktiviert
+address=Adresse
+<span class="emphasis">salesAmount=Verk\u00e4ufe bis zum heutigen Datum</span>
+...</pre></div></section>
+			<p>Add the missing texts to the <code>properties</code> files. Please note that special characters (non-Latin-1) have to be entered by using
+				Unicode escape characters.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/6fdf0acd0bc24ffdad327cf7e6f9e7e0">Step 9: Formatting Values</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/b8c4e534cdb440e9a5bbff86f9572bd6">Step 11: Validation Using the Message Manager</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/07e4b920f5734fd78fdaa236f26236d8.html" title="Data that is presented on the UI often has to be converted so that is human readable and fits to the locale of the user. On the other hand, data entered by the user has to be parsed and validated to be understood by the data source. For this purpose, you use formatters and data types." class="sap-doc">Formatting, Parsing, and Validating Data</a></li>
+	</ul></section></div></section></div></body></html>

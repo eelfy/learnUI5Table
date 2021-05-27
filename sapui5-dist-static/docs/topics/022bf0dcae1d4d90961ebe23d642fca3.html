@@ -1,0 +1,80 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio022bf0dcae1d4d90961ebe23d642fca3" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">"Share" Functionality</h1><div class="fig"><h1 class="topictitle1 title">"Share" Functionality</h1><div class="shortdesc"> The "share" functionality allows users to share the current application state using the options
+			Send Email and Save
+			as Tile.</div><ul class="ul ">
+			<li class="li">
+				<p><span class="ph uicontrol">Send Email</span></p>
+				<p>When a user chooses this option, the link to the page opens in the default email
+					client that is configured in the system. When a user chooses the link, the
+					application page opens in the same state in which it was shared: filter
+					settings, personalization options and selections for charts and tables, as well
+					app-specific button states such as the filter mode or view mode, are all
+					transferred.</p>
+			</li>
+			<li class="li"><span class="ph uicontrol">Save as Tile</span><p>When a user chooses this option, the corresponding <span class="ph uicontrol">Save as Tile</span> dialog is
+					displayed.
+					When a user chooses the tile, the application page opens in the same state in which the tile was created. Application developers
+					can customize the title and the sub-title of the tile. In
+					the list report, users can create a dynamic tile with a record count, where the applied filter is also taken into
+					account.</p></li>
+		</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><ul class="ul ">
+				<li class="li">
+					<p>The "share" functionality is available for the list report, object page, and subobject page.</p>
+				</li>
+				<li class="li">
+					<p>For applications using the flexible column layout, the "share" functionality is shown on the highest view level.</p>
+				</li>
+				
+				<li class="li">
+					<p>A dynamic tile is not created if the filter bar contains a semantic date.</p>
+				</li>
+				
+			</ul>
+		<p></p></div></div><section id="section_t52_jql_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can also share the current application state using <span class="ph uicontrol">Share on
+					Jam</span>. You can also use the dynamic tile creation.</p><p>If semantic date range configuration is not defined, a dynamic tile is created, by
+				default. For more information on semantic date range, see <a href="#/topic/fef65d03d01a4b2baca28983a5449cf7.html" title="You can use semantic date ranges, such as Today or Last Week, on the filter bar of list report and analytical list report applications." class="sap-doc">Enabling Semantic Date Range on Filter Bar</a>.</p></div></section><section id="section_r4n_lql_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p><span class="emphasis">Semantic Bookmarking</span></p><p>Semantic bookmarking enables the sharing of an object page even while it is being
+				edited by a user, that is, even when the object page has the status
+					<span class="ph sap-technical-name">draft</span>.</p><p>When a user clicks on the chevron in a list report table and navigates to an object
+				page, the URL contains technical keys or semantic keys (depending on whether the
+				application developer has defined semantic keys in the metadata for the entity set
+				of the list report).</p><p>Here’s an annotation snippet showing the semantic key annotation:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Common.SemanticKey"&gt;
+   &lt;Collection&gt;
+      &lt;PropertyPath&gt;SalesOrder&lt;/PropertyPath&gt;
+   &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+			<p></p></div></div><p>If the application developer does not define the annotations for the semantic keys, the URL contains only the technical keys. In this case, if
+				user A shares the URL via the "share" functionality with user B, user B will only be able to open the list report page if user A
+				shares while being in display mode. If user A is already in edit mode when the URL is shared, then user B will not be able to open the
+				link, since user B cannot access the draft of user
+				A.</p><p>If, however, the application developer has defined semantic keys, the URL only
+				contains semantic keys. In this case, user B will be able to open the shared URL,
+				irrespective of whether user A shares the active copy (display mode) or the draft
+				copy (edit mode). If user A shares the draft copy, then user B sees the
+				corresponding active copy of the object.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Semantic bookmarking is currently not supported in the following cases:</p>
+				<ul class="ul ">
+					
+					<li class="li">
+						<p>for
+							subobject
+							pages</p>
+					</li>
+					
+					<li class="li">
+						<p>if not all of the semantic keys defined for the entity set are part of the available context</p>
+					</li>
+					
+				</ul>
+				
+				<p>In these cases, changing to edit mode results in the technical keys being added to the URL. If user A now shares the URL while in
+					edit mode, then user B will not be able to open the link, since user B cannot access the draft of user A for the same record.</p>
+				
+				
+			<p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

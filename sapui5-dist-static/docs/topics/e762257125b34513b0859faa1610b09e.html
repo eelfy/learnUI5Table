@@ -1,0 +1,319 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe762257125b34513b0859faa1610b09e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling the Flexible Column
+		Layout</h1><div class="fig"><h1 class="topictitle1 title">Enabling the Flexible Column
+		Layout</h1><div class="shortdesc">The flexible column layout allows users to see more details on a page, and to expand and
+		collapse the screen areas, depending on their requirements.</div><p>The flexible column layout offers different layouts with up to three columns. Depending
+			on which panel the user is focused on, it can be expanded. The user can also switch
+			between different layouts and enable full-screen mode.</p><p>Use the following attributes to create the column layout you want:</p><ul class="ul ">
+			<li class="li">
+				<p><code>defaultTwoColumnLayoutType</code>: 2-column layout with these
+					options:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>TwoColumnsBeginExpanded</code></p>
+						<div><div class="fig"><img src="loioc34a5e7e72a24eaf908fdc98a87e7fdb_LowRes.png" usemap="#"></div></div>
+					</li>
+					<li class="li">
+						<p><code>TwoColumnsMidExpanded</code></p>
+						<div><div class="fig"><img src="loio392c14fa3f294a088d39a20e1084cb44_LowRes.png" usemap="#"></div></div>
+					</li>
+				</ul>
+			</li>
+			<li class="li">
+				<p><code>defaultThreeColumnLayoutType</code>: 3-column layout with these options:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>ThreeColumnsMidExpanded</code></p>
+						<div><div class="fig"><img src="loio227c14d158b946c1b06dc0aa5bc388a0_LowRes.png" usemap="#"></div></div>
+					</li>
+					<li class="li">
+						<p><code>ThreeColumnsEndExpanded</code></p>
+						<div><div class="fig"><img src="loio0f5a9ccda7bb42df9486cb2f7665d5c9_LowRes.png" usemap="#"></div></div>
+					</li>
+				</ul>
+			</li>
+		</ul><p>Users can expand and collapse the columns using the focus buttons. They can change to
+			full-screen mode by choosing the full-screen button.</p><div><div class="fig"><img src="loio9ff7dd43e9ed4c1caa515a08158e98be_HiRes.jpg" usemap="#"></div></div><section id="section_grc_dmp_gmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>For the overview page, the flexible column layout is not relevant.</p>
+					</li>
+					<li class="li">
+						<p>The analytical list page only supports the
+								<code>TwoColumnsBeginExpanded</code> layout. For more
+							information, see also <a title="https://launchpad.support.sap.com/#/notes/" href="https://launchpad.support.sap.com/#/notes/2409984" target="_blank" rel="noopener noreferrer">2409984</a>.</p>
+					</li>
+					<li class="li">
+						<p>The flexible column layout can be used in draft and non-draft scenarios.
+						</p>
+					</li>
+					<li class="li">
+						<p>Both draft and non-draft apps support 2-column and 3-column layouts. </p>
+						<p>In non-draft flexible column layout apps with create, read, update, and
+							delete (CRUD) capabilities, only the last column shows the
+								<span class="ph uicontrol">Edit</span> and <span class="ph uicontrol">Delete</span>
+							buttons.</p>
+					</li>
+				</ul>
+			<p></p></div></div><p>To enable the flexible column layout in an app, create an entry in
+				manifest.json, as
+				follows:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+        "_version": "1.1.0",
+        "settings": {
+            "flexibleColumnLayout": {
+                "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+            }
+        },
+        "pages": [...</pre></div></section><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>For
+				optimum readability, you can set the <code>PopinLayout</code> property to
+					<code>Block</code>, <code>GridLarge</code>, or
+					<code>GridSmall</code>. For more information, see <a href="#/topic/0d2f1a9ebd2d4a4c906216ded1d33783.html" title="You can extend and customize specific features of the list report and object page." class="sap-doc">Adapting the UI: List Report and Object Page</a>.</p></div></div><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Defining a Default Layout</h3></div><div class="fig"><p>For each page configured in the manifest you can define a default layout that is
+					used when the page is opened. You can use the <code>defaultLayoutType</code>
+					property to do so. For example, you can use the
+						<code>MidColumnFullScreen</code> property value to open a page in
+					full-screen mode. This overrides the layout which has been defined in the global
+						<code>flexibleColumnLayout</code> settings for the corresponding column.
+					Note that this is only relevant if different pages in the same column need
+					different default layouts.</p><p> For an object page, you can define "defaultLayoutType": "OneColumn". By doing
+					so, in the flexible column layout, this object page moves to the first column.
+					All other object pages that are below the first one in the hierarchy move up
+					accordingly. If they have the same setting, they also move to the first
+					column.</p><p>Usually, this setting is made on the main object page. After navigating from the
+					list report, the object page is then displayed in full-screen mode, that is, the
+					main object page replaces the list report. When navigating to an item, the main
+					object remains in the first column and the item is displayed in the second
+					column.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+    "settings": {
+            "flexibleColumnLayout": {
+                "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+            }
+        },
+                      "pages": [{
+                               "entitySet": "…",
+                               "component": {
+                                     "name": "sap.suite.ui.generic.template.ListReport",
+                                     "settings": {
+                                              …
+                                       }
+                                 },
+                                  "pages": [{
+                                            "entitySet": "…",
+                                             "defaultLayoutType": "OneColumn",
+                                             "component": {
+                                                      "name": "sap.suite.ui.generic.template.ObjectPage",
+                                                      "settings": {
+                                                                 …
+                                                      }
+                                             },
+</pre></div></section>
+				<p></p></div></div></div></section></div></section><section id="section_enh_np2_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>To enable the flexible column layout, add the <code>rootView</code>
+				object to the manifest as below:</p><p>You can create an entry in manifest.json
+				under the routing key to specify the <code>routerClass</code>. It has to be set
+				to <code>sap.f.routing.Router</code>. In the <code>routing.config</code>,
+				the optional <code>flexibleColumnLayout</code> object allows you to specify the
+				default expansion of the columns to two columns and three columns layout.</p><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+    "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
+            },
+    "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+                }
+            },
+            "routes": [
+                       .
+                       . 
+                       .
+</pre></div></section>
+			<p></p><section>
+				<h3 class="title ">Routes Configuration</h3>
+				<p>The route target leads to an array instead of a single element in the usual
+					fullscreen application. The pattern key format describes the pattern to be
+					matched from a navigation to identify the route, but it must end with an
+					optional query parameter <code>:?query:</code>so as to add the pattern.</p>
+				<p>The following keys should be set:</p><ul class="ul ">
+						<li class="li">
+							<p><code>name</code>: Unique identifier of the current route</p>
+						</li>
+						<li class="li">
+							<p><code>target</code>: Array listing the targets that will be
+								displayed</p>
+						</li>
+					</ul><p></p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"routes": [
+     	{
+        	"pattern": ":?query:",
+            "name": "SalesOrderManageList",
+            "target": ["SalesOrderManageList"]
+        },
+        {
+        	"pattern": "SalesOrderManage({key}):?query:",
+            "name": "SalesOrderManageObjectPage",
+            "target": ["SalesOrderManageList", "SalesOrderManageObjectPage"]
+        },
+        {
+        	"pattern": "SalesOrderManage({key})/_Item({key2}):?query:",
+            "name": "SalesOrderItemObjectPage",
+            "target": ["SalesOrderManageList", "SalesOrderManageObjectPage", "SalesOrderItemObjectPage"]
+         },
+         {
+         	"pattern": "SalesOrderManage({key})/_Item({key2})/_MaterialDetails({key3}):?query:",
+            "name": "MaterialDetailsObjectPage",
+            "target": ["MaterialDetailsObjectPage"]
+         },
+         {
+         	"pattern": "SalesOrderManage({key})/_Item({key2})/_MaterialDetails({key3})/_MaterialRatings({key4}):?query:",
+            "name": "MaterialRatingsObjectPage",
+            "target": ["MaterialRatingsObjectPage"]
+         },
+         {
+          	"pattern": "SalesOrderManage({key})/_Item({key2})/_MaterialDetails({key3})/_MaterialRatings({key4})/_MaterialRatingsDetails({key5}):?query:",
+            "name": "MaterialRatingsDetailsObjectPage",
+            "target": ["MaterialRatingsDetailsObjectPage"]
+         }
+	]</pre></div></section>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Target Configuration</h3>
+				<p>For each target, the following keys should be set:</p><ul class="ul ">
+						<li class="li">
+							<p><code>type</code>: Component</p>
+						</li>
+						<li class="li">
+							<p><code>id</code>: unique identifier for the current target</p>
+						</li>
+						<li class="li">
+							<p><code>name</code>: name of the template to be use by the view</p>
+							<ul class="ul ">
+								<li class="li">
+									<p><code>sap.fe.templates.ListReport</code> should be used
+										for the first level (landing view)</p>
+								</li>
+								<li class="li">
+									<p><code>sap.fe.templates.ObjectPage</code> should be used
+										for any sub-sequent level</p>
+								</li>
+							</ul>
+						</li>
+						<li class="li">
+							<p><code>controlAggregation</code>: specify where the view should be
+								located</p>
+							<ul class="ul ">
+								<li class="li">
+									<p><code>beginColumnPages</code>: should be used for the
+										first column to be displayed</p>
+								</li>
+								<li class="li">
+									<p><code>midColumnPages</code>: should be used for the
+										second column</p>
+								</li>
+								<li class="li">
+									<p><code>endColumnPages</code>: should be used for any
+										additional columns</p>
+								</li>
+							</ul>
+						</li>
+						<li class="li">
+							<p><code>contextPattern</code>: navigation path of the current
+								target</p>
+						</li>
+						<li class="li">
+							<p>All other keys remain unchanged compared the fullscreen
+								applications</p>
+						</li>
+					</ul><p></p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"targets": {
+     	"SalesOrderManageList": {
+        	"type": "Component",
+            "id": "SalesOrderManageList",
+            "name": "sap.fe.templates.ListReport",
+            "controlAggregation": "beginColumnPages",
+            "contextPattern": "",
+             "options": {
+				...
+				// Same as fullscreen  //
+				...
+             }
+         },
+         "SalesOrderManageObjectPage": {
+          	"type": "Component",
+            "id":  "SalesOrderManageObjectPage",
+            "name": "sap.fe.templates.ObjectPage",
+            "controlAggregation": "midColumnPages",
+            "contextPattern": "/SalesOrderManage({key})",
+            "options": {
+                ...
+				// Same as fullscreen  //
+				...
+             }
+         },
+         "SalesOrderItemObjectPage": {
+         	"type": "Component",
+            "id":  "SalesOrderItemObjectPage",
+            "name": "sap.fe.templates.ObjectPage",
+            "controlAggregation": "endColumnPages",
+            "contextPattern": "/SalesOrderManage({key})/_Item({key2})",
+            "options": {
+                ...
+				// Same as fullscreen  //
+				...
+            }
+         },
+		 "MaterialDetailsObjectPage": {
+         	"type": "Component",
+            "id":  "MaterialDetailsObjectPage",
+            "name": "sap.fe.templates.ObjectPage",
+            "controlAggregation": "endColumnPages",
+            "contextPattern": "/SalesOrderManage({key})/_Item({key2})/_MaterialDetails({key3})",
+             "options": {
+             	...
+				// Same as fullscreen  //
+				...
+            }
+         },
+		 ...
+	}</pre></div></section>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Limitations</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p><span class="emphasis">Switch to edit mode</span></p>
+							<p>When you switch to edit mode in a 3-column display, the right column
+								is closed automatically.</p>
+							<p><img src="loio3b53c539c12b46fdbab37184b89dbabd_LowRes.png" usemap="#"></p>
+							<p><img src="loioca1fb8fa54f04acdac22ea90d262751e_LowRes.png" usemap="#"></p>
+						</li>
+						<li class="li">
+							<p>Data synchronization between columns</p>
+							<p>In edit mode, changes made on a subobject page is not automatically
+								reflected on the parent object page. Each column has its own context
+								which is not synchronized with other columns.</p>
+							<p><img src="loiod8657776de8a47838d7cc18696136d71_LowRes.png" usemap="#"></p>
+						</li>
+					</ul>
+				<p></p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

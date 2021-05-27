@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper'
+						 }"
+>
+	<template:if test="{property>$Path@com.sap.vocabularies.UI.v1.IsImageURL}">
+		<template:then>
+			<control:FormElementWrapper visible="{= ${dataField>@@COMMON.getHiddenPathExpression}}">
+				<Avatar
+					id="{= ${this>_flexId} || (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-content']) : undefined) }"
+					src="{property>@@MODEL.value}"
+					displaySize="S"
+					class="sapUiSmallMarginEnd"
+					displayShape="Square"
+				>
+				</Avatar>
+			</control:FormElementWrapper>
+		</template:then>
+		<template:else>
+			<template:if test="{= RegExp('image/','i').test(${property>$Path@Org.OData.Core.V1.MediaType})}">
+				<template:then>
+					<control:FormElementWrapper visible="{= ${dataField>@@COMMON.getHiddenPathExpression}}">
+						<Avatar
+							id="{= ${this>_flexId} || (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-content']) : undefined) }"
+							src="{property>@@MODEL.value}"
+							displaySize="S"
+							class="sapUiSmallMarginEnd"
+							displayShape="Square"
+						>
+						</Avatar>
+					</control:FormElementWrapper>
+				</template:then>
+				<template:else>
+					<control:FormElementWrapper visible="{= ${dataField>@@COMMON.getHiddenPathExpression}}">
+						<HBox alignItems="Center">
+							<core:Icon src="sap-icon://document" class="sapUiSmallMarginEnd" />
+							<Link
+								text="{this.i18n>M_DATAFIELD_FRAGMENT_FIELD_PREVIEW}"
+								target="_blank"
+								href="{property>@@MODEL.value}"
+								ariaLabelledBy="{this>ariaLabelledBy}"
+							/>
+						</HBox>
+					</control:FormElementWrapper>
+				</template:else>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

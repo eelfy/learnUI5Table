@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/demo/PersSrvTest/Component-h2-preload.js",
+"sourceroot":".",
+"sources":["Component-dbg.js","manifest.json"],
+"names":["oComponentData"],
+"mappings":";;uDAEA,4DACA,8CAGA,uEAAwE,CAEpE,SAAU,CAAE,KAEZ,QAAS,CAAE,CACP,SAAU,MACd,EAEA,aAAc,CAAE,QAAS,EAAG,CACxB,aACA,IAAIA,CAAe,CAAE,qBAAsB,EAAG,wBAE9C,cAAe,CAAE,kDAEjB,OAAO,eACX,CAEJ;;;;;;;;;;;",
+"x_com_sap_openui5_sections":[135,550,597,1420]
+}

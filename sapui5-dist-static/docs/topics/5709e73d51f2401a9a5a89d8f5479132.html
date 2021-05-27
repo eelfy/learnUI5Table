@@ -1,0 +1,188 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5709e73d51f2401a9a5a89d8f5479132" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Dialog Controls</h1><div class="fig"><h1 class="topictitle1 title">Dialog Controls</h1><div class="shortdesc">SAPUI5 dialog controls can
+		serve different purposes within the application and are therefore handled differently by the
+		screen reader. </div><section>
+			<h2 class="title ">General Behavior</h2>
+			<p>Dialog controls are used to interact with the user in two main ways. Popups, message boxes,
+				and busy dialogs interrupt the user and require some additional interaction. Message
+				toast and message strip are used to just display some status information without
+				interrupting the user. Interrupting dialogs have a more complex structure, but all
+				generally follow the same structure - a title, content area and some actions. The
+				title should be the first thing read by the screen reader. It should explain the
+				general purpose of the dialog (i.e. Data confirmation, Interruption). If the dialog
+				contains initially focused elements, like action buttons, those should be read after
+				the title announcement. The contents of the dialog should be read in their
+				respective order. </p>
+		</section><section><h2 class="title ">Titles and Labels</h2>
+			<p>The behavior of controls based on Dialog/Popup (<code>role="dialog"</code>)
+				changes depending on their <code>aria-labelledby</code> attribute.</p>
+			<p>If the the control has an <code>aria-labelledby</code> attribute, the screen
+				reader will announce the following elements:</p><ul class="ul ">
+					<li class="li">
+						<p>The provided label</p>
+					</li>
+					<li class="li">
+						<p>The role of the dialog</p>
+					</li>
+					<li class="li">
+						<p>The currently focused element</p>
+					</li>
+				</ul><p></p>
+			<p>If the the control does NOT have an <code>aria-labelledby</code> attribute, the
+				screen reader will announce the following elements:</p><ul class="ul ">
+					<li class="li">
+						<p>All elements in the dialog (regardless if interactive or not)</p>
+					</li>
+					<li class="li">
+						<p>The role of the dialog</p>
+					</li>
+					<li class="li">
+						<p>The currently focused element</p>
+					</li>
+				</ul><p></p>
+			<p>The <code>title</code> property of a Popover/Dialog is used to display the title of the
+				dialog. If the dialog has no visible title, but one is needed, it can be provided as
+				a reference to another control in <code>aria-labelledby</code>. All other text
+				that needs to be read before the title, can be added there as well. </p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>A dialog without a title will be read completely when it appears. Users with
+					screen readers will not be able to differentiate it from the rest of the
+					application.</p>
+			<p></p></div></div>
+			<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>Dialog with <code>ariaLabelledBy</code>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">	var oDialog = new sap.m.Dialog({
+				title: "Dialog Title",
+				ariaLabelledBy: "textId",
+				content: [
+					new sap.m.Text({id: "textId", text: "A sample text that will be annoucned by JAWS after the title, when the dialog is opened."})
+				]
+			});
+			
+			var btn = new sap.m.Button({
+				text:'Hello World',
+				press: function(){
+					oDialog.open();
+				}
+			});
+			btn.placeAt('content');</pre></div></section><p></p></div></div>
+			<p>More detailed behavior is described in the table below.</p>
+		</section><section>
+			<h2 class="title ">Detailed Behavior</h2>
+			<p>In the following table you can see how the different dialog controls are read by the
+				screen reader. </p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_mv5_wrs_xw" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>SAPUI5 Control </p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>What is read by default</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Dialog / Select Dialog</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>Dialog title</p>
+									</li>
+									<li class="li">
+										<p>Initially focused element</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Busy Dialog</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>Dialog header</p>
+									</li>
+									<li class="li">
+										<p>Dialog message</p>
+									</li>
+									<li class="li">
+										<p>Progress bar</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Message Box</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>Dialog title</p>
+									</li>
+									<li class="li">
+										<p>Dialog message</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Message Toast</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>Message text when the toast appears</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Message Popover / Popover</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>No specific element needs to be read or focused. </p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Message Strip</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<ul class="ul ">
+									<li class="li">
+										<p>The complete content including text, icons and links</p>
+									</li>
+									<li class="li">
+										<p>Message type</p>
+									</li>
+									<li class="li">
+										<p>Associated headings (if any)</p>
+									</li>
+								</ul>
+								<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+									</p><p>The <span class="ph uicontrol">Close</span> button should not be read
+										initially. </p>
+								<p></p></div></div>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

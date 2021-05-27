@@ -1,0 +1,38 @@
+<mvc:View
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:smartField="sap.ui.comp.smartfield"
+		xmlns:m="sap.m" height="100%"
+		controllerName="sap.ui.comp.sample.smartfield.WithValueListAndConstantParameter.Main"
+		xmlns:form="sap.ui.comp.smartform">
+
+	<m:ScrollContainer id="SC1" height="100%" horizontal="false" vertical="true">
+		<form:SmartForm id="form" editable="true"
+			title="Smart Field with ValueList annotation">
+			<form:layout>
+				<form:ColumnLayout
+						columnsM="1"
+						columnsL="1"
+						columnsXL="1"/>
+			</form:layout>
+			<form:Group label="Smart Field with ValueList annotation without any constant parameters"  >
+				<form:GroupElement>
+					<smartField:SmartField id="code" width="60%" value="{CODE}"/>
+				</form:GroupElement>
+			</form:Group>
+
+			<form:Group label="Smart Field with ValueList annotation and constant parameter with value Asia"  >
+				<form:GroupElement>
+					<smartField:SmartField id="codeAsia" width="60%" value="{CODE_ASIA}"/>
+				</form:GroupElement>
+			</form:Group>
+
+			<form:Group label="Smart Field with ValueList annotation and constant parameter with value Europe">
+				<form:GroupElement>
+					<smartField:SmartField id="codeEurope" width="60%" value="{CODE_EUROPE}" contextEditable="true"/>
+				</form:GroupElement>
+			</form:Group>
+		</form:SmartForm>
+	</m:ScrollContainer>
+
+</mvc:View>

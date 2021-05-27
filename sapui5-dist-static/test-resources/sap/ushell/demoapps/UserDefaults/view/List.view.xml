@@ -1,0 +1,19 @@
+<core:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controllerName="sap.ushell.demo.UserDefaults.view.List">
+    <Page>
+        <content>
+            <List includeItemInSelection="false" mode="SingleSelectMaster" selectionChange="onViewSelectionChange">
+                <items>
+                    <StandardListItem id="editor" title="Simple Editor" description="Edit available user default values" />
+                    <StandardListItem
+                        id="usedParams"
+                        title="Used Default Parameters"
+                        description="Shows defaults used in Target Mappings" />
+                    <StandardListItem id="showEvents" title="Show User Default Store Events" description="Shows events" />
+                </items>
+            </List>
+        </content>
+    </Page>
+</core:View>

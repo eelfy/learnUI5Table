@@ -1,0 +1,89 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob8c4e534cdb440e9a5bbff86f9572bd6" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 11: Validation Using the Message Manager</h1><div class="fig"><h1 class="topictitle1 title">Step 11: Validation Using the Message Manager</h1><div class="shortdesc">So far, we have created a currency field that can format itself correctly. The currency data type also has the ability to validate that user input
+		adheres to to the requirements of a currency; however, data type validation functions are managed by SAPUI5, which of itself has no mechanism for reporting error messages back to the UI;
+		therefore, we need a mechanism for reporting error messages raised by validation functions back to the user. In this step, we will connect the entire
+		view to a feature known as the "Message Manager". Once this connection is established, any validation error messages generated based on the user input
+		will be passed to the message manager which in turn will connect them to the appropriate view and control that caused the error.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loioe67207b43d08410e82e74ad57ffbc022_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">A message appears</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.11/preview" title="#/sample/sap.ui.core.tutorial.databinding.11/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.11/preview">Data Binding - Step 11</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView",
+	"sap/ui/model/resource/ResourceModel"
+], function (JSONModel, XMLView, ResourceModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true,
+			address: {
+				street: "Dietmar-Hopp-Allee 16",
+				city: "Walldorf",
+				zip: "69190",
+				country: "Germany"
+			},
+			salesAmount: 12345.6789,
+			currencyCode: "EUR"
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		var oResourceBundle = new ResourceModel({
+			bundleName: "sap.ui.demo.db.i18n.i18n",
+			supportedLocales: ["", "de"],
+			fallbackLocale: ""			
+		});
+
+		sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+		// Display the XML view called "App"
+<span class="emphasis">		var oView </span>= new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		});
+
+<span class="emphasis">		// Register the view with the message manager
+		sap.ui.getCore().getMessageManager().registerObject(oView, true);
+</span>
+
+		// Insert the view into the DOM
+		<span class="emphasis">oView</span>.placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>The changes to the coding are minimal:</p><ul class="ul ">
+					<li class="li">
+						<p>The XML view is now created as a named object called
+								<code>oView</code>.</p>
+					</li>
+					<li class="li">
+						<p>The view object <code>oView</code> is registered with the
+								<code>MessageManager</code>.</p>
+					</li>
+					<li class="li">
+						<p>Once registered, the XML view is then inserted into the DOM as
+							before.</p>
+					</li>
+				</ul><p></p>
+			<p>You can now enter a non-numeric value into the <span class="ph uicontrol">Sales Amount</span> field and either press <span class="keyWrap"><kbd class="key">Enter</kbd></span> or move the focus to
+				a different UI control. This action triggers either the <code>onenter</code> or <code>onchange</code> event and then SAPUI5 executes the validation function belonging to the
+					<code>sap.ui.model.type.Currency</code> data type.</p>
+			<p>Now that the view has been registered with the <code>MessageManager</code>, any
+				validation error messages will be picked up by the <code>MessageManager</code>,
+				which in turn checks its list of registered objects and then passes the error
+				message back to the correct view for display.</p>
+			<p>Note that the field in error has a red border: <img src="loio44db88e92bc445b2b00e1b8e53b5ca9a_HiRes.png" usemap="#">
+			</p>
+			<p>However, the error message itself will only be displayed when that particular field
+				has focus: <img src="loioe67207b43d08410e82e74ad57ffbc022_HiRes.png" usemap="#"></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/9252ee4015f24fc49c71c295394d1b8d">Step 10: Property Formatting Using Data Types</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/97830de2d7314e93b5c1ee3878a17be9">Step 12: Aggregation Binding Using Templates</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/62b1481d3e084cb49dd30956d183c6a0.html" title="SAPUI5 provides a central place for storing and managing info, warning, and error messages." class="sap-doc">Error, Warning, and Info Messages</a></li>
+	</ul></section></div></section></div></body></html>

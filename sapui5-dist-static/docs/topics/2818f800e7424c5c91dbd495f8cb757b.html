@@ -1,0 +1,689 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2818f800e7424c5c91dbd495f8cb757b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">What's New in SAPUI5
+		1.48</h1><div class="fig"><h1 class="topictitle1 title">What's New in SAPUI5
+		1.48</h1><div class="shortdesc">With
+		this release, SAPUI5 is
+		upgraded from version 1.46 to 1.48.</div><section id="section_u3h_3mg_yz" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Third-Party Library Upgrades</h2></div><div class="fig"><ul class="ul ">
+				<li class="li">
+					<p>The <code>Handlebars.js</code> library has been upgraded from version
+						3.0.3 to 4.0.5. If you access the parent contexts in your Handlebars
+						templates, make sure that you pass the <code>compat</code> flag when
+						compiling:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Handlebars.compile(source, {
+	compat: true
+});
+</pre></div></section><p></p>
+					<p>This change has also been applied to the SAPUI5 versions
+						that are still in maintenance (1.28, 1.38., 1.44).</p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">QUnit</span> version 2.3.2 has been added (module
+							<code>sap.ui.thirdparty.qunit-2</code>, resources
+							<code>sap/ui/thirdparty/qunit-2.js</code>).</p>
+				</li>
+			</ul></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Features</h2></div><div class="fig"><section>
+				<h3 class="title ">Support Assistant and Other Support Tools</h3>
+				<p>The new Support Assistant tool enables application developers to check whether
+					they have built their applications in accordance with the best practices for
+					building SAPUI5
+					apps. The tool uses a set of predefined rules to check all aspects of an
+					application, for example, accessibility, performance, data-binding, and more.
+					Support Assistant is integrated into One Page Acceptance Tests (OPA5) and can be
+					used as part of OPA tests.</p>
+				<p>The main features of the tool are:</p><ul class="ul ">
+						<li class="li"><p>Creation and management of support rules</p></li>
+						<li class="li"><p>Application analysis</p></li>
+						<li class="li"><p>Results reporting</p></li>
+					</ul><p></p>
+				<div><div class="fig"><img src="loio78e276855353468591838dab8465b0a4_LowRes.png" usemap="#"></div></div>
+				<p>For more information, see <a href="#/topic/57ccd7d7103640e3a187ed55e1d2c163.html" title="The Support Assistant enables developers to check whether their apps are built according to the SAPUI5 best practices and guidelines." class="sap-doc">Support Assistant</a>.</p>
+				<p>We have also redesigned the other support tools, <span class="ph uicontrol">Technical Information
+						Dialog</span> and <span class="ph uicontrol">Diagnostics</span>, reworked the
+						<a href="#/topic/615d9e4aaa34447fbd4aa5f19dfde9b8.html" title="This section describes the various tools that are available for troubleshooting apps developed with SAPUI5" class="sap-doc">Troubleshooting</a> documentation section
+					under <span class="ph uicontrol">Essentials</span>, and created a <a href="#/topic/5661952e72df471b932eddc10350c081.html" title="In this tutorial, we will show you some tools that will help you if you run into problems with your SAPUI5 app." class="sap-doc">Troubleshooting</a> tutorial. </p>
+			</section><section>
+				<h3 class="title ">Reuse Components</h3>
+				<p>You now declare reuse components in the descriptor for applications
+						(<code>manifest.json</code>). A new factory function has been
+					introduced for creating reuse component instances within the context of the
+					current component. You can extend apps easily on the component level by
+					replacing the usage of a reuse component with a variant that modifies the
+						<code>manifest.json</code> values for the reuse component.</p>
+				<p>Another benefit is that the application index can index the declared reuse
+					components. It can then optimize the determination of dependencies that should
+					be preloaded during the component load. This is especially helpful for
+					components that are packaged in libraries, since up to now the application could
+					not identify and avoid a separate preload for these components (which ended in a
+					404 error).</p>
+				<p>You don't have to migrate old applications to the new logic to keep them working.
+					But if you want to benefit from further improvements with regards to component
+					loading and performance, as well as component extensibility (replace reuse
+					component), you should consider updating the component usage accordingly.</p>
+				<p>For more information, see <a href="#/topic/346599f0890d4dfaaa11c6b4ffa96312.html" title="You can use a ComponentContainer to wrap a UIComponent and reuse it anywhere within the SAPUI5 control tree. With the ComponentContainer you can nest components inside other components." class="sap-doc">Using and Nesting Components</a>
+					and <a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html" title="The descriptor for applications, components, and libraries (in short: app descriptor) is inspired by the WebApplication Manifest concept introduced by the W3C. The descriptor provides a central, machine-readable, and easy-to-access location for storing metadata associated with an application, an application component, or a library." class="sap-doc">Descriptor for Applications, Components, and Libraries</a>.</p>
+			</section><section>
+				<h3 class="title ">Object Page Personalization (experimental)</h3>
+				<p>SAPUI5 flexibility services now support personalization of the object page.
+					Activate this experimental feature and try it out!</p>
+				<p>For more information, search for <span class="ph uicontrol">Personalizing Apps</span> in the
+					documentation for your SAP NetWeaver version on the
+					SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a>.</p>
+			</section><section>
+				<h3 class="title ">Theme Parameter Tool</h3>
+				<p>There is a new theme parameter tool for finding the best-fitting semantic LESS
+					parameter for a new control. With this tool you can easily search, filter, and
+					preview theme parameters.</p>
+				<p>With the tool, you can also preview all supported SAP themes and find information
+					about the semantic parameter structure.</p>
+				<div><div class="fig"><img src="loiof1355e7d44ae495190f31d2835fcf67d_LowRes.png" usemap="#"></div></div>
+				<p>To find the tool, see <a href="#/demoapps" title="#/demoapps" class="sap-doc" alt="#/demoapps">Demo Apps</a>.</p>
+			</section></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Controls</h2></div><div class="fig"><ul class="ul ">
+				<li class="li">
+					<p><code>sap.m.MessageView</code>: Displays a summarized list of different
+						types of messages. The <code>MessageView</code> is used to show the
+						contents of <code>sap.m.MessagePopover</code>, but it can also be used
+						in other container controls like <code>sap.m.Dialog</code>.</p>
+					<p><code>sap.m.MessageView</code> also allows grouping of messages by
+						setting the property <code>groupItems</code> and defining a
+							<code>groupName</code> for each item. For
+							more information, see the <a href="#/api/sap.m.MessageView" title="#/api/sap.m.MessageView" class="sap-doc" alt="#/api/sap.m.MessageView">API Reference</a> and the <a href="#/sample/sap.m.sample.MessageViewWithGrouping/preview" title="#/sample/sap.m.sample.MessageViewWithGrouping/preview" class="sap-doc" alt="#/sample/sap.m.sample.MessageViewWithGrouping/preview">samples</a>.</p>
+					<div><div class="fig"><img src="loio6244b88b28cd446c839efd081c44087d_LowRes.png" usemap="#"></div></div>
+				</li>
+				<li class="li">
+					<p><code>sap.m.CustomTreeItem</code>: Similar to
+							<code>sap.m.CustomListItem</code> for the
+							<code>sap.m.List</code> control, the
+							<code>sap.m.CustomTreeItem</code> control allows you to define
+						custom item content for <code>sap.m.Tree</code>. For
+							more information, see the <a href="#/api/sap.m.CustomTreeItem" title="#/api/sap.m.CustomTreeItem" class="sap-doc" alt="#/api/sap.m.CustomTreeItem">API Reference</a> and the <a href="#/sample/sap.m.sample.CustomTreeItem/preview" title="#/sample/sap.m.sample.CustomTreeItem/preview" class="sap-doc" alt="#/sample/sap.m.sample.CustomTreeItem/preview">sample</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.PDFViewer</code> enables SAP Fiori developers to display PDF
+						files in a consistent way across all browsers and devices. It encapsulates
+						browser-specific PDF viewer plugins and provides a simple API to embed a PDF
+						file into a page or to open it in a dialog box. For
+							more information, see <a href="#/topic/cd80a8bca4ac450b86547d78f0653330.html" title="PDF viewer can be used to display PDF documents within your app, which enables your users to preview PDF documents before printing or downloading them." class="sap-doc">PDF Viewer</a>, the <a href="#/api/sap.m.PDFViewer" title="#/api/sap.m.PDFViewer" class="sap-doc" alt="#/api/sap.m.PDFViewer">API Reference</a>, and the <a href="#/entity/sap.m.PDFViewer" title="#/entity/sap.m.PDFViewer" class="sap-doc" alt="#/entity/sap.m.PDFViewer">sample</a>.
+						</p>
+					<div><div class="fig"><img src="loio3c7c40d76e704eefa3870adb99144275_LowRes.png" usemap="#"></div></div>
+				</li>
+				<li class="li">
+					<p><code>sap.rules.ui.RuleBuilder</code> enables business users to create,
+						edit, and view a decision table in an application. A decision table is a
+						tabular visualization of a business rule. The Rule Builder control supports
+						the following:</p><ul class="ul ">
+							<li class="li">
+								<p>Setting the decision table’s hit policy (first match or all
+									match).</p>
+							</li>
+							<li class="li">
+								<p>Defining the condition columns (<code>if</code> statements)
+									of the decision table.</p>
+							</li>
+							<li class="li">
+								<p>Choosing the results set (<code>then</code> statements) of
+									the decision table.</p>
+								<div><div class="fig"><img src="loio165859e415ec4475a0b6181d5e070b8f_LowRes.png" usemap="#"></div></div>
+							</li>
+							<li class="li">
+								<p>Setting each column’s input mode:</p><ul class="ul ">
+										<li class="li">
+											<p><span class="emphasis">Guided input mode</span> (default)
+												guides the user through the process of entering
+												values for conditions in decision table cells.</p>
+											<div><div class="fig"><img src="loiodf20da4865c940c5ba5add483a891291_LowRes.png" usemap="#"></div></div>
+										</li>
+										<li class="li">
+											<p><span class="emphasis">Text input mode</span> allows the user
+												to enter text directly into conditions in decision
+												table cells, and provides support via auto-suggest
+												and validation services.</p>
+											<div><div class="fig"><img src="loio5d6c1e1a7ab54db4bf5725e8e51d43e9_LowRes.png" usemap="#"></div></div>
+										</li>
+									</ul><p></p>
+							</li>
+							<li class="li">
+								<p>In both input modes, the client-side parser provides
+									auto-suggestion and validation of values from the business
+									vocabulary and business language relevant to the specific
+									decision table. Errors are highlighted and messages provide
+									alternative suggestions.</p>
+								<div><div class="fig"><img src="loiocd91cc4575d245e9a89e5271f670c928_LowRes.png" usemap="#"></div></div>
+							</li>
+							<li class="li">
+								<p>Performing copy, cut, paste, insert after, and insert before
+									actions on a row of a decision table. </p>
+								<div><div class="fig"><img src="loio3ef33289ac3942748dad85953993c8f6_LowRes.png" usemap="#"></div></div>
+							</li>
+						</ul><p></p><p>For
+							more information, see <a href="#/topic/67fcb301d0504fd4a24915edf4058c51.html" title="In this tutorial you will learn how to embed a rule builder control to manage business rules in your application." class="sap-doc">Rule Builder Control</a>, the <a href="#/api/sap.rules.ui.RuleBuilder" title="#/api/sap.rules.ui.RuleBuilder" class="sap-doc" alt="#/api/sap.rules.ui.RuleBuilder">API Reference</a>, and the <a href="#/entity/sap.rules.ui.RuleBuilder" title="#/entity/sap.rules.ui.RuleBuilder" class="sap-doc" alt="#/entity/sap.rules.ui.RuleBuilder">sample</a>.
+						
+					</p>
+				</li>
+				<li class="li">
+					<p><code>sap.suite.ui.microchart.LineMicroChart</code>:
+							<code>LineMicroChart</code> is used primarily for embedded analytics
+						applications and is designed to display a set of ordered points. These
+						points are connected via lines that showcase a data progression for a
+						specific data range. To display additional details, up to four labels can be
+						added to provide, for example, key values or dimensions.</p>
+					<p><code>LineMicroChart</code> provides regular points or emphasized points
+						with or without semantic colors. It offers a standard line diagram with an
+						automatically determined or predefined scale (with optional threshold).</p>
+					<div><div class="fig"><img src="loio1eeae4e9a78e4fd78aa43d0462d28f48_LowRes.png" usemap="#"></div></div>
+					<p>For more
+						information, see the <a href="#/api/sap.suite.ui.microchart.LineMicroChart" title="#/api/sap.suite.ui.microchart.LineMicroChart" class="sap-doc" alt="#/api/sap.suite.ui.microchart.LineMicroChart">API Reference</a> and the <a href="#/entity/sap.suite.ui.microchart.LineMicroChart" title="#/entity/sap.suite.ui.microchart.LineMicroChart" class="sap-doc" alt="#/entity/sap.suite.ui.microchart.LineMicroChart">samples</a>.</p>
+				</li>
+			</ul></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Features</h2></div><div class="fig"><section>
+				<h3 class="title ">Improved Script Loading</h3>
+				<p>If loading a resource fails, a second retry is done.</p>
+			</section><section>
+				<h3 class="title ">Date Intervals</h3>
+				<p>The <code>DateFormat</code> can format two dates as an interval. For more
+					information, see <a href="#/topic/91f2eba36f4d1014b6dd926db0e91070.html" title="The sap.ui.core.format.DateFormat class can be used to parse a string representing a date, time, or the combination of date and time into a JavaScript date object and vice versa (also known as format). DateFormat formats and parses date and time values according to a set of format options. It can also be used to format intervals. A pattern base on Locale Data Markup Language (LDML) date format notation can be given and the date is formatted following the given pattern. DateFormat can also format the date and time into relative values on &quot;day&quot; level." class="sap-doc">Date Format</a>.</p>
+			</section><section>
+				<h3 class="title ">SAPUI5
+					OData V4 Model</h3>
+				<p>The new version of the SAPUI5 OData V4
+					model introduces the following features:</p><ul class="ul ">
+						<li class="li">
+							<p>Automatic determination of <code>$select</code> and
+									<code>$expand</code> parameters for OData V4 requests by
+								setting <code>autoExpandSelect</code> in the model settings to
+									<code>true</code>.</p>
+						</li>
+						<li class="li">
+							<p>Automatic loading of "cross-service references" (a service that
+								references metadata from other documents) by the OData V4 model when
+								metadata from the referenced document is needed.</p>
+						</li>
+						<li class="li">
+							<p>Support of the V4-specific <code>lambda</code> operators
+									<code>any</code> and <code>all</code> on collections
+								with new filter operators <code>FilterOperator.All</code> and
+									<code>FilterOperator.Any</code> and it is possible to create
+								entities on relative bindings</p>
+						</li>
+					</ul><p></p>
+				<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+					</p><p><span class="emphasis">Incompatibility Due to Bug Fix</span></p>
+					<p>The following bug has been reported: If you call the <a href="#/api/sap.ui.model.odata.v4.Context/methods/getObject" title="#/api/sap.ui.model.odata.v4.Context/methods/getObject" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.Context/methods/getObject">sap.ui.model.odata.v4.Context#getObject()</a> or the <a href="#/api/sap.ui.model.odata.v4.Context/methods/requestObject" title="#/api/sap.ui.model.odata.v4.Context/methods/requestObject" class="sap-doc" alt="#/api/sap.ui.model.odata.v4.Context/methods/requestObject">sap.ui.model.odata.v4.Context#requestObject()</a> methods without
+						a parameter, the expected and documented behavior is that the same result is
+						returned as if the parameter <code>sPath=""</code> had been specified.
+						Due to the bug, however, the return value wraps the expected output that can
+						then only be accessed via <code>.value[0]</code>, for example
+							<code>oContext.getObject().value[0]</code>.</p>
+					<p><span class="emphasis">If you have used this workaround, your application will break
+							starting with SAPUI5
+							version 1.44.7.</span></p>
+					<p><span class="emphasis">Solution</span>: If your application needs to run with both the
+						fixed and unfixed versions of SAPUI5, specify
+						the <code>sPath=""</code> parameter, for <code>sPath</code>
+						parameter. In both cases, you <span class="emphasis">must not</span> use the
+						workaround with <code>.value[0]</code>.</p>
+				<p></p></div></div>
+				<div class="note restriction  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Restriction
+				</strong></div></div><div class="fig"><p>
+					</p><p>Due to the limited feature scope of this version of the SAPUI5 OData V4
+						model, check that all required features are in place before developing
+						applications. Check the detailed documentation of the features, as certain
+						parts of a feature may be missing. While we aim to be compatible with
+						existing controls, some controls might not work due to small
+						incompatibilities compared to
+							<code>sap.ui.model.odata.(v2.)ODataModel</code>, or due to missing
+						features in the model (such as tree binding). This also applies to Smart Controls (<code>sap.ui.comp</code> library) and SAP Fiori
+							Elements that do not support the SAPUI5
+							OData V4 model, as well as controls such as
+							<code>TreeTable</code> and <code>AnalyticalTable</code>, which
+						are not supported together with the SAPUI5 OData V4
+						model. The interface for applications has been changed for easier and more
+						efficient use of the model. For a summary of these changes, see <a href="#/topic/abd4d7c7548d4c29ab8364d3904a6d74.html" title="This section outlines the main differences between the OData V2 and OData V4 models." class="sap-doc">Changes Compared to OData V2 Model</a>.</p>
+				<p></p></div></div>
+				
+				<p>For more
+					information, see <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>, the
+						<a href="#/api/sap.ui.model.odata.v4" title="#/api/sap.ui.model.odata.v4" class="sap-doc" alt="#/api/sap.ui.model.odata.v4">API Reference</a>, and the <a href="#/entity/sap.ui.model.odata.v4.ODataModel" title="#/entity/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/entity/sap.ui.model.odata.v4.ODataModel">sample</a> in the Demo Kit. </p>
+			</section><section>
+				<h3 class="title ">One Page Acceptance Tests (OPA5)</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>You can now provide OPA test and application parameters in the URL.
+								This allows you to override the default values for individual test
+								executions. For more information, see <a href="#/topic/ce4b180d97064ad088a901b53ed48b21.html" title="Advanced topics and best practices for OPA tests." class="sap-doc">Cookbook for OPA5</a> and the API
+									Reference for <a href="#/api/sap.ui.test.Opa/methods/extendConfig" title="#/api/sap.ui.test.Opa/methods/extendConfig" class="sap-doc" alt="#/api/sap.ui.test.Opa/methods/extendConfig">sap.ui.test.Opa.extendConfig</a> and <a href="#/api/sap.ui.test.Opa5/methods/sap.ui.test.Opa5.extendConfig" title="#/api/sap.ui.test.Opa5/methods/sap.ui.test.Opa5.extendConfig" class="sap-doc" alt="#/api/sap.ui.test.Opa5/methods/sap.ui.test.Opa5.extendConfig">sap.ui.test.Opa5.extendConfig</a>.
+								</p>
+						</li>
+						<li class="li">
+							<p>You can now extend the testing capabilities of OPA with your own
+								extensions. For more information, see <a href="#/topic/9c22d2ada0414d97837b845e1e85ab86.html" title="Extend OPA capabilities with custom extensions." class="sap-doc">Extensions for OPA5</a> and the
+										<a href="#/api/sap.ui.test.OpaExtension" title="#/api/sap.ui.test.OpaExtension" class="sap-doc" alt="#/api/sap.ui.test.OpaExtension">API Reference</a>.
+								</p>
+						</li>
+					</ul>
+				<p></p>
+			</section><section>
+				<h3 class="title ">UI Adaptation at Runtime</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>UI adaptation at runtime now supports many additional SAPUI5
+								controls. Find out how to develop apps supporting it (also whether
+								your app supports it already) and how to enable apps for it. For
+								more information, see <a href="#/topic/f1430c0337534d469da3a56307ff76af.html" title="Here's what you have to consider when developing apps that support UI adaptation." class="sap-doc">SAPUI5 Flexibility: Enable Your App for UI Adaptation</a>.</p>
+						</li>
+						<li class="li">
+							<p>As stable IDs are an important prerequisite for SAPUI5
+								flexibility services, and thus for UI adaptation at runtime, we
+								revamped the documentation. Find out why stable IDs are needed and
+								how to use and name them. For more information, see <a href="#/topic/f51dbb78e7d5448e838cdc04bdf65403.html" title="Stable IDs are IDs for controls, elements, or components that you set yourself in the respective id property or attribute as opposed to IDs that are generated by SAPUI5. Stable means that the IDs are concatenated with the application component ID and do not have any auto-generated parts." class="sap-doc">Stable IDs: All You Need to Know</a>. </p>
+						</li>
+						<li class="li">
+							<p>Key users can now also edit UI elements, which are not directly on
+								the UI but are triggered by an action or must be navigated to, such
+								as dialog boxes and popups.</p>
+							<p>For more information, search for <span class="ph uicontrol">Adapting SAP Fiori UIs at
+									Runtime</span> in the documentation for your <a href="https://help.sap.com/viewer/p/SAP_NETWEAVER" title="https://help.sap.com/viewer/p/SAP_NETWEAVER" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_NETWEAVER</a> version on the SAP Help Portal.</p>
+						</li>
+					</ul>
+				<p></p>
+			</section></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Controls</h2></div><div class="fig"><ul class="ul ">
+				<li class="li">
+					<p><code>sap.f.Avatar</code>: With the use of the new
+							<code>detailBox</code> aggregation, you can automatically open a
+							<code>sap.m.LightBox</code> instance on user interaction with the
+							<code>sap.f.Avatar</code>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.f.DynamicPage</code>: It is now possible to initialize the
+						control with collapsed header. To enable the feature, set property
+							<code>headerExpanded</code> to false.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.gantt:</code></p><ul class="ul ">
+							<li class="li">
+								<p><span class="emphasis">Time period zooming</span>: You can press button
+										<span class="ph uicontrol">Z</span> to activate the time period zooming
+									mode. In this mode, you are able to fill the full chart area
+									with a selected period of time. To indicate the start and end of
+									the time period, move the mouse along the timeline with the left
+									button pressed.</p>
+							</li>
+							<li class="li">
+								<p><span class="emphasis">Additional vertical lines</span>: You can use the
+										<code>AdhocLine</code> class to draw additional vertical
+									lines at specific time points in the chart area. These vertical
+									lines help you mark milestones, such as the start of a project,
+									and special events, such as holidays.</p>
+							</li>
+						</ul>For more information, see the <a href="#/api/sap.gantt.AdhocLine" title="#/api/sap.gantt.AdhocLine" class="sap-doc" alt="#/api/sap.gantt.AdhocLine">API Reference</a> and the <a href="#/sample/sap.gantt.sample.BasicGanttChart/preview" title="#/sample/sap.gantt.sample.BasicGanttChart/preview" class="sap-doc" alt="#/sample/sap.gantt.sample.BasicGanttChart/preview">samples</a>.<p></p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.ComboBox</code> now highlights matching characters in the
+						dropdown list. This behaviour is now aligned with all select controls.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.DatePicker</code>: You can now set specific date or date
+						ranges as non-working days by using the new type of the
+							<code>sap.ui.unified.DateTypeRange</code> class,
+							<code>sap.ui.unified.CalendarDayType.NonWorking</code>. </p>
+					<p>For more
+						information, see the <a href="#/sample/sap.m.sample.DatePicker/preview" title="#/sample/sap.m.sample.DatePicker/preview" class="sap-doc" alt="#/sample/sap.m.sample.DatePicker/preview">sample</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.GenericTile</code>: With a new overflow concept that allows
+						more flexibility in the layout of the tile designs, generic tiles are
+						displayed in <code>LineMode</code> like list items when the screen width
+						is less than 450px. With a screen width greater than 450px, the tiles are no
+						longer truncated and the complete text is shown in a wrapped in-line
+						design.</p>
+					<p><code>Compact</code> and <code>Cozy</code> content densities are
+						available for small (&lt; 450px) and large (&gt; 450px) screens. For
+							more information, see the <a href="#/api/sap.m.GenericTile" title="#/api/sap.m.GenericTile" class="sap-doc" alt="#/api/sap.m.GenericTile">API Reference</a> and the <a href="#/entity/sap.m.GenericTile" title="#/entity/sap.m.GenericTile" class="sap-doc" alt="#/entity/sap.m.GenericTile">samples</a>.
+					</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.PlanningCalendar</code>:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>You can now set specific date or date ranges as non-working days by
+								using the new type of the
+									<code>sap.ui.unified.DateTypeRange</code> class,
+									<code>sap.ui.unified.CalendarDayType.NonWorking</code>.</p>
+						</li>
+						<li class="li">
+							<p>You can now expand the grouping of overlapping appointments in the
+								months view of the <code>sap.m.PlanningCalendar</code>. You can
+								do this by setting the new property
+									<code>groupAppointmentsMode</code> to
+									<code>sap.ui.unified.GroupAppointmentsMode.Expanded</code>.</p>
+							<p>For more information, see the <a href="#/api/sap.m.PlanningCalendar/methods/getGroupAppointmentsMode" title="#/api/sap.m.PlanningCalendar/methods/getGroupAppointmentsMode" class="sap-doc" alt="#/api/sap.m.PlanningCalendar/methods/getGroupAppointmentsMode">API Reference</a> and the
+									<a href="#/sample/sap.m.sample.PlanningCalendarViews/preview" title="#/sample/sap.m.sample.PlanningCalendarViews/preview" class="sap-doc" alt="#/sample/sap.m.sample.PlanningCalendarViews/preview">samples</a>.</p>
+						</li>
+					</ul>
+				</li>
+				<li class="li">
+					<p><code>sap.m.TextArea</code> controls with a limited text length can
+						determine how to handle text that exceeds that length. By setting
+							<code>showExceededText=true</code>, you can decide if those
+						characters are visible or cut. The text area changes its value state and
+						shows a counter of the extra characters when the threshold is reached. For
+							more information, see the <a href="#/api/sap.m.TextArea/methods/setShowExceededText" title="#/api/sap.m.TextArea/methods/setShowExceededText" class="sap-doc" alt="#/api/sap.m.TextArea/methods/setShowExceededText">API Reference</a> and the <a href="#/sample/sap.m.sample.TextAreaMaxLength/preview" title="#/sample/sap.m.sample.TextAreaMaxLength/preview" class="sap-doc" alt="#/sample/sap.m.sample.TextAreaMaxLength/preview">sample</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.UploadCollection</code>: When grouping of
+							<code>UploadCollectionItems</code> you can now provide the grouping
+						feature for <code>UploadCollection</code>. After you have selected the
+						grouping criteria, the grouping information is displayed as group header in
+						the upload collection list. For
+							more information, see the <a href="#/api/sap.m.UploadCollectionItem" title="#/api/sap.m.UploadCollectionItem" class="sap-doc" alt="#/api/sap.m.UploadCollectionItem">API Reference</a> and the <a href="#/sample/sap.m.sample.UploadCollectionSortingFiltering/preview" title="#/sample/sap.m.sample.UploadCollectionSortingFiltering/preview" class="sap-doc" alt="#/sample/sap.m.sample.UploadCollectionSortingFiltering/preview">samples</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.m.Wizard</code> now allows editing of any step in the sequence.
+						By using the association <code>currentStep</code> and the method
+							<code>setCurrentStep</code>, you can programmatically reach and then
+						edit any step in the sequence. For
+							more information, see the <a href="#/api/sap.m.Wizard/methods/setCurrentStep" title="#/api/sap.m.Wizard/methods/setCurrentStep" class="sap-doc" alt="#/api/sap.m.Wizard/methods/setCurrentStep">API Reference</a> and the <a href="#/sample/sap.m.sample.WizardCurrentStep/preview" title="#/sample/sap.m.sample.WizardCurrentStep/preview" class="sap-doc" alt="#/sample/sap.m.sample.WizardCurrentStep/preview">samples</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.suite.ui.commons.ChartContainer</code>: There is a new
+							<span class="ph uicontrol">Selection Details</span> button in the chart container
+						toolbar. When you choose this button, a popover opens with all the data that
+						was selected in the currently visible chart. On mobile devices, a dialog box
+						covering the entire screen area is used instead of a popover. To show the
+						new <span class="ph uicontrol">Selection Details</span> button, set the
+							<code>ChartContainer</code>’s <code>showSelectionDetails</code>
+						property to <code>true</code>. The button is set inside the main toolbar
+						of the chart container next to the controlling buttons that are added
+						automatically. </p>
+					<p>
+						For
+							more information, see the <a href="#/api/sap.m.SelectionDetails" title="#/api/sap.m.SelectionDetails" class="sap-doc" alt="#/api/sap.m.SelectionDetails">API Reference</a> and the <a href="#/sample/sap.suite.ui.commons.sample.ChartContainerActions/preview" title="#/sample/sap.suite.ui.commons.sample.ChartContainerActions/preview" class="sap-doc" alt="#/sample/sap.suite.ui.commons.sample.ChartContainerActions/preview">samples</a>.
+					</p>
+				</li>
+				<li class="li">
+					<p><code>sap.suite.ui.microchart.InteractiveBarChart</code>: The
+							<code>InteractiveBarChart</code> provides optional
+							<code>min</code> and <code>max</code> properties with which to
+						control the scale of displayed bars. If these properties are not provided by
+						the consumer, the chart uses a scale derived from the values of the
+						displayed bars. For
+							more information, see the <a href="#/api/sap.suite.ui.microchart.InteractiveBarChart" title="#/api/sap.suite.ui.microchart.InteractiveBarChart" class="sap-doc" alt="#/api/sap.suite.ui.microchart.InteractiveBarChart">API Reference</a> and the <a href="#/entity/sap.suite.ui.microchart.InteractiveBarChart" title="#/entity/sap.suite.ui.microchart.InteractiveBarChart" class="sap-doc" alt="#/entity/sap.suite.ui.microchart.InteractiveBarChart">samples</a>.
+					</p>
+				</li>
+				<li class="li">
+					<p><code>sap.suite.ui.microchart</code>: A default tooltip was added to
+							<code>InteractiveBarChart</code>,
+							<code>InteractiveLineChart</code>, and
+							<code>InteractiveDonutChart</code>. When the user hovers over the
+						interaction area in an interactive chart, a tooltip with the nontruncated
+						version of the label and a non-abbreviated version of the measure appears.
+						In interactive mode, the tooltip is generated separately for each
+						interaction area. In non-interactive mode, only an aggregated tooltip is
+						shown. You can customize or even suppress this at chart level or at
+						interaction area level. </p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.layout.BlockLayout</code>:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>New options for coloring individual cells have been added. For each
+									<code>BlockLayoutCell</code>, you can set
+									<code>backgroundColorSet</code> and
+									<code>backgroundColorShade</code>. There are 11 predefined
+								color sets, each with 4 color shades. The sets and shades can be
+								easily customized in UI theme designer. You can also set an image as
+								the background of a cell. </p>
+						</li>
+						<li class="li">
+							<p>An additional breaking point for M-sized displays has been added.</p>
+						</li>
+					</ul>
+					<p>For more
+						information, see the <a href="#/api/sap.ui.layout.BlockLayoutCell" title="#/api/sap.ui.layout.BlockLayoutCell" class="sap-doc" alt="#/api/sap.ui.layout.BlockLayoutCell">API Reference</a> and the <a href="#/sample/sap.ui.layout.sample.BlockLayoutCustomBackground/preview" title="#/sample/sap.ui.layout.sample.BlockLayoutCustomBackground/preview" class="sap-doc" alt="#/sample/sap.ui.layout.sample.BlockLayoutCustomBackground/preview">samples</a>.</p>
+					<div><div class="fig"><img src="loiod4f2319fc0ad40c9b3d0f97ecf393871_LowRes.png" usemap="#"></div></div>
+				</li>
+				<li class="li">
+					<p><code>sap.tnt.ToolPage</code>: <code>IconTabBar</code> can now be
+						used in <code>sap.tnt.ToolPage</code>. The <code>ToolHeader</code>
+						is enhanced to allow <code>IconTabBar</code> elements. When inside the
+							<code>ToolHeader</code>, the <code>IconTabBar</code> can use
+						only labels and no icons. </p><ul class="ul ">
+							<li class="li">
+								<p>You can now have no tab selected by setting the
+										<code>selectedKey</code> property to a non-existing key
+									value.</p>
+							</li>
+							<li class="li">
+								<p>When <code>IconTabHeader</code> is used on smartphones and
+									tablets, only completely visible tabs are displayed (no
+									truncation). The rest of the tabs will overflow.</p>
+							</li>
+						</ul>For more information, see the <a href="#/sample/sap.tnt.sample.ToolHeaderIconTabHeader/preview" title="#/sample/sap.tnt.sample.ToolHeaderIconTabHeader/preview" class="sap-doc" alt="#/sample/sap.tnt.sample.ToolHeaderIconTabHeader/preview">sample</a>.<p></p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.table</code>: You can now highlight items in the tables of
+						the <code>sap.ui.table</code> library
+							(<code>sap.ui.table.Table</code>,
+							<code>sap.ui.table.TreeTable</code>,
+							<code>sap.ui.table.AnalyticalTable</code>), for example to indicate
+						an error. For
+							more information, see the API Reference for <a href="#/api/sap.ui.table.RowSettings" title="#/api/sap.ui.table.RowSettings" class="sap-doc" alt="#/api/sap.ui.table.RowSettings">sap.ui.table.RowSettings</a> and
+								<a href="#/api/sap.ui.table.Table/methods/setRowSettingsTemplate" title="#/api/sap.ui.table.Table/methods/setRowSettingsTemplate" class="sap-doc" alt="#/api/sap.ui.table.Table/methods/setRowSettingsTemplate">sap.ui.table.Table.setRowSettingsTemplate</a>, and the <a href="#/sample/sap.ui.table.sample.RowHighlights/preview" title="#/sample/sap.ui.table.sample.RowHighlights/preview" class="sap-doc" alt="#/sample/sap.ui.table.sample.RowHighlights/preview">sample</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.unified.Calendar</code>: </p><ul class="ul ">
+							<li class="li">
+								<p>You can now show and hide week numbers with the use of a new
+									property <code>showWeekNumbers</code>. This feature is
+									disabled for the Islamic calendar.</p>
+								<p>For more information, see the <a href="#/api/sap.ui.unified.Calendar/methods/setShowWeekNumbers" title="#/api/sap.ui.unified.Calendar/methods/setShowWeekNumbers" class="sap-doc" alt="#/api/sap.ui.unified.Calendar/methods/setShowWeekNumbers">API Reference</a> and the
+										<a href="#/sample/sap.ui.unified.sample.CalendarMinMax/preview" title="#/sample/sap.ui.unified.sample.CalendarMinMax/preview" class="sap-doc" alt="#/sample/sap.ui.unified.sample.CalendarMinMax/preview">samples</a>.</p>
+							</li>
+							<li class="li">
+								<p>You can now set specific dates or date ranges to be displayed as
+									non-working by using the <code>specialDates</code>
+									aggregation and
+										<code>sap.ui.unified.CalendarDayType.NonWorking</code>
+									enumeration type.</p>
+								<p>For more information, see the <a href="#/sample/sap.ui.unified.sample.CalendarSpecialDaysLegend/preview" title="#/sample/sap.ui.unified.sample.CalendarSpecialDaysLegend/preview" class="sap-doc" alt="#/sample/sap.ui.unified.sample.CalendarSpecialDaysLegend/preview">sample</a>.</p>
+							</li>
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.unified.ColorPicker</code>: A responsive variant of the
+						color picker control is now available in the <code>sap.ui.unified</code>
+						library that is compatible for use with controls from the other responsive
+							SAPUI5
+						libraries.</p>
+					<p>For more
+						information, see the <a href="#/api/sap.ui.unified.ColorPicker" title="#/api/sap.ui.unified.ColorPicker" class="sap-doc" alt="#/api/sap.ui.unified.ColorPicker">API Reference</a> and the <a href="#/sample/sap.ui.unified.sample.ColorPicker/preview" title="#/sample/sap.ui.unified.sample.ColorPicker/preview" class="sap-doc" alt="#/sample/sap.ui.unified.sample.ColorPicker/preview">samples</a>.</p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.comp.smartfilterbar.SmartFilterBar</code>:</p><ul class="ul ">
+							<li class="li">
+								<p>The selection variants that are listed in the OData metadata and
+									annotation files can now be displayed like variants defined on
+									the UI of the variant management in the
+										<code>SmartFilterBar</code> control.</p>
+								<p>For more information, see the <a href="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar/methods/getConsiderSelectionVariants" title="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar/methods/getConsiderSelectionVariants" class="sap-doc" alt="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar/methods/getConsiderSelectionVariants">API Reference</a> and
+										<a href="#/topic/7bcdffc056a94731b4341db73251e32b.html" title="The sap.ui.comp.smartfilterbar.SmartFilterBar control analyzes the $metadata document of an OData service and renders a FilterBar control that can be used to filter, for example, a table or a chart." class="sap-doc">Smart Filter Bar</a>. </p>
+							</li>
+							<li class="li">The <code>SmartFilterBar</code> control now supports a new
+								annotation,
+								<code>com.sap.vocabularies.UI.v1.FilterFacets</code>. With this
+								annotation, you can group filter
+								fields.</li>
+							
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.comp.smartchart.SmartChart</code>: </p><ul class="ul ">
+							<li class="li">
+								<p>There is a new experimental API that lets you read and write the
+									current UI state of a <code>SmartChart</code> control. The
+									scope of information that is included in this API is identical
+									with the scope within an OData-based
+										<code>PresentationVariant</code>. </p>
+								<p>For more information, see the <a href="#/api/sap.ui.comp.smartchart.SmartChart" title="#/api/sap.ui.comp.smartchart.SmartChart" class="sap-doc" alt="#/api/sap.ui.comp.smartchart.SmartChart">API Reference</a>. </p>
+							</li>
+							<li class="li">
+								<p>Based on the
+										<code>com.sap.vocabularies.UI.v1.DataPoint</code>
+									annotation, you can define semantic patterns and coloring for
+									the <code>SmartChart</code> control.</p>
+								<p>For more information, see the <a href="#/api/sap.ui.comp.smartchart.SmartChart/annotations/DataPoint" title="#/api/sap.ui.comp.smartchart.SmartChart/annotations/DataPoint" class="sap-doc" alt="#/api/sap.ui.comp.smartchart.SmartChart/annotations/DataPoint">API Reference</a>. </p>
+							</li>
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p><code>sap.ui.comp.navpopover.SmartLink</code>: The
+							<code>SmartLink</code> control supports a new annotation,
+							<code>SemanticObjectMapping</code>. You can use it to map local
+						properties to the parameters in a <code>SemanticObject</code>
+						action.</p>
+				</li>
+			</ul></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">SAP
+				Fiori Elements</h2></div><div class="fig"><section>
+				<h3 class="title ">List Report and Object Page</h3>
+				<ul class="ul ">
+					<li class="li"><p>General Features</p><ul class="ul ">
+							<li class="li"><p>Action-specific messages for confirmation dialog boxes.</p><p>You
+									can create message texts for specific critical actions. They are
+									displayed in the confirmation dialog box for the
+									action.</p><p>For more information, see <a href="#/topic/f5a04c7ddd054a33a84e48525a51b5fb.html" title="You can create message texts for specific critical actions. They are displayed in the confirmation dialog box for the action." class="sap-doc">Adding Action-Specific Messages to Confirmation Dialog Boxes</a>.</p></li>
+							<li class="li"><p>List report and object page now support the use of the
+										<span class="ph uicontrol">High-Contrast White</span> theme.</p></li>
+							<li class="li"><p>You can configure inbound navigation to a sub-object page of an
+									app, using deep linking.</p><p>For more information, see <a href="#/topic/1d4a0f94bfee48d1b50ca8084a76beec.html" title="This section describes the configuration options for navigating from an app (outbound) and navigating to an app (inbound)." class="sap-doc">Configuring External Navigation</a>.</p></li>
+							<li class="li"><p>The edit flow in non-draft apps has been optimized to provide the
+									following features:</p><ul class="ul ">
+										<li class="li"><p><span class="ph uicontrol">Create</span> and
+												<span class="ph uicontrol">Delete</span> buttons are
+												available in the table toolbar in display
+											mode.</p></li>
+										<li class="li"><p>In edit mode, navigation to subobject pages is not
+												possible, and chevrons are hidden.</p></li>
+										<li class="li"><p><span class="ph uicontrol">Edit</span> and
+												<span class="ph uicontrol">Delete</span> buttons are
+												available in the object page header and on all
+												sub-object pages that follow.</p></li>
+									</ul><p></p><p>For more information, see <a href="#/topic/a90c55840b144f2ebc2d836adbc1a54f.html" title="By default, you need to create apps that use draft handling." class="sap-doc">Non-Draft Apps</a>.</p></li>
+							<li class="li"><p>Transient messages issued by the back end are now grouped by the
+									document they belong to when displayed on the screen.</p><p>For
+									more information, see <a href="#/topic/239b1922758645e7b451e01ded7f56bc.html" title="The system generates messages in response to what users do in the SAP system. A message presents information, an instruction, or a warning to users in a given situation." class="sap-doc">Using Messages</a>.</p></li>
+							<li class="li"><p>Rating indicators and progress bars can be displayed in all table
+									types (responsive, grid, and analytical).</p></li>
+						</ul></li>
+					<li class="li"><p>List Report View</p><ul class="ul ">
+							<li class="li"><p>By default, the list report displays one table. You can define
+									multiple views on a table for the user to switch between the
+									views using an icon tab bar or a segmented button.</p><p>For
+									more information, see <a href="#/topic/0d390fed360c4c58a0f0619338938de1.html" title="You can define multiple views of a table and display them in single table mode. Users can switch between views using a segmented button." class="sap-doc">Defining Multiple Views on a List Report Table - Single Table Mode</a>.</p></li>
+							<li class="li"><p>For simplicity purposes, you can create an app without any
+									variant management. In this case, just the title of the app is
+									displayed. You can create a custom title, if required.</p><p>For
+									more information, see <a href="#/topic/094fe8c8d8ac4f0eb4724b1a52d2ad61.html" title="To make things easier, you may want to create an app without variant management. In this case, only the title of the app is displayed. You can create a custom title, if required." class="sap-doc">Creating a List Report Without Variant Management</a>.</p></li>
+							<li class="li"><p>If you have not added a semantic key to the line items, the
+									editing status is displayed in the <span class="ph uicontrol">Title</span>
+									or <span class="ph uicontrol">Description</span> column, depending on the
+									available information.</p><p>For more information, see <a href="#/topic/b31162d62a864e6bb8e3ea8b3dfc384b.html" title="In draft-enabled applications, the Draft, Unsaved Changes by Another User and Locked by Another User statuses are displayed in the first column to which you can add the semantic key using the semantic key annotation." class="sap-doc">Displaying the Editing Status</a>.</p></li>
+							<li class="li"><p>Users can navigate from a tree table to the object page, at row
+									level. The <span class="ph uicontrol">Show Detail</span> button is not
+									displayed in the tree table.</p></li>
+							<li class="li"><p>When deleting a document in the list report, an existing draft
+									and the active version are deleted in a single step.</p></li>
+							<li class="li"><p>If users have set <span class="ph uicontrol">Execute on Select</span> for
+									their default variant, the content of the list report is
+									displayed immediately upon launching the app, and the smart
+									filter bar is collapsed.</p><p>For more information, see <a href="#/topic/1cf5c7f5b81c4cb3ba98fd14314d4504.html" title="The list report lets the user work with a large list of items. It combines powerful functions for filtering large lists with different ways of displaying the resulting item list." class="sap-doc">List Report Elements</a>.</p></li>
+						</ul></li>
+					<li class="li"><p>Object Page View</p><ul class="ul ">
+							<li class="li"><p>You can enable the simple header facet that handles simple data
+									points without wasting vertical space.</p><p>For more
+									information, see <a href="#/topic/9422074471ef4db9a7ee6b519102f0d1.html" title="If you want to display more content in your header facet, you can enable the simple header facet." class="sap-doc">Enabling Simple Header Facets</a>. </p></li>
+							<li class="li"><p>In responsive, grid, and analytical tables, if the entity is
+									searchable, a search field is displayed. Users can search on any
+									of the table column values if they are search-enabled.
+									</p><p>For more information, see <a href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" title="Both the list report and the object page support several table types." class="sap-doc">Tables</a>.</p></li>
+						</ul></li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Overview Pages (OVP)</h3>
+				<p>Overview pages have been enhanced with the following features:</p><ul class="ul ">
+						<li class="li"><p><span class="ph uicontrol">High-Contrast White</span> theme</p></li>
+						<li class="li"><p>Automatic refresh of cards for a given interval</p></li>
+						<li class="li"><p>Sharing of page variant with other users</p></li>
+						<li class="li"><p>The <code>annotationPath</code> property is replaced with
+									<code>path</code> property for the
+									<code>SelectionPresentationVariant</code> annotation
+								properties <code>SelectionVariant</code> and
+									<code>PresentationVariant</code></p><p>For more information
+								see <a href="#/topic/65731e6b823240398e33133908efdaa1.html" title="This topic provides a list of the annotations used in overview pages. They are as follows:" class="sap-doc">Annotations Used in Overview Pages</a>.</p></li>
+						<li class="li"><p>The filter area includes:</p><ul class="ul ">
+									<li class="li"><p>Additional date formats (UTC and medium)</p></li>
+									<li class="li"><p>Default filter values in the filter area</p></li>
+									<li class="li"><p>Auto-hiding of the filter bar on the initial loading of
+											an application</p></li>
+								</ul><p></p></li>
+						<li class="li"><p>Placeholder card of the object stream lets you include custom text
+								along with the existing message</p><p>For more information, see
+									<a href="#/topic/756c49c9271248e7b980bee17668f617.html" title="Stack cards aggregate a set of cards of the same type, which are based on a common topic or action. When clicked, up to 20 stacked cards can be displayed in the object stream." class="sap-doc">Stack Cards</a>.</p></li>
+						<li class="li"><p>Counter information in cards has been moved from the footer to the
+								header area</p><p>For more information, see <a href="#/topic/8ed3f76b5f62419eb0408c0dba4b2e47.html" title="Overview pages may contain transactional cards, such as table, list, stack, quick view cards, and analytical chart cards such as line, bubble, donut, column, and bullet chart cards." class="sap-doc">Types of Cards</a>.</p></li>
+						<li class="li"><p>Quick view card displays error messages as received from the back-end
+								services</p></li>
+						<li class="li"><p>Support of an extension for cards that lets you develop custom card
+								types</p><p>For more information, see <a href="#/topic/6d260f7708ca4c4a9ff45e846402aebb.html" title="Create custom cards to view custom information relevant to your overview page." class="sap-doc">Custom Cards</a>.</p></li>
+						<li class="li"><p>Spline interpolation in Line Charts to view the line
+								smoothly</p><p>For more information, see <a href="#/topic/68e62adedfd44cd48cb6ebc418c8d95a.html" title="This section describes the analytical chart cards you can use in overview pages." class="sap-doc">Chart Cards Used in Overview Pages</a>.</p></li>
+						<li class="li"><p>Scatter chart now lets you define the size of the data
+								point</p><p>For more information, see <a href="#/topic/68e62adedfd44cd48cb6ebc418c8d95a.html" title="This section describes the analytical chart cards you can use in overview pages." class="sap-doc">Chart Cards Used in Overview Pages</a>.</p></li>
+					</ul><p></p>
+			</section><section>
+				<h3 class="title ">Analytical List Page (ALP)</h3>
+				<p>Analytical List Page (ALP) is a new SAP Fiori Elements template for performing
+					detailed analytics on aggregated or transactional data. It provides different
+					view types and an interplay between aggregate data (chart view) and
+					transactional data (table data). You can also filter a data set by choosing the
+					dimensions (for example, country) based on the measure values (for example, net
+					sales).</p>
+				<p>ALP lets you:</p><ul class="ul ">
+						<li class="li"><p>Personalize filter, chart, or table controls</p></li>
+						<li class="li"><p>Manage variants</p></li>
+						<li class="li"><p>Use context-based navigation</p></li>
+						<li class="li"><p>Define related Key Performance Indicators (KPIs) and extensions for
+								custom filters, custom actions, or custom columns</p></li>
+					</ul><p></p>
+				<p>For more
+					information, see <a href="#/topic/3d33684b08ca4490b26a844b6ce19b83.html" title="Analytical List Page (ALP) is an SAP Fiori elements application for detailed analytics." class="sap-doc">Analytical List Page</a> and the
+						<a href="#/api/sap.suite.ui.generic.template.AnalyticalListPage" title="#/api/sap.suite.ui.generic.template.AnalyticalListPage" class="sap-doc" alt="#/api/sap.suite.ui.generic.template.AnalyticalListPage">API Reference</a>.</p>
+				
+			</section></div></section><section class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Analysis Path Framework (APF)</h2></div><div class="fig"><p>APF has been enhanced with the following features: </p><ul class="ul ">
+				<li class="li">
+					<p>You can now create hierarchical steps in which the data is depicted in a tree
+						table. At runtime, the data is structured in rows and columns and grouped
+						into nodes. It is also possible to select data in the tree table and hand
+						over the selection as a filter to the subsequent analysis steps.</p>
+					<p>For more information, see <a href="#/topic/694956ffa7074d96967e6f50f171f5d2.html" title="694956ffa7074d96967e6f50f171f5d2.xml" class="sap-doc">Creating Hierarchical Steps</a>.</p>
+				</li>
+				<li class="li">
+					<p>For navigation targets, you can configure parameters and values that are
+						added to the URL of the navigation target at runtime. This is relevant when
+						the navigation target requires mandatory parameters to run.</p>
+					<p>For more information, see <a href="#/topic/d5762bcb9bf047d6a1b2db2b92f8fa69.html" title="d5762bcb9bf047d6a1b2db2b92f8fa69.xml" class="sap-doc">Creating Navigation Targets</a>.</p>
+				</li>
+				<li class="li">
+					<p>The integration of the smart filter bar into APF has been changed in a way
+						that you can now make dynamic time selections for time filters that support
+						date range selections. For example, you can select <span class="ph uicontrol">Last X
+							Days</span> and define the number of days. </p>
+					<p>For more information, see <a href="#/topic/594f1111efd54bc8baef87ef4dcb2a75.html" title="594f1111efd54bc8baef87ef4dcb2a75.xml" class="sap-doc">Smart Filter Bar</a>.</p>
+				</li>
+			</ul></div></section><section id="section_tfp_n5w_r1b" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Documentation
+				Updates</h2></div><div class="fig"><p>In addition to the documentation for new features, the following
+				changes have been applied to the documentation:</p><ul class="ul ">
+					<li class="li"><p>New tutorial: <a href="#/topic/5661952e72df471b932eddc10350c081.html" title="In this tutorial, we will show you some tools that will help you if you run into problems with your SAPUI5 app." class="sap-doc">Troubleshooting</a></p></li>
+					<li class="li"><p>Reworked <a href="#/topic/615d9e4aaa34447fbd4aa5f19dfde9b8.html" title="This section describes the various tools that are available for troubleshooting apps developed with SAPUI5" class="sap-doc">Troubleshooting</a>
+							section</p></li>
+				</ul><p></p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/6660a59a8a22460a91fe65a0d96a567e">Previous Versions</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks"><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="topic/067e2fb0165145a5ac9b128b5853f7c9">What's New in SAPUI5 1.86</a></li><li><a href="topic/eeb5bd913fe448598e0449050143027a">What's New in SAPUI5 1.85</a></li><li><a href="topic/ccf76b76327c421e9d87ff7fc3d7ba41">What's New in SAPUI5 1.84</a></li><li><a href="topic/f081cf0a64784c62aa653e80036659f0">What's New in SAPUI5 1.82</a></li><li><a href="topic/f71563ccd2294cf0a59d16b62be0f7eb">What's New in SAPUI5 1.81</a></li><li><a href="topic/3294c688331c4e918a22dc0bb0892ff8">What's New in SAPUI5 1.80</a></li><li><a href="topic/edf8e35377d4452491cdc488030feb13">What's New in SAPUI5 1.79</a></li><li><a href="topic/d176be37229a45dbb1d6d0a1ae2f3167">What's New in SAPUI5 1.78</a></li><li><a href="topic/2ec6b6b03ee249928bba929eec3d2d74">What's New in SAPUI5 1.77</a></li><li><a href="topic/b9b0a3f223c14b9d99e0d86e649cafec">What's New in SAPUI5 1.76</a></li><li><a href="topic/dc3d3ce46105441db5543049fb1c11e7">What's New in SAPUI5 1.75</a></li><li><a href="topic/21fc6cb77b0c44aab55f045812e69c98">What's New in SAPUI5 1.74</a></li><li><a href="topic/7b826642c45d4b8d97c5013cdc240ad6">What's New in SAPUI5 1.73</a></li><li><a href="topic/25e532617b7f4b9bad842757324151ed">What's New in SAPUI5 1.72</a></li><li><a href="topic/609fd015eaf64bd2a4a5c0331590eb4c">What's New in SAPUI5 1.71</a></li><li><a href="topic/4e89fee547a24385826cddcfdf4df238">What's New in SAPUI5 1.70</a></li><li><a href="topic/41203fd3272b479d8c665357e3b21a43">What's New in SAPUI5 1.69</a></li><li><a href="topic/5531aef1adc8462392a5b8fe1178606e">What's New in SAPUI5 1.68</a></li><li><a href="topic/0968958c4143469d941dbe3b59e06142">What's New in SAPUI5 1.67</a></li><li><a href="topic/ebe7fda555aa466782090053d6f54f21">What's New in SAPUI5 1.66</a></li><li><a href="topic/9d2b1897722a4e99b60580fb09aa35e0">What's New in SAPUI5 1.65</a></li><li><a href="topic/1975e304ab924fb3b799240fdd9fe59b">What's New in SAPUI5 1.64</a></li><li><a href="topic/77e1dcc27c494d60ba0a03759b706e89">What's New in SAPUI5 1.63</a></li><li><a href="topic/27eea38eeb7b40d19d0dfe3ddf513175">What's New in SAPUI5 1.62</a></li><li><a href="topic/de4d50b6c0f649fa859e4657ff8557a6">What's New in SAPUI5 1.61</a></li><li><a href="topic/2a70354a2a38492a873333edc4b9a303">What's New in SAPUI5 1.60</a></li><li><a href="topic/b28edde1f4ad425d9247f3bbcdc5d9b7">What's New in SAPUI5 1.58</a></li><li><a href="topic/53b4b5ec2c83408a8da2cb6b9154c246">What's New in SAPUI5 1.56</a></li><li><a href="topic/f29023ebf9dc4a43b98516a5e2c43837">What's New in SAPUI5 1.54</a></li><li><a href="topic/a09dd79a24c041d288402768558a1d1a">What's New in SAPUI5 1.52</a></li><li><a href="topic/a8449849c81249bb8abd98b4b9342a4a">What's New in SAPUI5 1.50</a></li><li><a href="topic/4cf0986450ca43e5a8d12dd66e999a77">What's New in SAPUI5 1.46</a></li><li><a href="topic/05ce1dc72c74475bada39234f6721f21">What's New in SAPUI5 1.44</a></li><li><a href="topic/4768f1ac7f0645929b4e9ea9981bb65e">What's New in SAPUI5 1.42</a></li><li><a href="topic/e659bd2383524a05b716916bcda9b368">What's New in SAPUI5 1.40</a></li><li><a href="topic/6a875f998994489483e8085705347d72#loio6a875f998994489483e8085705347d72">What's New in SAPUI5 1.38</a></li></ul></section></div></section></div></body></html>

@@ -1,0 +1,20 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa575619e25c2487f904bae71764e2350" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">View Cloning</h1><div class="fig"><h1 class="topictitle1 title">View Cloning</h1><div class="shortdesc">For normal controls, view cloning bases on control settings that are described by SAPUI5 metadata, such as
+		properties, aggregations, associations, and event handlers. The clone operation collects
+		these settings and creates a new instance.</div><p>Another important aspect of SAPUI5 views is their cloning behavior. As you might
+			know, SAPUI5 aggregation bindings can use template control to create a series
+			of similar controls based on a collection of data, for example, items in a <code>sap.ui.table.Table</code> for each entry in a model
+			array. The data binding uses a <code>ManagedObject.clone</code> operation to create multiple controls out of a single template.</p><p>For views there is a conflict between this basic, generic approach and the way how views
+			usually define their content: via hooks (JSView) or via persisted XML or JSON files.
+			Furthermore, it is allowed and documented best practice to modify the view in the onInit
+			hook of its controller. To avoid conflicts between the generic cloning and the MVC
+			concepts, views implement a slightly modified clone operation: only a subset of the view
+			settings are cloned, the remainder is re-created by calling the hook (JSView) or
+			applying the external view description (XML or JSON file), depending on the view type. </p><p>Cloned in a generic way are the following settings: </p><ul class="ul ">
+			<li class="li">any models that have been set (<code>setModel()</code>) </li>
+			<li class="li">registered control event listeners, e.g. <code>attachPress</code>, <code>attachChange</code>, <code>attachSubmit</code>, ...</li>
+			<li class="li">registered browser event listeners (<code>attachBrowserEvent</code>)</li>
+			<li class="li">bindings (<code>bindProperty</code>, <code>bindAggregation</code>)</li>
+		</ul><p>Not cloned, but recreated are all aggregations, namely the content. </p><p>In scenarios where the above clone approach still leads to undesirable behavior, factory
+			functions can be used for the aggregation binding instead.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/91f057786f4d1014b6dd926db0e91070.html" title="List binding (or aggregation binding) is used to automatically create child controls according to model data." class="sap-doc">List Binding (Aggregation Binding)</a></li>
+	</ul></section></div></section></div></body></html>

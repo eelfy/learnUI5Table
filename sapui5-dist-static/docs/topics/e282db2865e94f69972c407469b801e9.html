@@ -1,0 +1,171 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe282db2865e94f69972c407469b801e9" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Migrating from Component Metadata to Descriptor</h1><div class="fig"><h1 class="topictitle1 title">Migrating from Component Metadata to Descriptor</h1><div class="shortdesc">Overview, how the component metadata are mapped to the descriptor. </div><p>For compatibility reasons, the mapping to the <code>manifest.json</code> file is done
+			automatically. If a metadata property has been defined, it can also be consumed via the
+			corresponding property of the <code>manifest.json</code> file. For a detailed
+			step-by-step guide, see <a href="#/topic/3a9babace121497abea8f0ea66e156d9.html" title="Detailed description of the steps needed to create a descriptor V2 for applications file for an existing transactional app created by the customer based on SAP Fiori." class="sap-doc">Creating a Descriptor File for Existing Apps</a>. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To
+				benefit from the performance improvements that can be achieved by using <q>manifest
+					first</q>, we recommend to migrate the component metadata to the descriptor
+					(<code>manifest.json</code>). For more information about manifest first, see
+				the <i>Manifest First Function</i> section in <a href="#/topic/be0cf40f61184b358b5faedaec98b2da.html" title="The descriptor for applications, components, and libraries (in short: app descriptor) is inspired by the WebApplication Manifest concept introduced by the W3C. The descriptor provides a central, machine-readable, and easy-to-access location for storing metadata associated with an application, an application component, or a library." class="sap-doc">Descriptor for Applications, Components, and Libraries</a>.</p></div></div><p></p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				
+				
+				</tgroup><table border="1" id="table_ogz_llt_45" class="tableFullWidth "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+					<tr>
+						<th colspan="1" rowspan="1">
+							<p>Metadata</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>Descriptor</p>
+						</th>
+						<th colspan="1" rowspan="1">
+							<p>Comment</p>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Component namespace</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.app/id</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>version</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.app/applicationVersion/version</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>config</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/config</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>dependencies</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/depedencies</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Different format, see <i>Dependencies</i> section below</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>customizing</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/extends/extensions</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>handleValidation</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/handleValidation</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>includes</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/resources</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Different format, see <i>Resources</i> section below</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>rootView</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/rootView</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>routing</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p><code>sap.ui5/routing</code></p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>-</p>
+						</td>
+					</tr>
+				</tbody>
+			</table></div></div><section>
+			<h2 class="title ">Dependencies</h2>
+			<p>Libraries and components are objects and not arrays. For the descriptor part, we use
+					<code>ui5version</code> instead of <code>minUI5Version</code>.</p>
+			<p><span class="emphasis">Metadata</span>
+			</p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"dependencies": {
+    "ui5version": "1.30.0",
+    "libs": [
+        "sap.m",
+        "sap.ui.unified"
+    ],
+    "components": [ "sap.app.otherComponent" ]
+}</pre></div></section>
+			<p><span class="emphasis">Descriptor</span></p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"dependencies": {
+    "minUI5Version": "1.30.0",
+    "libs": {
+        "sap.m": {},
+        "sap.ui.unified": {}
+    },
+    "components": {
+        "sap.app.otherComponent": {}
+    }
+}</pre></div></section>
+		</section><section>
+			<h2 class="title ">Resources</h2>
+			<p>Includes are renamed to resources and are objects and not an array.</p>
+			<p><span class="emphasis">Metadata</span></p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"includes": ["script.js", "style.css"]</pre></div></section>
+			<p><span class="emphasis">Descriptor</span></p>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"resources": {
+    "js": [
+        {
+            "uri": "script.js"
+        }
+    ],
+    "css": [
+        {
+            "uri": "style.css"
+        }
+    ]
+}</pre></div></section>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

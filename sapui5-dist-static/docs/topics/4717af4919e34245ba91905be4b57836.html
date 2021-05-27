@@ -1,0 +1,135 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4717af4919e34245ba91905be4b57836" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step Navigation</h1><div class="fig"><h1 class="topictitle1 title">Step Navigation</h1><div class="shortdesc"></div><p>The <code>sap.ui.vk.StepNavigation</code> control enables navigation and activation
+			of procedures and steps contained in a single 3D scene.</p><section id="section_fhs_bx1_qz">
+			<h2 class="title ">API Reference / Sample</h2>
+			<ul class="ul ">
+				<li class="li"><a href="#/api/sap.ui.vk.StepNavigation" title="#/api/sap.ui.vk.StepNavigation" class="sap-doc" alt="#/api/sap.ui.vk.StepNavigation"><code>sap.ui.vk.StepNavigation</code></a> in the <span class="ph uicontrol">API
+						Reference</span> in the Demo Kit</li>
+				<li class="li"><a href="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.05" title="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.05" class="sap-doc" alt="#/entity/sap.ui.vk.tutorial.VIT/sample/sap.ui.vk.tutorial.VIT.05">3D Viewer - Step 5 - Add Step Navigation control</a> in the Demo Kit</li>
+			</ul>
+		</section><section>
+			<h2 class="title ">Overview</h2>
+			<p>The VDS file format supports pre-authored animations, also known as steps. Steps are
+				grouped into procedures.</p>
+			<p>The Step Navigation (<code>sap.ui.vk.StepNavigation</code>) control allows you to
+				see which animations are available in a 3D scene. You can play an animation for an
+				individual step, or play all the steps for a single procedure from start to
+				finish.</p>
+		</section><section><h2 class="title ">Details</h2><section>
+				<h3 class="title ">Step Navigation User Interface</h3>
+				<p>The Step Navigation control can be divided into two parts: the top part of the
+					control contains buttons and drop down menus that allow you to choose a
+					procedure, set the play mode, and play, pause, or skip a step. Below these
+					buttons, thumbnails of each step are displayed. You can hover over a thumbnail
+					to show the name of the step, and click on a thumbnail to play the step.</p>
+				<img src="loiod2f03be5386d466eb7d70621c29ff7e9_LowRes.png" usemap="#">
+				<p>The following table describes the functionality of each of the buttons or
+					dropdown menus in the Step Navigation control:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_xfl_xym_25" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Button / Menu name</th>
+								<th colspan="1" rowspan="1">Icon</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Previous</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio41ed1bc5db8e4af59b701f43e77c9d68_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Plays the previous step in the procedure.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Play</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loioc2df912f14714839932c0224411b3d1c_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Plays the currently selected step in the procedure.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Pause</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio9d1309800bb5428ba06b133ceaf69c33_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Pauses the animation at the current step.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Step Descriptions</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio3c4b68cdcb734a2d94fe11180144f4d4_LowRes.png" usemap="#"><img src="loioe325e95978334281a03bc5a6b038f0a2_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Shows or hides descriptions associated with the steps. By
+										default, Step Descriptions are hidden.</p>
+									<p>When step descriptions are shown, a dialog appears for the
+										step that is being played. The dialog contains the step's
+										name, and below it, any description associated with the
+										step.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Next</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio69e11d4f4cfa40ffac2443d1c5b51ed4_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Plays the next step in the procedure.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Play Options</span></td>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio68c4edffaf05410c87dda7021fcab394_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>By default, there are three options:</p>
+									<ul class="ul ">
+										<li class="li"><span class="ph uicontrol">Play Step</span> - play the currently
+											selected step only.</li>
+										<li class="li"><span class="ph uicontrol">Play All</span> - play all the steps in
+											the procedure.</li>
+										<li class="li"><span class="ph uicontrol">Play Remaining</span> - play the
+											currently selected step, and all the subsequent
+											steps.</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Procedures</span></td>
+								<td colspan="1" rowspan="1" valign="top">(the dropdown menu located to the right of the Play Options
+									dropdown menu)</td>
+								<td colspan="1" rowspan="1" valign="top">Select which procedure in the scene to play. Depending on the
+									loaded model, you may have one or more procedures to select
+									from.</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Individual buttons and menus cannot be disabled.</p>
+				<p></p></div></div>
+				<p>In addition to using these buttons and drop down menus to select which step or
+					steps to play, you can also click on the thumbnail for a step, and then click
+					the <span class="ph uicontrol">Play</span> button to play the animation associated with
+					that step.</p>
+				<p>While a step is playing, you can still rotate, pan, or zoom in the scene.</p>
+			</section><section>
+				<h3 class="title ">Hiding or Displaying the Step Navigation Control</h3>
+				<p>You can hide or view the Step Navigation control using the <span class="ph uicontrol">Step
+						Navigation</span> button in the toolbar (if
+						<code>sap.ui.vk.Toolbar</code> is used in the application).</p>
+				<p>By default, Step Navigation is hidden from view. You can change this so that when
+					a scene with animation is loaded into your application, then the Step Navigation
+					control is displayed.</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_mjw_5zm_25" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Step Navigation button state</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><img src="loio49e71923a5214b778df453c37f5efe40_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Step Navigation is shown</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><img src="loiodc4ee05bc59347a4ab1ede9a01958259_LowRes.png" usemap="#"></td>
+								<td colspan="1" rowspan="1" valign="top">Step Navigation is hidden</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

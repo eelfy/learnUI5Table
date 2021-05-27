@@ -1,0 +1,278 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc18ada4bc56e427a9a2df2d1898f28a5" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Different Representations of a Field</h1><div class="fig"><h1 class="topictitle1 title">Different Representations of a Field</h1><div class="shortdesc">Applications can control how the field is represented by using annotations or metadata.</div><section id="section_q1y_fvf_k4b">
+			<h2 class="title ">Representation as a Simple Plain Text Facet</h2>
+			<p>A field can be displayed as a simple plain text facet, which shows up in the key-value format:</p>
+			<div><div class="fig"><img src="loio52e34f42ca4c40ac94f2ebc982f18f39_LowRes.png" usemap="#"></div></div>
+			<p>To be represented in this manner, you must initialize the OData field with an annotation that has a <code>UI.DataField</code>
+				wrapped within <code>UI.FieldGroup</code>, as shown in the sample code below:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Plain Text
+				Facet</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="PlainText"&gt;
+     &lt;Record&gt;
+          &lt;PropertyValue Property="Data"&gt;
+                &lt;Collection&gt;
+                     &lt;Record Type="UI.DataField"&gt;
+                           &lt;PropertyValue Property="Value" Path="description" /&gt;
+                       &lt;/Record&gt;
+                 &lt;/Collection&gt;
+          &lt;/PropertyValue&gt;
+      &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>If the "Path" has a <code>sap:label()</code> associated to it, then first the label is displayed, followed by the value pointed to by the
+					path (separated by a colon).</p>
+			<p></p></div></div>
+		</section><section id="section_ihr_jvf_k4b">
+			<h2 class="title ">Representation as Part of a Form</h2>
+			<p>You can group multiple fields together into a form-based representation:</p>
+			<div><div class="fig"><img src="loio5ab0639893534ef5b15fe98d824c603e_LowRes.png" usemap="#"></div></div>
+			<p>The <code>FieldGroup</code> is currently not supported as part of the field macro.</p>
+			<p>For more information about the required annotations, see <a href="#/topic/cb1748ea9b984251addc03718d98df35.html" title="Application developers can group fields that should be shown together, such as various address fields (the street, house number, and postal code)." class="sap-doc">Grouping of Fields</a>.</p>
+		</section><section id="section_w4r_lvf_k4b">
+			<h2 class="title ">Representation as a Key Value Facet or a Key Performance Indicator (KPI)</h2>
+			<p>A field can be represented as a key value facet or render a KPI:</p>
+			<div><div class="fig"><img src="loio902d5308aafe4b22a57c730d1ee0f49e_LowRes.png" usemap="#"></div></div>
+			<p>The underlying annotation for this is the <code>UI.DataPoint</code> annotation:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Representation as a Key Value Facet or a
+				KPI</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="StockAvailability"&gt;
+      &lt;Record Type="UI.DataPointType"&gt;
+           &lt;PropertyValue Property="Title" String="Availability" /&gt;
+           &lt;PropertyValue Property="Value" Path="stock/availability" /&gt;
+           &lt;PropertyValue Property="Criticality" Path="stock/availability"/&gt;
+       &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+			<p>Apart from its usage in the object page header, the KPI could also be a <code>DataField</code> that is marked with criticality. In
+				such cases, SAP Fiori elements brings up the object status control.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>DataField</code> with
+				Criticality</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="SAP__UI.DataField"&gt;
+    &lt;PropertyValue Property="Criticality" Path="OvrlDeliveryStatusCriticality"/&gt;
+    &lt;PropertyValue Property="CriticalityRepresentation" EnumMember="SAP__UI.CriticalityRepresentationType/WithoutIcon"/&gt;
+    &lt;PropertyValue Property="Value" Path="OverallDeliveryStatus"/&gt;
+    &lt;Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div>
+			<p>This could render 3 KPIs, as shown in the image below:</p>
+			<div><div class="fig"><img src="loio423321fb9b04481bb9d734caadc5e818_LowRes.png" usemap="#"></div></div>
+		</section><section id="section_tff_4vf_k4b">
+			<h2 class="title ">Representation as a Rating Indicator</h2>
+			<p>A field can be displayed as a rating indicator:</p>
+			<div><div class="fig"><img src="loio6d4af365717f41f99935cd8dfffe7c1a_LowRes.png" usemap="#"></div></div>
+			<p>This requires a <code>UI.DataPoint</code> annotation with the visualization type "Rating":</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p> Field as Rating
+				Indicator</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Rating"&gt;
+      &lt;Record&gt;
+           &lt;PropertyValue Property="Value" Path="averageRating" /&gt;
+            &lt;PropertyValue Property="TargetValue" Decimal="5" /&gt;
+            &lt;PropertyValue Property="Visualization"EnumMember="UI.VisualizationType/Rating" /&gt;
+      &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>When used within a table, the rating indicator is shown without a label.</p>
+			<p></p></div></div>
+		</section><section id="section_mw1_qvf_k4b">
+			<h2 class="title ">Representation as a Progress Indicator</h2>
+			<p>A field can be displayed as a progress indicator:</p>
+			<div><div class="fig"><img src="loiof63b611078ee4317a8354329135371d5_LowRes.png" usemap="#"></div></div>
+			<p>This requires a <code>UI.DataPoint</code> annotation with the visualization type "Progress":</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p> Field as Progress
+				Indicator</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Progress"&gt;
+      &lt;Record&gt;
+           &lt;PropertyValue Property="Value" Path="stock/quantity" /&gt;
+            &lt;PropertyValue Property="TargetValue" Decimal="100" /&gt;
+            &lt;PropertyValue Property="Visualization"EnumMember="UI.VisualizationType/Progress" /&gt;
+       &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>When used within a table, the progress indicator is shown without a label.</p>
+			<p></p></div></div>
+		</section><section id="section_qjc_35f_k4b"><h2 class="title ">Representation as a Link</h2><p>A field can be displayed as a link. The link can then be used in one of
+				the scenarios described below.</p><div><div class="fig"><img src="loiod3b1eaced29b4862aba7eacc247fea37_LowRes.png" usemap="#"></div></div><section>
+				<h3 class="title ">Semantic Link</h3>
+				<p>If the field is associated with a semantic object, it is rendered as a link - provided that the semantic object is a valid one in
+						SAP Fiori launchpad. All the actions configured for this semantic object are
+					displayed when users click on the link. If there is only one navigation target, the user is directly navigated upon clicking the
+					link.</p>
+				<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="clouds.products.CatalogService.Products/SoldToParty"&gt;
+    &lt;Annotation Term="Common.SemanticObject" String="supplier"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+				<p>For more information, see <a href="#/topic/d782acf8bfd74107ad6a04f0361c5f62.html" title="You can either specify a URL or associate a semantic object (= intent-based navigation) for external navigation targets." class="sap-doc">Navigation from an App (Outbound Navigation)</a>.</p>
+			</section><section>
+				<h3 class="title ">Quick View Card</h3>
+				<p>This allows applications to specify additional information that end users can access by clicking on the link. For example, the link
+					shows the status of a document, and clicking on it shows more detailed information.</p>
+				<p>For more information, see <a href="#/topic/307ced1bc98c4e3d93ecbe9658dc9176.html" title="You can enrich the popovers for smart link navigation with additional information to display quick views." class="sap-doc">Enabling Quick Views for Smart Link Navigation</a>.</p>
+			</section><section>
+				<h3 class="title ">Contact Card</h3>
+				<p>This allows applications to specify more details on the contact information displayed in the link field. For example, the link
+					field shows the name of the supplier and clicking on the link shows additional information about the supplier. The additional
+					information is shown in a pop-up.</p>
+				<p>For more information, see <a href="#/topic/a6a8c0c4849b483eb10e87f6fdf9383c.html" title="a6a8c0c4849b483eb10e87f6fdf9383c.xml" class="sap-doc">Adding a Contact Facet</a>. The topic describes how a contact facet can be
+					added to an object page form field. Similarly, you can add a table field by adding a reference to the
+						<code>Communication.Contact</code> annotation in the <code>UI.LineItem</code> annotation:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>UI.DataFieldForAnotation</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="clouds.products.CatalogService.Products"&gt;
+    &lt;Annotation Term="UI.LineItem"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+                &lt;PropertyValue Property="Label" String="Supplier"/&gt;
+                &lt;PropertyValue Property="Target" AnnotationPath="supplier/@Communication.Contact"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			</section><section>
+				<h3 class="title ">Contact Links</h3>
+				<p>Application developers can specify links for phone numbers or email addresses by using the annotations
+						<code>Communication.IsPhoneNumber</code> and <code>Communication.IsEmailAddress</code>. The links are tagged with the
+					prefix "mailto:" or "tel:". When users click the link, the browser redirects to the operating system (for example Android, iOS, or
+					Windows) and directly performs the corresponding action, such as opening an email app.</p>
+				<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="sap.fe.manageitems.TechnicalTestingService.LineItems/phoneNumber"&gt;
+    &lt;Annotation Term="Common.Label" String="Mobile"/&gt;
+    &lt;Annotation Term="Communication.IsPhoneNumber" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+				<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="sap.fe.manageitems.TechnicalTestingService.LineItems/emailAddress"&gt;
+    &lt;Annotation Term="Common.Label" String="Email"/&gt;
+    &lt;Annotation Term="Communication.IsEmailAddress" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			</section></section><section id="section_exz_w5f_k4b"><h2 class="title ">Representation as a <code>TextArea</code></h2><p>You can display a field as a
+					<code>TextArea</code> by annotating the property associated to the field with <code>UI.MultiLineText</code>.</p><div><div class="fig"><img src="loio1744ef6d9cb64b958a2dedab0bd7c7f3_LowRes.png" usemap="#"></div></div><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/PurchaseOrderByCustomer"&gt;
+    &lt;Annotation Term="Common.Label" String="Customer Reference"/&gt;
+    &lt;Annotation Term="UI.MultiLineText" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section><section>
+				<h3 class="title ">Default Length of Text Fields</h3>
+				<p>The number of lines of a text field depends on the place where it is used, and on whether it is editable. The following table
+					provides an overview:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_ld5_dyb_z4b" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Edit State</th>
+								<th colspan="1" rowspan="1">Place of Usage</th>
+								<th colspan="1" rowspan="1">Number of Lines</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Editable</td>
+								<td colspan="1" rowspan="1" valign="top">Form</td>
+								<td colspan="1" rowspan="1" valign="top">4</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Not Editable</td>
+								<td colspan="1" rowspan="1" valign="top">Form</td>
+								<td colspan="1" rowspan="1" valign="top">0 (= unlimited)</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Editable</td>
+								<td colspan="1" rowspan="1" valign="top">Table</td>
+								<td colspan="1" rowspan="1" valign="top">4</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Not Editable</td>
+								<td colspan="1" rowspan="1" valign="top">Table</td>
+								<td colspan="1" rowspan="1" valign="top">4</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>If the content exceeds the maximum number of lines for a given text field, this can lead to the following results:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>in edit mode: a scrollbar is shown</p>
+					</li>
+					<li class="li">
+						<p>in display mode: the text is cut off after the maximum number of available lines and ellipses are shown to indicate the
+							invisible text</p>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">Manifest-Based Definition of the Length of a Text Field</h3>
+				<p>If you need to define your own length for a text field in a <code>FieldGroup</code> or a <code>LineItem</code>, their
+						<code>controlConfiguration</code> has to be extended with a "fields" block or "columns" block in a structure as shown in
+					the following sample code:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Manifest Setting for the Length of a Text
+					Field</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+    "routing": {
+        "targets": {
+            "SalesOrderManageObjectPage": {
+                "options": {
+                    "settings": {
+                        "controlConfiguration": {
+                            "@com.sap.vocabularies.UI.v1.FieldGroup#myQualifier": {
+                                "fields": {
+                                    "DataField::myFormTextField": {
+                                        "formatOptions": {
+                                            "textLinesDisplay": "6",
+                                            "textLinesEdit": "6"
+                                        }
+                                    }
+                                 }
+                             },
+                            "myEntity/@com.sap.vocabularies.UI.v1.LineItem": {
+                                "columns": {
+                                    "DataField::myTableTextField": {
+                                        "formatOptions": {
+                                            "textLinesDisplay": "5",
+                                            "textLinesEdit": "5"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                     }
+                 }
+             }
+        }
+    }
+ }</pre></div></section><p></p></div></div>
+				<p>The following table provides an overview of the parameters that are allowed in <code>formatOptions</code>:</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_zpv_m1c_z4b" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Parameter</th>
+								<th colspan="1" rowspan="1">Type</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">textLinesDisplay</td>
+								<td colspan="1" rowspan="1" valign="top">Integer | String</td>
+								<td colspan="1" rowspan="1" valign="top">An integer value or a string containing an integer value that defines the number of lines the text field can
+									show when it is not editable before the text is cut of. If this value is not defined or set to zero, the entire
+									text is shown.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">textLinesEdit</td>
+								<td colspan="1" rowspan="1" valign="top">Integer | String</td>
+								<td colspan="1" rowspan="1" valign="top">An integer value or a string containing an integer value that defines the number of lines the text field can
+									show when it is editable before a scrollbar is shown.</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section></section><section id="section_kl4_2qs_r4b">
+			<h2 class="title ">Representation as a Micro Chart</h2>
+			<p>You can render a field as a micro chart to show additional information like critical measures, or criticality.</p>
+			<div><div class="fig"><img src="loio9ed960fcda1746f98b468098d6f77924_LowRes.png" usemap="#"></div></div>
+			<p>For more information, see <a href="#/topic/e219fd0c85b842c69ac3a514e712ece5.html" title="You can add a MicroChart control to a facet within the header area on the object page." class="sap-doc">Micro Chart Facet</a> and <a href="#/topic/b8312a4adde54f33a89480dbe12d8632.html" title="You can add a micro chart to a column in both the list report and the object page." class="sap-doc">Adding a Micro Chart to a Table</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

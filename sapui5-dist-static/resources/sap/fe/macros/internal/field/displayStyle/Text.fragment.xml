@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							UI: 'sap/fe/core/templating/UIFormatters',
+							FieldTemplating: 'sap/fe/macros/field/FieldTemplating'
+						 }"
+>
+	<template:if test="{= (${property>$Path/$Type} === 'Edm.String') &amp;&amp;	${property>$Path@com.sap.vocabularies.UI.v1.MultiLineText} }">
+		<template:then>
+			<Text text="{this>text}" width="100%" maxLines="{this>formatOptions/textLinesDisplay}" />
+		</template:then>
+		<template:elseif test="{= ${this>formatOptions/isAnalytics} &amp;&amp; ${property>$Path@Org.OData.Measures.V1.Unit} }">
+			<template:with path="property>$Path@Org.OData.Measures.V1.Unit" var="unit">
+				<control:ConditionalWrapper condition="{= '{= !!%' + %{unit>@@MODEL.value} + ' || !%' + %{dataField>Value@@MODEL.value} + '}'}">
+					<control:contentTrue>
+						<Text text="{this>text}" />
+					</control:contentTrue>
+					<control:contentFalse>
+						<Text text="*" />
+					</control:contentFalse>
+				</control:ConditionalWrapper>
+			</template:with>
+		</template:elseif>
+		<template:else>
+			<Text text="{this>text}" />
+		</template:else>
+	</template:if>
+
+
+</core:FragmentDefinition>

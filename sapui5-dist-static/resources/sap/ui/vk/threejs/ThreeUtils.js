@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["../thirdparty/three","sap/base/Log"],function(t,L){"use strict";var T={};T._disposeMaterial=function(m){if(m.map){m.map.dispose();}if(m.lightMap){m.lightMap.dispose();}if(m.bumpMap){m.bumpMap.dispose();}if(m.normalMap){m.normalMap.dispose();}if(m.specularMap){m.specularMap.dispose();}if(m.envMap){m.envMap.dispose();}m.dispose();};T.disposeMaterial=function(M){if(M){if(M instanceof THREE.MeshFaceMaterial){M.materials.forEach(function(m){T._disposeMaterial(m);});}else{T._disposeMaterial(M);}}};T.disposeObject=function(o){if(o instanceof THREE.Mesh||o instanceof THREE.Line||o instanceof THREE.Box3Helper){if(o.geometry){o.geometry.dispose();}if(o.material){T._disposeMaterial(o.material);}}};T.disposeGeometry=function(o){if(o instanceof THREE.Mesh||o instanceof THREE.Line||o instanceof THREE.Box3Helper){if(o.geometry){o.geometry.dispose();}}};T.getAllTHREENodes=function(a,b,c){if(!a){return;}if(!b||!c){L.error("getAllTHREENodes input parameters - all3DNodes and/or allGroupNodes are undefined.");return;}a.forEach(function(n){if(n instanceof THREE.Mesh){b.push(n);}else if(n instanceof THREE.Light){b.push(n);}else if(n instanceof THREE.Camera){b.push(n);}else if(n instanceof THREE.Box3Helper){b.push(n);}else if(n instanceof THREE.Group){c.push(n);}if(n.children&&n.children.length>0){T.getAllTHREENodes(n.children,b,c);}});};return T;});

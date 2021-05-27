@@ -1,0 +1,27 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio66f9c55623f243649f81be9d5a9574dc" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Compact Filter Setup</h1><div class="fig"><h1 class="topictitle1 title">Compact Filter Setup</h1><div class="shortdesc">Lets you specify filter field values based on the configuration in the
+			sap:filter-restriction of the respective field in the entity set. </div><section>
+			<p>In addition to the fields configured in the <code>SelectionFields</code> annotation,
+				compact filters also display the mandatory parameters and filters you need to query
+				the entity set. You can explicitly add  the additional filter fields listed in the
+				filter configuration dialog to the filter area, if needed.</p>
+			<p>The <code>ValueList</code> annotation handles the dependency of filter values based on the
+				selection of filter values in other filter fields.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>To enable value help in
+					compact filters, you have to define at least one <code>ValueList</code>
+					annotation configuration without the
+						<code>PresentationVariantQualifier</code> property.</p></div></div><p></p>
+			<p>The <code>AND</code> operator groups multiple filter field selections and the
+					<code>OR</code> operator groups multiple selections within the same
+				field.</p>
+		</section><section><h2 class="title ">Annotation for Filter Field Selection</h2><p>Annotation:
+			<code>UI.SelectionFields</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;/Annotation&gt;
+ &lt;Annotation Term="UI.SelectionFields"&gt;
+   &lt;Collection&gt;
+     &lt;PropertyPath&gt;DeliveryCalendarYear&lt;/PropertyPath&gt;
+     &lt;PropertyPath&gt;SoldToParty&lt;/PropertyPath&gt;
+     &lt;PropertyPath&gt;Product&lt;/PropertyPath&gt;
+     &lt;PropertyPath&gt;MainProductCategory&lt;/PropertyPath&gt;
+     &lt;PropertyPath&gt;DeliveryCalendarQuarter&lt;/PropertyPath&gt;
+   &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="#/topic/33f3d807c10b47d9a8141692d2619dc2.html" title="The section following the title area is the filter area. Set up filters to get the search results you want in the main content area." class="sap-doc">Configuring the Filter Area</a></li><li><a href="#/topic/16d43eb0472c4d5a9439ca1bf92c915d.html" title="Lets you map an entity to another entity that is associated with a different entity set. The value list annotation defines the relationship between filter fields of the main entity set and the fields in the value help entity set." class="sap-doc">Defining ValueList Annotation</a></li></ul></section></div></section></div></body></html>

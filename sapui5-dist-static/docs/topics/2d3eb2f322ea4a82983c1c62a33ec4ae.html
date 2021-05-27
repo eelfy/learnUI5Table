@@ -1,0 +1,81 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio2d3eb2f322ea4a82983c1c62a33ec4ae" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Variant for
+            Bootstrapping from Content Delivery Network</h1><div class="fig"><h1 class="topictitle1 title">Variant for
+            Bootstrapping from Content Delivery Network</h1><div class="shortdesc">SAPUI5 can either be
+            loaded locally with a relative path from an SAP Web server or externally from a Content
+            Delivery Network (CDN).
+    </div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><p>Loading SAPUI5 from a
+                CDN improves your app performance: You can load from a server that (in most cases)
+                is much closer to your location, and you can benefit from the caching mechanism and
+                the language fallback logic.</p>
+            
+            
+            
+        <p></p></div></div><section id="section_ekc_ct3_vjb"><h2 class="title ">Bootstrapping
+                From SAPUI5 CDN</h2><p>SAPUI5 application hosted on SAP BTP are allowed to leverage the SAPUI5 CDN to retrieve the SAPUI5
+                distribution layer artifacts.</p><section>
+                <h3 class="title ">Specific Version</h3>
+                <p>Check the available versions with the respective maintenance
+                    status at <a href="https://ui5.sap.com/versionoverview.html" title="https://ui5.sap.com/versionoverview.html" class="sap-doc">https://ui5.sap.com/versionoverview.html</a>.</p>
+                <p>You can refer to a specific version by using a versioned URL
+                    as in the following
+                    example:</p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+    type="text/javascript"
+    src="https://sapui5.hana.ondemand.com/<span class="emphasis">1.88.1</span>/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-libs="sap.m"&gt;&lt;/script&gt;
+
+</pre></div></section><p></p>
+                
+                <p>The first segment of the URL after the host name is used to specify a concrete version.</p>
+                
+            </section><section>
+                <h3 class="title ">Default Version</h3>
+                <p>The default version of our libraries has the generic URL
+                        <a href="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js" title="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js" class="sap-doc">https://sapui5.hana.ondemand.com/resources/sap-ui-core.js</a> (SAPUI5).</p>
+                <div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+                    </p><p>The default version is constantly being upgraded and this might have an impact on the stability of your application. Use this
+                        version for testing purposes only.</p>
+                    <p>If you want to use the default version, you can use the
+                        following bootstrap scripts:
+                        </p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+    type="text/javascript"
+    src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_belize"
+    data-sap-ui-libs="sap.m"&gt;&lt;/script&gt;
+</pre></div></section><p></p>
+                    
+                <p></p></div></div>
+            </section><section>
+                <h3 class="title ">Cache Control</h3>
+                <p>The cache control is different for dynamic and static resources. If you refer to the latest maintenance version (dynamic), you have
+                    a maximum cache age of one week, if you refer to a specific (static) version, you have a maximum cache age of 10 years. In both
+                    cases, cross-origin resource sharing (CORS) headers are set, so that you can consume resources from the central location without
+                    any proxy in between.</p>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>The Cache Buster is only needed if you consume SAPUI5 without a
+                        concrete version in the URL. When you consume SAPUI5 with the
+                        concrete version in the URL, this is not needed, as the content served by that unique URLs will never change and can be cached
+                        forever.</p>
+                <p></p></div></div>
+            </section></section><section>
+            <h2 class="title ">Bootstrapping from Custom CDN</h2>
+            <p>SAPUI5 applications hosted on platforms other than SAP BTP can leverage a custom CDN to retrieve the SAPUI5 distribution layer artifacts. For this, the SAPUI5 distribution layer artifacts must be deployed on an SAP web
+                server.</p>
+            <p>To use your custom CDN with the SAPUI5 ABAP repository, you need to
+                configure this CDN as an external location in the customizing. For more information, see the documentation for the customizing
+                activity <span class="ph uicontrol">Configure SAPUI5 Bootstrapping</span> in Customizing under <span class="ph menucascade">
+                    <span class="ph uicontrol">SAP NetWeaver</span>
+                    <span class="ph uicontrol">UI Technologies</span>
+                    <span class="ph uicontrol">SAPUI5</span>
+                </span>.</p>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+        <li><a href="https://blogs.sap.com/2015/07/30/multi-version-availability-of-sapui5" title="https://blogs.sap.com/2015/07/30/multi-version-availability-of-sapui5" class="external-link" target="_blank" rel="noopener">Multi-Version Availability of SAPUI5</a></li>
+        <li><a href="#/topic/91f021426f4d1014b6dd926db0e91070.html" title="Versioning and maintenance strategy for SAPUI5." class="sap-doc">Versioning and Maintenance of SAPUI5</a></li>
+    </ul></section></div></section></div></body></html>

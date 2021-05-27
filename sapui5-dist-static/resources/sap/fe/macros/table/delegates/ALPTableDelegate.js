@@ -1,0 +1,1 @@
+sap.ui.define(["sap/fe/macros/table/delegates/TableDelegate","sap/fe/macros/table/ALPTableDelegateBaseMixin"],function(T,A){"use strict";var a=Object.assign({},T,A,{_getDelegateParentClass:function(){return T;}});return a;},false);

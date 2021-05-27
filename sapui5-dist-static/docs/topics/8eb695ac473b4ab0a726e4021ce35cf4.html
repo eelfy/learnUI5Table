@@ -1,0 +1,28 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio8eb695ac473b4ab0a726e4021ce35cf4" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Disabling the Editing Status
+                Filter</h1><div class="fig"><h1 class="topictitle1 title">Disabling the Editing Status
+                Filter</h1><div class="shortdesc">The editing status filter is enabled by default in the list report page of draft enabled
+                applications.</div><div><div class="fig"><img src="loiod6891a2faae947a5ac59f8343a281da5_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Editing status filter</span></div><p>If required, you can disable this filter for your app. To do so, you need to
+                        adapt your OData service in the backend. The resulting metadata.xml file
+                        looks as shown
+                        below:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">                      &lt;Annotation Term="Capabilities.NavigationRestrictions"&gt;
+                             &lt;Record&gt;
+                                    &lt;PropertyValue Property="RestrictedProperties"&gt;
+                                            &lt;Collection&gt;
+                                                     &lt;Record&gt;
+                                                            &lt;PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData" /&gt;
+                                                            &lt;PropertyValue Property="FilterRestrictions"&gt;
+                                                                   &lt;Record&gt;
+                                                                          &lt;PropertyValue Property="Filterable" Bool="false" /&gt;
+                                                                   &lt;/Record&gt;
+                                                            &lt;/PropertyValue&gt;
+                                                     &lt;/Record&gt;
+                                            &lt;/Collection&gt;
+                                    &lt;/PropertyValue&gt;
+                             &lt;/Record&gt;
+                      &lt;/Annotation&gt;
+               </pre></div></section><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+                <p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

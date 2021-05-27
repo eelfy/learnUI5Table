@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension","sap/ui/core/mvc/OverrideExecution"],function(C,O){"use strict";return C.extend("sap.fe.core.controllerextensions.Routing",{metadata:{methods:{"onBeforeNavigation":{"public":true,"final":false,overrideExecution:O.After}}},onBeforeNavigation:function(c){return false;}});});

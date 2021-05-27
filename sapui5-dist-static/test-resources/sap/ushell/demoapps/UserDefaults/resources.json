@@ -1,0 +1,95 @@
+{
+	"_version":"1.1.0",
+	"resources":[
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/demo/UserDefaults/Component-h2-preload.js",
+			"size": 3893,
+			"required" : ["sap/m/Button.js", "sap/m/HBox.js", "sap/m/Input.js", "sap/m/InputListItem.js", "sap/m/List.js", "sap/m/MessageStrip.js", "sap/m/Page.js", "sap/m/SplitApp.js", "sap/m/StandardListItem.js", "sap/m/Text.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/VerticalLayout.js"],
+			"included" : ["sap/ushell/demo/UserDefaults/Component.js", "sap/ushell/demo/UserDefaults/manifest.json", "sap/ushell/demo/UserDefaults/messagebundle.properties", "sap/ushell/demo/UserDefaults/view/List.controller.js", "sap/ushell/demo/UserDefaults/view/List.view.xml", "sap/ushell/demo/UserDefaults/view/Main.controller.js", "sap/ushell/demo/UserDefaults/view/Main.view.xml", "sap/ushell/demo/UserDefaults/view/ShowEvents.controller.js", "sap/ushell/demo/UserDefaults/view/ShowEvents.view.xml", "sap/ushell/demo/UserDefaults/view/SimpleEditor.controller.js", "sap/ushell/demo/UserDefaults/view/SimpleEditor.view.xml", "sap/ushell/demo/UserDefaults/view/UsedParams.controller.js", "sap/ushell/demo/UserDefaults/view/UsedParams.view.xml"]
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/demo/UserDefaults/Component-preload.js",
+			"size": 13324,
+			"required" : ["sap/m/Button.js", "sap/m/HBox.js", "sap/m/Input.js", "sap/m/InputListItem.js", "sap/m/List.js", "sap/m/MessageStrip.js", "sap/m/Page.js", "sap/m/SplitApp.js", "sap/m/StandardListItem.js", "sap/m/Text.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/VerticalLayout.js"],
+			"included" : ["sap/ushell/demo/UserDefaults/Component.js", "sap/ushell/demo/UserDefaults/manifest.json", "sap/ushell/demo/UserDefaults/messagebundle.properties", "sap/ushell/demo/UserDefaults/view/List.controller.js", "sap/ushell/demo/UserDefaults/view/List.view.xml", "sap/ushell/demo/UserDefaults/view/Main.controller.js", "sap/ushell/demo/UserDefaults/view/Main.view.xml", "sap/ushell/demo/UserDefaults/view/ShowEvents.controller.js", "sap/ushell/demo/UserDefaults/view/ShowEvents.view.xml", "sap/ushell/demo/UserDefaults/view/SimpleEditor.controller.js", "sap/ushell/demo/UserDefaults/view/SimpleEditor.view.xml", "sap/ushell/demo/UserDefaults/view/UsedParams.controller.js", "sap/ushell/demo/UserDefaults/view/UsedParams.view.xml"]
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/demo/UserDefaults/Component.js",
+			"size": 857,
+			"required" : ["sap/ui/core/UIComponent.js"]
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/demo/UserDefaults/manifest.json",
+			"size": 2986
+		},
+		{
+			"name": "messagebundle.properties",
+			"module": "sap/ushell/demo/UserDefaults/messagebundle.properties",
+			"size": 507
+		},
+		{
+			"name": "view/List.controller.js",
+			"module": "sap/ushell/demo/UserDefaults/view/List.controller.js",
+			"size": 2296,
+			"format":"raw"
+		},
+		{
+			"name": "view/List.view.xml",
+			"module": "sap/ushell/demo/UserDefaults/view/List.view.xml",
+			"size": 838,
+			"required" : ["sap/m/List.js", "sap/m/Page.js", "sap/m/StandardListItem.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/UserDefaults/view/List.controller.js"]
+		},
+		{
+			"name": "view/Main.controller.js",
+			"module": "sap/ushell/demo/UserDefaults/view/Main.controller.js",
+			"size": 1522,
+			"format":"raw"
+		},
+		{
+			"name": "view/Main.view.xml",
+			"module": "sap/ushell/demo/UserDefaults/view/Main.view.xml",
+			"size": 331,
+			"required" : ["sap/m/SplitApp.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/UserDefaults/view/Main.controller.js"]
+		},
+		{
+			"name": "view/ShowEvents.controller.js",
+			"module": "sap/ushell/demo/UserDefaults/view/ShowEvents.controller.js",
+			"size": 3834,
+			"format":"raw"
+		},
+		{
+			"name": "view/ShowEvents.view.xml",
+			"module": "sap/ushell/demo/UserDefaults/view/ShowEvents.view.xml",
+			"size": 807,
+			"required" : ["sap/m/MessageStrip.js", "sap/m/Page.js", "sap/m/Text.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/VerticalLayout.js", "sap/ushell/demo/UserDefaults/view/ShowEvents.controller.js"]
+		},
+		{
+			"name": "view/SimpleEditor.controller.js",
+			"module": "sap/ushell/demo/UserDefaults/view/SimpleEditor.controller.js",
+			"size": 6131,
+			"format":"raw"
+		},
+		{
+			"name": "view/SimpleEditor.view.xml",
+			"module": "sap/ushell/demo/UserDefaults/view/SimpleEditor.view.xml",
+			"size": 2722,
+			"required" : ["sap/m/Button.js", "sap/m/HBox.js", "sap/m/Input.js", "sap/m/InputListItem.js", "sap/m/List.js", "sap/m/MessageStrip.js", "sap/m/Page.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/VerticalLayout.js", "sap/ushell/demo/UserDefaults/view/SimpleEditor.controller.js"]
+		},
+		{
+			"name": "view/UsedParams.controller.js",
+			"module": "sap/ushell/demo/UserDefaults/view/UsedParams.controller.js",
+			"size": 2773,
+			"format":"raw"
+		},
+		{
+			"name": "view/UsedParams.view.xml",
+			"module": "sap/ushell/demo/UserDefaults/view/UsedParams.view.xml",
+			"size": 1306,
+			"required" : ["sap/m/Button.js", "sap/m/InputListItem.js", "sap/m/List.js", "sap/m/MessageStrip.js", "sap/m/Page.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/VerticalLayout.js", "sap/ushell/demo/UserDefaults/view/UsedParams.controller.js"]
+		}
+	]
+}

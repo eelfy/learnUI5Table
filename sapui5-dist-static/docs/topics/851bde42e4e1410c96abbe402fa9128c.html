@@ -1,0 +1,68 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio851bde42e4e1410c96abbe402fa9128c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 1: Ready...</h1><div class="fig"><h1 class="topictitle1 title">Step 1: Ready...</h1><div class="shortdesc">Let's get you ready for your journey! We bootstrap SAPUI5 in an HTML page and
+		implement a simple "Hello World" example.</div><section id="section_cpm_14c_1gb">
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio9c157e9764b846fea7de519d141c33ac_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">The browser shows a "Ready" button that triggers a "Hello World" message</span></div>
+		</section><section id="section_zzy_mpc_1gb">
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.quickstart.01/preview" title="#/sample/sap.m.tutorial.quickstart.01/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.quickstart.01/preview">Quick
+						Start - Step 1</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.html (new)</h2>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;Quickstart Tutorial&lt;/title&gt;
+	&lt;script id="sap-ui-bootstrap"
+		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-resourceroots='{"Quickstart": "./"}'
+		data-sap-ui-onInit="module:Quickstart/index"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true"&gt;
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class="sapUiBody" id="content"&gt;&lt;/body&gt;
+&lt;/html&gt;</span></pre></div></section>
+			<p>In your development environment, create the folder <code>webapp</code>. In this folder, create an <code>index.html</code> file, and
+				paste the above code to this file.</p>
+			<p>With the <code>script</code> tag, we load and initialize SAPUI5 with
+				typical bootstrap parameters. We define, for example, a theme, control libraries, as well as performance and compatibility flags.</p>
+			<p>First, we need a source to load SAPUI5 from. To keep things convenient, we
+				use the path to our Content Delivery Network (CDN) for OpenUI5.</p>
+			<p>The bootstrap property <code>resourceroots</code> defines the namespace for all resources of the app. This way, we can easily
+				reference additional files that we are about to create in this step.</p>
+			<p>The <code>index</code> module that we load with the <code>onInit</code> parameter will hold the application logic.</p>
+			<p>The <code>body</code> tag is defined with the <code>sapUiBody</code> class and the <code>content</code> ID. This is where we will
+				add the content of the app in the next steps.</p>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>For more information about bootstrapping from the CDN, see <a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a>.</p>
+			<p></p></div></div>
+		</section><section id="section_fh4_t23_1gb">
+			<h2 class="title ">webapp/index.js (New)</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">sap.ui.define([
+	"sap/m/Button",
+	"sap/m/MessageToast"
+], function (Button, MessageToast) {
+	"use strict";
+
+	new Button({
+		text: "Ready...",
+		press: function () {
+			MessageToast.show("Hello World!");
+		}
+	}).placeAt("content");
+
+});</span></pre></div></section>
+			<p>In your <code>webapp</code> folder, create a new file <code>index.js</code> that will be called as soon as SAPUI5 is loaded and initialized.</p>
+			<p>We load two UI controls - a button and a message toast - and place the button in the element with the <code>content</code> ID. The
+				button is defined with a <code>text</code> property and a callback attached to its <code>press</code> event.</p>
+			<p>Now, start the webserver, serve the sources of the `webapp` folder, and open the <code>index.html</code> file in your browser. When the
+				button is pressed, a message toast with the "Hello World" message is shown at the bottom of the screen.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/592f36fd077b45349a67dcb3efb46ab1">Quick Start</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/128214a9b2754b15aec5e365780b03fd">Step 2: Steady...</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/7bb04e05f9484e1b95b38a2e48ecef4f.html" title="This part of the documentation introduces you to some common and recommended use cases for the installation, configuration, and setup of SAPUI5 development environments." class="sap-doc">Development Environment</a></li>
+		<li><a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a></li>
+	</ul></section></div></section></div></body></html>

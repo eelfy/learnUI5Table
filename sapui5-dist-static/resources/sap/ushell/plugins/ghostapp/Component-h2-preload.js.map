@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/plugins/ghostapp/Component-h2-preload.js",
+"sourceroot":".",
+"sources":["Component-dbg.js","manifest.json"],
+"names":["AppComponent"],
+"mappings":";;AACA,gBAAa,yCAAC,CACZ,iCAEF,EAAG,QAAS,CAACA,CAAY,CAAE,CACzB,aAEA,OAAOA,CAAY,gDAAiD,CAClE,SAAU,CACR,SAAU,OACV,QAAS,YACX,CACF,GACF;;;;;;;;;",
+"x_com_sap_openui5_sections":[66,350,420,2586]
+}

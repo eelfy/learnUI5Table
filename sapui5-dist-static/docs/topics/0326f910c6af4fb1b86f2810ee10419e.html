@@ -1,0 +1,55 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0326f910c6af4fb1b86f2810ee10419e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Link List Cards</h1><div class="fig"><h1 class="topictitle1 title">Link List Cards</h1><div class="shortdesc">Allows you to view a list of links with title, picture, icon, or subtitle.</div><section>
+			<p>Link List card supports the following navigation types:</p><ul class="ul ">
+					<li class="li">QuickView link: To view contact information from a collection. Example, Recent contact
+						list</li>
+					<li class="li">Cross App link: To access related applications. Example, intent-based navigation</li>
+					<li class="li">External URL link</li>
+				</ul><p></p>
+		</section><section>
+			<h2 class="title ">Link List Card Types</h2>
+			<p>Supports standard and carousel link list card types.</p>
+		</section><section><h2 class="title ">Standard</h2><p>Provides an ordered list items. (Optional) You can </p><ul class="ul ">
+        <li class="li">Add a picture and/or subtitle to the list item.</li>
+        <li class="li">Configure the card size to view multiple columns, if the dashboard layout has multiple
+          columns.</li>
+      </ul><img src="loiof27c6ec2049241e89de4871046d0efb6_LowRes.png" usemap="#">
+    </section><section><h2 class="title ">Carousel</h2><p>Provides carousel based view. Title and subtitle appears on top
+				of the card, allowing more space for image. You can also configure this list type
+				with multiple columns.</p><img src="loio4a16a45c8c9b48c2982447b289e0dd5c_LowRes.png" usemap="#"></section><section>
+			<p>You can customize the information in the link list  to appear in the following ways:</p><ul class="ul ">
+          <li class="li">One or two line(s) of<ul class="ul ">
+              <li class="li">Text only</li>
+              <li class="li">Text with icon supports image control</li>
+              <li class="li">Text with image supports avatar control</li>
+            </ul>
+          </li>
+          <li class="li">Interaction States: You can add more interactions to the link list.</li>
+        </ul><p></p>
+		</section><section>
+			<h2 class="title ">Annotation Examples</h2>
+		</section><section><span class="emphasis">Standard Link List</span><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"card20": {
+    "model": "salesOrder",
+    "template": "sap.ovp.cards.linklist",
+    "settings": {
+        "title": "Dynamic Linklist Card",
+        "targetUri": "https://en.abc.org/wiki/A_2",
+        "subtitle": "NEW CARD",
+        "listFlavor": "standard",
+        "sortBy": "Name",
+        "entitySet": "ProductSet",
+        "sortOrder": "ascending",
+        "headerAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#header1",
+        "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#identify1",
+    }
+}
+</pre></div></section></section><section><span class="emphasis">Carousel</span><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"card_20": {
+    "model": "HEPM_OVP_TECH_VAL",
+    "template": "sap.ovp.cards.linklist",
+    "settings": {
+        "title": "{{card20_title}}",
+        "entitySet": "Hepmra_C_OFT_Employee",
+        "listFlavor": "carousel",
+        "sortBy": "Employee",
+        "sortOrder": "ascending",
+    }
+},</pre></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

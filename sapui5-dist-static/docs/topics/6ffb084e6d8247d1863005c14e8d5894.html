@@ -1,0 +1,75 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6ffb084e6d8247d1863005c14e8d5894" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Finding the Right Key for the Anchor</h1><div class="fig"><h1 class="topictitle1 title">Finding the Right Key for the Anchor</h1><div class="shortdesc">For the correct positioning of your custom elements, you need to identify an anchor element using the browser's developer
+		tools.</div><p>To open the browser's developer tools, choose CTRL+OPT+I on Windows, and CMD+OPT+I on macOS.</p><section id="section_hgp_lbc_5nb">
+			<h2 class="title ">How to Find Anchors for the Header Facet</h2>
+			<p>In the browser's developer tools, open the DOM element inspector and search for either the string
+					<code>fe::HeaderFacetContainer</code> or <code>fe::HeaderFacetCustomContainer</code>, depending on whether you want to
+				place your custom header facet relative to a standard or a custom header facet. The name displayed directly after these strings are
+				the facet keys that you have to use as the <code>position.anchor</code>. For example, the anchor name you would use to refer to a
+				header facet with element ID <code>AppName::AppNameObjectPage--fe::HeaderFacetContainer::AnchorHeaderFacetName</code> would be
+					<code>AnchorHeaderFacetName</code>.</p>
+		</section><section id="section_qlb_5bc_5nb">
+			<h2 class="title ">How to Find Anchors for the Header Facet Field</h2>
+			<p>To place a custom header field inside a given header facet, search for the string <code>fe::HeaderFacet::Form</code> in the DOM
+				element inspector. The fields of these forms have the key pattern <code>DataFieldAbstractType::PropertyName</code> that you have
+				to specify as <code>position.anchor</code>. For example, if the field that you want to use as position anchor has the element ID
+					<code>AppName:: AppName ObjectPage--fe::HeaderFacet::Form::HeaderFacetName::DataField::PropertyName::Field</code>, you should
+				use the string <code>DataField::PropertyName</code> for <code>position.anchor</code>.</p>
+			<p>The key is a combination of the type and the property name. For most scenarios the <code>DataField</code> would be common, the key
+				would then be <code>DataField::PropertyName</code>.</p>
+		</section><section id="section_kfj_bcc_5nb">
+			<h2 class="title ">How to Find Anchors for the Table Column</h2>
+			<p>To position a custom column in relation to the others, you need to specify the correct column key. In case of custom columns, this task
+				requires two separate steps:</p>
+			<ol>
+				<li class="li">
+					<p>Open the browser's developer tools and search for the string <code>fe::table::AppName::LineItem::C::</code> (insert the
+						name of your application for <code>AppName</code>). The column IDs have an element ID with the search string as the
+						prefix, followed by the column name, for example <code>fe::table::AppName::LineItem::C::PersonName</code> or
+							<code>fe::table::AppName::LineItem::C::FieldGroup::multipleFields</code>.</p>
+				</li>
+				<li class="li">Find the column type. For this you open the browser's developer tools to investigate the metadata requests in the network log (you
+					can filter for <code>$metadata</code>). Once you have identified the metadata request, open the response XML and search for
+					the string <code>&lt;Annotation Term="UI.LineItem"&gt;</code> to find the line item annotations of your table. The line-item
+					annotation would look as follows: <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.LineItem"&gt;
+    &lt;Collection&gt;
+        &lt;Record Type="UI.DataField"&gt;
+            &lt;PropertyValue Property="Value" Path="PersonName"/&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.DataFieldForAction"&gt;
+            &lt;PropertyValue Property="Action" String="ChangePresence"/&gt;
+        &lt;/Record&gt;
+        &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#multipleFields"/&gt;
+        &lt;/Record&gt;
+        ...
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section>
+					<p></p></div></div></li>
+			</ol>
+			<p>The key that you have to insert in <code>position.anchor</code> is composed as <code>DataFieldAbstractType::ColumnName</code>,
+				containing the record type given in the metadata and the property name you have retrieved from the DOM inspector before. Here are some
+				examples:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p><code>DataField::PersonName</code></p>
+				</li>
+				<li class="li">
+					<p><code>DataFieldForAction::ChangePresence</code></p>
+				</li>
+				<li class="li">
+					<p><code>DataFieldForAnnotation::FieldGroup::multipleFields</code></p>
+				</li>
+			</ul>
+			<p>If you want to use another custom column as a position anchor, you can directly use the custom column key that you have specified in
+				the <code>columns</code> collection of your manifest.json file.</p>
+		</section><section id="section_erq_qyf_5nb">
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

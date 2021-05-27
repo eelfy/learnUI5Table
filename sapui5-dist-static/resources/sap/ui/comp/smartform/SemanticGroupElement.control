@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>smartform/SemanticGroupElement</name>
+    <derived/>
+    <documentation>SemanticGroupElement holds the semantically connected fields divided by a delimiter.</documentation>
+    <since>1.88</since>
+    <baseType>sap.ui.layout/form/SemanticFormElement</baseType>
+    <properties>
+        <property name="elementForLabel" type="sap.ui.core/int" defaultValue="0" group="Misc">
+            <documentation>Index of element to be used for label determination</documentation>
+        </property>
+    </properties>
+    <events>
+        <event name="visibleChanged" allowPreventDefault="false">
+            <documentation>The event is fired after the visibility of the control has changed.</documentation>
+        </event>
+    </events>
+    <aggregations default="elements">
+        <aggregation name="elements" type="sap.ui.core/Control" cardinality="0..n">
+            <documentation>Aggregation of controls to be displayed together with a label and separated by delimiter.
+
+&lt;b&gt;Warning:&lt;/b&gt; Do not put any layout or other container controls in here.
+This could damage the visual layout, keyboard support and screen-reader support.
+Views are also not supported. Only form controls are allowed.
+Allowed controls implement the interface &lt;code&gt;sap.ui.core.IFormContent&lt;/code&gt;.</documentation>
+        </aggregation>
+    </aggregations>
+</control>

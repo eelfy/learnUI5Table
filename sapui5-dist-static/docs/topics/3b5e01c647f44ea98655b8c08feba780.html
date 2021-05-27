@@ -1,0 +1,145 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio3b5e01c647f44ea98655b8c08feba780" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Progress Indicator Facet</h1><div class="fig"><h1 class="topictitle1 title">Progress Indicator Facet</h1><div class="shortdesc">You can add a progress indicator to a header facet on the object page.</div><p>The progress indicator allows you to visually represent the level of completion of a goal or target, such as a project's progress, sales
+			progress for the current year’s goal, the development stage of a product, stock availability, and so on. The figure below shows a progress
+			indicator within the object page header.</p><div><div class="fig"><img src="loio2e059aa75ab14d88b58cfd44eeb98aaa_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Progress Indicator in Object Page Header</span></div><p>As shown below, progress can be expressed either as a percentage or in absolute numbers (for example, "8 of 10"), and it can include a unit
+			of measure, such as PC, GB, and so on.</p><div><div class="fig"><img src="loio73aaedf9f5fa466eb84b4f5493d362ea_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Progress Indicator: Percent or Number</span></div><p>The progress indicator in the header facet is made up of sections to include a title, subtitle, and footer:</p><div><div class="fig"><img src="loio767e59fd545d4237a0a4591ee9a3c387_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Sections of Progress Indicator</span></div><section>
+			<h2 class="title ">Code Samples</h2>
+			<p><span class="emphasis">UI.ReferenceFacet</span></p>
+			<p>To display the progress indicator in the object page header, add a record to the <code>UI.HeaderFacets</code> collection. This
+				record must be of type <code>UI.ReferenceFacet</code> and contain an <code>AnnotationPath</code> that points to a
+					<code>UI.DataPoint</code> with the visualization type <code>Progress</code>. The properties for the data point can be
+				included in either the <code>entityType</code> being annotated (<code>Target</code>) or in another <code>entityType</code>
+				different from the <code>Target</code>, in which case the <code>AnnotationPath</code> contains a navigation path as shown
+				below.</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProjectType"&gt;
+   &lt;Annotation Term="UI.HeaderFacets"&gt;
+      &lt;Collection&gt;
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target"
+            AnnotationPath="to_ProgressType/@UI.DataPoint#Progress"/&gt;
+         &lt;/Record&gt;
+      &lt;/Collection&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>In the example above, "UI" is an alias for the <code>com.sap.vocabularies.UI.v1</code> vocabulary.</p>
+			<p></p></div></div>
+			<p><span class="emphasis">CDS: UI.DataPoint</span></p>
+			<p>In CDS, annotate the <code>EntityType</code> containing the properties required for the data point as shown in the separate
+				sections for SAP Fiori elements for OData
+                            V2 and SAP Fiori elements for OData
+                            V4, respectively, below.</p>
+			<p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>
+						</p><ul class="ul ">
+							<li class="li">
+								<p>The data point annotation is for a <code>Property</code> even if the UI vocabulary specifies an
+										<code>EntityType</code> as the <code>Target</code>.</p>
+							</li>
+							<li class="li">The property name will be used as the <code>Qualifier</code> in the resulting (generated) annotation.</li>
+						</ul>
+					<p></p>
+				<p></p></div></div>The generated annotation will be similar to the example below: <p></p>
+			<p><span class="emphasis">UI.DataPoint</span></p>
+			<p>Annotate the <code>entityType</code> containing the properties required for the data point as shown below.</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProgressType"&gt;
+   &lt;Annotation Term="UI.DataPoint" Qualifier="Progress"&gt;
+      &lt;Record&gt;
+         &lt;PropertyValue Property="Title" String="{@i18n&gt;Title}"/&gt;
+         &lt;PropertyValue Property="Description" String="{@i18n&gt;SubTitle}"/&gt;
+         &lt;PropertyValue Property="Value" Path="Progress"/&gt;
+         &lt;PropertyValue Property="TargetValue" Decimal="150"/&gt;
+         &lt;PropertyValue Property="Criticality" Path="Criticality "/&gt;
+         &lt;PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/&gt;
+      &lt;/Record&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			<p><span class="emphasis">UoM and Common.Label</span></p>
+			<p>Additionally, for the unit of measure (UoM) and the footer, annotate the <code>entityType</code>’s property so that it includes the
+				path of the <code>Value</code> property for the data point. For example, in the code sample above, the path for the data point
+					<code>Value</code> property is <code>Value</code>, which is then used to annotate the <code>entityType</code>. In the
+				examples below, this is represented by <code>&lt;Annotations
+					Target="STTA_PROD_MAN.STTA_C_MP_ProgressType/<span class="emphasis">Value</span>"&gt;</code>.</p>
+			<p>Note that the unit of measure can be annotated with <code>Unit</code> or <code>ISOCurrency</code> as shown below. For the
+				footer, the term <code>Common.Label</code> needs to be applied.</p>
+			<p><span class="emphasis">Progress Indicator: UoM.Unit</span></p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProgressType/Value"&gt;
+   &lt;Annotation Term="UoM.Unit" Path="UoM"&gt;
+   &lt;Annotation Term="Common.Label" String="{@i18n&gt;Footer}"&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			<p><span class="emphasis">Progress Indicator: UoM.ISOCurrency</span></p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ ProgressType/Value"&gt;
+   &lt;Annotation Term="UoM.ISOCurrency" Path="UoM"&gt;
+   &lt;Annotation Term="Common.Label" Path="Footer”&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>In the examples above, <code>UoM</code> is an alias for the <code>Org.OData.Measures.V1</code> vocabulary.</p>
+			<p></p></div></div>
+		</section><section id="section_mq1_gqm_bmb">
+			<h2 class="title ">Rendering Rules</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p>The <code>Value</code> and <code>Title</code> properties are mandatory. Without a value, the progress cannot be
+						calculated. A title should always be provided for an object page header facet, as this is required by the
+							<code>DataPoint</code> term in the UI vocabulary.</p>
+				</li>
+				<li class="li">
+					<p>The <code>TargetValue</code> property is mandatory when using a <code>UoM</code> that is not expressed as a percentage
+						(for example, currency, CM, PC, and so on), or if no <code>UoM</code> is provided. </p>
+				</li>
+				<li class="li">
+					<p>The remaining properties - <code>Unit of Measure</code>, <code>Subtitle</code>, and <code>Footer</code> - are
+						optional. </p>
+				</li>
+				<li class="li">
+					<p>If the value of the <code>Unit of Measure</code> property is "%", then the <code>Value</code> property will be used
+						directly as a percentage. </p>
+				</li>
+				<li class="li">
+					<p>If the value of the <code>Unit of Measure</code> is not "%" or is not provided, then the progress will be calculated using
+						the <code>Value</code> and <code>TargetValue</code> properties according to the formula<code> Progress = Value /
+							TargetValue</code>.</p>
+				</li>
+				<li class="li">
+					<p>Additionally, the following checks will be done:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>Division by zero will result in progress being zero (since it cannot be calculated). </p>
+						</li>
+						<li class="li">
+							<p>Progress must be a value between 0 and 100.</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>If the progress is less than zero, then no color will appear in the progress bar.</p>
+								</li>
+								<li class="li">If the progress is greater than 100, then the progress bar will be fully colored.</li>
+								<li class="li">In both cases the actual value of the progress will be displayed in the bar as shown below.</li>
+							</ul>
+							<div><div class="fig"><img src="loioec1bbd33235a47e89349fa13cd83eb5f_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Values in Progress Indicator</span></div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section><section id="section_gdw_jqm_bmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p><span class="emphasis">CDS: UI.DataPoint</span></p><p>In CDS, annotate the <code>EntityType</code> containing the properties required for the data point as shown
+				below.</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI.dataPoint: {   
+    title:'{@i18n&gt;Title}',   
+    description: {@i18n&gt;SubTitle},   
+    targetValue: 150,   
+    criticality: 'Criticality',   
+    visualization: #PROGRESS   
+}
+ProjectProgress.Progress
+</pre></div></section><p></p></div></section><section id="section_bg1_nqm_bmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p><span class="emphasis">SAP Cloud Application Programming Model: UI.DataPoint</span></p><p>In CDS, annotate the <code>EntityType</code> containing the properties required for the data point as shown
+				below.</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@UI: DataPoint #Progress              : {
+        Value         : Progress,
+        TargetValue   : 100,
+        Title         : 'Progress',
+        Visualization : #Progress
+    }
+</pre></div></section><p></p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

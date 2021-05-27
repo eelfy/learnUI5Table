@@ -1,0 +1,577 @@
+/* NOTE: This file was generated as an optimized version of "library.source.less" for the Theme Designer. */
+
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2021 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+
+@import "../../../../../../Base/baseLib/baseTheme/base.less"; /* ORIGINAL IMPORT PATH: "../../../../../sap/ui/core/themes/base/base.less" */
+
+@import "../../../../../sap/ui/core/themes/base/global.less";
+
+/* START "AnalyticsCloudContent.less" */
+/* =========================================================== */
+/* CSS for control sap.ui.integration.controls/AnalyticsCloudContent */
+/* Base theme                                                  */
+/* =========================================================== */
+
+.sapFCardContent {
+	.sapFCardAnalyticsCloudContent {
+		svg {
+			text {
+				font-family: @sapUiFontFamily !important;
+				font-size: @sapMFontSmallSize !important;
+				fill: @sapUiTileTextColor !important;
+			}
+
+			.highcharts-text-outline[stroke-width="2px"] {
+				fill: @sapUiContentFocusColor !important;
+				stroke: @sapBaseColor !important;
+			}
+
+			.highcharts-text-outline[stroke-width="2px"] + tspan {
+				fill: @sapUiContentFocusColor !important;
+			}
+
+			.highcharts-title {
+				font-family: @sapUiFontHeaderFamily !important;
+				font-size: @sapMFontHeader5Size !important;
+				font-weight: @sapUiFontHeaderWeight !important;
+				fill: @sapUiTileTitleTextColor !important;
+			}
+
+			.highcharts-subtitle {
+				font-family: @sapUiFontFamily !important;
+				font-size: @sapMFontMediumSize !important;
+				font-weight: normal !important;
+				fill: @sapUiTileTextColor !important;
+			}
+
+			.highcharts-axis {
+				path[stroke] {
+					stroke: @sapUiText !important;
+				}
+			}
+
+			.highcharts-legend {
+				> rect[fill] {
+					fill: @sapUiTileBackground !important;
+				}
+
+				> rect[stroke] {
+					stroke: @sapUiTileBorderColor !important;
+				}
+			}
+
+			.highcharts-tooltip-box {
+				color: @sapUiTileTitleTextColor !important;
+				fill: @sapUiTileBackground;
+			}
+
+			.highcharts-background {
+				fill: @sapUiTileBackground;
+			}
+
+			.highcharts-scrollbar-track {
+				fill: @sapUiScrollBarTrackColor;
+				stroke: @sapUiScrollBarBorderColor;
+			}
+
+			.highcharts-scrollbar-button,
+			.highcharts-scrollbar-thumb {
+				fill: @sapUiScrollBarFaceColor;
+				stroke: @sapUiScrollBarBorderColor;
+			}
+
+			.highcharts-scrollbar-button:hover,
+			.highcharts-scrollbar-thumb:hover {
+				fill: @sapUiScrollBarHoverFaceColor;
+			}
+
+			.highcharts-scrollbar-arrow,
+			.highcharts-scrollbar-rifles {
+				stroke: @sapUiScrollBarSymbolColor;
+				fill: @sapUiScrollBarSymbolColor;
+			}
+		}
+	}
+}
+/* END "AnalyticsCloudContent.less" */
+
+/* START "CalendarContent.less" */
+/* =========================================================== */
+/* CSS for control sap.ui.integration.controls/CalendarContent */
+/* Base theme                                                  */
+/* =========================================================== */
+
+.sapFCardCalendarContent .sapFCalCard {
+	padding: 1rem;
+	.sapUiCal:not(.sapUiCalInt) {
+		width: 100%;
+		padding: 0;
+		min-height: 16.5rem;
+		min-width: 16.5rem;
+	}
+	.sapUiCalMonthPicker,
+	.sapUiCalYearPicker {
+		left: 0;
+		margin-left: 0;
+	}
+	.sapUiCal .sapUiCalMonthView {
+		padding: 0;
+	}
+
+	.sapUiCalendarAppContainer {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		box-sizing: border-box;
+		padding-right: 0;
+	}
+
+	.sapFCalCardLineSeparator {
+		border-top: 0.0625rem solid @sapGroup_ContentBorderColor;
+		margin-bottom: 1rem;
+	}
+
+	.sapUiCalendarAppContainer > .sapUiCalendarAppContainerLeft {
+		padding: 0;
+		width: 15%;
+		margin: 0 0.75rem 0 0;
+		.sapUiCalendarAppStart {
+			font-size: @sapMFontMediumSize;
+			color: @sapUiBaseText;
+			text-align: right;
+		}
+		.sapUiCalendarAppEnd {
+			font-size: @sapMFontSmallSize;
+			color: @sapUiContentLabelColor;
+			margin-top: 0.25rem;
+			text-align: right;
+		}
+	}
+	.sapUiCalendarAppContainer > .sapUiCalendarAppContainerRight {
+		flex: 1 1 auto;
+		margin-right: 0;
+		width: 70%;
+	}
+
+	.sapFCalCardRightSide {
+		display: flex;
+		flex-direction: column;
+		.sapFCalCardAppList{
+			width: 100%
+		}
+		.sapMBtn {
+			align-self: center;
+		}
+	}
+
+	.sapUiCalendarAppContainer.sapUiCalendarAppCurrent > .sapUiCalendarAppContainerRight {
+		position: relative;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			border: 2px solid @sapUiLegendCurrentDateTime;
+			border-radius: 4px;
+			top: -4px;
+			left: -4px;
+			bottom: -4px;
+			right: -4px;
+			pointer-events: none;
+		}
+	}
+
+	.sapUiCalendarAppContainer > .sapUiCalendarAppContainerRight > .sapUiCalendarApp {
+		margin: 0;
+	}
+	.sapUiCalLegMoreText {
+		font-size: @sapFontSize;
+		color: @sapUiLinkActive;
+		margin-left: 0.25rem;
+		&>.sapUiUnifiedLegendSquare {
+			display: none;
+		}
+	}
+
+	.sapFCalCardNoItemsText {
+		line-height: 2rem;
+		text-align: center;
+		font-size: 0.9rem;
+	}
+
+	.sapUiUnifiedLegend {
+		padding: 1rem 0.5rem;
+	}
+
+	.sapUiCalendarAppContainer > .sapUiCalendarAppContainerRight > .sapUiCalendarApp:not(.sapUiCalendarAppDisabled):active {
+		.sapUiCalendarAppCont {
+			.sapUiCalendarAppIcon:before,
+			.sapUiCalendarAppTitleWrapper .sapUiCalendarAppTitle,
+			.sapUiCalendarAppTitleWrapper .sapUiCalendarAppText{
+				color: @sapUiListBackground;
+			}
+		}
+	}
+
+	.sapUiCalendarApp.sapUiCalendarAppDisabled.sapUiCalendarAppSel,
+	.sapUiCalendarApp.sapUiCalendarAppDisabled:active,
+	.sapUiCalendarApp.sapUiCalendarAppDisabled.sapUiCalendarAppSel:active{
+		color: transparent;
+		background-color: transparent;
+	}
+
+	.sapUiCalendarApp.sapUiCalendarAppDisabled {
+		 cursor: auto;
+	}
+}
+
+.sapUiSizeCompact {
+	.sapFCardCalendarContent .sapFCalCard {
+		.sapUiCalMonthPicker,
+		.sapUiCalYearPicker {
+			left: 0;
+			margin-left: 0;
+		}
+	}
+}
+
+.sapFCalCard .sapMTBStandard {
+	border-bottom: none;
+}
+
+.sapFCalCard .sapUiCalendarAppCont {
+	height: 100%;
+	display: flex;
+}
+
+// center vertically if it is title-only or text-only appointment
+.sapFCalCard .sapUiCalendarAppOneLine {
+	.sapUiCalendarAppIcon,
+	.sapUiCalendarAppTitle,
+	.sapUiCalendarAppText {
+		height: 3rem;
+		line-height: 3rem;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.sapUiCalendarAppIcon {
+		top: 0;
+	}
+}
+
+/* ======================================= */
+/* Two columns                             */
+/* ======================================= */
+
+.sapFCardCalendarContent.sapMPCInCardTwoColumns {
+	.sapFCalCardLayout {
+		display: flex;
+	}
+
+	.sapFCalCardLineSeparator {
+		display: none;
+	}
+	.sapFCalCardLeftSide,
+	.sapFCalCardRightSide {
+		width: 50%;
+	}
+
+	.sapFCalCardRightSide {
+		display: flex;
+		flex-direction: column;
+		.sapFCalCardAppList{
+			width: 100%
+		}
+		.sapMBtn {
+			align-self: center;
+		}
+	}
+
+	// visualize the start and end on top of the appointment content
+	.sapUiCalendarAppContainer {
+		flex-direction: column;
+
+		.sapUiCalendarAppContainerLeft {
+			width: 100%;
+			margin: 0;
+			padding: 0 0 0.0625rem 0;
+
+			.sapUiCalendarAppStart,
+			.sapUiCalendarAppEnd {
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+			}
+
+			.sapUiCalendarAppEnd {
+				margin-left: 0.25rem;
+			}
+		}
+
+		.sapUiCalendarAppContainerRight {
+			width: 100%;
+		}
+	}
+}
+/* END "CalendarContent.less" */
+
+/* START "Card.less" */
+/* =============================================== */
+/* CSS for control sap.ui.integration.widgets/Card */
+/* Base theme                                      */
+/* ================================================*/
+
+.sapUiIntCard {
+	min-height: 5rem;
+}
+/* END "Card.less" */
+
+/* START "CustomElementBase.less" */
+/* ======================================== */
+/* CSS for control sap.ui.integration/Base  */
+/* Base theme                               */
+/* ======================================== */
+
+ui-integration-card {
+	display: inline-block;
+	width: 100%;
+
+	& > div[data-sap-ui-area] {
+		height: 100%;
+		width: 100%;
+	}
+}
+/* END "CustomElementBase.less" */
+
+/* START "CustomElementCard.less" */
+/* ======================================== */
+/* CSS for control sap.ui.integration/Card  */
+/* Base theme                               */
+/* ======================================== */
+
+ui-integration-card {
+	.sapFCard {
+		height: 100%;
+	}
+}
+/* END "CustomElementCard.less" */
+
+/* START "ListContent.less" */
+
+/* ======================================================= */
+/* CSS for control sap.ui.integration.controls/ListContent */
+/* Base theme                                              */
+/* ======================================================= */
+
+.sapFCard .sapFCardContent .sapFCardContentHidden.sapUiIntMicrochartLegend {
+	// use display none until loading animation for the legend is provided
+	display: none;
+}
+/* END "ListContent.less" */
+
+/* START "ListContentItem.less" */
+/* =========================================================== */
+/* CSS for control sap.ui.integration.controls/ListContentItem */
+/* Base theme                                                  */
+/* =========================================================== */
+
+@_sap_ui_integration_controls_ListContentItem_ChartHeight: 1rem;
+
+.sapMLIB.sapUiIntLCI {
+	padding: 0 1rem 0 1rem;
+
+	&.sapUiIntLCIWithChart .sapMLIBContent > .sapMSLIDiv {
+		flex-direction: column;
+	}
+
+	&.sapUiIntLCIWithChart {
+		height: 5rem;
+	}
+
+	&.sapUiIntLCIWithChart.sapMSLIWithDescription {
+		height: 5rem + @_sap_ui_integration_controls_ListContentItem_ChartHeight;
+	}
+
+	.sapFCardIcon {
+		flex-shrink: 0;
+	}
+
+	&.sapMLIBActive .sapFCardIcon.sapFAvatar .sapUiIcon {
+		color: @sapUiListActiveTextColor;
+	}
+}
+
+.sapUiIntLCI:not(.sapMSLIThumbnail):not(.sapMSLIWithDescription).sapUiIntLCIIconSize {
+	&XS {
+		height: 2.5625rem;
+	}
+
+	&S {
+		height: 3.5625rem;
+	}
+
+	&M {
+		height: 4.5625rem;
+	}
+}
+
+/* END "ListContentItem.less" */
+
+/* START "Microchart.less" */
+/* ====================================================== */
+/* CSS for control sap.ui.integration.controls/Microchart */
+/* Base theme                                             */
+/* ====================================================== */
+
+
+.sapUiIntMicrochartValue {
+	&Neutral {
+		color: @sapUiNeutralText;
+	}
+
+	&Good {
+		color: @sapUiPositiveText;
+	}
+
+	&Error {
+		color: @sapUiNegativeText;
+	}
+
+	&Critical {
+		color: @sapUiCriticalText;
+	}
+}
+
+.sapUiIntMicrochartChartWrapper {
+	height: 1rem;
+	display: flex;
+	align-items: center;
+	margin-top: 0.5rem;
+
+	.sapUiIntMicrochartChart {
+		flex-grow: 1;
+		height: 0.675rem;
+	}
+}
+/* END "Microchart.less" */
+
+/* START "MicrochartLegend.less" */
+/* ============================================================ */
+/* CSS for control sap.ui.integration.controls/MicrochartLegend */
+/* Base theme                                                   */
+/* ============================================================ */
+
+.sapUiIntMicrochartLegend {
+	padding-top: 0.5rem;
+	padding-left: 1rem;
+
+	.sapUiIntMicrochartLegendItem {
+		display: inline-flex;
+		margin-right: 3rem;
+		margin-bottom: 0.5rem;
+		max-width: 100%;
+
+		// color segment
+		:first-child {
+			flex-shrink: 0;
+			width: 0.75rem;
+			height: 0.75rem;
+			margin-right: 0.5rem;
+		}
+
+		// title
+		:nth-child(2) {
+			height: 0.75rem;
+			font-size: 0.75rem;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+	}
+}
+
+.sapUiIntMicrochartLegendItem {
+	&Neutral {
+		background: @sapUiChartPaletteSemanticNeutral;
+	}
+
+	&Good {
+		background: @sapUiChartPaletteSemanticGood;
+	}
+
+	&Error {
+		background: @sapUiChartPaletteSemanticBad;
+	}
+
+	&Critical {
+		background: @sapUiChartPaletteSemanticCritical;
+	}
+}
+
+/* END "MicrochartLegend.less" */
+
+/* START "ObjectContent.less" */
+/* ====================================================== */
+/* CSS for control sap.ui.integration.cards/ObjectContent */
+/* Base theme                                             */
+/* ====================================================== */
+
+.sapFCardObjectContent {
+	padding: 1rem 1rem 0 1rem;
+}
+
+.sapFCardObjectGroup {
+	padding-bottom: 1.75rem;
+
+	& .sapFCardObjectItemTitle {
+		margin-bottom: 0.5rem;
+	}
+
+	> .sapFCardObjectItemLabel {
+		margin-top: 1rem;
+	}
+
+	&:not(.sapFCardObjectGroupWithTitle) {
+
+		/* Don't apply margin to the first label when there is no title */
+		> .sapFCardObjectItemLabel {
+			margin-top: 0;
+		}
+
+		/* Apply margin to the rest of the labels */
+		> .sapFCardObjectItemLabel ~ .sapFCardObjectItemLabel {
+			margin-top: 1rem;
+		}
+	}
+
+	& .sapFCardObjectItemText {
+		margin-top: 0.25rem;
+	}
+
+	& .sapFCardObjectItemAvatar {
+		margin-right: 0.5rem;
+	}
+}
+
+.sapFCardObjectGroup.sapFCardObjectGroupLastInColumn {
+	padding-bottom: 1rem;
+}
+
+.sapFCardObjectSpaceBetweenGroup {
+	margin-right: 2rem;
+}
+
+.sapFCard .sapFCardContent {
+	.sapFCardObjectContent .sapUiAFLayout .sapUiAFLayoutItem.sapFCardInvisibleContent {
+		display: none;
+	}
+}
+
+/* END "ObjectContent.less" */
+

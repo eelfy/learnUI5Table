@@ -1,0 +1,224 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5fb9f57fcf12401bbe39a635e9a32a4e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Custom Fields to the Filter Bar</h1><div class="fig"><h1 class="topictitle1 title">Adding Custom Fields to the Filter Bar</h1><div class="shortdesc">You can extend the filter bar by using a custom filter field.</div><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div><section id="section_r3m_ynr_jnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>To enable this, you need to add a view extension and a corresponding controller extension, as in the following example:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+          </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"extends": {
+                        "extensions": {
+                        "sap.ui.controllerExtensions": {
+                          "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                            "controllerName": "my_app.ext.controller.ListReportExtension"
+                          }
+                        },
+                "sap.ui.viewExtensions": { 
+                                        "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                                    "SmartFilterBarControlConfigurationExtension|&lt;myEntityset&gt;": {
+                                              "className": "sap.ui.core.Fragment",
+                                              "fragmentName": "&lt;myNamespace&gt;.ext.fragment.CustomFilter",
+                                              "type": "XML"
+                                          },
+</pre></div></section>
+        <p></p></div></div><p></p><p>You can add additional controls to the smart filter bar. The following methods are mandatory:</p><ul class="ul ">
+          <li class="li">
+            <p>Use <code>onBeforeRebindTable</code> to evaluate the settings in the custom fields and to add the corresponding filters to the
+                <code>bindingParameters</code> of the table.</p>
+          </li>
+          <li class="li">
+            <p>Use <code>getCustomAppStateData</code> to read the state of all custom fields and store that state in the object provided to enable
+              the templates to use it for navigation.</p>
+          </li>
+          <li class="li">
+            <p>Use <code>restoreCustomAppStateData</code> to get the custom app state object you provided in
+                <code>getCustomAppStateData</code> and set the corresponding values for your custom controls. For example, you call this method
+              after returning from a navigation.</p>
+          </li>
+        </ul>The <code>onInitSmartFilterBar</code> method is optional. You use it if you need to bind a custom control to its own model or if you
+        want value changes to trigger an action.<p></p><p>The enhanced controller methods each call a corresponding extension method: </p><ul class="ul ">
+          <li class="li">
+            <p><code>onBeforeRebindTableExtension</code></p>
+          </li>
+          <li class="li">
+            <p><code>getCustomAppStateDataExtension</code></p>
+          </li>
+          <li class="li">
+            <p><code>restoreCustomAppStateDataExtension</code></p>
+          </li>
+          <li class="li">
+            <p><code>onInitSmartFilterBarExtension</code>
+            </p>
+          </li>
+        </ul><p></p><p>
+        </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+          </p><p>The methods <code>getCustomAppStateDataExtension</code> and <code>restoreCustomAppStateDataExtension</code> are generated
+            automatically in the controller extension if a custom field is added to the app via the SAP WebIDE wizard. You can change the code in the
+            methods as needed.</p>
+        <p></p></div></div>
+      <p></p><p>
+        </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The filterable fields are defined by metadata annotations. Use the extension option if the filter attribute can only be calculated by
+          the client.</p></div></div>
+      <p></p><p>For an example with step-by-step instructions, see <a href="#/topic/3a515829ffd74239878ebc0d453d001d.html" title="The following example shows the development steps for adding an additional filter to the smart filter bar of the list report." class="sap-doc">Adding Filterable Field to the Smart Filter Bar</a>.</p></div></section><section id="section_sjl_14r_jnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>You can configure the <code>FilterBar</code> locally via the section <code>@com.sap.vocabularies.UI.v1.SelectionFields</code> in the
+          <code>controlConfiguration</code> of the manifest.json for the list report target:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">    ...
+            "targets": {
+                "SalesOrderManageList": {
+                    "type": "Component",
+                    "id": "SalesOrderManageList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings" : {
+                            "entitySet" : "SalesOrderManage",                              
+                            "controlConfiguration" : {
+                                 "@com.sap.vocabularies.UI.v1.SelectionFields" : {
+                                    "navigationProperties": ["_Partner", "_DistributionChannel"],
+                                    "filterFields": {
+                                        "MyCustomRatingThing": {
+                                            "label": "{i18n&gt;CustomRatingFilter}",
+                                            "property": "Rating",
+                                            "template": "SalesOrder.custom.CustomRatingFilter",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "SalesOrder"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+...</pre></div></section>
+      <p></p></div></div><p>You can use the <code>filterFields</code> setting to add custom filters. The pattern looks like this:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"&lt;key&gt;": {
+    "label": &lt;UILabel&gt;,                   // static string or i18n binding, e.g. "MyText" or "{i18n&gt;MyCustomLabel}"
+    "property": &lt;FullPropertyPath&gt;,       // the full path to the property to be filtered, e.g. "Rating" or "_Partner/Rating"
+    "template": &lt;XmlFragmentPath&gt;,        // the path to the Xml Template containing the filter control, e.g. "SalesOrder.custom.CustomRatingFilter"
+    "position": {
+        "placement": "Before"|"After",
+        "anchor": "&lt;Key_of_filter_field&gt;"    // for annotation based filterfields, the property is the key, e.g. "SalesOrder", "_Patner::FullName" (slashes are replaced by ::)
+    }
+}</pre></div></section>
+      <p></p></div></div><p>Here is an example of a custom filter template:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout"&gt;
+    &lt;HBox alignItems="Center" core:require="{handler: 'SalesOrder/custom/CustomRating'}" width="100%"&gt;
+ 
+&lt;!--     // either handle value change in the handler... // --&gt;
+&lt;!--     &lt;RatingIndicator id="MyCustomRatingIndicatorId" value="{= ${filterValues&gt;} ? ${filterValues&gt;}.substring(1) : null }" change="handler.onValueChanged" /&gt;--&gt;
+ 
+&lt;!--     // ...or bind it directly (and use a filter value type) (recommended) // --&gt;
+        &lt;RatingIndicator id="MyCustomRatingIndicatorId" value="{path: 'filterValues&gt;', type: 'sap.fe.macros.filter.type.Value'}" /&gt;
+ 
+&lt;!--     // Example for adapting the used operator, using GT (greater than) instead of default EQ --&gt;
+&lt;!--     &lt;RatingIndicator--&gt;
+&lt;!--         id="MyCustomRatingIndicatorId"--&gt;
+&lt;!--         value="{path: 'filterValues&gt;', type: 'sap.fe.macros.filter.type.Value', formatOptions: { operator: 'GT' }}"--&gt;
+&lt;!--     /&gt;--&gt;
+ 
+        &lt;core:Icon src="sap-icon://reset" press="handler.onReset" class="sapUiSmallMarginBegin" /&gt;
+    &lt;/HBox&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section>
+      <p></p></div></div><p>You can define a filter field with a custom filter operator filtering on different properties. In this case, the key specified in
+                manifest can be a unique string used to create the ID of the filter field during the templating process.</p><p>The mechanism to define a custom filter operator can be seen in the following sample code:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Custom Rating Filter
+                Operator</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"&gt;
+    &lt;HBox alignItems="Center" core:require="{handler: 'SalesOrder/custom/CustomRating'}" width="100%"&gt;
+        &lt;ComboBox
+            id="MyCustomRatingComboBox"
+            selectedKey="{path: 'filterValues&gt;', type: 'sap.fe.macros.filter.type.Value', formatOptions: { operator: 'SalesOrder.custom.CustomRating.ratingLevels' }}"
+        &gt;
+            &lt;items&gt;
+                &lt;core:Item key="Low" text="Low Rating" /&gt;
+                &lt;core:Item key="Medium" text="Medium Rating" /&gt;
+                &lt;core:Item key="High" text="High Rating" /&gt;
+            &lt;/items&gt;
+        &lt;/ComboBox&gt;
+    &lt;/HBox&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section><p></p></div></div><p>Here, the custom filter conditions are defined in the function <code>ratingLevels()</code> in <code>CustomRating.js</code>,
+                which is placed in the folder hierarchy <code>SalesOrder / custom</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Implementation of the Custom Rating
+                Operator</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/ui/model/Filter", "sap/ui/model/FilterOperator"], function(Filter, FilterOperator) {
+  "use strict";
+  return {
+    onValueChanged: function(oEvent) {
+        this.setFilterValues("Rating", oEvent.getParameter("value").toString());
+    },
+ 
+    ratingLevels: function(sValue) {
+        switch (sValue) {
+            case "Low":
+                return new Filter({ path: "Rating", operator: FilterOperator.LT, value1: 2 });
+            case "Medium":
+                return new Filter({
+                    filters: [
+                        new Filter({ path: "Rating", operator: FilterOperator.GT, value1: 1 }),
+                        new Filter({ path: "Rating", operator: FilterOperator.LT, value1: 5 })
+                    ],
+                    and: true
+                });           
+            case "High":
+                return new Filter({ path: "Rating", operator: FilterOperator.EQ, value1: 5 });       
+        }
+    }
+ };
+});</pre></div></section><p></p></div></div><p>The <code>'ratingLevels'</code> method defined in the <code>custom.js</code> file returns a new filter object for each case,
+                represented by the different keys of the <code>ComboBox</code> in the custom filter definition.</p><p>The supported filter operators include all the filter operators defined in <code>"sap/ui/model/FilterOperator"</code>.</p><p>The following is an example of the handler used to reset the filter value:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([], function() {
+    "use strict";
+ 
+    return {
+        onReset: function(oEvent) {
+            this.setFilterValues("Rating");
+        },
+ 
+        onValueChanged: function(oEvent) {
+            this.setFilterValues("Rating", oEvent.getParameter("value"));
+        }
+    };
+});</pre></div></section>
+      <p></p></div></div><p>The function <code>setFilterValues</code> that is used is part of the <code>ListReports ControllerExtensionAPI</code>. Here is its
+        signature:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">ControllerExtensionAPI (ListReport only):
+ 
+        /**
+         * Set the filter values for the given property in the filterbar.
+         * The filter values can be either a single value or an array of values.
+         * Each filter value must be represented as a string corresponding to the given operator.
+         *
+         * @param {string} sConditionPath the path to the property as condition path
+         * @param {string} [sOperator] the operator to be used (optional) - if not set, the default operator (EQ) will be used
+         * @param {Array | any} vValues the values to be applied
+         *
+         * @returns {Promise} a promise for async handling
+         */
+        setFilterValues: function(sConditionPath, sOperator, vValues);</pre></div></section>
+      <p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>For custom filters, SAP Fiori elements provides an internal model called <code>filterValues</code>, which is bound to each
+                    custom filter field and contains the filtered values specific to the filter field.</p>
+                <p>To support variant management handling, as well as app state handling, the value-providing property of the filter control that is
+                    used should be bound against the relative path "{filterValues&gt;}".</p>
+            <p></p></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

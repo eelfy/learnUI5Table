@@ -1,0 +1,57 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa76525362b754354a85981a7389ca7af" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Setting the Default Column Width</h1><div class="fig"><h1 class="topictitle1 title">Setting the Default Column Width</h1><div class="shortdesc">You can customize the width of a column defined in a line item via the UI annotation
+			com.sap.vocabularies.HTML5.v1.CssDefaults.</div><p>SAP Fiori elements auto calculates the default width of columns containing texts based on
+			the <code>MaxLength</code> property of  the field defined in the metadata. The lower
+			limit is set to 3 rem and the upper limit is set to 20 rem.</p><p>The default width of columns containing different controls/UI elements is given in the table
+			below:</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				
+				</tgroup><table border="1" id="table_zgd_lyt_y4b" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+					<tr>
+						<th colspan="1" rowspan="1">Columns with Controls/UI Elements</th>
+						<th colspan="1" rowspan="1">Default Width</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">Images</td>
+						<td colspan="1" rowspan="1" valign="top">5 rem</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">
+							<p>Rating indicator</p>
+							<p>Progress indicator</p>
+						</td>
+						<td colspan="1" rowspan="1" valign="top">6.875 rem</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">Charts</td>
+						<td colspan="1" rowspan="1" valign="top">20 rem</td>
+					</tr>
+				</tbody>
+			</table></div></div><p>The sample code below shows how to set the column width via the
+				<code>com.sap.vocabularies.HTML5.v1.CssDefaults</code> annotation.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">			&lt;Annotation Term="UI.LineItem"&gt;
+                    &lt;Collection&gt;
+                       &lt;Record Type="UI.DataFieldWithIntentBasedNavigation"&gt;
+                          &lt;PropertyValue Property="SemanticObject" String="EPMSalesOrder" /&gt;
+                          &lt;PropertyValue Property="Action" String="display_sttabupa" /&gt;
+                          &lt;PropertyValue Property="Value" Path="bp_id" /&gt;
+                          &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" /&gt;
+                            <span class="emphasis">&lt;Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults"&gt;
+                                &lt;Record&gt;
+                                    &lt;PropertyValue Property="width" String="10rem"/&gt;
+                                &lt;/Record&gt;
+                          &lt;/Annotation&gt;
+</span>
+                       &lt;/Record&gt;
+                       &lt;Record Type="UI.DataField"&gt;
+                          &lt;PropertyValue Property="Value" Path="currency_code" /&gt;
+                          &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" /&gt;
+                          <span class="emphasis">&lt;Annotation Term="com.sap.vocabularies.HTML5.v1.CssDefaults"&gt;
+                                &lt;Record&gt;
+                                    &lt;PropertyValue Property="width" String="15rem"/&gt;
+                                &lt;/Record&gt;
+                          &lt;/Annotation&gt;
+</span>
+                       &lt;/Record&gt;
+                    &lt;/Collection&gt;
+                 &lt;/Annotation&gt;</pre></div></section><div><div class="fig"><img src="loio5538367cb65d44369193f30ba32bb8d3_LowRes.png" usemap="#"></div></div><p>For information about custom columns in list reports and object pages, see <a href="#/topic/d525522c1bf54672ae4e02d66b38e60c.html" title="You can use extension points to enhance tables in SAP Fiori elements apps." class="sap-doc">Extension Points for Tables</a>.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

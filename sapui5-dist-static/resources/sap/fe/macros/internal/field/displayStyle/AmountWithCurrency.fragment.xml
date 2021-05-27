@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns:control="sap.fe.core.controls"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper'
+						 }"
+>
+	<template:with path="property>$Path@Org.OData.Measures.V1.ISOCurrency" var="currency">
+		<control:FormElementWrapper formDoNotAdjustWidth="true" width="{= ${this>formatOptions/textAlignMode} === 'Table' ? '100%' : undefined}">
+			<!-- if Analytical Table -->
+			<template:if test="{this>formatOptions/isAnalytics}">
+				<template:then>
+					<control:ConditionalWrapper condition="{= '{= !!%' + %{currency>@@MODEL.value} + ' || !%' + %{dataField>Value@@MODEL.value} + '}' }">
+						<control:contentTrue>
+							<u:Currency stringValue="{this>valueAsStringBindingExpression}" currency="{this>unitBindingExpression}" useSymbol="false" />
+						</control:contentTrue>
+						<control:contentFalse>
+							<u:Currency stringValue="" currency="*" useSymbol="false" />
+						</control:contentFalse>
+					</control:ConditionalWrapper>
+				</template:then>
+				<template:else>
+					<!-- We use % to prevent ODataBinding automatically formatting the stringValue as a number-->
+					<u:Currency stringValue="{this>valueAsStringBindingExpression}" currency="{this>unitBindingExpression}" useSymbol="false" />
+				</template:else>
+			</template:if>
+		</control:FormElementWrapper>
+	</template:with>
+</core:FragmentDefinition>

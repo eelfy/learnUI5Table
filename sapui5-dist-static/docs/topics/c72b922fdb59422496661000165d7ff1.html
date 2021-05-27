@@ -1,0 +1,75 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc72b922fdb59422496661000165d7ff1" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 4: Two-Way Data Binding</h1><div class="fig"><h1 class="topictitle1 title">Step 4: Two-Way Data Binding</h1><div class="shortdesc">In the examples used so far, we have used a read-only field to display the value of a
+		model property. We will now change the user interface so that the first and last name fields
+		are displayed using sap.m.Input fields and an additional check box control
+		is used to enable or disable both input fields. This arrangement illustrates a feature known
+		as "two-way data binding". Now that the view contains more controls, we will also move the
+		view definition into an XML file.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio61d68f167778425bbdd2abd7d550ae65_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Input fields can be enabled or disabled</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.04/preview" title="#/sample/sap.ui.core.tutorial.databinding.04/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.04/preview">Data Binding - Step 4</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/App.view.xml (New)</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">&lt;mvc:View
+	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"&gt;
+	&lt;Panel headerText="{/panelHeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;form:SimpleForm editable="true" layout="ColumnLayout"&gt;
+			&lt;Label text="First Name"/&gt;
+			&lt;Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="Last Name"/&gt;
+			&lt;Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="Enabled"/&gt;
+			&lt;CheckBox selected="{/enabled}"/&gt;
+		&lt;/form:SimpleForm&gt;
+	&lt;/Panel&gt;
+&lt;/mvc:View&gt;</span></pre></div></section>
+			<p>We create a new <code>view</code> folder in our app and a new file for our XML view inside
+				the app folder.</p>
+		</section><section><h2 class="title ">webapp/index.js</h2><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView"
+], function (JSONModel, XMLView) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		// Create a JSON model from an object literal
+		var oModel = new JSONModel({
+<span class="emphasis">			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true,
+			panelHeaderText: "Data Binding Basics"
+</span>
+		});
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+<span class="emphasis">		// Display the XML view called "App"
+		new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		}).placeAt("content");
+</span>
+	});
+});</pre></div></section><p>We
+				delete the code that assigned the <code>sap.m.Text</code> field to the UI and add an XML view that is identified by its resource
+				name.</p><p>You can now refresh the application preview and select or deselect the checkbox. You will see that the input fields are
+				automatically enabled or disabled in response to the state of the checkbox.</p><img src="loio61d68f167778425bbdd2abd7d550ae65_HiRes.png" usemap="#"><img src="loio6222561089bb4559beafb33b456bc8d4_HiRes.png" usemap="#"><p>It is
+				clear that we have not written any code to transfer data between the user interface and the model, yet the <code>Input</code>
+				controls are enabled or disabled according to the state of the checkbox. This behavior is the result of the fact that OData models and
+				JSON models implement two-way data binding, and that for JSON Models two-way binding is the default behavior. For more information,
+				see <a href="#/topic/68b9644a253741e8a4b9e4279a35c247.html#loio68b9644a253741e8a4b9e4279a35c247/section_BindingModes" title="68b9644a253741e8a4b9e4279a35c247.xml#loio68b9644a253741e8a4b9e4279a35c247/section_BindingModes" class="sap-doc">Binding Modes</a>.</p><p>Two things are happening
+					here:</p><ul class="ul ">
+					<li class="li">
+						<p>Data binding allows the property of a control to derive its value from any suitable property in a model.</p>
+					</li>
+					<li class="li">
+						<p>SAPUI5 automatically handles the transport of data both from
+							the model to the controls, and back from the controls to the model. This is called two-way binding.</p>
+					</li>
+				</ul><p></p></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/d70e9894c09b4c27a98d4850d4e90f2c">Step 3: Create Property Binding</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/88756c08fe144ba08ff1762ad92fc07c">Step 5: One-Way Data Binding</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/68b9644a253741e8a4b9e4279a35c247.html" title="You use data binding to bind UI elements to data sources to keep the data in sync and allow data editing on the UI." class="sap-doc">Data Binding</a></li>
+	</ul></section></div></section></div></body></html>

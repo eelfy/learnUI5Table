@@ -1,0 +1,93 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6256083b146e40b896309ead6ccd8751" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Testing</h1><div class="fig"><h1 class="topictitle1 title">Testing</h1><div class="shortdesc">The templates include basic testing features, unit tests as well as integration tests
+		for a basic test coverage of the initial app. The tests are written independently of the
+		actual data displayed in the app.</div><p>The <code>webapp</code> folder of the template app contains a
+				<code>test.html</code> file which serves as an overview for the different
+			test pages. You can run the app with or without mock data and run the unit and
+			integration tests. This section describes which application tests are provided and how
+			they are structured.</p><section>
+			<h2 class="title ">Custom Mock Data</h2>
+			<p>To run the automated tests below, we need a stable reference between the item on the master page and the items displayed in the line
+				item table on the detail page. The mock server we use to simulate a backend system is capable of creating random entities suitable for
+				testing, but it cannot foresee the dependency between the entity sets.</p>
+			<p>After creating this template, we therefore need to create mock data to successfully run all automated tests delivered with this
+				template.</p>
+			<p>In SAP Web IDE, you can easily create
+				mock data that fulfill the conditions above: Right-click on the
+					<code>metadata.xml</code> file in the <code>localService</code>
+				folder of your template project, and select <span class="ph uicontrol">Edit Mock Data</span>.
+				Select the entity sets that you have chosen for the master page and the detail page,
+				and choose <span class="ph uicontrol">Generate Random Data</span>. The generated files will be
+				put in the folder <code>localService/mockdata</code>.</p>
+			<div><div class="fig"><img src="loio119f31a267944d31853bae43fc0f65ba_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Screenshot of the Edit Mock Data dialog</span></div>
+			<p>You can also manually download a set of json files from the actual service by appending <kbd class="ph userinput">$format=json</kbd> to the
+				corresponding URL. Download the resulting files, and put them in the <code>localService/mockdata</code> folder within the
+				template project.</p>
+			<p>For more information, see <a href="#/topic/311890311f7148adbfbf248a6980df1c.html" title="In this step, we want to change the mock data of the initial app." class="sap-doc">Step 2: Custom Mock Data</a> in our Worklist App tutorial.</p>
+		</section><section>
+			<h2 class="title ">Integration Tests</h2>
+			<p>The integration tests shipped with the template cover all basic functionality and
+				provide several "journeys". Journeys include a series of OPA tests that belong to
+				the same functionality and should be executed together. Some of the journeys are
+				implemented for both phone and desktop use cases to test device-specific interaction
+					steps:</p><ul class="ul ">
+					<li class="li">
+						<p><code>BusyJourney</code> / <code>BusyJourneyPhone</code>: This
+							journey tests the busy indication features of the app for phone and
+							other devices.</p>
+					</li>
+					<li class="li">
+						<p><code>NavigationJourney</code> /
+								<code>NavigationJourneyPhone</code>: This journey will trigger
+							user interactions and navigate through the application. The routing
+							configuration, basic navigation events, and error handling are tested
+							here.</p>
+					</li>
+					<li class="li">
+						<p><code>NotFoundJourney/NotFoundJourneyPhone</code>: Several "not found" cases of the application are tested here. Faulty navigation
+							scenarios are introduced intentionally to simulate errors.</p>
+					</li>
+					<li class="li">
+						<p><code>MasterJourney</code>: Tests for the
+								<span class="ph uicontrol">Master</span> page that check the search, sorting,
+							filtering and grouping features built into the app.</p>
+					</li>
+					<li class="li">
+						<p><code>FLPIntegrationJourney</code>: This journey is available if you have enabled SAP
+							Fiori launchpad (FLP) for your app. It tests the FLP integration
+							features <span class="ph uicontrol">Save as tile</span> and <span class="ph uicontrol">Share on SAP
+								Jam</span>.</p>
+					</li>
+					<li class="li">
+						<p><code>AllJourneys</code>: This is a convenience journey that will
+							call all the other journeys specified above and is used in the test
+							suite file.</p>
+					</li>
+				</ul><p></p>
+			<p>You can execute all journeys by calling the test suite file
+					<code>opaTests.qunit.html</code> or
+					<code>opaTestsPhone.qunit.html</code> in the
+					<code>webapp/test/integration</code> folder or selecting the
+					<span class="ph uicontrol">run all integration tests</span> link in the
+					<code>test.html</code> file in the app’s root folder.</p>
+			<p>For more information, see <a href="#/topic/2696ab50faad458f9b4027ec2f9b884d.html" title="OPA5 is an API for SAPUI5 controls. It hides asynchronicity and eases access to SAPUI5 elements. This makes OPA especially helpful for testing user interactions, integration with SAPUI5, navigation, and data binding." class="sap-doc">Integration Testing with One Page Acceptance Tests (OPA5)</a>
+				and <a href="#/entity/sap.ui.test.Opa5" title="#/entity/sap.ui.test.Opa5" class="sap-doc" alt="#/entity/sap.ui.test.Opa5">sap.ui.test.Opa5</a> in the
+						<span class="ph uicontrol">Samples</span> within the Demo Kit.</p>
+		</section><section>
+			<h2 class="title ">Unit Tests</h2>
+			<p>In the <code>unit</code> subfolder you can find all unit tests for our
+				application. They are structured similarly to the structure of the
+					<code>webapp</code> folder. For example, controller tests are located in
+				the <code>controller</code> folder whereas formatter tests are located in
+				the <code>model</code> folder.</p>
+			<p>Unit tests are included for the following functionality:</p>
+			<ul class="ul ">
+				<li class="li">ListSelector tests</li>
+				<li class="li">Formatters</li>
+				<li class="li">Device model</li>
+			</ul>
+			<p>As with the integration tests, you can execute all unit tests by calling the test
+				suite file <code>unitTests.qunit.html</code> in the
+					<code>webapp/test/unit</code> folder or selecting the <span class="ph uicontrol">run all unit tests</span> link in the
+					<code>test.html</code> file in the app’s root folder.</p>
+			<p>For more information, see <a href="#/topic/09d145cd86ee4f8e9d08715f1b364c51.html" title="QUnit is a powerful, easy-to-use JavaScript unit testing framework. It is used by the jQuery, jQuery UI and jQuery Mobile projects and is capable of testing any generic JavaScript code. It supports asynchronous tests out-of-the-box." class="sap-doc">Unit Testing with QUnit</a>, <a href="https://qunitjs.com/" title="https://qunitjs.com/" class="external-link" target="_blank" rel="noopener">https://qunitjs.com/</a> and <a href="http://sinonjs.org/" title="http://sinonjs.org/" class="external-link" target="_blank" rel="noopener">http://sinonjs.org/</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

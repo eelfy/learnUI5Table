@@ -1,0 +1,60 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5b1dd11bc3834b05aa9832f2a48a3dec" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Customizing Overview Pages Using Runtime Capabilities</h1><div class="fig"><h1 class="topictitle1 title">Customizing Overview Pages Using Runtime Capabilities</h1><div class="shortdesc">End users can customize their overview pages by rearranging cards and by hiding or
+		showing cards. They can also apply a filter to the displayed information, which will affect
+		all relevant cards.</div><p>End users can customize their overview pages in the following ways: </p><ul class="ul ">
+				<li class="li">
+					<p>Drag and drop cards to rearrange them. You can do this using the mouse, or
+						with the keyboard by pressing <span class="keyWrap"><kbd class="key">Ctrl</kbd></span> and the arrow buttons.</p>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>
+							</p><ul class="ul ">
+								<li class="li">
+									<p> You can only personalize cards with same screen resolution
+										and size.</p>
+								</li>
+								<li class="li">
+									<p>The browser zoom level should be set at default size, that is, 100%.</p>
+								</li>
+								<li class="li">
+									<p>You can arrange the source and target location of any card.
+										The target location is saved only for the moved cards. The
+										remaining cards are arranged based on the best fit in the
+										layout. If you want to assign specific target location to
+										each card, you need to move each card at least once.</p>
+								</li>
+							</ul>
+						<p></p>
+					<p></p></div></div>
+				</li>
+				<li class="li">
+					<p>Hide cards by doing the following: </p>
+					<ol>
+						<li class="li">In the header bar, click or tap the <span class="ph uicontrol">Options</span> icon
+							and select <span class="ph uicontrol">Manage Cards</span>.</li>
+						<li class="li">Use the switch control to hide or show the relevant card.</li>
+						<li class="li">Click <span class="ph uicontrol">OK</span>.</li>
+						<li class="li">To reset the view to the default settings, in the <span class="ph uicontrol">Manage
+								Cards</span> window, click <span class="ph uicontrol">Reset</span>.</li>
+					</ol>
+				</li>
+				<li class="li">
+					<p>Resize a card in horizontal and vertical directions. Or, you can load cards
+						with specific default size. For example, to set default size for a card,
+						configure the card settings in the descriptor file.</p>
+					<p>Prerequisite: Set the property <code>containerLayout: "resizable"</code>
+						in descriptor configuration file.
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"defaultSpan": {
+  "rows": 7,
+  "cols": 2
+}</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Resizing
+							of stack card is not supported.</p></div></div><p></p>
+				</li>
+				<li class="li">
+					<p>Filter the information displayed in cards by defining the values or range of
+						values to be displayed for a specific field. For example, display only
+						orders for which the supply date has passed. </p>
+				</li>
+			</ul><p></p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

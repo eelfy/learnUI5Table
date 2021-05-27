@@ -1,0 +1,688 @@
+{
+    "site": {
+        "payload": {
+            "groupsOrder": [
+                "Workflow_embedded_group"
+            ]
+        }
+    },
+    "menus": {
+        "00d9d6e0-bdd9-11e9-9f46-5746642050ab": {
+            "_version": "3.0",
+            "identification": {
+                "id": "00d9d6e0-bdd9-11e9-9f46-5746642050ab",
+                "title": "{{menuTitle}}",
+                "entityType": "menu"
+            },
+            "payload": {
+                "entities": []
+            }
+        }
+    },
+    "groups": {
+        "Workflow_embedded_group": {
+            "payload": {
+                "tiles": [
+                    {
+                        "id": "sap.ushell.demo.letterBoxing#Action-toLetterBoxing",
+                        "vizId": "sap.ushell.demo.letterBoxing#Action-toLetterBoxing"
+                    },
+                    {
+                        "id": "sap.ushell.demo.AppNavSample#AppNavSample-id",
+                        "vizId": "sap.ushell.demo.AppNavSample#AppNavSample-id"
+                    },
+                    {
+                        "id": "sap.ushell.demo.AppFullWidth#AppFullWidth-id",
+                        "vizId": "sap.ushell.demo.AppFullWidth#AppFullWidth-id"
+                    },
+                    {
+                        "id": "sap.ushell.demo.EventDelegationDemoApp#test-eventdelegation",
+                        "vizId": "sap.ushell.demo.EventDelegationDemoApp#test-eventdelegation"
+                    },
+                    {
+                        "id": "statefull.container.demp.appA#X1-Y1",
+                        "vizId": "statefull.container.demp.appA#X1-Y1"
+                    },
+                    {
+                        "id": "statefull.container.demp.appB#X2-Y2",
+                        "vizId": "statefull.container.demp.appB#X2-Y2"
+                    }
+                ]
+            },
+            "_version": "3.0",
+            "identification": {
+                "id": "Workflow_embedded_group",
+                "title": "Workflow",
+                "entityType": "group",
+                "description": ""
+            }
+        }
+    },
+    "layouts": {},
+    "widgets": {},
+    "_version": "3.0.0",
+    "catalogs": {
+        "workflow_catalog_embedded": {
+            "payload": {
+                "viz": [
+                    "sap.ushell.demo.letterBoxing#Action-toLetterBoxing",
+                    "sap.ushell.demo.AppNavSample#AppNavSample-id",
+                    "sap.ushell.demo.AppFullWidth#AppFullWidth-id",
+                    "sap.ushell.demo.EventDelegationDemoApp#test-eventdelegation",
+                    "statefull.container.demp.appA#X1-Y1",
+                    "statefull.container.demp.appB#X2-Y2"
+                ]
+            },
+            "_version": "3.0",
+            "identification": {
+                "id": "workflow_catalog_embedded",
+                "title": "Workflow",
+                "entityType": "catalog",
+                "description": "Workflow catalog"
+            }
+        }
+    },
+    "vizTypes": {},
+    "applications": {
+        "cross.fnd.fiori.inbox": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.fiori",
+                "urlTemplateParams": {
+                    "appId": "sap.ushell.demo.letterBoxing"
+                }
+            },
+            "sap.app": {
+                "ach":"CA-UI2-INT-FE",
+                "id": "cross.fnd.fiori.inbox",
+                "title": "Letter Boxing",
+                "dataSources": {
+                    "TASKPROCESSING": {
+                        "uri": "sap/opu/odata/IWPGW/TASKPROCESSING;mo;v=2/",
+                        "settings": {
+                            "localUri": "/cross.fnd.fiori.inbox/model/metadata.xml"
+                        }
+                    }
+                },
+                "contentProviderId": "S4SYSTEM",
+                "destination": "S4FIN",
+                "crossNavigation": {
+                    "inbounds": {
+                        "Action-toLetterBoxing": {
+                            "action": "toLetterBoxing",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            },
+                            "semanticObject": "toLetterBoxing"
+                        }
+                    }
+                }
+            }
+        },
+        "sap.ushell.demo.AppNavSample": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.fiori",
+                "urlTemplateParams": {
+                    "appId": "sap.ushell.demo.AppNavSample"
+                }
+            },
+            "sap.app": {
+                "id": "sap.ushell.demo.AppNavSample",
+                "title": "App Nav Sample",
+                "dataSources": {
+                    "TASKPROCESSING": {
+                        "uri": "sap/opu/odata/IWPGW/TASKPROCESSING;mo;v=2/",
+                        "settings": {
+                            "localUri": "/sap.ushell.demo.AppNavSample/model/metadata.xml"
+                        }
+                    }
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "AppNavSample-id": {
+                            "action": "id",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    },
+                                    "sap-ushell-innerAppRouteDisabled": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "View1/"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            },
+                            "semanticObject": "AppNavSample"
+                        }
+                    }
+                }
+            }
+        },
+        "sap.ushell.demo.AppFullWidth": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.fiori2",
+                "urlTemplateParams": {
+                    "appId": "sap.ushell.demo.AppNavSample"
+                }
+            },
+            "sap.app": {
+                "id": "sap.ushell.demo.AppNavSample",
+                "title": "App Nav Sample - LetterBox",
+                "dataSources": {
+                    "TASKPROCESSING": {
+                        "uri": "sap/opu/odata/IWPGW/TASKPROCESSING;mo;v=2/",
+                        "settings": {
+                            "localUri": "/sap.ushell.demo.AppNavSample/model/metadata.xml"
+                        }
+                    }
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "AppFullWidth-id": {
+                            "action": "id",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            },
+                            "semanticObject": "AppFullWidth"
+                        }
+                    }
+                }
+            }
+        },
+        "sap.ushell.demo.EventDelegationDemoApp": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.fiori",
+                "urlTemplateParams": {
+                    "appId": "sap.ushell.demo.EventDelegationDemoApp"
+                }
+            },
+            "sap.app": {
+                "id": "sap.ushell.demo.EventDelegationDemoApp",
+                "title": "Event Delegation Demo App",
+                "dataSources": {
+                    "TASKPROCESSING": {
+                        "uri": "sap/opu/odata/IWPGW/TASKPROCESSING;mo;v=2/",
+                        "settings": {
+                            "localUri": "/sap.ushell.demo.EventDelegationDemoApp/model/metadata.xml"
+                        }
+                    }
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "test-eventdelegation": {
+                            "action": "eventdelegation",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            },
+                            "semanticObject": "test"
+                        }
+                    }
+                }
+            }
+        },
+        "statefull.container.demp.appA": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.appA"
+            },
+            "sap.app": {
+                "id": "statefull.container.demp.appA",
+                "title": "Statefull App A",
+                "crossNavigation": {
+                    "inbounds": {
+                        "X1-Y1": {
+                            "semanticObject": "X1",
+                            "action": "Y1",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "statefull.container.demp.appB": {
+            "sap.integration": {
+                "navMode": "inplace",
+                "urlTemplateId": "urltemplate.appB"
+            },
+            "sap.app": {
+                "id": "statefull.container.demp.appB",
+                "title": "Statefull App B",
+                "crossNavigation": {
+                    "inbounds": {
+                        "X2-Y2": {
+                            "semanticObject": "X2",
+                            "action": "Y2",
+                            "signature": {
+                                "parameters": {
+                                    "sap-ushell-navmode": {
+                                        "required": false,
+                                        "defaultValue": {
+                                            "value": "inplace"
+                                        }
+                                    }
+                                },
+                                "additionalParameters": "allowed"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "contentUnits": {},
+    "urlTemplates": {
+        "urltemplate.base": {
+            "_version": "3.0.0",
+            "identification": {
+                "id": "urltemplate.base",
+                "entityType": "urltemplate",
+                "title": "{{title}}"
+            },
+            "payload": {
+                "urlTemplate": "{+_baseUrl}",
+                "parameters": {
+                    "names": {
+                        "_baseUrl": "{join() &_destProtocol,'://',&_destHost,':',&_destPort,&_destPrefix}",
+                        "_destName": "{or &_sapSystemParam,./sap.app/destination}",
+                        "_providerId": "{./sap.app/contentProviderId}",
+                        "_sapSystemParam": "{if({sap-system}) &_sapSystemPrefixed}",
+                        "_sapSystemPrefixed": "{join(_) &_providerId,sap-system}",
+                        "_destProtocolHttps": "{and /systemAliases/{&_destName}/https,'https'}",
+                        "_destProtocolHttp": "{and /systemAliases/{&_destName}/http,'http'}",
+                        "_destProtocol": "{or &_destProtocolHttps,&_destProtocolHttp}",
+                        "_destHost": "{/systemAliases/{&_destName}/{&_destProtocol}/host}",
+                        "_destPort": "{or /systemAliases/{&_destName}/{&_destProtocol}/port,''}",
+                        "_destPlatform": "{or /systemAliases/{&_destName}/platform,'CF'}",
+                        "_destPlatformIsAbap": "{match(^ABAP$) &_destPlatform}",
+                        "_defaultPathPrefix": "{and &_destPlatformIsAbap,'/sap/bc'}",
+                        "_destPathPrefix": "{/systemAliases/{&_destName}/{&_destProtocol}/pathPrefix}",
+                        "_destPrefix": "{if({&_destPathPrefix}) &_destPathPrefix,&_defaultPathPrefix}",
+                        "_destClient": "{/systemAliases/{&_destName}/client}",
+                        "_destService": "{/systemAliases/{&_destName}/rfc/service}",
+                        "_destSysId": "{/systemAliases/{&_destName}/rfc/systemId}",
+                        "_destMsHost": "{/systemAliases/{&_destName}/rfc/messageServer}",
+                        "_destRfcHost": "{/systemAliases/{&_destName}/rfc/host}",
+                        "_destLoginGroup": "{/systemAliases/{&_destName}/rfc/loginGroup}",
+                        "_destSncName": "{/systemAliases/{&_destName}/rfc/sncNameR3}",
+                        "_destSncQo": "{/systemAliases/{&_destName}/rfc/sncQoPR3}",
+                        "_destIsLoadBalancing": "{and &_destSysId}",
+                        "_destIsNotLoadBalancing": "{not &_destIsLoadBalancing}",
+                        "_destHostIsConnectString": "{match(^[/][HGMR][/].*) &_destRfcHost}",
+                        "originalHash": "{url(hash)}",
+                        "hashWithoutInnerRoute": "{replace(&[\\/].*$,) &originalHash}",
+                        "startupParameters": "{*|match(^(?!sap-(system\\|(ushell-navmode))$))}",
+                        "startParamsJoined": "{*|match(^(?!sap-(system\\|(ushell-navmode))$))|join(&,=)}",
+                        "ui5Version": "{or &env:ui5Version,/site/payload/sap.cloud.portal/config/ui5VersionNumber}",
+                        "sapPlugins": {
+                            "renameTo": "sap-plugins",
+                            "value": "{if({&env:sapPlugins}) &env:sapPlugins}"
+                        },
+                        "sapClient": {
+                            "renameTo": "sap-client",
+                            "value": "{if({&_destPlatformIsAbap}) &_destClient}"
+                        },
+                        "sapShell": {
+                            "renameTo": "sap-shell",
+                            "value": "FLP"
+                        },
+                        "sapShellFormatted": "{join '&sap-shell=',&sapShell}",
+                        "sapTheme": {
+                            "renameTo": "sap-theme",
+                            "value": "{&env:theme}"
+                        },
+                        "sapThemeFull": "{join '&sap-theme=',&sapTheme}",
+                        "sapLanguage": {
+                            "renameTo": "sap-language",
+                            "value": "{&env:logonLanguage}"
+                        },
+                        "sapLocale": {
+                            "renameTo": "sap-locale",
+                            "value": "{&env:language}"
+                        },
+                        "sapLocaleFormatted": "{join '&sap-locale=',&sapLocale}",
+                        "sapUiDebug": {
+                            "renameTo": "sap-ui-debug",
+                            "value": "{if({&env:isDebugMode}) &env:isDebugMode}"
+                        },
+                        "_contentDensity": "{or &env:contentDensity,'compact'}",
+                        "_sapDensityIsCozy": "{match(^cozy$) &_contentDensity}",
+                        "sapDensity": {
+                            "renameTo": "sap-touch",
+                            "value": "{if({&_sapDensityIsCozy}) '1','0'}"
+                        },
+                        "sapInnerAppState": {
+                            "renameTo": "sap-iapp-state",
+                            "value": "{if({&env:innerAppState}) &env:innerAppState}"
+                        }
+                    }
+                }
+            },
+            "texts": [{
+                "locale": "",
+                "textDictionary": {
+                    "title": "Base URL Template"
+                }
+            }]
+        },
+        "urltemplate.fiori": {
+            "identification": {
+                "id": "urltemplate.fiori"
+            },
+            "payload": {
+                "urlTemplate": "../../../../../test-resources/sap/ushell/shells/demo/ui5appruntime.html{?appId,startupParameters,sapUiDebug,sapClient,sapShell,sapDensity,versionedLibCss,sapPlugins}{+sapThemeFull}{+languageParam}{+hashWithoutInnerRoute}{+innerAppRoute}",
+                "parameters": {
+                    "mergeWith": ["/urlTemplates/urltemplate.base/payload/parameters/names"],
+                    "names": {
+                        "_destName": "{./sap.app/destination}",
+                        "innerAppRouteValue": "{or &innerAppRoute:.,sap-ushell-innerAppRoute}",
+                        "innerAppRouteValuePrefixed": "{join '&/',&innerAppRouteValue}",
+                        "innerAppRoute": "{and &innerAppRouteValue,&innerAppRouteValuePrefixed}",
+                        "startupParameters": {
+                            "renameTo": "sap-startup-params",
+                            "value": "{*|match(^(?!sap-ushell(-innerAppRoute\\|-navmode)$))|join(&,=)}"
+                        },
+                        "isAppRuntimeCf": "{match(^CF$) &_destPlatform}",
+                        "appRuntimeAbap": "{if({&_destPlatformIsAbap}) '/ui2/flp/ui5appruntime.html'}",
+                        "isAppRuntimeNeo": "{match(^NEO$) &_destPlatform}",
+                        "appRuntimeCf": "{if({&isAppRuntimeCf}) '/cp.portal/ui5appruntime.html'}",
+                        "isNeoAppRuntimeDebugMode": "{and &isAppRuntimeNeo,&env:isDebugMode}",
+                        "appRuntimeNeo": "{if({&isNeoAppRuntimeDebugMode}) '/sap/fiori/appruntime/ui5appruntimedebug.html','/sap/fiori/appruntime/ui5appruntime.html'}",
+                        "appRuntime": "{or &appRuntimeAbap,&appRuntimeCf,&appRuntimeNeo}",
+                        "appId": {
+                            "value": "{./sap.integration/urlTemplateParams/appId}",
+                            "renameTo": "sap-ui-app-id"
+                        },
+                        "versionedLibCss": {
+                            "value": "true",
+                            "renameTo": "sap-ui-versionedLibCss"
+                        },
+                        "sapLocaleFormatted": "{join '&sap-locale=',&sapLocale}",
+                        "sapLanguageFormatted": "{join '&sap-language=',&sapLanguage}",
+                        "languageForAbap": "{if({&_destPlatformIsAbap}) &sapLanguageFormatted}",
+                        "languageForOtherPlatforms": "{if(!{&_destPlatformIsAbap}) &sapLocaleFormatted}",
+                        "languageParam": "{or &languageForAbap,&languageForOtherPlatforms}",
+                        "technicalAppComponentId": "{or ./sap.integration/urlTemplateParams/baseComponentName,&appId}"
+                    }
+                },
+                "capabilities": {
+                    "navigationMode": "embedded",
+                    "startMethod": "GET",
+                    "fullWidth": true,
+                    "statefulContainer": true,
+                    "technicalAppComponentId": "{+technicalAppComponentId}",
+                    "appFrameworkId": "UI5"
+                }
+            }
+        },
+        "urltemplate.fiori2": {
+            "identification": {
+                "id": "urltemplate.fiori2"
+            },
+            "payload": {
+                "urlTemplate": "../../../../../test-resources/sap/ushell/shells/demo/ui5appruntime.html{?appId,sapUiDebug,sapClient,sapLanguage,sapShell,sapDensity,sapPlugins,targetNavMode}{+sapThemeFull}{+originalHash}",
+                "parameters": {
+                    "mergeWith": ["/urlTemplates/urltemplate.base/payload/parameters/names"],
+                    "names": {
+                        "appId": {
+                            "value": "{./sap.integration/urlTemplateParams/appId}",
+                            "renameTo": "sap-ui-app-id"
+                        },
+
+                        "_appIdCapability": "{or ./sap.fiori/registrationIds/0,&appId}",
+                        "_technicalAppComponentIdCapability": "{&appId}"
+                    }
+                },
+                "capabilities": {
+                    "technicalAppComponentId": "{+_technicalAppComponentIdCapability}",
+                    "appFrameworkId": "UI5",
+                    "fullWidth": false
+                }
+            }
+        },
+        "urltemplate.appA": {
+            "identification": {
+                "id": "urltemplate.appA"
+            },
+            "payload": {
+                "urlTemplate": "../../../../../test-resources/sap/ushell/demoapps/IframeReuseSample/IframeReuseSample.html?disableSetup=true#X-Y&/A",
+                "parameters": {
+                    "mergeWith": ["/urlTemplates/urltemplate.base/payload/parameters/names"],
+                    "names": {
+                    }
+                },
+                "capabilities": {
+                    "navigationMode": "embedded",
+                    "startMethod": "GET",
+                    "fullWidth": true,
+                    "statefulContainer": true
+                }
+            }
+        },
+        "urltemplate.appB": {
+            "identification": {
+                "id": "urltemplate.appB"
+            },
+            "payload": {
+                "urlTemplate": "../../../../../test-resources/sap/ushell/demoapps/IframeReuseSample/IframeReuseSample.html?disableSetup=true#X2-Y2&/B",
+                "parameters": {
+                    "mergeWith": ["/urlTemplates/urltemplate.base/payload/parameters/names"],
+                    "names": {
+                    }
+                },
+                "capabilities": {
+                    "navigationMode": "embedded",
+                    "startMethod": "GET",
+                    "fullWidth": true,
+                    "statefulContainer": true
+                }
+            }
+        }
+    },
+    "visualizations": {
+        "sap.ushell.demo.letterBoxing#Action-toLetterBoxing": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://flight"
+                    }
+                },
+                "sap.app": {
+                    "title": "Letter Boxing",
+                    "ach":"CA-UI2-INT-FE"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "cross.fnd.fiori.inbox",
+                        "inboundId": "Action-toLetterBoxing"
+                    }
+                }
+            },
+            "businessApp": "sap.ushell.demo.letterBoxing"
+        },
+        "sap.ushell.demo.AppNavSample#AppNavSample-id": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://status-negative"
+                    }
+                },
+                "sap.app": {
+                    "title": "App Nav Sample"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "sap.ushell.demo.AppNavSample",
+                        "inboundId": "AppNavSample-id"
+                    }
+                }
+            },
+            "businessApp": "sap.ushell.demo.AppNavSample"
+        },
+        "sap.ushell.demo.AppFullWidth#AppFullWidth-id": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://status-negative"
+                    }
+                },
+                "sap.app": {
+                    "title": "App Nav Sample - LetterBox"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "sap.ushell.demo.AppFullWidth",
+                        "inboundId": "AppFullWidth-id"
+                    }
+                }
+            },
+            "businessApp": "sap.ushell.demo.AppFullWidth"
+        },
+        "sap.ushell.demo.EventDelegationDemoApp#test-eventdelegation": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://syringe"
+                    }
+                },
+                "sap.app": {
+                    "title": "Event Delegation Test"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "sap.ushell.demo.EventDelegationDemoApp",
+                        "inboundId": "test-eventdelegation"
+                    }
+                }
+            },
+            "businessApp": "sap.ushell.demo.EventDelegationDemoApp"
+        },
+        "statefull.container.demp.appA#X1-Y1": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://syringe"
+                    }
+                },
+                "sap.app": {
+                    "title": "Isolated Application A"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "statefull.container.demp.appA",
+                        "inboundId": "X1-Y1"
+                    }
+                }
+            },
+            "businessApp": "statefull.container.demp.appA"
+        },
+        "statefull.container.demp.appB#X2-Y2": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://syringe"
+                    }
+                },
+                "sap.app": {
+                    "title": "Isolated Application B"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "statefull.container.demp.appB",
+                        "inboundId": "X2-Y2"
+                    }
+                }
+            },
+            "businessApp": "statefull.container.demp.appB"
+        }
+    },
+    "systemAliases": {
+        "S4FIN": {
+            "id": "S4FIN",
+            "client": "500",
+            "platform": "ABAP",
+            "https": {
+                "id": "ER9_500_HTTPS",
+                "host": "ier9.df.ap.corp",
+                "port": 44300
+            },
+            "rfc": {
+                "id": "ER9_500_RFC",
+                "systemId": "ER9",
+                "host": "ier9.df.ap.corp",
+                "service": 32,
+                "loginGroup": "PUBLIC"
+            }
+        },
+        "S4SYSTEM": {
+            "id": "S4SYSTEM",
+            "client": "902",
+            "platform": "ABAP",
+            "https": {
+                "id": "S4SYSTEM_HTTPS",
+                "host": "myHost-rc.df.ap.corp",
+                "port": 446
+            },
+            "properties": {
+                "productName": "S/4HANA",
+                "demo.custom.property": "myValue"
+            }
+        }
+
+    },
+    "personalizedSite": {}
+}

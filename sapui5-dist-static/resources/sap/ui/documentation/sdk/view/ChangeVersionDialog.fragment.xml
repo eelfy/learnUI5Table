@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<Dialog
+			title="{i18n>CHANGE_VERSION_DIALOG_TITLE}"
+			contentHeight="400px"
+			stretch="{appView>/bPhoneSize}">
+		<endButton>
+			<Button
+				text="{i18n>CHANGE_VERSION_DIALOG_CLOSE_BTN}"
+				press="onCloseVersionDialog">
+			</Button>
+		</endButton>
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<SearchField
+							liveChange="onChangeVersionDialogSearch"
+							showSearchButton="false">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<List
+				id="versionList"
+				itemPress="onVersionItemPress"
+				items="{
+					path: '/',
+					sorter: [{
+						path: 'groupTitle',
+						descending: true,
+						group: true,
+						comparator: '.versionSwitchCustomComparator'
+					}, {
+						path: 'patchVersion',
+						descending: true
+					}]
+				}">
+			<StandardListItem
+					title="{path: 'version'}"
+					type="Active">
+				<customData>
+					<core:CustomData key="path" value="{path: 'path'}" />
+				</customData>
+			</StandardListItem>
+		</List>
+	</Dialog>
+</core:FragmentDefinition>

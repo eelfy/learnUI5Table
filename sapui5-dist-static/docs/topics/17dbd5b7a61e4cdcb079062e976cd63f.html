@@ -1,0 +1,33 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio17dbd5b7a61e4cdcb079062e976cd63f" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Header Facets</h1><div class="fig"><h1 class="topictitle1 title">Header Facets</h1><div class="shortdesc">You can include various types of header facets in your object page header, for example displaying contact data or a rating
+		indicator.</div><p>You can use the annotation term <code>UI.HeaderFacets</code> to define which
+			information is displayed in the
+			header.The
+				<code>UI.HeaderFacets</code> contains a collection of
+				<code>UI.ReferenceFacet</code> with each reference facet corresponding to a
+			header element displayed on the UI. The following sample code shows such a structure:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.HeaderFacets"&gt;
+    &lt;Collection&gt;
+        ...
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Price" /&gt;
+        &lt;/Record&gt;
+        ...
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="to_StockAvailability/@UI.DataPoint#StockAvailability" /&gt;
+        &lt;/Record&gt;
+        ...
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+			<p></p></div></div>
+			<p></p><section id="section_dn1_5zh_nlb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can also include the address facet in the object page header. For more
+				information, see <a href="#/topic/0b73cbbeda344d88b5d0f8bea4d4498e.html" title="If you add a UI.ReferenceFacet that points to an address annotation, an address facet is displayed in the object page header." class="sap-doc">Address Facet in the Object Page Header</a>.</p></div></section><section id="section_mjc_ccs_hnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Stashing</h3>
+			</section><p>If an application developer has defined header facets as stashed in the
+				manifest, they are initially not visible on the UI. Such header facets are not
+				loaded when the app is started. Key users can add these stashed header facets via
+				key user adaptation at runtime and make them visible for end users on the object
+				page header.</p><p>For more information, refer to <a href="#/topic/59bfd317ed5d4af3b490abbe7a9731d8.html" title="You can extend and customize your SAP Fiori applications." class="sap-doc">Adapting the UI</a>.</p></div></section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/9422074471ef4db9a7ee6b519102f0d1">Enabling Simple Header Facets</a></li><li><a href="topic/1da0926a5d404c5586cd8b4f73d1cf4a">Plain Text Facet</a></li><li><a href="topic/214dc25fb47f42c6a0091dfe71e87950">Contact Facet</a></li><li><a href="topic/e219fd0c85b842c69ac3a514e712ece5">Micro Chart Facet</a></li><li><a href="topic/ff0ae0b200e0488d928f87a043c4c747">Header Field Group</a></li><li><a href="topic/c2a389a11a704b00886440031a3d43f9">Data Points</a></li><li><a href="topic/ebe05d52c43241c19aaf79dd5f1c69f1">Form Facet</a></li><li><a href="topic/0b73cbbeda344d88b5d0f8bea4d4498e">Address Facet in the Object Page Header</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

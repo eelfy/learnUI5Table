@@ -1,0 +1,75 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioed9aa41c563a44b18701529c8327db4d" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Draft Handling</h1><div class="fig"><h1 class="topictitle1 title">Draft Handling</h1><div class="shortdesc">A draft is an interim version of a business entity that has not yet been explicitly
+		saved as an active version. Drafts are saved automatically in the background whenever users
+		add or change information within a business entity while it's in edit mode (auto-save). SAP
+		Fiori elements support the creation of apps using draft handling.</div><p>Drafts are used as follows:</p><ul class="ul ">
+			<li class="li">
+				<p>To keep unsaved changes when an editing activity is interrupted. This lets users resume editing later.</p>
+			</li>
+			<li class="li">
+				<p>To prevent data loss if an app terminates unexpectedly</p>
+			</li>
+			<li class="li">
+				<p>As a locking mechanism to prevent multiple users from editing the same object at the same time, and to inform users about unsaved
+					changes by another user.</p>
+			</li>
+		</ul><p>When a user starts creating a new business entity or edits an existing one, a draft is created in the background. This enables field
+			validation and dynamic field control (showing additional fields based on user interaction) and provides default values for fields based on
+			recent data entry. A draft can be validated for consistency and completeness at any time. This returns a list of messages.</p><p>While the user is modifying a business entity, an indicator shows when a draft is saved implicitly. The user still needs to choose
+				<span class="ph uicontrol">Save</span> to incorporate the changes into an active business document.</p><section id="section_mvv_ts2_pmb">
+			<h2 class="title ">Using the <span class="ph uicontrol">Apply</span> Button</h2>
+			<p>The footer bar of a subobject page contains an <span class="ph uicontrol">Apply</span> button in create mode and edit mode. When users choose this
+				button they can conclude their current create or edit activity, apply the changes or entries to the draft, and navigate one step up in
+				the object hierarchy.</p>
+			<p>When a user edits an object, the system behavior of the <span class="ph uicontrol">Apply</span> button is as follows: <img src="loio36204dc3fff942668f0c38c93d6684d6_LowRes.png" usemap="#"></p>
+			<ol>
+				<li class="li">
+					<p>On an object page, the user chooses <span class="ph uicontrol">Edit</span>. </p>
+				</li>
+				<li class="li">
+					<p>The system creates a draft version of the object.</p>
+				</li>
+				<li class="li">
+					<p>The user makes changes to the draft version of the object and navigates to a detail page. When <span class="ph uicontrol">Apply</span> is
+						chosen, the changes are applied to the draft.</p>
+				</li>
+				<li class="li">
+					<p>When the user chooses <span class="ph uicontrol">Save</span>, the changes are saved to the active version of the object.</p>
+				</li>
+			</ol>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>If the <code>DiscardAction</code> has been defined in the <code>DraftRoot</code> annotation, the
+						<code>DiscardAction</code> is called if the user chooses to delete the draft. If the <code>DiscardAction</code> has
+					not been defined, the <code>Delete</code> call is triggered instead.</p>
+			<p></p></div></div>
+		</section><section id="section_qvv_ts2_pmb">
+			<h2 class="title ">Handling Inconsistent Input</h2>
+			<p>Users might enter data that is so inconsistent that the system cannot store it in the draft. For example, characters are entered in a
+				number field, or more characters than the field length allows are entered. If this is the case, the contents of the UI differ from the
+				contents of the draft. Before the draft can be saved by the user, the system displays a message prompting the users to solve these
+				errors. After all errors have been solved, the draft can be saved.</p>
+			<p>This system behavior is also valid when using the <span class="ph uicontrol">Apply</span> button. When choosing <span class="ph uicontrol">Apply</span>, the
+				system has to make sure that the contents on the UI and the stored contents of the draft are identical. If the errors described above
+				occur, the system displays the same message prompting the user to solve them.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>This message lists only errors related to technical inconsistencies, not to logical inconsistencies. For example, if a user enters
+					a business partner that does not exist, this error is not displayed. These types of errors are displayed in a state message when
+					saving the object.</p>
+			<p></p></div></div>
+		</section><section id="section_ivw_gkc_d2b">
+			<h2 class="title ">Related Links:</h2>
+			<ul class="ul ">
+				<li class="li">
+					<p><a href="https://experience.sap.com/fiori-design-web/draft-handling/" title="https://experience.sap.com/fiori-design-web/draft-handling/" class="external-link" target="_blank" rel="noopener">Draft Handling in SAP Fiori Design
+						Guidelines</a></p>
+				</li>
+				<li class="li">
+					<p><a href="https://help.sap.com/viewer/cc0c305d2fab47bd808adcad3ca7ee9d/7.52.2/en-US/d36820f082c84085b6634be4576e351a.html" title="https://help.sap.com/viewer/cc0c305d2fab47bd808adcad3ca7ee9d/7.52.2/en-US/d36820f082c84085b6634be4576e351a.html" class="external-link" target="_blank" rel="noopener">Developing New Transactional Apps with Draft
+							Capabilities</a>
+					</p>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>ActionDefinition</name>
+    <derived/>
+    <author>SAP SE</author>
+    <documentation>Represents an action, which appears in the header of {@link sap.ui.integration.widgets.Card}.
+Useful in &lt;code&gt;Component&lt;/code&gt; card and &lt;code&gt;Extension&lt;/code&gt;.</documentation>
+    <since>1.85</since>
+    <developmentState state="experimental" since="1.85">Disclaimer: this class is in a beta state - incompatible API changes may be done before its official public release. Use at your own discretion.</developmentState>
+    <baseType>sap.ui.core/Element</baseType>
+    <properties>
+        <property name="type" type="sap.ui.integration/CardActionType">
+            <documentation>The type of the action.</documentation>
+        </property>
+        <property name="text" type="sap.ui.core/string" defaultValue="">
+            <documentation>The text of the action button.</documentation>
+        </property>
+        <property name="icon" type="sap.ui.core/URI">
+            <documentation>The icon of the action button.</documentation>
+        </property>
+        <property name="buttonType" type="sap.m/ButtonType" defaultValue="Transparent">
+            <documentation>The type of the action button.</documentation>
+        </property>
+        <property name="enabled" type="sap.ui.core/boolean" defaultValue="true">
+            <documentation>Indicates whether the user can interact with the action button or not.
+&lt;b&gt;Note&lt;/b&gt;: Disabled controls cannot be focused and they are out of the navigation tab-chain.</documentation>
+        </property>
+        <property name="visible" type="sap.ui.core/boolean" defaultValue="true">
+            <documentation>Whether the action button should be visible on the screen.</documentation>
+        </property>
+        <property name="parameters" type="sap.ui.core/object">
+            <documentation>The parameters of the action.</documentation>
+        </property>
+    </properties>
+    <events>
+        <event name="press" allowPreventDefault="false">
+            <documentation>Fired when the action button is pressed.</documentation>
+        </event>
+    </events>
+    <associations>
+        <association name="_menuButton" type="sap.m/Button" cardinality="0..1" visibility="hidden">
+            <documentation>The button in the actions menu, which is related to this action.</documentation>
+        </association>
+    </associations>
+</control>

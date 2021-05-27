@@ -1,0 +1,49 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4cde849dc18949b69bbe152a0aaa19c6" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 1: No Data Binding</h1><div class="fig"><h1 class="topictitle1 title">Step 1: No Data Binding</h1><div class="shortdesc">In this step, we simply place some text on the screen using a standard
+			sap.m.Text control. The text in this control is a hard-coded part of
+		the control's definition; therefore, this is not an example of data binding!</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio6d391d527601499fbeb3734246b2c067_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Screen with text</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit
+					at <a href="#/sample/sap.ui.core.tutorial.databinding.01/preview" title="#/sample/sap.ui.core.tutorial.databinding.01/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.01/preview">Data Binding - Step 1</a>.</p>
+		</section><section id="section_ic3_zll_5fb">
+			<h2 class="title ">webapp/index.html (New)</h2>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+	&lt;title&gt;Data Binding&lt;/title&gt;
+	&lt;script id="sap-ui-bootstrap"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-resourceroots='{"sap.ui.demo.db": "./"}'
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true"&gt;
+	&lt;/script&gt;
+	&lt;script src="index.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body class="sapUiBody" id="content"&gt;&lt;/body&gt;
+&lt;/html&gt;</span></pre></div></section>
+			<p>Create a new folder <code>webapp</code> which will contain all sources of the app that we will create throughout this tutorial, and
+				create the <code>index.html</code> file within this folder.</p>
+		</section><section id="section_jc3_zll_5fb">
+			<h2 class="title ">webapp/index.js (New)</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/m/Text"
+], function (Text) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		// Create a text UI element that displays a hardcoded text string
+		new Text({text: "Hi, my name is Harry Hawk"}).placeAt("content");
+	});
+});</pre></div></section>
+			<p>Create a new <code>index.js</code> file that will contain the application logic for this tutorial. We start by placing the
+					<code>sap.m.Text</code> control into the html content. Since the value of the control's text property has been hard-coded, it
+				is unrelated to any data that might exist within a model object. Therefore, data binding is <span class="emphasis">not</span> being used
+				here.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/5278bfd38f3940b192df0e39f2fb33b3">Step 2: Creating a Model</a></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

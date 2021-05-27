@@ -1,0 +1,38 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof65e8b196335457cbfc891418ec25cfd" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Displaying Actions on the Object Page</h1><div class="fig"><h1 class="topictitle1 title">Displaying Actions on the Object Page</h1><p>Specific rules apply when displaying actions on the object page. </p><section>
+			<h2 class="title ">Order of Actions</h2>
+			<p>The order of the application-specific actions follows the order defined in the metadata file. Generic actions, like
+					<span class="ph uicontrol">Save</span> and <span class="ph uicontrol">Edit</span>, are placed after application-specific actions.</p>
+		</section><section>
+			<h2 class="title ">Display Based on Mode</h2>
+			<p>The display of actions depends on which mode the user is in:</p><ul class="ul ">
+					<li class="li">
+						<p>In <span class="ph uicontrol">Display</span> mode, the relevant actions are displayed in the header toolbar (see <a href="#/topic/645e27ae85d54c8cbc3f6722184a24a1.html" title="The object page lets you display, edit, and create objects, as well as save drafts. It is suitable for both simple objects and more complex, multi-faceted objects. The object page view gives you optimal support for multiple devices." class="sap-doc">Object Page Elements</a>).</p>
+					</li>
+					<li class="li">
+						<p>In <span class="ph uicontrol">Edit</span> or <span class="ph uicontrol">Create</span> mode, the footer bar contains the relevant actions, for
+							example, <span class="ph uicontrol">Save</span> and <span class="ph uicontrol">Cancel</span> in <span class="ph uicontrol">Edit</span> mode (see figure
+							below), and <span class="ph uicontrol">Create</span> and <span class="ph uicontrol">Cancel</span> in <span class="ph uicontrol">Create</span> mode.</p>
+					</li>
+				</ul><p></p>
+			<div><div class="fig"><img src="loio2c8767fde4014d3db53ae0a68951ed78_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object Page: Action Triggered from Footer Bar (Edit Mode)</span></div>
+			<p>You can add criticality to an action button via annotations. For more information,
+				see <a href="#/topic/12f2ba26f0d74853a0707597844c2961.html" title="You can add criticality to an action button via annotations." class="sap-doc">Setting the Criticality for Actions</a>.</p>
+		</section><section id="section_igr_pyx_qmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>In non-draft applications, users can choose the <span class="ph uicontrol">Save and Edit</span> button to save the current changes. The
+						object page stays in edit mode so that they can continue editing. You can enable this feature via SAPUI5 Visual Editor. For
+						more information, see <a href="#/topic/0d2f1a9ebd2d4a4c906216ded1d33783.html" title="You can extend and customize specific features of the list report and object page." class="sap-doc">Adapting the UI: List Report and Object Page</a>.</p>
+					<p>If this feature is enabled, you have to make following changes:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>Change the type of the <span class="ph uicontrol">Save and Edit</span> button to <code>Emphasized</code> and of the
+									<span class="ph uicontrol">Save</span> button to <code>Transparent</code>. You can do so by changing the
+									<code>Type</code> property of both buttons in SAPUI5 Visual Editor.</p>
+						</li>
+						<li class="li">Place the <span class="ph uicontrol">Save and Edit</span> button as the first button in the footer and the
+								<span class="ph uicontrol">Save</span> button as the second button, using SAPUI5 Visual Editor.</li>
+					</ul>
+				<p></p></div></div>
+			<p></p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

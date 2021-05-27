@@ -1,0 +1,11 @@
+<FragmentDefinition xmlns="sap.ui.core" xmlns:m="sap.m">
+    <m:GenericTile
+        frameType= "{
+            parts: [
+                '$this>displayFormat',
+                '$this>tileSize'
+            ],
+            formatter: '._formatPlaceholderFrameType'
+        }"
+        state="{$this>state}"/>
+</FragmentDefinition>

@@ -1,0 +1,62 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiode4f8bf44b9846ccace1d78f3915aa81" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Harvey Micro Chart</h1><div class="fig"><h1 class="topictitle1 title">Harvey Micro Chart</h1><div class="shortdesc"></div><p><img src="loio5026048ef97b465f952777749f5b0a75_LowRes.png" usemap="#"></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>A single measure value is shown against a maximum value. For more information on this
+				chart type, refer <a href="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.HarveyBallMicroChart" title="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.HarveyBallMicroChart" class="external-link" target="_blank" rel="noopener">Samples</a> documentation.</p>
+		<p></p></div></div><section id="section_llx_jhq_qmb">
+			<h2 class="title ">UI.Chart Annotation</h2>
+			<p>The <code>UI.Chart Title</code> property is used for the title. </p>
+			<p>The <code>UI.Chart Description</code> property is used for the subtitle.</p>
+			<p>
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="SpecificationWidthHarveyChart"&gt;
+	&lt;Record&gt;
+		&lt;PropertyValue EnumMember="UI.ChartType/Pie" Property="ChartType" /&gt;
+                &lt;PropertyValue Property="Title" String="Sold to Produced Harvey Chart" /&gt;
+                &lt;PropertyValue Property="Description" String="Harvey Chart" /&gt;
+                &lt;PropertyValue Property="Measures"&gt;
+                        &lt;Collection&gt;
+                              &lt;PropertyPath&gt;Sold&lt;/PropertyPath&gt;
+                        &lt;/Collection&gt;
+                &lt;/PropertyValue&gt;
+                &lt;PropertyValue Property="MeasureAttributes"&gt;
+                        &lt;Collection&gt;
+                               &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                                     &lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint" /&gt;
+                               &lt;/Record&gt;
+                        &lt;/Collection&gt;
+                &lt;/PropertyValue&gt;
+        &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div>
+			<p></p>
+		</section><section id="section_bgx_jhq_qmb"><h2 class="title ">UI.DataPoint Annotation</h2>
+			<p>
+				</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint"&gt;
+					&lt;Record&gt;
+						&lt;PropertyValue Path="Sold" Property="Value" /&gt;
+						&lt;PropertyValue Path="Produced" Property="MaximumValue" /&gt;
+						&lt;PropertyValue Path="criticalityValue" Property="Criticality" /&gt;
+					&lt;/Record&gt;
+				&lt;/Annotation&gt;
+</pre></div></section>
+				<p></p></div></div>
+			<p></p>
+			<p>For semanting coloring, only the <code>Criticality</code> property is
+				supported.</p>
+			<p>Mandatory:</p>
+			<ol>
+				<li class="li"><code>UI.Chart</code> → <code>ChartType</code>:
+					“<code>Pie</code>”</li>
+				<li class="li"><code>UI.Chart</code> → <code>Measures</code></li>
+				<li class="li"><code>UI.Chart</code> → <code>MeasureAttributes</code> →
+						<code>DataPoint</code></li>
+				<li class="li"><code>UI.DataPoint</code>→ <code>MaximumValue</code></li>
+				<li class="li">In case semantic coloring is required, use <code>UI.DataPoint</code> →
+						<code>Criticality</code></li>
+			</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

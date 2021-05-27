@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field Templating Testing #addTextArrangementToBindingExpression 1`] = `
+Object {
+  "_type": "Binding",
+  "modelName": "otherModel",
+  "path": "textLast",
+}
+`;
+
+exports[`Field Templating Testing #addTextArrangementToBindingExpression 2`] = `
+Object {
+  "_type": "Formatter",
+  "fn": "sap.fe.core.formatters.ValueFormatter",
+  "parameters": Array [
+    Object {
+      "_type": "Constant",
+      "value": "formatWithBrackets",
+    },
+    Object {
+      "_type": "Binding",
+      "constraints": Object {},
+      "formatOptions": Object {
+        "parseKeepsEmptyString": true,
+      },
+      "modelName": undefined,
+      "path": "textLast",
+      "type": "sap.ui.model.odata.type.String",
+    },
+    Object {
+      "_type": "Binding",
+      "modelName": undefined,
+      "path": "targetText",
+    },
+  ],
+}
+`;
+
+exports[`Field Templating Testing #addTextArrangementToBindingExpression 3`] = `
+Object {
+  "_type": "IfElse",
+  "condition": Object {
+    "_type": "Binding",
+    "modelName": undefined,
+    "path": "testProp",
+  },
+  "onFalse": Object {
+    "_type": "Binding",
+    "constraints": Object {},
+    "formatOptions": Object {
+      "parseKeepsEmptyString": true,
+    },
+    "modelName": undefined,
+    "path": "noText",
+    "type": "sap.ui.model.odata.type.String",
+  },
+  "onTrue": Object {
+    "_type": "Formatter",
+    "fn": "sap.fe.core.formatters.ValueFormatter",
+    "parameters": Array [
+      Object {
+        "_type": "Constant",
+        "value": "formatWithBrackets",
+      },
+      Object {
+        "_type": "Binding",
+        "constraints": Object {},
+        "formatOptions": Object {
+          "parseKeepsEmptyString": true,
+        },
+        "modelName": undefined,
+        "path": "textLast",
+        "type": "sap.ui.model.odata.type.String",
+      },
+      Object {
+        "_type": "Binding",
+        "modelName": undefined,
+        "path": "targetText",
+      },
+    ],
+  },
+}
+`;
+
+exports[`Field Templating Testing #getBindingWithTextArrangement 1`] = `
+Object {
+  "_type": "Binding",
+  "modelName": undefined,
+  "path": "targetText",
+}
+`;
+
+exports[`Field Templating Testing #getBindingWithTextArrangement 2`] = `
+Object {
+  "_type": "Binding",
+  "constraints": Object {},
+  "formatOptions": Object {
+    "parseKeepsEmptyString": true,
+  },
+  "modelName": undefined,
+  "path": "noText",
+  "type": "sap.ui.model.odata.type.String",
+}
+`;
+
+exports[`Field Templating Testing #getBindingWithTextArrangement 3`] = `
+Object {
+  "_type": "Formatter",
+  "fn": "sap.fe.core.formatters.ValueFormatter",
+  "parameters": Array [
+    Object {
+      "_type": "Constant",
+      "value": "formatWithBrackets",
+    },
+    Object {
+      "_type": "Binding",
+      "modelName": undefined,
+      "path": "targetText",
+    },
+    Object {
+      "_type": "Binding",
+      "constraints": Object {},
+      "formatOptions": Object {
+        "parseKeepsEmptyString": true,
+      },
+      "modelName": undefined,
+      "path": "textFirst",
+      "type": "sap.ui.model.odata.type.String",
+    },
+  ],
+}
+`;
+
+exports[`Field Templating Testing #getBindingWithTextArrangement 4`] = `
+Object {
+  "_type": "Formatter",
+  "fn": "sap.fe.core.formatters.ValueFormatter",
+  "parameters": Array [
+    Object {
+      "_type": "Constant",
+      "value": "formatWithBrackets",
+    },
+    Object {
+      "_type": "Binding",
+      "constraints": Object {},
+      "formatOptions": Object {
+        "parseKeepsEmptyString": true,
+      },
+      "modelName": undefined,
+      "path": "textLast",
+      "type": "sap.ui.model.odata.type.String",
+    },
+    Object {
+      "_type": "Binding",
+      "modelName": undefined,
+      "path": "targetText",
+    },
+  ],
+}
+`;

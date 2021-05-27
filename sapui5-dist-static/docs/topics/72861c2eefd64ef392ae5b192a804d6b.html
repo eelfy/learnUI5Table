@@ -1,0 +1,47 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio72861c2eefd64ef392ae5b192a804d6b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using SAPUI5 Flexibility</h1><div class="fig"><h1 class="topictitle1 title">Using SAPUI5 Flexibility</h1><div class="shortdesc">You can use SAPUI5 flexibility to extend your SAP Fiori apps.</div><section id="section_w4p_rgf_n2b">
+			<h2 class="title ">Overview</h2>
+			<p>SAPUI5 flexibility (see <a href="#/topic/a8e55aa2f8bc4127923b20685a6d1621.html" title="Modification-free, cost-saving, easy to use, and performant: Discover the new flexibility when adapting SAP Fiori UIs using SAPUI5 flexibility." class="sap-doc">SAPUI5 Flexibility: Adapting UIs Made Easy</a>) allows you to extend SAP Fiori
+				elements-based applications without modifications of base artefacts. To use this
+				type of extensibility, you need an adaptation project in SAP Web IDE. It allows you to make
+				changes that are also available in key user adaptation (see <a href="#/topic/f1430c0337534d469da3a56307ff76af.html" title="Here's what you have to consider when developing apps that support UI adaptation." class="sap-doc">SAPUI5 Flexibility: Enable Your App for UI Adaptation</a>) as well as to extend views with
+				XML fragments (see <a href="#/topic/2c677b574ea2486a8d5f5414d15e21c5.html" title="XML fragments are similar to XML view, but have no &lt;View&gt; tag as root element. Instead, there is an SAPUI5 control." class="sap-doc">XML Fragments</a>) and extend
+				controllers with controller extensions.</p>
+		</section><section id="section_vjc_m3f_n2b"><h2 class="title ">Using SAPUI5 Flexibility for Controller
+				Extensions</h2><p>Controller extensions add or override functionality of existing applications. For more information, see <a href="#/topic/21515f09c0324218bb705b27407f5d61.html" title="Controller extensions allow you to add functionality to existing applications. They can be used for extensibility purposes, for example by a customer wishing to extend SAP-delivered applications, or as a reusable part that is added to the original application." class="sap-doc">Using Controller Extension</a>.</p><p>By using SAPUI5
+				flexibility and adaptation projects, controller extensions are added to the reserved <code>extension</code> namespace of the
+				controller. This is done in order to avoid name clashes with already existing functionality in the controller, for example
+					<code>oMainControllerInstance.extension.my.sample.ControllerExtension.publicMethod()</code>.</p>
+			<section>
+				<h3 class="title ">Usage in a View</h3>
+			</section><p>The controller extension functionality can be used in views in the same way as a regular controller function. Deep
+				namespaces are already supported in this scenario and it should work without additional effort.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Button press=".extension.my.sample.ControllerExtension.publicMethod" text="Execute"&gt;&lt;/Button&gt;</pre></div></section><section>
+				<h3 class="title ">Override Extension Functionality</h3>
+			</section><p>It is possible to override public or extend lifecycle methods of controller extension in another controller
+				extension.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">override: {
+    //override other extensions method by the namespace extension name
+    extension: {
+        "my.sample.ControllerExtension": {
+            publicMethod: function() {
+                //...
+            }
+        }
+    }
+}</pre></div></section><p>You
+				can also override an extension directly in a controller.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(['sap/ui/core/mvc/Controller', 'my/extension/SampleExtension'],
+    function(Controller, SampleExtension) {
+    "use strict";
+    return MainController = Controller.extend("sample.Main", {
+        //inline override of an extension. E.g. to provide a hook implementation
+        sample: SampleExtension.override({
+            someHook: function() {},
+            someOtherMethod: function() {}
+        }),
+        onLifecycleHook: function() {
+        }
+    });
+});
+</pre></div></section>
+			<p></p></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

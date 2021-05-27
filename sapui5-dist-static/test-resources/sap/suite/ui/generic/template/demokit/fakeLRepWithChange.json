@@ -1,0 +1,51 @@
+{
+	"changes": [
+		{
+			"fileName": "id_1560343149690_274_propertyChange",
+			"fileType": "change",
+			"changeType": "propertyChange",
+			"moduleName": "",
+			"reference": "SOwoExt.Component",
+			"packageName": "$TMP",
+			"content": {
+				"property": "useIconTabBar",
+				"newValue": true
+			},
+			"selector": {
+				"id": "SOwoExt::sap.suite.ui.generic.template.ObjectPage.view.Details::C_STTA_SalesOrder_WD_20--objectPage",
+				"type": "sap.uxap.ObjectPageLayout",
+				"idIsLocal": false
+			},
+			"layer": "VENDOR",
+			"texts": {},
+			"namespace": "apps/SOwoExt/changes/",
+			"projectId": "SOwoExt",
+			"creation": "2019-06-12T12:39:22.860Z",
+			"originalLanguage": "EN",
+			"conditions": {},
+			"context": "",
+			"support": {
+				"generator": "Change.createInitialFileContent",
+				"service": "",
+				"user": "",
+				"sapui5Version": "1.66.1",
+				"sourceChangeFileName": "",
+				"compositeCommand": ""
+			},
+			"oDataInformation": {},
+			"dependentSelector": {},
+			"validAppVersions": {
+				"creation": "1.88.0",
+				"from": "1.88.0",
+				"to": "1.88.0"
+			},
+			"jsOnly": false,
+			"variantReference": ""
+		}
+	],
+	"settings": {
+		"isKeyUser": true,
+		"isAtoAvailable": false,
+		"isProductiveSystem": false
+	}
+}

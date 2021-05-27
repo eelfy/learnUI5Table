@@ -1,0 +1,323 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio18b17bdd49d1436fa9172cbb01e26544" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Side Effects</h1><div class="fig"><h1 class="topictitle1 title">Side Effects</h1><div class="shortdesc">If a user changes the content of a field or performs another activity, this change can
+		potentially influence other fields on the UI. This system behavior is called a side
+		effect.</div><p>Side effects are performed in the back end. However, you need to annotate the side
+			effects implemented in the back end using side effect annotations to "inform" the
+			frontend which fields on the UI might be influenced by a change, in order to request new
+			data for these fields. Otherwise, the UI might still display outdated data. </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The
+				so-called default side effects are relevant for the majority of apps. Therefore, you
+				do not need to annotate these side effects.They are available per default. You
+				cannot switch them off.</p></div></div><p></p><section id="section_zkt_rsg_2nb"><section>
+				<h3 class="title ">Default Side Effects</h3>
+				<p>The following side effects are available in SAP Fiori elements by default. </p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_ak5_kyc_mmb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">User Action</th>
+								<th colspan="1" rowspan="1">
+									<p>Side Effect</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Creating a new entity / draft version, either in the list
+										report or on the object page</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>List binding of the parent page is refreshed to show the
+										newly created entity.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Deleting an entity, either in the list report or on the
+										object page</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>List binding of the parent page is refreshed to remove the
+										deleted entity.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Creating a draft for an active object</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>List binding of the list report page is refreshed to show the
+										new draft.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Discarding a draft version</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>List binding of the list report page is refreshed to remove
+										the draft and show the active version.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Activating a draft version</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>List binding of the list report page is refreshed to remove
+										the draft and show the active version.</p>
+								</td>
+							</tr>
+							
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Triggering an action</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>After executing an action successfully, the collection for
+										which the action is defined is refreshed automatically if
+										the following conditions apply:</p><ul class="ul ">
+											<li class="li">
+												<p>The action is a bound action.</p>
+											</li>
+											<li class="li">The returned instance does not correspond to the
+												bound instance. Example: Copy action.</li>
+										</ul><p></p>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table></div></div>
+				
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>You can annotate side effects on actions. </p>
+					<p>If a side effect is not annotated, the system do not refresh the data
+						automatically. However, you do not need to annotate the default side
+						effects.</p>
+				<p></p></div></div>
+				
+			</section><section>
+				<h3 class="title ">Side Effects
+					Format</h3>
+				<p>A side effect
+					annotation
+					includes the following elements:</p><ul class="ul ">
+						<li class="li">
+							<p>Side effect
+								source:
+								A property change, an action, or a structural change (creating or
+								deleting a subitem)</p>
+						</li>
+						<li class="li">
+							<p>Side
+								effect target: A property or structural
+								information </p>
+						</li>
+						<li class="li">
+							<p><code>TriggerAction</code>
+								(optional): The value of this property denotes the
+								path to a function import
+								that
+								needs to be executed when the side effect is
+								triggered. </p>
+							<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+								</p><p>The <code>TriggerAction</code> replaces the
+										<code>PreparationAction</code> property that is
+									deprecated as of SAPUI5 1.87 release.</p>
+							<p></p></div></div>
+						</li>
+					</ul>
+				<p></p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Please note that side effects types are deprecated as of SAPUI5 1.84
+						release.</p>
+				<p></p></div></div>
+				<span class="emphasis">Side
+					Effect Annotation Properties</span>
+				<p>The following side effect annotations are supported:</p><ul class="ul ">
+						<li class="li">
+							<p><span class="emphasis">Source properties</span></p>
+							
+							
+							<p><span class="emphasis">SAP Fiori elements for OData
+                            V2</span></p>
+							<p>You can define a single property or a list of properties as a source,
+								which forms a virtual field group.</p>
+							<p>When you modify the source property and move the focus away from the
+								source, the side effect is triggered.</p>
+							<p>When you modify the virtual field group and move the focus away from
+								the virtual field group, the side effect is triggered only after
+								validating all the source properties.</p>
+							<p><span class="emphasis">SAP Fiori elements for OData
+                            V4</span></p>
+							<p>If you use a value help, the side effect is triggered as soon as the
+								value is set. However, if you are entering the value, the side
+								effect is triggered when the focus moves away from the field.</p>
+							
+							<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You cannot use navigation properties as source properties.</p></div></div>
+						</li>
+						<li class="li">
+							<p><span class="emphasis">Source entities</span></p>
+							<p>You can specify a navigation property:</p>
+							<p>In SAP Fiori elements for OData
+                            V2:
+								Only
+								1:n
+								navigation
+								property can be specified as the source
+								entity.</p>
+							<p>In SAP Fiori elements for OData
+                            V4:
+								Any
+								kind of navigation property (1:1 or 1:n) can be specified as the
+								source
+								entity,</p>
+							
+							<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You cannot specify a 1:1 association or an empty target, for
+								example, <code>NavigationPropertyPath</code> to ensure that the
+								whole entity is considered as the source.</p></div></div>
+							
+							<p>The side effect is triggered when structural changes are made (adding
+								or deleting an item). The side effect is not triggered if a property
+								of any entity is changed. This needs to be done in the entity type
+								of the associated entity.</p>
+						</li>
+						<li class="li">
+							<p><span class="emphasis">Target properties</span></p>
+							<p>You can define a property or a list of properties to be refreshed.
+								You can also use 1:1 navigation properties. If this is the case, a
+								request with an expand to this navigation property is triggered.</p>
+						</li>
+						<li class="li">
+							<p><span class="emphasis">Target entities</span></p>
+							<p>You can specify 1:1 and 1:n navigation properties. </p>
+							<p>If you specify an empty target, the whole entity is updated.</p>
+						</li>
+					</ul><p></p>
+				
+				<span class="emphasis">Scenarios
+					where
+					Side Effects cannot be Triggered</span>
+				<p>As a general rule, no data is sent to the backend until
+					the
+					UI validation
+					errors
+					are
+					solved. Hence, side effect is not triggered when there
+					are
+					validation
+					errors
+					related to the source
+					property
+					or a set of
+					propertiess.</p>
+				<p>For example, if a data field referencing to property
+						<code>ProductCategory</code>
+					or
+						<code>MainProductCategory</code>
+					has field value entered with greater than
+						<code>MaxLength="40"</code>, no side effect shall be
+					triggered.
+					Both the properties should be succesfully validated in order to trigger the side effect.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;EntityType Name="SEPMRA_I_ProductCategoryType" sap:label="Category" sap:content-version="1"&gt;
+        	&lt;Key&gt;
+        	&lt;PropertyRef Name="ProductCategory"/&gt;
+       	 &lt;/Key&gt;
+        	&lt;Property Name="ProductCategory" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Category"/&gt;
+        	&lt;Property Name="MainProductCategory" Type="Edm.String" MaxLength="40" sap:label="Main Category" sap:value-list="fixed-values"/&gt;
+        	&lt;NavigationProperty Name="to_MainCategory" Relationship="STTA_PROD_MAN.assoc_BBDC3EA034F824A7382F8EEF561C1160" FromRole="FromRol
+	   e_assoc_BBDC3EA034F824A7382F8EEF561C1160" ToRole="ToRole_assoc_BBDC3EA034F824A7382F8EEF561C1160"/&gt;
+	   &lt;/EntityType&gt;
+</pre></div></section>
+					<p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="NAMESPACE.ENTITYTYPE"&gt;
+	&lt;Annotation Term="com.sap.vocabularies.Common.v1.SideEffects" Qualifier="ProductChnaged"&gt;
+		&lt;Record&gt;
+			&lt;PropertyValue Property="SourceProperties"&gt;
+				&lt;Collection&gt;
+					&lt;PropertyPath&gt;ProductCategory&lt;/PropertyPath&gt;
+					&lt;PropertyPath&gt;MainProductCategory&lt;/PropertyPath&gt;
+				&lt;/Collection&gt;
+			&lt;/PropertyValue&gt;
+			&lt;PropertyValue Property="TargetEntities"&gt;
+				&lt;Collection&gt;
+					&lt;NavigationPropertyPath&gt;&lt;/NavigationPropertyPath&gt;
+				&lt;/Collection&gt;
+			&lt;/PropertyValue&gt;
+
+		&lt;/Record&gt;
+	&lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section>
+					<p></p></div></div><p></p>
+			</section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h3></div><div class="fig"><span class="emphasis">Side Effects
+					Format</span><p>You can define side effects either in
+					the
+					backend
+					or in local annotation files.</p><span class="emphasis">Side
+					Effect Annotation Properties</span><ul class="ul ">
+					
+					<li class="li">
+						<p><span class="emphasis">Target entities</span></p>
+						
+						
+						<p>In case of 1:n, the request is not sent via the binding of the table.
+							This means that no paging is considered. Therefore, 1:n should be used
+							carefully.</p>
+						
+					</li>
+					<li class="li">
+						<p><span class="emphasis">Side
+								effect without a specific source</span></p>
+						
+						<p>You can define a side effect without any source properties or source
+							entities. This is called as a global side effect. For more information,
+							see <a href="#/topic/955ae316856a4dcdbe07a1dbf584fa98.html" title="To optimize performance, make the annotations for the desired side effects as specific as possible." class="sap-doc">Using the Global Side Effect</a>.</p>
+						
+						
+					</li>
+				</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Side effects for non-draft apps are supported. The side effects are
+								triggered once the user saves the entity and the save action is
+								successful.</p>
+						</li>
+						<li class="li">
+							<p>If a text arragement annotation is used, especially in combination
+								with a value list annotation, you also need to provide a side effect
+								annotation to indicate that the text must be updated when the user
+								sets a different key.</p>
+						</li>
+						<li class="li">
+							<p>Side effects for non-draft apps are also supported for action
+								buttons. Refer <i>Example: Side effect after executing an action</i>
+								in <a href="#/topic/61cf21d50ed34cbf888713496c618904.html" title="This topic provides some examples for annotating side effects." class="sap-doc">Side Effect Annotations: Examples</a>.</p>
+						</li>
+					</ul>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h3></div><div class="fig"><p><span class="emphasis">Target Entities</span></p><p>The list is refreshed if a 1:n association is mentioned as target entity.</p><p>You can also specify absolute paths, that is paths starting with the entity
+					container. They can be defined as <code>TargetEntities</code> to refresh
+					complete entity sets in the list report.</p><div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p><code>&lt;NavigationPropertyPath&gt;/namespace.to.EntityContainer/EntityType&lt;/NavigationPropertyPath&gt;</code></p></div></div><p>For more information, see the section <cite>Example: Side effect after executing
+						an action</cite> in the topic <a href="#/topic/61cf21d50ed34cbf888713496c618904.html" title="This topic provides some examples for annotating side effects." class="sap-doc">Side Effect Annotations: Examples</a>.</p></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/61cf21d50ed34cbf888713496c618904.html" title="This topic provides some examples for annotating side effects." class="sap-doc">Side Effect Annotations: Examples</a></li>
+		<li><a href="#/topic/955ae316856a4dcdbe07a1dbf584fa98.html" title="To optimize performance, make the annotations for the desired side effects as specific as possible." class="sap-doc">Using the Global Side Effect</a></li>
+	</ul></section></div></section></div></body></html>

@@ -1,0 +1,124 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0f8626ed7b7542ffaa44601828db20de" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 23: Custom Formatters</h1><div class="fig"><h1 class="topictitle1 title">Step 23: Custom Formatters</h1><div class="shortdesc">If we want to do a more complex logic for formatting properties of our data model, we
+		can also write a custom formatting function. We will now add a localized status with a
+		custom formatter, because the status in our data model is in a rather technical
+		format.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio7e0112d9ffe54e568fa8ecc44a5af3bf_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">A status is now displayed with a custom formatter</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.23/preview" title="#/sample/sap.m.tutorial.walkthrough.23/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.23/preview">Walkthrough - Step 23</a>.</p>
+			<h2 class="title ">webapp/model/formatter.js (New)</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"><span class="emphasis">sap.ui.define([], function () {
+	"use strict";
+	return {
+		statusText: function (sStatus) {
+			var resourceBundle = this.getView().getModel("i18n").getResourceBundle();
+			switch (sStatus) {
+				case "A":
+					return resourceBundle.getText("invoiceStatusA");
+				case "B":
+					return resourceBundle.getText("invoiceStatusB");
+				case "C":
+					return resourceBundle.getText("invoiceStatusC");
+				default:
+					return sStatus;
+			}
+		}
+	};
+});</span></pre></div></section>
+			<p>We create a new folder <code>model</code> in our app project. The new <code>formatter</code> file is placed in the model folder of the
+				app, because formatters are working on data properties and format them for display on the UI. So far we did not have any model-related
+				artifacts, except for the <code>Invoices.json</code> file, we will now add the folder <code>webapp/model</code> to our
+				app. This time we do not extend from any base object but just return a JavaScript object with our <code>formatter</code> functions
+				inside the <code>sap.ui.define</code> call.</p>
+			<p>Function <code>statusText</code> gets the technical status from the data model as input parameter and returns a human-readable text that is read from
+				the <code>resourceBundle</code> file.</p>
+		</section><section>
+			<h2 class="title ">webapp/controller/InvoiceList.controller.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/model/json/JSONModel"<span class="emphasis">,
+	"../model/formatter"</span>
+], function (Controller, JSONModel, <span class="emphasis">formatter</span>) {
+	"use strict";
+	return Controller.extend("sap.ui.demo.walkthrough.controller.InvoiceList", {
+		<span class="emphasis">formatter: formatter,</span>
+		onInit : function () {
+			var oViewModel = new JSONModel({
+				currency: "EUR"
+			});
+			this.getView().setModel(oViewModel, "view");
+		}
+	});
+});</pre></div></section>
+			<p>To load our formatter functions, we have to add it to the
+					<code>InvoiceList.controller.js</code>. In this controller, we first add a
+				dependency to our custom <code>formatter</code> module. The controller simply
+				stores the loaded formatter functions in the local property
+					<code>formatter</code> to be able to access them in the view.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/InvoiceList.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+	controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"&gt;
+	&lt;List
+			headerText="{i18n&gt;invoiceListTitle}"
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{invoice&gt;/Invoices}"&gt;
+		&lt;items&gt;
+			&lt;ObjectListItem
+				title="{invoice&gt;Quantity} x {invoice&gt;ProductName}"
+				number="{
+					parts: [{path: 'invoice&gt;ExtendedPrice'}, {path: 'view&gt;/currency'}],
+					type: 'sap.ui.model.type.Currency',
+					formatOptions: {
+						showMeasure: false
+					}
+				}"
+				numberUnit="{view&gt;/currency}"
+				numberState="{=	${invoice&gt;ExtendedPrice} &gt; 50 ? 'Error' : 'Success' }"<span class="emphasis">&gt;
+				&lt;firstStatus&gt;
+					&lt;ObjectStatus text="{
+						path: 'invoice&gt;Status',
+						formatter: '.formatter.statusText'
+					}"/&gt;
+				&lt;/firstStatus&gt;
+			&lt;/ObjectListItem&gt;</span>
+		&lt;/items&gt;
+	&lt;/List&gt;
+&lt;/mvc:View&gt;</pre></div></section>
+			<p>We add a status using the <code>firstStatus</code> aggregation to our
+					<code>ObjectListItem</code> that will display the status of our invoice. The
+				custom formatter function is specified with the reserved property
+					<code>formatter</code> of the binding syntax. A <code>"."</code> in
+				front of the formatter name means that the function is looked up in the controller
+				of the current view. There we defined a property <code>formatter</code> that
+				holds our formatter functions, so we can access it by
+					<code>.formatter.statusText</code>.</p>
+		</section><section>
+			<h2 class="title ">webapp/i18n/i18n.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># App Descriptor
+appTitle=Hello World
+appDescription=A simple walkthrough app that explains the most important concepts of SAPUI5
+
+# Hello Panel
+showHelloButtonText=Say Hello
+helloMsg=Hello {0}
+homePageTitle=Walkthrough
+helloPanelTitle=Hello World
+openDialogButtonText=Say Hello With Dialog
+dialogCloseButtonText=Ok
+
+# Invoice List
+invoiceListTitle=Invoices
+<span class="emphasis">invoiceStatusA=New
+invoiceStatusB=In Progress
+invoiceStatusC=Done</span></pre></div></section>
+			<p>We add three new entries to the resource bundle that reflect our translated status texts.
+				These texts are now displayed below the <code>number</code> attribute of the
+					<code>ObjectListItem</code> dependent on the status of the invoice.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/c98d57347ba444c6945f596584d2db45">Step 22: Expression Binding</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/5295470d7eee46c1898ee46c1b9ad763">Step 24: Filtering</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/07e4b920f5734fd78fdaa236f26236d8.html" title="Data that is presented on the UI often has to be converted so that is human readable and fits to the locale of the user. On the other hand, data entered by the user has to be parsed and validated to be understood by the data source. For this purpose, you use formatters and data types." class="sap-doc">Formatting, Parsing, and Validating Data</a></li>
+	</ul></section></div></section></div></body></html>

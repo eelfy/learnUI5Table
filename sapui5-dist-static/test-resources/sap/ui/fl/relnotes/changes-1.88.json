@@ -1,0 +1,40 @@
+{
+  "1.88.0": {
+    "date": "March 2021",
+    "notes": [
+      {
+        "id": "d752a465215e7c74f4cb13baf375236104a4b632",
+        "type": "FIX",
+        "text": "[INTERNAL] sap.ui.fl...Loader does not use the cache key while reInitialize",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2170012946"
+          }
+        ]
+      },
+      {
+        "id": "d55c6c85b548ef9c11eec0067a405aa8c2aaa021",
+        "type": "FIX",
+        "text": "[INTERNAL] sap.ui.fl invalidates cache of sap-app-id variants correct",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2170011312"
+          }
+        ]
+      },
+      {
+        "id": "f1fe7fea3ce7927fb9ca1af34c544ced41efa6f5",
+        "type": "FIX",
+        "text": " sap.ui.fl - buisiness context description for custom fields",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2180133164"
+          }
+        ]
+      }
+    ]
+  }
+}

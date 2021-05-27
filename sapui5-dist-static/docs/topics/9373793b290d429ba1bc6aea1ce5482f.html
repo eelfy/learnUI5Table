@@ -1,0 +1,133 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9373793b290d429ba1bc6aea1ce5482f" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 8: Binding Paths: Accessing Properties in Hierarchically Structured Models</h1><div class="fig"><h1 class="topictitle1 title">Step 8: Binding Paths: Accessing Properties in Hierarchically Structured Models</h1><div class="shortdesc">In step 6 , we stated that the fields in a resource model are arranged in a flat
+		structure; in other words, there can be no hierarchy of properties; however, this is true
+		only for resource models. The properties within JSON and OData models almost always are
+		arranged in a hierarchical structure. Therefore, we should take a look at how to reference
+		fields in a hierarchically structured model object.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loio12705f5341f24febb905a50d37bf32db_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Second panel with additional data</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files in the Demo Kit at <a href="#/sample/sap.ui.core.tutorial.databinding.08/preview" title="#/sample/sap.ui.core.tutorial.databinding.08/preview" class="sap-doc" alt="#/sample/sap.ui.core.tutorial.databinding.08/preview">Data Binding - Step 8</a>.</p>
+		</section><section>
+			<h2 class="title ">webapp/index.js</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require([
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/XMLView",
+	"sap/ui/model/resource/ResourceModel"
+], function (JSONModel, XMLView, ResourceModel) {
+	"use strict";
+
+	// Attach an anonymous function to the SAPUI5 'init' event
+	sap.ui.getCore().attachInit(function () {
+		var oModel = new JSONModel({
+			firstName: "Harry",
+			lastName: "Hawk",
+			enabled: true<span class="emphasis">,
+			address: {
+				street: "Dietmar-Hopp-Allee 16",
+				city: "Walldorf",
+				zip: "69190",
+				country: "Germany"
+			}
+</span>
+		});
+
+		// Assign the model object to the SAPUI5 core
+		sap.ui.getCore().setModel(oModel);
+
+		var oResourceModel = new ResourceModel({
+			bundleName: "sap.ui.demo.db.i18n.i18n",
+			supportedLocales: ["", "de"],
+			fallbackLocale: ""
+		});
+
+		sap.ui.getCore().setModel(oResourceModel, "i18n");
+
+		// Display the XML view called "App"
+		new XMLView({
+			viewName: "sap.ui.demo.db.view.App"
+		}).placeAt("content");
+	});
+});
+</pre></div></section>
+			<p>The JSON model object now contains an additional sub-object called <code>address</code>.
+				Within this object are four properties: <code>street</code>,
+					<code>city</code>, <code>zip</code>, and <code>country</code>.</p>
+		</section><section>
+			<h2 class="title ">webapp/view/App.view.xml</h2>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View
+	xmlns="sap.m"
+	<span class="emphasis">xmlns:form="sap.ui.layout.form"</span>
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"&gt;
+	&lt;Panel headerText="{i18n&gt;panel<span class="emphasis">1</span>HeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;form:SimpleForm editable="true" layout="ColumnLayout"&gt;
+			&lt;Label text="{i18n&gt;firstName}"/&gt;
+			&lt;Input value="{/firstName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="{i18n&gt;lastName}"/&gt;
+			&lt;Input value="{/lastName}" valueLiveUpdate="true" width="200px" enabled="{/enabled}"/&gt;
+			&lt;Label text="{i18n&gt;enabled}"/&gt;
+			&lt;CheckBox selected="{/enabled}"/&gt;
+		&lt;/form:SimpleForm&gt;
+	&lt;/Panel&gt;
+	<span class="emphasis">&lt;Panel headerText="{i18n&gt;panel2HeaderText}" class="sapUiResponsiveMargin" width="auto"&gt;
+		&lt;content&gt;
+			&lt;l:VerticalLayout&gt;
+				&lt;Label labelFor="address" text="{i18n&gt;address}:"/&gt;
+				&lt;FormattedText class="sapUiSmallMarginBottom"
+					htmlText="{/address/street}&amp;lt;br&gt;{/address/zip} {/address/city}&amp;lt;br&gt;{/address/country}"
+					id="address" 
+					width="200px"/&gt;
+			&lt;/l:VerticalLayout&gt;
+		&lt;/content&gt;
+	&lt;/Panel&gt;</span>
+&lt;/mvc:View&gt;</pre></div></section>
+			<p>We add a new panel to the XML view with a new <code>Label</code> and <code>Text</code> pair of elements.</p>
+			<p>The text property of the <code>Label</code> element is bound to the i18n resource bundle
+				field <code>address</code>.</p>
+			<p>The text property of the <code>Text</code> element is bound to three i18n properties:
+					<code>/address/street</code>, <code>/address/zip</code>,
+					<code>/address/city</code>, and <code>/address/country</code>. The
+				resulting address format is achieved by separating each one of these model property
+				references with a hard-coded newline character while <code>zip</code> and
+					<code>city</code> are separated by a space.</p>
+		</section><section>
+			<h2 class="title ">webapp/i18n/i18n.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Field labels
+firstName=First Name
+lastName=Last Name
+enabled=Enabled
+<span class="emphasis">address=Address
+</span>
+
+# Screen titles
+panel<span class="emphasis">1</span>HeaderText=Data Binding Basics 
+<span class="emphasis">panel2HeaderText=Address Details</span></pre></div></section>
+		</section><section>
+			<h2 class="title ">webapp/i18n/i18n_de.properties</h2>
+			<section class="lang-prefs"><div class="fig fig-codeblock"><pre class="codeblock prettyprint"># Field labels
+firstName=Vorname
+lastName=Nachname
+enabled=Aktiviert
+address=Adresse
+
+
+# Screen titles
+panel<span class="emphasis">1</span>HeaderText=Data Binding Grundlagen
+<span class="emphasis">panel2HeaderText=Adressdetails</span></pre></div></section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The resource bundle files now contain new properties for the <span class="emphasis">Address</span> and
+					a new panel header text. Both panel properties have been numbered.</p>
+				<p>In the XML view, inside the curly brackets for the binding path of the <code>Text</code>
+					element, notice that the first character is a forward slash. This is required
+					for binding paths that make absolute references to properties in JSON and OData
+					models, but must not be used for resource models. After the first forward slash
+					character, the binding path syntax uses the object names and the property name
+					separated by forward slash characters (<code>{/address/street}</code>).</p>
+				<p>As has been mentioned previously, all binding path names are case-sensitive.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/e5310932a71f42daa41f3a6143efca9c">Data Binding</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/4e593b44e78a431e8b21be6b3915fb55">Step 7: (Optional) Resource Bundles and Multiple Languages</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/6fdf0acd0bc24ffdad327cf7e6f9e7e0">Step 9: Formatting Values</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/96804e3315ff440aa0a50fd290805116.html#loio96804e3315ff440aa0a50fd290805116" title="The JSON model can be used to bind controls to JavaScript object data, which is usually serialized in the JSON format." class="sap-doc">JSON Model</a></li>
+	</ul></section></div></section></div></body></html>

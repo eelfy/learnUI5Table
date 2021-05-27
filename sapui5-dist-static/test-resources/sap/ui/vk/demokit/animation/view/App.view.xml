@@ -1,0 +1,95 @@
+<mvc:View
+	controllerName="sap-demo-animation.controller.App"
+	xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:vk="sap.ui.vk"
+	xmlns:vk3="sap.ui.vk.threejs"
+	displayBlock="true"
+>
+	<m:App class="sapUiDemoWT" id="sap-demo"  width="100%">
+		<m:Page title="{i18n>pageTitle}">
+			<l:Splitter orientation="Horizontal" height="100%" width="100%">
+				<l:Splitter id="leftSplitter" orientation="Vertical" height="100%" width="100%">
+					<m:HBox>
+						<m:layoutData>
+							<l:SplitterLayoutData size="44px"/>
+						</m:layoutData>
+							<m:items>
+								<m:Input id="leftUrl" width="100%" placeholder="URL" value="{leftSource>/url}" liveChange="localStorage.setItem('left-source-url', ${$parameters>/value})">
+								<m:layoutData>
+									<m:FlexItemData growFactor="1"/>
+								</m:layoutData>
+							</m:Input>
+							<m:Input id="leftSceneId" placeholder="Scene ID" value="{leftSource>/sceneId}" liveChange="localStorage.setItem('left-source-sceneId', ${$parameters>/value})">
+								<m:layoutData>
+									<m:FlexItemData maxWidth="100px"/>
+								</m:layoutData>
+							</m:Input>
+							<m:Button id="leftButtonLoad" text="Load" press="._loadContent('leftConnector', ${leftSource>/url}, ${leftSource>/sceneId})">
+								<m:layoutData>
+									<m:FlexItemData maxWidth="100px"/>
+								</m:layoutData>
+							</m:Button>
+						</m:items>
+					</m:HBox>
+					<l:Splitter orientation="Horizontal" height="100%" width="100%">
+						<l:layoutData>
+							<l:SplitterLayoutData size="auto"/>
+						</l:layoutData>
+						<vk:SceneTree id="leftTree" contentConnector="leftConnector" viewStateManager="leftVSM">
+							<vk:layoutData>
+								<l:SplitterLayoutData size="30%"/>
+							</vk:layoutData>
+						</vk:SceneTree>
+						<vk3:Viewport id="leftViewport" height="100%" contentConnector="leftConnector" viewStateManager="leftVSM"/>
+					</l:Splitter>
+					<vk:ViewGallery id="leftViewGallery" contentConnector="leftConnector" host="leftViewport" animationPlayer="leftAnimationPlayer" viewManager="leftViewManager"/>
+				</l:Splitter>
+				<!-- -->
+				<l:Splitter id="rightSplitter" orientation="Vertical" height="100%" width="100%">
+					<m:HBox>
+						<m:layoutData>
+							<l:SplitterLayoutData size="44px"/>
+						</m:layoutData>
+						<m:items>
+							<m:Input id="rightUrl" width="100%" placeholder="URL" value="{rightSource>/url}" liveChange="localStorage.setItem('right-source-url', ${$parameters>/value})">
+								<m:layoutData>
+									<m:FlexItemData growFactor="1"/>
+								</m:layoutData>
+							</m:Input>
+							<m:Input id="rightSceneId" placeholder="Scene ID" value="{rightSource>/sceneId}" liveChange="localStorage.setItem('right-source-sceneId', ${$parameters>/value})">
+								<m:layoutData>
+									<m:FlexItemData maxWidth="100px"/>
+								</m:layoutData>
+							</m:Input>
+							<m:Button id="rightButtonLoad" text="Load" press="._loadContent('rightConnector', ${rightSource>/url}, ${rightSource>/sceneId})">
+								<m:layoutData>
+									<m:FlexItemData maxWidth="100px"/>
+								</m:layoutData>
+							</m:Button>
+						</m:items>
+					</m:HBox>
+					<l:Splitter orientation="Horizontal" height="100%" width="100%">
+						<vk:Viewport id="rightViewport" contentConnector="rightConnector" viewStateManager="rightVSM"/>
+						<vk:SceneTree id="rightTree" contentConnector="rightConnector" viewStateManager="rightVSM"/>
+					</l:Splitter>
+					<vk:ViewGallery id="rightViewGallery" contentConnector="rightConnector" host="rightViewport" animationPlayer="rightAnimationPlayer" viewManager="rightViewManager"/>
+				</l:Splitter>
+			</l:Splitter>
+		</m:Page>
+		<m:dependents>
+			<vk:AnimationPlayer id="leftAnimationPlayer" viewStateManager="leftVSM"/>
+			<vk:ContentConnector id="leftConnector"/>
+			<vk:ViewManager id="leftViewManager" contentConnector="leftConnector" animationPlayer="leftAnimationPlayer"/>
+			<vk3:ViewStateManager id="leftVSM" contentConnector="leftConnector" viewManager="leftViewManager"/>
+			<!-- -->
+			<vk:AnimationPlayer id="rightAnimationPlayer" viewStateManager="rightVSM"/>
+			<vk:ContentConnector id="rightConnector"/>
+			<vk:ViewManager id="rightViewManager" contentConnector="rightConnector" animationPlayer="rightAnimationPlayer"/>
+			<vk3:ViewStateManager id="rightVSM" contentConnector="rightConnector" viewManager="rightViewManager"/>
+		</m:dependents>
+	</m:App>
+</mvc:View>

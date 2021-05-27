@@ -1,0 +1,66 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 833,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 362
+		},
+		{
+			"name": "ExtensionAPI-dbg.js",
+			"size": 2450,
+			"isDebug": true
+		},
+		{
+			"name": "ExtensionAPI.js",
+			"size": 549
+		},
+		{
+			"name": "ListReport.view.xml",
+			"size": 6910
+		},
+		{
+			"name": "ListReportController-dbg.controller.js",
+			"size": 28918,
+			"isDebug": true
+		},
+		{
+			"name": "ListReportController.controller.js",
+			"size": 13859
+		},
+		{
+			"name": "manifest.json",
+			"size": 490
+		},
+		{
+			"name": "overrides/IntentBasedNavigation-dbg.js",
+			"size": 1264,
+			"isDebug": true
+		},
+		{
+			"name": "overrides/IntentBasedNavigation.js",
+			"size": 527
+		},
+		{
+			"name": "overrides/ViewState-dbg.js",
+			"size": 9626,
+			"isDebug": true
+		},
+		{
+			"name": "overrides/ViewState.js",
+			"size": 4750
+		},
+		{
+			"name": "view/fragments/CollectionVisualization.fragment.xml",
+			"size": 1521
+		},
+		{
+			"name": "view/fragments/MultipleMode.fragment.xml",
+			"size": 1703
+		}
+	]
+}

@@ -1,0 +1,139 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6d260f7708ca4c4a9ff45e846402aebb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Custom Cards</h1><div class="fig"><h1 class="topictitle1 title">Custom Cards</h1><div class="shortdesc">Create
+        custom cards to view custom information relevant to your overview page.</div><section>
+			<h2 class="title ">Procedure</h2>
+			<p>To create a custom card:</p><ol>
+					<li class="li">
+                        <p>Create the following files in your project folder:</p><ul class="ul ">
+                                <li class="li">
+                                    <p><code>Component.js</code> file</p>
+                                </li>
+                                <li class="li">
+                                    <p><code>Cardtype.controller.js</code> file.
+                                        For
+                                        example:
+                                        <code>List.controller.js</code></p>
+                                </li>
+                                <li class="li">
+                                    <p><code>Cardtype.fragment.xml</code> file. For example:
+                                            <code>List.fragment.xml</code></p>
+                                </li>
+                                <li class="li">
+                                    <p><code>CardtypeHeader.fragment.xml</code> file. For
+                                        example: <code>ListHeader.fragment.xml</code></p>
+                                </li>
+                            </ul><p></p>
+                    </li>
+					<li class="li">
+						<p>Extend the custom overview page component in your component
+							file.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/ovp/cards/custom/Component"],
+ 
+    function (CardComponent) {
+        "use strict";
+ 
+        return CardComponent.extend("test.testovp.ext.list.Component", {
+            // use inline declaration instead of component.json to save 1 round trip
+            metadata: {
+                properties: {
+                    "contentFragment": {
+                        "type": "string",
+                        "defaultValue": "sap.ovp.cards.list.List"
+                    },
+                    "controllerName": {
+                        "type": "string",
+                        "defaultValue": "sap.ovp.cards.list.List"
+                    },
+                    "annotationPath": {
+                        "type": "string",
+                        "defaultValue": "com.sap.vocabularies.UI.v1.LineItem"
+                    },
+                    "countHeaderFragment": {
+                        "type": "string",
+                        "defaultValue": "sap.ovp.cards.generic.CountHeader"
+                    },
+                    "headerExtensionFragment": {
+                        "type": "string",
+                        "defaultValue": "sap.ovp.cards.generic.KPIHeader"
+                    }
+                },
+ 
+                version: "${version}",
+ 
+                library: "sap.ovp",
+ 
+                includes: [],
+ 
+                dependencies: {
+                    libs: ["sap.suite.ui.microchart"],
+                    components: []
+                },
+                config: {}
+            }
+        });
+    }
+);</pre></div></section><p></p>
+					</li>
+					<li class="li">
+						<p>Define the fragment file
+								content.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>List.fragment.xml</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:ovp="sap.ovp.ui"
+        xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"&gt;
+    &lt;!-- Here you can put your Card's Content Area --&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section><p></p></div></div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>ExtendedBarList.fragment.xml</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:ovp="sap.ovp.ui"
+        xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"&gt;
+    &lt;!-- Here you can put your Card's Header Area --&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section><p></p></div></div><p></p>
+					</li>
+					<li class="li">
+						<p>Define the content of the controller file.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                                </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">(function () {
+    "use strict";
+    /*global sap, jQuery */
+    
+   /*
+   Here you can put Controller code
+   */
+ 
+    sap.ui.define("my_app.ext.controller.OverViewPageExt", [], function() {
+        return {
+            onInit: function () {
+                
+            },
+    
+            onAfterRendering: function () {
+                
+            }
+    }
+    });
+})();
+</pre></div></section>
+                            <p></p></div></div><p></p>
+					</li>
+					<li class="li">
+						<p>Configure the descriptor file.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                                </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"card008_UrgentPurchaseOrdersk": {
+  "model": "purchaseOrder",
+  "template": "sap.ovp.demo.ext.list",
+  "settings": {
+    "title": "Custom Card for purchased items",
+    "subTitle": "PurchaseOrderSet custom card",
+    "listType": "extended",
+    "entitySet": "PurchaseOrderSet",
+    ...
+	...</pre></div></section>
+                            <p></p></div></div><p></p>
+					</li>
+				</ol><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

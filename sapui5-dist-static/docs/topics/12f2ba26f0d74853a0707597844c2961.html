@@ -1,0 +1,56 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio12f2ba26f0d74853a0707597844c2961" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Setting the Criticality for Actions</h1><div class="fig"><h1 class="topictitle1 title">Setting the Criticality for Actions</h1><div class="shortdesc">You can add criticality to an action button via annotations.</div><p>When you set the criticality to an action, the corresponding action button renders a semantic action button (positive semantic and negative
+			semantic).</p><p>Criticality of a data field (<span class="ph sap-technical-name">UI.DataFieldForAction</span>) can be achieved by setting a value or status
+			for the <code>Criticality</code> property in the annotation.</p><p>Actions that are a part of table rows (inline), an object page header, and an object page footer support <code>Criticality</code>.</p><div><div class="fig"><img usemap="#"><img src="loioe60c298928c74a3faef5d2603cd84da5_LowRes.png" usemap="#"></div></div><div class="note other samplecode lang-json"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForAction"&gt; 
+
+    &lt;PropertyValue Property="Determining" Bool="true"/&gt; 
+
+    &lt;PropertyValue Property="Label" String="Positive (Dummy)"/&gt; 
+
+    &lt;PropertyValue Property="Action" String="com.c_salesordermanage_sd_aggregate.DummyBoundAction"/&gt; 
+
+    &lt;PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/&gt; 
+
+&lt;/Record&gt; </pre></div></section>
+		<p></p></div></div><p>Two supported values for <code>Criticality</code> are:</p><div class="tableWrapper "><div class="fig"><tgroup>
+				
+				
+				</tgroup><table border="1" id="table_pz4_vj5_dnb" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+					<tr>
+						<th colspan="1" rowspan="1">Value</th>
+						<th colspan="1" rowspan="1">Outcome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">UI.CriticalityType/Positive or 3</td>
+						<td colspan="1" rowspan="1" valign="top">Positive/Green status (Completed/Available/On Track/Acceptable)</td>
+					</tr>
+					<tr>
+						<td colspan="1" rowspan="1" valign="top">UI.CriticalityType/Negative or 1</td>
+						<td colspan="1" rowspan="1" valign="top">Negative/Red status (Attention/Overload/Alert)</td>
+					</tr>
+				</tbody>
+			</table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><ul class="ul ">
+				<li class="li">
+					<p><code>Criticality</code> is currently supported only for <span class="ph sap-technical-name">DataFieldForAction</span>.</p>
+				</li>
+				<li class="li">
+					<p>When  an action is marked as critical, the previously emphasized buttons (SAVE, EDIT or APPLY) no longer appear emphasized.</p>
+				</li>
+				<li class="li">
+					<p>Emphasized buttons and semantic buttons (critical actions) cannot occur together on one page, as there can only be a single
+						primary action (so either the emphasized or the semantic button). </p>
+				</li>
+				<li class="li">
+					<p>In SAP Fiori elements for OData V4, the object page header
+						currently only allows you to place a critical action as the left-most
+						action.</p>
+				</li>
+			</ul>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

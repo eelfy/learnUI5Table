@@ -1,0 +1,176 @@
+{
+	"_version": "1.21.0",
+	"sap.app": {
+		"id": "itelo",
+		"type": "application",
+		"i18n": { "bundleName": "itelo.i18n.i18n", "supportedLocales": [""], "fallbackLocale": "" },
+		"applicationVersion": {
+			"version": "1.88.0"
+		},
+		"title": "{{title}}",
+		"description": "{{description}}",
+		"tags": {
+			"keywords": []
+		},
+		"ach": "CA-UI5-ST",
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/v4/clouds.products.CatalogService/",
+				"type": "OData",
+				"settings": {
+					"annotations": ["localAnnotations"],
+					"odataVersion": "4.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"localAnnotations": {
+				"uri": "annotations/annotations.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "annotations/annotations.xml"
+				}
+			}
+		},
+		"offline": false,
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "ui5template.fiorielements.v4",
+			"version": "1.0.0"
+		},
+		"crossNavigation": {
+			"inbounds": {},
+			"outbounds": {}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"resources": {
+			"js": [],
+			"css": []
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.fe.templates": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": { "bundleName": "itelo.i18n.i18n", "supportedLocales": [""], "fallbackLocale": "" }
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"synchronizationMode": "None",
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true,
+					"groupProperties": {
+						"default": {
+							"submit": "Auto"
+						}
+					}
+				}
+			}
+		},
+		"routing": {
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "ProductsList",
+					"target": "ProductList"
+				},
+				{
+					"pattern": "Products({key}):?query:",
+					"name": "ProductObjectPage",
+					"target": "ProductObjectPage"
+				},
+				{
+					"pattern": "Products({key}/reviews({key2}):?query:",
+					"name": "ReviewObjectPage",
+					"target": "ReviewObjectPage"
+				}
+			],
+			"targets": {
+				"ProductList": {
+					"type": "Component",
+					"id": "ProductList",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"entitySet": "Products",
+							"variantManagement": "Page",
+							"initialLoad": "Enabled",
+							"navigation": {
+								"Products": {
+									"detail": {
+										"route": "ProductObjectPage"
+									}
+								}
+							}
+						}
+					}
+				},
+				"ProductObjectPage": {
+					"type": "Component",
+					"id": "ProductObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "Products",
+							"navigation": {
+								"reviews": {
+									"detail": {
+										"route": "ReviewObjectPage"
+									}
+								}
+							}
+						}
+					}
+				},
+				"ReviewObjectPage": {
+					"type": "Component",
+					"id": "ReviewObjectPage",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "Reviews"
+						}
+					}
+				}
+			}
+		},
+		"flexEnabled": false,
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.platform.abap": {
+		"uri": ""
+	},
+	"sap.platform.hcp": {
+		"uri": ""
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	}
+}

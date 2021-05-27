@@ -1,0 +1,209 @@
+[
+	{
+		"name": "AnnotationHelperOP",
+		"module": "test-resources/sap/fe/core/internal/qunit/AnnotationHelperOP.qunit",
+		"title": "sap.fe.templates.ObjectPage.AnnotationHelper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "ShareUtils",
+		"module": "test-resources/sap/fe/core/internal/qunit/ShareUtils.qunit",
+		"title": "ShareUtils - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "MessagePopOver",
+		"module": "test-resources/sap/fe/core/internal/qunit/messagePopover/MessagePopover.qunit",
+		"title": "sap.fe.messagePopover - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "TemplatingExpressions",
+		"module": "test-resources/sap/fe/core/qunit/TemplatingExpressions.qunit",
+		"title": "sap.fe - Templating Expressions Unit Tests",
+		"group": []
+	},
+	{
+		"name": "MessageHandling",
+		"module": "test-resources/sap/fe/core/internal/qunit/MessageHandling.qunit",
+		"title": "Message Handling - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Draft",
+		"module": "test-resources/sap/fe/core/internal/qunit/Draft.qunit",
+		"title": "Draft - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "FlexibleColumnLayout",
+		"module": "test-resources/sap/fe/core/internal/qunit/FlexibleColumnLayout.qunit",
+		"title": "FlexibleColumnLayout - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "EditFlow",
+		"module": "test-resources/sap/fe/core/internal/qunit/EditFlow.qunit",
+		"title": "EditFlow - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "AnnotationHelper_Qunits",
+		"module": "test-resources/sap/fe/core/internal/qunit/AnnotationHelper.qunit",
+		"title": "sap.fe.AnnotationHelper Unit Tests",
+		"group": []
+	},
+	{
+		"name": "ModelHelper",
+		"module": "test-resources/sap/fe/core/internal/qunit/ModelHelper.qunit",
+		"title": "sap.fe.core.helpers.ModelHelper Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Operations",
+		"module": "test-resources/sap/fe/core/internal/qunit/operations.qunit",
+		"title": "Operations - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "StableIdHelper",
+		"module": "test-resources/sap/fe/core/qunit/helpers/StableIdHelper.qunit",
+		"title": "Stable Id Helper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "CacheHandlerService",
+		"module": "test-resources/sap/fe/core/qunit/services/CacheHandlerTest.qunit",
+		"title": "Cache Handler Service - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "RouterProxy",
+		"module": "test-resources/sap/fe/core/internal/qunit/RouterProxy.qunit",
+		"title": "RouterProxy - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "AppStateHandler_QUnits",
+		"module": "test-resources/sap/fe/core/internal/qunit/AppStateHandler.qunit",
+		"title": "AppStateHandler - Unit Tests",
+		"group": [],
+		"skip": true
+	},
+	{
+		"name": "TemplateConverter",
+		"module": "test-resources/sap/fe/core/internal/qunit/converters/TemplateConverter.qunit",
+		"title": "Template Converter - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "DataVisualization Converter",
+		"module": "test-resources/sap/fe/core/internal/qunit/converters/controls/DataVisualization.qunit",
+		"title": "DataVisualization - Unit Tests",
+		"group": [],
+		"skip": true
+	},
+	{
+		"name": "Table Converter",
+		"module": "test-resources/sap/fe/core/internal/qunit/converters/controls/Table.qunit",
+		"title": "TableConverter - Unit Tests",
+		"group": [],
+		"skip": true
+	},
+	{
+		"name": "Table Converter (analytical case)",
+		"module": "test-resources/sap/fe/core/internal/qunit/converters/controls/TableAnalytics.qunit",
+		"title": "TableConverter - Unit Tests for analytical case",
+		"group": []
+	},
+	{
+		"name": "Filter Converter",
+		"module": "test-resources/sap/fe/core/internal/qunit/templating/FilterHelper.qunit",
+		"title": "FilterHelper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Chart Converter",
+		"module": "test-resources/sap/fe/core/internal/qunit/converters/controls/Chart.qunit",
+		"title": "ChartConverter - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "CommonUtils_Qunits",
+		"module": "test-resources/sap/fe/core/internal/qunit/CommonUtils.qunit",
+		"title": "sap.fe.core.CommonUtils Unit Tests",
+		"group": []
+	},
+	{
+		"name": "DynamicPathExpression",
+		"module": "test-resources/sap/fe/core/internal/qunit/helpers/DynamicAnnotationPathHelper.qunit",
+		"title": "DynamicPathExpression - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "ShellServices Factory",
+		"module": "test-resources/sap/fe/core/internal/qunit/services/ShellServicesFactory.qunit",
+		"title": "ShellServices Factory - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Navigation Services Factory",
+		"module": "test-resources/sap/fe/core/internal/qunit/services/NavigationServiceFactory.qunit",
+		"title": "Navigation Services Factory - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Templating: Property Helper",
+		"module": "test-resources/sap/fe/core/internal/qunit/templating/PropertyHelper.qunit",
+		"title": "Templating: Property Helper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Templating: UI Formatters",
+		"module": "test-resources/sap/fe/core/internal/qunit/templating/UIFormatters.qunit",
+		"title": "Templating: UI Formatters - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Templating: Value Help",
+		"module": "test-resources/sap/fe/core/internal/qunit/templating/ValueHelpTemplating.qunit",
+		"title": "Templating: Value Help - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "SemanticKeyHelper",
+		"module": "test-resources/sap/fe/core/qunit/helpers/SemanticKeyHelper.qunit",
+		"title": "SemanticKeyHelper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "SemanticDateOperators",
+		"module": "test-resources/sap/fe/core/qunit/helpers/SemanticDateOperators.qunit",
+		"title": "SemanticDateOperators - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Routing Service",
+		"module": "test-resources/sap/fe/core/internal/qunit/services/RoutingServiceFactory.qunit",
+		"title": "RoutingService - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "ExcelFormalHelper",
+		"module": "test-resources/sap/fe/core/qunit/helpers/ExcelFormatHelper.qunit",
+		"title": "ExcelFormalHelper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Templating: Data Model Helper",
+		"module": "test-resources/sap/fe/core/internal/qunit/templating/DataModelPathHelper.qunit",
+		"title": "Templating: Data Model Helper - Unit Tests",
+		"group": []
+	},
+	{
+		"name": "Placeholder",
+		"module": "test-resources/sap/fe/core/internal/qunit/Placeholder.qunit",
+		"title": "Placeholder - Unit Tests",
+		"group": []
+	}
+]

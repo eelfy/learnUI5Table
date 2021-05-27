@@ -1,0 +1,14 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 2018
+	},
+	"env": {
+		"browser": true
+	},
+	"globals": {
+		"sinon": true
+	},
+	"rules": {
+		"promise/catch-or-return": "warn"
+	}
+}

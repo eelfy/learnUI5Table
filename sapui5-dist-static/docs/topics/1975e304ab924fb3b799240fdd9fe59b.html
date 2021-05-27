@@ -1,0 +1,331 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio1975e304ab924fb3b799240fdd9fe59b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">What's New in SAPUI5 1.64 </h1><div class="fig"><h1 class="topictitle1 title">What's New in SAPUI5 1.64 </h1><div class="shortdesc">With
+		this release SAPUI5 is upgraded
+		from version 1.63 to 1.64.</div><section id="section_yxw_pxt_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_krd_ltq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">Rule Builder: AST based DMN SFEEL</span></p>
+								<p>The rule builder now supports a new expression language: AST
+									based DMN SFEEL. DMN SFEEL is an improvised approach to modeling
+									business decision logic. It can be used both in text rules as
+									well as in decision tables.</p>
+								<p>For more information, see <a href="#/topic/67fcb301d0504fd4a24915edf4058c51.html" title="In this tutorial you will learn how to embed a rule builder control to manage business rules in your application." class="sap-doc">Rule Builder Control</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_bkm_s15_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_ejf_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.f.Card</code></span></p>
+								<p>The new <code>sap.f.Card</code> control complies with the
+									visual design of the Integration Card
+										(<code>sap.ui.integration.widgets.Card</code>). In
+									contrast to the Integration Card, <code>sap.f.Card</code>
+									provides more freedom in choosing the structure and the controls
+									you can include, so that you can compose the card content area
+									according to your needs. It enables you to decide and compose
+									the card content area according to your needs.</p>
+								<p>The <code>sap.f.Card</code> consists of three elements: a
+									container with background color and rounded corners, a header,
+									and content areas.</p>
+								<div><div class="fig"><img src="loiob1ff765e1db44ae38f583bc228e14432_HiRes.png" usemap="#"></div></div>
+								<p>For more information, see <a href="#/topic/5b46b03f024542ba802d99d67bc1a3f4.html" title="A card is a design pattern that displays the most concise pieces of information in a limited-space container. Similar to a tile, it helps users structure their work in an intuitive and dynamic way." class="sap-doc">Cards</a>, the <a href="#/api/sap.f.Card" title="#/api/sap.f.Card" class="sap-doc" alt="#/api/sap.f.Card">API Reference</a> and the
+										<a href="#/entity/sap.f.Card/sample/sap.f.sample.Card" title="#/entity/sap.f.Card/sample/sap.f.sample.Card" class="sap-doc" alt="#/entity/sap.f.Card/sample/sap.f.sample.Card">Sample</a>.</p>
+								
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_qwl_pb5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_tpj_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis">Key User Adaptation: Restricting Adaptation for Certain
+									Controls</span><p>It is now possible to exclude certain
+									controls from key user adaptation (formerly known as
+										<span class="emphasis">UI adaptation at runtime</span>) by adding
+									instance-specific design time metadata:</p><ul class="ul ">
+										<li class="li"><code>not-removable</code> prevents controls from
+											being removed.</li>
+										<li class="li"><code>not-adaptable</code> prevents controls from
+											being changed.</li>
+									</ul><p></p><p>For more information, see <a href="#/topic/f1430c0337534d469da3a56307ff76af.html" title="Here's what you have to consider when developing apps that support UI adaptation." class="sap-doc">SAPUI5 Flexibility: Enable Your App for UI Adaptation</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis">SAPUI5
+									Flexibility: New <code>flexEnabled</code>
+									Flag</span><p>The <code>flexEnabled</code> flag in the
+										<code>sap.ui5</code> section of the
+										<code>manifest.json</code> indicates whether the
+									application supports key user adaptation and developer
+									adaptation. If you set the flag, it's also possible to check via
+										SAP Web IDE if
+									your control IDs are stable.</p><p>For more information, see
+										<a href="#/topic/f1430c0337534d469da3a56307ff76af.html" title="Here's what you have to consider when developing apps that support UI adaptation." class="sap-doc">SAPUI5 Flexibility: Enable Your App for UI Adaptation</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis">SAPUI5
+									Flexibility: Simplified Terminology</span><p>We have
+									improved and simplified the terminology for certain core terms
+									in the area of SAPUI5
+									flexibility. Here's what has changed:</p><div class="tableWrapper "><div class="fig"><tgroup>
+											
+											
+											
+											</tgroup><table border="1" id="table_km5_frc_ygb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+												<tr>
+												<th colspan="1" rowspan="1">Old</th>
+												<th colspan="1" rowspan="1">New</th>
+												<th colspan="1" rowspan="1">Explanation</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+												<td colspan="1" rowspan="1" valign="top">SAPUI5 flexibility services</td>
+												<td colspan="1" rowspan="1" valign="top">SAPUI5 flexibility</td>
+												<td colspan="1" rowspan="1" valign="top">
+												<p>Collection of features that allow upgrade-safe
+												and modification-free UI changes of SAPUI5 apps on different levels</p>
+												</td>
+												</tr>
+												<tr>
+												<td colspan="1" rowspan="1" valign="top">UI adaptation at runtime (RTA)</td>
+												<td colspan="1" rowspan="1" valign="top">key user adaptation</td>
+												<td colspan="1" rowspan="1" valign="top">
+												<p>Key users (business experts with special
+												permissions) can adapt the UI of an SAPUI5 app that is running in the SAP Fiori launchpad for other users by means of intuitive
+												WYSIWYG functions.</p>
+												</td>
+												</tr>
+												<tr>
+												<td colspan="1" rowspan="1" valign="top">UI adaptation at design time (DTA)</td>
+												<td colspan="1" rowspan="1" valign="top">developer adaptation</td>
+												<td colspan="1" rowspan="1" valign="top">
+												<p>Developers can adapt SAPUI5 apps via the SAPUI5 Visual Editor in SAP Web IDE.</p>
+												</td>
+												</tr>
+											</tbody>
+										</table></div></div><p></p>For more information on the features of SAPUI5
+								flexibility, see <a href="#/topic/a8e55aa2f8bc4127923b20685a6d1621.html" title="Modification-free, cost-saving, easy to use, and performant: Discover the new flexibility when adapting SAP Fiori UIs using SAPUI5 flexibility." class="sap-doc">SAPUI5 Flexibility: Adapting UIs Made Easy</a>.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">SAPUI5 OData V4 Model</span></p>
+								<p>With the new version of the SAPUI5 OData V4 model, the number of decimal places of entered
+									numbers is checked against the unit or the currency customizing
+									when using the <code>sap.ui.model.odata.type.Unit</code> and
+										<code>sap.ui.model.odata.type.Currency</code> types that
+									were introduced with SAPUI5 1.63.</p>
+								<div class="note restriction  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Restriction
+				</strong></div></div><div class="fig"><p>Due to the limited feature scope of this
+									version of the SAPUI5 OData V4 model, check that all required features are in place
+									before developing applications. Check the detailed documentation
+									of the features, as certain parts of a feature may be missing.
+									While we aim to be compatible with existing controls, some
+									controls might not work due to small incompatibilities compared
+									to <code>sap.ui.model.odata.(v2.)ODataModel</code>, or due
+									to missing features in the model (such as tree binding). This
+									also applies to smart controls (<code>sap.ui.comp</code> library) and
+											SAP Fiori
+										elements that do not support the SAPUI5 OData V4 model, as well as controls such as
+										<code>TreeTable</code> and
+										<code>AnalyticalTable</code>, which are not supported
+									together with the SAPUI5 OData V4 model. The interface for applications has been
+									changed for easier and more efficient use of the model. For a
+									summary of these changes, see <a href="#/topic/abd4d7c7548d4c29ab8364d3904a6d74.html" title="This section outlines the main differences between the OData V2 and OData V4 models." class="sap-doc">Changes Compared to OData V2 Model</a>.</p></div></div>
+								
+								<p>For more information, see <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>, the <a href="#/api/sap.ui.model.odata.v4" title="#/api/sap.ui.model.odata.v4" class="sap-doc" alt="#/api/sap.ui.model.odata.v4">API Reference</a>, and
+									the <a href="#/entity/sap.ui.model.odata.v4.ODataModel" title="#/entity/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/entity/sap.ui.model.odata.v4.ODataModel">Samples</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_rqn_wd5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_qcq_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.f.DynamicPage</code></span></p>
+								<p>We have redesigned the content area of the
+										<code>DynamicPageTitle</code> control so that the width
+									of the <code>expandedContent</code> and
+										<code>snappedContent</code> aggregations no longer
+									depends on the width of the <code>heading</code>
+									aggregation. Both <code>expandedContent</code> and
+										<code>snappedContent</code> aggregations can now take
+									the whole width of the <code>DynamicPageTitle</code> and are
+									displayed below the heading and content areas. For more information, see the <a href="#/entity/sap.f.DynamicPage/sample/sap.f.sample.DynamicPageFreeStyle" title="#/entity/sap.f.DynamicPage/sample/sap.f.sample.DynamicPageFreeStyle" class="sap-doc" alt="#/entity/sap.f.DynamicPage/sample/sap.f.sample.DynamicPageFreeStyle">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.f.ShellBar</code> (Experimental)</span></p>
+								<p>We have implemented an additional element that visualizes the number of notifications for
+									the app (<code>notificationsNumber</code> property). It is
+									displayed at the top right corner of the notifications button.
+									When the resize breakpoint is hit and the notifications button
+									enters the overflow area of the
+									<code>OverflowToolbar</code>, the element is displayed at
+									the top right corner of both the
+										<code>OverflowToolbarButton</code> and the overflow area
+									notification button.</p>
+								<div><div class="fig"><img src="loio4ae1e3f40d754916a91d159216dd295f_HiRes.png" usemap="#"></div></div>
+								<p>For more information, see the <a href="#/api/sap.f.ShellBar" title="#/api/sap.f.ShellBar" class="sap-doc" alt="#/api/sap.f.ShellBar">API Reference</a> and the
+										<a href="#/entity/sap.f.ShellBar/sample/sap.f.sample.ShellBar" title="#/entity/sap.f.ShellBar/sample/sap.f.sample.ShellBar" class="sap-doc" alt="#/entity/sap.f.ShellBar/sample/sap.f.sample.ShellBar">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.m.ComboBox</code></span><p>We have
+									introduced grouping in the suggestions list of
+										<code>sap.m.ComboBox</code>. This feature allows you to
+									group items by certain characteristics, and to display a header.
+									New group can be created in two ways:</p><ul class="ul ">
+										<li class="li">If data binding is used, grouping is defined on the
+											sorter in data binding.</li>
+										<li class="li">Alternatively, you can add a group header
+											programmatically as an instance of
+												<code>sap.ui.core.SeparatorItem</code> with a
+											text property by adding it to the items aggregation of
+											the <code>sap.m.ComboBox</code> control. This
+											transforms the
+												<code>sap.ui.core.SeparatorItem</code>
+											internally to
+											<code>sap.m.GroupHeaderListItem</code>, and uses the
+											text value as the header of the group. </li>
+									</ul>In case a <code>sap.ui.core.SeparatorItem</code>
+									without a defined text property is inserted in the aggregation
+									items, the ComboBox will display only a horizontal separator
+									without any text. For more information, see the <a href="#/api/sap.m.ComboBox" title="#/api/sap.m.ComboBox" class="sap-doc" alt="#/api/sap.m.ComboBox">API Reference</a> and the
+										<a href="#/entity/sap.m.ComboBox/sample/sap.m.sample.ComboBoxGrouping" title="#/entity/sap.m.ComboBox/sample/sap.m.sample.ComboBoxGrouping" class="sap-doc" alt="#/entity/sap.m.ComboBox/sample/sap.m.sample.ComboBoxGrouping">Sample</a>.<p></p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.DatePicker</code></span></p>
+								<p>With the new <code>isValidValue</code> function, you can
+									receive information on the validity of the latest value provided
+									in <code>sap.m.DatePicker</code>, not only on change but at
+									any time, so that you can act upon an incorrectly entered
+										date. For more information, see the <a href="#/api/sap.m.DatePicker" title="#/api/sap.m.DatePicker" class="sap-doc" alt="#/api/sap.m.DatePicker">API Reference</a> and
+										the <a href="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker" title="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker" class="sap-doc" alt="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.m.Input</code></span>,
+										<span class="emphasis"><code>sap.m.ComboBoxBase</code></span>
+								<span class="emphasis">(Experimental)</span><p>We have introduced a new
+									experimental method <code>showItems(fnFilter)</code>. It
+									enables you to open a popup with suggestion items for the
+										<code>sap.m.Input</code>,
+										<code>sap.m.ComboBox</code>, and
+										<code>sap.m.MultiComboBox</code> controls, and to filter
+									the available items based on custom criteria. For more
+									information, see the API Reference (<a href="#/api/sap.m.Input/methods/showItems" title="#/api/sap.m.Input/methods/showItems" class="sap-doc" alt="#/api/sap.m.Input/methods/showItems"><code>sap.m.Input</code></a>, <a href="#/api/sap.m.ComboBoxBase/methods/showItems" title="#/api/sap.m.ComboBoxBase/methods/showItems" class="sap-doc" alt="#/api/sap.m.ComboBoxBase/methods/showItems"><code>sap.m.ComboBoxBase</code></a>).</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis"><code>sap.m.Input</code></span>,
+										<span class="emphasis"><code>sap.m.MultiInput</code></span><p>We
+									have introduced grouping for the suggestions of
+										<code>sap.m.Input</code> and
+										<code>sap.m.MultiInput</code>. This feature allows you
+									to easily group items visually by separating the different
+									groups via a distinguishable group header item. The
+									functionality is available for inputs that use list suggestions
+									and table suggestions. For more information, see the samples (
+										<a href="#/entity/sap.m.Input/sample/sap.m.sample.InputGrouping" title="#/entity/sap.m.Input/sample/sap.m.sample.InputGrouping" class="sap-doc" alt="#/entity/sap.m.Input/sample/sap.m.sample.InputGrouping"><code>sap.m.Input</code></a>, <a href="#/entity/sap.m.MultiInput/sample/sap.m.sample.MultiInputGrouping" title="#/entity/sap.m.MultiInput/sample/sap.m.sample.MultiInputGrouping" class="sap-doc" alt="#/entity/sap.m.MultiInput/sample/sap.m.sample.MultiInputGrouping"><code>sap.m.MultiInput</code></a>).</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.m.SinglePlanningCalendar</code></span></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>We have introduced a new all-day logic that checks
+											whether an appointment starts at 00:00 and ends at 00:00
+											on any day in the future.</p>
+									</li>
+									<li class="li">
+										<p>We have introduced a cozy form factor, which provides
+											larger interactive user interface elements. This
+											facilitates your work with the control on mobile
+											devices.</p>
+									</li>
+								</ul>
+								<p>For more information, see the <a href="#/api/sap.m.SinglePlanningCalendar" title="#/api/sap.m.SinglePlanningCalendar" class="sap-doc" alt="#/api/sap.m.SinglePlanningCalendar">API Reference</a> and the
+										<a href="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendar" title="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendar" class="sap-doc" alt="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendar">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.integration.widgets.Card</code></span></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>We have introduced a new <code>Object</code> card
+											type, which displays the basic details for an object,
+											such as a person or a sales order. For more information, see <a href="#/topic/5b46b03f024542ba802d99d67bc1a3f4.html" title="A card is a design pattern that displays the most concise pieces of information in a limited-space container. Similar to a tile, it helps users structure their work in an intuitive and dynamic way." class="sap-doc">Cards</a>
+												and the <a href="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.ObjectCard" title="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.ObjectCard" class="sap-doc" alt="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.ObjectCard">Sample</a>.</p>
+									</li>
+									<li class="li">
+										<p>We have introduced a new <code>Timeline</code> card
+											type, which displays time-related content. For more information, see <a href="#/topic/5b46b03f024542ba802d99d67bc1a3f4.html" title="A card is a design pattern that displays the most concise pieces of information in a limited-space container. Similar to a tile, it helps users structure their work in an intuitive and dynamic way." class="sap-doc">Cards</a>
+												and the <a href="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.TimelineCard" title="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.TimelineCard" class="sap-doc" alt="#/entity/sap.ui.integration.widgets.Card/sample/sap.ui.integration.sample.TimelineCard">Sample</a>.</p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.uxap.ObjectPageLayout</code></span></p>
+								<p>We have implemented the option to provide a simple, single-line
+									title that takes up less space on smaller phone screens when the
+									dynamic header of the <code>ObjectPageLayout</code> control
+									is collapsed (snapped). You can enable it via the
+										<code>snappedTitleOnMobile</code> aggregation. For more information, see the <a href="#/api/sap.uxap.ObjectPageDynamicHeaderTitle" title="#/api/sap.uxap.ObjectPageDynamicHeaderTitle" class="sap-doc" alt="#/api/sap.uxap.ObjectPageDynamicHeaderTitle">API Reference</a> and
+										the <a href="#/entity/sap.uxap.ObjectPageLayout/sample/sap.uxap.sample.ObjectPageDynamicHeader" title="#/entity/sap.uxap.ObjectPageLayout/sample/sap.uxap.sample.ObjectPageDynamicHeader" class="sap-doc" alt="#/entity/sap.uxap.ObjectPageLayout/sample/sap.uxap.sample.ObjectPageDynamicHeader">Sample</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_g3r_bf5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">SAP Fiori Elements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_fm5_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">Analytical List Page</span></p>
+								<p>You can pass the variant ID as a URL parameter while navigating
+									from an application to the analytical list page. For more
+									information, see <a href="#/topic/8ce658e05498466d9a74823b94e840ac.html" title="Lets you manage variants with different structures in the filter and content areas." class="sap-doc">Managing Variants</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_r5v_3h5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Demo Kit Improvements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_e2h_2vq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">API Reference</span></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>The API Reference documentation for non-class entities
+											now displays the <code>@see</code> and
+												<code>@example</code> tags of their JSDocs. For a preview of an <code>@see</code> tag, see
+												the <a href="#/api/sap.ui.core.LabelEnablement" title="#/api/sap.ui.core.LabelEnablement" class="sap-doc" alt="#/api/sap.ui.core.LabelEnablement"><code>sap.ui.core.LabelEnablement</code></a>
+												namespace. For a preview of an
+												<code>@example</code> tag, see the <a href="#/api/module%3Asap%2Fbase%2Futil%2Fmerge" title="#/api/module%3Asap%2Fbase%2Futil%2Fmerge" class="sap-doc" alt="#/api/module%3Asap%2Fbase%2Futil%2Fmerge"><code>sap/base/util/merge</code></a>
+												function.</p>
+									</li>
+									<li class="li">
+										<p>Based on your feedback, we have improved the API
+											Reference documentation to include the borrowed
+												<span class="ph uicontrol">Properties</span>,
+												<span class="ph uicontrol">Aggregations</span>, and
+												<span class="ph uicontrol">Associations</span> in the
+											respective sections. All the inherited entries are
+											marked with a <span class="ph uicontrol">Borrowed from:</span>
+											label in the <span class="ph uicontrol">Description</span> column
+											with a link to the corresponding class.</p><div><div class="fig"><img src="loiod7f2a71df7944a0cb574de845248690e_HiRes.png" usemap="#"></div></div><p></p>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/6660a59a8a22460a91fe65a0d96a567e">Previous Versions</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks"><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="topic/067e2fb0165145a5ac9b128b5853f7c9">What's New in SAPUI5 1.86</a></li><li><a href="topic/eeb5bd913fe448598e0449050143027a">What's New in SAPUI5 1.85</a></li><li><a href="topic/ccf76b76327c421e9d87ff7fc3d7ba41">What's New in SAPUI5 1.84</a></li><li><a href="topic/f081cf0a64784c62aa653e80036659f0">What's New in SAPUI5 1.82</a></li><li><a href="topic/f71563ccd2294cf0a59d16b62be0f7eb">What's New in SAPUI5 1.81</a></li><li><a href="topic/3294c688331c4e918a22dc0bb0892ff8">What's New in SAPUI5 1.80</a></li><li><a href="topic/edf8e35377d4452491cdc488030feb13">What's New in SAPUI5 1.79</a></li><li><a href="topic/d176be37229a45dbb1d6d0a1ae2f3167">What's New in SAPUI5 1.78</a></li><li><a href="topic/2ec6b6b03ee249928bba929eec3d2d74">What's New in SAPUI5 1.77</a></li><li><a href="topic/b9b0a3f223c14b9d99e0d86e649cafec">What's New in SAPUI5 1.76</a></li><li><a href="topic/dc3d3ce46105441db5543049fb1c11e7">What's New in SAPUI5 1.75</a></li><li><a href="topic/21fc6cb77b0c44aab55f045812e69c98">What's New in SAPUI5 1.74</a></li><li><a href="topic/7b826642c45d4b8d97c5013cdc240ad6">What's New in SAPUI5 1.73</a></li><li><a href="topic/25e532617b7f4b9bad842757324151ed">What's New in SAPUI5 1.72</a></li><li><a href="topic/609fd015eaf64bd2a4a5c0331590eb4c">What's New in SAPUI5 1.71</a></li><li><a href="topic/4e89fee547a24385826cddcfdf4df238">What's New in SAPUI5 1.70</a></li><li><a href="topic/41203fd3272b479d8c665357e3b21a43">What's New in SAPUI5 1.69</a></li><li><a href="topic/5531aef1adc8462392a5b8fe1178606e">What's New in SAPUI5 1.68</a></li><li><a href="topic/0968958c4143469d941dbe3b59e06142">What's New in SAPUI5 1.67</a></li><li><a href="topic/ebe7fda555aa466782090053d6f54f21">What's New in SAPUI5 1.66</a></li><li><a href="topic/9d2b1897722a4e99b60580fb09aa35e0">What's New in SAPUI5 1.65</a></li><li><a href="topic/77e1dcc27c494d60ba0a03759b706e89">What's New in SAPUI5 1.63</a></li><li><a href="topic/27eea38eeb7b40d19d0dfe3ddf513175">What's New in SAPUI5 1.62</a></li><li><a href="topic/de4d50b6c0f649fa859e4657ff8557a6">What's New in SAPUI5 1.61</a></li><li><a href="topic/2a70354a2a38492a873333edc4b9a303">What's New in SAPUI5 1.60</a></li><li><a href="topic/b28edde1f4ad425d9247f3bbcdc5d9b7">What's New in SAPUI5 1.58</a></li><li><a href="topic/53b4b5ec2c83408a8da2cb6b9154c246">What's New in SAPUI5 1.56</a></li><li><a href="topic/f29023ebf9dc4a43b98516a5e2c43837">What's New in SAPUI5 1.54</a></li><li><a href="topic/a09dd79a24c041d288402768558a1d1a">What's New in SAPUI5 1.52</a></li><li><a href="topic/a8449849c81249bb8abd98b4b9342a4a">What's New in SAPUI5 1.50</a></li><li><a href="topic/2818f800e7424c5c91dbd495f8cb757b">What's New in SAPUI5 1.48</a></li><li><a href="topic/4cf0986450ca43e5a8d12dd66e999a77">What's New in SAPUI5 1.46</a></li><li><a href="topic/05ce1dc72c74475bada39234f6721f21">What's New in SAPUI5 1.44</a></li><li><a href="topic/4768f1ac7f0645929b4e9ea9981bb65e">What's New in SAPUI5 1.42</a></li><li><a href="topic/e659bd2383524a05b716916bcda9b368">What's New in SAPUI5 1.40</a></li><li><a href="topic/6a875f998994489483e8085705347d72#loio6a875f998994489483e8085705347d72">What's New in SAPUI5 1.38</a></li></ul></section></div></section></div></body></html>

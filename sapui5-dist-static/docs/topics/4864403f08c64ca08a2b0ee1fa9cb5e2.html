@@ -1,0 +1,343 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4864403f08c64ca08a2b0ee1fa9cb5e2" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Smart Field</h1><div class="fig"><h1 class="topictitle1 title">Smart Field</h1><div class="shortdesc">The sap.ui.comp.smartfield.SmartField control offers a wrapper for
+		other controls using OData metadata to determine which control has to be instantiated and
+		makes it possible to add input-enabled fields to an application.</div><p>The frequently asked questions section below aims at answering some
+				basic questions that you might have when using this control.</p><p>For more
+				information about this control, see the <a href="#/api/sap.ui.comp.smartfield.SmartField" title="#/api/sap.ui.comp.smartfield.SmartField" class="sap-doc" alt="#/api/sap.ui.comp.smartfield.SmartField">API Reference</a> and the <a href="#/entity/sap.ui.comp.smartfield.SmartField" title="#/entity/sap.ui.comp.smartfield.SmartField" class="sap-doc" alt="#/entity/sap.ui.comp.smartfield.SmartField">samples</a>.
+		</p><p>For more
+				information about annotations for this control, see the <a href="#/api/sap.ui.comp.smartfield.SmartField/annotations/Summary" title="#/api/sap.ui.comp.smartfield.SmartField/annotations/Summary" class="sap-doc" alt="#/api/sap.ui.comp.smartfield.SmartField/annotations/Summary">API Reference</a>.</p><section>
+			<h2 class="title ">Overview</h2>
+			<p>The <code>SmartField</code> control provides an efficient way to add
+				input-enabled fields to an SAP Fiori application. The control automatically adjusts
+				to the metadata of the underlying OData service, for example, by doing the
+					following:</p><ul class="ul ">
+					<li class="li">
+						<p>Hosting controls for editing and displaying values of OData
+							properties</p>
+					</li>
+					<li class="li">
+						<p>Providing value help automatically</p>
+					</li>
+					<li class="li">
+						<p>Performing input checks</p>
+					</li>
+				</ul><p></p>
+			<p>In addition, the <code>SmartField</code> control implements field control and
+				supports message handling.</p>
+			<p>The <code>SmartField</code> control can be used in the following ways:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>As a standalone control, for example, in XML views</p>
+				</li>
+				<li class="li">
+					<p>In combination with a <code>SmartForm</code> control</p>
+				</li>
+				<li class="li">
+					<p>In combination with a <code>SmartTable</code> control</p>
+					<p>Used in particular as cell editor in editing scenarios.</p>
+				</li>
+			</ul>
+			<p>The <code>SmartField</code> control selects a control for displaying and a
+				control for editing the OData property to which they are bound. The main criterion
+				for selecting nested controls is the EDM type of the OData property to which a
+					<code>SmartField</code> control is bound.</p>
+		</section><section><h2 class="title ">Details</h2><section>
+				<h3 class="title ">Binding</h3>
+				<p>The OData property that a <code>SmartField</code> control manages is determined by the
+					binding of the value property of the control.
+					Properties
+					of a complex type are not supported.</p>
+				<p>The <code>SmartField</code> control allows for binding of navigation
+					properties.</p>
+				<p>The entity set to which the bindings are related is either specified in the
+						<code>entitySet</code> attribute of the control or derived from the
+					binding context at runtime.</p>
+				<p> When binding the <code>SmartField</code> control against the OData service
+					property of type <code>Edm.Boolean</code>, and if the
+						<code>SmartField</code> control is in read-only mode, static texts are
+					used for visual representation. In addition, a configuration parameter in the
+						<code>SmartField</code> control can define the properties of the static
+					texts of the <code>CheckBox</code>, such as <code>Yes/No</code> or
+						<code>True/False</code>. For the <code>SmartForm</code> control, the
+					custom data can be used for this purpose.</p>
+			</section><section>
+				<h3 class="title ">Configuration</h3>
+				<p>The <code>configuration</code> aggregation of <code>SmartField</code>
+					provides the option to overwrite the default behavior of the
+						<code>SmartField</code> control.</p>
+				<p>Using the <code>controlType</code> property, you can select the appropriate
+					control for your use case.</p>
+				<p>The following control types are available:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Check box</p>
+					</li>
+					<li class="li">
+						<p>Date picker </p>
+					</li>
+					<li class="li">
+						<p>Drop-down list (combo box) </p>
+					</li>
+					<li class="li">
+						<p>Input </p>
+					</li>
+					<li class="li">
+						<p>Select drop-down list (<code>sap.m.Select</code>)</p>
+					</li>
+				</ul>
+				<p>It depends on the related data types and configurations <span class="emphasis">which</span> control
+					types are rendered, for example:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>If the relevant OData property is of type <code>Edm.String</code>,
+							the <code>SmartField</code> control can be configured to render a
+							combo box or a select drop-down list.</p>
+					</li>
+					<li class="li">
+						<p>If the relevant OData property is of type <code>Edm.Boolean</code>,
+							the <code>SmartField</code> control can be configured to render a
+							combo box.</p>
+					</li>
+					<li class="li">
+						<p>If the relevant OData property is of type <code>Edm.DateTime</code>,
+							the <code>SmartField</code> control can be configured to render a
+							date picker.</p>
+					</li>
+				</ul>
+				<p>The table below shows which controls are used if you <span class="emphasis">don't</span>
+					overwrite the control type.</p>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						
+						</tgroup><table border="1" id="table_knt_l2v_yx" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="2" rowspan="1">
+									<p>Editing Use Cases</p>
+								</th>
+								<th colspan="2" rowspan="1">
+									<p>Display Use Cases</p>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>EDM Type</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Control</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>EDM Type</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Control</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Boolean</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>sap.m.CheckBox</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Boolean</code></p>
+								</td>
+								<td colspan="1" rowspan="14" valign="top"><code>sap.m.Text</code></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int16</code></p>
+								</td>
+								<td colspan="1" rowspan="10" valign="top">
+									<p><code>sap.m.Input</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int16</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int32</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int32</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int64</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Int64</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.SByte</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.SByte</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Byte</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Byte</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Single</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Single</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Float</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Float</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Double</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Double</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Decimal</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Decimal</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.String</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.String</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Time</code></p>
+								</td>
+								<td colspan="1" rowspan="3" valign="top"><code>sap.m.DateTimePicker</code></td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.Time</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.DateTime</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.DateTime</code></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.DateTimeOffset</code></p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><code>Edm.DateTimeOffset</code></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+				<p>Using the <code>displayBehaviour</code> property, you can define how an ID
+					and a description or Boolean values are represented in read-only mode.</p>
+				<p>You have the following options:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.descriptionAndId</code>:
+							Description and ID are displayed for available values.</p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.descriptionOnly</code>:
+							Only the description of the available values is displayed.</p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.idAndDescription</code>:
+							ID and description are displayed for available values.</p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.idOnly</code>: Shows
+							the ID only.</p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.OnOff</code>: Shows
+							Boolean value as <code>On/Off</code></p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.TrueFalse</code>: Shows
+							Boolean value as <code>True/False</code></p>
+					</li>
+					<li class="li">
+						<p><code>sap.ui.comp.smartfield.DisplayBehaviour.YesNo</code>: Shows
+							Boolean value as <code>Yes/No</code></p>
+					</li>
+				</ul>
+				<p>Using the <code>preventInitialDataFetchInValueHelpDialog</code> property, you
+					can prevent the query from being fired immediately when the value help dialog is
+					opened. </p>
+			</section><section>
+				<h3 class="title ">Field Control</h3>
+				<p>The field control handles the visual representation of
+						<code>SmartField</code> controls, such as:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>Whether input is mandatory</p>
+					</li>
+					<li class="li">
+						<p>Whether the controls are read-only</p>
+					</li>
+					<li class="li">
+						<p>Whether the controls are hidden as defined by the SAP Fiori user
+							interface programming model</p>
+						<p>The following attributes are available to implement field control:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p><code>Enabled</code></p>
+								<p>Toggles from display to edit mode.</p>
+							</li>
+							<li class="li"><code>Visible</code><p>Hides the <code>SmartField</code>
+									control.</p></li>
+							<li class="li"><code>Mandatory</code><p>Determines whether input is
+									required.</p></li>
+						</ul>
+					</li>
+				</ul>
+				<p>Consumers of the <code>SmartField</code> control can further adapt the
+					runtime behavior by binding these attributes.</p>
+				<p>The behavior can only be made more restrictive on client side, for example, if an
+					OData property is mandatory, this cannot be overwritten on
+						<code>SmartField</code> control level.</p>
+			</section></section><section><h2 class="title ">FAQ</h2><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">How can I prevent OData requests from fetching value lists to display the
+					description for a given key in read-only mode?</h3></div><div class="fig"><p>If the property <code>fetchValueListReadOnly</code> is set to
+						<code>false</code>, no request is sent to fetch the value list, thus
+					improving performance. However, if you would actually like to to see the
+					description for a key, you have to use the <code>sap:text</code> v2
+					annotation or the <code>com.sap.vocabularies.Common.v1.Text</code> v4
+					annotation to define the path to a property containing the description. This
+					target property has to be defined in the model, which means that you as the
+					application developer have to take care of fetching the data.</p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">I have defined custom formatters for <code>SmartField</code> within my
+					application. Why are they ignored?</h3></div><div class="fig"><p>If you define custom formatters, they will not be taken into consideration.
+						<code>SmartField</code> always uses its <span class="emphasis">own</span>
+					formatters for the external representation of values. In addition, custom data
+					types, which you define for your application, are supported.</p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">If I use composite binding for the <code>SmartField</code> control, the
+					field does not show all elements. How can I use this type of
+					binding?</h3></div><div class="fig"><p><code>SmartField</code> does not support composite binding. You can only use the standard
+					one-way or two-way binding for the <code>SmartField</code> control.</p></div></section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

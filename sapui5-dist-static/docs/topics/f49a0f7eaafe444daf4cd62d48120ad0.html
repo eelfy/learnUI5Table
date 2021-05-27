@@ -1,0 +1,201 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof49a0f7eaafe444daf4cd62d48120ad0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Further Features of the Field</h1><div class="fig"><h1 class="topictitle1 title">Further Features of the Field</h1><div class="shortdesc">Application developers can control important features of the field.</div><section id="section_kfc_wzf_k4b">
+			<h2 class="title ">Text Arrangement</h2>
+			<p>The value displayed within the field can show either only the textual description of the value, or show it together with the ID representation
+				of the value. Consider the following example data set:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					</tgroup><table border="1" id="table_yvj_hfb_q4b" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">SalesOrderID</th>
+							<th colspan="1" rowspan="1">PlantID</th>
+							<th colspan="1" rowspan="1">PlantName</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">100</td>
+							<td colspan="1" rowspan="1" valign="top">A1</td>
+							<td colspan="1" rowspan="1" valign="top">ABC</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">101</td>
+							<td colspan="1" rowspan="1" valign="top">A2</td>
+							<td colspan="1" rowspan="1" valign="top">DEF</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<p>In this example, <code>PlantID</code> represents the unique ID of the object "Plant". But this is not easily readable for the end
+				user and typically, the field <code>PlantID</code> would have a <code>sap:text()</code> pointing to the field
+					<code>PlantName</code>, which holds the more human-readable value. Via the <code>UI.TextArrangement</code> annotation,
+				application developers can control what is displayed whenever a field refers to <code>PlantID</code> in its value path:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_f4h_2gb_q4b" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">TextArrangement</th>
+							<th colspan="1" rowspan="1">Display Format</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">TextFirst - (default value)</td>
+							<td colspan="1" rowspan="1" valign="top">ABC (A1)</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">TextLast</td>
+							<td colspan="1" rowspan="1" valign="top">A1 (ABC)</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">TextOnly</td>
+							<td colspan="1" rowspan="1" valign="top">ABC</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">TextSeparate</td>
+							<td colspan="1" rowspan="1" valign="top">A1</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>TextArrangement
+				Annotation</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SalesOrder"&gt; //Main EntitySet
+  &lt;Annotation Term="com.sap.vocabularies.UI.v1.TextArrangement" EnumMember="com.sap.vocabularies.UI.v1.TextArrangementType/TextFirst"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><ul class="ul ">
+					<li class="li">
+						<p>You can also define the <code>TextArrangement</code> annotation shown above at property level. This takes precedence
+							over the one defined at entity set level. The entity level <code>TextArrangement</code> value is taken into
+							consideration as a fallback only when you have not specified the <code>TextArrangement</code> at property level.</p>
+					</li>
+					<li class="li">
+						<p>The <code>TextArrangement</code> of the value help entity set is used to determine the display of the fields that show
+							up in the action parameter dialog. The <code>TextArrangement</code> specified at property level within the value help
+							entity set again takes precedence over the one defined at entity set level.</p>
+					</li>
+					<li class="li">
+						<p>The <code>TextArrangement</code> annotation <code>#TextOnly</code> is supported in value help tables (that is, in
+							the value help dialog and for the type-ahead feature). Other <code>TextArrangement</code> annotations like
+								<code>#TextFirst</code>, <code>#TextLast</code>, or <code>#TextSeparate</code> are not considered. Combo
+							boxes also support <code>#TextFirst</code> and <code>#TextLast</code>.</p>
+					</li>
+				</ul>
+			<p></p></div></div>
+		</section><section id="section_v5m_xzf_k4b">
+			<h2 class="title ">Visibility and Enablement of the Field</h2>
+			<p>The visibility of the field is affected by the <code>UI.Hidden</code> annotation, which can be given either at property level or field
+				level.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>UI.Hidden</code> Within a
+				<code>DataField</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataField"&gt;
+   &lt;PropertyValue Property="Value" Path="TotalNetAmount" /&gt;
+   &lt;Annotation Term="UI.Hidden" Bool="false" /&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>UI.Hidden</code> Within a
+				<code>Property</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/TotalNetAmount"&gt;
+    &lt;Annotation Term="Common.Label" String="Net Amount"/&gt;
+    &lt;Annotation Term="Measures.ISOCurrency" Path="TransactionCurrency"/&gt;
+    &lt;Annotation Term="UI.Hidden" Bool="true" /&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			<p><code>UI.Hidden</code> can also be path based.</p>
+			<p>In addition, the value of the <code>FieldControl</code> determines how the field behaves:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Metadata Showing
+				<code>FieldControl</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.ArtistsType/Name"&gt;
+   &lt;Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/&gt;
+   ....
+   ....
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					</tgroup><table border="1" id="table_zx4_mwy_q4b" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">Value of the <code>FieldControl</code></th>
+							<th colspan="1" rowspan="1">Behavior</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Mandatory</td>
+							<td colspan="1" rowspan="1" valign="top">Property must have a non-null value whenever save or update is triggered.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Optional</td>
+							<td colspan="1" rowspan="1" valign="top">Property can have a null value.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">ReadOnly</td>
+							<td colspan="1" rowspan="1" valign="top">Property value cannot be changed. In edit mode, this property will not show up as an editable field.</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Inapplicable</td>
+							<td colspan="1" rowspan="1" valign="top">Property has no meaning in the current entity state and will show up in disabled state.<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>In a travel
+									expense report, the property <code>DestinationCountry</code> is <code>Inapplicable</code> if the trip type
+									is domestic, and <code>mandatory</code> if the trip type is international.</p></div></div></td>
+						</tr>
+					</tbody>
+				</table></div></div>
+		</section><section id="section_b14_xzf_k4b">
+			<h2 class="title ">Editability of the Field</h2>
+			<p>There are different ways in which a field can be marked as editable:</p>
+			<ol>
+				<li class="li">
+					<p><code>Core.Computed</code></p>
+				</li>
+				<li class="li"><code>Core.Immutable</code></li>
+				<li class="li"><code>Common.FieldControl</code></li>
+			</ol>
+			<p>While the first two options are only used with the static values <code>true</code> and <code>false</code>, the third option is
+				also used dynamically by referring to another property.</p>
+			<p>If a property is annotated with <code>Core.Computed true</code>, it is always displayed in a non-editable way.</p>
+			<p><code>Core.Immutable</code> has the same result in edit mode, but in create mode the property is editable.</p>
+			<p><code>Common.FieldControl</code> is a term using an enumeration with <code>ReadOnly</code> as a possible value. You can
+				statically set a property to read-only (similar to <code>Core.Computed</code>), but you can also refer to a property that uses the
+				enumeration values as possible data values.</p>
+			<div class="note tip  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Tip
+				</strong></div></div><div class="fig"><p>
+				</p><p>Not all field representations are editable in the object page header. Only the plain text facet and form facets are considered for
+					editability. Semantic links are also displayed in edit mode, but only when the field is associated with a value help.</p>
+			<p></p></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>The property ID of the entity <code>ProductsType</code> will always be invisible (since it’s a
+				GUID)</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.ProductsType/ID"&gt;
+    &lt;Annotation Term="SAP__UI.Hidden"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>The property <code>ModifiedAt</code> is always invisible (wherever the property appears) if the property
+					<code>HasDraftEntity</code> is set to <code>true</code> – in all other cases it’s
+				visible</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.ProductsType/ModifiedAt"&gt;
+    &lt;Annotation Term="SAP__UI.Hidden" Path="HasDraftEntity"/&gt;
+&lt;/Annotations&gt;</pre></div></section><p></p></div></div>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>The property <code>ModifiedAt</code> is invisible in the <code>FieldGroup</code> with the qualifier
+					<code>AdministrativeData</code> if the property <code>HasDraftEntity</code> is set to <code>true</code> – all other
+				appearances of the property <code>ModifiedAt</code> are not influenced
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.ProductsType"&gt;
+    &lt;Annotation Term="SAP__UI.FieldGroup" Qualifier="AdministrativeData"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Data"&gt;
+                &lt;Collection&gt;
+                    &lt;Record Type="SAP__UI.DataField"&gt;
+                        &lt;Annotation Term="SAP__UI.Hidden" Path=="HasDraftEntity"/&gt;
+                        &lt;PropertyValue Property="Label" String="Modified at"/&gt;
+                        &lt;PropertyValue Property="Value" Path="ModifiedAt"/&gt;
+                    &lt;/Record&gt; ...</pre></div></section><p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

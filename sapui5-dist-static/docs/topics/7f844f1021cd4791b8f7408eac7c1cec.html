@@ -1,0 +1,239 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio7f844f1021cd4791b8f7408eac7c1cec" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Setting the Table Type</h1><div class="fig"><h1 class="topictitle1 title">Setting the Table Type</h1><div class="shortdesc">In the manifest.json file, and through annotations, you can control
+		which table type is rendered in the list report and on the object page.</div><p>These are the <code>type</code> properties available within <code>tableSettings</code>:</p><ul class="ul ">
+                <li class="li"><code>ResponsiveTable</code></li>
+                <li class="li"><code>GridTable</code></li>
+            </ul><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><ul class="ul ">
+                <li class="li">
+                    <p>On smart phones, responsive tables are shown. </p>
+                </li>
+                <li class="li">
+                    <p>List report only: If the <code>type</code> property within <code>tableSettings</code> is
+                            <code>AnalyticalTable</code>, set the annotation <code>sap:semantics</code> to <code>aggregate</code> for the
+                        specified entity type. Note that <code>sap:semantics</code> is a back-end entity type definition and cannot be changed in
+                        the SAP Web IDE.</p>
+                </li>
+                <li class="li">
+                    <p>If you do not maintain the <code>type</code> property within
+                            <code>tableSettings</code> , and if <code>sap:semantics</code>
+                        to <code>aggregate</code> has been set in the
+                        back-end, an analytical table is rendered.</p>
+                </li>
+            </ul>
+        <p></p></div></div><section id="section_bqd_r2f_dmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>In addition to using the
+                    <code>manifest.json</code> file, you can also use annotations to control which table type is rendered in the list report
+                and on the object page.</p><p>These are the additional <code>type</code> properties available within
+                    <code>tableSettings</code>:</p><ul class="ul ">
+                    <li class="li"><code>AnalyticalTable</code></li>
+                    <li class="li"><code>TreeTable</code></li>
+                </ul><p></p><section>
+                <h3 class="title ">Examples</h3>
+                <p>Set the <code>type</code> property within <code>tableSettings</code> to the required value in the
+                        <code>sap.ui.generic.app</code> section of the manifest.json:</p>
+                <p>Example for the list report:</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+			"pages": [{
+				"entitySet": "Zfarvd_Bs_Hd_Bo",
+				"component": {
+					"name": "sap.suite.ui.generic.template.ListReport",
+					"list": true,
+					"settings": {
+						"tableSettings": {
+							"type": "GridTable"
+							}
+					}
+				},	</pre></div></section>
+                <p>Examples for the object page:</p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+        "pages": [
+            {
+                "entitySet": "STTA_C_MP_Product",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true
+                },
+                "pages": [
+                    {
+                        "entitySet": "STTA_C_MP_Product",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                            "settings": {
+                                "sections": {
+                                    "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+                                        "navigationProperty": "to_ProductText",
+                                        "entitySet": "STTA_C_MP_ProductText",
+                                        "tableSettings": {
+								      "type": "TreeTable"
+								 }
+                                    }
+                                }
+                            }
+                        },</pre></div></section>
+                <p>
+                    Defining
+                        <code>tableTypes</code> under the settings is supported for backward
+                    compatibility. However, using
+                        <code>tableSettings</code>
+                    is recommended for defining table types.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>If you maintain
+                        the <code>type</code> property within <code>tableSettings</code> in
+                            <code>sections</code>, it has a higher priority than the
+                            <code>type</code> property of <code>tableSettings</code> in an
+                        object page.</p></div></div><p></p>
+                <section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": [{
+                "entitySet": "STTA_C_MP_Product",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ObjectPage",
+                    "settings": {
+                        "showRelatedApps": true,
+                        "tableSettings": {
+                            "type":"ResponsiveTable"
+                        },
+                        "sections": {
+                            "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+                                "navigationProperty": "to_ProductText",
+                                "entitySet": "STTA_C_MP_ProductText",
+                                "tableSettings": {
+                                    "type":"GridTable"
+                                }
+                            }
+                        }
+                    }
+</pre></div></section>
+            </section></div></section><section id="section_dw3_vks_mlb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>In the <code>manifest.json</code> file, you
+                can control which table type is rendered in the list report and on the object page.</p><section>
+                <h3 class="title ">Examples</h3>
+                <p>Set the <code>type</code> property within <code>tableSettings</code> to the required values in <span class="ph menucascade">
+                        <span class="ph uicontrol">sap.ui5:</span>
+                        <span class="ph uicontrol">routing:</span>
+                        <span class="ph uicontrol">targets</span>
+                    </span>of the manifest.json file.</p>
+                <p>Example for the list report:</p>
+                <div class="note other samplecode lang-json"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"targets": {
+                "SalesOrderManageList": {
+                    "type": "Component",
+                    "id": "SalesOrderManageList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings" : {
+                            "entitySet" : "SalesOrderManage",
+
+                            "variantManagement": "Page",
+
+                            "initialLoad": true,                                 
+                            "controlConfiguration" : {
+                                "@com.sap.vocabularies.UI.v1.LineItem" : {
+                                    "tableSettings": {
+                                        "type": "ResponsiveTable"
+                                    }
+                                }
+                                "@com.sap.vocabularies.UI.v1.SelectionFields" : {
+                                    "filterBarSettings": {
+                                        "personalization": {
+                                            "item" : true,
+                                            "value" : true
+                                    
+                                        }
+
+                                    }
+                                }
+                            },</pre></div></section>
+                <p></p></div></div>
+                <p>Example for the object page:</p>
+                <div class="note other samplecode lang-json"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage": { 
+
+                    "type": "Component", 
+
+                    "id": "SalesOrderManageObjectPage", 
+
+                    "name": "sap.fe.templates.ObjectPage", 
+
+                    "options": { 
+
+                        "settings": { 
+
+                            "entitySet": "SalesOrderManage", 
+
+                            "navigation": { 
+
+                                "_Item": { 
+
+                                    "detail": { 
+
+                                        "route": "SalesOrderItemObjectPage" 
+
+                                    } 
+
+                                } 
+
+                            }, 
+
+                            "variantManagement": "Control", 
+
+                            "showRelatedApps": true, 
+
+                            "editableHeaderContent": false, 
+
+                            "sectionLayout": "Tabs", 
+
+                            "controlConfiguration": { 
+
+                                "_Item/@com.sap.vocabularies.UI.v1.LineItem": { 
+
+                                    "tableSettings": { 
+
+                                        "type": "GridTable", 
+
+                                        "personalization": { 
+
+                                            "column": true, 
+
+                                            "sort": false 
+
+                                        }, 
+
+                                        "creationMode": { 
+
+                                            "name": "CreationRow", 
+
+                                            "createAtEnd": true 
+
+                                        } 
+
+                                    } 
+
+                                }, 
+
+                                "_Partner/@com.sap.vocabularies.UI.v1.LineItem": { 
+
+                                    "tableSettings": { 
+
+                                        "personalization": false 
+
+                                    } 
+
+                                } 
+
+                            } 
+
+                        } 
+
+                    } 
+
+                }, </pre></div></section>
+                <p></p></div></div>
+            </section></div></section><section id="section_ipf_sff_dmb">
+            <h2 class="title ">More Information</h2>
+            <p>For a description of the available table types, see <a href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" title="Both the list report and the object page support several table types." class="sap-doc">Tables</a>.</p>
+            <p>For information about setting up tables in the list report through annotations, see <a href="#/topic/4c2d17aec55b4162b19f1b573b5a4f99.html" title="You can set up various aspects of the list report table through annotations and in the manifest.json file" class="sap-doc">Settings for List Report Tables</a>.</p>
+            <p>For information about setting up tables in the object page, see <a href="#/topic/47425bb6d37b426da027621abf4a14c3.html" title="You can set up various aspects of the object page tables through the manifest.json file, as described in the sections that follow." class="sap-doc">Settings for Object Page Tables</a>.</p>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

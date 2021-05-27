@@ -1,0 +1,206 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioeded636b85584cd586b1fe231d2b5dac" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">JavaScript Coding Guidelines</h1><div class="fig"><h1 class="topictitle1 title">JavaScript Coding Guidelines</h1><div class="shortdesc">Provides an overview of the guidelines for JavaScript coding for SAPUI5 with regard to code
+		formatting, naming conventions, and creating classes.</div><p>For JavaScript, the following <span class="emphasis">general</span> guidelines apply:</p><ul class="ul ">
+				<li class="li">
+					<p>Do <b>not</b> use global JavaScript variables; organize all global objects in an
+							<code>sap.*</code> namespace structure. The module
+							<code>sap/base/util/ObjectPath </code> assists in doing so. For more
+						information, see <a href="#/topic/5a978fe3504e4dd39f5db0a46438ba64.html" title="SAPUI5 modules such as classes, components, and controls, should use a consistent qualified naming scheme. Each module should reside in a unique namespace." class="sap-doc">JavaScript Namespaces</a> and
+							<a href="#/api/jQuery.sap/methods/jQuery.sap.getObject" title="#/api/jQuery.sap/methods/jQuery.sap.getObject" class="sap-doc" alt="#/api/jQuery.sap/methods/jQuery.sap.getObject">API Reference:
+									<code>jQuery.sap.getObject</code></a>.
+						</p>
+					<p>This also means: Do <b>not</b> use undeclared variables. When using global
+						variables introduced by other libraries, declare the use in a special global
+						comment: <code>/*global JSZip, OpenAjax */</code>.</p>
+				</li>
+				<li class="li">
+					<p>Do <b>not</b> access internal (private) members of other objects.</p>
+				</li>
+				<li class="li">
+					<p>Do <b>not</b> use <code>console.log()</code></p>
+				</li>
+				<li class="li">
+					<p>Use <code>window.document.getElementById("&lt;someId&gt;")</code> instead of
+							<code>jQuery("#&lt;someId&gt;")</code> when
+							<code>&lt;someId&gt;</code> is not a known string; certain
+						characters in IDs need to be escaped for jQuery to work correctly. </p>
+				</li>
+				<li class="li">
+					<p>Keep modifications of jQuery and other embedded Open Source to a minimum and
+						document them clearly with the term <i>SAP modification</i>. Such
+						modifications may <b>not</b> alter the standard behavior of the used library
+						in a way that breaks other libraries</p>
+				</li>
+			</ul><p></p><section>
+			<h2 class="title ">Code Formatting</h2>
+			<p>For any code becoming part of SAPUI5, an ESLint check
+				needs to run successfully, see <a href="#/topic/41de83f642224556b8716dec2b41ce86.html" title="For the tools used for SAPUI5 content development, guidelines and recommendations have been introduced." class="sap-doc">Tools</a>. The following list contains the most important formatting rules:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>Add a semicolon after each statement, even if optional</p>
+				</li>
+				<li class="li">
+					<p>No spaces before and after round braces (function calls, function
+						parameters), but…</p>
+				</li>
+				<li class="li">
+					<p>…use spaces after
+							<code>if/else/for/while/do/switch/try/catch/finally</code>, around
+						curly braces, around operators and after commas</p>
+				</li>
+				<li class="li">
+					<p>Opening curly brace (functions, for, if-else, switch) is on the same line</p>
+				</li>
+				<li class="li">
+					<p>Use "===" and "!==" instead of "==" and "!="; see the ESLint docu for special
+						cases where "==" is allowed</p>
+				</li>
+				<li class="li">
+					<p> The code should therefore look like this:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">function outer(c, d) {
+        var e = c * d;
+        if (e === 0) {
+            e++;
+        }
+        for (var i = 0; i &lt; e; i++) {
+            // do nothing
+        }
+
+        function inner(a, b) {
+            return (e * a) + b;
+        }
+
+        return inner(0, 1);
+    }
+</pre></div></section>
+				</li>
+			</ul>
+		</section><section>
+			<h2 class="title ">Naming Conventions</h2>
+			<p>We strongly recommend to use the Hungarian notation where name prefixes indicate the
+				type for variables and object field names. But do <b>not</b> use the Hungarian
+				notation for API method parameters: The documentation specifies the type in this
+				case.</p>
+			<p>When using the Hungarian notation, use the prefixes highlighted below and continue
+				with an uppercase letter (camelCase):</p>
+			<div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_qy5_xgh_np" class=" "><thead>
+					<tr><th colspan="1" rowspan="1">Sample</th>
+					<th colspan="1" rowspan="1">Type</th>
+				</tr></thead><tbody><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>s</b>Id</td>
+					<td colspan="1" rowspan="1" valign="top">string</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>o</b>DomRef</td>
+					<td colspan="1" rowspan="1" valign="top">object</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>$</b>DomRef</td>
+					<td colspan="1" rowspan="1" valign="top">jQuery object</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>i</b>Count</td>
+					<td colspan="1" rowspan="1" valign="top">int</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>m</b>Parameters</td>
+					<td colspan="1" rowspan="1" valign="top">map / assoc. array</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>a</b>Entries</td>
+					<td colspan="1" rowspan="1" valign="top">array</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>d</b>Today</td>
+					<td colspan="1" rowspan="1" valign="top">date</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>f</b>Decimal</td>
+					<td colspan="1" rowspan="1" valign="top">float</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>b</b>Enabled</td>
+					<td colspan="1" rowspan="1" valign="top">boolean</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>r</b>Pattern</td>
+					<td colspan="1" rowspan="1" valign="top">RegExp</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>fn</b>Function</td>
+					<td colspan="1" rowspan="1" valign="top">function</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>v</b>Variant</td>
+					<td colspan="1" rowspan="1" valign="top">variant types</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><b>p</b>Dialog</td>
+					<td colspan="1" rowspan="1" valign="top">promise</td>
+				</tr></tbody></table></div></div>
+			<p>Use CamelCase for class names, starting with an uppercase letter. HTML element IDs
+				starting with <code>sap-ui-</code> are reserved for SAPUI5. DOM attribute
+				names starting with <code>data-sap-ui-</code> as well as URL parameter names
+				starting with <code>sap-</code> and <code>sap-ui-</code> are reserved for
+					SAPUI5.</p>
+			<p>The following IDs are currently used:</p>
+			<div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_egg_2jh_np" class=" "><thead>
+					<tr><th colspan="1" rowspan="1">ID</th>
+					<th colspan="1" rowspan="1">Description</th>
+				</tr></thead><tbody><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-bootstrap</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID of the bootstrap script tag</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-library-*</code></td>
+					<td colspan="1" rowspan="1" valign="top">Prefix for UI libraries script tags</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-theme-*</code></td>
+					<td colspan="1" rowspan="1" valign="top">Prefix for theme stylesheets link tags</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-highlightrect</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID of the highlight rect for controls in TestSuite</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-blindlayer-*</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID for <code>BlockLayer</code></td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-static</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID of the static popup area of UI5</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-TraceWindowRoot</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID of the <code>TraceWindowRoot</code></td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><code>sap-ui-xmldata</code></td>
+					<td colspan="1" rowspan="1" valign="top">ID of the <code>XML Data Island</code></td>
+				</tr></tbody></table></div></div>
+		</section><section>
+			<h2 class="title ">Creating Classes</h2>
+			<p>For the creation of classes, the following rules and guidelines apply:</p><ul class="ul ">
+					<li class="li">
+						<p>Initialize and describe instance fields in the constructor function:
+								<code>this._bReady = false; // ready to handle
+							requests</code></p>
+					</li>
+					<li class="li">
+						<p>Define instance methods as members of the prototype of the constructor
+							function: <code>MyClass.prototype.doSomething =
+								function(){...</code></p>
+					</li>
+					<li class="li">
+						<p>Define static members (fields and functions) as members of the
+							constructor function object itself: <code>MyClass.doSomething =
+								function(){... </code></p>
+					</li>
+					<li class="li">
+						<p>Start the name of private members with an underscore:
+								<code>this._bFinalized</code></p>
+					</li>
+					<li class="li">
+						<p>Combine constructor + methods + statics in a single JS source file named
+							and located after the qualified name of the class; this is a
+							precondition for class loading</p>
+					</li>
+					<li class="li">
+						<p>Static classes do not have a constructor but an object literal; there is
+							no pattern for inheritance of such classes. If inheritance is needed,
+							use a normal class and create a singleton in the class.</p>
+					</li>
+					<li class="li">
+						<p>Do not use <code>SuperClass.extend(…)</code> for subclasses. If no base class exists,
+							the prototype is automatically initialized by JavaScript as an empty
+							object literal and must not be assigned manually. Consider inheriting
+							from <code>sap/ui/base/Object</code></p>
+					</li>
+					<li class="li">
+						<p>Subclasses call (or apply) the constructor of their base class:
+								<code>SuperClass.apply(this, arguments);</code></p>
+					</li>
+				</ul><p></p>
+			<p>For more information, see <a href="#/topic/f6fba4c6e1cb49c7b355319ac9c8d1cd.html" title="Full example of a class definition, including JSDoc" class="sap-doc">Example for Defining a Class</a>.</p>
+		</section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/5a978fe3504e4dd39f5db0a46438ba64">JavaScript Namespaces</a></li><li><a href="topic/f6fba4c6e1cb49c7b355319ac9c8d1cd">Example for Defining a Class</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

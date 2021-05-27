@@ -1,0 +1,431 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod782acf8bfd74107ad6a04f0361c5f62" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Navigation from an App (Outbound
+		Navigation)</h1><div class="fig"><h1 class="topictitle1 title">Navigation from an App (Outbound
+		Navigation)</h1><div class="shortdesc">You can either specify a URL or associate a semantic object (= intent-based navigation)
+		for external navigation targets.</div><section id="section_q3c_dg5_5lb">
+			<h2 class="title ">Using a URL</h2>
+			<p>You have two annotation options: You can either specify the absolute URL explicitly, or you can use a path reference to a property
+				using the annotation <code>DataFieldWithUrl</code> as follows:</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This option is supported only by the list report and the
+					object page.</p></div></div><p></p>
+			<p>Example
+				<code>DataFieldWithURL</code>:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldWithUrl"&gt;
+    &lt;PropertyValue Property="Value" Path="SupplierName"/&gt;
+    &lt;PropertyValue Property="Url" Path="SupplierWebsiteUrl"/&gt;
+&lt;/Record&gt;</pre></div></section><p></p>
+			<p>A link control is rendered for the property on the list report or object page.</p>
+		</section><section><h2 class="title ">Navigation to a Semantic Object (Intent-Based Navigation)</h2><p>If you
+				associate a semantic object annotation with any property, this establishes <a href="http://help.sap.com/saphelp_nw75/helpdata/en/bd/8ae3d327ab4541bcce8e7353c046fc/content.htm" title="http://help.sap.com/saphelp_nw75/helpdata/en/bd/8ae3d327ab4541bcce8e7353c046fc/content.htm" class="external-link" target="_blank" rel="noopener">Intent-Based Navigation</a>.</p><p>An intent is a mechanism
+				that lets users perform actions on semantic objects (such as navigating to a sales
+				order or displaying a fact sheet), without having to worry about the UI technology
+				or technical implementation of the navigation target. Intent-based navigation is
+				necessary in the following cases:</p><ul class="ul ">
+					<li class="li">
+						<p>Depending on the user’s role, a different application or view of an
+							application must be displayed.</p>
+					</li>
+					<li class="li">
+						<p>You want to define an ambiguous navigation target. This means that, at
+							runtime, a list of potential targets is suggested to the user.</p>
+					</li>
+				</ul><p></p><p>This is an example of a cost center as a semantic
+				object:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFAR_CUSTOMER_LINE_ITEMS2_SRV.Item/CostCenter"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.Common.v1.SemanticObject" String="CostCenter"/&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p><p>These
+				are your options for intent-based navigation:</p><ul class="ul ">
+				<li class="li"><p>Using a <code>link</code> control</p>To render a field as a
+						<code>link</code> control, you must associate a semantic object
+					annotation with the property.<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZFAR_CUSTOMER_LINE_ITEMS2_SRV.Item/CostCenter"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.Common.v1.SemanticObject" String="CostCenter"/&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+					<p></p></div></div><p>When a user chooses the link, the system displays a
+						popover containing some text and links to the targets for the user to choose
+						from. You can enhance the content of this popover and display a quick view
+						containing more information about the navigation target. For more
+						information, see <a href="#/topic/307ced1bc98c4e3d93ecbe9658dc9176.html" title="You can enrich the popovers for smart link navigation with additional information to display quick views." class="sap-doc">Enabling Quick Views for Smart Link Navigation</a>.</p></li>
+				<li class="li"><p>Using a button</p>To provide a button for navigation, you annotate a property
+					as a <span class="ph sap-technical-name">DataFieldForIntentBasedNavigation</span>.<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+    &lt;PropertyValue Property="Label" String="My Button for navigation"/&gt;
+    &lt;PropertyValue Property="SemanticObject" String="MySemanticObject"/&gt;
+    &lt;PropertyValue Property="Action" String="manage"/&gt;
+&lt;/Record&gt;
+</pre></div></section>
+					<p></p></div></div></li>
+			</ul><p>You can replace standard internal navigation with external navigation by using
+				intent-based navigation. For more information, see <a href="#/topic/8bd546e27a5f41cea6e251ba04534d70.html" title="Navigation from the list report view to the object page in the same app is enabled by default. If required, you can disable this navigation or replace it with navigation to another app (external navigation)." class="sap-doc">Changing Navigation to Object Page</a>.</p><section>
+				<h3 class="title ">Actions Triggering External Navigation</h3>
+				<p>Add the following property: <code>&lt;PropertyValue Property="RequiresContext"
+						Bool="true"/&gt;</code></p>
+				<p>If <code>RequiresContext</code> is true, then the button is disabled until a
+					selection is made. If it is false, then the button is always enabled. The
+					default value for <code>RequiresContext</code> is false.</p>
+				<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;&lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+   &lt;PropertyValueProperty="SemanticObject" String="EPMProduct/&gt;
+   &lt;PropertyValue Property="Action" String="manage_st" /&gt;
+   &lt;PropertyValueProperty="Label" String="IBNWithContext" /&gt;
+   &lt;PropertyValue Property="RequiresContext" Bool="true" /&gt;
+&lt;/Record&gt;</pre></div></section>
+				
+				<ul class="ul ">
+					<li class="li">
+						<p><span class="emphasis">Enable or Disable Buttons Triggering External
+								Navigation</span></p>
+						<p>In a <code>DataFieldForIntentBasedNavigation</code>, you can specify
+								<code>RequiresContext</code>. Setting it to
+								<code>True</code> means that a line needs to be selected for the
+							button to be enabled. Otherwise, it is disabled.</p>
+					</li>
+					<li class="li">
+						<p><span class="emphasis">Display or Hide Buttons Triggering External
+								Navigation</span></p>
+						<p>You can define that context-independent buttons
+								(<code>RequiresContext</code> is set to <code>False</code>)
+							triggering external navigation are displayed only if the navigation
+							target is supported on the current device. In addition to this, if the
+								<code>SemanticObject</code> or the action is invalid, and in
+							case the user does not have the correct authorizations, the button is
+							not displayed. As a prerequisite, you need to have maintained the
+							navigation target in the SAP Fiori launchpad, as shown in the figures
+							below:</p>
+						<div><div class="fig"><img src="loio41cc89e4400d44a6bf1a38136f281063_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">SAP Fiori launchpad: Maintain the supported devices for the
+								combination of semantic object and action.</span></div>
+						<div><div class="fig"><img src="loio45f06a4d89d64a2394d5e7d821d94960_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">SAP Fiori launchpad: Maintain the mandatory parameters for
+								semantic object and action</span></div>
+						<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+							</p><ul class="ul ">
+								<li class="li">
+									<p>As shown above, in the SAP Fiori launchpad, you maintain mandatory parameters for navigation, for
+										example, a sales order ID. If you have specified
+											<code>RequiresContext: False</code>, for the
+										combination of semantic object and action, and for this
+										combination you maintain a mandatory parameter in the SAP
+										Fiori launchpad, these settings contradict each other and
+										the button is not displayed.</p>
+								</li>
+								<li class="li">
+									<p>This feature is not relevant for context-dependent buttons.
+										For information about context-dependent and
+										context-independent actions, see <a href="#/topic/cbf16c599f2d4b8796e3702f7d4aae6c.html" title="You can use generic actions provided by SAP Fiori elements and implement application-specific actions using annotations or extension points." class="sap-doc">Actions</a></p>
+								</li>
+							</ul>
+						<p></p></div></div>
+					</li>
+				</ul>
+			</section></section><section>
+			<h2 class="title ">Mapping Semantic Objects</h2>
+			<p>You can alter the name of properties which are passed in the navigation context while
+				using the intent-based navigation mechanism.</p>
+			<p>We recommend using the common field names from the global field catalog in both
+				source and target applications. If the source field name is not from the global
+				field catalog, do not pass the source field name, but rather pass the global field
+				catalog name to the target.</p>
+			<p>If the target field name is not from the global field catalog, you can use the target
+				mapping mechanism to convert the incoming global field catalog name to the target
+				specific field.</p>
+			<div><div class="fig"><img src="loiob0c1ab295d734416a8e537dcfb0872da_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Mapping Semantic Objects</span></div>
+			<p>To achieve this when using the link, you can use the
+					<code>SemanticObjectMapping</code> property:</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/SoldToParty"&gt;
+    &lt;Annotation Term="Common.SemanticObjectMapping"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="Common.SemanticObjectMappingType"&gt;
+                &lt;PropertyValue Property="LocalProperty" PropertyPath="SoldToParty"/&gt;
+                &lt;PropertyValue Property="SemanticObjectProperty" String="ABC"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;</pre></div></section>
+			<p></p></div></div>
+			<p>The value for the field is passed as the value for <code>ABC</code> rather than
+				as the value for <code>SoldToParty</code>.</p>
+			<p>Empty values are not passed to the target application, unless explicitly set via
+					<span class="ph uicontrol">Define Conditions</span> in the filter bar.</p>
+		</section><section class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><section>
+				<h3 class="title ">Intent-Based Navigation</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li"><p>Using a link</p>To provide a link for navigation, you annotate a
+							property as a
+								<span class="ph sap-technical-name">DataFieldWithIntentBasedNavigation</span>.
+							You can use this type of link in tables and forms, that is, a
+								<span class="ph sap-technical-name">DataFieldWithIntentBasedNavigation</span>
+							can be added to <span class="ph sap-technical-name">LineItem</span> or
+								<span class="ph sap-technical-name">FieldGroup</span> annotations. The
+							link text is set according to the "Value" property (in the example below
+							this is the value of <code>SomePath</code>). Note that
+								<span class="ph sap-technical-name">sap:unit</span> annotations are
+							currently not evaluated in this context.<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldWithIntentBasedNavigation"&gt;
+    &lt;PropertyValue Property="Label" String="My Link for navigation" /&gt;
+    &lt;PropertyValue Property="Value" Path="SomePath" /&gt;
+    &lt;PropertyValue Property="SemanticObject" String="MySemanticObject"/&gt;
+    &lt;PropertyValue Property="Action" String="manage"/&gt;
+&lt;/Record&gt;
+</pre></div></section>
+							<p></p></div></div> For examples of how to use the
+								<span class="ph sap-technical-name">DataFieldWithIntentBasedNavigation</span>
+							annotation, see <a href="#/topic/ebe05d52c43241c19aaf79dd5f1c69f1.html" title="You can add a form facet to the object page header." class="sap-doc">Form Facet</a>
+							and <a href="#/topic/b623e0bbbb2b4147b2d0516c463921a0.html" title="The table control offers a possibility to show both the generic actions, such as Create and Delete, as well as application-specific actions." class="sap-doc">Adding Actions to Tables</a>.</li>
+					</ul>
+				<p></p>
+				<p>When a user chooses the link, and only one navigation target is found, direct
+					navigation to the target is triggered. If more than one target is found, the
+					system displays a popover containing some text and links to the targets for the
+					user to choose from.</p>
+			</section><section>
+				<h3 class="title ">Excluding Properties in Navigation Context</h3>
+				<p>The properties marked with annotation
+						<code>PersonalData.IsPotentiallySensitive</code> is not included in the
+					navigation context. You can also choose to exclude any property from the
+					application using the annotation
+						<code>UI.ExcludeFromNavigationContext</code>.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="ZEPM_C_User.C_UserDetailsType/CreditCardNumber"&gt;
+	&lt;Annotation Term="com.sap.vocabularies.PersonalData.v1.IsPotentiallySensitive" /&gt;
+&lt;/Annotations&gt;
+
+&lt;Annotations Target="ZEPM_C_SALESORDERITEMQUERY_CDS.ZEPM_C_SALESORDERITEMKPIResult/BusinessPartner"&gt;
+	&lt;Annotation Term="UI.ExcludeFromNavigationContext /&gt;
+&lt;/Annotations&gt;</pre></div></section>
+				<p></p></div></div>
+			</section></div></section><section id="section_hnp_tjw_xmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Handling Sensitive and Inapplicable Data</h3>
+				<p>During external outbound navigation, the following data is removed from the navigation context as the data is sensitive or
+						non-applicable:</p><ul class="ul ">
+						<li class="li">
+							<p>Properties annotated with <code>com.sap.vocabularies.PersonalData.v1.IsPotentiallySensitive</code></p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/ID"&gt;
+    &lt;Annotation Term="com.sap.vocabularies.PersonalData.v1.IsPotentiallySensitive" /&gt;
+&lt;/Annotations&gt;</pre></div></section>
+							<p></p></div></div>
+						</li>
+						<li class="li">
+							<p>Measures: Properties defined as <code>com.sap.vocabularies.Analytics.v1.Measures</code> in the metadata</p>
+						</li>
+					</ul><p></p>
+				<p>During external outbound navigation, the following data is removed from the navigation context as the data is sensitive or
+					non-applicable: Properties annotated with <code>com.sap.vocabularies.UI.v1.ExcludeFromNavigationContext</code></p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="com.c_salesordermanage_sd.SalesOrderManage/ID"&gt;
+    &lt;Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+					<p></p></div></div><p></p>
+				<p>Inapplicable properties: Properties annotated with <code>com.sap.vocabularies.Common.v1.FieldControl</code> that have a path
+					that resolves to <code>Inapplicable</code> at runtime.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SAP__self.ReviewsType/AvailabilityCode"&gt;
+    &lt;Annotation Term=" SAP__Common.FieldControl" Path="__FieldControl/AvailabilityCode_FC"/&gt;
+&lt;/Annotations&gt;</pre></div></section>
+					<p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>Sensitive properties of navigation entities beyond one level will not be removed from the navigation context.</p>
+					<p></p></div></div><p></p>
+			</section><section>
+				<h3 class="title ">Semantic Object Mapping</h3>
+				<p>To do this when navigating via the <code>DataFieldForIntentBasedNavigation</code> button, use the <code>Mapping</code>
+					property in the <code>DataFieldForIntentBasedNavigation</code> annotation.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+   ...
+   ...
+    &lt;PropertyValue Property="Mapping"&gt;
+        &lt;Collection&gt;
+            &lt;Record&gt;
+                &lt;PropertyValue Property="LocalProperty" PropertyPath="nameOfSourceProperty"/&gt;
+                &lt;PropertyValue Property="SemanticObjectProperty" String="nameOfTargetProperty"/&gt;
+            &lt;/Record&gt;                                              
+            ...
+            ...
+        &lt;/Collection&gt;
+    &lt;/PropertyValue&gt;
+&lt;/Record&gt;</pre></div></section>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Navigation via Link</h3>
+				<p>The value of the property against which the semantic object is configured is passed directly in the navigation context. For
+					example, if the property is <code>SoldToParty</code> and has the value <code>001</code>, the navigation context is
+						<code>SoldToParty=001</code>. To achieve a different property in the navigation context, use the
+						<code>SemanticObjectMapping</code> annotation.</p>
+				
+				<p>Links are only editable if the field having the link representation has a value help associated with it.</p>
+				
+			</section><section>
+				<h3 class="title ">Navigation via Button</h3>
+				<p>Applications can selectively enable <code>DataFieldForIntentBasedNavigation</code> buttons using the
+						"<code>NavigationAvailable</code>" property of the <code>DataFieldForIntentBasedNavigation</code> annotation. This
+					Boolean property accepts <code>true</code> / <code>false</code> / <code>path</code> and points to a property that
+					evaluates to <code>true/false</code>.</p>
+				<p>If the property points to a path, it can be a path to one of the following:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>the parent property, such as the header button in the object page, or the table button in the object page</p>
+					</li>
+					<li class="li">
+						<p>a same-level property</p>
+					</li>
+					<li class="li">
+						<p>a property from a 1:1 navigation entity set, such as a table toolbar button (this is supported only if
+								<code>requiresContext</code> is set to <code>true</code>), or an inline button</p>
+					</li>
+				</ul>
+				<p>If "<code>NavigationAvailable</code>" is defined as a path for a table toolbar button, the button is enabled only if at least
+					one context selected has the path evaluating to <code>true</code>. Only the selected contexts for which the path evaluates to
+						<code>true</code> are passed to the target application.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>SAP Fiori elements recommends not to use static <code>false</code> or <code>true</code> as a value for the
+									"<code>NavigationAvailable</code>" property. Static <code>false</code> results in the button always being
+								disabled, and static <code>true</code> is equal to not specifying anything.</p>
+						</li>
+						<li class="li">
+							<p>This feature is not applicable for charts and analytical tables.</p>
+						</li>
+					</ul>
+				<p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>XML
+					Annotation</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+    &lt;PropertyValue Property="SemanticObject" String="v4Freestyle"/&gt;
+    &lt;PropertyValue Property="Action" String="Inbound"/&gt;
+    &lt;PropertyValue Property="Label" String="IBN with context"/&gt;
+    &lt;PropertyValue Property="RequiresContext" Bool="true"/&gt;
+    &lt;PropertyValue Property="NavigationAvailable" Path="isDeletable"/&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CAP CDS
+					Annotation</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+        $Type           : 'UI.DataFieldForIntentBasedNavigation',
+        SemanticObject  : 'v4Freestyle',
+        Action          : 'Inbound',
+        Label           : 'IBN',
+        NavigationAvailable : isDeletable,
+        RequiresContext : false
+}</pre></div></section><p></p></div></div>
+			</section><section>
+				<h3 class="title ">Hiding Unwanted Actions from a Semantic Object</h3>
+				<p>You can hide actions on semantic objects through the <code>SemanticObjectUnavailableActions</code> settings defined with or
+					without a qualifier. Such actions are not displayed when the link (or quick view link) popover is shown.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="MyService.SalesOrderManage/SoldToParty"&gt;
+    &lt;Annotation Term="Common.SemanticObject" Qualifier="SalesOrder" String="SalesOrder"/&gt;
+    &lt;Annotation Term="Common.SemanticObjectMapping" Qualifier="SalesOrder"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="Common.SemanticObjectMappingType"&gt;
+                &lt;PropertyValue Property="LocalProperty" PropertyPath="SoldToParty"/&gt;
+                    &lt;PropertyValue Property="SemanticObjectProperty" String="SoldToParty"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+    ...
+    &lt;Annotation Term="Common.SemanticObjectUnavailableActions" Qualifier="SalesOrder"&gt;
+        &lt;Collection&gt;
+            &lt;String&gt;manageVM&lt;/String&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+    &lt;Annotation Term="Common.SemanticObjectUnavailableActions"&gt;
+        &lt;Collection&gt;
+            &lt;String&gt;manage&lt;/String&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+    ...
+    ...
+&lt;/Annotations&gt;</pre></div></section>
+				<p></p></div></div>
+				<p>This results in both the <code>analyze</code> and <code>manage</code> actions being hidden from the link popover of the
+						<code>OrderID</code> field. The other available actions from the <code>SalesOrder</code> entity set will be
+					displayed.</p>
+			</section><section>
+				<h3 class="title ">Additional Context During Outbound Navigation from Object Page or Subobject Page</h3>
+				<p>The page context that is passed will be augmented with the technical and semantic keys.</p>
+				<p>The page context will have all the information passed from the previous level - typically the object page, but it could also be a
+					parent level subobject page. The page context will, therefore, normally have all the visible fields (and values) that are bound to
+					the parent level page. In addition, the technical keys or semantic keys (or both) of the entity set (that is, the control from
+					where the navigation is triggered) are added to the page context together with the technical keys or semantic keys (or both) of
+					the 'parent' entity set. When you navigate away from the subobject page by means of <code>DataFieldForIBN</code>, for example,
+					the navigation context will also have the keys from the parent page (together with the keys from the subobject page data).</p>
+				<p>For example, when you navigate from the object page table into a subobject page, the table record context will include the keys of
+					the table entity set. In addition, the keys of the entity set from the object page header will also be part of the page context of
+					the subobject page.</p>
+				<p>The technical keys are always passed, since it is clear what the technical keys are from the metadata of the entity set. The
+					semantic keys are only passed if they are used by the application - in this case, they have to add annotations to mark the
+					semantic keys:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">Common: {
+        SemanticKey   : [SalesOrder]
+    }
+</pre></div></section>
+				<p></p></div></div>
+				<p>When there is a specific control level selection context, the merged context has both the parent-level context (Sales Order ID page
+					context) and the control-level context (Sales Order Item selection). If there is the same property at both parent level and the
+					entity set of the control, then the control level value will persist.</p>
+				<p>For example, if an object page header has "Location"="DE" and there is also the same "Location" property in the items table with
+					the value "JP", then the merged context that is passed will just have "Location"="JP". The header level "Location" is lost.</p>
+			</section></div></section><section id="section_acb_tbc_vlb"><h2 class="title ">Restrictions</h2><section>
+				<h3 class="title ">SAP Fiori elements for OData
+                            V2</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>When you specify a URL for external navigation, a <code>link</code>
+							control is rendered for the property on the list report or object page
+							only if it's in <span class="ph uicontrol">Display</span> mode.</p>
+					</li>
+					<li class="li">
+						<p>When using intent-based navigation for external navigation, a
+								<code>link</code> control is rendered for the property on the
+							list report or object page only if it's in
+								<span class="ph uicontrol">Display</span> mode.</p>
+					</li>
+				</ul>
+			</section><section>
+				<h3 class="title ">SAP Fiori elements for OData
+                            V4</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>For outbound navigation, if there is a filter bar and a filter field has
+							values with the operators <code>Not Equal To</code> or <code>Not
+								Empty</code>, then these fields are not transported to the target
+							application.</p>
+					</li>
+					<li class="li">
+						<p>Parameters are currently not supported.</p>
+					</li>
+					<li class="li">
+						<p>Values that belong to navigation entity sets are currently not
+							supported.</p>
+					</li>
+				</ul>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

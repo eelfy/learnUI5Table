@@ -1,0 +1,62 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"size": 1298,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"size": 482
+		},
+		{
+			"name": "UserDefaultsEntry-dbg.js",
+			"size": 4168,
+			"isDebug": true
+		},
+		{
+			"name": "UserDefaultsEntry.js",
+			"size": 1624
+		},
+		{
+			"name": "UserDefaultsForm-dbg.js",
+			"size": 4933,
+			"isDebug": true
+		},
+		{
+			"name": "UserDefaultsForm.js",
+			"size": 1995
+		},
+		{
+			"name": "controller/ExtendedValueDialog-dbg.controller.js",
+			"size": 4445,
+			"isDebug": true
+		},
+		{
+			"name": "controller/ExtendedValueDialog.controller.js",
+			"size": 1971
+		},
+		{
+			"name": "controller/UserDefaultsSetting-dbg.controller.js",
+			"size": 43787,
+			"isDebug": true
+		},
+		{
+			"name": "controller/UserDefaultsSetting.controller.js",
+			"size": 14369
+		},
+		{
+			"name": "manifest.json",
+			"size": 2184
+		},
+		{
+			"name": "view/ExtendedValueDialog.fragment.xml",
+			"size": 600
+		},
+		{
+			"name": "view/UserDefaultsSetting.view.xml",
+			"size": 1662
+		}
+	]
+}

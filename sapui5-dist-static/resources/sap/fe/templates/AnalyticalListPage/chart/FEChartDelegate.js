@@ -1,0 +1,1 @@
+sap.ui.define(["sap/fe/macros/ChartDelegate","sap/fe/macros/CommonHelper","sap/ui/fl/Utils","sap/fe/navigation/library"],function(B,C,f,n){"use strict";var a=Object.assign({},B);a.rebindChart=function(m,b){var i=m.getBindingContext("pageInternal");var t=i.getProperty(i.getPath()+"/alpContentView");if(!t||t!=="Table"){B.rebindChart(m,b);}};return a;},false);

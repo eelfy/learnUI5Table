@@ -1,0 +1,134 @@
+[
+	{
+		"name": "ChartDelegate",
+		"group": ["macros"],
+		"module": "./macros/ChartDelegate.qunit"
+	},
+	{
+		"name": "FormDelegate",
+		"group": ["macros"],
+		"module": "./macros/flexibility/FormDelegate.qunit"
+	},
+	{
+		"name": "FormElementTemplating",
+		"group": ["macros"],
+		"module": "./macros/FormElementTemplating.qunit"
+	},
+	{
+		"name": "FormTemplating",
+		"group": ["macros"],
+		"module": "./macros/FormTemplating.qunit"
+	},
+	{
+		"name": "FormHelper",
+		"group": ["macros"],
+		"module": "./macros/FormHelper.qunit"
+	},
+	{
+		"name": "FormContainerTemplating",
+		"group": ["macros"],
+		"module": "./macros/FormContainerTemplating.qunit"
+	},
+	{
+		"name": "FieldHelper",
+		"group": ["macros"],
+		"module": "./macros/FieldHelper.qunit"
+	},
+	{
+		"name": "CommonHelper",
+		"group": ["macros"],
+		"module": "./macros/CommonHelper.qunit"
+	},
+	{
+		"name": "MacroMetadata",
+		"group": ["macros"],
+		"loader": {
+			"paths": {
+				"sap/fe/macros/fragments": "test-resources/sap/fe/macros/qunit/macros/fragments"
+			}
+		},
+		"module": "./macros/MacroMetadata.qunit"
+	},
+	{
+		"name": "MicroChartHelper",
+		"group": ["macros"],
+		"module": "./macros/MicroChartHelper.qunit"
+	},
+	{
+		"name": "MicroChartContainer",
+		"group": ["macros"],
+		"module": "./macros/MicroChartContainer.qunit",
+		"sinon": true
+	},
+	{
+		"name": "PhantomUtil",
+		"group": ["macros"],
+		"module": "./macros/PhantomUtil.qunit"
+	},
+	{
+		"name": "SideEffect",
+		"group": ["macros"],
+		"module": "./macros/SideEffect.qunit"
+	},
+	{
+		"name": "TableHelper",
+		"group": ["macros"],
+		"module": "./macros/TableHelper.qunit"
+	},
+	{
+		"name": "TableRuntime",
+		"group": ["macros"],
+		"module": "./macros/TableRuntime.qunit"
+	},
+	{
+		"name": "ValueHelpTemplating",
+		"group": ["macros"],
+		"module": "./macros/ValueHelpTemplating.qunit"
+	},
+	{
+		"name": "FilterBarHelper",
+		"group": ["macros"],
+		"module": "./macros/FilterBarHelper.qunit"
+	},
+	{
+		"name": "TableDelegate",
+		"group": ["macros"],
+		"module": "./macros/TableDelegate.qunit"
+	},
+	{
+		"name": "TableHelperForTemplate",
+		"group": ["macros"],
+		"loader": {
+			"paths": {
+				"sap/fe/macros/fragments": "test-resources/sap/fe/macros/qunit/macros/fragments"
+			}
+		},
+		"module": "./macros/TableHelperTemplate.qunit",
+		"skip": true
+	},
+	{
+		"name": "MicroChartHelperForTemplate",
+		"group": ["macros"],
+		"module": "./macros/MicroChartHelperForTemplate.qunit"
+	},
+	{
+		"name": "FieldHelperForTemplate",
+		"group": ["macros"],
+		"module": "./macros/FieldHelperTemplate.qunit"
+	},
+	{
+		"name": "ChartHelperForTemplate",
+		"group": ["macros"],
+		"module": "./macros/ChartHelperTemplate.qunit"
+	},
+	{
+		"name": "ValueListHelper",
+		"group": ["macros"],
+		"module": "./macros/ValueListHelper.qunit"
+	},
+	{
+		"name": "FilterBarDelegate",
+		"group": ["macros"],
+		"module": "./macros/FilterBarDelegate.qunit"
+	}
+]

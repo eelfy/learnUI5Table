@@ -1,0 +1,152 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiob95adf3545fc4c578ca50d1ee3ec34a1" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting Texts in the Delete Dialog Box
+		(Object Page with Nested Smart Table)</h1><div class="fig"><h1 class="topictitle1 title">Adapting Texts in the Delete Dialog Box
+		(Object Page with Nested Smart Table)</h1><div class="shortdesc">You can adapt the text of the Delete dialog box that is
+		displayed when you delete items from nested smart tables on the object page.</div><section class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig">
+			<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div>
+			<p>On an object page with a nested smart table, you can choose the
+					<span class="ph uicontrol">Delete</span> button in the table toolbar to delete the selected
+				table items.</p>
+			<p>Perform these steps to be able to use the extension:</p>
+		</div></section><section class="section steps  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="fig">
+			<li class="step">
+				<span class="cmd">Register your extension with the app descriptor (manifest.json):</span>
+				<div class="itemgroup info">
+					<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"extends": {
+   "extensions": {
+      ... 
+      "sap.ui.controllerExtensions": {
+         ...
+         "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            ...
+            "controllerName": "MY_APP.ext.controller.DetailsExtension",
+            ...
+         }
+      } 
+      ...
+</pre></div></section>
+					<p></p></div></div>
+				</div>
+			</li>
+			<li class="step">
+				<span class="cmd">Maintain the controller extension files in your app:</span>
+				<div class="itemgroup info">
+					<div><div class="fig"><img src="loio318f52b49d144ccb85a056bcdbf7893c_LowRes.png" usemap="#"></div></div>
+				</div>
+			</li>
+			<li class="step">
+				<span class="cmd">The <span class="ph uicontrol">Delete</span> dialog box contains the following text:</span>
+				<div class="itemgroup info"><ul class="ul ">
+						<li class="li">
+							<p>title: always appears</p>
+						</li>
+						<li class="li">
+							<p>text: always appears</p>
+						</li>
+						<li class="li">
+							<p>undeletableText: appears only if one or more selected table items
+								cannot be deleted using the <code>deletablePath</code>
+								feature.</p>
+						</li>
+					</ul>Implement the <code>beforeLineItemDeleteExtension</code> function in
+					the controller extension file of the object page. You have several options to
+					determine the delete dialog:</div>
+				<div class="itemgroup info">
+					<ul class="ul ">
+						<li class="li">
+							<p>The easy way</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">beforeLineItemDeleteExtension: function(oBeforeLineItemDeleteProperties) {
+    if (oBeforeLineItemDeleteProperties.sUiElementId !== "My_APP::sap.suite.ui.generic.template.ObjectPage.view.Details::MY_EntitySet--to_NavProperty::com.sap.vocabularies.UI.v1.LineItem::Table") {
+        return;
+    }
+    var oMessageText = {
+        title: "My title";
+        text: "My text",
+        undeletableText: "My undeletable text"
+    };
+    return oMessageText;
+}
+</pre></div></section>
+							<p></p></div></div>
+						</li>
+						<li class="li">
+							<p>Using promises</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">beforeLineItemDeleteExtension: function(oBeforeLineItemDeleteProperties) {
+    if (oBeforeLineItemDeleteProperties.sUiElementId !== "My_APP::sap.suite.ui.generic.template.ObjectPage.view.Details::MY_EntitySet--to_NavProperty::com.sap.vocabularies.UI.v1.LineItem::Table") {
+        return;
+    }
+    var oMessageText = {
+        title: "My title";
+        text: "My text",
+        undeletableText: "My undeletable text"
+    };
+    return Promise.resolve(oMessageText);
+}
+</pre></div></section>
+							<p></p></div></div>
+						</li>
+						<li class="li">
+							<p>Using the <code>extensionAPI.SecuredExecution</code> (see also
+									<a href="#/topic/6a39150ad3e548a8b5304d32d560790a.html" title="The API for developers of extensions for SAP Fiori elements provides the securedExecution method that can be used for various purposes." class="sap-doc">Using the SecuredExecution Method</a>)</p>
+							<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+								</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">beforeLineItemDeleteExtension: function(oBeforeLineItemDeleteProperties) {
+    if (oBeforeLineItemDeleteProperties.sUiElementId !== "My_APP::sap.suite.ui.generic.template.ObjectPage.view.Details::MY_EntitySet--to_NavProperty::com.sap.vocabularies.UI.v1.LineItem::Table") {
+        return;
+    }
+    var oMessageText = {
+        title: "My title";
+        text: "My text",
+        undeletableText: "My undeletable text"
+    };
+    return this.extenionAPI.securedExecution(function() {
+        return new Promise(function(resolve) {
+            ...
+            resolve(oMessageText);
+            ...
+        });
+    });
+}
+</pre></div></section>
+							<p></p></div></div>
+						</li>
+					</ul>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The property <code>oBeforeLineItemDeleteProperties</code> contains
+						information about the selected items that are to be deleted from the nested
+						smart table. For example, <code>sUiElementId</code> identifies the UI
+						element (here, the nested smart table) from which something is to be
+						deleted.</p></div></div>
+				</div>
+				<div class="itemgroup info">
+					<p>
+						</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+							</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+						<p></p></div></div>
+					<p></p>
+				</div>
+			</li>
+		</ol></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

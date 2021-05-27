@@ -1,0 +1,29 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0715706772ed43f389d2ab9b381ef8ec" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">IDs in Declarative XML or HTML Fragments</h1><div class="fig"><h1 class="topictitle1 title">IDs in Declarative XML or HTML Fragments</h1><div class="shortdesc">If a fragment with a control ID is instantiated twice without giving an ID, a
+		duplicate ID error occurs.</div><p>Given the following XML fragment
+			example:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;HBox xmlns="sap.m"&gt;
+   &lt;Button                    text="Hello World" /&gt;
+   &lt;Button id="btnInFragment" text="Hello World" /&gt;
+&lt;/HBox&gt;</pre></div></section>The
+			first button will always have a generated ID, as, for instance,
+				<code>__button2</code>. This is regardless of how the fragment is instantiated
+			or whether it resides inside a view. <p></p><p>The second button will either have the ID <code>btnInFragment</code>, in case the fragment is instantiated without giving an ID. This
+			approach is easy to use, but implies the risk of ID collisions when instantiated multiple times:
+			</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(["sap/ui/core/Fragment"], function(Fragment){
+   Fragment.load({
+      name: "my.useful.UiPartZ",
+      type: "HTML"
+   }).then(function(oFragment){
+      // ...
+   }); // Button ID will not be prefixed
+});</pre></div></section><p></p><p>The other possible ID of the second button is <code>myFragment--btnInFragment</code>, in case the fragment is instantiated giving the ID
+				<code>myFragment</code>. You should not rely on the exact syntax of this prefixing.
+			</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.require(["sap/ui/core/Fragment"], function(Fragment){
+   Fragment.load({
+      name: "my.useful.UiPartZ",
+      id: "myFragment",
+      type: "HTML"
+   }).then(function(oFragment){
+      // ...
+   });
+});</pre></div></section><p></p><p>It is, however, possible that a containing view may add its prefix. For more information,
+			see <a href="#/topic/f10bf709b05f4adea8f8b8ad9a840247.html" title="For fragments that are used within declarative views, generated IDs are not prefixed." class="sap-doc">IDs of Fragments in Views</a>.</p><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

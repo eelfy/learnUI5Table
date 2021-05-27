@@ -1,0 +1,84 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof26d42bea11c4deda82c7a2e00c9bc05" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Variant Management in the Object Page</h1><div class="fig"><h1 class="topictitle1 title">Enabling Variant Management in the Object Page</h1><div class="shortdesc"> You can enable variant management in the object page.</div><section class="section context  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Context</h2></div><div class="fig"><p>You can enable variant management for tables in the object page. By default, variant management is not enabled.</p><p>In SAP Fiori Elements for OData V2, you can also enable variant management for
+				charts.</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Procedure for SAP Fiori Elements for OData V2</h3></div><div class="fig"><p>To enable variant management for all tables and charts on an object page, make these manifest settings on component level:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"component": {
+	"name": "sap.suite.ui.generic.template.ObjectPage",
+	"settings": {
+		"tableSettings": {
+			"variantManagement": true
+		},
+		"chartSettings": {
+			"variantManagement": true
+		}
+	}
+}
+</pre></div></section>
+					<p></p></div></div>
+				<p></p><p>You can enable variant management for a specific table on an object page by adding this manifest switch: </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"component": {
+	"name": "sap.suite.ui.generic.template.ObjectPage",
+	"settings": {
+		"sections": {
+			"to_ProductText::com.sap.vocabularies.UI.v1.LineItem ": {
+				"tableSettings": {
+					"variantManagement": true
+				}
+			}
+		}
+	}
+}
+</pre></div></section>
+					<p></p></div></div><p></p><p>You can enable variant management for a specific chart on an object page by adding this manifest switch:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"component": {
+	"name": "sap.suite.ui.generic.template.ObjectPage",
+	"settings": {
+		"sections": {
+			"to_ProductSalesData::com.sap.vocabularies.UI.v1.Chart ": {
+				"chartSettings": {
+					"variantManagement": true
+				}
+			}
+		}
+	}
+}
+</pre></div></section>
+					<p></p></div></div><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>When variant management is enabled, the selected variant is stored in the inner app state and restored. When you switch to a
+						different object, the default variant for that particular object is selected. </p>
+				<p></p></div></div></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">Procedure for SAP Fiori Elements for OData V4</h3></div><div class="fig"><p>To enable variant management for the object page, you must set it to <code>Control</code>.</p><p>You can turn the personalization on or off for each table individually, thereby also turning the variant management for that
+					control on or off.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage": {
+    "options": {
+        "settings": {
+            "variantManagement": "Control",                        
+            "controlConfiguration": {
+                "_Item/@com.sap.vocabularies.UI.v1.LineItem": {
+                    "tableSettings": {
+                        "personalization": {
+                            "column": true,
+                            "sort" : false
+                        }
+                    }
+                },
+                "_Partner/@com.sap.vocabularies.UI.v1.LineItem": {
+                    "tableSettings": {
+                        "personalization":
+                            "column": true,
+                            "sort" : false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section>
+				<p></p></div></div></div></section></div></section><section id="result_fxt_rnh_lkb" class="section result  "><div class="collapsible-icon sap-icon"><h2 class="sectiontitle tasklabel">Results</h2></div><div class="fig">Variant management is enabled for the selected control on the object page.</div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

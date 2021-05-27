@@ -1,0 +1,44 @@
+<mvc:View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="sap.ui.comp.sample.smartfilterbar.FiscalDates.SmartFilterBar" height="100%">
+
+	<VBox fitContainer="true">
+		<Button id="toggleUpdateMode" text="Change to 'LiveMode'" press="toggleUpdateMode"/>
+
+		<smartFilterBar:SmartFilterBar id="smartFilterBar" persistencyKey="UniqueAndStablePersistencyKey"
+			considerSelectionVariants="true" entitySet="LineItemsSet" enableBasicSearch="true" basicSearchFieldName="Bukrs">
+			<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_YEAR" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_PERIOD" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_YEAR_PERIOD" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_QUARTER" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_YEAR_QUARTER" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_WEEK" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_YEAR_WEEK" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FISCAL_DAY_OF_YEAR" visibleInAdvancedArea="true">
+				</smartFilterBar:ControlConfiguration>
+			</smartFilterBar:controlConfiguration>
+			<smartFilterBar:layoutData>
+				<FlexItemData shrinkFactor="0"/>
+			</smartFilterBar:layoutData>
+		</smartFilterBar:SmartFilterBar>
+
+		<smartTable:SmartTable id="smartTable" entitySet="LineItemsSet" smartFilterId="smartFilterBar" tableType="Table" enableAutoColumnWidth="true"
+			useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" header="Line Items" showRowCount="true">
+			<smartTable:layoutData>
+				<FlexItemData growFactor="1" baseSize="0%"/>
+			</smartTable:layoutData>
+		</smartTable:SmartTable>
+
+	</VBox>
+</mvc:View>

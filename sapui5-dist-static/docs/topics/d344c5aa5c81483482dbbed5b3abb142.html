@@ -1,0 +1,163 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod344c5aa5c81483482dbbed5b3abb142" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Table Groupings</h1><div class="fig"><h1 class="topictitle1 title">Table Groupings</h1><div class="shortdesc">SAP Fiori elements handle table groupings automatically.</div><p>The grouping of rows is supported in responsive tables
+				(<span class="ph sap-technical-name">sap.m.Table</span>) and analytical tables
+				(<span class="ph sap-technical-name">sap.ui.Table.AnalyticalTable</span>). Grid tables
+			and tree tables are not supported.</p><p>Table grouping of rows looks like this:</p><div><div class="fig"><img src="loiob36df776d0144730bd4ea415477f9009_LowRes.png" usemap="#"></div></div><section id="section_kqh_3yx_rgb">
+			<h2 class="title ">Grouping Header Text</h2>
+			<p>These group header formatters are automatically set by SAP Fiori elements:</p><ul class="ul ">
+					<li class="li">
+						<p>Responsive table: Set a grouping function on the sorter:
+								<span class="ph sap-technical-name">fnGroup of
+								sap.ui.model.Sorter</span>.</p>
+					</li>
+					<li class="li">
+						<p>Analytical table: Set property
+								<span class="ph sap-technical-name">groupHeaderFormatter</span> of
+								<span class="ph sap-technical-name">sap.ui.table.AnalyticalColumn</span>.</p>
+					</li>
+				</ul><p></p>
+		</section><section id="section_p32_5yx_rgb">
+			<h2 class="title ">Grouping Header Types</h2>
+			<p>SAP Fiori elements supports these group header formatters:</p>
+			<div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					
+					
+					
+					</tgroup><table border="1" id="table_qkn_bzx_rgb" class=" "><colgroup><col width="1"><col width="1"><col width="1"><col width="1"><col width="1"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">OData Type</th>
+							<th colspan="1" rowspan="1">SAP Display Format</th>
+							<th colspan="1" rowspan="1">OData Example</th>
+							<th colspan="1" rowspan="1">Unformatted</th>
+							<th colspan="1" rowspan="1">Formatted</th>
+							<th colspan="1" rowspan="1">Comments</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.DateTimeOffsetDate</td>
+							<td colspan="1" rowspan="1" valign="top">Date</td>
+							<td colspan="1" rowspan="1" valign="top">/Date(1485471600000 +0000)/</td>
+							<td colspan="1" rowspan="1" valign="top">Fri Jan 27 2017 00:00:00 GMT+0100 (Central European Standard
+								Time)</td>
+							<td colspan="1" rowspan="1" valign="top">Jan 26, 2017</td>
+							<td colspan="1" rowspan="1" valign="top">UTC</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.DateTimeOffset</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">/Date(1485471600000 +0000)/</td>
+							<td colspan="1" rowspan="1" valign="top">Fri Jan 27 2017 00:00:00 GMT+0100 (Central European Standard
+								Time)</td>
+							<td colspan="1" rowspan="1" valign="top">Jan 27, 2017, 12:00:00 AM</td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.DateTime</td>
+							<td colspan="1" rowspan="1" valign="top">Date</td>
+							<td colspan="1" rowspan="1" valign="top">/Date(1485471600000 +0000)/</td>
+							<td colspan="1" rowspan="1" valign="top">Fri Jan 27 2017 00:00:00 GMT+0100 (Central European Standard
+								Time)</td>
+							<td colspan="1" rowspan="1" valign="top">Jan 26, 2017</td>
+							<td colspan="1" rowspan="1" valign="top">UTC</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.DateTime</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">/Date(1485471600000 +0000)/</td>
+							<td colspan="1" rowspan="1" valign="top">Fri Jan 27 2017 00:00:00 GMT+0100 (Central European Standard
+								Time)</td>
+							<td colspan="1" rowspan="1" valign="top">Jan 27, 2017, 12:00:00 AM</td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.Time</td>
+							<td colspan="1" rowspan="1" valign="top">Time</td>
+							<td colspan="1" rowspan="1" valign="top">PT11H13M01S</td>
+							<td colspan="1" rowspan="1" valign="top">[object Object] is: {ms: 43980000, __edmType: "Edm.Time"}</td>
+							<td colspan="1" rowspan="1" valign="top">11:13:01 AM</td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.String</td>
+							<td colspan="1" rowspan="1" valign="top">Date</td>
+							<td colspan="1" rowspan="1" valign="top">20180313</td>
+							<td colspan="1" rowspan="1" valign="top">20180313</td>
+							<td colspan="1" rowspan="1" valign="top"> Mar 13, 2018 </td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.Boolean</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top"> true </td>
+							<td colspan="1" rowspan="1" valign="top">true</td>
+							<td colspan="1" rowspan="1" valign="top">Yes</td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.Decimal</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">10</td>
+							<td colspan="1" rowspan="1" valign="top">10</td>
+							<td colspan="1" rowspan="1" valign="top">10.000 m*</td>
+							<td colspan="1" rowspan="1" valign="top">Unit of measure</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.Decimal</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top"> 2498.00 </td>
+							<td colspan="1" rowspan="1" valign="top">2498.00</td>
+							<td colspan="1" rowspan="1" valign="top">2,498.00 EUR*</td>
+							<td colspan="1" rowspan="1" valign="top">Currency</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.String</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">m</td>
+							<td colspan="1" rowspan="1" valign="top">m</td>
+							<td colspan="1" rowspan="1" valign="top">Meter (m)*</td>
+							<td colspan="1" rowspan="1" valign="top">Unit of measure and TextArrangement</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">Edm.String</td>
+							<td colspan="1" rowspan="1" valign="top">
+							</td><td colspan="1" rowspan="1" valign="top">EUR</td>
+							<td colspan="1" rowspan="1" valign="top">EUR</td>
+							<td colspan="1" rowspan="1" valign="top">Euro (EUR)*</td>
+							<td colspan="1" rowspan="1" valign="top">Currency and TextArrangement</td>
+						</tr>
+					</tbody>
+				</table></div></div>
+			<p>* Units of measure or currencies in the grouping header are supported only in
+				responsive tables.</p>
+		</section><section id="section_nzy_r1y_rgb">
+			<h2 class="title ">Limitations</h2>
+			<p>For analytical tables, take the following limations into account:</p><ul class="ul ">
+					<li class="li">
+						<p>Grouping can only be activated for dimension columns.</p>
+					</li>
+					<li class="li">
+						<p>Grouping takes place on the server. The header formatter has no effect on
+							the grouping itself. This means that groups stay separate even if they
+							have the same header after formatting.</p>
+					</li>
+					<li class="li">
+						<p>The <code>TextArrangement</code> annotation is not supported. A property with a text
+							property is displayed as follows: “m – Meter”. For more information, see
+							the <span class="ph uicontrol">API Reference</span> for <a href="#/api/sap.ui.comp.smarttable.SmartTable/annotations/TextArrangement" title="#/api/sap.ui.comp.smarttable.SmartTable/annotations/TextArrangement" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable/annotations/TextArrangement"><code>TextArrangement</code></a>.</p>
+					</li>
+					<li class="li">
+						<p>Displaying values with units of measure is not supported.</p>
+					</li>
+				</ul>
+			<p></p>
+		</section><section>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+			<p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/demotiles/abap/customDemoTile/Component-h2-preload.js",
+"sourceroot":".",
+"sources":["Component-dbg.js","manifest.json"],
+"names":["UIComponent"],
+"mappings":";;AACA,gBAAa,sDAAC,CACV,yBACJ,EAAG,QAAS,CAACA,CAAW,CAAE,CACtB,aAKA,OAAOA,CAAW,6DAA8D,CAC5E,SAAU,CACN,SAAU,MACd,EAIA,cAAe,QAAS,EAAG,CACvB,OAAO,aACH,SAAU,0DACV,KAAM,6BAGN,SAAU,uBACd,GACJ,CACJ,GACJ;;;;;;;;;;;;",
+"x_com_sap_openui5_sections":[79,543,626,1427]
+}

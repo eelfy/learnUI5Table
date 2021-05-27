@@ -1,0 +1,1 @@
+sap.ui.define(["sap/fe/macros/filter/DraftEditState"],function(E){"use strict";return{All:E.ALL.id,Unchanged:E.UNCHANGED.id,OwnDraft:E.OWN_DRAFT.id,Locked:E.LOCKED.id,UnsavedChanges:E.UNSAVED_CHANGES.id};},true);

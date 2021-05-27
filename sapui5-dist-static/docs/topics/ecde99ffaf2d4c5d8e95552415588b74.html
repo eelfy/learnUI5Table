@@ -1,0 +1,46 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioecde99ffaf2d4c5d8e95552415588b74" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Card Filters</h1><div class="fig"><h1 class="topictitle1 title">Configuring Card Filters</h1><div class="shortdesc">You can add filters to all card types, by using the
+         com.sap.vocabularies.UI.v1.SelectionVariant annotation term or by passing
+      filter parameter in the URL.</div><section>
+			<p>The following example shows filter configuration in the annotation document. The record set is
+            filtered by the <code>TotalSum</code> property and returns values between 0 and
+            8000. You can provide multiple filters in the <code>SelectOptions</code>
+            collection.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.SelectionVariant" Qualifier="bubble"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="SelectOptions"&gt;
+            &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="PropertyName" PropertyPath="TotalSum" /&gt;
+               &lt;PropertyValue Property="Ranges"&gt;
+                  &lt;Collection&gt;
+                     &lt;Record&gt;
+                        &lt;PropertyValue Property="Sign"
+                           EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" /&gt;
+                        &lt;PropertyValue Property="Option"
+                           EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/BT" /&gt;
+                        &lt;PropertyValue Property="Low" String="0" /&gt;
+                        &lt;PropertyValue Property="High" String="8000" /&gt;
+                     &lt;/Record&gt;
+                  &lt;/Collection&gt;
+               &lt;/PropertyValue&gt;
+            &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+			<p></p></div></div>
+		</section><section>
+         <p>The preference for displaying the currency type is taken from the SAP Fiori Launchpad
+            user settings in the <code>DisplayCurrency</code> field of an application. You can
+            also set filters for SAP Fiori overview page by passing a filter paramter in the URL.
+            Applicable when you launch SAP Fiori overview pages  from SAP Fiori Launchpad or from
+            any other application with a filter parameter.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>You can only pass strings or
+               integers as filter parameters. The filter applies automatically if the filter
+               property exists in the entityset.</p></div></div> For example:
+            http://abc#Equipment-overviewPage?EquipmentNumber=123456<p></p>
+      </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

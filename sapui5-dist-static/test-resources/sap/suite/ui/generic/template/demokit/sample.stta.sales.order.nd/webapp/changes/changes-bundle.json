@@ -1,0 +1,39 @@
+[
+	{
+		"fileName": "id_1571034271718_200_propertyChange",
+		"fileType": "change",
+		"changeType": "propertyChange",
+		"reference": "STTA_SO_ND.Component",
+		"packageName": "$TMP",
+		"content": {
+			"property": "visible",
+			"newValue": "{ui>/editable}"
+		},
+		"selector": {
+			"id": "STTA_SO_ND::sap.suite.ui.generic.template.ObjectPage.view.Details::STTA_C_SO_SalesOrder_ND--template:::ObjectPageAction:::SaveAndEdit",
+			"type": "sap.m.Button",
+			"idIsLocal": false
+		},
+		"layer": "VENDOR",
+		"texts": {},
+		"namespace": "apps/STTA_SO_ND/changes/",
+		"creation": "2019-10-14T06:24:46.774Z",
+		"originalLanguage": "EN",
+		"conditions": {},
+		"context": "",
+		"support": {
+			"generator": "Change.createInitialFileContent",
+			"service": "",
+			"user": ""
+		},
+		"oDataInformation": {},
+		"dependentSelector": {},
+		"validAppVersions": {
+			"creation": "1.88.0",
+			"from": "1.88.0",
+			"to": "1.88.0"
+		},
+		"jsOnly": false,
+		"variantReference": ""
+	}
+]

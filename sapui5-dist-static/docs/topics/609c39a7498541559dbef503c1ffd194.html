@@ -1,0 +1,108 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio609c39a7498541559dbef503c1ffd194" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting the Filter Bar</h1><div class="fig"><h1 class="topictitle1 title">Adapting the Filter Bar</h1><div class="shortdesc">You can define application-specific selection fields by using
+			com.sap.vocabularies.UI.v1.SelectionFields and field groups for the
+		filter popup.</div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Field groups are used in the filter bar only to group the fields. The grouping can only be seen in the <span class="ph uicontrol">Adapt
+					Filters</span> popup. Any label specified in the annotations is used to override the property's default label.</p>
+			<p>To explicitly define which field groups are to be displayed in the <span class="ph uicontrol">Adapt Filters</span> popup, use the
+					<code>UI.FilterFacets</code> annotation. If you don’t define any field groups using the annotation, all field groups will be
+				displayed in the <span class="ph uicontrol">Adapt Filters</span> popup.</p>
+			<p>Each filter field will be displayed only once in the <span class="ph uicontrol">Adapt Filters</span> popup. If a single field is used in multiple
+				field groups, the field will be displayed in the last group to be processed and containing this field.</p>
+		<p></p></div></div><div><div class="fig"><img src="loio410e07f5bf9c4f84a01b9185b6566f83_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">List Report: Adapt Filters Popup</span></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>The <span class="ph uicontrol">Editing Status</span> filter is added automatically if you have a
+			draft service.</p></div></div><section id="section_obh_1xm_kmb"><h2 class="title ">Adding Filters</h2><p>Use
+					<code>com.sap.vocabularies.UI.v1.SelectionFields</code> to add filter fields
+				to the filter bar. Specify additional <code>PropertyPath</code> values as shown
+				in the code sample below.</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">XML
+					Annotation</h3></div><div class="fig"><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="SEPMRA_PROD_MAN.SEPMRA_C_PD_ProductType"&gt;
+	...
+	&lt;Annotation Term="UI.SelectionFields"&gt;
+		&lt;Collection&gt;
+			&lt;PropertyPath&gt;Price&lt;/PropertyPath&gt;
+			&lt;PropertyPath&gt;Supplier&lt;/PropertyPath&gt;
+		&lt;/Collection&gt;
+	&lt;/Annotation&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate view SEPMRA_C_PD_PRODUCT with {
+@UI.SelectionField: [
+  {
+    position: 1 ,
+    element: 'PRICE'
+  }
+]
+price;
+@UI.SelectionField: [
+  {
+    position: 2 ,
+    element: 'SUPPLIER'
+  }
+]
+supplier;
+}</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate SEPMRA_PROD_MAN.SEPMRA_C_PD_ProductType with @(
+  UI.SelectionFields : [
+    Price,
+    Supplier
+  ]
+);</pre></div></section></div></section><p><span class="emphasis">Setting Default Filter Value</span></p><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">
+					XML
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType/Supplier"&gt;
+    &lt;Annotation Term="Common.FilterDefaultValue" String="100000047"/&gt;
+&lt;/Annotations&gt;</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">ABAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">@Consumption.filter.defaultValue: '100000047'
+Supplier</pre></div></section></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">CAP CDS
+					Annotation</h3></div><div class="fig"><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">annotate STTA_PROD_MAN.STTA_C_MP_ProductType with (
+	@Common.FilterDefaultValue : '100000047'
+	Supplier
+};</pre></div></section></div></section><p></p></section><section id="section_spb_4vm_kmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>The below video shows the step-by-step procedure for adding a default
+				filter to the filter bar: 
+					
+					</p><div class="video-links-disclaimer"><span class="video-links-disclaimer-label">Disclaimer:</span>
+				The below video
+				<img class="link-external" title="Information published on non-SAP site" alt="Information published on non-SAP site">
+				is not part of the SAP product documentation. Please read the
+				<a href="http://help.sap.com/disclaimer?site=" target="_blank">legal disclaimer</a>
+				for video links before viewing this video.
+			</div><div class="videoMaxWidth" style="max-width: 448px;"><div class="videoWrapper" style="max-height: 252px"><iframe allowfullscreen="true" style="max-width: 448px; max-height: 252px" width="448" height="252" src="https://www.youtube.com/embed/Rx6Q_XvjrFQ"><span style="display: none;">Hidden</span></iframe></div></div>
+				<p></p><p>To set default filter value, refer <a href="#/topic/f27ad7bc1f9c4b0d947b1fb18c37e94c.html" title="You can set default filter values in list report applications, for example." class="sap-doc">Setting Default Filter Values</a>.</p><p>For more information
+				about the smart filter bar, see <a href="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar" title="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar" class="sap-doc" alt="#/api/sap.ui.comp.smartfilterbar.SmartFilterBar">SmartFilterBar</a>.</p></div></section><section id="section_q5m_cnn_d4b" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The filter bar only shows filter fields defined via the
+					<code>@com.sap.vocabularies.UI.v1.SelectionFields</code> annotation.
+				Additional fields available for adaptation are all direct simple properties of the
+				current entity type.</p><section>
+				<h3 class="title ">Navigation Properties</h3>
+				<p>To include navigation properties for filtering you can directly define them
+					within the same annotation so that they will appear as filter fields in the
+					filter bar. To add further filter fields to the adaptation, you can use the
+						<code>navigationProperties</code> setting. It is an array of
+					(navigation) property paths relative to the current entity type. If the path
+					points to a navigation property or a complex property, all simple properties of
+					that type are added to the adaptation. If the path points to a simple property,
+					then only this field will become available as a filter field.</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">navigationProperties:  [ "_DistributionChannel", "_Partner/FullName" ]</pre></div></section>
+				<p></p></div></div>
+				<ul class="ul ">
+					<li class="li">
+						<p>all properties of the navigation type
+								<code>_DistributionChannel</code> will be added to the filter
+							adaptation (unless they are marked as <code>Hidden</code> or
+								<code>HiddenFilter</code>)</p>
+					</li>
+					<li class="li">
+						<p>the single property <code>FullName</code> of the
+								<code>Partner</code> association will be added to the filter
+							adaptation (unless it is marked as <code>Hidden</code> or
+								<code>HiddenFilter</code>)</p>
+					</li>
+				</ul>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/7bcdffc056a94731b4341db73251e32b.html" title="The sap.ui.comp.smartfilterbar.SmartFilterBar control analyzes the $metadata document of an OData service and renders a FilterBar control that can be used to filter, for example, a table or a chart." class="sap-doc">Smart Filter Bar</a></li>
+		<li><a href="#/topic/3cdebeebb04b4205908140242c9d6817.html" title="To enable the search function, sap:searchable must be set to true for the root entity set." class="sap-doc">Enabling the Search Function</a></li>
+		<li><a href="#/topic/fef65d03d01a4b2baca28983a5449cf7.html" title="You can use semantic date ranges, such as Today or Last Week, on the filter bar of list report and analytical list report applications." class="sap-doc">Enabling Semantic Date Range on Filter Bar</a></li>
+	</ul></section></div></section></div></body></html>

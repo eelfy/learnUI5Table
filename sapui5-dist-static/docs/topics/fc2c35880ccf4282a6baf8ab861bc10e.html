@@ -1,0 +1,110 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofc2c35880ccf4282a6baf8ab861bc10e" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 1: Creating the Initial App</h1><div class="fig"><h1 class="topictitle1 title">Step 1: Creating the Initial App</h1><div class="shortdesc">In this step, we set up the initial app.</div><section id="section_ed2_4dd_lbb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Preview</h2></div><div class="fig"><div><div class="fig"><img src="loio60e42c87d9494360a64017fc16d8bbcb_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">The worklist app</span></div></div></section><section id="section_cnf_d4b_l4b">
+			<h2 class="title ">Setup</h2>
+			<p>To set up your project for this tutorial, download the files for <span class="ph uicontrol">Step 1</span>
+				from the <span class="ph uicontrol">Samples</span> in the Demo Kit at <a href="#/entity/sap.m.tutorial.worklist/sample/sap.m.tutorial.worklist.01" title="#/entity/sap.m.tutorial.worklist/sample/sap.m.tutorial.worklist.01" class="sap-doc" alt="#/entity/sap.m.tutorial.worklist/sample/sap.m.tutorial.worklist.01">Worklist App - Step 1</a>. The code
+				contains a preconfigured application project that can be used as a starting point to
+				develop the worklist app. You can deploy the downloaded application to a (local) Web
+				server and call the <code>webapp/test/mockServer.html</code> file in your
+				browser manually to start the app.</p>
+			<p>To access the real service, you would need to set up a proxy service that connects
+				your app project deployed on a Web server to the remote service. Due to the so
+				called same-origin policy browsers deny AJAX requests to service endpoints in case
+				the domain/subdomain, protocol, or port differ from the app’s domain/subdomain,
+				protocol, or port. Cross-origin resource sharing (CORS) makes it possible to break
+				out of these restrictions derived from the same-origin policy. With CORS the server
+				and browser agree which cross-origin requests are allowed. Another way to bypass the
+				same-origin policy is using a proxy on the same host of the app. To keep it simple,
+				our app contains a test page to run the app with local mock data instead of
+				retrieving the data from a real server hosted somewhere else. This way we won’t have
+				any issues related to the same-origin policy of the browsers, as long as we run the
+				app with our mock server.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>The texts in the <code>i18n.properties</code> file are automatically
+					generated based on the template Customizing (OData entity set, entities,
+					properties, and texts). The result can be incorrect texts like "Enter an
+					&lt;Products&gt; name or a part of it." You should therefore revise the
+					generated texts in the <code>i18n.properties </code> file.</p>
+			<p></p></div></div>
+		</section><section id="section_iyw_fnp_l4b">
+			<h2 class="title ">Structure</h2>
+			<p>With the downloaded code from the Demo Kit, you have an initial app structure with
+				the following content inside the <code>webapp</code> folder:</p>
+			<div><div class="fig"><img src="loio7f6899e87d8240d5bd3fc8594e148714_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Folder structure of the initial project</span></div>
+			<ul class="ul ">
+				<li class="li">
+					<p><span class="emphasis">Home Page</span>
+							(<code>webapp/view/Worklist.view.xml</code> file)</p>
+					<p>The home page of the app shows a table of products including the
+						corresponding number of units in the stock. The title of the table shows how
+						many items are available. A search field in the header toolbar of the table
+						allows you to search for a product by name. Pressing a table row navigates
+						the user to a new page that shows the details of the pressed product.</p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">Data</span></p>
+					<p>You can run the app with the real service or with the mock server serving
+						mock data. In the <code>webapp/localService/mockserver.js</code>
+						file, the mock server is configured. Using the mock server in this tutorial
+						allows us to easily run the code even without network connection and without
+						the need of having a remote server for our application data. To run the app
+						with the mock server and its corresponding mock data the
+							<code>/webapp/test/mockServer.html</code> file has to be called
+						in the browser. </p>
+					<p>The <code>webapp/localService/metadata.xml</code> file is used by the
+						mock server to describe our OData service. In this step, the mock server
+						will generate mock data based on this file. In a subsequent step the mock
+						server will use our own custom mock data.</p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">Configuration of the App</span></p>
+					<p>In the <code>webapp/manifest.json</code> descriptor file, we configure our app. The
+						descriptor file contains the following relevant sections: </p><ul class="ul ">
+							<li class="li">
+								<p><code>sap.app</code></p>
+								<p>In this section we reference an
+										<code>i18n.properties</code> file and use a special
+									syntax to bind the texts for the title and description
+									properties. In the <code>dataSources</code> section, we tell
+									our app where to find our <code>mainService</code> OData
+									service. As you might guess, the URI correlates to the
+										<code>rootUri</code> of our mock server instance, which
+									can be found in
+										<code>webapp/localService/mockserver.js</code>. It is
+									important that these two paths match to allow our mock server to
+									provide the test data we defined above.</p>
+							</li>
+							<li class="li">
+								<p><code>sap.ui5</code></p>
+								<p>In the <code>sap.ui5</code> section, we declare with the
+										<code>rootView</code> parameter that our
+										<code>mycompany.myapp.MyWorklistApp.view.App</code> view
+									shall be loaded and used as the <code>rootView</code> for
+									our app.</p>
+								<p>Furthermore, we define two models to be automatically
+									instantiated and bound to the component: an
+										<code>i18n</code> model and a default model
+										<code>""</code>. The latter references our
+										<code>mainService</code>
+									<code>dataSource</code>, which is declared in our
+										<code>sap.app</code> section as an OData 2.0 data
+									source. The <code>i18n</code> file can be found at
+										<code>webapp/i18n/i18n.properties</code>. The
+										<code>mainService</code> data source will be mocked by
+									our mock server.</p>
+							</li>
+						</ul><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>There is a <code>test.html</code> file in the
+								<code>webapp</code> folder. This file serves as an easy
+							entry point for developers to run and test the app in various ways
+							during development. It contains links to the relevant files inside the
+								<code>test</code> folder, which you can use to run with the
+							Mock Server or to run unit tests and OPA tests.</p></div></div><p></p>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/6a6a621c978145ad9eef2b221d2cf21d">Worklist App</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/311890311f7148adbfbf248a6980df1c">Step 2: Custom Mock Data</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/a460a7348a6c431a8bd967ab9fb8d918.html" title="The app templates documented here are a kind of &quot;best practice&quot; for your app development." class="sap-doc">App Templates: Kick Start Your App Development</a></li>
+		<li><a href="#/topic/003f755d46d34dd1bbce9ffe08c8d46a.html" title="The details described here represent a best practice for structuring an application that features one component, one OData service and less than 20 views. If you're building an app that has more components, OData services and views, you may have to introduce more folder levels than described here." class="sap-doc">Folder Structure: Where to Put Your Files</a></li>
+	</ul></section></div></section></div></body></html>

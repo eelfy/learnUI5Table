@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"sap/ushell/demotiles/cdm/newstile/Component-h2-preload.js",
+"sourceroot":".",
+"sources":["Component-dbg.js","manifest.json"],
+"names":["UIComponent","bNewVisibility","oNewVisualProperties","oTile","oView"],
+"mappings":";;;;AACA,WAAY,CACZ,aAGA,kEAEA,eACe,yBACX,EAAG,SAASA,CAAW,CAAE,CACrB,OAAOA,CAAW,sDAAuD,CACrE,QAAS,CAAE,CACP,WAAY,MAChB,EAGA,cAAe,CAAE,SAASC,CAAc,CAAE,CAI1C,EAGA,WAAY,CAAE,UAAW,CAErB,2CACJ,EAGA,uBAAwB,CAAE,SAASC,CAAoB,CAAE,CAGzD,EAEA,aAAc,CAAE,UAAW,CACvB,IAAIC,CAAM,CAAE,aACR,QAAS,CAAE,6CACX,IAAK,CAAE,4BACP,MAAO,IACX,GAEAA,CAAK,uBAAwB,CAACC,CAAK,CAAE,CACjC,gBAAiB,CAAED,CAAK,iBAC5B,cAEA,OAAOA,CAAK,CAChB,CACJ,GACR,GACA;;;;;;;;;",
+"x_com_sap_openui5_sections":[147,830,883,2283]
+}

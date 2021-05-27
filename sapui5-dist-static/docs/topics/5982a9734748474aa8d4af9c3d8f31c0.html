@@ -1,0 +1,84 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio5982a9734748474aa8d4af9c3d8f31c0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">SAPUI5 vs. OpenUI5</h1><div class="fig"><h1 class="topictitle1 title">SAPUI5 vs. OpenUI5</h1><div class="shortdesc">With SAPUI5 and OpenUI5 we provide two deliveries of
+		our UI development toolkit. Both are very closely related, but have their
+		differences.</div><section>
+			<h2 class="title ">Licenses</h2>
+			<p>The main difference is the license.</p>
+			<p><span class="emphasis">OpenUI5</span> is Open Source, free to use, released under the Apache 2.0
+				license. Since we also use many Open Source libraries, we try to return the favor
+				and also benefit from the experience and knowledge of developers all over the
+				world.</p>
+			<p><span class="emphasis">SAPUI5</span>
+				is not a separate SAP product with a separate license. It's integrated, for example,
+				in the following products:</p><ul class="ul ">
+					<li class="li">
+						<p>SAP HANA</p>
+					</li>
+					<li class="li">
+						<p>SAP Business Technology Platform</p>
+					</li>
+					<li class="li">
+						<p>
+							SAP NetWeaver 7.4 or
+							higher (included in the UI technologies
+								(<span class="ph sap-technical-name">SAP_UI</span>) component)</p>
+					</li>
+					<li class="li">
+						<p>User interface add-on for SAP NetWeaver Application Server
+                                7.3x</p>
+					</li>
+				</ul><p></p>
+		</section><section>
+			<h2 class="title ">Content</h2>
+			<p>The easiest way to get an overview of which libraries are delivered is to have a look
+				at the <span class="ph uicontrol">API Reference</span> of the each Demo Kit. You'll see that
+				the list of libraries in SAPUI5 is much longer...
+				which in no way means that OpenUI5 provides just a very
+				limited scope!</p>
+			<p>Most importantly, the core containing all central functionality and the most commonly
+				used control libraries is identical in both deliveries. (For example,
+					<code>sap.m</code>, <code>sap.ui.layout</code>,
+					<code>sap.ui.unified</code>.)</p>
+			<p>So OpenUI5 also gives you
+				all the important features needed to build feature-rich Web applications.</p>
+			<p>The additional libraries in SAPUI5 include more controls
+				on top, like charts, and SAPUI5 also lets you use
+				'smart controls', for example, which are controls that are automatically configured
+				by OData annotations from the back end. The exact feature range of SAPUI5 also depends on the
+				platform you're using. For example, you can only use the ABAP repository with SAP NetWeaver and not on SAP Business Technology Platform.</p>
+		</section><section>
+			<h2 class="title ">Contributing to OpenUI5</h2>
+			<p>OpenUI5 is Open Source, and
+				is available on <a href="https://github.com/SAP/openui5/" title="https://github.com/SAP/openui5/" class="external-link" target="_blank" rel="noopener">GitHub</a>.</p>
+			<p>If you find a bug or have an idea for a new feature - just go ahead and propose a
+				GitHub issue or a change. But before you do so, please just read our guidelines
+				first: <a href="https://github.com/SAP/openui5/blob/master/CONTRIBUTING.md" title="https://github.com/SAP/openui5/blob/master/CONTRIBUTING.md" class="external-link" target="_blank" rel="noopener">Contributing to OpenUI5</a>.</p>
+		</section><section>
+			<h2 class="title ">Resources</h2>
+			<p>For the OpenUI5 version,
+				visit <a href="http://openui5.org/" title="http://openui5.org/" class="external-link" target="_blank" rel="noopener">http://openui5.org/</a> where you can download the runtime and the Demo Kit (SDK) at <a href="http://openui5.org/download.html" title="http://openui5.org/download.html" class="external-link" target="_blank" rel="noopener">http://openui5.org/download.html</a>.</p>
+			<p>For the SAPUI5 resources,
+				check your platform installation. </p>
+			<p>Both resources are also available online via the content delivery network provider
+				Akamai at <code>https://openui5.hana.ondemand.com/</code> and
+					<code>https://sapui5.hana.ondemand.com/</code>.</p>
+		</section><section>
+			<h2 class="title ">Compatibility of OpenUI5 and SAPUI5</h2>
+			<p>Technically, you can switch between OpenUI5 and SAPUI5 (providing you have
+				the respective license), e.g. if you want to use the SAPUI5-specific features.</p>
+			<p>Just check first which SAPUI5 version you need, because the version numbers of OpenUI5 and SAPUI5 might differ on patch
+				level (last number). You can find this information in the technical information
+				dialog (<span class="keys">
+					<span class="keyWrap"><kbd class="key">Ctrl</kbd></span>
+					<span class="keyWrap"><kbd class="key">Alt</kbd></span>
+					<span class="keyWrap"><kbd class="key">Shift</kbd></span>
+					<span class="keyWrap"><kbd class="key">P</kbd></span>
+				</span>).</p>
+			<p>If you're using the content delivery network, you can simply replace the
+				bootstrapping reference to
+					<code>https://openui5.hana.ondemand.com/&lt;1.xx.yy&gt;/</code> with a
+				reference to <code>https://sapui5.hana.ondemand.com/&lt;1.xx.zz&gt;/</code>. For
+				more information, see <a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a>.</p>
+			<p>For all other cases, replace the runtime. Since the technical names (of controls,
+				libraries, etc.) and APIs are the same in both OpenUI5 and SAPUI5, the code will still
+				work and you can start enhancing it directly.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

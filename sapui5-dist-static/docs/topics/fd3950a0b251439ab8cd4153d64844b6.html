@@ -1,0 +1,64 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofd3950a0b251439ab8cd4153d64844b6" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Buttons to Display Draft / Saved Values</h1><div class="fig"><h1 class="topictitle1 title">Enabling Buttons to Display Draft / Saved Values</h1><div class="shortdesc">In the list report and on the object page, you can enable buttons to display and hide
+		draft values. </div><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+			</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+			"_version": "1.3.0",
+			"settings": {
+				"showDraftToggle": true,
+			}
+}, </pre></div></section>
+		<p></p></div></div><p>By default, these buttons are hidden. To enable them, set the
+				<code>showDraftToggle</code> flag to <code>True</code> in the
+			manifest.json.</p><p>In the list report table toolbar, this enables the <span class="ph uicontrol">Hide Draft
+				Values</span> / <span class="ph uicontrol">Show Draft Values</span> button. In the object
+			page header, this enables the <span class="ph uicontrol">Display Saved Version</span> /
+				<span class="ph uicontrol">Return to Draft</span> button for your draft-enabled
+			applications.</p><p>In the list report, the <span class="ph uicontrol">Hide Draft Values</span> / <span class="ph uicontrol">Show Draft
+				Values</span> button is enabled only if the <span class="ph uicontrol">Editing
+				Status</span> in the list report filterbar is set to
+			<span class="ph uicontrol">All</span>. Using this button, users can view the saved / active
+			versions of entities if there are any. They can switch back to displaying the modified
+			draft version using the <span class="ph uicontrol">Show Draft Values</span> button </p><p>On the object page, users see the <span class="ph uicontrol">Display Saved Version</span> /
+				<span class="ph uicontrol">Return to Draft</span> button when someone lands on their draft.</p><p>The following tables show the system behavior for list report and object
+				page:</p><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_sxq_dv4_vgb" class=" "><thead>
+					<tr><th colspan="1" rowspan="1">Mode switch in list report</th>
+					<th colspan="1" rowspan="1">In list report</th>
+					<th colspan="1" rowspan="1">When navigating to object page</th>
+					<th colspan="1" rowspan="1">Navigation back to list report</th>
+				</tr></thead><tbody><tr>
+					<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Hide Draft Values</span></td>
+					<td colspan="1" rowspan="1" valign="top">Only saved objects are displayed in the list report table</td>
+					<td colspan="1" rowspan="1" valign="top">Saved object is displayed with<span class="ph uicontrol"> Return to Draft</span>
+						button if a draft exists for this object.</td>
+					<td colspan="1" rowspan="1" valign="top">Only saved objects are displayed in the list report table</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Show Draft Values</span></td>
+					<td colspan="1" rowspan="1" valign="top">Saved and draft objects are displayed in the list report
+						table</td>
+					<td colspan="1" rowspan="1" valign="top">Object page opens in edit mode for drafts with <span class="ph uicontrol">Display Saved
+							Version</span> button</td>
+					<td colspan="1" rowspan="1" valign="top">Saved and draft objects are displayed in the list report
+						table</td>
+				</tr></tbody></table></div></div><div class="tableWrapper "><div class="fig"><table border="1" id="simpletable_vsg_rv4_vgb" class=" "><thead>
+					<tr><th colspan="1" rowspan="1">Mode switch on object page</th>
+					<th colspan="1" rowspan="1">On object page</th>
+					<th colspan="1" rowspan="1">Navigation back to list report</th>
+				</tr></thead><tbody><tr>
+					<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Display Saved Version</span></td>
+					<td colspan="1" rowspan="1" valign="top">Saved version of record with <span class="ph uicontrol">Return to Draft</span>
+						button</td>
+					<td colspan="1" rowspan="1" valign="top">State of <span class="ph uicontrol">Hide / Show Draft</span> button preserved from
+						when the user last navigated from list report</td>
+				</tr><tr>
+					<td colspan="1" rowspan="1" valign="top"><span class="ph uicontrol">Return to Draft</span></td>
+					<td colspan="1" rowspan="1" valign="top">Object page opens in edit mode with <span class="ph uicontrol">Display Saved
+							Version</span> button</td>
+					<td colspan="1" rowspan="1" valign="top">State preserved of <span class="ph uicontrol">Hide / Show Draft</span> button from
+						when the user last navigated from list report</td>
+				</tr></tbody></table></div></div><p></p><div><div class="fig"><img src="loioced98c07b5de4e9f9de308c5d91ddbfe_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">List report - all items are shown</span></div><div><div class="fig"><img src="loio0635819529f141b6a6e712d20b3bc2d9_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">List report - only saved versions of the items are shown</span></div><div><div class="fig"><img src="loio455364d0ba854a11979056b6d44662c0_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object page - saved version of the object shown in read mode</span></div><div><div class="fig"><img src="loio22e272d8e87b444f9c0608e884b43aae_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Object page - draft version of the object is shown</span></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

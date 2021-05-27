@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<control xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>ui/footerbar/AddBookmarkButton</name>
+    <derived/>
+    <documentation>Clicking the button opens a dialog box allowing the user to save the app state,
+  so that the app can be launched in this state directly from the launchpad.</documentation>
+    <baseType>sap.m/Button</baseType>
+    <properties>
+        <property name="beforePressHandler" type="sap.ui.core/any" group="Misc">
+            <documentation>A callback function that is called before the save-as-tile dialog is opened.</documentation>
+        </property>
+        <property name="afterPressHandler" type="sap.ui.core/any" group="Misc">
+            <documentation>A callback function that is called after the save-as-tile dialog is closed.</documentation>
+        </property>
+        <property name="title" type="sap.ui.core/string" group="Misc">
+            <documentation>Title to be displayed on the tile.</documentation>
+        </property>
+        <property name="subtitle" type="sap.ui.core/string" group="Misc">
+            <documentation>Subtitle to be displayed below the tile title.</documentation>
+        </property>
+        <property name="info" type="sap.ui.core/string" group="Misc">
+            <documentation>Text to be displayed at the bottom of the tile.</documentation>
+        </property>
+        <property name="tileIcon" type="sap.ui.core/string" group="Appearance">
+            <documentation>Icon to be displayed in the Tile.</documentation>
+        </property>
+        <property name="numberUnit" type="sap.ui.core/string" group="Appearance">
+            <documentation>For dynamic tile, the unit to be displayed below the number, for example, USD.</documentation>
+        </property>
+        <property name="keywords" type="sap.ui.core/string" group="Misc">
+            <documentation>The keywords based on which the future tile should be indexed and filtered.</documentation>
+        </property>
+        <property name="customUrl" type="sap.ui.core/any" group="Misc">
+            <documentation>A customized target URL for the tile.</documentation>
+        </property>
+        <property name="serviceUrl" type="sap.ui.core/any" group="Misc">
+            <documentation>URL of an OData service from which data for a dynamic tile should be read.</documentation>
+        </property>
+        <property name="serviceRefreshInterval" type="sap.ui.core/string" group="Misc">
+            <documentation>Number of seconds after which dynamic content is read from the data source and the display is refreshed.</documentation>
+        </property>
+        <property name="showGroupSelection" type="sap.ui.core/boolean" defaultValue="true" group="Misc">
+            <documentation>Whether to display the control for group selection in the save-as-tile dialog in launchpad homepage mode.</documentation>
+        </property>
+        <property name="showPageSelection" type="sap.ui.core/boolean" defaultValue="true" group="Misc">
+            <documentation>Whether to display the control for page selection in the save-bookmark dialog in launchpad spaces mode.</documentation>
+        </property>
+        <property name="appData" type="sap.ui.core/object" group="Misc">
+            <documentation>An object containing properties with information about the app, e.g. serviceUrl, numberUnit, ... .</documentation>
+            <deprecation>use dedicated properties above instead</deprecation>
+        </property>
+    </properties>
+</control>

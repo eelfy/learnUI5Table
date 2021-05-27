@@ -1,0 +1,59 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiof3cc057e405c4fd58ee2ed42c557797c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Using the Condensed Table Layout </h1><div class="fig"><h1 class="topictitle1 title">Using the Condensed Table Layout </h1><div class="shortdesc">You can set the content density to condensed for
+			ui.table on the list report and object page applications.</div><p>To do so, in the manifest.json under the relevant section, set <span class="ph sap-technical-name">"condensedTableLayout" : true</span>. Make
+			this setting for the section in which you want the UI table to adapt the condensed style.</p><p>SAP Fiori Elements for OData V2</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Object Page
+			Table</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"ObjectPage|STTA_C_MP_Product": {
+                                        "entitySet": "STTA_C_MP_Product",
+                                        "component": {
+                                               "name": "sap.suite.ui.generic.template.ObjectPage",
+                                               "settings": {
+                                                     "sections": {
+                                                             "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+                                                                   "condensedTableLayout": true,
+                                                            }
+                                                     }
+                                               }
+                                        }
+</pre></div></section><p></p></div></div><p>SAP Fiori Elements for OData V4</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Object Page
+			Table</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPageCondensedTable": {
+	"type": "Component",
+	"id": "SalesOrderManageObjectPage",
+	"name": "sap.fe.templates.ObjectPage",
+	"options": {
+		"settings": {
+			"entitySet": "SalesOrderManage",
+			...
+			},
+			"controlConfiguration": {
+				"_Item/@com.sap.vocabularies.UI.v1.LineItem": {
+					"tableSettings": {
+						"type": "GridTable",
+						"condensedTableLayout": true,
+					}
+				}
+			}
+		}
+}</pre></div></section><p></p></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><ul class="ul ">
+				<li class="li">
+					<p>On an object page, the <span class="ph sap-technical-name">condensedTableLayout</span> class can be set only if there is just one
+						section that contains only UI.table or if the icon tab bar is used for navigation between sections, and any section has only
+						one table in it. Otherwise, the class is not applied for <code>ui.table</code> even if the manifest key is set to
+						true.</p>
+				</li>
+				<li class="li">
+					<p>The app needs to run in compact mode. If it runs in cozy mode, the class is not set, even if the manifest key is set to
+						true.</p>
+				</li>
+				<li class="li">
+					<p>Condensed mode can only be applied to <code>ui.table</code>.</p>
+				</li>
+			</ul>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/e54f729da8e3405fae5e4fe8ae7784c1.html" title="The devices used to run apps that are developed with SAPUI5 run on various different operating systems and have very different screen sizes. SAPUI5 contains different content densities for certain controls that allow your app to adapt to the device in question, allowing you to display larger controls for touch-enabled devices and a smaller, more compact design for devices that are operated by mouse." class="sap-doc">Content Densities</a></li>
+	</ul></section></div></section></div></body></html>

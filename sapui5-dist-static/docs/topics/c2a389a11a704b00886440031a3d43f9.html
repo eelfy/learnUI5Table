@@ -1,0 +1,117 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc2a389a11a704b00886440031a3d43f9" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Data Points</h1><div class="fig"><h1 class="topictitle1 title">Data Points</h1><p>A data point represents a single point of data. It is typically a number but can also be textual, for example, a status value.</p><section><p>The image below shows the data points <span class="ph uicontrol">Price</span> and <span class="ph uicontrol">Availability</span> in the object page
+				header.</p><div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio6eac05c6fd7f460ea85c495b4778c1aa_LowRes.png"></div></div><span class="collapsible-icon sap-icon figcap title">Object Page: DataPoints</span></div><p>This video shows the step-by-step procedure for adding a data point header to an object page:</p>
+			
+				
+				<div class="video-links-disclaimer"><span class="video-links-disclaimer-label">Disclaimer:</span>
+				The below video
+				<img class="link-external" title="Information published on non-SAP site" alt="Information published on non-SAP site">
+				is not part of the SAP product documentation. Please read the
+				<a href="http://help.sap.com/disclaimer?site=" target="_blank">legal disclaimer</a>
+				for video links before viewing this video.
+			</div><div class="videoMaxWidth" style="max-width: 448px;"><div class="videoWrapper" style="max-height: 252px"><iframe allowfullscreen="true" style="max-width: 448px; max-height: 252px" width="448" height="252" src="https://www.youtube.com/embed/iyqgYe40A9E"><span style="display: none;">Hidden</span></iframe></div></div>
+			</section><section>
+			<h2 class="title ">Code Samples</h2>
+			<p><span class="emphasis">UI.Reference Facet</span></p>
+			<p>If you add a <code>UI.ReferenceFacet</code> that points to <code>UI.DataPoint</code>, the title and value of the
+					<code>UI.DataPoint</code> will be rendered.</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.HeaderFacets"&gt;
+    &lt;Collection&gt;
+        ...
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Price" /&gt;
+        &lt;/Record&gt;
+        ...
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="to_StockAvailability/@UI.DataPoint#StockAvailability" /&gt;
+        &lt;/Record&gt;
+        ...
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+			<p><span class="emphasis">UI.DataPoint</span></p>
+			<p>Each <code>UI.DataPoint</code> annotation term must point to a qualifier, as shown below:</p>
+			<section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Price"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Value" Path="Price" /&gt;
+        &lt;PropertyValue Property="Title" String="Price" /&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+
+&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_StockAvailabilityType"&gt;
+    &lt;Annotation Term="UI.DataPoint" Qualifier="StockAvailability"&gt;
+        &lt;Record&gt;
+            &lt;PropertyValue Property="Value" Path="StockAvailability" /&gt;
+            &lt;PropertyValue Property="Title" String="Availability" /&gt;
+            &lt;PropertyValue Property="Criticality" Path="StockAvailability" /&gt;
+        &lt;/Record&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+			
+		</section><section id="section_nxh_l5t_dnb">
+			<h2 class="title ">Numerical Data Points</h2>
+			<p>For numerical data points, you can override the scale and precision defined in the metadata to display the decimal formatted value on the UI
+				using the property <code>NumberOfFractionalDigits</code> of annotation <code>NumberFormat</code>.</p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						
+						</tgroup><table border="1" id="table_jjl_n5t_dnb" class=" "><colgroup><col width="1"><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Scale metadata</th>
+								<th colspan="1" rowspan="1">Precision metadata</th>
+								<th colspan="1" rowspan="1">Value of <code>NumberOfFractionalDigits</code>
+								</th>
+								<th colspan="1" rowspan="1">Decimal places displayed on the UI</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+								<td colspan="1" rowspan="1" valign="top">15</td>
+								<td colspan="1" rowspan="1" valign="top">undefined</td>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+								<td colspan="1" rowspan="1" valign="top">15</td>
+								<td colspan="1" rowspan="1" valign="top">5</td>
+								<td colspan="1" rowspan="1" valign="top">5</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+								<td colspan="1" rowspan="1" valign="top">15</td>
+								<td colspan="1" rowspan="1" valign="top">1</td>
+								<td colspan="1" rowspan="1" valign="top">1</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+								<td colspan="1" rowspan="1" valign="top">15</td>
+								<td colspan="1" rowspan="1" valign="top">20</td>
+								<td colspan="1" rowspan="1" valign="top">14</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+								<td colspan="1" rowspan="1" valign="top">15</td>
+								<td colspan="1" rowspan="1" valign="top">0</td>
+								<td colspan="1" rowspan="1" valign="top">3</td>
+							</tr>
+						</tbody>
+					</table></div></div><p></p>
+			<p>You can define the property <code>NumberOfFractionalDigits</code> of annotation <code>NumberFormat</code> to set the decimal
+				places to be displayed on the UI.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.DataPoint" Qualifier="Weight"&gt;
+    &lt;Record Type="com.sap.vocabularies.UI.v1.DataPointType"&gt;
+        &lt;PropertyValue Property="Value" Path="Weight" /&gt;
+        &lt;PropertyValue Property="Title" String="Weight" /&gt;
+        &lt;PropertyValue Property="ValueFormat"&gt;
+            &lt;Record Type="com.sap.vocabularies.UI.v1.NumberFormat"&gt;
+                &lt;PropertyValue Property="NumberOfFractionalDigits" Int="5"/&gt;
+            &lt;/Record&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+				<p></p></div></div><p></p>
+		</section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/bcc12cbe038146a2a586ac021a20f3a7">Rating Indicator Facet</a></li><li><a href="topic/3b5e01c647f44ea98655b8c08feba780">Progress Indicator Facet</a></li><li><a href="topic/c312735b7417423ea239394b3b4f4018">Key Value Facet</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

@@ -1,0 +1,98 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofe12df2e338e43598977d09f3d191b7b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Step 2: Bootstrap</h1><div class="fig"><h1 class="topictitle1 title">Step 2: Bootstrap</h1><div class="shortdesc">Before we can do something with SAPUI5, we need to load and initialize it.
+		This process of loading and initializing SAPUI5 is called
+			bootstrapping. Once this bootstrapping is finished, we simply display an alert.</div><section>
+			<h2 class="title ">Preview</h2>
+			<div><div class="fig"><img src="loiof997780100fe40e7b149abd05bd82677_HiRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">An alert "UI5 is ready" is displayed</span></div>
+		</section><section>
+			<h2 class="title ">Coding</h2>
+			<p>You can view and download all files at <a href="#/sample/sap.m.tutorial.walkthrough.02/preview" title="#/sample/sap.m.tutorial.walkthrough.02/preview" class="sap-doc" alt="#/sample/sap.m.tutorial.walkthrough.02/preview">Walkthrough - Step 2</a>.</p>
+			<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>SAPUI5 is a JavaScript library that can either be loaded from the same Web server
+					where the app resides, or from a different server. If SAPUI5 is
+					deployed somewhere else on the server or you want to use a different server, then you need to adjust the corresponding paths in
+					the bootstrap (here: <code>src="/resources/sap-ui-core.js"</code>) in this tutorial according to your own requirements.</p>
+				<p>You can use this reference to the latest stable version of SAPUI5 for
+					the tutorial or for testing purposes, but never use this for productive use. In an actual app, you always have to specify an SAPUI5 version explicitly.</p>
+				<p>For more information about the CDN, see <a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a>.</p>
+			<p></p></div></div>
+		</section><section>
+			<h2 class="title ">webapp/index.html</h2>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;SAPUI5 Walkthrough&lt;/title&gt;
+<span class="emphasis">	&lt;script
+		id="sap-ui-bootstrap"
+		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_belize"
+		data-sap-ui-libs="sap.m"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true"
+		data-sap-ui-onInit="module:sap/ui/demo/walkthrough/index"
+		data-sap-ui-resourceroots='{
+			"sap.ui.demo.walkthrough": "./"
+		}'&gt;
+
+	&lt;/script&gt;</span>
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;Hello World&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre></div></section>
+			<p>In this step, we load the SAPUI5 framework from our local webserver and
+				initialize the core modules with the following configuration options:</p><ul class="ul ">
+					<li class="li">
+						<p>The <code>src</code> attribute of the <code>&lt;script&gt;</code> tag tells the browser where to find the SAPUI5 core library – it initializes the SAPUI5 runtime and loads additional resources, such as the
+							libraries specified in the <code>data-sap-ui-libs</code> attribute.</p>
+					</li>
+					<li class="li">
+						<p>The SAPUI5 controls support different themes, we choose
+								<code>sap_belize</code> as our default theme.</p>
+					</li>
+					<li class="li">
+						<p>We specify the required UI library <code>sap.m</code> containing the UI controls we need for this tutorial.</p>
+					</li>
+					<li class="li">
+						<p>To make use of the most recent functionality of SAPUI5 we
+							define the compatibility version as <code>edge</code>.</p>
+					</li>
+					<li class="li">
+						<p> We configure the process of “bootstrapping” to run asynchronously.</p>
+						<p>This means that the SAPUI5 resources can be loaded
+							simultaneously in the background for performance reasons. </p>
+					</li>
+					<li class="li">We define the module to be loaded initially in a declarative way. With this, we avoid directly executable JavaScript code in
+						the HTML file. This makes your app more secure. We will create the script that this references to further down in this
+						step.</li>
+					<li class="li">
+						<p> We tell SAPUI5 core that resources in the
+								<code>sap.ui.demo.walkthrough</code> namespace are located in the same folder as <code>index.html</code>. This
+							is, for example, necessary for apps that run in the SAP Fiori launchpad.</p>
+					</li>
+				</ul><p></p>
+		</section><section id="section_ks2_1bv_xfb">
+			<h2 class="title ">webapp/index.js (New)</h2>
+			<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+
+], function () {
+	"use strict";
+
+
+	alert("UI5 is ready");
+});
+</pre></div></section>
+			<p>Now, we create a new <code>index.js</code> script that will contain the application logic for this tutorial step. We do this to avoid
+				having executable code directly in the HTML file for security reasons. This script will be called by the
+					<code>index.html</code>. We defined it there as a module in a declarative way.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/3da5f4be63264db99f2e5b04c5e853db">Walkthrough</a></div><div class="previousLink"><br><strong>Previous: </strong><a href="topic/2680aa9b16c14a00b01261d04babbb39">Step 1: Hello World!</a></div><div class="nextLink"><br><strong>Next: </strong><a href="topic/ddbceecd7d3d42eea9cf78a820a238fb">Step 3: Controls</a></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/a04b0d10fb494d1cb722b9e341b584ba.html" title="To use SAPUI5 features in your HTML page, you have to load and initialize the SAPUI5 library." class="sap-doc">Bootstrapping: Loading and Initializing</a></li>
+		<li><a href="#/topic/91f1f4536f4d1014b6dd926db0e91070.html" title="The standard variant for bootstrapping loads all JavaScript modules of a library in advance with one single request for performance reasons." class="sap-doc">Standard Variant for Bootstrapping</a></li>
+		<li><a href="#/topic/9feb96da02c2429bb1afcf6534d77c79.html" title="Compatibility version flags allow applications to react to incompatible changes in SAPUI5." class="sap-doc">Compatibility Version Information</a></li>
+		<li><a href="#/topic/2d3eb2f322ea4a82983c1c62a33ec4ae.html" title="SAPUI5 can either be loaded locally with a relative path from an SAP Web server or externally from a Content Delivery Network (CDN)." class="sap-doc">Variant for Bootstrapping from Content Delivery Network</a></li>
+		<li><a href="https://jquery.org/" title="https://jquery.org/" class="external-link" target="_blank" rel="noopener">https://jquery.org/</a></li>
+		<li><a href="#/topic/fe1a6dba940e479fb7c3bc753f92b28c.html" title="Content Security Policy (CSP) adds an additional layer of security that enables the detection and mitigation of certain types of attacks including cross site scripting and data injection." class="sap-doc">Content Security Policy</a></li>
+	</ul></section></div></section></div></body></html>

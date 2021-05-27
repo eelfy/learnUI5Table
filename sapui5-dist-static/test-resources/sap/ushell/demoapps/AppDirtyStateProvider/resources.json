@@ -1,0 +1,107 @@
+{
+	"_version":"1.1.0",
+	"resources":[
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/Component-h2-preload.js",
+			"size": 6543,
+			"required" : ["sap/m/App.js", "sap/m/Button.js", "sap/m/Column.js", "sap/m/Input.js", "sap/m/Label.js", "sap/m/List.js", "sap/m/MessagePage.js", "sap/m/Page.js", "sap/m/SearchField.js", "sap/m/StandardListItem.js", "sap/m/Table.js", "sap/m/Text.js", "sap/m/TextArea.js", "sap/m/Title.js", "sap/m/Toolbar.js", "sap/m/ToolbarSpacer.js", "sap/ui/core/Icon.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/Controller.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/core/routing/History.js", "sap/ui/layout/HorizontalLayout.js", "sap/ui/layout/VerticalLayout.js", "sap/ui/model/json/JSONModel.js", "sap/ushell/library.js"],
+			"included" : ["sap/ushell/demo/AppDirtyStateProvider/Component.js", "sap/ushell/demo/AppDirtyStateProvider/manifest.json", "sap/ushell/demo/AppDirtyStateProvider/controller/App.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js", "sap/ushell/demo/AppDirtyStateProvider/controller/NotFound.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/EmployeeList.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverview.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverviewContent.controller.js", "sap/ushell/demo/AppDirtyStateProvider/i18n/i18n.properties", "sap/ushell/demo/AppDirtyStateProvider/view/App.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/NotFound.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/EmployeeList.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverview.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewContent.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewTop.view.xml"]
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/Component-preload.js",
+			"size": 14281,
+			"required" : ["sap/m/App.js", "sap/m/Button.js", "sap/m/Column.js", "sap/m/Input.js", "sap/m/Label.js", "sap/m/List.js", "sap/m/MessagePage.js", "sap/m/Page.js", "sap/m/SearchField.js", "sap/m/StandardListItem.js", "sap/m/Table.js", "sap/m/Text.js", "sap/m/TextArea.js", "sap/m/Title.js", "sap/m/Toolbar.js", "sap/m/ToolbarSpacer.js", "sap/ui/core/Icon.js", "sap/ui/core/UIComponent.js", "sap/ui/core/mvc/Controller.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/core/routing/History.js", "sap/ui/layout/HorizontalLayout.js", "sap/ui/layout/VerticalLayout.js", "sap/ui/model/json/JSONModel.js", "sap/ushell/library.js"],
+			"included" : ["sap/ushell/demo/AppDirtyStateProvider/Component.js", "sap/ushell/demo/AppDirtyStateProvider/controller/App.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js", "sap/ushell/demo/AppDirtyStateProvider/controller/NotFound.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/EmployeeList.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverview.controller.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverviewContent.controller.js", "sap/ushell/demo/AppDirtyStateProvider/i18n/i18n.properties", "sap/ushell/demo/AppDirtyStateProvider/manifest.json", "sap/ushell/demo/AppDirtyStateProvider/view/App.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/NotFound.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/EmployeeList.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverview.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewContent.view.xml", "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewTop.view.xml"]
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/Component.js",
+			"size": 3863,
+			"required" : ["sap/ui/core/UIComponent.js", "sap/ushell/library.js"]
+		},
+		{
+			"name": "controller/App.controller.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/App.controller.js",
+			"size": 2697,
+			"required" : ["sap/ui/model/json/JSONModel.js", "sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js"]
+		},
+		{
+			"name": "controller/BaseController.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js",
+			"size": 708,
+			"required" : ["sap/ui/core/mvc/Controller.js", "sap/ui/core/routing/History.js"]
+		},
+		{
+			"name": "controller/NotFound.controller.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/NotFound.controller.js",
+			"size": 956,
+			"required" : ["sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js"]
+		},
+		{
+			"name": "controller/employee/EmployeeList.controller.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/employee/EmployeeList.controller.js",
+			"size": 770,
+			"required" : ["sap/ui/model/json/JSONModel.js", "sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js"]
+		},
+		{
+			"name": "controller/employee/overview/EmployeeOverview.controller.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverview.controller.js",
+			"size": 265,
+			"required" : ["sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js"]
+		},
+		{
+			"name": "controller/employee/overview/EmployeeOverviewContent.controller.js",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverviewContent.controller.js",
+			"size": 272,
+			"required" : ["sap/ushell/demo/AppDirtyStateProvider/controller/BaseController.js"]
+		},
+		{
+			"name": "i18n/i18n.properties",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/i18n/i18n.properties",
+			"size": 1113
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/manifest.json",
+			"size": 3520
+		},
+		{
+			"name": "view/App.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/App.view.xml",
+			"size": 2729,
+			"required" : ["sap/m/App.js", "sap/m/Button.js", "sap/m/Input.js", "sap/m/Label.js", "sap/m/Page.js", "sap/m/TextArea.js", "sap/m/Title.js", "sap/ui/core/Icon.js", "sap/ui/core/mvc/XMLView.js", "sap/ui/layout/HorizontalLayout.js", "sap/ui/layout/VerticalLayout.js", "sap/ushell/demo/AppDirtyStateProvider/controller/App.controller.js"]
+		},
+		{
+			"name": "view/NotFound.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/NotFound.view.xml",
+			"size": 352,
+			"required" : ["sap/m/MessagePage.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/AppDirtyStateProvider/controller/NotFound.controller.js"]
+		},
+		{
+			"name": "view/employee/EmployeeList.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/employee/EmployeeList.view.xml",
+			"size": 788,
+			"required" : ["sap/m/List.js", "sap/m/Page.js", "sap/m/StandardListItem.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/EmployeeList.controller.js"]
+		},
+		{
+			"name": "view/employee/overview/EmployeeOverview.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverview.view.xml",
+			"size": 468,
+			"required" : ["sap/m/Page.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverview.controller.js"]
+		},
+		{
+			"name": "view/employee/overview/EmployeeOverviewContent.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewContent.view.xml",
+			"size": 1862,
+			"required" : ["sap/m/Button.js", "sap/m/Column.js", "sap/m/SearchField.js", "sap/m/Table.js", "sap/m/Text.js", "sap/m/Title.js", "sap/m/Toolbar.js", "sap/m/ToolbarSpacer.js", "sap/ui/core/mvc/XMLView.js", "sap/ushell/demo/AppDirtyStateProvider/controller/employee/overview/EmployeeOverviewContent.controller.js"]
+		},
+		{
+			"name": "view/employee/overview/EmployeeOverviewTop.view.xml",
+			"module": "sap/ushell/demo/AppDirtyStateProvider/view/employee/overview/EmployeeOverviewTop.view.xml",
+			"size": 144,
+			"required" : ["sap/m/Title.js", "sap/ui/core/mvc/XMLView.js"]
+		}
+	]
+}

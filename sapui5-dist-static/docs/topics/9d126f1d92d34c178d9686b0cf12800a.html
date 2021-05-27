@@ -1,0 +1,67 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio9d126f1d92d34c178d9686b0cf12800a" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Comparison Micro Chart</h1><div class="fig"><h1 class="topictitle1 title">Comparison Micro Chart</h1><div class="shortdesc">A single measure value is shown against a maximum value. </div><p><img src="loio0df709f21a7f4fc6b5872707674509bb_LowRes.png" usemap="#"></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><p>In the image above, the values on the left (10, 40 and 70) represent the dimension
+                values. They are the IDs of the <code>SalesOrder Items</code>. For more
+                information on this chart type, refer <a href="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.ComparisonMicroChart" title="https://sapui5.hana.ondemand.com/1.82.5/#/entity/sap.suite.ui.microchart.ComparisonMicroChart" class="external-link" target="_blank" rel="noopener">Samples</a> documentation.</p>
+        <p></p></div></div><p>There are two variants to the display value. If the <code>Value</code> property of
+            the DataPoint do not have a text associated with it in the
+                <code>@com.sap.vocabularies.Common.v1.Text</code> annotation, then the value is
+            displayed. If there is a text associated with the DataPoint, then the TextValue is
+            displayed.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><p>The unit of measure is plotted using the first record (first instance of the data
+                point) that is to be plotted. </p>
+        <p></p></div></div><p>For semantic coloring, only <code>Criticality</code> property is supported.</p><p>Mandatory:</p><ol>
+            <li class="li"><code>UI.Chart</code> → <code>ChartType</code>: “<code>Bar</code>”</li>
+            <li class="li"><code>UI.Chart</code> → <code>Dimensions</code></li>
+            <li class="li"><code>UI.Chart</code> → <code>Measures</code></li>
+            <li class="li"><code>UI.Chart</code> → <code>MeasureAttributes</code> →
+                    <code>DataPoint</code></li>
+            <li class="li"><code>UI.DataPoint</code> → <code>Value</code></li>
+        </ol><section id="section_bcw_pgq_qmb">
+            <h2 class="title ">UI.Chart Annotations</h2>
+            <p>The <code>UI.Chart Title</code> property is used for the title. </p>
+            <p>The <code>UI.Chart Description</code> property is used for the subtitle.</p>
+            <p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Chart" Qualifier="ComparisonPath"&gt;
+    &lt;Record Type="UI.ChartDefinitionType"&gt;
+        &lt;PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/&gt;
+        &lt;PropertyValue Property="Description" String="Testing Comparison Chart"/&gt;
+        &lt;PropertyValue Property="Dimensions"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;SalesOrderItem&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="MeasureAttributes"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.ChartMeasureAttributeType"&gt;
+                    &lt;PropertyValue Property="Measure" PropertyPath="NetAmount"/&gt;
+                    &lt;PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/&gt;
+                    &lt;PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#ComparisonPath"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Measures"&gt;
+            &lt;Collection&gt;
+                &lt;PropertyPath&gt;NetAmount&lt;/PropertyPath&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Title" String="Items Comparison Chart"/&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+
+</pre></div></section>
+                <p></p></div></div>
+            <p></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V4.</p>
+            <p></p></div></div>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

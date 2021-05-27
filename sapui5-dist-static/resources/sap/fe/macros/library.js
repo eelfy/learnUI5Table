@@ -1,0 +1,6 @@
+/*
+ * ! SAP UI development toolkit for HTML5 (SAPUI5)
+        (c) Copyright 2009-2017 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["sap/ui/core/Fragment","sap/ui/core/XMLTemplateProcessor","sap/fe/macros/macroLibrary","sap/ui/core/Core","sap/ui/core/library","sap/ui/unified/library","sap/ui/mdc/library","sap/ui/mdc/field/ConditionsType","sap/fe/macros/filter/type/MultiValue","sap/fe/macros/filter/type/Range"],function(F,X,m,C,c,u,a,b,M,R){"use strict";sap.ui.getCore().initLibrary({name:"sap.fe.macros",dependencies:["sap.ui.core","sap.ui.mdc","sap.ui.unified"],types:["sap.fe.macros.NavigationType","sap.fe.macros.DraftIndicatorType","sap.fe.macros.DraftIndicatorState"],interfaces:[],controls:[],elements:[],version:"1.88.0",noLibraryCSS:true});sap.fe.macros.NavigationType={External:"External",InPage:"InPage",None:"None"};sap.fe.macros.DraftIndicatorType={IconAndText:"IconAndText",IconOnly:"IconOnly"};sap.fe.macros.DraftIndicatorState={NoChanges:"NoChanges",WithChanges:"WithChanges",Active:"Active"};F.registerType("CUSTOM",{load:F.getType("XML").load,init:function(s){s.containingView={oController:s.containingView.getController()&&s.containingView.getController().getExtensionAPI(s.id)};return F.getType("XML").init.apply(this,arguments);}});return sap.fe.macros;});

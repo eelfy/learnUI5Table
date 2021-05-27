@@ -1,0 +1,65 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6a0a050e91474d4780dd5e3604642928" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting Logic Before Save
+		Operation</h1><div class="fig"><h1 class="topictitle1 title">Adapting Logic Before Save
+		Operation</h1><div class="shortdesc">You can use an extension to execute any logic before the save operation.</div><p>The <code>BeforeSaveExtension</code> is triggered just before starting the save
+			operations.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>In draft applications, this extension is called only once while saving the root
+				object page. For non-draft applications, the extension is called for save operations
+				from any object page.</p>
+		<p></p></div></div><p>The <code>BeforeSaveExtension</code> can be used in two cases:</p><ul class="ul ">
+				<li class="li">
+					<p>When this extension returns a promise, it can be resolved or rejected.</p><ul class="ul ">
+							<li class="li">
+								<p>If promise is resolved, the save operation is initiated.</p>
+							</li>
+							<li class="li">
+								<p>If promise is rejected, the save operation is terminated.</p>
+							</li>
+						</ul><p></p>
+				</li>
+				<li class="li">
+					<p>If the extension does not return a result, the save operation starts without
+						waiting for the extension to be completed.</p>
+				</li>
+			</ul><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">beforeSaveExtension: function () {
+			var fnResolve, fnReject;
+			var oPromise = new Promise(function (resolve, reject){
+				fnResolve = resolve;
+				fnReject = reject;
+			});
+			this.oDialog = new sap.m.Dialog({
+				title: "BeforeSaveExtension",
+				content: new sap.m.Text({
+					text: "This is an exmpale to check the beforeSaveExtension"
+				}),
+				beginButton: new sap.m.Button({
+					text: "Continue to Save",
+					press: function () {
+						fnResolve();
+						this.oDialog.close();
+					}.bind(this)
+				}),
+				endButton: new sap.m.Button({
+					text: "Cancel Save",
+					press: function () {
+						fnReject();
+						this.oDialog.close();
+					}.bind(this)
+				})
+			});
+			this.getView().addDependent(this.oDialog);
+			this.oDialog.open();
+			return oPromise;
+		}
+
+</pre></div></section>
+			<p></p></div></div><p></p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+		<p></p></div></div><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

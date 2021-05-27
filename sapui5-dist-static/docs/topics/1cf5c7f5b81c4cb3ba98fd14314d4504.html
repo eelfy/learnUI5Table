@@ -1,0 +1,260 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio1cf5c7f5b81c4cb3ba98fd14314d4504" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">List Report Elements</h1><div class="fig"><h1 class="topictitle1 title">List Report Elements</h1><div class="shortdesc">The list report lets the user work with a large list of items. It combines powerful
+		functions for filtering large lists with different ways of displaying the resulting item
+		list.</div><section id="section_eyp_31t_s1b"><div class="imagemap_tooltips dark-overlays" data-static-type="false">
+				
+				<p>This image is interactive. Hover over each area for a description. Click highlighted areas
+							for more information
+						</p><div class="imagemap fig"><img src="loio15b555303d2743ff8ac2b00298d828ef_LowRes.png" usemap="#__im_imagemap1"><map name="__im_imagemap1"><area shape="rect" coords="0,1,1886,46" originalcoords="0,1,1886,46" alt="ac70343fdf16499e8b39d42cec7593be.xml" title="Application Header" href="#/topic/ac70343fdf16499e8b39d42cec7593be.html" class="sap-doc"><area shape="rect" coords="28,71,198,134" originalcoords="28,71,198,134" alt="33c2b0d5bce24b30b1f05dbfe791f125.xml" title="Variant Management" href="#/topic/33c2b0d5bce24b30b1f05dbfe791f125.html" class="sap-doc"><area shape="rect" coords="0,56,1885,257" originalcoords="0,56,1885,257" alt="609c39a7498541559dbef503c1ffd194.xml" title="Filter Bar" href="#/topic/609c39a7498541559dbef503c1ffd194.html" class="sap-doc"><area shape="rect" coords="1302,273,1847,366" originalcoords="1302,273,1847,366" alt="993e99eae4414b73bc7afef9518c79bf.xml" title="Table Toolbar" href="#/topic/993e99eae4414b73bc7afef9518c79bf.html" class="sap-doc"><area shape="rect" coords="0,255,1887,832" originalcoords="0,255,1887,832" alt="c0f6592a592e47f9bb6d09900de47412.xml" title="Table" href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" class="sap-doc"></map></div>
+			</div></section><section id="section_an2_wdm_ymb">
+			<h2 class="title ">Main Elements of the List Report</h2>
+			<p>The list report view includes the following main elements:</p><ul class="ul ">
+					<li class="li">
+						<p>Application header</p>
+					</li>
+					<li class="li">
+						<p>Filter bar with variant management and a generic
+								<span class="ph uicontrol">Share</span> menu that includes the following
+								actions:</p><ul class="ul ">
+								<li class="li">
+									<p><span class="ph uicontrol">Send Email</span></p>
+								</li>
+								<li class="li"><span class="ph uicontrol">Save as Tile</span></li>
+							</ul><p></p>
+					</li>
+					<li class="li">
+						<p>Table</p>
+					</li>
+					<li class="li">Footer toolbar that can include optional actions</li>
+				</ul><p></p>
+		</section><section id="section_gnc_lwf_34b">
+			<h2 class="title ">Loading Data</h2>
+			<p>When you launch the application, the system loads the data automatically to the list
+				report by default and the smart filter bar appears collapsed if one or more filter
+				fields have some default values.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Provide default values for filter fields to avoid
+						showing
+						empty tables when you launch the app.</p>
+				<p></p></div></div><p></p>
+			<p>Autoloading
+				is the default behavior for the standard variant if any default filter values have
+				been defined. Application developers can change this behavior
+				through manifest settings.</p>
+		</section><section id="section_d3w_j5l_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>The
+				following settings can be made:</p><ul class="ul ">
+				<li class="li">
+					<p><span class="emphasis">Application Developers:</span></p>
+					<p>Application developers can change the default behavior using the
+							<code>loadDataOnAppLaunch</code> property in the manifest setting as
+						shown below: </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">“pages”: {
+               “ListReport | &lt; EntitySet &gt; “: {
+               		“entitySet”: &lt; EntitySet &gt; ,
+                   	 “component”: {
+                                  	 “name”: “sap.suite.ui.generic.template.ListReport”,
+                                  	 "list": true,
+                                  	 “settings”: {
+                                                 "dataLoadSettings": {
+                                                      "loadDataOnAppLaunch": "always" / "never"/ "ifAnyFilterExist"
+                                                   }
+                                         }
+                           }
+                  }
+</pre></div></section>
+						<p></p></div></div><p></p>
+					<p><code>loadDataOnAppLaunch</code> can be set to <code>always</code>,
+							<code>never</code>, <code>ifAnyFilterExist</code> or left
+						undefined. </p>
+					<p>The
+						initial app data is loaded based on the following
+							settings:</p><ul class="ul ">
+							<li class="li">
+								<p><code>always</code>:
+									Data
+									for the standard variant is always
+									loaded.
+									End users can override this by
+									deselecting
+									the <span class="ph uicontrol">Apply Automatically</span> checkbox in the
+										<span class="ph uicontrol">Manage Views</span> dialog.
+									</p>
+							</li>
+							<li class="li">
+								<p>
+									<code>never</code>:
+									Data
+									for the standard variant is not loaded automatically,
+									and
+									the user has to actively click the <span class="ph uicontrol">Go</span>
+									button. End users can override this by
+									selecting
+									the <span class="ph uicontrol">Apply Automatically</span> checkbox in the
+										<span class="ph uicontrol">Manage Views</span> dialog. </p>
+							</li>
+							<li class="li">
+								<p><code>ifAnyFilterExist</code> is set or is not defined:
+									
+									Data for the standard variant is loaded  only if the default
+									filter values have been defined (by an administrator or a user,
+									or passed from another app). This is the default behavior for
+									any newly generated apps. End user cannot override this default
+									behavior in <span class="ph uicontrol">Manage Views</span> dialog. The
+										<span class="ph uicontrol">Apply Automatically</span> checkbox is not
+									available, rather the text <span class="ph uicontrol">For Preset
+										Filters</span> is displayed.</p>
+							</li>
+						</ul><p></p>
+					<p>These settings work for both single
+						and
+						multi-view applications.</p>
+					<p>For multi-view scenarios, you can also change the manifest setting
+							<code>enableAutobinding</code> to <code>False</code> under
+							<code>quickVariantSelectionX</code> instead of using the
+							<code>loadDataOnAppLaunch</code> setting. However, we recommend you
+						to use the manifest setting <code>loadDataOnAppLaunch</code> for the
+						multi-view scenario as well. </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">“pages”: {
+          “ListReport|&lt;EntitySet&gt; “: {
+                  “entitySet”: &lt;EntitySet&gt;,
+                  “component”: {
+                  “name”: “sap.suite.ui.generic.template.ListReport”,
+                  “settings”: {
+                              “quickVariantSelectionX”: {
+                                      “enableAutoBinding”:  false
+                               }
+                   }
+             }
+          }
+</pre></div></section>
+						<p></p></div></div><p></p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">End Users:</span>
+					</p>
+					<p>End users can disable autoloading by
+						deselecting the
+						<span class="ph uicontrol">Apply
+						Automatically</span> checkbox
+						in
+						the <span class="ph uicontrol">Manage Views</span>
+						dialog.
+						
+						To enable autoloading, select
+						the
+							<span class="ph uicontrol">Apply Automatically</span>
+						checkbox.
+						This is not possible if
+							<code>loadDataOnAppLaunch</code> is
+						not
+						defined or is set to
+						<code>ifAnyFilterExist</code>.</p>
+				</li>
+			</ul><p>Please note that the smart filter bar with variant management and a generic
+					<span class="ph uicontrol">Share</span> menu also includes the action <span class="ph uicontrol">Share in
+					SAP Jam</span> (if the integration with SAP Jam is configured).</p><section>
+				<h3 class="title ">More Information</h3>
+				<p>For more information about the various functions of the list report view,
+					see:</p>
+				<ul class="ul ">
+					
+					
+					
+					<li class="li">Social media integration (enabling the <span class="ph uicontrol">Share in SAP
+							Jam</span> option in the footer toolbar):<p><a href="http://help.sap.com/saphelp_nw75/helpdata/en/2f/880e688daa441a9eb4223e8f0cabee/content.htm" title="http://help.sap.com/saphelp_nw75/helpdata/en/2f/880e688daa441a9eb4223e8f0cabee/content.htm" class="external-link" target="_blank" rel="noopener">About SAP Jam Integration</a></p></li>
+					<li class="li">
+						<p>For more information on how to show item list in a list report and parent
+							on an object page, see the corresponding section in <a href="#/topic/2c65f07f44094012a511d6bd83f50f2d.html" title="SAP Fiori elements control the navigation within an app (internal navigation). This section describes the configuration options that you have." class="sap-doc">Configuring Internal Navigation</a>, </p>
+					</li>
+				</ul>
+			</section></div></section><section id="section_nth_x5l_ymb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The following settings can be made:</p><ul class="ul ">
+				<li class="li">
+					<p><span class="emphasis">Application Developers:</span></p>
+					<p>Application developers can change the default behavior using the
+							<code>initialLoad</code> property in the manifest setting as shown
+						below: </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui5": {
+	...
+	"routing": {
+		"routes": [...],
+		"targets": {
+			"SalesOrderManageList": {
+				"type": "Component",
+				"id": "SalesOrderManageList",
+				"name": "sap.fe.templates.ListReport",
+				"options": {
+					"settings": {
+						"entitySet": "SalesOrderManage",
+						"variantManagement": "Page",
+						"initialLoad": "Auto",
+						"controlConfiguration": {...},
+						"navigation": {...}
+					}
+				}
+			},
+			...
+		}
+	},
+	...
+}</pre></div></section>
+						<p></p></div></div><p></p>
+					<p><code>initialLoad</code> can be set to <code>Auto</code>, <code>Disabled</code>,
+						and <code>Enabled</code>. </p>
+					<p>The app data is loaded based on the following settings:</p><ul class="ul ">
+							<li class="li">
+								<p><code>Auto</code>: An initial load of data only occurs if some default filter values
+									have been set in the filter bar. The <span class="ph uicontrol">Apply
+										Automatically</span> checkbox is replaced by the text
+										<span class="ph uicontrol">For Preset Filters</span> in the
+										<span class="ph uicontrol">Manage Views</span> dialog. This is the
+									default setting.</p>
+							</li>
+							<li class="li">
+								<p>
+									<code>Disabled</code>: An initial load of data does not
+									occur for the standard variant and the user has to actively
+									click the <span class="ph uicontrol">Go</span> button. End users can
+									override this by selecting the <span class="ph uicontrol">Apply
+										Automatically</span> checkbox in the <span class="ph uicontrol">Manage
+										Views</span> dialog. </p>
+							</li>
+							<li class="li">
+								<p><code>Enabled</code>: An initial load of data occurs for the standard variant. End
+									users can override this by deselecting the <span class="ph uicontrol">Apply
+										Automatically</span> checkbox in the <span class="ph uicontrol">Manage
+										Views</span> dialog.</p>
+							</li>
+						</ul><p></p>
+					<p>These settings work for both single and multi-view applications.</p>
+				</li>
+				<li class="li">
+					<p><span class="emphasis">End Users:</span>
+					</p>
+					<p>End users can disable autoloading by deselecting the checkbox <span class="ph uicontrol">Apply
+							Automatically</span>  in the <span class="ph uicontrol">Manage Views</span>
+						dialog. To enable autoloading, end users can select the checkbox
+							<span class="ph uicontrol">Apply Automatically</span> in the <span class="ph uicontrol">Manage
+							Views</span> dialog.</p>
+					<p>If  <code>initialLoad</code> is set to <code>Auto</code>, then the checkbox for
+							<span class="ph uicontrol">Apply Automatically</span> is replaced by the text
+							<span class="ph uicontrol">For Preset Filters</span> in the <span class="ph uicontrol">Manage
+							Views</span> dialog.</p>
+				</li>
+			</ul></div></section><section id="section_pcy_4cm_ymb">
+			<h2 class="title ">More Information</h2>
+			<p>For more information about the various functions of the list report view, see:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p><a href="#/topic/3af1d0381ffe4a97b8e86bf484eb94e3.html" title="You can use annotations and configurations to set up various elements in the list report view, such as the table type and filter bar." class="sap-doc">Configuring List Report Features</a></p>
+				</li>
+				<li class="li">
+					<p><a href="#/topic/a4d3c46175b34ac095245167dd2b787f.html" title="You can use annotations to set up various elements that are common to the list report and the object page, such as status colors and navigation." class="sap-doc">Configuring Further Common Features</a></p>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

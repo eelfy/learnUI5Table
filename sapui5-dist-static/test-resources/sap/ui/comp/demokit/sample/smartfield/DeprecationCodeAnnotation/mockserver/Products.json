@@ -1,0 +1,13 @@
+[
+	{
+		"__metadata": {
+			"id": "smartfield.SmartField/Products('1239102')",
+			"uri": "smartfield.SmartField/Products('1239102')",
+			"type": "com.sap.GL.zrha.Products"
+		},
+		"ProductId": "1239102",
+		"Name": "Power Projector 4713",
+		"Price": "856.43",
+		"CurrencyCode": "EUR"
+	}
+]

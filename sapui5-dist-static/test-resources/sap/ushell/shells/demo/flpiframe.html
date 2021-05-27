@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flp in iframe</title>
+	  <script>
+		setTimeout(function(){ 
+			document.getElementById('flp').contentWindow.document.location.hash = "#Action-todefaultapp"
+		},10000);
+		setTimeout(function(){ 
+			document.getElementById('flp').contentWindow.document.location.hash = "#Action-toappnavsample"
+		},15000);
+	  </script>
+   </head>
+   <body>
+      <iframe id="flp" src="./FioriLaunchpadIsolation.html?sap-isolation-enabled=true#Shell-home" width="400px" height="400px"></iframe>
+   </body>
+</html>

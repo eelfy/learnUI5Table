@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:control="sap.fe.core.controls"
+>
+	<template:if test="{entitySet>@com.sap.vocabularies.Common.v1.DraftRoot}">
+		<template:then>
+			<control:FormElementWrapper>
+				<VBox>
+					<template:if test="{= ${this>formatOptions/semanticKeyStyle} === 'ObjectIdentifier' }">
+						<template:then>
+							<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.ObjectIdentifier" type="XML" />
+						</template:then>
+						<template:else>
+							<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.LabelSemanticKey" type="XML" />
+						</template:else>
+					</template:if>
+					<macro:DraftIndicator DraftIndicatorType="IconAndText" entitySet="{entitySet>}" />
+				</VBox>
+			</control:FormElementWrapper>
+		</template:then>
+		<template:else>
+			<template:if test="{= ${this>formatOptions/semanticKeyStyle} === 'ObjectIdentifier' }">
+				<template:then>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.ObjectIdentifier" type="XML" />
+				</template:then>
+				<template:else>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.LabelSemanticKey" type="XML" />
+				</template:else>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

@@ -1,0 +1,147 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe64efdad5bdf4264b54052bd7ab2229a" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adding Action Buttons to Forms in
+        Sections</h1><div class="fig"><h1 class="topictitle1 title">Adding Action Buttons to Forms in
+        Sections</h1><div class="shortdesc">You
+        can
+        add action buttons to the forms contained in sections. These forms are indicated by
+            com.sap.vocabularies.UI.v1.FieldGroup. A form action button is then
+        displayed in the toolbar of the object page section that contains the form.</div><p>You can add the following action buttons: </p><ul class="ul ">
+                <li class="li">
+                    <p>Buttons calling an OData function (using <code>DataFieldForAction</code>)</p>
+                </li>
+                <li class="li">
+                    <p>Buttons triggering intent-based navigation (using <code>DataFieldForIntentBasedNavigation</code>)</p>
+                </li>
+            </ul><p></p><p>To do so, add a <code>DataFieldForAction</code> or <code>DataFieldForIntentBasedNavigation</code> to the data of your
+                <code>FieldGroup</code> definition. The following example shows the definition of a form with two buttons:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="TechnicalData"&gt;
+    &lt;Record&gt;
+        &lt;PropertyValue Property="Data"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="Width"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="Depth"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/&gt;
+                &lt;/Record&gt;
+                ...
+                &lt;Record Type="UI.DataFieldForAction"&gt;
+                    &lt;PropertyValue Property="Label" String="Copy"/&gt;
+                    &lt;PropertyValue Property="Action" String="STTA_PROD_MAN.STTA_PROD_MAN_Entities/STTA_C_MP_ProductCopy"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataFieldForIntentBasedNavigation"&gt;
+                    &lt;PropertyValue Property="Label" String="Manage Products (ST)" /&gt;
+                    &lt;PropertyValue Property="SemanticObject" String="EPMProduct" /&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="Label" String="Technical Data"/&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+        <p></p></div></div><p>You must now link the <code>UI.FieldGroup</code> configured above to the <code>UI.ReferenceFacet</code> that corresponds to the
+            form:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>ReferenceFacet</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Facets"&gt;
+    &lt;Collection&gt;
+    ....                  
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="Technical Data"/&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TechnicalData"/&gt;
+        &lt;/Record&gt;
+    ....
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><p>For more information, see also <a href="#/topic/1d4a0f94bfee48d1b50ca8084a76beec.html" title="This section describes the configuration options for navigating from an app (outbound) and navigating to an app (inbound)." class="sap-doc">Configuring External Navigation</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+            </p><p>SAP recommends applications to place the action that is most important on the very left. For more information, please refer to <a href="https://experience.sap.com/fiori-design-web/action-placement/" title="https://experience.sap.com/fiori-design-web/action-placement/" class="external-link" target="_blank" rel="noopener">Action Placement</a>.</p>
+        <p></p></div></div><section id="section_nk1_vft_knb">
+            <h2 class="title ">Additional
+                Features in SAP Fiori Elements for OData V2</h2>
+            <p>You can change the form action button styles through UI adaptations.</p>
+        </section><section id="section_f5r_zhf_knb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+                <h3 class="title ">Adding Form Actions</h3>
+            </section><p>In addition to the <code>UI.FieldGroup</code> definition given above, form actions can also be added via
+                    <code>UI.Identification</code> or
+                <code>UI.StatusInfo</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>ReferenceFacet</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Facets"&gt;
+    &lt;Collection&gt;
+    ....                  
+        &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="Technical Data"/&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.Identification#ID"/&gt;
+        &lt;/Record&gt;
+    ....
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div><p>Here
+                are some examples of the various possibilities via which a <code>UI.DataFieldForAction</code> can be embedded:</p><ul class="ul ">
+                <li class="li">
+                    <p><code>UI.Identification</code> with a qualifier</p>
+                    <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>UI.DataFieldForAction</code> in Form Actions in
+                        <code>UI.Identification</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.Identification" Qualifier="ID"&gt;
+    &lt;Collection&gt;
+        ....
+        &lt;Record Type="UI.DataFieldForAction"&gt;
+            &lt;PropertyValue Property="Label" String="Break Up" /&gt;
+            &lt;PropertyValue Property="Action" String="com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.BREAK_UP" /&gt;
+            &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated" /&gt;
+        &lt;/Record&gt;
+        ....
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+                    <p>Note that <code>DataFieldForAction</code> buttons coming from an unqualified <code>UI.Identification</code> will go to
+                        the global actions of the object page, unless they are marked as "determining", in which case they will go to the footer.</p>
+                </li>
+                <li class="li">
+                    <p><code>UI.StatusInfo</code> with/without a qualifier</p>
+                    <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>UI.DataFieldForAction</code> in Form Actions in
+                        <code>UI.StatusInfo</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.StatusInfo" Qualifier="SI"&gt;
+    &lt;Collection&gt;
+        ....
+        &lt;Record Type="UI.DataFieldForAction"&gt;
+            &lt;PropertyValue Property="Label" String="Move Country" /&gt;
+            &lt;PropertyValue Property="Action" String="com.sap.gateway.srvd.sadl_gw_appmusicdr_definition.v0001.MOVE_COUNTRY" /&gt;
+            &lt;PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated" /&gt;
+        &lt;/Record&gt;
+        ....
+    &lt;/Collection&gt;
+&lt;/Annotation&gt;</pre></div></section><p></p></div></div>
+                </li>
+            </ul><section>
+                <h3 class="title ">Emphasizing the Most Important ‘Form’ Action</h3>
+                <p>By default, all form action buttons are rendered with a transparent background. If you need to set a focus on the most important
+                    action, you can highlight it by using a ‘ghost’ styling.</p>
+                <p>You can highlight form actions maintained via the <code>DataFieldForAction</code> and
+                        <code>DataFieldForIntentBasedNavigation</code> by adding <code>UI.Emphasized</code> to the action definition as shown
+                    in the example below:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type=“UI.DataFieldForAction”&gt;
+    &lt;PropertyValue Property=“Label” String=“Static Action” /&gt;
+    &lt;PropertyValue Property=“Action” String=“com.c_salesordermanage_sd.DummyStaticAction” /&gt;
+    &lt;Annotation Term=“UI.Emphasized” /&gt;
+&lt;/Record&gt;
+&lt;Record Type=“UI.DataFieldForAction”&gt;
+    &lt;PropertyValue Property=“Label” String=“Static Action” /&gt;
+    &lt;PropertyValue Property=“Action” String=“com.c_salesordermanage_sd.DummyStaticAction” /&gt;
+    &lt;Annotation Term=“UI.Emphasized” Bool=“true” /&gt;
+&lt;/Record&gt;
+&lt;Record Type=“UI.DataFieldForAction”&gt;
+    &lt;PropertyValue Property=“Label” String=“Static Action” /&gt;
+    &lt;PropertyValue Property=“Action” String=“com.c_salesordermanage_sd.DummyStaticAction” /&gt;
+    &lt;Annotation Term=“UI.Emphasized” Path=“…” /&gt;
+&lt;/Record&gt;</pre></div></section>
+                <p></p></div></div>
+                
+                
+                
+            </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

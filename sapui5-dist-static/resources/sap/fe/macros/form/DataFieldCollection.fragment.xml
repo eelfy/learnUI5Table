@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:core="sap.ui.core"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FORM: 'sap/fe/macros/form/FormHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:with path="formContainer>formElements" var="formElements">
+		<template:if test="{= MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) }">
+			<template:then>
+				<template:with path="formContainer>entitySet" var="targetEntitySet">
+					<macro:FormContainer
+						id="{= ${this>id} ? ID.generate(['fe', { FacetSource: ${this>facetSource} }, 'FormContainer', { Facet: ${facet>} }]) : undefined }"
+						title="{= ${this>useFormContainerLabels} === 'true' &amp;&amp; ${facet>} &amp;&amp; ${facet>@@MODEL.label} ? ${facet>@@MODEL.label} : '' }"
+						entitySet="{targetEntitySet>}"
+						dataFieldCollection="{formContainer>formElements}"
+						navigationPath="{= MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) ? MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) : ''}"
+						visibilityPath="{= ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} ? ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} : '' }"
+						displayMode="{this>displayMode}"
+						onChange="{this>onChange}"
+						valueHelpRequestGroupId="{this>valueHelpRequestGroupId}"
+					/>
+				</template:with>
+			</template:then>
+			<template:else>
+				<macro:FormContainer
+					id="{= ${this>id} ? ID.generate(['fe', { FacetSource: ${this>facetSource} }, 'FormContainer', { Facet: ${facet>} }]) : undefined }"
+					title="{= ${this>useFormContainerLabels} === 'true' &amp;&amp; ${facet>} &amp;&amp; ${facet>@@MODEL.label} ? ${facet>@@MODEL.label} : '' }"
+					entitySet="{entitySet>}"
+					dataFieldCollection="{formContainer>formElements}"
+					visibilityPath="{= ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} ? ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} : '' }"
+					displayMode="{this>displayMode}"
+					onChange="{this>onChange}"
+					valueHelpRequestGroupId="{this>valueHelpRequestGroupId}"
+				/>
+			</template:else>
+		</template:if>
+	</template:with>
+</core:FragmentDefinition>

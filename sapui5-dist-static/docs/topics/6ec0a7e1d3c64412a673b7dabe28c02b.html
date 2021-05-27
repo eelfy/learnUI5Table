@@ -1,0 +1,12 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio6ec0a7e1d3c64412a673b7dabe28c02b" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Events Fired Centrally by the App or the NavContainer</h1><div class="fig"><h1 class="topictitle1 title">Events Fired Centrally by the App or the NavContainer</h1><div class="shortdesc">When NavContainer.to(…) or NavContainer.back(…) are
+		called, the NavContainer triggers events and the application can register
+		for this events. The navigate event is fired before the transition
+		animation starts, and the afterNavigate event is fired when the animation
+		has been completed.</div><p>The events contain a lot of information about the page that is left and the target page
+			of the navigation, as well as what kind of navigation is happening.</p><p>Example:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">app.attachNavigate(function(evt) {
+   var isBack = !evt.getParameter("isTo"); // there are several types of back animation, but we want the general direction only
+   alert("Navigating " + (isBack ? "back " : "") + " to page " + evt.getParameter("toId"));
+});</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/sap.m.NavContainer/events/afterNavigate" title="#/api/sap.m.NavContainer/events/afterNavigate" class="sap-doc" alt="#/api/sap.m.NavContainer/events/afterNavigate">API Reference event: afterNavigate</a></li>
+		<li><a href="#/api/sap.m.NavContainer/events/navigate" title="#/api/sap.m.NavContainer/events/navigate" class="sap-doc" alt="#/api/sap.m.NavContainer/events/navigate">API Reference event: navigate</a></li>
+	</ul></section></div></section></div></body></html>

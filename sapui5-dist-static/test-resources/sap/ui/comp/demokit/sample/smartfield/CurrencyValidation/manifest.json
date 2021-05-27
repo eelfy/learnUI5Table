@@ -1,0 +1,41 @@
+{
+	"_version": "1.0.0",
+	"sap.app": {
+		"id": "sap.ui.comp.sample.smartfield.CurrencyValidation",
+		"type": "application"
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.comp.sample.smartfield.CurrencyValidation.Main",
+			"type": "XML",
+			"async": true
+		},
+		"dependencies": {
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.comp": {}
+			}
+		},
+		"commands": {
+			"Save": {
+				"shortcut": "Ctrl+S"
+			}
+		},
+		"config": {
+			"sample": {
+				"stretch": true,
+				"files": [
+					"Main.view.xml",
+					"Main.controller.js",
+					"Component.js",
+					"Utils.js",
+					"manifest.json",
+					"mockserver/metadata.xml",
+					"mockserver/Products.json",
+					"mockserver/Currencies.json"
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,131 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio214dc25fb47f42c6a0091dfe71e87950" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Contact Facet</h1><div class="fig"><h1 class="topictitle1 title">Contact Facet</h1><p>Using the <code>@Communication.Contact</code> annotation, you can enable a quick view contact within the header form facet, as shown in the
+            sections below.</p><section id="section_ewf_xf5_dnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements
+                    for OData V2</h2></div><div class="fig"><div><div class="fig"><img src="loioabf0b26b57af4503a740cdcff88ecb2f_HiRes.jpg" usemap="#"></div></div><span class="emphasis">Code Samples</span><p>In the example, the
+                    <code>UI.DataFieldForAnnotation</code> points to a contact annotation on a
+                different entity, which has a 1:1 relation to the root entity, and so one contact is
+                displayed in the header. The label, for example, <span class="ph uicontrol">Supplier</span>, is
+                taken from <code>UI.DataFieldForAnnotation</code>, and the value, for example
+                    <span class="ph uicontrol">Laurent</span>, is the <code>fn</code> property of the
+                contact annotation.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Contact
+                    link</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.DataFieldForAnnotation"&gt;
+       &lt;PropertyValue Property="Label" String="Supplier [ContactQV]"/&gt;
+       &lt;PropertyValue Property="Target" AnnotationPath="to_Supplier/@Communication.Contact"/&gt;
+       &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+&lt;/Record&gt;</pre></div></section><p></p></div></div><p></p><p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Popover</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Communication.Contact"&gt;
+                          &lt;Record&gt;
+                               &lt;PropertyValue Property="fn" Path="CompanyName"/&gt;
+                               &lt;PropertyValue Property="email"&gt;
+                                    &lt;Collection&gt;
+                                          &lt;Record&gt;
+                                               &lt;PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/&gt;
+                                               &lt;PropertyValue Property="address" Path="EmailAddress"/&gt;
+                                          &lt;/Record&gt;
+                                    &lt;/Collection&gt;
+                               &lt;/PropertyValue&gt;
+                               &lt;PropertyValue Property="tel"&gt;
+                                    &lt;Collection&gt;
+                                          &lt;Record&gt;
+                                               &lt;PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred Communication.PhoneType/work"/&gt;
+                                               &lt;PropertyValue Property="uri" Path="PhoneNumber"/&gt;
+                                          &lt;/Record&gt;
+                                          &lt;Record&gt;
+                                               &lt;PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/&gt;
+                                               &lt;PropertyValue Property="uri" Path="FaxNumber"/&gt;
+                                          &lt;/Record&gt;
+                                    &lt;/Collection&gt;
+                               &lt;/PropertyValue&gt;
+                          &lt;/Record&gt;
+                     &lt;/Annotation&gt;
+</pre></div></section><p></p></div></div>
+            <p></p></div></section><section id="section_wtx_hg5_dnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Contact Facet</span></div><span class="emphasis">Code Samples</span><p>In the example, the <code>UI.DataFieldForAnnotation</code> points to a contact annotation on
+                a different entity, which has a 1:1 relation to the root entity, and so one contact is displayed in the header. The label, for
+                example, <span class="ph uicontrol">Sold-To-Party</span>, is taken from <code>UI.DataFieldForAnnotation</code>, and the value, for example
+                    <span class="ph uicontrol">Domestic HK Customer 1</span>, is the <code>fn</code> property of the contact
+                    annotation.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Contact
+                    link</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.FieldGroup" Qualifier="OrderData"&gt;
+    &lt;Record Type="UI.FieldGroupType"&gt;
+        &lt;PropertyValue Property="Data"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="UI.DataFieldWithNavigationPath"&gt;
+                    &lt;PropertyValue Property="Label" String="Referenced Sales Order"/&gt;
+                    &lt;PropertyValue Property="Value" Path="_ReferencedSalesOrder/SalesOrder"/&gt;
+                    &lt;PropertyValue Property="Target" NavigationPropertyPath="SalesOrderManage"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataFieldForAnnotation"&gt;
+                    &lt;PropertyValue Property="Target" AnnotationPath="_SoldToParty/@Communication.Contact"/&gt;
+                    &lt;PropertyValue Property="Label" String="Sold-To-Party"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="PurchaseOrderByCustomer"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="SalesOrderDate"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                    &lt;Annotation Term="UI.Hidden" Path="Delivered"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="ShippingCondition"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="OverallSDProcessStatus"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                    &lt;PropertyValue Property="Criticality" Path="StatusCriticality"/&gt;
+                &lt;/Record&gt;
+                &lt;Record Type="UI.DataField"&gt;
+                    &lt;PropertyValue Property="Value" Path="DescriptionFieldForOPACleanup"/&gt;
+                    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section><p></p></div></div><p></p><p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Popover</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="Communication.Contact"&gt;
+    &lt;Record Type="Communication.ContactType"&gt;
+        &lt;PropertyValue Property="adr"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="Communication.AddressType"&gt;
+                    &lt;PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/&gt;
+                    &lt;PropertyValue Property="uri" Path="InternationalPhoneNumber"/&gt;
+                    &lt;PropertyValue Property="code" Path="PostalCode"/&gt;
+                    &lt;PropertyValue Property="country" Path="Country"/&gt;
+                    &lt;PropertyValue Property="locality" Path="CityName"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="email"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="Communication.EmailAddressType"&gt;
+                    &lt;PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/&gt;
+                    &lt;PropertyValue Property="address" Path="EmailAddress"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="fn" Path="CustomerName"/&gt;
+        &lt;PropertyValue Property="tel"&gt;
+            &lt;Collection&gt;
+                &lt;Record Type="Communication.PhoneNumberType"&gt;
+                    &lt;PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/&gt;
+                    &lt;PropertyValue Property="uri" Path="InternationalPhoneNumber"/&gt;
+                &lt;/Record&gt;
+            &lt;/Collection&gt;
+        &lt;/PropertyValue&gt;
+        &lt;PropertyValue Property="photo" Path="CustomerImg"/&gt;
+    &lt;/Record&gt;
+&lt;/Annotation&gt;
+</pre></div></section><p></p></div></div>
+            <p></p></div></div></section><section>
+			<h2 class="title ">More Information</h2>
+			<p>For more information about the <code>Communication.Contact</code> annotation, see <a href="#/topic/a6a8c0c4849b483eb10e87f6fdf9383c.html" title="a6a8c0c4849b483eb10e87f6fdf9383c.xml" class="sap-doc">Adding a Contact Facet</a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

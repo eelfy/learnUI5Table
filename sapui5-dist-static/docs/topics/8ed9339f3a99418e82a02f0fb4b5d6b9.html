@@ -1,0 +1,82 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio8ed9339f3a99418e82a02f0fb4b5d6b9" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Master-Detail Template</h1><div class="fig"><h1 class="topictitle1 title">Master-Detail Template</h1><div class="shortdesc">The SAP Fiori Master-Detail Application template implements a
+		flexible column layout, one of the design patterns that is specified by the SAP Fiori design guidelines.</div><p>The flexible column layout is a layout control that displays multiple floorplans on a single page. This allows faster and more fluid navigation
+			between multiple floorplans than the usual page-by-page navigation. The flexible column layout offers different layouts with up to three
+			columns. In the template, we use two colums (master and detail). For more information about flexible columns and master-detail apps, see
+			the 
+                                    <a href="https://experience.sap.com/fiori-design-web/" title="https://experience.sap.com/fiori-design-web/" class="external-link" target="_blank" rel="noopener">SAP Fiori
+                                            Design Guidelines</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+			</p><p>You have two options: You can use this template to build an <span class="emphasis">app for the
+						SAP Fiori launchpad (FLP)</span> or to
+				build <span class="emphasis">standalone apps</span>.</p><ul class="ul ">
+					<li class="li">
+						<p>If the app runs in FLP it also
+							contains additional features like <span class="ph uicontrol">Save as Tile</span> or
+								<span class="ph uicontrol">Share in SAP Jam</span> that depend on FLP at
+							runtime. This app cannot be run standalone, meaning no
+								<code>index.html</code> file is created but only files for
+							testing the app in the FLP
+							sandbox.</p>
+					</li>
+					<li class="li">
+						<p>Only standalone apps contain an <code>index.html</code> file that
+							is used to start the app.</p>
+					</li>
+				</ul><p></p>
+		<p></p></div></div><div><div class="fig"><img src="loio2d145878ee8d475da971b21419109ce8_HiRes.jpg" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Screenshot of the Master-Detail App</span></div><p>The main control of this app is the <code>sap.f.flexibleColumnLayout</code> control. This control first displays only the
+				<span class="ph uicontrol">Master</span> view with a list of objects. When the user selects an object in the master list, the
+				<span class="ph uicontrol">Detail</span> view is displayed on the right side, showing the details for the selected item.</p><p>The <span class="ph uicontrol">Master</span> view shows the current number of items and a search
+			field that can be used to search through the list items. The number of items are updated
+			automatically and the search filters for a preconfigured field of the list.
+			Functionality for sorting, filtering, and grouping the list is also included in the
+			template as well.</p><p>The <span class="ph uicontrol">Detail</span> page contains a dynamic page header displaying more details for the selected object, an
+				<code>sap.m.Overflowtoolbar</code> that can be enriched with custom content, and a table of line items that are associated to the
+			selected object in the data model.</p><p>The master list and the line item table are set to <code>growing</code> mode so that
+			initially only the first few items are displayed for performance reasons. Using the
+				<code>scrollToLoad</code> feature, the user can display more items by scrolling
+			down or pressing the trigger at the end of the list.</p><p>We use the semantic <code>MasterPage</code> and <code>DetailPage</code> controls for the content aggregations of the
+				<code>sap.f.FlexibleColumnLayout</code> control. A <code>SemanticPage</code> is an enhanced <code>sap.f.DynamicPage</code>
+			that contains controls with semantic-specific meaning and displays them according to the SAP Fiori design guidelines. For more details about semantic controls, see the <a href="#/api/sap.f.semantic.SemanticPage/samples" title="#/api/sap.f.semantic.SemanticPage/samples" class="sap-doc" alt="#/api/sap.f.semantic.SemanticPage/samples">sample</a> in the Demo Kit.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>As the use cases for apps using a master-detail pattern differ greatly, we only show a basic scenario in our template as a starting point for
+			your individual development activities. For more information, see <a href="#/topic/8ed9339f3a99418e82a02f0fb4b5d6b9.html#loio8ed9339f3a99418e82a02f0fb4b5d6b9/section_EnhanceTemplate" title="8ed9339f3a99418e82a02f0fb4b5d6b9.xml#loio8ed9339f3a99418e82a02f0fb4b5d6b9/section_EnhanceTemplate" class="sap-doc">How Do I Enhance the Template?</a></p></div></div><section id="section_els_xvw_k1b">
+			<h2 class="title ">Where Can I Find the Master-Detail Template?</h2>
+			<p>You can find the template in the following places:</p><ul class="ul ">
+					<li class="li">
+						<p><span class="emphasis">SAP Fiori
+								Master-Detail Application</span> template in SAP Web IDE</p>
+						<p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><p></p>
+					</li>
+					<li class="li">
+						<p><span class="emphasis">Master-Detail Template</span>
+							and <span class="emphasis">Master-Detail (FLP)
+									Template</span>
+							
+								under <a href="#/demoapps" title="#/demoapps" class="sap-doc" alt="#/demoapps">Demo Apps</a>.</p>
+					</li>
+					<li class="li">
+						<p><code>openui5-masterdetail-app</code> in the <a href="https://github.com/SAP" title="https://github.com/SAP" class="external-link" target="_blank" rel="noopener">SAP Repository on
+								GitHub</a></p>
+						<p>For more information on how to clone or download the template from
+							GitHub, refer to the template documentation on <a href="https://github.com/SAP/openui5-masterdetail-app/blob/master/README.md" title="https://github.com/SAP/openui5-masterdetail-app/blob/master/README.md" class="external-link" target="_blank" rel="noopener">GitHub</a> .</p>
+					</li>
+				</ul><p></p>
+		</section><section id="section_EnhanceTemplate">
+			<h2 class="title ">How Do I Enhance the Template?</h2>
+			<p>In our template, we use a simple layout that you can use as a basis for enhancements. For example, if you want to use an object page with a
+				dynamic header, you can use one of the page-type <a href="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview" title="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview" class="sap-doc" alt="#/sample/sap.uxap.sample.ObjectPageDynamicHeader/preview">Object Page Layout samples</a>.
+				 All you have to do is replace the relevant content in the
+				template with the content from the sample. To add a third column to your app, create a new view and have a look at the
+					<span class="keynote apiname">sap.f.FlexibleColumnLayout</span> examples to see how to configure it.</p>
+			<p>You can find more information about the possibilities of object pages at <a href="https://experience.sap.com/fiori-design-web/object-page/" title="https://experience.sap.com/fiori-design-web/object-page/" class="sap-doc">SAP
+							Fiori Design Guidelines - Object Page</a>.</p>
+		</section><section class="contentInSection"><h2>In this section:</h2><ul><li><a href="topic/89de2f43b91d470daa8121a0b4ba35cc">Navigation</a></li><li><a href="topic/a92e0aa0d121436885a96e420b26b945">Busy Indication</a></li><li><a href="topic/ea4e8def934e447a961fb92841d6c025">Model Instantiation</a></li><li><a href="topic/f809189153034d7586468e7213aa8cf1">Master List Filtering</a></li><li><a href="topic/034a132eef6e447a887d246a4635626d">Send Email</a></li><li><a href="topic/6256083b146e40b896309ead6ccd8751">Testing</a></li><li><a href="topic/324f0734dd3e467f874328f40353bfa5">Device Adaptation</a></li><li><a href="topic/b3271882b8a84808939385374d75a880">Stable IDs</a></li></ul></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/a3ab54ecf7ac493b91904beb2095d208.html" title="With the Demo Kit, we deliver some demo apps that show you how you can use the various features and controls of SAPUI5." class="sap-doc">Demo Apps</a></li>
+		<li><a href="#/topic/7bb04e05f9484e1b95b38a2e48ecef4f.html" title="This part of the documentation introduces you to some common and recommended use cases for the installation, configuration, and setup of SAPUI5 development environments." class="sap-doc">Development Environment</a></li>
+	</ul></section></div></section></div></body></html>

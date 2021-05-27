@@ -1,0 +1,125 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa2fe8e763014477e87990ff50657a0d0" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Composite Binding</h1><div class="fig"><h1 class="topictitle1 title">Composite Binding</h1><div class="shortdesc">Calculated fields enable the binding of multiple properties in different models to a
+		single property of a control.</div><p>The value property of a text field, for example, may be bound to a property
+				<code>firstName</code> and a property <code>lastName</code> in a model. The
+			application can access these values in a formatter function and can decide how they
+			should be processed or combined together. If no formatter function is specified, the
+			values are joined together by default. You can use the <code>useRawValues</code>
+			property to specify if the parameter values in the formatter function are formatted
+			according to the type of the property or not. </p><p>The multiple property bindings are stored in a <code>CompositeBinding</code> and can
+			be accessed by calling the <code>getBindings</code> function. You can access the
+			composite binding, for example, by using the <code>getBinding('value')</code>
+			function of the control. The composite binding has no path, model, context, and type
+			because it contains multiple property bindings containing the necessary information. A
+			composite binding may, for example, store two property bindings which belong to
+			different models and have different types.</p><p>If you have specified a formatter function, it is also available in the composite
+			binding.</p><p>There are several options to create multiple bindings for a control. The syntax is very
+			similar to the normal single binding declaration. </p><p>Each binding is created by the specified parts and assigned information. A part must contain
+			the path to the property in the model and may contain additional information for the
+			binding, for example a type.</p><section id="section_N10044_N10011_N10001">
+			<h2 class="title ">Constructor Declaration</h2>
+			<ol>
+				<li class="li">Use binding objects to add additional parameters, for example the type:
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTxt = new sap.m.Input({
+    value: {
+        parts: [
+                {path: "/firstName", type: new sap.ui.model.type.String()},
+                {path: "/lastName"},
+                {path: "myModel2&gt;/amount", type: new sap.ui.model.type.Float()} // path to property in another model
+               ]
+          }
+}); </pre></div></section></li>
+				<li class="li"> Use strings which only take the
+					path:<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTxt = new sap.m.Input({
+    value: {
+        parts: [
+                "/firstName",
+                "/lastName",
+                "myModel2&gt;/fraud" // path to property in another model
+               ]
+         }
+}); </pre></div></section></li>
+			</ol>
+		</section><section id="section_N10062_N10011_N10001">
+			<h2 class="title ">Bind Property Declaration</h2>
+			<ol>
+				<li class="li">Use binding objects to add additional parameters, for example the type:
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTxt.bindValue({
+    parts: [
+            {path: "/firstName", type: new sap.ui.model.type.String()},
+            {path: "/lastName"}
+           ]
+}); </pre></div></section></li>
+				<li class="li">Use strings which only take the
+					path:<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">oTxt.bindValue({
+    parts: [
+            "/firstName",
+            "/lastName"
+           ]
+}); </pre></div></section></li>
+			</ol>
+			<p>These samples also work with a relative binding path, when you use them as a template in a
+				list binding. </p>
+		</section><section id="section_tlp_5np_rcb">
+			<h2 class="title ">Complex Syntax for Calculated Fields</h2>
+			<p>Complex (or "extended") syntax can be used for calculated fields in declarative
+				views, such as HTML and XML views.</p>
+			<p>To use the feature in your SAPUI5 application, set
+				the configuration flag <code>bindingSyntax</code> in the bootstrap as
+				follows:</p>
+			<section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+      ...
+        data-sap-ui-bindingSyntax="complex"&gt;
+    &lt;/script&gt;</pre></div></section>
+			<p>The following examples show how to use the feature:</p>
+			<ul class="ul ">
+				<li class="li">
+					<p>You can mix text with calculated fields as follows:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Label text="Hello Mr. {
+                         path:'/singleEntry/firstName', 
+                         formatter: '.myFormatter'
+                        }, 
+                        {
+                         /singleEntry/lastName
+                        }
+ " /&gt;</pre></div></section>
+					<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+						</p><p>Use translatable text in your application.</p>
+					<p></p></div></div>
+				</li>
+				<li class="li">
+					<p>Use a syntax with leading quotation marks ("...") if you use MVC and your
+						formatter or type is located in the controller. In the following example,
+						the existing type or formatter function in the controller is used:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;TextField value="{
+                   path:'gender', 
+                   formatter:'.myGenderFormatter'
+                  } 
+                  {firstName}, 
+                  {lastName}
+"/&gt;</pre></div></section>
+				</li>
+				<li class="li">
+					<p>If you have a global formatter function, use the following syntax:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;TextField value="{
+              parts: [
+                      {path:'birthday/day'},
+                      {path:'birthday/month'},
+                      {path:'birthday/year'}
+                     ], 
+              formatter:'my.globalFormatter'
+}"/&gt;</pre></div></section>
+				</li>
+				<li class="li">
+					<p>For a global type that is created with the specified format options, see the
+						following example:</p>
+					<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Label text="A type test: {
+                           path:'/singleEntry/amount', 
+                           type:'sap.ui.model.type.Float', 
+                           formatOptions: { minFractionDigits: 1}
+                          } EUR
+"/&gt;</pre></div></section>
+				</li>
+			</ul>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

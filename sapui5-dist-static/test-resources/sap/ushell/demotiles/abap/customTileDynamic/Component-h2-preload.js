@@ -1,0 +1,16 @@
+//@ui5-bundle sap_ushell_demotiles_abap_customTileDynamic/Component-h2-preload.js
+sap.ui.require.preload({
+	"sap_ushell_demotiles_abap_customTileDynamic/Component.js":function(){
+// Copyright (c) 2009-2020 SAP SE, All Rights Reserved
+(function(){"use strict";jQuery.sap.declare("sap_ushell_demotiles_abap_customTileDynamic.Component");sap.ui.define(["sap/ui/core/UIComponent"],function(U){return U.extend("sap_ushell_demotiles_abap_customTileDynamic.Component",{metadata:{"manifest":"json"},tileSetVisible:function(n){this._controller.visibleHandler(n);},tileRefresh:function(){this._controller.refreshHandler(this._controller);},tileSetVisualProperties:function(n){this._controller.setVisualPropertiesHandler(n);},createContent:function(){var t=sap.ui.view({viewName:"sap.ushell.demotiles.abap.customTileDynamic.DynamicTile",type:sap.ui.core.mvc.ViewType.JS});this._controller=t.getController();return t;}});});}());
+},
+	"sap_ushell_demotiles_abap_customTileDynamic/manifest.json":'{"_version":"1.1.0","sap.flp":{"type":"tile","tileSize":"1x1"},"sap.app":{"id":"sap_ushell_demotiles_abap_customTileDynamic","_version":"1.0.0","type":"application","applicationVersion":{"version":"1.0.0"},"title":"Custom Dynamic App Launcher","description":"Custom Tile","tags":{"keywords":[]},"ach":"CA-UI2-INT-FE"},"sap.ui":{"_version":"1.1.0","icons":{"icon":"sap-icon://favorite"},"deviceTypes":{"desktop":true,"tablet":true,"phone":true}},"sap.ui5":{"_version":"1.1.0","componentName":"sap_ushell_demotiles_abap_customTileDynamic","dependencies":{"minUI5Version":"1.38","libs":{"sap.m":{}}},"models":{},"rootView":{"viewName":"sap_ushell_demotiles_abap_customTileDynamic.DynamicTile","type":"JS"},"handleValidation":false}}'
+},"sap_ushell_demotiles_abap_customTileDynamic/Component-h2-preload"
+);
+sap.ui.loader.config({depCacheUI5:{
+"sap_ushell_demotiles_abap_customTileDynamic/sap/ushell/demotiles/abap/customTileDynamic/Configuration.controller.js":["sap/ushell/components/tiles/utils.js"],
+"sap_ushell_demotiles_abap_customTileDynamic/sap/ushell/demotiles/abap/customTileDynamic/Configuration.view.xml":["sap/m/Button.js","sap/m/CheckBox.js","sap/m/Dialog.js","sap/m/HBox.js","sap/m/Input.js","sap/m/Label.js","sap/m/MessageStrip.js","sap/ui/commons/Button.js","sap/ui/commons/ComboBox.js","sap/ui/commons/TextField.js","sap/ui/commons/layout/MatrixLayout.js","sap/ui/commons/layout/MatrixLayoutCell.js","sap/ui/commons/layout/MatrixLayoutRow.js","sap/ui/core/Title.js","sap/ui/core/mvc/XMLView.js","sap/ui/layout/ResponsiveFlowLayout.js","sap/ui/layout/form/SimpleForm.js","sap/ui/table/Column.js","sap/ui/table/Table.js","sap/ushell/demotiles/abap/customTileDynamic/Configuration.controller.js"],
+"sap_ushell_demotiles_abap_customTileDynamic/sap/ushell/demotiles/abap/customTileDynamic/DynamicTile.controller.js":["sap/ui/thirdparty/datajs.js","sap/ushell/Config.js","sap/ushell/components/applicationIntegration/AppLifeCycle.js","sap/ushell/components/tiles/utils.js","sap/ushell/components/tiles/utilsRT.js","sap/ushell/services/AppType.js","sap/ushell/utils/WindowUtils.js"],
+"sap_ushell_demotiles_abap_customTileDynamic/sap/ushell/demotiles/abap/customTileDynamic/DynamicTile.view.js":["sap/m/GenericTile.js"]
+}});
+//# sourceMappingURL=Component-h2-preload.js.map

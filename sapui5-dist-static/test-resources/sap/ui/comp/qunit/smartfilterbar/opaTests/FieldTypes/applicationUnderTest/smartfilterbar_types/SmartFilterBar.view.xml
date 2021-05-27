@@ -1,0 +1,201 @@
+<core:View controllerName="sap.ui.comp.sample.smartfilterbar_types.SmartFilterBar"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:l="sap.ui.layout"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:ce="sap.ui.codeeditor"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%">
+
+	<App>
+		<pages>
+			<f:DynamicPage id="dynamicPage" class="sapUiSizeCompact">
+				<f:title>
+					<f:DynamicPageTitle>
+						<f:actions>
+							<Label text="UTC Mode ('on' is default):"/>
+							<Switch id="UtcModeSwitch" customTextOn="On" customTextOff="Off" change="onUtcModeChange">
+								<layoutData>
+									<FlexItemData growFactor="1" />
+								</layoutData>
+							</Switch>
+						</f:actions>
+						<f:heading>
+							<sv:SmartVariantManagement id="__SVM01" persistencyKey="smartfilterbar_types" showShare="true" entitySet="ZEPM_C_SALESORDERITEMQUERYResults" showExecuteOnSelection="true" />
+						</f:heading>
+						<f:snappedContent>
+							<Text id="statusText" />
+						</f:snappedContent>
+
+					</f:DynamicPageTitle>
+				</f:title>
+				<f:header>
+					<f:DynamicPageHeader>
+						<f:content>
+							<smartFilterBar:SmartFilterBar id="smartFilterBar"
+														   advancedMode="false"
+														   smartVariant="__SVM01"
+														   persistencyKey="smartfilterbar_types_sfb"
+														   initialized="onInitialized"
+														   clear="onClear"
+														   cancel="onCancel"
+														   search="onSearch"
+														   liveMode="false"
+														   considerAnalyticalParameters="true"
+														   considerSelectionVariants="true"
+														   showClearButton="true"
+														   showRestoreOnFB="true"
+														   assignedFiltersChanged="onAssignedFiltersChanged"
+														   entitySet="ZEPM_C_SALESORDERITEMQUERYResults"
+														   useToolbar="false"
+														   enableBasicSearch="true">
+
+								<smartFilterBar:customData>
+									<core:CustomData key="dateFormatSettings" value='\{"UTC":true, "style":"short"\}' />
+								</smartFilterBar:customData>
+
+								<smartFilterBar:layoutData>
+									<FlexItemData shrinkFactor="0" />
+								</smartFilterBar:layoutData>
+
+								<smartFilterBar:controlConfiguration>
+
+									<smartFilterBar:ControlConfiguration key="DATE_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATE_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATE_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATE_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATE_AUTO_NOT_NULLABLE" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="DATETIME_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATETIME_AUTO_NOT_NULLABLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATETIME_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATETIME_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DATETIME_SINGLE" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="TIME_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="TIME_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="TIME_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="TIME_SINGLE" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="DTOFFSET_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DTOFFSET_AUTO_NOT_NULLABLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DTOFFSET_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DTOFFSET_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DTOFFSET_SINGLE" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="STRINGDATE_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRINGDATE_AUTO_NOT_NULLABLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRINGDATE_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRINGDATE_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRINGDATE_SINGLE" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="STRING_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_AUTO_NOT_NULLABLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_VL_MAXLENGTH" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="STRING_IN1" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_INOUT" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_INOUT_DEPRECATIONCODE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_OUT1" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="STRING_OUT2" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DECIMAL_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DECIMAL_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DECIMAL_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="DECIMAL_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="FLOAT_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="FLOAT_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="FLOAT_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="FLOAT_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="BOOL_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="BOOL_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="BOOL_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="BOOL_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="NUMC_SINGLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="NUMC_MULTIPLE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="NUMC_INTERVAL" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="NUMC_AUTO" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="FISCAL_YEAR_PERIOD" visibleInAdvancedArea="true"/>
+
+									<smartFilterBar:ControlConfiguration key="DTR_AUTO" visibleInAdvancedArea="true" conditionType="sap.ui.comp.config.condition.DateRangeType" />
+									<smartFilterBar:ControlConfiguration key="TooltipMultiCombobox" index="31" label="Custom MultiComboBox" width="300px" visibleInAdvancedArea="true">
+										<smartFilterBar:customControl>
+											<MultiComboBox  id="multiComboBoxWithTooltip" customData:hasValue="true" placeholder="Custom MultiComboBox" tooltip="Tooltip View overwrite" >
+												<core:Item key="1" text="ONE" /> <core:Item key="2" text="TWO" />  <core:Item key="3" text="THREE" />
+											</MultiComboBox>
+										</smartFilterBar:customControl>
+									</smartFilterBar:ControlConfiguration>
+								</smartFilterBar:controlConfiguration>
+							</smartFilterBar:SmartFilterBar>
+
+						</f:content>
+					</f:DynamicPageHeader>
+				</f:header>
+				<f:content>
+
+					<VBox>
+						<Panel expandable="true" expanded="false" width="auto" class="sapUiResponsiveMargin" headerText="FilterProvider">
+							<l:Grid containerQuery="true" defaultSpan="XL6 L6 M12">
+								<l:VerticalLayout width="100%">
+									<Title text="FilterProvider.model.oData:" />
+									<ce:CodeEditor id="filterProviderOdata" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+								<l:VerticalLayout width="100%">
+									<HBox fitContainer="true">
+										<Title text="get/setFilterData:" />
+										<Button id="setfilterDataAsString" text="setFilterDataAsString" press="onSetFilterDataAsString" />
+										<Button id="setfilterData" text="Test setFilterData(getFilterData()))" press="onSetFilterData" />
+									</HBox>
+									<ce:CodeEditor id="outputAreagetFilterData" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+							</l:Grid>
+						</Panel>
+
+						<Panel expandable="false" expanded="true" width="auto" class="sapUiResponsiveMargin">
+							<Title text="Request URL (including Parameters):" />
+							<Text id="outputAreaUrl" width="100%" />
+
+							<Title text="Filters:" />
+							<Text id="outputAreaFilters" width="100%" />
+						</Panel>
+						<Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin" headerText="UIState and TextValues">
+							<l:Grid containerQuery="true" defaultSpan="XL6 L6 M12">
+								<l:VerticalLayout width="100%">
+									<Title text="UIState (DateSuiteFormat):" />
+									<ce:CodeEditor id="outputAreaDataSuite" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+								<l:VerticalLayout width="100%">
+									<Title text="Values:" />
+									<ce:CodeEditor id="outputAreaValueTexts" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+							</l:Grid>
+						</Panel>
+
+						<Panel expandable="true" expanded="false" width="auto" class="sapUiResponsiveMargin">
+							<l:Grid containerQuery="true" defaultSpan="XL6 L6 M12">
+								<l:VerticalLayout width="100%">
+									<Text text="SelectionVariant:" />
+									<HBox fitContainer="true">
+										<Button id="toSelectionVariant" text="Convert to SelectionVariant" press="onCreateToSelectionVariant" />
+									</HBox>
+									<ce:CodeEditor id="outputAreaToSelectionVariant" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+
+								<l:VerticalLayout width="100%">
+									<Text text="Applied SelectionVariant:" />
+									<HBox fitContainer="true">
+										<Button id="fromSelectionVariant" text="Assign to FilterBar" press="onCreatetFromSelectionVariant" />
+									</HBox>
+									<ce:CodeEditor id="outputAreaFromSelectionVariant" width="100%" height="300px" type="jsoniq" value=""/>
+								</l:VerticalLayout>
+							</l:Grid>
+						</Panel>
+					</VBox>
+				</f:content>
+			</f:DynamicPage>
+		</pages>
+	</App>
+</core:View>

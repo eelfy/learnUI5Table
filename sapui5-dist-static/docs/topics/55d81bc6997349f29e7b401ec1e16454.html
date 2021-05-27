@@ -1,0 +1,46 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio55d81bc6997349f29e7b401ec1e16454" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Save and Navigation Options on the Object Page</h1><div class="fig"><h1 class="topictitle1 title">Save and Navigation Options on the Object Page</h1><div class="shortdesc">When creating, editing, and saving draft or non-draft records, the user stays on the
+		object page by default. </div><section id="section_fk1_njb_1cb">
+                     <h2 class="title ">Save and Close Feature - Navigation to List Report</h2>
+                     <p>You can add save and close logic to the <span class="ph uicontrol">Save</span> button
+                            on the object page to enable users to navigate directly back to the list
+                            report. If the user clicks the button, the draft record is saved and the
+                            user automatically navigates to the list report page.</p>
+                     <p>To enable this feature, set the <code>navToListOnSave</code> flag to
+                                   <code>true</code> in the
+                            manifest.json.</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"pages": {
+                                  "ObjectPage|STTA_C_MP_Product": {
+                                         "entitySet": "STTA_C_MP_Product",
+                                         "component": {
+                                                "name": "sap.suite.ui.generic.template.ObjectPage",
+                                                "settings": {
+                                                       "navToListOnSave": true,
+                                                       "showRelatedApps": true,
+                                                       "tableType": "ResponsiveTable",
+                                                       "editableHeaderContent": true,
+                                                       "showConfirmationOnDraftActivate": true,
+                                                       "sections": {
+                                                              "to_ProductText::com.sap.vocabularies.UI.v1.LineItem": {
+                                                                     "navigationProperty": "to_ProductText",
+                                                                     "entitySet": "STTA_C_MP_ProductText",
+                                                                     "multiSelect": true,
+                                                                     "createMode": "inline",
+                                                                     "tableType": "ResponsiveTable"
+                                                              }
+                                                       }
+                                                }
+                                         },
+</pre></div></section><p></p>
+                     <p>If the flag is set to <code>true</code>, the user automatically
+                            navigates to the list report page as soon as the draft record has been
+                            saved. </p>
+                     <p>If the flag is set to <code>false</code> or if the flag is not set at
+                            all, the user stays on object page which is also the default behavior.
+                     </p>
+              </section><section>
+                     <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                            </p><p>Please note that this topic is currently only applicable to SAP Fiori elements for OData
+                            V2.</p>
+                     <p></p></div></div>
+              </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

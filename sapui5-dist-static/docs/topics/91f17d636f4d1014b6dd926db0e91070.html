@@ -1,0 +1,14 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio91f17d636f4d1014b6dd926db0e91070" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Declarative Support</h1><div class="fig"><h1 class="topictitle1 title">Enabling Declarative Support</h1><div class="shortdesc">Declarative support needs to be enabled in the HTML document by adding an attribute
+		to the SAPUI5 bootstrap script
+		tag.</div><p>This is done as follows: </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">data-sap-ui-modules="sap.ui.core.plugin.DeclarativeSupport"</pre></div></section><p>SAPUI5 then requires (loads)
+			the plugin <code>sap.ui.core.plugin.DeclarativeSupport</code>. When started, the
+			plugin parses and enhances special HTML tags in the HTML document. The complete
+			bootstrap script tag for SAPUI5 (based on a CDN
+			version) looks as follows: </p><section class="lang-html"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;script id="sap-ui-bootstrap"
+  type="text/javascript"
+  src="resources/sap-ui-core.js"
+  data-sap-ui-theme="sap_belize"
+  data-sap-ui-libs="sap.m"
+  data-sap-ui-modules="sap.ui.core.plugin.DeclarativeSupport"
+  &gt;
+&lt;/script&gt;</pre></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

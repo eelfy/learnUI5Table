@@ -1,0 +1,31 @@
+.text{
+	padding-left: 2rem;
+	padding-right: 2rem;
+	line-height: 1.3;
+}
+
+.checkBox {
+	box-sizing: border-box;
+	zoom: 1.1;
+	font-weight: bolder;
+	float: right;
+	width: 520px;
+}
+
+.link {
+	padding-left: 2rem;
+	padding-top: 0.5rem;
+	padding-right: 30rem;
+}
+
+.statusLabel {
+	padding-left: 7rem;
+	font-size: medium;
+	padding-top: 30px;
+}
+
+.trackStatus{
+	padding-left: 0.5rem;
+	padding-top: 30px;
+	font-size: medium;
+}

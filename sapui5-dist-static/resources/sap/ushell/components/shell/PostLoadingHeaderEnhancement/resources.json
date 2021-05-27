@@ -1,0 +1,100 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": "Component-dbg.js",
+			"module": "sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component.js",
+			"size": 13862,
+			"isDebug": true,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/CustomData.js",
+				"sap/ui/core/IconPool.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/library.js",
+				"sap/ushell/renderers/fiori2/AccessKeysHandler.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/ui/launchpad/AccessibilityCustomData.js",
+				"sap/ushell/ui/shell/ShellHeadItem.js"
+			]
+		},
+		{
+			"name": "Component-h2-preload.js",
+			"module": "sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component-h2-preload.js",
+			"size": 6289,
+			"merged": true,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/CustomData.js",
+				"sap/ui/core/IconPool.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/library.js",
+				"sap/ushell/renderers/fiori2/AccessKeysHandler.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/ui/launchpad/AccessibilityCustomData.js",
+				"sap/ushell/ui/shell/ShellHeadItem.js"
+			],
+			"included": [
+				"sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component.js"
+			]
+		},
+		{
+			"name": "Component-h2-preload.js.map",
+			"size": 5886,
+			"isDebug": true
+		},
+		{
+			"name": "Component-preload.js",
+			"module": "sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component-preload.js",
+			"size": 5827,
+			"merged": true,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/CustomData.js",
+				"sap/ui/core/IconPool.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/library.js",
+				"sap/ushell/renderers/fiori2/AccessKeysHandler.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/ui/launchpad/AccessibilityCustomData.js",
+				"sap/ushell/ui/shell/ShellHeadItem.js"
+			],
+			"included": [
+				"sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component.js"
+			]
+		},
+		{
+			"name": "Component-preload.js.map",
+			"size": 5880,
+			"isDebug": true
+		},
+		{
+			"name": "Component.js",
+			"module": "sap/ushell/components/shell/PostLoadingHeaderEnhancement/Component.js",
+			"size": 5618,
+			"required": [
+				"sap/ui/Device.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/CustomData.js",
+				"sap/ui/core/IconPool.js",
+				"sap/ushell/Config.js",
+				"sap/ushell/EventHub.js",
+				"sap/ushell/library.js",
+				"sap/ushell/renderers/fiori2/AccessKeysHandler.js",
+				"sap/ushell/resources.js",
+				"sap/ushell/ui/launchpad/AccessibilityCustomData.js",
+				"sap/ushell/ui/shell/ShellHeadItem.js"
+			]
+		},
+		{
+			"name": "resources.json",
+			"size": 1787
+		}
+	]
+}

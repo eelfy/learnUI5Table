@@ -1,0 +1,302 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioc245ad757dc64694842e00c40e677cd8" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Quick Views for Navigation
+		Links</h1><div class="fig"><h1 class="topictitle1 title">Configuring Quick Views for Navigation
+		Links</h1><div class="shortdesc">You can configure the content area of the quick views to display specific
+		data.</div><p>The content area, consisting of a title and additional information, for example, a field
+			group, has a default behavior and can be adapted to your needs.</p><section id="section_i3t_ny2_3mb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><section>
+				<h3 class="title ">Title Area</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Images</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>To display an image, annotate
+											<code>HeaderInfo.ImageUrl</code> or
+											<code>HeaderInfo.TypeImageUrl</code>. If you don't,
+										no image is displayed.</p>
+								</li>
+								<li class="li">
+									<p>If you annotate <code>HeaderInfo.ImageUrl</code> and
+											<code>HeaderInfo.TypeImageUrl</code>,
+											<code>ImageUrl</code> is evaluated first, and
+											<code>TypeImageUrl</code> second. The
+											<code>ImageUrl/TypeImageUrl</code> string and path
+										including navigation properties are evaluated.</p>
+								</li>
+							</ul>
+						</li>
+						<li class="li">
+							<p>Title</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>Enter the title according to the
+											<code>TextArrangement</code> annotation. See the
+										figure below: <code>TextArrangementType/TextLast</code>.
+										Note that <span class="ph uicontrol">Computer Systems</span> is
+										declared as <code>TextLast</code> here.</p>
+									<div><div class="fig"><img src="loioadc6a09c8333453c9d4119bca89982f7_LowRes.png" usemap="#"></div></div>
+								</li>
+								<li class="li">
+									<p>If a main navigation has been defined, the title is displayed
+										as a link. In the example below, see the
+												<span class="ph sap-technical-name"><span class="ph uicontrol">Asia High
+												tech</span></span> link:</p>
+									<div><div class="fig"><img src="loio8d1888b91fb04b509f9e8285c0b05984_LowRes.png" usemap="#"></div></div>
+								</li>
+							</ul>
+						</li>
+						<li class="li">Description<ul class="ul ">
+								<li class="li">
+									<p>The description is always displayed beneath the title and
+										must be filled according to the
+											<code>TextArrangement</code> annotation.</p>
+								</li>
+								<li class="li">
+									<p>If the description is not filled, the title size is increased
+										automatically and the description field remains empty, as
+										shown below
+										(<code>TextArrangementType/TextOnly</code>).</p>
+									<div><div class="fig"><img src="loio9b4acac4169044468913352472e8c400_LowRes.png" usemap="#"></div></div>
+								</li>
+							</ul></li>
+					</ul>
+				<p></p>
+			</section><section>
+				<h3 class="title ">Content Area</h3>
+			</section><p>The content area can contain field groups, contacts, and Data.Points. </p><section>
+				<h3 class="title ">Field Groups</h3>
+			</section><ul class="ul ">
+				<li class="li">
+					<p>You can include any number of field groups or none at all. The example below
+						shows a quick view with no reference facet, however, a header image
+						included:</p>
+					<div><div class="fig"><img src="loiocf98382637114570b856538c30cc5cb5_LowRes.png" usemap="#"></div></div>
+				</li>
+				<li class="li">
+					<p>A field group can have a label. It is taken from the <code> from within
+						the <code>&lt;Record Type="UI.ReferenceFacet"&gt;</code>.</code></p><code>
+				</code></li><code>
+				<li class="li">
+					<p>For fields, the path including navigation properties is evaluated.</p>
+				</li>
+				<li class="li">
+					<p>Fields support annotations such as <code>IsEmailAddress</code>,
+							<code>IsUrl</code>, and <code>IsPhoneNumber</code>. Note that
+						any links that would create a popover on the quick view are ignored by the
+						system.</p>
+				</li>
+				<li class="li">
+					<p>There are different types of content for field groups:</p>
+					<ul class="ul ">
+						<li class="li">
+							<p>Interpreted by <code>SmartField</code>:
+									<code>DataField</code> including criticality,
+									<code>DataFieldWithUrl</code></p>
+						</li>
+						<li class="li">
+							<p>Interpreted by SAP Fiori elements:
+									<code>DataFieldWithIntentBasedNavigation</code></p>
+						</li>
+					</ul>
+				</li>
+			</code></ul><section><code>
+				<h3 class="title ">Contacts</h3>
+				<p>You can display any number of contacts or none at all. See the example below: </p>
+				<div><div class="fig"><img src="loio7fbc5f96f3074a13a089387817b1822b_LowRes.png" usemap="#"></div></div>
+				<p>The following applies:</p><ul class="ul ">
+						<li class="li">
+							<p>You can place the contact anywhere. It is specified by the position
+								of the reference facet in the collection.</p>
+						</li>
+						<li class="li">
+							<p>If the picture, title, and description belonging to a contact
+								(contact title area) correspond with the content of the title area ,
+								the contact title area is not displayed.</p>
+						</li>
+						<li class="li">
+							<p>The reference facet must point to a
+									<code>com.sap.vocabularies.Communication.v1.Contact</code>.</p>
+						</li>
+					</ul><p></p>
+			</code></section><section><code>
+				<h3 class="title ">DataPoints</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>You can place an existing DataPoint in your annotation.</p>
+					</li>
+					<li class="li">
+						<p>You can place the DataPoint anywhere. It is specified by the position of
+							the reference facet in the collection.</p>
+					</li>
+					<li class="li">
+						<p>A DataPoint can have a label. It is taken from within the
+								<code>&lt;Record Type="UI.ReferenceFacet"&gt;</code>.</p>
+					</li>
+				</ul>
+				<div><div class="fig"><img src="loio5da4f791047f45aaac7b7554c221b819_HiRes.png" usemap="#"></div></div>
+				<p>The sample code shows a quick view facet containing field group, contact and
+					DataPoint:
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_SupplierType"&gt; 
+   &lt;Annotation Term="UI.QuickViewFacets"&gt;
+      &lt;Collection&gt;
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SupplierQuickViewPOC_FieldGroup_1" /&gt;
+         &lt;/Record&gt;                        
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="Main Contact Person" /&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@Communication.Contact#KeyAccount"/&gt;
+         &lt;/Record&gt;
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="DataPoint in QV"/&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Product"/&gt;
+         &lt;/Record&gt; 
+      &lt;/Collection&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p>
+			</code></section></div></section><section id="section_spl_mz2_3mb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible"><code>SAP Fiori Elements for OData V4</code></h2></div><div class="fig"><section><code>
+				<h3 class="title ">Title Area</h3>
+				<p>
+					</p><ul class="ul ">
+						<li class="li">
+							<p>Images</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>If you don’t provide <code>HeaderInfo.ImageUrl</code> or
+											<code>HeaderInfo.TypeImageUrl</code>, you can
+										provide initials in the <code>HeaderInfo.Initials</code>
+										annotation. The initials will be displayed if no
+											<code>HeaderInfo.ImageUrl</code> or
+											<code>HeaderInfo.TypeImageUrl</code> is
+										provided.</p>
+								</li>
+								<li class="li">
+									<p>If no <code>HeaderInfo.ImageUrl</code>,
+											<code>HeaderInfo.TypeImageUrl</code>, or
+											<code>HeaderInfo.Initials</code> is provided, no
+										image will be displayed</p>
+								</li>
+							</ul>
+						</li>
+						<li class="li">
+							<p>Title</p>
+							<ul class="ul ">
+								<li class="li">
+									<p>The title is taken from
+										<code>HeaderInfo.Title</code>.</p>
+									<div><div class="fig"><img src="loioadc6a09c8333453c9d4119bca89982f7_LowRes.png" usemap="#"></div></div>
+								</li>
+								<li class="li">
+									<p>If a main navigation has been defined, the title is displayed
+										as a link. In the example below, see the
+												<span class="ph sap-technical-name"><span class="ph uicontrol">Asia High
+												tech</span></span> link:</p>
+									<div><div class="fig"><img src="loio8d1888b91fb04b509f9e8285c0b05984_LowRes.png" usemap="#"></div></div>
+								</li>
+							</ul>
+						</li>
+						<li class="li">Description<ul class="ul ">
+								<li class="li">
+									<p>The description is taken from the
+											<code>HeaderInfo.Description</code> annotation.</p>
+								</li>
+								<li class="li">
+									<div><div class="fig"><img src="loio9b4acac4169044468913352472e8c400_LowRes.png" usemap="#"></div></div>
+								</li>
+							</ul></li>
+					</ul>
+				<p></p>
+			</code></section><section><code>
+				<h3 class="title ">Content Area</h3>
+				<p>The content area can contain field groups, contacts, and <code>DataPoints</code>.</p>
+				<p><span class="emphasis">Field Groups</span></p>
+				<ul class="ul ">
+					<li class="li">
+						<p>You can include any number of field groups or none at all. The example
+							below shows a quick view with no reference facet, however, a header
+							image included:</p>
+						<div><div class="fig"><img src="loio7910b7663933430e8e74e15f4c10c496_LowRes.png" usemap="#"></div></div>
+					</li>
+					<li class="li">
+						<p>A field group can have a label. It is taken from within the <code>&lt;Record
+								Type="UI.ReferenceFacet"&gt;</code>.</p>
+					</li>
+					<li class="li">
+						<p>For fields, the path including navigation properties is evaluated.</p>
+					</li>
+					<li class="li">
+						<p>Fields support annotations such as <code>IsEmailAddress</code>, <code>IsUrl</code>,
+							and <code>IsPhoneNumber</code>. Note that any links that would
+							create a popover on the quick view are ignored by the system.</p>
+					</li>
+					<li class="li">
+						<p>There are different types of content for field groups:</p>
+						<ul class="ul ">
+							<li class="li">
+								<p>Interpreted by <code>SmartField</code>:
+										<code>DataField</code> including criticality,
+										<code>DataFieldWithUrl</code></p>
+							</li>
+							<li class="li">
+								<p>Interpreted by SAP Fiori elements:
+										<code>DataFieldWithIntentBasedNavigation</code></p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</code></section><section><code>
+				<h3 class="title ">Contacts</h3>
+				<p>You can display any number of contacts or none at all. See the example below: </p>
+				<div><div class="fig"><img src="loio64e125243d324a90ab5931519068c545_LowRes.png" usemap="#"></div></div>
+				<p>The following applies:</p><ul class="ul ">
+						<li class="li">
+							<p>You can place the contact anywhere. It is specified by the position
+								of the reference facet in the collection.</p>
+						</li>
+						<li class="li">
+							<p>If the picture, title, and description belonging to a contact
+								(contact title area) correspond with the content of the title area ,
+								the contact title area is not displayed.</p>
+						</li>
+						<li class="li">
+							<p>The reference facet must point to a
+									<code>com.sap.vocabularies.Communication.v1.Contact</code>.</p>
+						</li>
+					</ul><p></p>
+			</code></section><section><code>
+				<h3 class="title ">DataPoints</h3>
+				<ul class="ul ">
+					<li class="li">
+						<p>You can place an existing DataPoint in your annotation.</p>
+					</li>
+					<li class="li">
+						<p>You can place the DataPoint anywhere. It is specified by the position of
+							the reference facet in the collection.</p>
+					</li>
+					<li class="li">
+						<p>A DataPoint can have a label. It is taken from within the
+								<code>&lt;Record Type="UI.ReferenceFacet"&gt;</code>.</p>
+					</li>
+				</ul>
+				<div><div class="fig"><img src="loio5da4f791047f45aaac7b7554c221b819_HiRes.png" usemap="#"></div></div>
+				<p>The sample code shows a quick view facet containing field group, contact and
+						<code>DataPoint</code>:
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_SupplierType"&gt; 
+   &lt;Annotation Term="UI.QuickViewFacets"&gt;
+      &lt;Collection&gt;
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SupplierQuickViewPOC_FieldGroup_1" /&gt;
+         &lt;/Record&gt;                        
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="Main Contact Person" /&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@Communication.Contact#KeyAccount"/&gt;
+         &lt;/Record&gt;
+         &lt;Record Type="UI.ReferenceFacet"&gt;
+            &lt;PropertyValue Property="Label" String="DataPoint in QV"/&gt;
+            &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Product"/&gt;
+         &lt;/Record&gt; 
+      &lt;/Collection&gt;
+   &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section><p></p>
+			</code></section></div></section><section class="contentInSection hidden"><h2><code>In this section:</code></h2></section><section class="familyLinks"><div class="parentLink hidden"><code><br><strong>Parent topic: </strong></code></div><div class="previousLink hidden"><code><br><strong>Previous: </strong></code></div><div class="nextLink hidden"><code><br><strong>Next: </strong></code></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2><code>Related information</code></h2></div><ul class="fig"></ul></section></div></section></div></body></html>

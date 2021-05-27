@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="UTF-8">
+
+			
+<script id="sap-ui-bootstrap"		
+				
+			type="text/javascript"
+			src="../../../../../../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m, sap.ui.mdc, sap.ui.fl, sap.ui.rta"
+			data-sap-ui-theme="sap_fiori_3"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-xx-bindingSyntax="complex"
+			data-sap-ui-flexibilityServices='[{"connector": "LocalStorageConnector"}]'			
+			data-sap-ui-resourceroots='{"sap.ui.mdc.sample.filterbar.sample1": "", "mock" : "./.."}'>
+	</script>
+
+
+</head>
+
+
+<script type="text/javascript">
+	sap.ui.getCore().attachInit(function () {
+		sap.ui.require([		
+			'sap/ui/mdc/sample/filterbar/sample1/mockserver/mockServer',
+			"sap/ui/core/ComponentContainer"
+		], function (MockServer, ComponentContainer) {
+
+			return sap.ui.component({
+				name: "sap.ui.mdc.sample.filterbar.sample1",
+				async: true
+			})
+
+			.then(function (oComponent) {
+				var oMockServer = new MockServer();
+
+				oMockServer.started.then(function() {
+					return new ComponentContainer({
+						height: "100%",
+						component: oComponent,
+						async: true
+					}).placeAt("contentFB");
+				});
+			});
+
+		});
+	});
+</script>
+
+
+<body class="sapUiBody sapUiSizeCozy">
+<div id="contentFB"></div>
+</body>
+
+</html>

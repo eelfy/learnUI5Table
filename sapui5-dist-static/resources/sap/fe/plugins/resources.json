@@ -1,0 +1,182 @@
+{
+	"_version": "1.1.0",
+	"resources": [
+		{
+			"name": ".library",
+			"size": 876
+		},
+		{
+			"name": ".theming",
+			"size": 96
+		},
+		{
+			"name": "library-dbg.js",
+			"module": "sap/fe/plugins/library.js",
+			"size": 877,
+			"isDebug": true,
+			"required": [
+				"sap/ui/core/Core.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js",
+			"module": "sap/fe/plugins/library-h2-preload.js",
+			"size": 1455,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/LoaderExtensions.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/Core.js"
+			],
+			"included": [
+				"sap/fe/plugins/library.js",
+				"sap/fe/plugins/manifest.json",
+				"sap/fe/plugins/preload/Component.js",
+				"sap/fe/plugins/preload/FilePreload.js",
+				"sap/fe/plugins/preload/getDependencies.js"
+			]
+		},
+		{
+			"name": "library-h2-preload.js.map",
+			"size": 380,
+			"isDebug": true
+		},
+		{
+			"name": "library-preload.js",
+			"module": "sap/fe/plugins/library-preload.js",
+			"size": 7933,
+			"merged": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/LoaderExtensions.js",
+				"sap/base/util/UriParameters.js",
+				"sap/ui/core/Component.js",
+				"sap/ui/core/Core.js"
+			],
+			"included": [
+				"sap/fe/plugins/library.js",
+				"sap/fe/plugins/manifest.json",
+				"sap/fe/plugins/preload/Component.js",
+				"sap/fe/plugins/preload/FilePreload.js",
+				"sap/fe/plugins/preload/getDependencies.js"
+			]
+		},
+		{
+			"name": "library-preload.js.map",
+			"size": 3731,
+			"isDebug": true
+		},
+		{
+			"name": "library.js",
+			"module": "sap/fe/plugins/library.js",
+			"size": 392,
+			"required": [
+				"sap/ui/core/Core.js"
+			]
+		},
+		{
+			"name": "manifest.json",
+			"module": "sap/fe/plugins/manifest.json",
+			"size": 752
+		},
+		{
+			"name": "preload/Component-dbg.js",
+			"module": "sap/fe/plugins/preload/Component.js",
+			"size": 1004,
+			"isDebug": true,
+			"required": [
+				"sap/base/util/UriParameters.js",
+				"sap/fe/plugins/preload/FilePreload.js",
+				"sap/ui/core/Component.js"
+			]
+		},
+		{
+			"name": "preload/Component.js",
+			"module": "sap/fe/plugins/preload/Component.js",
+			"size": 640,
+			"required": [
+				"sap/base/util/UriParameters.js",
+				"sap/fe/plugins/preload/FilePreload.js",
+				"sap/ui/core/Component.js"
+			]
+		},
+		{
+			"name": "preload/FilePreload-dbg.js",
+			"module": "sap/fe/plugins/preload/FilePreload.js",
+			"size": 5503,
+			"isDebug": true,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/LoaderExtensions.js"
+			]
+		},
+		{
+			"name": "preload/FilePreload.js",
+			"module": "sap/fe/plugins/preload/FilePreload.js",
+			"size": 2319,
+			"required": [
+				"sap/base/Log.js",
+				"sap/base/util/LoaderExtensions.js"
+			]
+		},
+		{
+			"name": "preload/data/components.json",
+			"size": 15840
+		},
+		{
+			"name": "preload/data/fragments.json",
+			"size": 5111
+		},
+		{
+			"name": "preload/data/libraries.json",
+			"size": 216
+		},
+		{
+			"name": "preload/getDependencies-dbg.js",
+			"module": "sap/fe/plugins/preload/getDependencies.js",
+			"size": 6741,
+			"requiresTopLevelScope": true,
+			"exposedGlobalNames": [
+				"fs",
+				"XMLTemplateKeyWords",
+				"pReaddir",
+				"pWriteFile",
+				"pReadFile",
+				"getFiles",
+				"getLibrariesInDir",
+				"addJsFile",
+				"addFragmentFile",
+				"getComponentsFromXMLView",
+				"main"
+			],
+			"format": "raw",
+			"isDebug": true
+		},
+		{
+			"name": "preload/getDependencies.js",
+			"module": "sap/fe/plugins/preload/getDependencies.js",
+			"size": 3699,
+			"requiresTopLevelScope": true,
+			"exposedGlobalNames": [
+				"fs",
+				"XMLTemplateKeyWords",
+				"pReaddir",
+				"pWriteFile",
+				"pReadFile",
+				"getFiles",
+				"getLibrariesInDir",
+				"addJsFile",
+				"addFragmentFile",
+				"getComponentsFromXMLView",
+				"main"
+			],
+			"format": "raw"
+		},
+		{
+			"name": "resources.json",
+			"size": 2003
+		}
+	]
+}

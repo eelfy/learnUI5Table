@@ -1,0 +1,484 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio0d2f1a9ebd2d4a4c906216ded1d33783" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Adapting the UI: List Report and Object Page</h1><div class="fig"><h1 class="topictitle1 title">Adapting the UI: List Report and Object Page</h1><div class="shortdesc">You can extend and customize specific features of the list report and object page.</div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Adapt the UI only for the use cases described here. Otherwise, issues regarding consistency, compatibility, or other problems may occur
+			immediately or in future releases.</p></div></div><p>We recommend that you use <a href="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" title="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US" class="external-link" target="_blank" rel="noopener">SAP
+				Fiori tools</a>, which is a set of extensions for SAP Business Application Studio and
+				Visual Studio Code, to adapt the list report and object page.</p><section id="section_ndt_tlw_gnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You can also use SAP Web IDE to extend and customize specific
+				features of the list report and object page.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>SAP Web IDE is no longer available via SAP Business Technology Platform trial accounts. Any references to SAP Web IDE in this documentation are only relevant for you if you
+                                have access to SAP Web IDE through a productive SAP BTP account. Please consider SAP Business Application Studio as an alternative. See <a href="#/topic/6bbad66475d040f39df6fbbaabe6f40f.html" title="Learn how you can use SAP Business Application Studio together with UI5 Tooling to develop state-of-the-art UI5 apps." class="sap-doc">App Development Using SAP Business Application Studio</a>.</p></div></div><p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p><section>
+				<h3 class="title ">Adapting the UI: List Report</h3>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_a1y_gr1_wz" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Feature</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Display the <span class="ph uicontrol">Export to Excel</span> button in the table toolbar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>The <span class="ph uicontrol"> Export to Excel</span><code>Use Export to Excel</code> property to <code>False</code> via UI adaptation.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Combine buttons (actions) in the toolbar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Select the buttons you want to combine by holding the <span class="keyWrap"><kbd class="key">ctrl</kbd></span> key and left-clicking them in the
+										required order. Then, release the  button is visible on the UI by default. You can hide this button by
+										setting the <span class="keyWrap"><kbd class="key">ctrl</kbd></span> key, right-click one of the selected buttons and choose
+											<span class="ph uicontrol">Combine</span> from the context menu.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+											</p><p>If the buttons don't all fit because the preview size in the UI adaptation editor is too small, you can
+												expand the editor tab by double-clicking it and collapsing the outline and property panels.</p>
+										<p></p></div></div><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Change the column width of <code>sap.ui.table.Table</code> ,<code>sap.ui.table.AnalyticalTable</code> button is visible on the UI by default. You can hide this button by,
+										or <code>sap.m.Table</code>.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Choose the column header to select the corresponding <code>sap.ui.table.Column</code>. Change the
+											<span class="ph uicontrol">Width</span> property as needed.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Center-align status columns</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>For <code>sap.m.Table</code>, select a column and set the <span class="ph uicontrol">H Align</span> property to
+											<code>Center</code>.</p>
+									<p>For <code>sap.ui.table</code>, click the column header and set the <span class="ph uicontrol">H Align</span> property
+										to <code>Center</code>.</p>
+									<p>For vertical alignment of whole responsive table, see <a href="#/topic/c0f6592a592e47f9bb6d09900de47412.html" title="Both the list report and the object page support several table types." class="sap-doc">Tables</a>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Disable sticky column header and sticky table toolbar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>By default, the sticky column header and the sticky table toolbar in the list report are enabled. To disable
+										them, change the <span class="ph uicontrol">Sticky</span> property value under <span class="ph uicontrol">Table</span>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Hide a toolbar action for a specific table (if you use multiple views on list report tables)</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Set the <code>visible</code> property to <code>false</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Disable standard system behavior for list report tables (analytical, grid, tree tables): Table should not
+									occupy the entire space available in the container.</td>
+								<td colspan="1" rowspan="1" valign="top">In the Dynamic Page, set the <code>Fit Content</code> property to <code>false</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Change the layout of the list report table for better readability in case of a high number of columns.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>For <code>sap.m.Table</code>, set the <code>PopinLayout</code> property to one of the following
+											values:</p><ul class="ul ">
+											<li class="li">
+												<p><code>Block</code></p>
+											</li>
+											<li class="li">
+												<p><code>GridSmall</code></p>
+											</li>
+											<li class="li">
+												<p><code>GridLarge</code></p>
+											</li>
+										</ul>The default layout is <code>Block</code>.<p></p>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table></div></div>
+			</section><section>
+				<h3 class="title ">Adapting the UI: Object Page</h3>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_ehl_z4b_wz" class=" "><colgroup><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>Feature</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Setting</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Change the image shape from square to circle</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Switch to preview mode, navigate to the object page, switch back to <span class="ph uicontrol">Adapt the UI</span>. Select
+										the object page header and set the <span class="ph uicontrol">Object Image Shape</span> property to
+											<code>Circle</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Change the avatar shape in the object page dynamic header from a square to a circle</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Switch to preview mode, navigate to the object page, switch back to <span class="ph uicontrol">Adapt the UI</span>. Select
+										the avatar in the object page header and set the <span class="ph uicontrol">displayShape</span> property to
+											<code>Circle</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Hide anchor bar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Switch to preview mode, navigate to the object page, switch back to <span class="ph uicontrol">Adapt the UI</span>. Select
+										the object page layout and set the <span class="ph uicontrol">Show Anchor Bar</span> property to
+										<code>false</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Switch to tabs</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Switch to preview mode, navigate to the object page, switch back to <span class="ph uicontrol">Adapt the UI</span>. Select
+										the object page layout and set the <span class="ph uicontrol">Use Icon Tab Bar</span> property
+											<code>"useIconTabBar"</code> to <code>true</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Display the <span class="ph uicontrol">Export to Excel</span> button in the table toolbar</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>For <code>SmartTable</code>, set the <span class="ph uicontrol">Use Export to Excel</span> property to
+											<code>true</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show header content in edit mode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>By default, there is a binding at the <span class="ph uicontrol">showHeaderContent</span> property of
+											<code>sap.uxap.ObjectPageLayout</code> that the UI Adaptation editor cannot display. Change this
+										property to <code>False</code> to get a change file. Then, change the <code>newValue</code> from
+											<code>false</code> to <code>true</code>. </p>
+									<p>Alternatively, you can make a binding change if you need to change the value according to a property or an
+										expression. For more information, see <a href="#/topic/4754094fbf4046e88271d9ca881ceaa1.html" title="You can create property binding changes manually by using the UI Adaptation Editor. Note that you can use only those properties whose data has already be retrieved by the model." class="sap-doc">Creating a Binding Change</a>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show content parts in the header according to a specific mode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top"><p>Ensure that the header content is also displayed in edit/create mode, as described above. Then, search for
+										the <span class="ph uicontrol">sap.m.VBox</span> under<span class="ph menucascade">
+											<span class="ph uicontrol"> sap.uxap.ObjectPageLayout</span>
+											<span class="ph uicontrol">headerContent</span>
+										</span> of the header facet you want to adjust. At the <span class="ph uicontrol">sap.m.VBox</span>, set a binding
+										change in the <span class="ph uicontrol">Visible</span> property.</p> See also <a href="#/topic/4754094fbf4046e88271d9ca881ceaa1.html" title="You can create property binding changes manually by using the UI Adaptation Editor. Note that you can use only those properties whose data has already be retrieved by the model." class="sap-doc">Creating a Binding Change</a>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Hide the <span class="ph uicontrol">Share</span> button</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Select the <span class="ph uicontrol">Share</span> button in the header and set the <code>Visible</code> property to
+											<code>false</code>. </p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Set widths of mixed content in sections</p>
+									<p>When placing mixed content, such as forms or tables into one subsection, you may want to adjust the content
+										blocks to display a table next to a form, for example.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Select the <code>sap.ui.layout.GridData</code> of the corresponding section and set the spans according to
+										your requirements.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Don't collapse headers when scrolling down</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Select the <span class="ph uicontrol">sap.uxap.ObjectPageLayout</span> and set the <code>Always show content
+											header</code> property to <code>true</code>.</p>
+									<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>On tablets and mobile phones, the header collapses automatically.</p></div></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show more contact information in the header facet</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>In the outline, choose <span class="ph menucascade">
+											<span class="ph uicontrol">sap.m.Page</span>
+											<span class="ph uicontrol">content</span>
+											<span class="ph uicontrol">sap.uxap.ObjectPageLayout </span>
+											<span class="ph uicontrol">headerContent</span>
+										</span>. For each header facet, an sap.m.VBox is displayed. In the contact header facet, several
+										sap.m.HBoxes are displayed when icons and texts or links are available but invisible. Set the
+											<span class="ph uicontrol">Visible</span> properties of the required items to <code>true</code>.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Show paginator buttons (up and down arrows) on first object page</p>
+									<p>By default, the paginator buttons for navigating to the previous object page or next object page are not
+										displayed on the first object page. They are displayed from the second object page onwards.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>From the outline, choose <span class="ph menucascade">
+											<span class="ph uicontrol">
+											<span class="ph uicontrol">sap.m.Page</span>
+											<span class="ph uicontrol">content</span>
+											<span class="ph uicontrol">sap.uxap.ObjectPageLayout </span>
+											<span class="ph uicontrol">headerTitle</span>
+											<span class="ph uicontrol">sap.uxap.ObjectPageHeader</span>
+											<span class="ph uicontrol">navigationBar</span>
+											<span class="ph uicontrol">sap.m.Bar</span>
+											<span class="ph uicontrol">contentRight</span>
+											<span class="ph uicontrol">sap.m.HBox</span>
+										</span> and set the property <span class="ph uicontrol">Visible</span> to <code>true</code>. </span></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Set object page tables with non-editable content only to not editable</p>
+									<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This is relevant for tables with non-editable content only. </p></div></div>
+									<p>By default, object page tables are automatically set to <code>editable</code> if the object page is in edit
+										mode. This means that users can only access editable table content when they navigate through the table using
+										the tab key.</p>
+									<p>However, in a table with only non-editable content, there is no tab stop. </p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Set the <code>editable</code> property of the smart table to <code>false</code>. The inner table's
+											<code>navigationMode</code> property is set to <code>Navigation</code>.</p>
+									<p>Users can then navigate through the entire focusable table content, and not only through the editable
+										fields.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Enable "Include Item In Selection" for tables.</p>
+									<p> By setting this property to true, the item selection is displayed even if a user navigates away from a
+										table.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">For the SmartTable control, set the <code>includeItemInSelection</code> property to
+									<code>True</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">Enable the <span class="ph uicontrol">Save and Edit</span> button in non-draft applications. Users can choose this button
+									to save the current changes. The object page stays in edit mode so that they can continue editing.</td>
+								<td colspan="1" rowspan="1" valign="top">In the SAPUI5 Visual Editor, go to the object page of your app. Switch to edit mode and choose the <code>Save
+										and Edit</code> button from the outline panel. Change the visibility to true. In the change file that's
+									created, change the new value from <code>true</code> to <code>{ui&gt;/editable}</code>.</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Change the layout of the object table for better readability in case of a high number of columns.</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>For <code>sap.m.Table</code>, set the <code>PopinLayout</code> property to one of the following
+											values:</p><ul class="ul ">
+											<li class="li">
+												<p><code>Block</code></p>
+											</li>
+											<li class="li">
+												<p><code>GridSmall</code></p>
+											</li>
+											<li class="li">
+												<p><code>GridLarge</code></p>
+											</li>
+										</ul>The default layout is <code>Block</code>.<p></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section><section>
+				<h3 class="title ">More Information</h3>
+				<p>For more information, refer to <a href="#/topic/4754094fbf4046e88271d9ca881ceaa1.html" title="You can create property binding changes manually by using the UI Adaptation Editor. Note that you can use only those properties whose data has already be retrieved by the model." class="sap-doc">Creating a Binding Change</a>.</p>
+				<p>For more information about SAP Web IDE,
+                                    see the documentation for SAP Web IDE on
+                                    the SAP Help Portal at <a href="https://help.sap.com/viewer/p/SAP_Web_IDE" title="https://help.sap.com/viewer/p/SAP_Web_IDE" class="external-link" target="_blank" rel="noopener">https://help.sap.com/viewer/p/SAP_Web_IDE</a>.</p>
+			</section></div></section><section id="section_tdj_bpn_gnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><section>
+				<h3 class="title ">Enabling the Feature <i>Key User Adaptation</i> on the Object Page Header</h3>
+				<p>Application developers can enable key users to make the following adaptations on the object page header:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>remove header facets</p>
+					</li>
+					<li class="li">
+						<p>add predefined header facets</p>
+					</li>
+					<li class="li">
+						<p>change the order of header facets</p>
+					</li>
+					<li class="li">
+						<p>rename the titles of header facets</p>
+					</li>
+				</ul>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Key user adaptation for object page headers is currently only possible in display mode.</p>
+				<p></p></div></div>
+				<p>Application developers can prepare annotations for header facets that can later be added by the key user to the object page header
+					as follows:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="UI.HeaderFacets"&gt;
+&lt;Collection&gt;
+  ...
+  &lt;Record Type="UI.ReferenceFacet"&gt;
+    &lt;PropertyValue Property="Label" String="Column MicroChart"/&gt;
+    &lt;PropertyValue Property="ID" String="ColumnMicroChart"/&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="_Item/@UI.Chart#ColumnMaxPath"/&gt;
+    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+  &lt;/Record&gt;
+  &lt;Record Type="UI.ReferenceFacet"&gt;
+    &lt;PropertyValue Property="Label" String="Progress Indicator"/&gt;
+    &lt;PropertyValue Property="ID" String="ProgressIndicator"/&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Progress"/&gt;
+    &lt;Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/&gt;
+  &lt;/Record&gt;
+  ...
+&lt;/Collection&gt;
+&lt;/Annotation&gt;
+</pre></div></section>
+				<p></p></div></div>
+				<p>Application developers can remove header facets via stashing, as well as restrict the adaptability of the header facets. Both can
+					be done in the manifest:</p>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"SalesOrderManageObjectPage": {
+       "type": "Component",
+        "id": "SalesOrderManageObjectPage",
+        "name": "sap.fe.templates.ObjectPage",
+        "options": {
+              "settings": {
+                   "editableHeaderContent ": false,
+                   "controlConfiguration": {
+                        "@com.sap.vocabularies.UI.v1.HeaderFacets": {
+                            "facets": {
+                                "ColumnMicroChart": {
+                                    "stashed": true
+                                },
+                                "ProgressIndicator": {
+                                    "stashed": false,
+                                    "flexSettings": {
+                                        "designtime": "not-adaptable-visibility"
+}}}}}}}}
+</pre></div></section>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>If you do not provide any entries for the header facet in the manifest, it will be rendered on the UI with the standard
+						behavior (by default, header facets are not stashed, and there are no restrictions regarding the adaptability).</p>
+				<p></p></div></div>
+				<p><span class="emphasis">Stashing</span></p>
+				<p>If the application developer has defined header facets as stashed in the manifest, they are initially not visible on the UI. Such
+					header facets are not loaded when the app is started. Key users can add these stashed header facets via key user adaptation, and
+					make them visible for end users on the object page header. For more information, refer to <a href="#/topic/17dbd5b7a61e4cdcb079062e976cd63f.html" title="You can include various types of header facets in your object page header, for example displaying contact data or a rating indicator." class="sap-doc">Header Facets</a>.</p>
+				<p><span class="emphasis">Restricting the Adaptability</span></p>
+				<p>Application developers can restrict the adaptability of header facets via the manifest setting
+						'<code>flexSettings'/'designtime</code>'. For example, the value '<code>not-adaptable-visibility</code>' means that
+					all actions that influence visibility are disabled, i.e., remove and add are not possible, but move is enabled. For more details,
+					refer to the section <i>Restrict adaptation for certain controls</i> in the topic <a href="#/topic/de9fd55c69af4b46863f5d26b5d796c4.html" title="Find out how you can enable UI adaptation exactly how you need it." class="sap-doc">Enabling UI Adaptation: Other Things to Consider</a>.</p>
+				<p><span class="emphasis">Referencing Header Facets</span></p>
+				<p>To stash header facets or restrict their adaptability, you must reference header facets in the manifest using the ID defined in the
+					annotation. If no ID is defined in the annotation, you can reference the header facet using the concatenated ID consisting of the
+						<code>AnnotationPath</code> term part, and the qualifier. Refer to the following metadata snippet:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Record Type="UI.ReferenceFacet"&gt;
+    &lt;PropertyValue Property="Label" String="Progress Indicator"/&gt;
+    &lt;PropertyValue Property="ID" String="ProgressIndicator"/&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Progress"/&gt;
+&lt;/Record&gt;
+&lt;Record Type="UI.ReferenceFacet"&gt;
+    &lt;PropertyValue Property="Label" String="Rating Indicator"/&gt;
+    &lt;PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Rating"/&gt;
+&lt;/Record&gt;
+</pre></div></section>
+				<p></p></div></div>
+				<p>For the first facet, the ID would be <code>"ProgressIndicator"</code>, for the second facet, it would be generated from the
+					annotation path, in this case <code>"DataPoint::Rating"</code>.</p>
+			</section><section>
+				<h3 class="title ">Form</h3>
+				<p>Application developers can also enable key users to move fields inside a <code>FormContainer</code>, or from one
+						<code>FormContainer</code> to another within the same form, provided that the <code>FormContainers</code> are based on
+					the same entity. Key users can rename fields by changing the label text. They can also remove and add fields, and can remove, add,
+					and move <code>FormContainers</code> within a form.</p>
+				<p>Key users can add simple properties that are not visible on the screen, but that are defined in the model, as a new field to a
+						<code>FormContainer</code>. If the value help for the property is available, the value help is also generated. Key users
+					can only add fields to a form once, which means that a field must not appear in the <code>Add</code> dialog if the property is
+					already visible on the screen within this form.</p>
+				<p>Application developers can also prepare properties with the annotation <code>DataFieldDefault</code>. This annotation acts like
+					a wrapper for different types of <code>DataFieldAbstract</code>, and app developers should specifically use it for
+					personalization. For example, as an app developer you can add a <code>DataField</code> or a <code>DataFieldWithUrl</code>
+					in the <code>DataFieldDefault</code> annotation.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p><code>DataFieldForAction</code>, <code>DataFieldForIntendBasedNavigation</code>, <code>DataFieldWithAction</code>
+						and <code>DataFieldWithIntentBasedNavigation</code> annotations are not supported, as buttons should not be added to the
+							<code>FormContainer</code>.</p>
+				<p></p></div></div>
+				<section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">OrganizationDivision : String(2) @(
+      Common : {Label : 'Division'},
+      UI : {
+         DataFieldDefault : {
+               $Type: 'UI.DataField',
+               Value: OrganizationDivision,
+               Label: 'Default Division'
+         }
+     }
+ );
+</pre></div></section>
+				<p>Properties for which no label has been defined get a label that consists of a warning text and the technical property name, for
+					example <code>[LABEL_MISSING: mediaType]</code>.</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Fields that are added using key user adaptation have a stable ID provided by SAPUI5 flexibility that is different from the stable ID generated by
+						SAP Fiori elements.</p>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Section/Subsection</h3>
+				<p>Key users can move and rename sections and subsections on the object page.</p>
+			</section><section>
+				<h3 class="title ">Embedding Content</h3>
+				<p>Key users can embed, update, move and remove IFrame content (that is, embed content) on object page headers and sections. For more
+					information, see <a href="https://help.sap.com/viewer/0f8b49c4dfc94bc0bda25a19aa93d5b2/Cloud/en-US/bfdf15154f16419fb60ce598b21fe515.html?q=embedding%20content" title="https://help.sap.com/viewer/0f8b49c4dfc94bc0bda25a19aa93d5b2/Cloud/en-US/bfdf15154f16419fb60ce598b21fe515.html?q=embedding%20content" class="external-link" target="_blank" rel="noopener">Embedding Content.</a>.</p>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

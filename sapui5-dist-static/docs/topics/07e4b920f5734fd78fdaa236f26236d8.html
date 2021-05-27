@@ -1,0 +1,150 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio07e4b920f5734fd78fdaa236f26236d8" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Formatting, Parsing, and Validating Data</h1><div class="fig"><h1 class="topictitle1 title">Formatting, Parsing, and Validating Data</h1><div class="shortdesc">Data that is presented on the UI often has to be converted so that is human readable
+        and fits to the locale of the user. On the other hand, data entered by the user has to be
+        parsed and validated to be understood by the data source. For this purpose, you use
+        formatters and data types.</div><section id="section_fpq_1bv_xcb"><div class="imagemap_tooltips light-overlays" data-static-type="false">
+                
+                <p>This image is interactive. Hover over each area for a description. Click highlighted areas
+							for more information
+						</p><div class="imagemap fig"><img src="loio40f0541313154bb0b5de72e2bd1c9207_LowRes.png" usemap="#__im_imagemap1"><map name="__im_imagemap1"><area shape="rect" coords="1,53,225,217" originalcoords="1,53,225,217" alt="91f27e3e6f4d1014b6dd926db0e91070.xml" title="The view in the Model-View-Controller (MVC) concept is responsible for defining and rendering the UI. SAPUI5 supports predefined view types." href="#/topic/91f27e3e6f4d1014b6dd926db0e91070.html" class="sap-doc"><area shape="poly" coords="446,82,448,194,567,220,672,196,675,85,562,51,562,51" originalcoords="446,82,448,194,567,220,672,196,675,85,562,51,562,51" alt="e1b625940c104b558e52f47afe5ddb4f.xml" title="A model in the Model View Controller concept holds the data and provides methods to retrieve the data from the database and to set and update data." href="#/topic/e1b625940c104b558e52f47afe5ddb4f.html" class="sap-doc"></map></div>
+            </div><p>Formatters are used to define the formatting of data on the UI
+                while data types work in both directions: they format the data on the UI and parse
+                and validate user input that is entered.</p><p>You can either use standard
+                formatters and data types or define your own custom objects. SAPUI5 provides
+                standard formatter classes that can be used to define custom data types and custom
+                formatters.</p><p>If an error occurs during formatting or parsing, the following
+                exception occurs: <code>sap/ui/model/FormatException</code> /
+                    <code>sap/ui/model/ParseException</code>.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>For some controls like <code>sap/m/Input</code> you can also use API
+                    properties that define the data type and add additional features like restricted
+                    input options, for example, <code>&lt;Input
+                        <span class="emphasis">type="Number"</span>/&gt;</code>.</p>
+            <p></p></div></div></section><section id="section_rgn_hc5_xcb">
+            <h2 class="title ">Formatters</h2>
+        </section><section id="section_gpy_rxt_xcb">
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>When using formatter functions, the binding is automatically switched to "one-way". So you can’t use a formatter function for
+                    "two-way" scenarios, but you can use <a href="#/topic/07e4b920f5734fd78fdaa236f26236d8.html#loio07e4b920f5734fd78fdaa236f26236d8/section_DataTypes" title="07e4b920f5734fd78fdaa236f26236d8.xml#loio07e4b920f5734fd78fdaa236f26236d8/section_DataTypes" class="sap-doc">Data Types</a>.</p>
+            <p></p></div></div>
+            <p>A simple formatter can be defined directly in the controller. For example, you can
+                format name data with the first letter in upper
+                case:</p><section class="lang-js"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">myFormatter: function(sName) {
+    return sName.charAt(0).toUpperCase() + sName.slice(1);
+}</pre></div></section><p></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>We recommend to use a separate <code>formatter.js</code> file that groups
+                    the formatters and makes them globally available in your app. You can then load
+                    the formatters in any controller by defining a dependency and instantiating the
+                    formatter file in a <code>formatter</code> variable. For more information,
+                    see <a href="#/topic/0f8626ed7b7542ffaa44601828db20de.html" title="If we want to do a more complex logic for formatting properties of our data model, we can also write a custom formatting function. We will now add a localized status with a custom formatter, because the status in our data model is in a rather technical format." class="sap-doc">Step 23: Custom Formatters</a> in the
+                        <span class="ph uicontrol">Walkthrough</span> tutorial.</p>
+            <p></p></div></div>
+            <p>When the formatter is defined in the controller, you can use it, for example, in an
+                XML
+                view:</p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Text text="{
+    path : 'person/name',
+    <span class="emphasis">formatter : '.myFormatter'</span>
+}" /&gt;</pre></div></section><p></p>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>You can also use predefined formatter functions for standard uses cases, like
+                        <code>formatMessage</code> from module
+                        <code>sap/base/strings/formatMessage</code>.</p>
+            <p></p></div></div>
+            <div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+                </p><p>The automatic type determination for OData V4 interacts with
+                        <code>targetType</code> and can, thus, influence a formatter’s input
+                    values. For more information on type determination in OData V4, see <a href="#/topic/53cdd55a77ce4f33a14bd0767a293063.html" title="53cdd55a77ce4f33a14bd0767a293063.xml" class="sap-doc">Type Determination</a>.</p>
+            <p></p></div></div>
+        </section><section id="section_DataTypes"><h2 class="title ">Data Types</h2><section>
+				<h3 class="title ">Simple Types</h3>
+				<p>If you also want to validate and parse input values, you use data types. All data types inherit from the abstract
+						<code>sap.ui.model.Type</code> class.</p>
+				<p>A subclass of this class is <code>sap.ui.model.SimpleType</code>. The currently available types inherit from
+						<code>SimpleType</code> class.</p>
+				<p>For simple data types, you can generate the following parameters in the constructor: </p><ul class="ul ">
+                        <li class="li">
+                            <p><code>formatOptions</code>: Format options define how a value is formatted and displayed in the UI. </p>
+                        </li>
+                        <li class="li">
+                            <p>
+                                <code>constraints</code>: Constraints are optional and define how an input value entered in the UI should look
+                                like. During parsing the value is validated against these constraints. For example, an <code>Integer</code> type
+                                has a constraint for <code>maximum</code> that is automatically validated when parsing the input values.</p>
+                        </li>
+                    </ul><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;mvc:View 
+   xmlns:core="sap.ui.core" 
+   xmlns:mvc="sap.ui.core.mvc" 
+   core:require="{
+      Integer: 'sap/ui/model/type/Integer'
+   }"&gt;
+   ...
+  &lt;Input value="{
+      path: '/number',
+      type: 'Integer',
+      <span class="emphasis">formatOptions</span>: {
+          minIntegerDigits: 3
+      },
+          <span class="emphasis">constraints</span>: {
+      maximum: 1000
+      }
+  }" /&gt;
+   ...
+&lt;/mvc:View&gt;</pre></div></section><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>This sample uses <code>core:require</code> to ensure the type module is imported and to enable the use of the short
+                            type name <code>Integer</code> instead of the full name in the declaration of data binding. For more information, see
+                                <a href="#/topic/b11d853a8e784db6b2d210ef57b0f7d7.html" title="Modules can be required in XML views and fragments and assigned to aliases which can be used as variables in properties, event handlers, and bindings." class="sap-doc">Require Modules in XML View and Fragment</a>.</p>
+                    <p></p></div></div><p></p>
+				<p>For a complete list of all simple types, see <a href="#/api/sap.ui.model.type/overview" title="#/api/sap.ui.model.type/overview" class="sap-doc" alt="#/api/sap.ui.model.type/overview">API
+							Reference: <code>sap.ui.model.Type</code></a>.
+					</p>
+			</section><section>
+				<h3 class="title ">OData Types</h3>
+				<p>These types support OData V2 and V4 including relevant property facets as constraints. The OData types represent the OData EDM
+					primitive types. For more information, see <a href="http://www.odata.org/documentation/odata-version-2-0/overview/" title="http://www.odata.org/documentation/odata-version-2-0/overview/" class="external-link" target="_blank" rel="noopener">Primitive Data Types in the OData
+						documentation</a>.</p>
+				<p>For a complete list of all OData types, see <a href="#/api/sap.ui.model.odata.type" title="#/api/sap.ui.model.odata.type" class="sap-doc" alt="#/api/sap.ui.model.odata.type">API
+							Reference: <code>sap.ui.model.odata.type</code></a>.
+					</p>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>Also see the information on automatic type determination in OData V4 under <a href="#/topic/53cdd55a77ce4f33a14bd0767a293063.html" title="53cdd55a77ce4f33a14bd0767a293063.xml" class="sap-doc">Type Determination</a>.</p>
+				<p></p></div></div>
+			</section><section>
+				<h3 class="title ">Custom Data Types</h3>
+				<p>You can also define a custom data type based on <code>sap.ui.model.SimpleType</code> by specifying a custom implementation for
+						<code>formatValue</code>, <code>parseValue</code>, and
+					<code>validateValue</code>:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define([
+    "sap/ui/model/SimpleType"
+], function (SimpleType) {
+    "use strict";
+    return SimpleType.extend("sap.ui.demo.myCustomType", {
+
+        formatValue: ...
+
+        parseValue: ...
+
+        validateValue: ...
+
+    });
+});</pre></div></section><p></p>
+				<div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p>
+					</p><p><a href="#/topic/69a25bf2f8a2478cbda4b8bbe64039de.html" title="Now that we have implemented the conversion tests, we add the corresponding functionality and show the button to flag a post in the app. The design team has specified that the flag feature should be implemented with a toggle button that has a flag icon." class="sap-doc">Step 5: Adding a Flag Button</a> of the <span class="ph uicontrol">Testing</span> tutorial shows how to implement a
+						custom data type.</p>
+				<p></p></div></div>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+        <li><a href="#/topic/e2e6f4127fe4450ab3cf1339c42ee832.html" title="You bind UI elements to data of a data source by defining a binding path to the model that represents the data source in the app." class="sap-doc">Binding Syntax</a></li>
+    </ul></section></div></section></div></body></html>

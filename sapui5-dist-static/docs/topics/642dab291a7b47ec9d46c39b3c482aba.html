@@ -1,0 +1,138 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio642dab291a7b47ec9d46c39b3c482aba" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Bootstrapping SAPUI5 Flexibility</h1><div class="fig"><h1 class="topictitle1 title">Bootstrapping SAPUI5 Flexibility</h1><div class="shortdesc">You can define an alternative route from where to load SAPUI5 flexibility. </div><section id="section_ch4_3bf_pkb">
+			<h2 class="title ">Location</h2>
+			<p>If you want SAPUI5 flexibility to be loaded from the default location as part
+				of the SAPUI5 bootstrap, you don't need to do anything.</p>
+			<p>If you'd like SAPUI5 flexibility to be loaded from an alternative location,
+				use the configuration parameter
+					<span class="parmname">flexibilityServices</span>=<code>"<var class="varname">/path/to/alternative/location</var>"</code>.</p>
+			<p>If you'd like to disable SAPUI5
+				flexibility during SAPUI5
+				bootstrap, set the parameter value to an empty string.</p>
+		</section><section id="section_dwl_nbf_pkb"><h2 class="title ">Using Connectors</h2><p>For various use cases, you can
+				also define a list of connectors withing <code>flexibilityServices</code>. These
+				connectors are targeted at a specific use case and can be combined.</p><p>You
+				provide the list of connectors as a string, because
+					<code>flexibilityServices</code> is a string as well. Example:
+					<code>flexibilityServices ='[{"connector":
+					"SessionStorageConnector"}]'</code>.</p><section>
+				<h3 class="title ">Configuring the Connectors for Layering</h3>
+				<p>The connectors control the layers to which changes are written. Every connector
+					has a default layering configuration, but you can limit this default by
+					specifying certain layers. Example: As a result of the following string, only
+					the SessionStorage connector is used for CUSTOMER layer content:</p>
+				<p><code>flexibilityServices ='[{"connector": "SessionStorageConnector", layers:
+						["CUSTOMER"]}]’</code></p>
+			</section><section>
+				<h3 class="title ">Connectors for Productive Usage</h3>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_ipf_szb_qkb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Name</th>
+								<th colspan="1" rowspan="1">Supported Layers</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>LrepConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top"><code>CUSTOMER, USER</code></td>
+								<td colspan="1" rowspan="1" valign="top">Default connector used to handle ABAP back-end systems as well as SAP Business Technology Platform, Neo environment</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>KeyUserConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top"><code>CUSTOMER</code></td>
+								<td colspan="1" rowspan="1" valign="top">Used to connect key user adaptation and shared views on SAP Business Technology Platform,
+									Cloud Foundry environment</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>PersonalizationConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top"><code>USER</code></td>
+								<td colspan="1" rowspan="1" valign="top">Used to connect personalization within an SAPUI5 application on SAP Business Technology Platform, Cloud Foundry environment</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section><section>
+				<h3 class="title ">Connectors for Testing and Demo Purposes</h3>
+				<div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						
+						</tgroup><table border="1" id="table_lbt_1cc_qkb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">Name</th>
+								<th colspan="1" rowspan="1">Supported Layers</th>
+								<th colspan="1" rowspan="1">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>LocalStorageConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top">All</td>
+								<td colspan="1" rowspan="1" valign="top">Used to store all entries within the local storage of the
+										browser.<div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>This storage is shared in case
+										of parallel testing.</p></div></div></td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>SessionStorageConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top">All</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Used to store all entries within the session storage of the
+											browser.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This is the recommended connector for
+											testing.</p></div></div><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>JsObjectConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top">All</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Used to store all entries within a JSON object persisting
+										only for the session.</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This is the recommended connector
+											for testing.</p></div></div><p></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top"><code>ObjectPathConnector</code></td>
+								<td colspan="1" rowspan="1" valign="top">None</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Used to load mocked back-end responses. It needs an
+										additional parameter <code>path</code>, which specifies
+										the path to the mock file.</p>
+									<p>The mocked file contains the data as JSON with the following
+										structure:</p><section class="lang-json"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    changes: [&lt;list of changes as JSON&gt;],
+    compVariants: [&lt;list of filters for comp controls as JSON&gt;]
+}
+</pre></div></section><p></p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div>
+			</section><p><span class="emphasis">Examples:</span></p><p>If you want to verify that a mocked
+				back-end system provides data, the configuration should look like
+				this:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">data-sap-ui-flexibilityServices = '[{"connector": "ObjectPathConnector", path: "/some/path/to/the/mocked/data.json"}]'</pre></div></section><p>If
+				you want to verify that a key user can add additional files, the configuration
+				should look like
+				this:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">data-sap-ui-flexibilityServices = '[{"connector": "SessionStorageConnector"}]'</pre></div></section><p>If
+				you want to verify both, that a mocked back-end system provides data and a key user
+				can add additional files, the configuration should look like
+				this:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">data-sap-ui-flexibilityServices = '[{"connector": "ObjectPathConnector", path: "/some/path/to/the/mocked/data.json"},{"connector": "SessionStorageConnector"}]'</pre></div></section><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>There are additional connectors for internal usage or super classes
+				which must not be used within a configuration.</p></div></div></section><section id="section_c1c_nbf_pkb">
+			<p>You can get the value of the parameter using the method
+					<code>getFlexibilityServices</code> of class
+					<code>sap.ui.core.Configuration</code>.</p>
+			<p>For more information on how to set a configuration parameter as well as how to retrieve its
+				current value, see <a href="#/api/sap.ui.core.Configuration" title="#/api/sap.ui.core.Configuration" class="sap-doc" alt="#/api/sap.ui.core.Configuration"><code>sap.ui.core.Configuration</code></a>.</p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/topic/9e6305746b8742f69faa55fae27ee220.html" title="SAPUI5 flexibility uses a consistent layering concept to store the UI changes as semantic delta information. This layering concept applies consistently to all users of SAPUI5 flexibility (end users, key users, and developers)." class="sap-doc">Layering Concept</a></li>
+	</ul></section></div></section></div></body></html>

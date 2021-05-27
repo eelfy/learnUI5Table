@@ -1,0 +1,168 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa87ca843bcee469f82a9072927a7dcdb" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Deprecated Themes and Libraries</h1><div class="fig"><h1 class="topictitle1 title">Deprecated Themes and Libraries</h1><div class="shortdesc">As SAPUI5 evolves over time, some of the UI controls are replaced by others, or
+		their concepts abandoned entirely. This chapter gives an overview on theme and library level of the most important deprecations. Individual control
+		deprecations and more information about the controls replacing them can be found in the API reference within the Demo Kit.</div><section><h2 class="title ">Themes that are no longer supported</h2><section>
+				<h3 class="title ">sap_hcb</h3>
+				<p>The <span class="keynote apiname">sap_hcb</span> theme is deprecated as of version 1.48. It has been replaced
+					by the <span class="keynote apiname">sap_belize_hcb</span> theme.</p>
+				<p><span class="keynote apiname">sap_hcb</span> is the High Contrast Black theme used for the already
+					deprecated <span class="keynote apiname">sap_goldreflection</span> and
+						<span class="keynote apiname">sap_bluecrystal</span> themes. For <span class="keynote apiname">sap_belize</span>
+					and <span class="keynote apiname">sap_belize_plus</span> there are two high contrast themes
+					available: <span class="keynote apiname">sap_belize_hcb</span> (High Contrast Black) and
+						<span class="keynote apiname">sap_belize_hcw</span> (High Contrast White).</p>
+			</section><section>
+				<h3 class="title ">sap_bluecrystal</h3>
+				<p>The <span class="keynote apiname">sap_bluecrystal</span> theme is no longer supported as of version 1.40. It
+					has been replaced by <span class="keynote apiname">sap_belize</span> as the default theme for SAPUI5
+					applications.</p>
+				<p>Custom themes based on <code>sap_bluecrystal</code> are no longer supported
+					with 1.40 or higher.</p>
+			</section><section>
+				<h3 class="title ">sap_ux</h3>
+				<p>The <span class="keynote apiname">sap_ux</span> theme is no longer supported as of version 1.40. This was one
+					of the very first SAPUI5 themes and
+					is only implemented by a small subset of the <span class="keynote apiname">sap.ui.commons</span>
+					and <span class="keynote apiname">sap.ui.ux3</span> controls, which are also deprecated.This theme
+					has been removed with SAPUI5 version
+					1.48.</p>
+			</section><section>
+				<h3 class="title ">sap_platinum</h3>
+				<p>The <span class="keynote apiname">sap_platinum</span> theme is no longer supported as of version 1.40. This was
+					one of the very first SAPUI5 themes and
+					is only implemented by a small subset of the <span class="keynote apiname">sap.ui.commons</span>
+					and <span class="keynote apiname">sap.ui.ux3</span> controls, which are also deprecated. This
+					theme has been removed with SAPUI5 version
+					1.48. </p>
+			</section><section>
+				<h3 class="title ">sap_goldreflection</h3>
+				<p>The <span class="keynote apiname">sap_goldreflection</span> theme is no longer supported as of version 1.40.
+					This was one of the first SAPUI5 themes and
+					is only implemented by the <span class="keynote apiname">sap.ui.commons</span> and
+						<span class="keynote apiname">sap.ui.ux3</span> controls, which are also deprecated. This
+					theme has been removed with SAPUI5 version
+					1.48.</p>
+			</section></section><section><h2 class="title ">Deprecated Libraries</h2><section>
+				<h3 class="title ">sap.ui.commons</h3>
+				<p>The <span class="keynote apiname">sap.ui.commons</span> library is deprecated as of version 1.38.</p>
+				<p><span class="keynote apiname">sap.ui.commons</span> was available from the very beginning of SAPUI5. It contains
+					a large number of basic UI controls like buttons, input fields and dropdowns.
+					With version 1.16, the <span class="keynote apiname">sap.m</span> library was introduced. It
+					contains semantically identical controls (button, input and select) that, at
+					that time, were only supported on mobile platforms. In later versions,
+						<span class="keynote apiname">sap.m</span> was extended to support desktop platforms as well.
+					For more information about this, see <a href="#/topic/74b59efa0eef48988d3b716bd0ecc933.html" title="Browser and platform support for the SAPUI5 libraries on iOS, Android, macOS, and Windows platforms." class="sap-doc">Browser and Platform Support</a>. The
+						<span class="keynote apiname">sap.m</span> controls were bigger in size to support mobile
+					displays that require a larger touch area. The “Compact Content Density” feature
+					explained under <a href="#/topic/e54f729da8e3405fae5e4fe8ae7784c1.html" title="The devices used to run apps that are developed with SAPUI5 run on various different operating systems and have very different screen sizes. SAPUI5 contains different content densities for certain controls that allow your app to adapt to the device in question, allowing you to display larger controls for touch-enabled devices and a smaller, more compact design for devices that are operated by mouse." class="sap-doc">Content Densities</a> was then
+					added to SAPUI5,
+					allowing you to display a control in a more compact screen size. Today,
+					applications should be built one single time using <span class="keynote apiname">sap.m</span> (and
+					other libraries) and their content density switched at runtime depending on the
+					environment. As such, the redundant library <span class="keynote apiname">sap.ui.commons</span>
+					should no longer be used.</p>
+				<p>Some of the controls in <span class="keynote apiname">sap.ui.commons.layout</span> have been replaced by the new dedicated layout library called
+						<span class="keynote apiname">sap.ui.layout</span>, which runs on the same platforms as <span class="keynote apiname">sap.m</span>.</p>
+				<p>Some of the old controls have been made available again through the non-deprecated <span class="keynote apiname">sap.ui.unified</span> library (e.g.
+					FileUploader, Menu), which runs on the same platforms as <span class="keynote apiname">sap.m</span>.</p>
+				<p>Some concepts such as Accordion and Row Repeater have been abandoned completely.</p>
+			</section><section>
+				<h3 class="title ">sap.ui.ux3</h3>
+				<p>The <span class="keynote apiname">sap.ui.ux3</span> library is deprecated as of version 1.38.</p>
+				<p>This library contains more complex UI controls that were based on <span class="keynote apiname">sap.ui.commons</span> along the UX3 design approach. The
+						<span class="keynote apiname">sap.m</span> library - successor to <span class="keynote apiname">sap.ui.commons</span> - implements SAP’s new SAP Fiori design
+					[http://experience.sap.com/fiori-design/], which supersedes UX3. As such, the <span class="keynote apiname">sap.ui.ux3</span> library is also deprecated. Some
+					of the UX3 concepts are reflected in SAP Fiori, some are abandoned, as outlined in the following table:</p><div class="tableWrapper "><div class="fig"><tgroup>
+							
+							
+							</tgroup><table border="1" id="table_xkc_rdk_gv" class=" "><colgroup><col width="1.0"><col width="1.0"></colgroup><thead>
+								<tr>
+									<th colspan="1" rowspan="1">
+										<p>Concept</p>
+									</th>
+									<th colspan="1" rowspan="1">
+										<p>What's Happened?</p>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Feeds</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Replaced by sap.m (<code>sap.m.Feed</code>*).</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Notification Bar</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Replaced by sap.m (<code>sap.m.MessagePopover</code> and <code>sap.m.semantic</code>*).</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Thing Inspector</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Indirectly replaced by a different design for displaying object data.</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Shell</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Partially replaced by <code>sap.ui.unified.Shell</code>.</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Data Set</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Not part of SAP Fiori.</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Exact</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Not directly part of SAP Fiori. Use <code>sap.ui.comp.FilterBar</code> or <code>sap.m.IconTabBar</code> for
+											filtering.</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Quick Views</p>
+									</td>
+									<td colspan="1" rowspan="1" valign="top">
+										<p>Concept abandoned as the concept of “hovering with the mouse pointer over a control” does not exist on mobile
+											devices.</p>
+									</td>
+								</tr>
+							</tbody>
+						</table></div></div><p></p>
+				<p>For more information about the SAP Fiori design, see the <a href="http://experience.sap.com/fiori-design/" title="http://experience.sap.com/fiori-design/" class="sap-doc">SAP Fiori design guidelines</a>.</p>
+			</section><section>
+				<h3 class="title ">sap.ca</h3>
+				<p>The <span class="keynote apiname">sap.ca</span> library is deprecated as of version 1.22. </p>
+				<p>This library contains a mixture of controls for various use cases. Some were replaced by <span class="keynote apiname">sap.m</span> (e.g. DatePicker, Message)
+					and some were discontinued without being replaced (such as Hierarchy or OverflowContainer). </p>
+			</section><section>
+				<h3 class="title ">sap.me</h3>
+				<p>The <span class="keynote apiname">sap.me</span> library is deprecated as of version 1.34.</p>
+				<p>The main feature within the <span class="keynote apiname">sap.me</span> library are the calendar controls. You find replacement controls in the
+						<span class="keynote apiname">sap.ui.unified</span> library covering most but not all features of the <span class="keynote apiname">sap.me</span> calendars.</p>
+			</section><section>
+				<h3 class="title ">sap.makit</h3>
+				<p>The <span class="keynote apiname">sap.makit</span> library is deprecated as of version 1.38.</p>
+				<p>The <span class="keynote apiname">sap.makit</span> library contains a few chart controls that only support mobile platforms and do not support accessibility
+					measures. This library is replaced by <span class="keynote apiname">sap.viz</span>.</p>
+			</section></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig">
+		<li><a href="#/api/deprecated" title="#/api/deprecated" class="sap-doc" alt="#/api/deprecated">Index of Deprecated APIs</a></li>
+		<li><a href="#/topic/363cd16eba1f45babe3f661f321a7820.html" title="SAPUI5 provides a set of JavaScript and CSS libraries, which can be combined in an application using the combinations that are supported." class="sap-doc">Supported Library Combinations</a></li>
+		<li><a href="#/topic/38ff8c27b022475a92b591bcf6262551.html" title="This chapter gives an overview of the possible combinations of themes and libraries for the SAPUI5 versions that are still in maintenance." class="sap-doc">Supported Combinations of Themes and Libraries</a></li>
+	</ul></section></div></section></div></body></html>

@@ -1,0 +1,70 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio41af842da7694ef1918fc06b75679ecc" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Configuring Sort Properties</h1><div class="fig"><h1 class="topictitle1 title">Configuring Sort Properties</h1><div class="shortdesc">All cards support sorting using the
+            com.sap.vocabularies.UI.v1.PresentationVariant annotation
+        term.</div><section>
+			<p>List, table, and stack cards support sorting by using the <code>sortBy</code> and
+                    <code>sortOrder</code> properties in the application manifest file.</p>
+			<p>The following example shows sort configuration in the application manifest file. The records
+                are sorted by the <code>Price</code> property in descending order.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ovp": {
+    ...
+    "cards": {
+        ...
+        "card04": {
+            "model": "ZCD204_EPM_DEMO_SRV",
+            "template": "sap.ovp.cards.list",
+            "settings": {
+                "sortBy": "Price",
+                "sortOrder": "descending",
+                "listFlavor": "bar",
+                "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#bar",
+                "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#bar",
+                "category": "{{card04_category}}",
+                "entitySet": "Products"
+            }
+        },
+        ...
+    }
+}</pre></div></section>
+			<p></p></div></div>
+			<p>The following example shows sort configuration in the annotation file. The records are sorted
+                by the <code>Sales</code> property in descending order. You can configure
+                multiple sorts by defining multiple properties in the <code>SortOrder</code>
+                collection.</p>
+			<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+				</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant" Qualifier="Eval_by_Country"&gt;
+   &lt;Record&gt;
+      &lt;PropertyValue Property="GroupBy"&gt;
+         &lt;Collection&gt;
+            &lt;PropertyPath&gt;Country&lt;/PropertyPath&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="SortOrder"&gt;
+         &lt;Collection&gt;
+            &lt;Record&gt;
+               &lt;PropertyValue Property="Property" PropertyPath="Sales" /&gt;
+               &lt;PropertyValue Property="Descending" Boolean="true" /&gt;
+            &lt;/Record&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+      &lt;PropertyValue Property="Visualizations"&gt;
+         &lt;Collection&gt;
+            &lt;AnnotationPath&gt;@UI.Chart#Eval_by_Country&lt;/AnnotationPath&gt;
+         &lt;/Collection&gt;
+      &lt;/PropertyValue&gt;
+   &lt;/Record&gt;
+&lt;/Annotation&gt;</pre></div></section>
+			<p></p></div></div>
+            <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                </p><p>Overview pages allow you to share sort parameters defined in the presentation
+                    variant to any target SAP Fiori Elements application. The target applications
+                    can use these parameters to sort data accordingly. For more information, see
+                        <a href="#/topic/1d4a0f94bfee48d1b50ca8084a76beec.html" title="This section describes the configuration options for navigating from an app (outbound) and navigating to an app (inbound)." class="sap-doc">Configuring External Navigation</a>.</p>
+            <p></p></div></div>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

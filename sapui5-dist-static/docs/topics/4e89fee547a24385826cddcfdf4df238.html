@@ -1,0 +1,255 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loio4e89fee547a24385826cddcfdf4df238" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">What's New in SAPUI5
+		1.70</h1><div class="fig"><h1 class="topictitle1 title">What's New in SAPUI5
+		1.70</h1><div class="shortdesc">With
+		this release SAPUI5 is upgraded
+		from version 1.69 to 1.70.</div><section id="section_yxw_pxt_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_krd_ltq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><span class="emphasis">Rule Builder Control</span><p>You can model a text
+									rule to perform operations on data objects or attributes in
+									expression language 2.0. For more information, see
+										<span class="emphasis">Operations</span> in <a href="#/topic/e6035883c54b4e2b94c022b6950398fd.html" title="e6035883c54b4e2b94c022b6950398fd.xml" class="sap-doc">Features</a>.</p></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_bkm_s15_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">New Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_ejf_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.f.GridListItem</span></code><p>We have introduced a new
+									control <code>GridListItem</code> to be used in the default
+										<code>items</code> aggregation of
+										<code>sap.f.GridList</code>. It consists of a header
+									toolbar and content.</p><div><div class="fig"><img src="loiod3ef93c51b5f4f1aa04445fae8755995_HiRes.png" usemap="#"></div></div><p>Note that even though the <code>content</code>
+									aggregation can be used for any control, complex responsive
+									layout controls, such as <code>Table</code> and
+										<code>Form</code>, should not be used.</p><p>For more information, see the <a href="#/api/sap.f.GridListItem" title="#/api/sap.f.GridListItem" class="sap-doc" alt="#/api/sap.f.GridListItem">API Reference</a> and the
+										<a href="#/entity/sap.f.GridList/sample/sap.f.sample.GridListModes" title="#/entity/sap.f.GridList/sample/sap.f.sample.GridListModes" class="sap-doc" alt="#/entity/sap.f.GridList/sample/sap.f.sample.GridListModes">Sample</a>.</p></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_qwl_pb5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Features</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_tpj_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis">SAPUI5 OData V4 Model</span></p>
+								<p>The new version of the SAPUI5 OData V4 model introduces the following features:</p>
+								<ul class="ul ">
+									<li class="li">
+										<p>The
+												<code>sap.ui.model.odata.v4.ODataListBinding.requestContexts</code>
+											method is available for requesting and accessing a
+											collection in controller code through list bindings.</p>
+									</li>
+								</ul>
+								<div class="note restriction  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Restriction
+				</strong></div></div><div class="fig"><p>Due to the limited feature scope of this
+									version of the SAPUI5 OData V4 model, check that all required features are in place
+									before developing freestyle and SAP Fiori elements applications.
+									Double-check the detailed documentation of the features, as
+									certain parts of a feature may be missing. While we aim to be
+									compatible with existing controls, some controls might not work
+									due to small incompatibilities compared to
+										<code>sap.ui.model.odata.(v2.)ODataModel</code>, or due
+									to missing features in the model (such as tree binding). This
+									also applies to smart controls (<code>sap.ui.comp</code> library) that
+										do not support the SAPUI5 OData V4 model, as well as controls such as
+										<code>TreeTable</code> and
+										<code>AnalyticalTable</code>, which are not supported in
+									combination with the SAPUI5 OData V4 model. The interface for applications has been
+									changed for easier and more efficient use of the model. For a
+									summary of these changes, see <a href="#/topic/abd4d7c7548d4c29ab8364d3904a6d74.html" title="This section outlines the main differences between the OData V2 and OData V4 models." class="sap-doc">Changes Compared to OData V2 Model</a>.</p></div></div>
+								
+								<p>For more information, see <a href="#/topic/5de13cf4dd1f4a3480f7e2eaaee3f5b8.html" title="The sap.ui.model.odata.v4.ODataModel is the model implementation for consuming an OData V4 service." class="sap-doc">OData V4 Model</a>, the <a href="#/api/sap.ui.model.odata.v4" title="#/api/sap.ui.model.odata.v4" class="sap-doc" alt="#/api/sap.ui.model.odata.v4">API Reference</a>, and
+									the <a href="#/entity/sap.ui.model.odata.v4.ODataModel" title="#/entity/sap.ui.model.odata.v4.ODataModel" class="sap-doc" alt="#/entity/sap.ui.model.odata.v4.ODataModel">Samples</a>.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_rqn_wd5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">Improved Controls</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_qcq_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.f.GridContainer</span></code><p>We have polished the code, added right-to-left (RTL) support, and
+									implemented a polyfill for Microsoft Internet Explorer 11 and Microsoft Edge browsers. For more information, see the <a href="#/api/sap.f.GridContainer" title="#/api/sap.f.GridContainer" class="sap-doc" alt="#/api/sap.f.GridContainer">API Reference</a> and the <a href="#/entity/sap.f.GridContainer/sample/sap.f.sample.GridContainerDragAndDrop" title="#/entity/sap.f.GridContainer/sample/sap.f.sample.GridContainerDragAndDrop" class="sap-doc" alt="#/entity/sap.f.GridContainer/sample/sap.f.sample.GridContainerDragAndDrop">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.m.ColorPalette</span></code><p>With
+									the new <code>displayMode</code> enum property of
+										<code>sap.m.ColorPalettePopover</code>, you can now
+									control which variant of <code>sap.m.ColorPicker</code> is
+									visualized when the <span class="ph uicontrol">More colors...</span> button
+									is pressed. For more information, see the <a href="#/api/sap.m.ColorPalettePopover" title="#/api/sap.m.ColorPalettePopover" class="sap-doc" alt="#/api/sap.m.ColorPalettePopover">API Reference</a> and
+										the <a href="#/entity/sap.m.ColorPalette/sample/sap.m.sample.ColorPalettePopover" title="#/entity/sap.m.ColorPalette/sample/sap.m.sample.ColorPalettePopover" class="sap-doc" alt="#/entity/sap.m.ColorPalette/sample/sap.m.sample.ColorPalettePopover">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.m.DatePicker</span></code><p>We have
+									introduced a more intuitive way for users to confirm date
+									selection. Setting the new <code>showFooter</code> property
+									enables a footer with <span class="ph uicontrol">OK</span> and
+										<span class="ph uicontrol">Cancel</span> buttons for the user to
+									confirm or cancel the date selection. When
+										<code>showFooter</code> is set to <code>true</code>,
+									the picker no longer closes when a day is selected and there's
+									no need to reopen the picker to select the month or year. For more information, see the <a href="#/api/sap.m.DatePicker" title="#/api/sap.m.DatePicker" class="sap-doc" alt="#/api/sap.m.DatePicker">API Reference</a> and
+										the <a href="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker" title="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker" class="sap-doc" alt="#/entity/sap.m.DatePicker/sample/sap.m.sample.DatePicker">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><code><span class="emphasis">sap.m.SelectDialog</span></code></p>
+								<ul class="ul ">
+									<li class="li">
+										<p>We have introduced a new
+												<code>clearButtonPressed</code> parameter for
+											the <code>search</code> event of the control. The
+											parameter is set to <code>true</code> when the
+												<span class="ph uicontrol">Clear</span> button of the search
+											field is pressed.</p>
+									</li>
+									<li class="li">
+										<p>We have introduced the <code>resizable</code> and
+												<code>draggable</code> properties for the
+											control. If the <code>resizable</code> property is
+											set to <code>true</code>,
+												<code>SelectDialog</code> has a resize handler
+											in its bottom-right corner. If the
+												<code>draggable</code> property is set to
+												<code>true</code>, the control can be dragged by
+											its header. Both properties are available in desktop
+											mode only.</p>
+									</li>
+								</ul>
+								<p>For more information, see the <a href="#/api/sap.m.SelectDialog" title="#/api/sap.m.SelectDialog" class="sap-doc" alt="#/api/sap.m.SelectDialog">API Reference</a> and the
+										<a href="#/entity/sap.m.SelectDialog" title="#/entity/sap.m.SelectDialog" class="sap-doc" alt="#/entity/sap.m.SelectDialog">Samples</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.m.SinglePlanningCalendar</span></code><p>We
+									have introduced support for indicating working hours in the
+										<code>sap.m.SinglePlanningCalendar</code> control.
+									Additionally, app developers can now show or hide the rest of
+									the hours in the day. The <code>startHour</code> and
+										<code>endHour</code> properties define the starting and
+									ending hours of the working day, and these are indicated
+									visually on the screen. The <code>fullDay</code> property
+									contains a boolean flag, which determines whether nonworking
+									hours are aslo displayed. For more information, see the <a href="#/api/sap.m.SinglePlanningCalendar" title="#/api/sap.m.SinglePlanningCalendar" class="sap-doc" alt="#/api/sap.m.SinglePlanningCalendar">API Reference</a> and
+										the <a href="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendarWithLegend" title="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendarWithLegend" class="sap-doc" alt="#/entity/sap.m.SinglePlanningCalendar/sample/sap.m.sample.SinglePlanningCalendarWithLegend">Sample</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.m.TableSelectDialog</span></code><p>We
+									have extended the <code>search</code> event of the control
+									with a new <code>clearButtonPressed</code> parameter. The
+									value of this parameter is set to <code>true</code> when the
+									event is fired by pressing the <span class="ph uicontrol">Clear</span>
+									button and to <code>false</code>, when the
+										<span class="ph uicontrol">Search</span> button is pressed. For more information, see the <a href="#/api/sap.m.TableSelectDialog" title="#/api/sap.m.TableSelectDialog" class="sap-doc" alt="#/api/sap.m.TableSelectDialog">API Reference</a> and
+										the <a href="#/entity/sap.m.TableSelectDialog" title="#/entity/sap.m.TableSelectDialog" class="sap-doc" alt="#/entity/sap.m.TableSelectDialog">Samples</a>.</p></td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.comp.smarttable.SmartTable</code></span></p>
+								<p>The new <code>useInfoToolbar</code> property allows you to
+									show the filters that have been defined for columns in the table
+									personalization dialog in a separate info toolbar. This feature
+									is enabled by default. For more information, see <a href="#/topic/bed8274140d04fc0b9bcb2db42d8bac2.html#loiobed8274140d04fc0b9bcb2db42d8bac2" title="The sap.ui.comp.smarttable.SmartTable control is used to create different types of tables based on OData metadata. The control allows the user to define personalized table settings." class="sap-doc">Smart Table</a>, the
+											<a href="#/api/sap.ui.comp.smarttable.SmartTable" title="#/api/sap.ui.comp.smarttable.SmartTable" class="sap-doc" alt="#/api/sap.ui.comp.smarttable.SmartTable">API Reference</a>,
+										and the <a href="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartMTableWithCriticality" title="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartMTableWithCriticality" class="sap-doc" alt="#/entity/sap.ui.comp.smarttable.SmartTable/sample/sap.ui.comp.sample.smarttable.smartMTableWithCriticality">Sample</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="emphasis"><code>sap.ui.table.AnalyticalTable</code></span></p>
+								<p>When you group columns in an analytical table, you can now select
+										<span class="ph uicontrol">Expand All </span> in the context menu to
+									expand all nodes. Also, you can now expand individual nodes via
+									the context menu by selecting <span class="ph uicontrol">Expand
+										Level</span>. For more information, see the <a href="#/api/sap.ui.table.AnalyticalTable/methods/expandAll" title="#/api/sap.ui.table.AnalyticalTable/methods/expandAll" class="sap-doc" alt="#/api/sap.ui.table.AnalyticalTable/methods/expandAll">API
+										Reference</a>.</p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><code><span class="emphasis">sap.ui.unified.Calendar</span></code><p>We
+									have improved the navigation in the multiple months view for
+										<code>sap.ui.unified.Calendar</code>. When you navigate
+									to the next/previous months, the displayed calendar view is now
+									with one month increments/decrements, instead of two. Note that
+									this behaviour comes out of the box without setting any
+										properties. For more information, see the <a href="#/api/sap.ui.unified.Calendar" title="#/api/sap.ui.unified.Calendar" class="sap-doc" alt="#/api/sap.ui.unified.Calendar">API Reference</a> and
+										the <a href="#/entity/sap.ui.unified.Calendar/sample/sap.ui.unified.sample.CalendarMultipleMonth" title="#/entity/sap.ui.unified.Calendar/sample/sap.ui.unified.sample.CalendarMultipleMonth" class="sap-doc" alt="#/entity/sap.ui.unified.Calendar/sample/sap.ui.unified.sample.CalendarMultipleMonth">Sample</a>.</p></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section id="section_g3r_bf5_zcb" class="collapsible expanded"><div class="collapsible-icon sap-icon"><h2 class="title collapsible expanded">SAP Fiori Elements</h2></div><div class="fig"><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					</tgroup><table border="1" id="table_fm5_dvq_mfb" class="tableFullWidth "><colgroup><col width="1"></colgroup><tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top"><p><span class="emphasis">List Report and Object Page</span></p><p>General
+										features:</p><ul class="ul ">
+										<li class="li">You can now use the
+												<code>MultiSelectionPlugin</code> in tables. For
+											more information, see <a href="#/topic/116b5d82e8c545e2a56e1b51b8b0a9bd.html" title="This feature enables you to configure whether end users can select a single row or multiple rows in a table while triggering table toolbar actions that require context." class="sap-doc">Enabling Multiple Selection in Tables</a>.<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>This feature results in new table selection
+												behavior for multi-select enabled tables
+												(<code>GridTable</code>,
+												<code>AnalyticalTable</code>,
+												<code>TreeTable</code>). Choosing the
+												<span class="uinolabel">Select All</span> checkbox for
+												these tables resulted in performance issues. A real
+												select all to the backend system was executed that,
+												depending on the service, number of entries,
+												hardware of the client device, and more aspects,
+												took very long and sometimes resulted in a timeout.
+												Therefore, the <span class="uinolabel">Select All</span>
+												checkbox is replaced by the <span class="uinolabel">Deselect
+												All</span> arrow with SAPUI5 1.69 for tables
+												on list pages from the list report and analytical
+												list page and with SAPUI5 1.70 for tables on any
+												kind of SAP Fiori elements object page. The
+												<code>selectAll</code> parameter was
+												introduced to get the <span class="uinolabel">Select
+												All</span> checkbox back on the UI.
+												</p></div></div><div><div class="fig"><img src="loio95bca00b749b47e59ef5e0a872a0c626_LowRes.jpg" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Select All Checkbox</span></div><div><div class="fig"><img src="loio449a6aeaf4604a879d61e2b9856460c4_LowRes.jpg" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Deselect All Arrow</span></div></li>
+									</ul><p></p>The object page has these new features:<ul class="ul ">
+									<li class="li">In addition to the smart area micro chart and the smart
+										bullet micro chart, you can now use the following micro
+										charts within the object page header: <ul class="ul ">
+											<li class="li">
+												<p>Smart radial micro chart</p>
+											</li>
+											<li class="li">
+												<p>Smart column micro chart</p>
+											</li>
+											<li class="li">
+												<p>Smart line micro chart</p>
+											</li>
+											<li class="li">
+												<p>Smart harvey micro chart</p>
+											</li>
+											<li class="li">
+												<p>Smart stacked bar micro chart</p>
+											</li>
+										</ul>For more information, see <a href="#/topic/e219fd0c85b842c69ac3a514e712ece5.html" title="You can add a MicroChart control to a facet within the header area on the object page." class="sap-doc">Micro Chart Facet</a>.</li>
+									<li class="li">
+										<p>A <span class="ph uicontrol">Paste</span> button is available in the
+											table toolbar if copying and pasting from Microsoft
+											Excel is supported. For more information, see <a href="#/topic/f6a8fd2812d9442a9bba2f6fb296c42e.html" title="Users can copy and paste data from Microsoft Excel to responsive tables and grid tables." class="sap-doc">Copying and Pasting from Microsoft Excel to Editable Tables</a>.
+										</p>
+									</li>
+								</ul><p><span class="emphasis">Overview Page</span></p><p>The overview page
+									has these new features or enhancements:</p><ul class="ul ">
+										<li class="li">
+											<p>The date fields are now right-aligned for table
+												cards. For more information, see <a href="#/topic/167bf7ccbb084afab7d846e1fa30b49c.html" title="A table card displays a list of records in a 3-column table layout." class="sap-doc">Table Cards</a>.</p>
+										</li>
+										<li class="li">
+											<p>The mandatory fields in the smart filter bar are now
+												highlighted and an error message is displayed only
+												after triggering the search by clicking Go.
+												Previously, the error would be displayed without
+												triggering the search.</p>
+										</li>
+									</ul><p></p></td>
+						</tr>
+					</tbody>
+				</table></div></div></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink"><br><strong>Parent topic: </strong><a href="topic/6660a59a8a22460a91fe65a0d96a567e">Previous Versions</a></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="relatedLinks"><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"><li><a href="topic/067e2fb0165145a5ac9b128b5853f7c9">What's New in SAPUI5 1.86</a></li><li><a href="topic/eeb5bd913fe448598e0449050143027a">What's New in SAPUI5 1.85</a></li><li><a href="topic/ccf76b76327c421e9d87ff7fc3d7ba41">What's New in SAPUI5 1.84</a></li><li><a href="topic/f081cf0a64784c62aa653e80036659f0">What's New in SAPUI5 1.82</a></li><li><a href="topic/f71563ccd2294cf0a59d16b62be0f7eb">What's New in SAPUI5 1.81</a></li><li><a href="topic/3294c688331c4e918a22dc0bb0892ff8">What's New in SAPUI5 1.80</a></li><li><a href="topic/edf8e35377d4452491cdc488030feb13">What's New in SAPUI5 1.79</a></li><li><a href="topic/d176be37229a45dbb1d6d0a1ae2f3167">What's New in SAPUI5 1.78</a></li><li><a href="topic/2ec6b6b03ee249928bba929eec3d2d74">What's New in SAPUI5 1.77</a></li><li><a href="topic/b9b0a3f223c14b9d99e0d86e649cafec">What's New in SAPUI5 1.76</a></li><li><a href="topic/dc3d3ce46105441db5543049fb1c11e7">What's New in SAPUI5 1.75</a></li><li><a href="topic/21fc6cb77b0c44aab55f045812e69c98">What's New in SAPUI5 1.74</a></li><li><a href="topic/7b826642c45d4b8d97c5013cdc240ad6">What's New in SAPUI5 1.73</a></li><li><a href="topic/25e532617b7f4b9bad842757324151ed">What's New in SAPUI5 1.72</a></li><li><a href="topic/609fd015eaf64bd2a4a5c0331590eb4c">What's New in SAPUI5 1.71</a></li><li><a href="topic/41203fd3272b479d8c665357e3b21a43">What's New in SAPUI5 1.69</a></li><li><a href="topic/5531aef1adc8462392a5b8fe1178606e">What's New in SAPUI5 1.68</a></li><li><a href="topic/0968958c4143469d941dbe3b59e06142">What's New in SAPUI5 1.67</a></li><li><a href="topic/ebe7fda555aa466782090053d6f54f21">What's New in SAPUI5 1.66</a></li><li><a href="topic/9d2b1897722a4e99b60580fb09aa35e0">What's New in SAPUI5 1.65</a></li><li><a href="topic/1975e304ab924fb3b799240fdd9fe59b">What's New in SAPUI5 1.64</a></li><li><a href="topic/77e1dcc27c494d60ba0a03759b706e89">What's New in SAPUI5 1.63</a></li><li><a href="topic/27eea38eeb7b40d19d0dfe3ddf513175">What's New in SAPUI5 1.62</a></li><li><a href="topic/de4d50b6c0f649fa859e4657ff8557a6">What's New in SAPUI5 1.61</a></li><li><a href="topic/2a70354a2a38492a873333edc4b9a303">What's New in SAPUI5 1.60</a></li><li><a href="topic/b28edde1f4ad425d9247f3bbcdc5d9b7">What's New in SAPUI5 1.58</a></li><li><a href="topic/53b4b5ec2c83408a8da2cb6b9154c246">What's New in SAPUI5 1.56</a></li><li><a href="topic/f29023ebf9dc4a43b98516a5e2c43837">What's New in SAPUI5 1.54</a></li><li><a href="topic/a09dd79a24c041d288402768558a1d1a">What's New in SAPUI5 1.52</a></li><li><a href="topic/a8449849c81249bb8abd98b4b9342a4a">What's New in SAPUI5 1.50</a></li><li><a href="topic/2818f800e7424c5c91dbd495f8cb757b">What's New in SAPUI5 1.48</a></li><li><a href="topic/4cf0986450ca43e5a8d12dd66e999a77">What's New in SAPUI5 1.46</a></li><li><a href="topic/05ce1dc72c74475bada39234f6721f21">What's New in SAPUI5 1.44</a></li><li><a href="topic/4768f1ac7f0645929b4e9ea9981bb65e">What's New in SAPUI5 1.42</a></li><li><a href="topic/e659bd2383524a05b716916bcda9b368">What's New in SAPUI5 1.40</a></li><li><a href="topic/6a875f998994489483e8085705347d72#loio6a875f998994489483e8085705347d72">What's New in SAPUI5 1.38</a></li></ul></section></div></section></div></body></html>

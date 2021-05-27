@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="com.sap.GL.zrha"
+			sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="LineItems" sap:label="Line Item"
+				sap:semantics="aggregate" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Id" />
+				</Key>
+				<Property Name="Id" Type="Edm.String" Nullable="false"
+					sap:visible="false" sap:label="SADL Key Field" sap:creatable="false" />
+				<Property Name="Bukrs" Type="Edm.String" Nullable="false"
+					MaxLength="4" sap:aggregation-role="dimension"
+					sap:required-in-filter="true" sap:label="Company Code"
+					sap:creatable="false" />
+				<Property Name="Hwaer" Type="Edm.String" MaxLength="5"
+					sap:aggregation-role="dimension" sap:display-format="UpperCase"
+					sap:label="Currency" sap:creatable="false" sap:updatable="false"
+					sap:semantics="currency-code" />
+			</EntityType>
+			<EntityType Name="VL_SH_H_T001" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="BUKRS" />
+				</Key>
+				<Property Name="BUKRS" Type="Edm.String" Nullable="false"
+					MaxLength="25" sap:display-format="UpperCase"
+					sap:label="Company Code" />
+				<Property Name="ORT01" Type="Edm.String" MaxLength="25"
+					sap:label="City" />
+				<Property Name="WAERS" Type="Edm.String" MaxLength="5"
+					sap:display-format="UpperCase" sap:label="Currency" sap:semantics="currency-code" />
+				<Property Name="DeprecationCode" Type="Edm.String" MaxLength="1"
+					sap:label="Company Deprecation Code" />
+			</EntityType>
+
+			<EntityContainer Name="com.sap.GL.zrha_Entities"
+				m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="LineItemsSet" EntityType="com.sap.GL.zrha.LineItems"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="VL_SH_H_T001" EntityType="com.sap.GL.zrha.VL_SH_H_T001"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:content-version="1" sap:countable="false" />
+			</EntityContainer>
+
+			<Annotations Target="com.sap.GL.zrha.LineItems/Bukrs"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Company Codes" />
+						<PropertyValue Property="CollectionPath" String="VL_SH_H_T001" />
+						<PropertyValue Property="SearchSupported" Bool="true" />
+						<PropertyValue Property="FetchValues" Int="1" />
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty"
+										PropertyPath="Bukrs" />
+									<PropertyValue Property="ValueListProperty"
+										String="BUKRS" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="ORT01" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="WAERS" />
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="DeprecationCode" />
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+
+			<Annotations Target="com.sap.GL.zrha.LineItems"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Bukrs" />
+							<Annotation Term="com.sap.vocabularies.UI.v1.Importance"
+								EnumMember="com.sap.vocabularies.UI.v1.ImportanceType/High" />
+						</Record>
+					</Collection>
+				</Annotation>
+
+	        	<Annotation Qualifier="IDESUS2010USD" Term="com.sap.vocabularies.UI.v1.SelectionVariant">
+					<Record>
+						<PropertyValue Property="Text" String="SelectionVariant from Annotations"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="com.sap.vocabularies.UI.v1.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="Bukrs"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="com.sap.vocabularies.UI.v1.SelectionRangeType">
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" Property="Sign"/>
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" Property="Option"/>
+												<PropertyValue Property="Low" String="0001"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Qualifier="IDESIndirectLabor" Term="com.sap.vocabularies.UI.v1.SelectionVariant">
+					<Record>
+						<PropertyValue Property="Text" String="SelectionVariant for Indirect labor costs (421000)"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="com.sap.vocabularies.UI.v1.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="Bukrs"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="com.sap.vocabularies.UI.v1.SelectionRangeType">
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" Property="Sign"/>
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" Property="Option"/>
+												<PropertyValue Property="Low" String="0001"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+
+					</Record>
+				</Annotation>
+
+				<Annotation Term="com.sap.vocabularies.UI.v1.SelectionVariant">
+					<Record>
+						<PropertyValue Property="Text" String="SelectionVariant for Indirect labor costs (421000)"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="com.sap.vocabularies.UI.v1.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="Bukrs"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" Property="Sign"/>
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" Property="Option"/>
+												<PropertyValue Property="Low" String="0001"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" Property="Sign"/>
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" Property="Option"/>
+												<PropertyValue Property="Low" String="0002"/>
+											</Record>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeSignType/I" Property="Sign"/>
+												<PropertyValue EnumMember="com.sap.vocabularies.UI.v1.SelectionRangeOptionType/EQ" Property="Option"/>
+												<PropertyValue Property="Low" String="0003"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+
+				<Annotation Term="com.sap.vocabularies.UI.v1.LineItem" Qualifier="Variant1">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.DataField">
+							<PropertyValue Property="Value" Path="Bukrs" />
+							<PropertyValue Property="Label" String="me Bukrs" />
+						</Record>
+					</Collection>
+				</Annotation>
+
+				<Annotation Term="com.sap.vocabularies.UI.v1.PresentationVariant"
+					Qualifier="ActualCosts">
+					<Record>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@com.sap.vocabularies.UI.v1.LineItem#Variant1</AnnotationPath>
+								<!--  <AnnotationPath>@com.sap.vocabularies.UI.v1.Chart#Variant1</AnnotationPath> -->
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType">
+									<PropertyValue Property="Property"
+										PropertyPath="Bukrs" />
+									<PropertyValue Property="Descending" Bool="false" />
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MaxItems" Int="10" />
+					</Record>
+				</Annotation>
+
+
+				<Annotation Qualifier="PS1"
+					Term="com.sap.vocabularies.UI.v1.SelectionPresentationVariant">
+					<Record>
+						<PropertyValue Property="ID" String="" />
+						<PropertyValue Property="Text" String="EntityType" />
+						<PropertyValue Property="SelectionVariant" Path="@com.sap.vocabularies.UI.v1.SelectionVariant#IDESIndirectLabor" />
+						<PropertyValue Property="PresentationVariant" Path="@com.sap.vocabularies.UI.v1.PresentationVariant#ActualCosts" />
+					</Record>
+
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="com.sap.GL.zrha.VL_SH_H_T001/DeprecationCode">
+				<Annotation Term="com.sap.vocabularies.CodeList.v1.IsConfigurationDeprecationCode" Bool="true"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

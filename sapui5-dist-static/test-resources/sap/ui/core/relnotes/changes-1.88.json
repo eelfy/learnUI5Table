@@ -1,0 +1,29 @@
+{
+  "1.88.0": {
+    "date": "March 2021",
+    "notes": [
+      {
+        "id": "62d7235b7852bf1db7c3dad9067f02b645303315",
+        "type": "FIX",
+        "text": " sap.f.DynamicPageTitle: Delete less variable",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": ""
+          }
+        ]
+      },
+      {
+        "id": "c8c1177c3c9ef4c6988aac7063c1750bf34bafa5",
+        "type": "FIX",
+        "text": " sap.f.DynamicPageTitle: Cutting of buttons is fixed",
+        "references": [
+          {
+            "type": "BCP",
+            "reference": "2180085793"
+          }
+        ]
+      }
+    ]
+  }
+}

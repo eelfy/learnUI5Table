@@ -1,0 +1,315 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiofef65d03d01a4b2baca28983a5449cf7" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Enabling Semantic Date Range on
+        Filter
+        Bar</h1><div class="fig"><h1 class="topictitle1 title">Enabling Semantic Date Range on
+        Filter
+        Bar</h1><div class="shortdesc">You can use semantic date ranges, such as Today or
+            Last Week, on the
+        filter bar
+        of list report and analytical list report applications.</div><section class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>For
+                a filter field of type <span class="ph uicontrol">Date</span>, the date picker is set by
+                default in the
+                
+                filter bar.
+                However,
+                if the <code>useDateRange</code> is configured as <code>true</code> in the
+                manifest file, the semantic date range control is rendered on the filter
+                bar.</p><p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Enable date range filter with all default range
+                    types</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+    “pages”: {
+     "ListReport|SEPMRA_C_PD_Product: {
+        “component”: {
+			"settings" : {
+            "filterSettings": {
+                "dateSettings":{
+                    "useDateRange": true 
+                }
+            }
+        }
+    }
+}
+</pre></div></section><p></p></div></div>
+            <p></p><p>This date
+                range shows all the default settings listed in the <a href="#/entity/sap.ui.comp.smartfilterbar.SmartFilterBar/sample/sap.ui.comp.sample.smartfilterbar.UseDateRangeType" title="#/entity/sap.ui.comp.smartfilterbar.SmartFilterBar/sample/sap.ui.comp.sample.smartfilterbar.UseDateRangeType" class="sap-doc" alt="#/entity/sap.ui.comp.smartfilterbar.SmartFilterBar/sample/sap.ui.comp.sample.smartfilterbar.UseDateRangeType">Sample Posting Date</a>.</p><p>The
+                    <code>useDateRange: true</code> setting and the custom date range
+                implementation are mutually exclusive. You can modify the default date range options
+                by setting <code>useDateRange:false</code> as shown in below sample code and by
+                specifying the required options.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": {
+    “pages”: {
+        “component”: {
+			"settings" : {
+			 ...
+            "filterSettings": {
+                "dateSettings":{
+                    "selectedValues": "DAYS,WEEK,MONTH,DATERANGE,QUARTER,YEAR",
+                    "fields": {
+                        "DateProperty1": {
+                            "selectedValues": "TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
+                            "exclude": true
+                        },
+                        "DateProperty2": {
+                            "customDateRangeImplementation": "SOMULTIENTITY.ext.controller.customDateRangeType",
+                            "selectedValues": "FROM,TO,DAYS,WEEK,MONTH,DATERANGE,TODAY,TOMORROW,YEAR,YESTERDAY",
+                            "exclude": true
+                        },
+                        "DateProperty3": { 
+                            "selectedValues": "YESTERDAY",
+                            "exclude": false 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</pre></div></section>
+                <p></p></div></div><p></p><p>The following types of settings exist, either at
+                property level or at default level, under <code>dateSettings</code>:</p><ul class="ul ">
+                    <li class="li">
+                        <p><code>customDateRangeImplementation</code> property: This property
+                            references a JS class, which you use to modify the date range value
+                            list. You can either remove standard data range values or add custom
+                            values.</p>
+                    </li>
+                    <li class="li">
+                        <p><code>selectedValues</code> and <code>exclude</code> properties:
+                            The <code>SelectedValues</code> property is a set of standard date
+                            range values that you want to include or exclude. The
+                                <code>exclude</code> property is set to <code>True</code> by
+                            default. This means excluding all values given as
+                                <code>selectedValues</code> from the list of date range filters.
+                            If the <code>exclude</code> property is set to
+                                <code>False</code>, the application shows only selected values
+                            in the list of date range filters.</p>
+                        <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                            </p><ul class="ul ">
+                                <li class="li">
+                                    <p>If you make both of the settings mentioned above, the
+                                            <code>customDateRangeImplementation</code> property
+                                        takes precedence over the <code>selectedValues</code>
+                                        and <code>exclude</code> properties.</p>
+                                    <p>
+                                        </p><div class="note other example "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Example
+				</strong></div></div><div class="fig"><p> Suppose we have 5 date filters, namely,
+                                            DateProperty1, DateProperty2, DateProperty3,
+                                            DateProperty4, and DateProperty5. As shown in the
+                                                <i>Sample Code: useDateRange</i>, DateProperty1,
+                                            DateProperty2, and DateProperty3 take the settings
+                                            defined for the respective properties, whereas
+                                            DateProperty4 and DateProperty5 take the default
+                                                <code>SelectedValues</code> settings one level
+                                            above the field specific configuration.</p></div></div>
+                                    <p></p>
+                                </li>
+                                <li class="li">
+                                    <p>If you define the semantic date range feature by providing
+                                        specific fields, you cannot render the fields from the
+                                        navigation property of the leading entity set as a semantic
+                                        date range in the
+                                        
+                                        filter bar. This feature is not yet supported.</p>
+                                </li>
+                            </ul>
+                        <p></p></div></div>
+                    </li>
+                </ul><p></p><section>
+                <h3 class="title ">Excluding Certain Date Range Types</h3>
+                <p>You can use the <code>filter</code> settings to include and exclude specific
+                    date range values.</p>
+                <p>Example 1: If you want to remove <span class="emphasis">Today</span> from the date range,
+                    refer to the sample code below:</p>
+                <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                    </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">filterSettings: {
+	dateSettings: { //Settings which will be applied for all the properties in the filter which are of type sap:date & support range filtering
+		useDateRange: false //Default value of the property is false. If set to true all date types will get default date ranges. Set to true all other date settings are ignored
+		fields: {
+			"LastUpdatedDate": {
+				//Override for a specific property of type sap:date LastUpdatedDate. This is the most simplest way of removing selected values
+				// from the standard date range. The values which you want to remove or keep needs to be mentioned as selectedValues in a
+				// comma separated format
+				selectedValues: "TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
+				//Optional property, default value is true. If set to false include selectedValues otherwise exclude
+				exclude: false
+			},
+			"PostingDate": {
+				//Alternate way of configuring is using the Filter option. Here developer should be able to specify
+				// the condition specific to each and every value (whether it is a key/category), needs to be excluded
+				// or included. You could also specify the operator whether it is contains or equal. This configuration
+				// passed directly to filter bar and therefore anything which could possible in SFB can be configured
+				// here as well
+				//Application can use this for more complex and detailed configuration
+				"filter": [{
+						path: 'key',
+						equals: 'TODAY',
+						exclude: true
+					} // TODAY filter will be removed
+				]
+			},
+			"CreatedDate": { //Override for a specific property of type sap:date CreatedDate
+				//Property holds a reference to a JS class using which App developer can modify the date range value list (can remove standard or
+				//add custom values). App developer should configure either customDateRangeImplementation or filter or selectedValues & exclude property.
+				//In case someone configures all four, the priority will be given to customDateRangeImplementation, next priority for filter property
+				//and the lowest priority will be for selectedValues & exclude (modeled properties) properties   
+				customDateRangeImplementation: "fin.co.statisticalkeyfigure.whereused.lib.CustomDateRangeType",
+			}
+		}
+	}
+}</pre></div></section>
+                <p></p></div></div>
+                <div><div class="fig"><img src="loio5368b4ceaf1c4fdd9d342cfd02bf401d_LowRes.png" usemap="#"></div></div>
+                <p>Example 2: If you want include <span class="emphasis">Today</span> and exclude
+                        <span class="emphasis">Today -X/+Y Days</span>, refer to the sample code below:</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"filter": [{
+		"path": "key",
+		"equals": "TODAY",
+		"exclude": false
+	},
+	{
+		"path": "key",
+		"equals": "TODAYFROMTO",
+		"exclude": true
+	}
+]
+// </pre></div></section>
+                    <p></p></div></div><p></p>
+                <div><div class="fig"><img src="loio5f57bd30ea36483faa9fbf6d3b3d311e_HiRes.png" usemap="#"></div></div>
+                <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                    </p><p>The<code>customDateRangeImplementation</code> setting takes priority
+                        followed by <code>filter</code> and <code>selectedValues</code> when
+                        excluding date range types.</p>
+                <p></p></div></div>
+                <p><span class="emphasis">Using the <code>DateRangeType</code> Category</span></p>
+                <p><code>DateRangeType</code> category contains group of
+                        <code>DateRangeType</code> keys. You can use category to remove all keys
+                    in that category. </p>
+                <p>For example, <code>DateRangeType</code> category
+                        <code>DYNAMIC.DATE</code> contains different keys such as
+                        <code>TO</code> and <code>FROM</code>,
+                        <code>DYNAMIC.DATE.INT</code> category contains keys such as
+                        <code>NEXTDAYS</code> and <code>LASTDAYS</code>, and
+                        <code>DYNAMIC</code> category includes both categories
+                        <code>DYNAMIC.DATE</code> and <code>DYNAMIC.DATE.INT</code>.</p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                        </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"filter": [{
+	"path": "category",
+	"contains": "FIXED",
+	"exclude": true
+}]
+// this will remove all the keys under the category which "contains" FIXED</pre></div></section>
+                    <p></p></div></div><p></p>
+            </section></div></section><section id="section_otf_dzw_jnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>For a filter field of type <span class="ph uicontrol">Date</span>, the date picker is set by default in the filter bar. You can
+                replace it with a date range by making the following code changes in the manifest file:</p><p>
+                </p><div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>Enable date range filter with all default range
+                    types</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {   
+        "routing": {
+            "targets": {
+                "SalesOrderManageList": {
+                    "type": "Component",
+                    "id": "SalesOrderManageList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "SalesOrderManage",
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                                    "useSemanticDateRange": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+            <p></p><section>
+                <h3 class="title ">Excluding Certain Date Range Types</h3>
+                <p>You can use the <code>operatorConfiguration</code> settings to include and exclude specific date range values. Applications can
+                    use this for more complex and detailed configuration.</p>
+                <ul class="ul ">
+                    <li class="li">
+                        <p>Example 1</p>
+                        <p>To remove "Today" from the date range, proceed as shown in the sample code below:</p>
+                        <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"filterFields": {
+    "SalesOrderDate": {
+       "settings": {
+           "operatorConfiguration": [
+                 {
+                     "path": "key",
+                      "equals": "TODAY",
+                      "exclude": true
+                  } // TODAY filter will be removed
+            ]
+       }
+    }
+ }</pre></div></section>
+                        <p></p></div></div>
+                        <p>The result can be seen in the screenshot:</p>
+                        <div><div class="fig"><img src="loioe0b551e61b5b4ee1ba50e504c6b13b86_LowRes.png" usemap="#"></div></div>
+                    </li>
+                    <li class="li">
+                        <p>Example 2</p>
+                        <p>To include "Today" and exclude "Today -X/+Y Days", proceed as shown in the sample code below:</p>
+                        <div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+                            </p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"filterFields": {
+    "SalesOrderDate": {
+       "settings": {
+           "operatorConfiguration": [
+                 {
+                     "path": "key",
+                      "equals": "TODAY",
+                      "exclude": false
+                  },
+                  {
+                    "path": "key",
+                     "equals": "TODAYXYDAYS",
+                     "exclude": true
+                  }
+            ]
+       }
+    }
+ }</pre></div></section>
+                        <p></p></div></div>
+                        <p>The result can be seen in the screenshot:</p>
+                        <div><div class="fig"><img src="loioa9217eae83b644cc915b9807d3579c86_LowRes.png" usemap="#"></div></div>
+                        <div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                            </p><p>Applications can currently only use the <code>operatorConfiguration</code> option to configure the date range
+                                operators.</p>
+                        <p></p></div></div>
+                    </li>
+                </ul>
+            </section></div></section><section id="section_q5w_tgf_nmb">
+            <h2 class="title ">More Information</h2>
+            <p>For more information on configuring filter bar in list report, see <a href="#/topic/609c39a7498541559dbef503c1ffd194.html" title="You can define application-specific selection fields by using com.sap.vocabularies.UI.v1.SelectionFields and field groups for the filter popup." class="sap-doc">Adapting the Filter Bar</a>.</p>
+            <p>Depending on the use of
+                the
+                date range filter, the default tile type also varies. For more
+                information
+                about
+                creating tiles in case of the semantic date range configuration, see <a href="#/topic/7e34ea9317a54806a725ddf9878530d7.html" title="You can extend the standard bookmark function by adding an extension point to the list report or analytical list page controller extension. Static tiles are then saved to the SAP Fiori launchpad instead of dynamic tiles." class="sap-doc">Extending the Bookmark Function to Save Static Tiles to the SAP Fiori Launchpad</a>.</p>
+        </section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

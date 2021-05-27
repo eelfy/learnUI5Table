@@ -1,0 +1,454 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiod525522c1bf54672ae4e02d66b38e60c" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Extension Points for Tables</h1><div class="fig"><h1 class="topictitle1 title">Extension Points for Tables</h1><div class="shortdesc">You can use extension points to enhance tables in SAP Fiori elements
+		apps.</div><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>Use app extensions with caution and only if you
+            cannot produce the required behavior by other means, such as manifest settings or
+            annotations. To correctly integrate your app extension coding with SAP Fiori elements,
+            use only the extensionAPI of SAP Fiori elements. For more information, see <a href="#/topic/bd2994b69ef542998becbc69ab093f7e.html" title="The extensionAPI consists of several elements that are described below. It can be used for the list report and object page." class="sap-doc">Using the extensionAPI</a>. </p><p>After you've created an app
+                extension, its display (for example, control placing, CSS) and system behavior (for
+                example, model and binding usage, busy handling) of the app extension lies within
+                the application's responsibility. SAP Fiori elements provides support only for the
+                official extensionAPI functions. Don't access or manipulate SAP Fiori elements'
+                internal coding.</p><p></p></div></div><section id="section_abc_txf_tnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>You use the following extension points to add additional columns to tables:</p><div class="tableWrapper "><div class="fig"><tgroup>
+					
+					
+					
+					
+					</tgroup><table border="1" id="table_jgg_ln3_rz" class=" "><colgroup><col width="1.0"><col width="1.0"><col width="1.0"><col width="1"></colgroup><thead>
+						<tr>
+							<th colspan="1" rowspan="1">
+								<p>Table Type</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>SAP Fiori Element</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Extension Point</p>
+							</th>
+							<th colspan="1" rowspan="1">
+								<p>Example</p>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>All</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object page</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">onBeforeRebindTableExtension</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/382a6c39fd494c12a4ee23c8659909bd.html" title="This example explains how to use an extension point if you want to apply custom logic when your table is being loaded or refreshed." class="sap-doc">Example: Applying Custom Logic When a Table is Loaded or Refreshed</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>Responsive table</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List report</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">ResponsiveTableColumnsExtension|&lt;Name of
+										the EntitySet&gt;</span></p>
+								<p><span class="ph sap-technical-name">ResponsiveTableCellsExtension|&lt;Name of the
+										EntitySet&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/28e95702b5854b938ac51c4bc2d078ab.html" title="You have to implement two extension points to add a custom column to a table." class="sap-doc">Example: Adding Columns to a Responsive Table in the List Report</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object page</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">ResponsiveTableColumnsExtension|&lt;Name of
+										the table EntitySet&gt;|&lt;Facet ID/Annotation
+										Path&gt;</span></p>
+								<p><span class="ph sap-technical-name">ResponsiveTableCellsExtension|&lt;Name of the
+										table EntitySet&gt;|&lt;Facet ID/Annotation
+										Path&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/c174923c270049c4b73d646cc688b8d9.html" title="You have to implement two extension points to add a custom column to a table." class="sap-doc">Example: Adding Columns to a Responsive Table on the Object Page</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>Grid table</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List report</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">GridTableColumnsExtension|&lt;Name of the
+										EntitySet&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/69bfeecb51154cf985a23b060d99cf40.html" title="To add custom columns to a grid table in the list report, follow the steps described below." class="sap-doc">Example: Adding Columns to a Grid Table in the List Report</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object page</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name"></span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/10a6ef1b7bf84f59aaf57cb3ea0c9aab.html" title="To add custom columns to a grid table in the list report, follow the steps described below." class="sap-doc">Example: Adding Columns to a Grid Table in the Object Page</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="2" valign="top">
+								<p>Analytical table</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List report</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">AnalyticalTableColumnsExtension|&lt;Name of
+										the EntitySet&gt;GridTableColumnsExtension|&lt;Name of the
+										table EntitySet&gt;|&lt;Facet ID/Annotation
+										Path&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+						</td></tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Object page</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">GridTableColumnsExtension|AnalyticalTableColumnsExtension|&lt;Name of
+										the table EntitySet&gt;|&lt;Facet ID/Annotation
+										Path&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/3b78e695abde4c21a472cd9e2f1c9eb5.html" title="To add custom columns to an analytical table on the object page, follow the steps described below." class="sap-doc">Example: Adding Columns to an Analytical Table on the Object Page</a></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>Tree table</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p>List report</p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><span class="ph sap-technical-name">TreeTableColumnsExtension|&lt;Name of the
+										EntitySet&gt;</span></p>
+							</td>
+							<td colspan="1" rowspan="1" valign="top">
+								<p><a href="#/topic/b903da5f037244629aa6462af2eb32ec.html" title="To add custom columns to a tree table in the list report, follow the steps described below." class="sap-doc">Example: Adding Columns to a Tree Table in the List Report</a></p>
+							</td>
+						</tr>
+					</tbody>
+				</table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p><code>&lt;Name of the EntitySet&gt;</code> is the EntitySet of the current
+				page. <code>&lt;Name of the table EntitySet&gt;</code> is the EntitySet of the
+				table the extension is meant for. Use the <code>&lt;name of the table
+					EntitySet&gt;</code> for all table column extensions on the object page, as
+				opposed to all other view extensions on the object page. </p></div></div></div></section><section id="section_zgq_tnj_x4b">
+			<p>You use extension point <span class="ph sap-technical-name">ListReportExtension</span>
+				to replace default navigation within a responsive table in a list report. For more
+				information, see the following example: <a href="#/topic/a12ad6058db84e8cb60a3a9b2ade63fb.html" title="You can replace the standard navigation from the list report to the object page with your own navigation to an external or internal target." class="sap-doc">Example: Replacing Standard Navigation in a Responsive Table in the List Report</a>.</p>
+			<p>You use extension point <span class="ph sap-technical-name">DetailsExtension</span> to
+				replace default navigation within a responsive table on an object page. For more
+				information, see the following example: <a href="#/topic/b20dc7a3d9ca41bebdb86fc3ae3295bf.html" title="You can replace the standard navigation from the object page with your own navigation to an external or internal target." class="sap-doc">Example: Replacing Standard Navigation in a Responsive Table on the Object Page</a>.</p>
+		</section><section id="section_lkv_1b5_tnb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">Additional Features in
+					SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The table containing additional custom columns can look like
+				this:</p><div><div class="fig"><img src="loio00819cdc225043fcaab5596c78a2274e_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Custom Columns in a Table</span></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+				</p><p>When adding custom columns to tables, each column needs a column key as its
+					unique identifier. Use only the following characters:</p>
+				<ul class="ul ">
+					<li class="li">
+						<p>:</p>
+					</li>
+					<li class="li">
+						<p>_</p>
+					</li>
+					<li class="li">
+						<p>-</p>
+					</li>
+					<li class="li">
+						<p>alpha-numeric characters</p>
+					</li>
+				</ul>
+				<p>For <code>UI.DataField</code>, the column keys are created using the OData
+					path. All columns start with ... ::C:: and follow this by the annotation type,
+					for example <code>UI.DataField, ::</code> and then the corresponding
+					property. Example: &lt;sap.m.Label
+					id="SalesOrder::SalesOrderManageList--fe::table::SalesOrderManage::LineItem::C::FieldGroup::multipleActionFields-innerColumnHeader"&gt;.
+					For custom columns, the ID is concatenated with
+					...C::CustomColumn::&lt;key&gt;.</p>
+			<p></p></div></div><section>
+				<h3 class="title ">Procedure</h3>
+				<ol>
+					<li class="li">
+						<p>Define a fragment for the view extension.</p>
+						<p>For a custom column in a table, you have to implement two extensions.
+							First, implement the definition of the custom columns, then, implement
+							the content of the custom columns.</p>
+						<div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p><code>CustomColumnButton.fragment.xml</code></p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout"&gt;
+	&lt;l:VerticalLayout core:require="{handler: 'SalesOrder/custom/CustomColumn'}"&gt;
+		&lt;Button text="Custom Button" press="handler.buttonPressed" /&gt;
+	&lt;/l:VerticalLayout&gt;
+&lt;/core:FragmentDefinition&gt;</pre></div></section><p></p></div></div>
+					</li>
+					<li class="li">
+						<p>Register your view extensions in the manifest.json file of your
+							application as follows:</p>
+						<p>
+							</p><div class="note other samplecode lang-xml"><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>manifest.json</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">{
+    "sap.ui5": {
+        "routing": {
+            "targets": {
+                "SalesOrderManageList": {
+                    "options": {
+                        "settings": {
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "columns": {
+                                        "CustomColumnRating": {
+                                            "header": "{i18n&gt;LR.Custom_Column|Button}",
+                                            "width": "10em",
+                                            "horizontalAlign": "Center",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "DataFieldForAnnotation::FieldGroup::multipleActionFields"
+                                            },
+                                            "template": "SalesOrder.custom.CustomColumnButton",
+                                            "availability": "Default",
+                                            "properties": [
+                                                "ID",
+                                                "TotalNetAmount",
+                                                "_CustomerPaymentTerms/CustomerPaymentTerms",
+                                                "_ShipToParty/BusinessPartner"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "SalesOrderManageObjectPage": {
+                    "options": {
+                        "settings": {
+                            "controlConfiguration": {
+                                "_Item/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "columns": {
+                                        "CustomColumnOnObjectPage": {
+                                            "header": "AnotherColumnLabel",
+                                            "template": "SalesOrder.custom.CustomColumnButton",
+                                            "availability": "Adaption"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</pre></div></section><p></p></div></div>
+						<p></p>
+						<p>In this example, the <code>CustomColumnButton.fragment.xml</code>
+							uses an event handler to be executed upon pressing (for more
+							information, see <a href="#/topic/bdf3e9818cd84d37a18ee5680e97e1c1.html" title="Event handler methods are invoked when an event occurs. Method names starting with on are reserved for event handler methods." class="sap-doc">Event Handler Methods</a>):</p>
+						<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>CustomColumn.js</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">sap.ui.define(["sap/m/MessageBox"], function(MessageBox) {
+    "use strict";
+ 
+    return {
+        buttonPressed: function() {
+            MessageBox.show("Button pressed!");
+        }
+    };
+});</pre></div></section><p></p></div></div>
+						<p>The manifest.json sample code above enables you to add an additional
+							column to an object page. By default, the column is not visible on the
+							UI due to the availability. Once it has been added via
+								<span class="ph uicontrol">Add/Remove Columns</span>, this is the result:</p>
+						<div><div class="fig"><img src="loiobea7e9ba2142413ba44163981577a368_LowRes.png" usemap="#"></div></div>
+						<p>
+							</p><div class="tableWrapper "><div class="fig"><tgroup>
+									
+									
+									
+									</tgroup><table border="1" id="table_ssw_r3g_tnb" class=" "><colgroup><col width="1"><col width="1"><col width="1"></colgroup><thead>
+										<tr>
+											<th colspan="1" rowspan="1">Property</th>
+											<th colspan="1" rowspan="1">Supported Values</th>
+											<th colspan="1" rowspan="1">Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">key</td>
+											<td colspan="1" rowspan="1" valign="top">aA-zZ, 0-9, :, _, -</td>
+											<td colspan="1" rowspan="1" valign="top">The key of the custom column is needed as an
+												identifier, which can be used as reference for other
+												columns.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">header</td>
+											<td colspan="1" rowspan="1" valign="top">any unicode string</td>
+											<td colspan="1" rowspan="1" valign="top">The header is shown on the table as header, as
+												well as in the add/remove dialog.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">width*</td>
+											<td colspan="1" rowspan="1" valign="top"><span class="emphasis">auto</span>|value|inherit;</td>
+											<td colspan="1" rowspan="1" valign="top"><p>auto: The browser calculates the
+												width.</p><p>length: Defines the width in px, cm,
+												etc.</p><p>%: Defines the width in percent of the
+												containing block.</p><p>inherit: Inherits this
+												property from its parent element.</p><p>Default
+												values are set by SAP Fiori elements if nothing is
+												set.</p>Note: This setting can also be used for
+												existing annotation columns.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">horizontalAlign*</td>
+											<td colspan="1" rowspan="1" valign="top"><span class="emphasis">"Begin"</span> | "Center" |
+												"End"</td>
+											<td colspan="1" rowspan="1" valign="top">Aligns the header as well as the content
+												horizontally.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">position</td>
+											<td colspan="1" rowspan="1" valign="top">
+											</td><td colspan="1" rowspan="1" valign="top">Defines the position of the column relative to
+												other columns.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">position.placement</td>
+											<td colspan="1" rowspan="1" valign="top"><span class="emphasis">"After"</span> | "Before" </td>
+											<td colspan="1" rowspan="1" valign="top">Defines the placement, either before or after the
+												anchor column.</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">position.anchor</td>
+											<td colspan="1" rowspan="1" valign="top">"&lt;key_of_referenced_column&gt;"</td>
+											<td colspan="1" rowspan="1" valign="top">
+												<p>The key of another column to be used as placement
+												anchor. Columns defined via annotations can be
+												referenced their <code>FieldId</code>.</p>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">template</td>
+											<td colspan="1" rowspan="1" valign="top">
+											</td><td colspan="1" rowspan="1" valign="top">Defining the target fragment follows the syntax
+												of defining a fragment via Fragment.load</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">availability*</td>
+											<td colspan="1" rowspan="1" valign="top"><span class="emphasis">"Default"</span> | "Adaptation" |
+												"Hidden"</td>
+											<td colspan="1" rowspan="1" valign="top">
+												<p>Defines where the column should be shown.</p>
+												<ul class="ul ">
+												<li class="li">
+												<p>Default: it will be shown by default in the
+												table.</p>
+												</li>
+												<li class="li">
+												<p>Adaptation: it will initially not shown in the
+												table but be available via end user adaptation</p>
+												</li>
+												<li class="li">
+												<p>Hidden: the column is neither available in the
+												table nor in adaptation</p>
+												</li>
+												</ul>
+												<p>Note: This setting can also be used for existing
+												annotation columns.</p>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="1" rowspan="1" valign="top">properties*</td>
+											<td colspan="1" rowspan="1" valign="top">Array of string(s)</td>
+											<td colspan="1" rowspan="1" valign="top">
+												<p>The properties can be any properties that already
+												exist in the annotations and that are available to
+												consume. If provided and if sorting is enabled for
+												the table, clicking the custom column header is
+												possible. This will lead to a property or a list
+												of properties for which sorting is enabled. The
+												list is displayed based on the labels of the
+												properties, corresponding to their definition in
+												the annotations. Upon clicking, the table is
+												sorted by the property. The sorting indicator can
+												be seen on all columns which point to the selected
+												property.</p>
+												<p>Properties added to any custom column can also be
+												found in the sorting and filtering dialog.
+												Selecting them there results in the same behavior
+												known from other properties in the table.</p>
+												<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+												</p><p>Sorting is not possible for navigation
+												properties, as this is currently not supported by
+												the back end.</p>
+												<p></p></div></div>
+											</td>
+										</tr>
+									</tbody>
+								</table></div></div>
+						<p></p>
+						<p>(*) = optional value</p>
+						<p><span class="emphasis">bold</span> formatting: default/fallback behavior</p>
+						<p>
+						</p><p>The UI model can be leveraged within the fragment, for example to react
+							to changes of the <code>editMode</code>:</p>
+						<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+							</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">enabled="{= ${ui&gt;/editMode} === 'Editable'}"</pre></div></section>
+						<p></p></div></div>
+						<p>For the correct positioning of your custom elements, you need to identify
+							an anchor element. For more information, see <a href="#/topic/6ffb084e6d8247d1863005c14e8d5894.html" title="For the correct positioning of your custom elements, you need to identify an anchor element using the browser's developer tools." class="sap-doc">Finding the Right Key for the Anchor</a>.</p>
+					</li>
+				</ol>
+			</section><section>
+				<h3 class="title ">Sorting and Filtering</h3>
+				<p>You can add the configuration to support sorting and filtering via "properties"
+					to any custom column as an array of properties:</p>
+				<div class="note other samplecode "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Sample Code
+				</strong></div></div><div class="fig"><p>
+					</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"properties": [
+    "TotalNetAmount",
+    "_CustomerPaymentTerms/CustomerPaymentTerms"
+]</pre></div></section>
+				<p></p></div></div>
+				<p>The header of a custom column is clickable:</p>
+				<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio2138690a1a9f4959b894ef544a5d4322_LowRes.png"></div></div></div>
+				<p>Upon selection of the icon shown in the screenshot, the provided properties are
+					displayed:</p>
+				<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio83b2725122f34ea787c62020ebcb5e92_LowRes.png"></div></div></div>
+				<p>If sorting is applied, the indicator is added to any column that points to the
+					property used for sorting:</p>
+				<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loio48480a80cf854606ada764749b2a7f38_LowRes.png"></div></div></div>
+				<p>Properties added to any custom column can also be found in the sorting and
+					filtering dialog (make sure sorting and filtering is available for your
+					table):</p>
+				<div><div class="fig"><div class="lightbox-img-wrapper"><div class="overlay"><span style="display: none;">Hidden</span></div><img class="minimized-small lightbox-img" src="loiod8b8a6e54eeb4a36aac5b1df9a22ec6e_LowRes.png"></div></div></div>
+			</section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

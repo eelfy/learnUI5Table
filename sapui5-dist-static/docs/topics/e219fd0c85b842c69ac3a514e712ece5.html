@@ -1,0 +1,144 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioe219fd0c85b842c69ac3a514e712ece5" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Micro Chart Facet</h1><div class="fig"><h1 class="topictitle1 title">Micro Chart Facet</h1><div class="shortdesc">You can add a MicroChart control to a facet within the header area on
+        the object page.</div><p>A micro chart facet contains a title, subtitle, <code>MicroChart</code> control, and
+            a footer. The <code>MicroChart</code> control supports the following micro charts in
+            the object page header: </p><ul class="ul ">
+                <li class="li">
+                    <p>Area micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Bullet micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Radial micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Column micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Line micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Harvey micro chart</p>
+                </li>
+                <li class="li">
+                    <p>Stacked bar micro chart</p>
+                </li>
+            </ul><p></p><p>In addition to the micro charts mentioned above, Comparison micro chart is
+            supported
+            in SAP Fiori elements for OData V4. </p><p>To add a micro chart facet, in the local annotations file, use a
+                <code>UI.HeaderFacets</code> term and the complex type
+                <code>UI.ReferenceFacet</code> and reference the <code>UI.Chart</code> as
+            shown in the sample code below.</p><section id="section_ctg_wf3_nlb"><div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Micro Chart Facet </span></div><section>
+                <h3 class="title ">Code Samples</h3>
+                <p><span class="emphasis">UI.HeaderFacets and UI.ReferenceFacet</span></p>
+                <p>
+                    </p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations Target="STTA_PROD_MAN.STTA_C_MP_ProductType"&gt;
+    &lt;Annotation Term="UI.HeaderFacets"&gt;
+        &lt;Collection&gt;
+            &lt;Record Type="UI.ReferenceFacet"&gt;
+                &lt;PropertyValue Property="Target" AnnotationPath="to_ProductSalesPrice/@UI.Chart"/&gt;
+            &lt;/Record&gt;
+        &lt;/Collection&gt;
+    &lt;/Annotation&gt;
+&lt;/Annotations&gt;
+</pre></div></section>
+                <p></p>
+            </section><section>
+                <h3 class="title ">UI.Chart Annotations</h3>
+                <p>The <code>UI.Chart Title</code> property is used for the title. </p>
+                <p>The <code>UI.Chart Description</code> property is used for the subtitle.</p>
+            </section><section>
+                <h3 class="title ">UI.DataPoint Annotation</h3>
+                <p>The <code>DataPoint</code> property of the <code>MeasureAttributes</code>
+                    of the <code>Chart</code> annotation has to point to the
+                        <code>UI.DataPoint</code> annotation. </p>
+                <p>The micro chart supports both the <code>Criticality</code> and
+                        <code>CriticalityCalculation</code> properties of a
+                        <code>UI.DataPoint</code>. For an example of how to use the
+                        <code>CriticalityCalculation</code>, see the area micro chart annotation
+                    example. For an example of how to use the <code>Criticality</code> property,
+                    see the bullet micro chart annotation example. </p>
+                <p>
+                    </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>Although the <code>Title</code> for the <code>UI.DataPoint</code>
+                        is mandatory, the micro chart doesn't use it.</p></div></div>
+                <p></p>
+            </section><section>
+                <h3 class="title ">Unit of Measure Annotations</h3>
+                <p>The <code>Unit of Measure</code> is used for the footer of the micro chart.
+                    An annotation for the <code>Unit of Measure</code> is included in the
+                    example below. The example uses the <code>Measures.ISOCurrency</code> term
+                    and it is applied to the entity type property that is used as the value property
+                    of the <code>UI.DataPoint</code>.</p>
+                <p>
+                    </p><section class="lang-xml"><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductSalesPriceType/AreaChartPrice"&gt;&gt;
+    &lt;Annotation Term="Measures.ISOCurrency" Path="Currency"/&gt;
+&lt;/Annotations&gt;
+&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductSalesRevenueType/BulletChartRevenue"&gt;&gt;
+   				&lt;Annotation Term="Measures.ISOCurrency" Path="Currency"/&gt;
+   			&lt;/Annotations&gt;
+
+			&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductSalesRevenueType/BulletChartMonthRevenue"&gt;&gt;
+   				&lt;Annotation Term="Measures.ISOCurrency" Path="Currency"/&gt;
+   			&lt;/Annotations&gt;
+   			&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductSalesRevenueType/BulletChartNetRevenue"&gt;
+   				&lt;Annotation Term="Measures.ISOCurrency" Path="Currency"/&gt;
+   			&lt;/Annotations&gt;
+   			&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductType/SpecificationWidthHarveyChart"&gt;
+   				&lt;Annotation Term="Measures.ISOCurrency" Path="Currency"/&gt;
+   			&lt;/Annotations&gt;
+   			&lt;Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="STTA_PROD_MAN.STTA_C_MP_ProductType/Sold"&gt;
+				&lt;Annotation Term="Measures.ISOCurrency" Path="WeightUnit" /&gt;
+			&lt;/Annotations&gt;
+</pre></div></section>
+                <p></p>
+                
+            </section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">SAP Fiori Elements for OData
+                    V2</h3></div><div class="fig"><p>
+                    </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>The template does not currently support the use of navigation properties
+                            in the <code>UI.Chart</code> term for the micro chart (see example
+                            below).</p>
+                        <div><div class="fig"><img src="loio02debb6e41424ba09ea3cc6ef0005ff7_LowRes.png" usemap="#"></div><span class="collapsible-icon sap-icon figcap title">Navigation Property</span></div>
+                    <p></p></div></div>
+                <p></p></div></section><section class="collapsible"><div class="collapsible-icon sap-icon"><h3 class="title collapsible">SAP Fiori Elements for OData
+                    V4</h3></div><div class="fig"><p>
+                    </p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+                        </p><p>The use of navigation properties, like the one highlighted below, is
+                            currently not supported.</p>
+                        <div><div class="fig"><span class="collapsible-icon sap-icon figcap title">Navigation Property </span></div>
+                    <p></p></div></div>
+                <p></p></div></div></section><section>
+                <h3 class="title ">More Information</h3>
+                <ul class="ul ">
+                    <li class="li">
+                        <p><a href="#/topic/1467f2bc79874281ac152c1e15f133f5.html" title="An area micro chart is a trend chart." class="sap-doc">Area Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/b91516684a8641b2964c2380c9ea94df.html" title="The bullet chart features a single, primary measure (for example, current year-to-date revenue)." class="sap-doc">Bullet Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/51eb56989df94267a75ebeff24093a5e.html" title="Radial micro charts displays a single percentage value." class="sap-doc">Radial Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/e5cb2afe0e484e4b803b0c82190895de.html" title="A line chart is a basic type of chart used in many fields." class="sap-doc">Line Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/1a4ecb81be1940959d2aaa4eb7547567.html" title="A column chart uses vertical bars to compare multiple values over time or across categories." class="sap-doc">Column Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/de4f8bf44b9846ccace1d78f3915aa81.html" title="de4f8bf44b9846ccace1d78f3915aa81.xml" class="sap-doc">Harvey Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/9c938378cf4245e9903e806cb4d41d97.html" title="9c938378cf4245e9903e806cb4d41d97.xml" class="sap-doc">Stacked Bar Micro Chart</a></p>
+                    </li>
+                    <li class="li">
+                        <p><a href="#/topic/9d126f1d92d34c178d9686b0cf12800a.html" title="A single measure value is shown against a maximum value." class="sap-doc">Comparison Micro Chart</a></p>
+                    </li>
+                </ul>
+            </section></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

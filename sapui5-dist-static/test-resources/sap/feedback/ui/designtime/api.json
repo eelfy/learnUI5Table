@@ -1,0 +1,1 @@
+{"$schema-ref":"http://schemas.sap.com/sapui5/designtime/api.json/1.0","version":"1.88.0","library":"sap.feedback.ui","symbols":[{"kind":"namespace","name":"sap.feedback.ui","basename":"ui","resource":"sap/feedback/ui/library.js","module":"sap/feedback/ui/library","export":"","static":true,"visibility":"public","description":"UI5 library: sap.feedback.ui."}]}

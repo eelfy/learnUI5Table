@@ -1,0 +1,42 @@
+[
+	{
+		"__metadata": {
+			"id": "/Items('1239102')",
+			"uri": "/Items('1239102')",
+			"type": "com.sap.GL.zrha.Items"
+		},
+		"ItemId": "1239102",
+		"Company Code": "0001",
+		"Count": 3
+	},
+	{
+		"__metadata": {
+			"id": "/Items('1239103')",
+			"uri": "/Items('1239103')",
+			"type": "com.sap.GL.zrha.Items"
+		},
+		"ItemId": "1239103",
+		"Company Code": "0006",
+		"Count": 1
+	},
+	{
+		"__metadata": {
+			"id": "/Items('1239104')",
+			"uri": "/Items('1239104')",
+			"type": "com.sap.GL.zrha.Items"
+		},
+		"ItemId": "1239104",
+		"Company Code": "0005",
+		"Count": 2
+	},
+	{
+		"__metadata": {
+			"id": "/Items('1239105')",
+			"uri": "/Items('1239105')",
+			"type": "com.sap.GL.zrha.Items"
+		},
+		"ItemId": "1239105",
+		"Company Code": "0006",
+		"Count": 123
+	}
+]

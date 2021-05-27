@@ -1,0 +1,77 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loioa3465c8d71b449dba23d557cb2c413aa" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Text Size and Fonts</h1><div class="fig"><h1 class="topictitle1 title">Text Size and Fonts</h1><div class="shortdesc">The size of the text and the font choice greatly impact the visibility and readability
+		of an application. Additionally, your application also has to still be usable at high zoom
+		levels. </div><section>
+			<h2 class="title ">Rules and Guidelines</h2>
+			<p>As an application developer, you should always consider the fact that the application could be
+				zoomed to 200%, and everything should still be visible. For that reason, any style
+				that involves disabling zooming or setting fixed weight or height should be avoided.
+				Properties that affect the zooming have to be set accordingly. </p>
+			<p>Here are some of the most common JavaScript properties that you should bear in mind: </p><ul class="ul ">
+					<li class="li">
+						<p><code>user-scalable</code></p>
+					</li>
+					<li class="li">
+						<p><code>initial-scale</code></p>
+					</li>
+					<li class="li">
+						<p><code>maximum-scale</code></p>
+					</li>
+					<li class="li">
+						<p><code>minimum-scale</code></p>
+					</li>
+					<li class="li">
+						<p><code>width</code></p>
+					</li>
+					<li class="li">
+						<p><code>height</code></p>
+					</li>
+					<li class="li">
+						<p><code>target-densitydpi</code></p>
+					</li>
+				</ul><div class="note caution  "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Caution
+				</strong></div></div><div class="fig"><p>
+					</p><p>Setting inappropriate values for these properties can completely disable the
+						zooming of an application. Here is an example of such incorrect values:
+						</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">&lt;meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1,
+ minimum-scale=1, width=device-width, height=device-height,
+ target-densitydpi=device-dpi" /&gt;</pre></div></section><p></p>
+				<p></p></div></div><p></p>
+			<p>Additionally,
+				you can also make zoom adjustments or disable zoom completely in CSS. For
+				example:</p><section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">zoom&nbsp;{
+&nbsp;&nbsp;&nbsp;zoom:&nbsp;150%;
+}</pre></div></section>Or<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">#elementId&nbsp;{
+&nbsp;&nbsp;&nbsp;-webkit-transform:&nbsp;scale(2,3);&nbsp;/* Safari */
+&nbsp;&nbsp;&nbsp;transform:&nbsp;scale(2,3);
+}
+
+html {
+   -ms-content-zoom-limit-min: 1;
+   -ms-content-zoom-limit-max: 1;
+}
+
+html {
+   touch-action: none;
+}
+</pre></div></section><p></p>
+		</section><section>
+			<h2 class="title ">Tips for Testing</h2>
+			<p>Enlarge the application UI text by zooming up to 200%.</p><ul class="ul ">
+					<li class="li">
+						<p>Is each text element and each image enlarged to double width and double height?</p>
+					</li>
+					<li class="li">
+						<p>Is the text still readable (no overlaps)?</p>
+					</li>
+					<li class="li">
+						<p>Are text alternatives for non-text content magnified in the same way?</p>
+					</li>
+					<li class="li">
+						<p>Is the full content and functionality still available?</p>
+					</li>
+					<li class="li">
+						<p>Does the layout still look OK?</p>
+					</li>
+				</ul><p></p>
+		</section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>

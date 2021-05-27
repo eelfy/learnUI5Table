@@ -1,0 +1,145 @@
+<html><head></head><body><div id="d4h5-main-container" class="dk-main"><section id="loiobfaf3ccf3d6d4735990cc793b21f5529" class=" section topic"><h1 class="collapsible-icon sap-icon innerTitle">Handling of the
+			preferredMode Parameter</h1><div class="fig"><h1 class="topictitle1 title">Handling of the
+			preferredMode Parameter</h1><div class="shortdesc">Applications can configure the mode in which the object page should be initially
+		launched via the preferredMode
+		parameter.</div><p>The <span class="ph sap-technical-name">preferredMode=create</span> is a URL parameter that
+			can be used by the applications to trigger the direct launch of the object page in
+			create mode even when the navigation target is the list report template.</p><p>If we configure the list report and object page app in FLP with a start-up parameter
+				<span class="ph sap-technical-name">preferredMode=create</span>, then on navigating to
+			the app, the object page will be directly loaded in create mode. This behavior would
+			also be seen if <span class="ph sap-technical-name">preferredMode=create</span> is added
+			to navigation URL:
+				(…<span class="ph sap-technical-name">#SalesOrder-manage?preferredMode=create</span>)</p><section class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V2</h2></div><div class="fig"><p>Enter the <span class="ph sap-technical-name">preferredMode</span> parameter to specify
+				the mode in which the object page should be opened as follows: </p><div class="tableWrapper "><div class="fig"><tgroup>
+						
+						
+						</tgroup><table border="1" id="table_lgk_h3n_5lb" class=" "><colgroup><col width="1"><col width="3.15"></colgroup><thead>
+							<tr>
+								<th colspan="1" rowspan="1">
+									<p>PreferredMode Parameter</p>
+								</th>
+								<th colspan="1" rowspan="1">
+									<p>Results in the following mode</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>display</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>Object page opens in display mode unless the user is already
+										working on a draft. In this case, the draft is opened in
+										edit mode.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>edit</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>A draft is created if one doesn't exist yet. If an outdated
+										draft by another user exists ("unsaved changes"), the user
+										can decide to cancel this draft and create their own, or to
+										keep the other user's draft and open it in display mode. If
+										another user's draft exists and is not outdated, the page is
+										opened in display mode.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>create</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p><span class="uinolabel">Create
+											Object
+											Page</span> is opened in the
+										target application.</p>
+									<p>In case of draft applications, a new draft is created by using the <code>POST</code>
+										call, by default. Users can override this beahvior and
+										configure applications to call a function import annotated
+										with
+										<code>newAction</code>..</p>
+									<p>You can use URL parameters to prefill specific values. This
+										is currenly not supported for draft creation via
+											<code>newAction</code>. For example, to set the
+										value 01 for the <span class="ph uicontrol">DefectCategory</span>
+										field, enter the URL
+											<code>…#Defect-displayWorklist?preferredMode=create&DefectCategory=01</code>.</p>
+									<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+										</p><p>The target application must specify in its manifest.json
+											which parameters are to be used from the incoming URL.
+											In the following example, only the
+												<code>Supplier</code> parameter is used.</p>
+										<section><div class="fig fig-codeblock"><pre class="codeblock prettyprint">"sap.ui.generic.app": { 
+   "_version": "1.2.0",
+   "settings": {
+      ... 
+  "inboundParameters": {
+         "DefectCategory": {
+            "useForCreate": true
+         }
+      }
+   },
+   "pages": [
+      {
+         ...</pre></div></section>
+									<p></p></div></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>mode</p>
+								</td>
+								<td colspan="1" rowspan="1" valign="top">
+									<p>If the specified mode isn't suitable for the current draft
+										state, there is no silent fallback. However, the user gets
+										an error message before the object page is opened in the
+										potentially available mode.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table></div></div><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>There is no double navigation. If no object page is defined in the target
+						app's manifest or the (usually internal) navigation to the object page is
+						overridden by external navigation, the list report is shown.</p>
+				<p></p></div></div><p></p></div></section><section id="section_evr_bcd_hmb" class="collapsible"><div class="collapsible-icon sap-icon"><h2 class="title collapsible">SAP Fiori Elements for OData V4</h2></div><div class="fig"><p>The feature works as follows:</p><ul class="ul ">
+				<li class="li">
+					<p>If the application has defined a create action (<code>NewAction</code>)
+						and if this is dependent on the mandatory parameters, then on launch of the
+						app there would be an action parameter dialog requesting to enter the
+						parameters. After entering the parameter values, the object page would open
+						in create mode. Once you enter the details for the object page and then
+						save, you should see that the record is saved.</p>
+				</li>
+				<li class="li">
+					<p>If the application has not defined a create action
+							(<code>NewAction</code>) or if this is not dependent on the
+						mandatory parameters, then on launch of the app the object page would open
+						in create mode. Once you enter the details for the object page and then
+						save, you should see that the record is saved.</p>
+				</li>
+			</ul><p>
+				</p><div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>When the application has its own view instead of the default object page
+						template and is configured with a start-up parameter
+							<span class="ph sap-technical-name">preferredMode=create</span> (or has
+						the URL parameter
+							<span class="ph sap-technical-name">preferredMode=create</span>), then we
+						do not have the above behavior. Instead, we just launch the list report
+						application.</p>
+				<p></p></div></div>
+				<div class="note   "><div class="collapsible-icon sap-icon"><div class="title"><strong>
+					Note
+				</strong></div></div><div class="fig"><p>
+					</p><p>There is no double navigation. If no object page is defined in the target
+						app's manifest, the list report is shown.</p>
+				<p></p></div></div>
+			<p></p></div></section><section class="contentInSection hidden"><h2>In this section:</h2></section><section class="familyLinks"><div class="parentLink hidden"><br><strong>Parent topic: </strong></div><div class="previousLink hidden"><br><strong>Previous: </strong></div><div class="nextLink hidden"><br><strong>Next: </strong></div></section><section class="hidden relatedLinks "><div class="collapsible-icon sap-icon title"><h2>Related information</h2></div><ul class="fig"></ul></section></div></section></div></body></html>
